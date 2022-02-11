@@ -6,13 +6,15 @@ Below are some basic concepts/ideas for the CSS library, split into individual c
 
 ### Concept
 
-Untitled renders well out of the box with Vanilla HTML, like a classless CSS library such as pico
+Untitled renders well out of the box with Vanilla HTML, like a classless CSS library such as [pico.css]
 
 ### Examples
 
-pico.css provides a good base for what we are looking for:
+[pico.css] provides a good base for what we are looking for:
 
 https://picocss.com/examples/preview/
+
+[pico.css]: https://picocss.com
 
 ## Semantic HTML Power Structures  
 
@@ -26,7 +28,8 @@ other CSS libraries, would typically require components.
 
 ### Examples
 
-The `main` tag would auto-center and pad at a reasonable (configurable) max-width:
+The `main` tag would auto-center and pad at a reasonable (configurable) max-width, similar to a Bootstrap 
+`container`, though not necessarily relying on fixed breakpoints:
 
 ```html
 <main>
@@ -38,7 +41,7 @@ Using a `nav` element with inline sub-elements will create a horizontal nav bar
 
 ```html
 <nav>
-  <span>Foo Company LLC</span> <a href="/foo">Foo</a> <a href="/foo">Foo</a> <a href="/foo">Foo</a>
+  <span>Foo Company LLC</span> | <a href="/foo">Foo</a> | <a href="/foo">Foo</a> | <a href="/foo">Foo</a>
 </nav>
 ```
 
@@ -79,38 +82,38 @@ Using a `form` element with block sub-elements will create a horizontal, label a
 ```html
 <form>
     <fieldset>
-        <div>
+        <p>
             <label for="aligned-name">Username</label>
             <input type="text" id="aligned-name" placeholder="Username" />
             <span>This is a required field.</span>
-        </div>
-        <div>
+        <p>
             <label for="aligned-password">Password</label>
             <input type="password" id="aligned-password" placeholder="Password" />
-        </div>
-        <div>
+        <p>
             <label for="aligned-email">Email Address</label>
             <input type="email" id="aligned-email" placeholder="Email Address" />
-        </div>
-        <div>
+        <p>
             <label for="aligned-foo">Supercalifragilistic Label</label>
             <input type="text" id="aligned-foo" placeholder="Enter something here..." />
-        </div>
-        <div>
+        <p>
             <label for="aligned-cb" class="pure-checkbox">
                 <input type="checkbox" id="aligned-cb" /> I&#x27;ve read the terms and conditions
             </label>
             <button type="submit">Submit</button>
-        </div>
     </fieldset>
 </form>
 ```
 
-##  Aria-Driven Components
+##  Components
  
 ### Concept
 
-Untitled offers "High Power" arias that capture high level components on, as much as is possible, a *single* CSS element
+Untitled offers "High Power" classes that capture high level components on, as much as is possible, a *single* CSS element.
+These classes may change the appearance of descendant elements. They should either be designed for use with a small amount
+of content, or restrict their reach into their children with `>`, etc. They can be expanded when `@scope` becomes standard
+and widespread.
+
+Here is a card:
 
 ```html
 <div role="card">
@@ -123,17 +126,22 @@ Untitled offers "High Power" arias that capture high level components on, as muc
 
 would render as a card element, as [defined here](https://piccalil.li/blog/cube-css/):
 
-Tabs could be similar defined like so:
+### ARIA-based
+
+In cases where it's applicable, implementations of the patterns described in [WAI-ARIA Authoring Guidelines]
+would be styled appropriately. Take tabs for example:
 
 ```html
-<div role="tab-bar">
-  <a href="/foo">Tab 1</a>
-  <a href="/foo">Tab 2</a>
-  <a href="/foo">Tab 3</a>
+<div role="tablist">
+  <a role="tab" href="/foo">Tab 1</a>
+  <a role="tab" href="/foo">Tab 2</a>
+  <a role="tab" href="/foo">Tab 3</a>
 </div>
 ```
 
-We would like to explore using the `role` attribute for this.
+[WAI-ARIA Authoring Guidelines]: https://www.w3.org/TR/wai-aria-practices-1.2/
+
+### Built-in components
 
 We would like to see the following components:
 
