@@ -1,5 +1,10 @@
 # Untitled CSS Library RFP
 
+Statement of Purpose: Create A CSS library that starts with good default styling, akin to classless CSS libraries, and,
+beyond that, offers purely semantic HTML components (e.g. nav bars), utilizing ARIA where appropriate (e.g. tabs) and, 
+finally, where tweaks are needed, offers a small & curated set of class-based utilities taken from the current popular
+utility libraries (tailwinds, tachyons, etc.)
+
 Untitled CSS Library is a CSS library that, so far as I can tell, does not exist.  
 
 It offers the following features:
