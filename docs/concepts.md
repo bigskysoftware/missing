@@ -126,7 +126,7 @@ would render as a card element, as [defined here](https://piccalil.li/blog/cube-
 Tabs could be similar defined like so:
 
 ```html
-<div role="tab">
+<div role="tab-bar">
   <a href="/foo">Tab 1</a>
   <a href="/foo">Tab 2</a>
   <a href="/foo">Tab 3</a>
