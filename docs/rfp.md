@@ -1,11 +1,18 @@
-# Untitled CSS Library RFP
+# missing CSS Library RFP
 
-Statement of Purpose: Create A CSS library that starts with good default styling, akin to classless CSS libraries, and,
-beyond that, offers purely semantic HTML components (e.g. nav bars), utilizing ARIA where appropriate (e.g. tabs) and, 
-finally, where tweaks are needed, offers a small & curated set of class-based utilities taken from the current popular
-utility libraries (tailwinds, tachyons, etc.)
 
-Untitled CSS Library is a CSS library that, so far as I can tell, does not exist.  
+untitled.css is a CSS library that
+ 
+ * starts with good default styling, akin to classless CSS libraries
+ * offers components based on purely semantic HTML, utilizing ARIA where appropriate (e.g. tabs)
+ * finally, offers a small & curated set of class-based utilities for tweaking
+ 
+untitled.css aims to minimize intervention in the HTML by allowing developers to start with a good out of the box experience, 
+ then build common components using plain, semantic HTML and only when they need to go beyond that, apply a minimized \
+ number of classes to achieve what they want.
+ 
+
+missing CSS Library is a CSS library that, so far as I can tell, does not exist.  
 
 It offers the following features:
 
@@ -25,11 +32,11 @@ It does not attempt to
 ## Rendering Well OOTB
 
 There are many CSS libraries that provide an excellent rendering experience with plain HTML.  pico.css is a cannonical example.
-Untitled CSS Library will, similarly, offer this functionality.
+missing CSS Library will, similarly, offer this functionality.
 
 ## Opinionated Styling of Less Commonly Used Element
 
-In keeping with the concept of rendering (and encouraging) semantic, vanilla CSS, Untitled CSS will render less commonly used
+In keeping with the concept of rendering (and encouraging) semantic, vanilla CSS, missing CSS will render less commonly used
 tags in a more opinionated manner.
 
 For example, the `main` tag will act like `container` does in many CSS frameworks: it will auto-center and set a max-width
@@ -39,11 +46,11 @@ within it.
 
 `nav` tags with a `ul` inside of it will render as a horizontal nav element.
 
-All this without additional classes needed: Untitled CSS takes interpretive advantage of semantic HTML.
+All this without additional classes needed: missing CSS takes interpretive advantage of semantic HTML.
 
 ## A Few High Power Component Classes
 
-In addition to the pure-HTML styling mentioned above, Untitled CSS will provide a small number of "high power" component
+In addition to the pure-HTML styling mentioned above, missing CSS will provide a small number of "high power" component
 classes.
 
 The term "High Power" means that the components will not require multiple uses of classes, but rather a single class
@@ -64,7 +71,7 @@ Consider the [aligned form](https://purecss.io/forms/#aligned-form) example from
 
 Note that there are a total of four classes required to achieve the aligned layout.  
 
-In Untitled CSS, this will be styled like so:
+In missing CSS, this will be styled like so:
 
 ```html
 <form class="aligned">

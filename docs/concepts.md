@@ -6,7 +6,7 @@ Below are some basic concepts/ideas for the CSS library, split into individual c
 
 ### Concept
 
-Untitled renders well out of the box with Vanilla HTML, like a classless CSS library such as [pico.css]
+missing renders well out of the box with Vanilla HTML, like a classless CSS library such as [pico.css]
 
 ### Examples
 
@@ -20,7 +20,7 @@ https://picocss.com/examples/preview/
 
 ### Concept
 
-Untitled takes advantage of semantic, lesser used tags such as `nav`, `main` and `section` to allow for more elaborate layouts in pure HTML
+missing takes advantage of semantic, lesser used tags such as `nav`, `main` and `section` to allow for more elaborate layouts in pure HTML
 
 Moving beyond the pico level of styling typically requires adding classes to the DOM.  To avoid this, we want to
 instead offer "Power Structures" which are opinionated uses of semantic HTML that will be rendered in what, in
@@ -108,7 +108,7 @@ Using a `form` element with block sub-elements will create a horizontal, label a
  
 ### Concept
 
-Untitled offers "High Power" classes that capture high level components on, as much as is possible, a *single* CSS element.
+missing offers "High Power" classes that capture high level components on, as much as is possible, a *single* CSS element.
 These classes may change the appearance of descendant elements. They should either be designed for use with a small amount
 of content, or restrict their reach into their children with `>`, etc. They can be expanded when `@scope` becomes standard
 and widespread.
@@ -159,6 +159,6 @@ We would like to see the following components:
  
 ### Concept
 
-Untitled offers a set of [utility classes](https://cube.fyi/utility.html) that captures the 80/20 of libraries like tailwinds
+missing offers a set of [utility classes](https://cube.fyi/utility.html) that captures the 80/20 of libraries like tailwinds
 
 TODO: good examples of utility class usage
