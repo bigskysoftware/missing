@@ -1,0 +1,16 @@
+/*********************************************************
+ The Card Component
+
+ TODO - document, link to all the layouts?
+ Style: custom-tag, custom-attribute
+ *********************************************************/
+
+.missing-card, missing-card, [missing-card] {
+  border: 1px solid red;
+  display: block;
+
+  & > img {
+  	border-radius: 2em;
+  }
+}
+

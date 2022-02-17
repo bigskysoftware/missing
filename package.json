@@ -1,0 +1,28 @@
+{
+  "name": "missing",
+  "version": "0.0.0",
+  "description": "A scaled CSS library",
+  "main": "dist/missing.css",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+  	"build": "node build/postcss.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bigskysoftware/missing.git"
+  },
+  "author": "Big Sky Software",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/bigskysoftware/missing/issues"
+  },
+  "homepage": "https://github.com/bigskysoftware/missing#readme",
+  "devDependencies": {
+    "postcss": "^8.4.6",
+    "postcss-import": "^14.0.2",
+    "postcss-preset-env": "^7.3.2"
+  }
+}
