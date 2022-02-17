@@ -9,7 +9,7 @@ const target     = path.join(__dirname, '../dist/missing.css')
 
 const pc = postcss([
 	atImport(),
-  presetEnv({ browsers: 'last 5 versions', stage: 1 }),
+	presetEnv({ browsers: 'last 2 versions', stage: 1 }),
 ])
 
 fs.readFile(entrypoint, { encoding: 'utf8' })
