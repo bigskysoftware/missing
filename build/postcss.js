@@ -5,7 +5,8 @@ const presetEnv = require('postcss-preset-env')
 const atImport = require('postcss-import')
 
 const entrypoint = path.join(__dirname, '../src/main.css')
-const target     = path.join(__dirname, '../dist/missing.css')
+const dist     = path.join(__dirname, '../dist')
+const target     = path.join(dist, '/missing.css')
 
 const pc = postcss([
 	atImport(),
@@ -22,5 +23,6 @@ fs.readFile(entrypoint, { encoding: 'utf8' })
 			},
 		)
 	).then(result => {
-		fs.writeFile(target, result.css)
+		fs.mkdir(dist)
+		fs.writeFile(target, result.css, { flag: 'w' })
 	})
