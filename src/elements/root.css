@@ -40,7 +40,7 @@ body > header {
 }
 
 main {
-	max-width: 70ch;
+	max-width: min(calc(100vw - 2 * var(--l-rhythm)), 70ch);
 	margin: auto;
 }
 
