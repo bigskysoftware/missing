@@ -18,7 +18,8 @@
 	display: block;
 
 	font-size: calc(1em / 1.5);
-	line-height: 1;
+	line-height: 1em;
+	margin-top: calc(var(--l-headings-height) - 1.5em);
 	font-weight: normal;
 
 	color: var(--c-text-muted);
