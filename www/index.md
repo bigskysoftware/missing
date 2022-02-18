@@ -6,6 +6,8 @@ layout: layout.html
 
 # missing.css<v-h>:</v-h> <sub-title>The Missing CSS Stylesheet</sub-title>
 
+## What is it?
+
 missing.css is the missing CSS library that we all wished existed:
 
   * It starts with decent default styling for vanilla HTML, akin to classless CSS libraries
@@ -15,6 +17,13 @@ missing.css is the missing CSS library that we all wished existed:
 The objective of missing.css is to minimize the neccessary intervention in the HTML by allowing developers to
 start with a good out of the box experience, then build common components using plain, semantic HTML and
 then, only if necessary, apply a minimal number of classes to achieve.
+
+<aside class="missing-card info">
+
+<block-label>Did you know?</block-label> The `<main>` element can only have these elements as ancestors:
+`<html>`, `<body>`, `<div>`, `<form>` without an accessible name, and autonomous custom elements.
+
+</aside>
 
 missing.css is not designed to be a complete styling solution for large websites.  It may serve as a basis
 for a more completely styled site, but does not attempt to offer the completeness of, say, bootstrap.

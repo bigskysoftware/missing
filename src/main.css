@@ -8,10 +8,12 @@
 :root {
 	/* Colors */
 	--c-text: #000;
-	--c-text-muted: #777;
+	--c-text-muted: #555;
 
 	--c-bg: #fff;
 	--c-bg-2: #f6f6f6;
+
+	--c-shadow: #777;
 
 	/* Lengths */
 	--l-rhythm: 1.2rem;

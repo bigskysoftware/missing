@@ -29,12 +29,13 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 -->
 
-<div id="top" role="document">
-    <header>
+<main>
+    <header class="-container">
         <h1>HTML5 Test Page</h1>
         <p>This is a test page filled with common HTML elements to be used to provide visual feedback whilst building CSS systems and frameworks.</p>
     </header>
-    <nav>
+    <nav aria-labelledby="toc-title" class="-container">
+    	<h2 id="toc-title">Table of Contents</h2>
         <ul>
             <li>
                 <a href="#text">Text</a>
@@ -82,7 +83,6 @@ SOFTWARE.
             </li>
         </ul>
     </nav>
-    <main>
         <section id="text">
             <header><h1>Text</h1></header>
             <article id="text__headings">
@@ -569,10 +569,10 @@ SOFTWARE.
                 <p><a href="#top">[Top]</a></p>
             </form>
         </section>
-    </main>
     <footer>
         <p>Made by <a href="http://twitter.com/cbracco">@cbracco</a>. Code on <a href="http://github.com/cbracco/html5-test-page">GitHub</a>.</p>
     </footer>
+  </main>
 </div>
 </body>
 </html>
