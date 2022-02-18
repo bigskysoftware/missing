@@ -4,12 +4,17 @@
 
 	padding-inline: calc(.5 * var(--l-rhythm));
 	transform: translate(
-		calc(-1.2 * var(--l-rhythm)), calc(-1.4 * var(--l-rhythm))
+		calc(-1.1 * var(--l-rhythm)), calc(-1.5 * var(--l-rhythm))
 	);
 
 	border-radius: calc(.25 * var(--l-rhythm));
 
-	background: var(--c-text);
+	font-weight: bold;
+
+	background: var(--c-accent);
 	color: var(--c-bg);
+	box-shadow:
+		0 calc(.05 * var(--l-rhythm)) calc(.1 * var(--l-rhythm))
+		var(--c-text-muted);
 }
 
