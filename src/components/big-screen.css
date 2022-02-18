@@ -1,0 +1,12 @@
+.big-screen, big-screen, [big-screen] {
+	/***
+	 A tall, vertically centered block. Because it uses flex, it disrupts margin
+	 collapsing. Use with an inner wrapper.
+	 ***/
+	min-height: 60vh;
+
+	display: flex;
+	flex-flow: column nowrap;
+	justify-content: center;
+}
+

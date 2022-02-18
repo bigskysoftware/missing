@@ -4,7 +4,11 @@ layout: layout.html
 
 <main>
 
+<big-screen>
+
 # missing.css<v-h>:</v-h> <sub-title>The Missing CSS Stylesheet</sub-title>
+
+</big-screen>
 
 missing.css is the missing CSS library that we all wished existed:
 
