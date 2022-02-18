@@ -25,9 +25,8 @@ nav: {
 			{% for name, href in nav.pages %}
 				<li><a
 					href="{{ href }}"
-					{{ 'aria-current="page"' if href == page.url }}>
-					{{ name }}
-				</a>
+					{{ 'aria-current="page"' if href == page.url }}
+					>{{ name }}</a>
 			{% endfor %}
 		</nav>
 		<nav aria-label="external links">
@@ -35,9 +34,8 @@ nav: {
 			{% for name, href in nav.external %}
 				<li><a
 					rel="noopener noreferrer nofollow"
-					href="{{ href }}">
-					{{ name }}
-				</a>
+					href="{{ href }}"
+					>{{ name }}</a>
 			{% endfor %}
 			</ul>
 		</nav>
