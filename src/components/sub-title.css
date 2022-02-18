@@ -3,6 +3,7 @@
 	display: block;
 
 	font-size: calc(1em / 1.5);
+	font-weight: normal;
 
 	color: var(--c-text-muted);
 }
