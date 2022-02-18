@@ -1,18 +1,20 @@
 
 const postcss = require('../build/postcss.js')
-const { EleventyRenderPlugin } = require("@11ty/eleventy")
 
 module.exports = eleventyConfig => {
+
+	// Build missing.css
 	eleventyConfig.on('eleventy.before', postcss)
-
-	eleventyConfig.addPlugin(EleventyRenderPlugin)
-
+	eleventyConfig.addWatchTarget('src')
+	eleventyConfig.addWatchTarget('build')
 
 	return {
 		dir: {
 			input: 'www/',
-			output: 'dist/'
-		}
+			output: 'dist/',
+			includes: 'includes/',
+		},
+		htmlTemplateEngine: 'njk',
 	}
 }
 

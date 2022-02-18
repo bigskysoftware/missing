@@ -1,0 +1,48 @@
+---
+nav: {
+	pages: {
+		"Home": /,
+		"Demo": html5/,
+	},
+	external: {
+		"GitHub": "https://github.com/bigskysoftware/missing"
+	},
+}
+---
+
+<!doctype html>
+<html lang="{{ lang | d(en) }}">
+<head>
+	<meta charset="utf=8">
+	<meta name="viewport" content="width=device-width">
+
+	<link rel="stylesheet" href="/missing.css">
+</head>
+<body>
+	<header>
+		<nav aria-label="site">
+			<ul>
+			{% for name, href in nav.pages %}
+				<li><a
+					href="{{ href }}"
+					{{ 'aria-current="page"' if href == page.url }}>
+					{{ name }}
+				</a>
+			{% endfor %}
+		</nav>
+		<nav aria-label="external links">
+			<ul>
+			{% for name, href in nav.external %}
+				<li><a
+					rel="noopener noreferrer nofollow"
+					href="{{ href }}">
+					{{ name }}
+				</a>
+			{% endfor %}
+			</ul>
+		</nav>
+	</header>
+
+	{{ content | safe }}
+</body>
+
