@@ -1,5 +1,20 @@
 
 .sub-title, sub-title, [sub-title] {
+	/***
+	 Meant for use in headings. Make sure to also use visually-hidden punctuation
+	 to mark the subtitle as shown below:
+
+	1 | <h2>
+	2 | 	Foo Bar<v-h>:</v-h>
+	3 | 	<sub-title>How I Learned To Stop Worrying and Love Baz</sub-title>
+	4 | </h2>
+
+	1 | <h2>
+	2 | 	<sub-title class="-allcaps">Breaking News</sub-title><v-h>:</v-h>
+	3 | 	Bad Thing Happens
+	4 | <h2>
+	 ***/
+
 	display: block;
 
 	font-size: calc(1em / 1.5);
