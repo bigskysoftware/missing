@@ -6,8 +6,6 @@ layout: layout.html
 
 # missing.css<v-h>:</v-h> <sub-title>The Missing CSS Stylesheet</sub-title>
 
-## What is it?
-
 missing.css is the missing CSS library that we all wished existed:
 
   * It starts with decent default styling for vanilla HTML, akin to classless CSS libraries
