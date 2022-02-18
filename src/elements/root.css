@@ -3,3 +3,44 @@ html {
 	font-family: -apple-system, system-ui, sans-serif;
 }
 
+body > header {
+	/***
+	 A header directly at the start of the body is a navbar.
+	 ***/
+
+	position: sticky;
+	inset-block-start: 0;
+	inset-inline: 0;
+
+	margin: 0;
+	padding: 0 var(--l-rhythm);
+
+	background: var(--c-bg);
+	box-shadow:
+		0
+		calc(.1 * var(--l-rhythm))
+		calc(.3 * var(--l-rhythm))
+		var(--c-text-muted),
+
+		0
+		0
+		calc(.1 * var(--l-rhythm))
+		var(--c-text);
+
+	/* Inner layout */
+	display: flex;
+	flex-flow: row;
+	justify-content: space-between;
+
+	& > nav ul {
+		display: flex;
+		flex-flow: row wrap;
+		gap: var(--l-rhythm);
+	}
+}
+
+main {
+	max-width: 70ch;
+	margin: auto;
+}
+

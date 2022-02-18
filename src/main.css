@@ -10,6 +10,8 @@
 	--c-text: #000;
 	--c-text-muted: #555;
 
+	--c-bg: #fff;
+
 	/* Lengths */
 	--l-rhythm: 1.2rem;
 }
