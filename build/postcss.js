@@ -1,14 +1,19 @@
 const fs = require('node:fs/promises')
 const path = require('node:path')
+
 const postcss = require('postcss')
+
 const presetEnv = require('postcss-preset-env')
 const atImport = require('postcss-import')
+const importGlob = require('postcss-import-ext-glob')
+
 
 const entrypoint = path.join(__dirname, '../src/main.css')
 const dist     = path.join(__dirname, '../dist')
 const target     = path.join(dist, '/missing.css')
 
 const pc = postcss([
+	importGlob(),
 	atImport(),
 	presetEnv({ browsers: 'last 2 versions', stage: 1 }),
 ])

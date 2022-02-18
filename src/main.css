@@ -1,5 +1,16 @@
 /* TODO - do ;) */
 
-@import "core/sanitize.css";
+@import "./core/sanitize.css";
 
-@import "components/card.css";
+@import-glob "./components/*.css";
+@import-glob "./elements/*.css";
+
+:root {
+	/* Colors */
+	--c-text: #000;
+	--c-text-muted: #555;
+
+	/* Lengths */
+	--l-rhythm: 1.2rem;
+}
+
