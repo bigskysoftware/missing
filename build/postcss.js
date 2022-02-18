@@ -13,16 +13,15 @@ const pc = postcss([
 	presetEnv({ browsers: 'last 2 versions', stage: 1 }),
 ])
 
-fs.readFile(entrypoint, { encoding: 'utf8' })
-	.then(css =>
-		pc.process(
-			css,
-			{
-				from: entrypoint,
-				to: target,
-			},
-		)
-	).then(result => {
-		fs.mkdir(dist)
-		fs.writeFile(target, result.css, { flag: 'w' })
+module.exports = async () => {
+	const css = await fs.readFile(entrypoint, { encoding: 'utf8' })
+	const result = await pc.process(css, {
+		from: entrypoint,
+		to: target,
 	})
+	await fs.mkdir(dist, { recursive: true })
+	await fs.writeFile(target, result.css, { flag: 'w' })
+}
+
+if (require.main === module) module.exports()
+
