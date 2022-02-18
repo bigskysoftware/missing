@@ -15,27 +15,24 @@ body > header {
 	margin: 0;
 	padding: 0 var(--l-rhythm);
 
-	background: var(--c-bg);
+	background: var(--c-bg-2);
 	box-shadow:
-		0
-		calc(.1 * var(--l-rhythm))
-		calc(.3 * var(--l-rhythm))
-		var(--c-text-muted),
-
-		0
-		0
-		calc(.1 * var(--l-rhythm))
-		var(--c-text);
+		0 0 calc(.6 * var(--l-rhythm))
+		var(--c-text-muted);
 
 	/* Inner layout */
 	display: flex;
 	flex-flow: row;
 	justify-content: space-between;
 
-	& > nav ul {
+	@nest :where(& nav ul) {
 		display: flex;
 		flex-flow: row wrap;
 		gap: var(--l-rhythm);
+	}
+
+	@nest :where(& a) {
+		text-decoration: none;
 	}
 }
 

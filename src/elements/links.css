@@ -1,0 +1,9 @@
+
+a {
+	color: currentColor;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
