@@ -13,7 +13,7 @@ a[href^="https://"], a[href^="//"] {
 	 ***/
 	&::after {
 		content: '\2197';
-		content: '\2197' / 'external link';
+		content: '\2197' / 'external';
 	}
 }
 
