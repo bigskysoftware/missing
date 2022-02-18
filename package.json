@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "node build/postcss.js",
-    "www": "node build/www.js",
+    "www": "eleventy --config=www/.eleventy.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/bigskysoftware/missing#readme",
   "devDependencies": {
+    "@11ty/eleventy": "^1.0.0",
     "fs-extra": "^9.1.0",
     "postcss": "^8.4.6",
     "postcss-import": "^14.0.2",
