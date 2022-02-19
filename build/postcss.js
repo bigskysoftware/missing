@@ -15,7 +15,13 @@ const target     = path.join(dist, '/missing.css')
 const pc = postcss([
 	importGlob(),
 	atImport(),
-	presetEnv({ browsers: 'last 2 versions', stage: 1 }),
+	presetEnv({
+		browsers: 'last 2 versions',
+		stage: 4,
+		features: {
+			'logical-properties-and-values': false
+		},
+	}),
 ])
 
 module.exports = async () => {
