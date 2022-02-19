@@ -8,6 +8,8 @@ module.exports = eleventyConfig => {
 	eleventyConfig.addWatchTarget('src')
 	eleventyConfig.addWatchTarget('build')
 
+	eleventyConfig.addCollection('demos', coll => coll.getFilteredByGlob('www/demos/*'))
+
 	return {
 		dir: {
 			input: 'www/',
