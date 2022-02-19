@@ -16,10 +16,12 @@
   flex: 1 0 30ch;
 
 	background: var(--c-bg-2);
+	border: 1px solid var(--c-accent);
   box-shadow:
-		0 calc(.2 * var(--l-rhythm)) calc(.3 * var(--l-rhythm)) calc(-.1 * var(--l-rhythm))
-		var(--c-text-muted),
-		0 calc(0 * var(--l-rhythm)) calc(.1 * var(--l-rhythm))
+		0
+		calc(.2 * var(--l-rhythm))
+		calc(.5 * var(--l-rhythm))
+		calc(-.2 * var(--l-rhythm))
 		var(--c-text-muted);
 }
 
