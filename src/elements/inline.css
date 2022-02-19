@@ -1,3 +1,22 @@
 
 @custom-selector :--italic i, cite, em, var, address, dfn;
 
+
+a {
+	color: currentColor;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a[href^="https://"], a[href^="//"] {
+	/***
+	 External link.
+	 ***/
+	&::after {
+		content: '\2197';
+		content: '\2197' / 'external';
+	}
+}
+
