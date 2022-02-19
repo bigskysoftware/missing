@@ -17,9 +17,7 @@
 
 	background: var(--c-bg-2);
   box-shadow:
-		0 calc(.2 * var(--l-rhythm)) calc(.3 * var(--l-rhythm))
-		var(--c-text-muted),
-		0 calc(-.1 * var(--l-rhythm)) calc(.1 * var(--l-rhythm)) calc(-.1 * var(--l-rhythm))
+		0 calc(.2 * var(--l-rhythm)) calc(.3 * var(--l-rhythm)) calc(-.1 * var(--l-rhythm))
 		var(--c-text-muted),
 		0 calc(0 * var(--l-rhythm)) calc(.1 * var(--l-rhythm))
 		var(--c-text-muted);
