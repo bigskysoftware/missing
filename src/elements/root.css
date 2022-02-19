@@ -28,12 +28,10 @@ body > header {
 	flex-flow: row;
 	justify-content: space-between;
 
-	& nav ul {
+	& nav ul[role="list"] {
 		display: flex;
 		flex-flow: row wrap;
 		gap: var(--l-rhythm);
-
-		list-style: none;
 	}
 
 	& a {

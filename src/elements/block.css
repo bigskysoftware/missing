@@ -1,5 +1,6 @@
 
-@custom-selector :--list ul, ol, dl;
+@custom-selector :--list ul, ol;
+@custom-selector :--heading h1, h2, h3, h4, h5, h6;
 
 p {
 	margin-block: var(--l-rhythm);
@@ -21,43 +22,48 @@ blockquote {
 	}
 }
 
-ul {
-	list-style: square;
-	margin-left: calc(2 * var(--l-rhythm));
+:--list {
+	padding-left: calc(2 * var(--l-rhythm));
 }
 
-:where(:--list[role="list"]) {
-	padding-left: 0;
+ul {
+	list-style: square;
+}
+
+ol {
+	list-style: decimal;
+}
+
+:--list[role="list"] {
+	padding-inline-start: 0;
 	list-style: none;
 }
 
 
-h1, h2, h3, h4, h5, h6 {
-	line-height: 1em;
-	margin-block-start: calc(var(--l-headings-height) - 1em);
+:--heading {
 	margin-block-end: var(--l-rhythm);
 }
 
 h1 {
-	font-weight: normal;
-
-	font-size: 3.375em;
-	--l-headings-height: calc(4 * var(--l-rhythm));
+	font-size: 2.5em;
+	line-height: calc(2.5 * var(--l-rhythm));
+	margin-block-start: calc(2.5 * var(--l-rhythm));
 }
 
 h2 {
-	font-size: 2.25em;
-	--l-headings-height: calc(3 * var(--l-rhythm));
+	font-size: 2em;
+	line-height: calc(2 * var(--l-rhythm));
+	margin-block-start: calc(2 * var(--l-rhythm));
 }
 
 h3 {
 	font-size: 1.5em;
-	--l-headings-height: calc(2 * var(--l-rhythm));
+	line-height: calc(1.5 * var(--l-rhythm));
+	margin-block-start: calc(1.5 * var(--l-rhythm));
 }
 
 h4, h5, h6 {
 	font-size: 1em;
-	--l-headings-height: calc(1 * var(--l-rhythm));
 }
 
 h5 {

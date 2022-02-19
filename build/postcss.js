@@ -17,9 +17,9 @@ const pc = postcss([
 	atImport(),
 	presetEnv({
 		browsers: 'last 2 versions',
-		stage: 4,
+		stage: 0,
 		features: {
-			'logical-properties-and-values': false
+			'logical-properties-and-values': false,
 		},
 	}),
 ])
@@ -34,5 +34,5 @@ module.exports = async () => {
 	await fs.writeFile(target, result.css, { flag: 'w' })
 }
 
-if (require.main === module) module.exports()
+module.exports()
 

@@ -4,23 +4,21 @@
 	 Meant for use in headings. Make sure to also use visually-hidden punctuation
 	 to mark the subtitle as shown below:
 
-	1 | <h2>
+	1 | <h1>
 	2 | 	Foo Bar<v-h>:</v-h>
 	3 | 	<sub-title>How I Learned To Stop Worrying and Love Baz</sub-title>
-	4 | </h2>
+	4 | </h1>
 
-	1 | <h2>
+	1 | <h1>
 	2 | 	<sub-title class="-allcaps">Breaking News</sub-title><v-h>:</v-h>
 	3 | 	Bad Thing Happens
-	4 | <h2>
+	4 | <h1>
 	 ***/
 
 	display: block;
 
-	font-size: calc(1em / 1.5);
-	line-height: 1em;
-	margin-top: calc(var(--l-headings-height) - 1.5em);
 	font-weight: normal;
+	font-size: .8em;
 
 	color: var(--c-text-muted);
 }

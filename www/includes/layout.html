@@ -22,7 +22,7 @@ nav: {
 <body>
 	<header>
 		<nav aria-label="site">
-			<ul>
+			<ul role="list">
 			{% for name, href in nav.pages %}
 				<li><a
 					href="{{ href }}"
@@ -31,7 +31,7 @@ nav: {
 			{% endfor %}
 		</nav>
 		<nav aria-label="external links">
-			<ul>
+			<ul role="list">
 			{% for name, href in nav.external %}
 				<li><a
 					rel="noopener noreferrer nofollow"
