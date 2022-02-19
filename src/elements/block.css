@@ -1,4 +1,37 @@
 
+@custom-selector :--list ul, ol, dl;
+
+p {
+	margin-block: var(--l-rhythm);
+}
+
+blockquote {
+	font-size: 1.1em;
+	line-height: var(--l-rhythm);
+	font-style: italic;
+	color: var(--c-text-muted);
+
+	& :--italic {
+		font-style: normal;
+	}
+
+	& > footer {
+		text-align: right;
+		text-align: end;
+	}
+}
+
+ul {
+	list-style: square;
+	margin-left: calc(2 * var(--l-rhythm));
+}
+
+:where(:--list[role="list"]) {
+	padding-left: 0;
+	list-style: none;
+}
+
+
 h1, h2, h3, h4, h5, h6 {
 	line-height: 1em;
 	margin-block-start: calc(var(--l-headings-height) - 1em);
@@ -7,7 +40,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
 	font-weight: normal;
-	
+
 	font-size: 3.375em;
 	--l-headings-height: calc(4 * var(--l-rhythm));
 }
@@ -35,4 +68,5 @@ h6 {
 	font-weight: normal;
 	font-style: italic;
 }
+
 
