@@ -7,8 +7,6 @@
  https://html.spec.whatwg.org/multipage/sections.html
  ***/
 
-@custom-selector :--heading h1, h2, h3, h4, h5, h6;
-
 html {
 	/* TODO */
 }

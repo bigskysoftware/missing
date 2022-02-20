@@ -4,6 +4,7 @@
 
 @import-glob "./components/*.css";
 @import-glob "./elements/*.css";
+
 :root {
 	/* Colors */
 	--c-text: #000;
@@ -20,4 +21,11 @@
 	/* Lengths */
 	--l-rhythm: 1.4rem;
 }
+
+@custom-selector :--list ul, ol;
+@custom-selector :--italic em, cite, dfn, var, i, address;
+@custom-selector :--bold strong, b, dt;
+@custom-selector :--mono code, samp, kbd, pre;
+@custom-selector :--heading h1, h2, h3, h4, h5, h6;
+@custom-selector :--tcell th, td;
 

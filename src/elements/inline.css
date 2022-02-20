@@ -2,33 +2,116 @@
  4.5 Text-level semantics
  https://html.spec.whatwg.org/multipage/text-level-semantics.html
 
- 4.6 Links
- https://html.spec.whatwg.org/multipage/links.html
-
  4.7 Edits
  https://html.spec.whatwg.org/multipage/edits.html
  ***/
 
 /* Text-level semantics */
 
-@custom-selector :--italic i, cite, em, var, address, dfn;
-
-
 a {
 	color: var(--c-link, var(--c-accent));
-}
 
-a:hover {
-	text-decoration: underline;
-}
+	&:hover {
+		text-decoration: underline;
+	}
 
-a[href^="https://"], a[href^="//"] {
-	/***
-	 External link.
-	 ***/
-	&::after {
-		content: '\2197';
-		content: '\2197' / 'external';
+	&[href^="https://"], &[href^="//"] {
+		/***
+		 External link.
+		 ***/
+		&::after {
+			content: '\2197';
+			content: '\2197' / 'external';
+		}
 	}
 }
+
+em {
+	/* TODO */
+}
+
+strong {
+	/* TODO */
+}
+
+small {
+	/* TODO */
+}
+
+s {
+	/* TODO */
+}
+
+cite {
+	/* TODO */
+}
+
+q {
+	/* TODO */
+}
+
+dfn {
+	/* TODO */
+}
+
+abbr {
+	/* TODO */
+}
+
+ruby {
+	/* TODO */
+
+	rt {
+	}
+
+	rp {
+	}
+}
+
+time {
+	/* TODO */
+}
+
+code {
+	/* TODO */
+}
+
+var {
+	/* TODO */
+}
+
+samp {
+	/* TODO */
+}
+
+kbd {
+	/* TODO */
+}
+
+sub {
+	/* TODO */
+}
+
+sup {
+	/* TODO */
+}
+
+i {
+	/* TODO */
+}
+
+b {
+	/* TODO */
+}
+
+u {
+	/* TODO */
+}
+
+mark {
+	/* TODO */
+}
+
+/* Edits */
+
 

@@ -4,8 +4,6 @@
  https://html.spec.whatwg.org/multipage/grouping-content.html
  ***/
 
-@custom-selector :--list ul, ol;
-
 p {
 	margin-block: var(--l-rhythm);
 }
@@ -76,5 +74,6 @@ figure {
 }
 
 main {
+	/* TODO */
 }
 
