@@ -51,7 +51,7 @@ on click
 <h2>Implementation</h2>
 <p>HDB lives in a <a href="https://github.com/bigskysoftware/_hyperscript/blob/7740c7eccfe3fe4f09443ec0adb961c72eb27a7b/src/lib/hdb.js">single JavaScript file</a>.</p>
 <h3>Turning the keys</h3>
-<p>In the hyperscript runtime (which is a tree walking interpreter), each command has an <code>execute()</code> method which either returns the next command to be executed, or a <code>Promise</code> thereof. The execute method for the breakpoint command creates an HDB environment and assigns it to the global scope (usually <code>window</code>):</p>
+<p>In the hyperscript runtime, <span><small>(The runtime is an example of a tree walking interpreter.)</small></span> each command has an <code>execute()</code> method which either returns the next command to be executed, or a <code>Promise</code> thereof. The execute method for the breakpoint command creates an HDB environment and assigns it to the global scope (usually <code>window</code>):</p>
 <figure><figcaption><a href="https://github.com/bigskysoftware/_hyperscript/blob/7740c7eccfe3fe4f09443ec0adb961c72eb27a7b/src/lib/hdb.js#L20">hdb.js ln. 20</a></figcaption>
 <pre class="language-js"><code class="language-js"><span class="token keyword">var</span> hdb <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HDB</span><span class="token punctuation">(</span>ctx<span class="token punctuation">,</span> runtime<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span><br>window<span class="token punctuation">.</span>hdb <span class="token operator">=</span> hdb<span class="token punctuation">;</span></code></pre>
 </figure>

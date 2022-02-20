@@ -35,7 +35,21 @@ strong {
 }
 
 small {
-	/* TODO */
+	@nest span > &:only-child {
+		/***
+		 Sidenote
+		 ***/
+		display: block;
+		float: right;
+
+		max-width: 15ch;
+		padding-inline-start: 2ch;
+
+		margin-inline-end: max( /* the margins are negative so we use min()*/
+			calc(17ch - var(--l-gutter-width)),
+			-17ch /* Go no further than my own width, stay close to text */
+		);
+	}
 }
 
 s {

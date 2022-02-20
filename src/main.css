@@ -7,19 +7,37 @@
 
 :root {
 	/* Colors */
-	--c-text: #000;
-	--c-text-muted: #555;
+	--c-text: #000; /* Text. */
+	--c-text-muted: #555; /* De-emphasized or disabled elements' text. Will be
+		used with a background of --c-bg and --c-bg-2 -- check contrast! */
 
-	--c-bg: #fff;
-	--c-bg-2: #efefff;
+	--c-bg: #fff; /* Page background. */
+	--c-bg-2: #efefff; /* Background for blocks: cards, admonitions etc. */
 
-	--c-shadow: #777;
+	--c-shadow: #777; /* Box shadows. */
 
-	--c-accent: #3465a4;
-	--c-accent-muted: #8eb8ee;
+	--c-accent: #3465a4; /* Accent color. Will be used *as a text color* with a
+		background of --c-bg and --c-bg-2 -- check contrast! */
+	--c-accent-muted: #8eb8ee; /* Muted accent color. Will not be used for text. */
 
 	/* Lengths */
-	--l-rhythm: 1.4rem;
+	--l-rhythm: 1.4rem; /* Vertical rhythm, line height. */
+	--l-line-length: 75ch; /* Maximum line length for prose. */
+
+	/* Do not set these. */
+	--l-eff-line-length: /* Effective line length for prose. */
+		min(
+			calc( 100vw - (2 * var(--l-rhythm)) ),
+			var(--l-line-length)
+		);
+
+	--l-gutter-width: /* Width of spaces at each side of page content. */
+		calc(
+			(
+				100vw                      /* Viewport width */
+				- var(--l-eff-line-length) /* minus line width */
+			) / 2                        /* Divide by 2: there are two page margins */
+		);
 }
 
 @custom-selector :--list ul, ol;
