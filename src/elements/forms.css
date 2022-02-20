@@ -1,0 +1,72 @@
+/***
+ 4.10 Forms
+ https://html.spec.whatwg.org/multipage/forms.html
+ ***/
+
+form {
+}
+
+label {
+}
+
+input {
+	&[type="text"],
+	&[type="search"],
+	&[type="tel"],
+	&[type="url"],
+	&[type="email"],
+	&[type="password"],
+	&[type="date"],
+	&[type="month"],
+	&[type="week"],
+	&[type="time"],
+	&[type="datetime-local"],
+	&[type="number"] {
+	}
+
+	&[type="range"] {
+	}
+
+	&[type="color"] {
+	}
+
+	&[type="checkbox"] {
+	}
+
+	&[type="radio"] {
+	}
+
+	&[type="file"] {
+	}
+
+	&[type="image"] {
+	}
+}
+
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+}
+
+select {
+}
+
+textarea {
+}
+
+output {
+}
+
+progress {
+}
+
+meter {
+}
+
+fieldset {
+}
+
+legend {
+}
+

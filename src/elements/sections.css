@@ -1,0 +1,82 @@
+
+/***
+ 4.1 The document element
+ https://html.spec.whatwg.org/multipage/semantics.html#the-root-element
+
+ 4.3 Sections
+ https://html.spec.whatwg.org/multipage/sections.html
+ ***/
+
+@custom-selector :--heading h1, h2, h3, h4, h5, h6;
+
+html {
+	/* TODO */
+}
+
+body {
+	/* TODO */
+}
+
+article {
+	/* TODO */
+}
+
+section {
+	/* TODO */
+}
+
+nav {
+	/* TODO */
+}
+
+aside {
+	/* TODO */
+}
+
+:--heading {
+	margin-block-end: var(--l-rhythm);
+}
+
+	h1 {
+		font-size: 2.5em;
+		line-height: calc(2.5 * var(--l-rhythm));
+		margin-block-start: calc(2.5 * var(--l-rhythm));
+	}
+
+	h2 {
+		font-size: 2em;
+		line-height: calc(2 * var(--l-rhythm));
+		margin-block-start: calc(2 * var(--l-rhythm));
+	}
+
+	h3 {
+		font-size: 1.5em;
+		line-height: calc(1.5 * var(--l-rhythm));
+		margin-block-start: calc(1.5 * var(--l-rhythm));
+	}
+
+	h4, h5, h6 {
+		font-size: 1em;
+	}
+
+	h5 {
+		font-variant: small-caps;
+	}
+
+	h6 {
+		font-weight: normal;
+		font-style: italic;
+	}
+
+header {
+	/* TODO */
+}
+
+footer {
+	/* TODO */
+}
+
+address {
+	/* TODO */
+}
+

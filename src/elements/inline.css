@@ -1,3 +1,15 @@
+/***
+ 4.5 Text-level semantics
+ https://html.spec.whatwg.org/multipage/text-level-semantics.html
+
+ 4.6 Links
+ https://html.spec.whatwg.org/multipage/links.html
+
+ 4.7 Edits
+ https://html.spec.whatwg.org/multipage/edits.html
+ ***/
+
+/* Text-level semantics */
 
 @custom-selector :--italic i, cite, em, var, address, dfn;
 
