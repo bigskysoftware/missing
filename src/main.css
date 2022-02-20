@@ -22,7 +22,7 @@
 
 	/* Lengths */
 	--l-rhythm: 1.4rem; /* Vertical rhythm, line height. */
-	--l-line-length: 75ch; /* Maximum line length for prose. */
+	--l-line-length: 45rem; /* Maximum line length for prose. */
 
 	/* Do not set these. */
 	--l-eff-line-length: /* Effective line length for prose. */

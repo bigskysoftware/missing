@@ -43,12 +43,13 @@ small {
 		float: right;
 
 		max-width: 15ch;
-		padding-inline-start: 2ch;
+		padding-inline: 1.5ch 1ch;
 
-		margin-inline-end: max( /* the margins are negative so we use min()*/
-			calc(17ch - var(--l-gutter-width)),
-			-17ch /* Go no further than my own width, stay close to text */
+		margin-inline-end: max( /* the margin is negative so we use max not min */
+			calc(0px - var(--l-gutter-width)),
+			-15ch /* Go no further than my own width, stay close to text */
 		);
+		margin-block-end: var(--l-rhythm);
 	}
 }
 
