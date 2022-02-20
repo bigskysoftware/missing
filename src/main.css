@@ -3,11 +3,7 @@
 @import "./core/sanitize.css";
 
 @import-glob "./components/*.css";
-@import "./elements/block.css";
-@import "./elements/inline.css";
-@import "./elements/links.css";
-@import "./elements/root.css";
-
+@import "./elements/*.css";
 :root {
 	/* Colors */
 	--c-text: #000;

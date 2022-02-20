@@ -3,7 +3,7 @@
 
 
 a {
-	color: currentColor;
+	color: var(--c-link, var(--c-accent));
 }
 
 a:hover {
