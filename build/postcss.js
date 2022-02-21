@@ -1,5 +1,6 @@
 const fs = require('node:fs/promises')
 const path = require('node:path')
+const zlib = require('node:zlib')
 
 const postcss = require('postcss')
 
@@ -41,6 +42,16 @@ module.exports = async () => {
 	const minified =
 		await pcMinifier.process(result, { from: entrypoint, to: prodTarget })
 	await fs.writeFile(prodTarget, minified.css, { flag: 'w' })
+
+	zlib.brotliCompress(minified.css, (err, brotlied) => {
+		if (err) throw err
+		fs.writeFile(prodTarget + '.br', brotlied, { flag: 'w' })
+	})
+
+	zlib.gzip(minified.css, (err, gzipped) => {
+		if (err) throw err
+		fs.writeFile(prodTarget + '.gz', gzipped, { flag: 'w' })
+	})
 }
 
 module.exports()
