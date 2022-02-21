@@ -13,7 +13,21 @@ hr {
 }
 
 pre {
-	/* TODO */
+	font-family: var(--f-mono);
+	font-size: .9em;
+	line-height: var(--l-rhythm);
+	tab-size: 2;
+
+	padding: calc(.5 * var(--l-rhythm));
+	margin: var(--l-rhythm) 0;
+	border-radius: .5em;
+
+	overflow-x: auto;
+	scrollbar-width: thin;
+	scrollbar-color: var(--c-accent) transparent;
+
+	background: var(--c-bg);
+	border: 1px solid var(--c-accent-muted);
 }
 
 blockquote {
