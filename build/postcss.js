@@ -10,11 +10,13 @@ const cssnano = require('cssnano')
 
 
 const entrypoint = path.join(__dirname, '../src/main.css')
-const dist     = path.join(__dirname, '../dist')
-const target     = path.join(dist, '/missing.css')
+const dist       = path.join(__dirname, '../dist')
 
-module.exports = async ({ minify = false } = {}) => {
-	const pc = postcss([
+const prodTarget = path.join(dist, '/missing.min.css')
+const devTarget  = path.join(dist, '/missing.css')
+
+module.exports = async () => {
+	const pcMain = postcss([
 		importGlob(),
 		atImport(),
 		presetEnv({
@@ -24,17 +26,22 @@ module.exports = async ({ minify = false } = {}) => {
 				'logical-properties-and-values': false,
 			},
 		}),
-		...(minify ? [cssnano({ preset: 'default' })] : []),
 	])
 
+	const pcMinifier = postcss([cssnano({ preset: 'default' })])
+
 	const css = await fs.readFile(entrypoint, { encoding: 'utf8' })
-	const result = await pc.process(css, {
-		from: entrypoint,
-		to: target,
-	})
+
 	await fs.mkdir(dist, { recursive: true })
-	await fs.writeFile(target, result.css, { flag: 'w' })
+
+	const result =
+		await pcMain.process(css, { from: entrypoint, to: devTarget })
+	await fs.writeFile(devTarget, result.css, { flag: 'w' })
+
+	const minified =
+		await pcMinifier.process(result, { from: entrypoint, to: prodTarget })
+	await fs.writeFile(prodTarget, minified.css, { flag: 'w' })
 }
 
-module.exports({ minify: true })
+module.exports()
 
