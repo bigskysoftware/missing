@@ -24,6 +24,7 @@
   "homepage": "https://github.com/bigskysoftware/missing#readme",
   "devDependencies": {
     "@11ty/eleventy": "^1.0.0",
+    "cssnano": "^5.0.17",
     "fs-extra": "^9.1.0",
     "postcss": "^8.4.6",
     "postcss-import": "^14.0.2",
