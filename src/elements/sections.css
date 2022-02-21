@@ -8,7 +8,8 @@
  ***/
 
 html {
-	/* TODO */
+	font-family: var(--font-main);
+	line-height: var(--l-rhythm);
 }
 
 body {
@@ -67,7 +68,40 @@ aside {
 	}
 
 header {
-	/* TODO */
+	@nest body > & {
+		/***
+		 A header directly at the start of the body is a navbar.
+		 ***/
+
+		position: sticky;
+		inset-block-start: 0;
+		inset-inline: 0;
+		z-index: 10;
+
+		margin: 0;
+		padding: 0 var(--l-rhythm);
+
+		background: var(--c-bg-2);
+		border-block-end: 1px solid var(--c-accent);
+		box-shadow:
+			0 calc(-.3 * var(--l-rhythm)) calc(1 * var(--l-rhythm))
+			var(--c-text-muted);
+
+		/* Inner layout */
+		display: flex;
+		flex-flow: row;
+		justify-content: space-between;
+
+		& nav ul[role="list"] {
+			display: flex;
+			flex-flow: row wrap;
+			gap: var(--l-rhythm);
+		}
+
+		& a {
+			text-decoration: none;
+		}
+	}
 }
 
 footer {

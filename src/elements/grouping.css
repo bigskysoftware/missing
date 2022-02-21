@@ -74,6 +74,7 @@ figure {
 }
 
 main {
-	/* TODO */
+	max-width: min(calc(100vw - 2 * var(--l-rhythm)), var(--l-line-length));
+	margin: auto;
 }
 

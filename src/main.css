@@ -24,6 +24,11 @@
 	--l-rhythm: 1.4rem; /* Vertical rhythm, line height. */
 	--l-line-length: 45rem; /* Maximum line length for prose. */
 
+	/* Fonts */
+	--f-main: -apple-system, system-ui, sans-serif;
+	--f-mono: monospace, monospace; /* monospace twice stops browsers from
+		shrinking this */
+
 	/* Do not set these. */
 	--l-eff-line-length: /* Effective line length for prose. */
 		min(
