@@ -1,23 +1,27 @@
+---
+permalink: rfp/
+---
+
 # missing CSS Library RFP
 
 
 untitled.css is a CSS library that
- 
+
  * starts with good default styling, akin to classless CSS libraries
  * offers components based on purely semantic HTML, utilizing ARIA where appropriate (e.g. tabs)
  * finally, offers a small & curated set of class-based utilities for tweaking
- 
-untitled.css aims to minimize intervention in the HTML by allowing developers to start with a good out of the box experience, 
+
+untitled.css aims to minimize intervention in the HTML by allowing developers to start with a good out of the box experience,
  then build common components using plain, semantic HTML and only when they need to go beyond that, apply a minimized \
  number of classes to achieve what they want.
- 
 
-missing CSS Library is a CSS library that, so far as I can tell, does not exist.  
+
+missing CSS Library is a CSS library that, so far as I can tell, does not exist.
 
 It offers the following features:
 
 * Classless CSS - It renders well out of the box with Vanilla HTML, like a classless CSS library such as pico
-* Semantic Power Structure  - It takes advantage of semantic, lesser used tags such as `nav`, `main` and `section` to allow for more elaborate layouts 
+* Semantic Power Structure  - It takes advantage of semantic, lesser used tags such as `nav`, `main` and `section` to allow for more elaborate layouts
   in pure HTML
 * Aria-Driven Components - It offers "High Power" arias that capture high level components on, as much as is possible, a *single* CSS element
 * Utility Classes - It offers a set of [utility classes](https://cube.fyi/utility.html) that captures the 80/20 of libraries like tailwinds
@@ -69,7 +73,7 @@ Consider the [aligned form](https://purecss.io/forms/#aligned-form) example from
         ...
 ```
 
-Note that there are a total of four classes required to achieve the aligned layout.  
+Note that there are a total of four classes required to achieve the aligned layout.
 
 In missing CSS, this will be styled like so:
 
@@ -116,7 +120,7 @@ We would like to see the following high-power CSS classes:
 
 ## Utility Classes
 
-Finally, for the small tweaks that make a website "feel right", we would like to offer a reasonably small number of 
+Finally, for the small tweaks that make a website "feel right", we would like to offer a reasonably small number of
 utility classes that allow for pragmatic adjustments of elements.
 
 Tailwinds is an inspiration here, but take the 20 of the 80/20, simplifying things.
@@ -137,7 +141,7 @@ We would like to do the project in [less.css](https://lesscss.org/)
 
 # Inspiration
 
-The following libraries provide 
+The following libraries provide
 
 * [pico.css](https://picocss.com/)
 * [purecss.css](https://purecss.io/)

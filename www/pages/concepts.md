@@ -1,8 +1,12 @@
+---
+permalink: concepts/
+---
+
 # Concepts
 
 Below are some basic concepts/ideas for the CSS library, split into individual components and discussed individually
 
-## Classless CSS 
+## Classless CSS
 
 ### Concept
 
@@ -16,7 +20,7 @@ https://picocss.com/examples/preview/
 
 [pico.css]: https://picocss.com
 
-## Semantic HTML Power Structures  
+## Semantic HTML Power Structures
 
 ### Concept
 
@@ -28,7 +32,7 @@ other CSS libraries, would typically require components.
 
 ### Examples
 
-The `main` tag would auto-center and pad at a reasonable (configurable) max-width, similar to a Bootstrap 
+The `main` tag would auto-center and pad at a reasonable (configurable) max-width, similar to a Bootstrap
 `container`, though not necessarily relying on fixed breakpoints:
 
 ```html
@@ -105,7 +109,7 @@ Using a `form` element with block sub-elements will create a horizontal, label a
 ```
 
 ##  Components
- 
+
 ### Concept
 
 missing offers "High Power" classes that capture high level components on, as much as is possible, a *single* CSS element.
@@ -154,9 +158,9 @@ We would like to see the following components:
 * fix-to-top (?)
 * fix-to-left (?)
 
- 
-## Utility Classes 
- 
+
+## Utility Classes
+
 ### Concept
 
 missing offers a set of [utility classes](https://cube.fyi/utility.html) that captures the 80/20 of libraries like tailwinds
