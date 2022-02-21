@@ -26,21 +26,15 @@
 
 /**
  * 1. Use the default cursor in all browsers (opinionated).
- * 2. Change the line height in all browsers (opinionated).
  * 3. Breaks words to prevent overflow in all browsers (opinionated).
- * 4. Use a 4-space tab width in all browsers (opinionated).
  * 5. Remove the grey highlight on links in iOS (opinionated).
  * 6. Prevent adjustments of font size after orientation changes in iOS.
  */
 
 :where(:root) {
     cursor: default; /* 1 */
-    line-height: 1.5; /* 2 */
     overflow-wrap: break-word; /* 3 */
-    -moz-tab-size: 4; /* 4 */
-    tab-size: 4; /* 4 */
     -webkit-tap-highlight-color: transparent; /* 5 */
-    -webkit-text-size-adjust: 100%; /* 6 */
     text-size-adjust: 100%; /* 6 */
 }
 
@@ -53,16 +47,6 @@
 
 :where(body) {
     margin: 0;
-}
-
-/**
- * Correct the font size and margin on `h1` elements within `section` and
- * `article` contexts in Chrome, Edge, Firefox, and Safari.
- */
-
-:where(h1) {
-    font-size: 2em;
-    margin: 0.67em 0;
 }
 
 /* Grouping content
@@ -87,33 +71,12 @@
 }
 
 /**
- * Remove the list style on navigation lists in all browsers (opinionated).
- */
-
-:where(nav) :where(ol, ul) {
-    list-style-type: none;
-    padding: 0;
-}
-
-/**
  * Prevent VoiceOver from ignoring list semantics in Safari (opinionated).
  */
 
 :where(nav li)::before {
     content: "\200B";
     float: left;
-}
-
-/**
- * 1. Correct the inheritance and scaling of font size in all browsers.
- * 2. Correct the odd `em` font sizing in all browsers.
- * 3. Prevent overflow of the container in all browsers (opinionated).
- */
-
-:where(pre) {
-    font-family: monospace, monospace; /* 1 */
-    font-size: 1em; /* 2 */
-    overflow: auto; /* 3 */
 }
 
 /* Text-level semantics
@@ -132,7 +95,7 @@
  * Add the correct font weight in Chrome, Edge, and Safari.
  */
 
-:where(b, strong) {
+:--bold {
     font-weight: bolder;
 }
 
@@ -141,7 +104,7 @@
  * 2. Correct the odd `em` font sizing in all browsers.
  */
 
-:where(code, kbd, samp) {
+:--mono {
     font-family: monospace, monospace; /* 1 */
     font-size: 1em; /* 2 */
 }
@@ -163,14 +126,6 @@
 
 :where(audio, canvas, iframe, img, svg, video) {
     vertical-align: middle;
-}
-
-/**
- * Remove the border on iframes in all browsers (opinionated).
- */
-
-:where(iframe) {
-    border-style: none;
 }
 
 /**
@@ -233,12 +188,10 @@
 
 /**
  * 1. Remove the margin in Firefox and Safari.
- * 3. Change the resize direction in all browsers (opinionated).
  */
 
 :where(textarea) {
     margin: 0; /* 1 */
-    resize: vertical; /* 3 */
 }
 
 /**
