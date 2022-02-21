@@ -5,9 +5,13 @@ layout: layout.html
 <main>
 
 <big-screen>
+<div>
 
 # missing<wbr>.css<v-h>:</v-h> <sub-title>The Missing CSS Stylesheet</sub-title>
 
+Add it to your website: <code>&lt;link rel="stylesheet" href="<strong>https://the.missing.style</strong>"></code>
+
+</div>
 </big-screen>
 
 missing.css is the missing CSS library that we all wished existed:
