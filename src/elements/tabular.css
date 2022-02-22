@@ -13,7 +13,7 @@ caption {
 }
 
 tbody {
-	border-block: 1px solid var(--c-text);
+	border-block: 1px solid var(--text);
 }
 
 thead {
@@ -28,7 +28,7 @@ tr {
 
 td, th {
 	&:not(:last-child) {
-		padding-inline-end: var(--l-rhythm);
+		padding-inline-end: var(--rhythm);
 	}
 }
 

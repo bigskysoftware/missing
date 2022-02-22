@@ -8,8 +8,8 @@
  ***/
 
 html {
-	font-family: var(--f-main);
-	line-height: var(--l-rhythm);
+	font-family: var(--main-font);
+	line-height: var(--rhythm);
 }
 
 body {
@@ -33,30 +33,31 @@ aside {
 }
 
 :--heading {
-	margin-block-end: var(--l-rhythm);
-	font-family: var(--f-display);
+	margin-block-end: var(--rhythm);
+	font-family: var(--display-font);
 }
 
 	h1 {
 		font-size: 2.5em;
-		line-height: calc(2.5 * var(--l-rhythm));
-		margin-block-start: calc(2.5 * var(--l-rhythm));
+		line-height: calc(2.5 * var(--rhythm));
+		margin-block-start: calc(2.5 * var(--rhythm));
 	}
 
 	h2 {
 		font-size: 2em;
-		line-height: calc(2 * var(--l-rhythm));
-		margin-block-start: calc(2 * var(--l-rhythm));
+		line-height: calc(2 * var(--rhythm));
+		margin-block-start: calc(2 * var(--rhythm));
 	}
 
 	h3 {
 		font-size: 1.5em;
-		line-height: calc(1.5 * var(--l-rhythm));
-		margin-block-start: calc(1.5 * var(--l-rhythm));
+		line-height: calc(1.5 * var(--rhythm));
+		margin-block-start: calc(1.5 * var(--rhythm));
 	}
 
 	h4, h5, h6 {
 		font-size: 1em;
+		margin-block-start: var(--rhythm);
 	}
 
 	h5 {
@@ -80,13 +81,13 @@ header {
 		z-index: 10;
 
 		margin: 0;
-		padding: 0 var(--l-rhythm);
+		padding: 0 var(--rhythm);
 
-		background: var(--c-bg-2);
-		border-block-end: 1px solid var(--c-accent);
+		background: var(--bg-2);
+		border-block-end: 1px solid var(--accent);
 		box-shadow:
-			0 calc(-.3 * var(--l-rhythm)) calc(1 * var(--l-rhythm))
-			var(--c-text-muted);
+			0 calc(-.3 * var(--rhythm)) calc(1 * var(--rhythm))
+			var(--muted-fg);
 
 		/* Inner layout */
 		display: flex;
@@ -96,7 +97,7 @@ header {
 		& nav ul[role="list"] {
 			display: flex;
 			flex-flow: row wrap;
-			gap: var(--l-rhythm);
+			gap: var(--rhythm);
 		}
 
 		& a {

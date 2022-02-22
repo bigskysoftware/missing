@@ -8,20 +8,20 @@
 .missing-card, missing-card, [missing-card] {
 	display: block;
 	border: 1px solid transparent;
-	margin: calc(2 * var(--l-rhythm)) 0;
-	padding: 0 var(--l-rhythm);
+	margin: calc(2 * var(--rhythm)) 0;
+	padding: 0 var(--rhythm);
 
-	border-radius: calc(var(--l-rhythm) / 4);
+	border-radius: calc(var(--rhythm) / 4);
 
   flex: 1 0 30ch;
 
-	background: var(--c-bg-2);
-	border: 1px solid var(--c-accent);
+	background: var(--bg-2);
+	border: 1px solid var(--accent);
   box-shadow:
 		0
-		calc(.2 * var(--l-rhythm))
-		calc(.5 * var(--l-rhythm))
-		calc(-.2 * var(--l-rhythm))
-		var(--c-text-muted);
+		calc(.2 * var(--rhythm))
+		calc(.5 * var(--rhythm))
+		calc(-.2 * var(--rhythm))
+		var(--muted-fg);
 }
 

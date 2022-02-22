@@ -5,7 +5,7 @@
  ***/
 
 p {
-	margin-block: var(--l-rhythm);
+	margin-block: var(--rhythm);
 }
 
 hr {
@@ -14,28 +14,28 @@ hr {
 }
 
 pre {
-	font-family: var(--f-mono);
+	font-family: var(--mono-font);
 	font-size: .9em;
-	line-height: var(--l-rhythm);
+	line-height: var(--rhythm);
 	tab-size: 2;
 
-	padding: calc(.5 * var(--l-rhythm));
-	margin: var(--l-rhythm) 0;
+	padding: calc(.5 * var(--rhythm));
+	margin: var(--rhythm) 0;
 	border-radius: .5em;
 
 	overflow-x: auto;
 	scrollbar-width: thin;
-	scrollbar-color: var(--c-accent) transparent;
+	scrollbar-color: var(--accent) transparent;
 
-	background: var(--c-bg);
-	border: 1px solid var(--c-accent-muted);
+	background: var(--bg);
+	border: 1px solid var(--accent-muted);
 }
 
 blockquote {
 	font-size: 1.1em;
-	line-height: var(--l-rhythm);
+	line-height: var(--rhythm);
 	font-style: italic;
-	color: var(--c-text-muted);
+	color: var(--muted-fg);
 
 	& :--italic {
 		font-style: normal;
@@ -48,7 +48,7 @@ blockquote {
 }
 
 :--list {
-	padding-left: calc(1.5 * var(--l-rhythm));
+	padding-left: calc(1.5 * var(--rhythm));
 
 	&:where([role="list"]) {
 		padding-left: 0;
@@ -94,7 +94,7 @@ figure {
 }
 
 main {
-	max-width: min(calc(100vw - 2 * var(--l-rhythm)), var(--l-line-length));
+	max-width: var(--eff-line-length);
 	margin: auto;
 }
 

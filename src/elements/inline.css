@@ -9,7 +9,7 @@
 /* Text-level semantics */
 
 a {
-	color: var(--c-link, var(--c-accent));
+	color: var(--link-fg, var(--accent));
 
 	&:hover {
 		text-decoration: underline;
@@ -46,10 +46,10 @@ small {
 		padding-inline: 1.5ch 1ch;
 
 		margin-inline-end: max( /* the margin is negative so we use max not min */
-			calc(0px - var(--l-gutter-width)),
+			calc(0px - var(--gutter-width)),
 			-15ch /* Go no further than my own width, stay close to text */
 		);
-		margin-block-end: var(--l-rhythm);
+		margin-block-end: var(--rhythm);
 	}
 }
 
