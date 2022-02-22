@@ -13,7 +13,7 @@ html {
 }
 
 body {
-	/* TODO */
+	margin: 0;
 }
 
 article {
@@ -34,6 +34,7 @@ aside {
 
 :--heading {
 	margin-block-end: var(--l-rhythm);
+	font-family: var(--f-display);
 }
 
 	h1 {

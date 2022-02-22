@@ -26,6 +26,7 @@
 
 	/* Fonts */
 	--f-main: -apple-system, system-ui, sans-serif;
+	--f-display: var(--f-main); /* Headings etc. */
 	--f-mono: monospace, monospace; /* monospace twice stops browsers from
 		shrinking this */
 

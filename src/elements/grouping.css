@@ -9,7 +9,8 @@ p {
 }
 
 hr {
-	/* TODO */
+	color: inherit;
+	height: 0;
 }
 
 pre {
@@ -47,7 +48,12 @@ blockquote {
 }
 
 :--list {
-	padding-left: calc(2 * var(--l-rhythm));
+	padding-left: calc(1.5 * var(--l-rhythm));
+
+	&:where([role="list"]) {
+		padding-left: 0;
+		list-style: none;
+	}
 }
 
 ul {

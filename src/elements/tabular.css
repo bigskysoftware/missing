@@ -4,12 +4,16 @@
  ***/
 
 table {
+	font-variant-numeric: tabular-nums;
 }
 
 caption {
+	text-align: start;
+	font-style: italic;
 }
 
 tbody {
+	border-block: 1px solid var(--c-text);
 }
 
 thead {
@@ -19,14 +23,19 @@ tfoot {
 }
 
 tr {
+
 }
 
 td, th {
+	&:not(:last-child) {
+		padding-inline-end: var(--l-rhythm);
+	}
 }
 
 	td {
 	}
 
 	th {
+		text-align: start;
 	}
 
