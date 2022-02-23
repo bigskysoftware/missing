@@ -13,7 +13,7 @@ caption {
 }
 
 tbody {
-	border-block: 1px solid var(--text);
+	border-block: 1px solid var(--fg);
 }
 
 thead {
