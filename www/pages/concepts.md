@@ -1,6 +1,6 @@
 ---
 permalink: concepts/
-layout: layout.html
+layout: prose.html
 ---
 
 # Concepts
