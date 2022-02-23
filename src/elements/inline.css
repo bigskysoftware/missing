@@ -8,7 +8,7 @@
 
 /* Text-level semantics */
 
-a {
+:where(a) {
 	color: var(--link-fg, var(--accent));
 
 	&:hover {
@@ -26,15 +26,15 @@ a {
 	}
 }
 
-em {
+:where(em) {
 	/* TODO */
 }
 
-strong {
+:where(strong) {
 	/* TODO */
 }
 
-small {
+:where(small) {
 	@nest span > &:only-child {
 		/***
 		 Sidenote
@@ -53,87 +53,87 @@ small {
 	}
 }
 
-s {
+:where(s) {
 	/* TODO */
 }
 
-cite {
+:where(cite) {
 	/* TODO */
 }
 
-q {
+:where(q) {
 	/* TODO */
 }
 
-dfn {
+:where(dfn) {
 	/* TODO */
 }
 
-abbr {
+:where(abbr) {
 	/* TODO */
 }
 
-ruby {
+:where(ruby) {
 	/* TODO */
 
-	rt {
+	& :where(rt) {
 	}
 
-	rp {
+	* :where(rp) {
 	}
 }
 
-time {
+:where(time) {
 	/* TODO */
 }
 
-code {
+:where(code) {
 	/* TODO */
 }
 
-var {
+:where(var) {
 	/* TODO */
 }
 
-samp {
+:where(samp) {
 	/* TODO */
 }
 
-kbd {
+:where(kbd) {
 	/* TODO */
 }
 
-sub {
+:where(sub) {
 	/* TODO */
 }
 
-sup {
+:where(sup) {
 	/* TODO */
 }
 
-i {
+:where(i) {
 	/* TODO */
 }
 
-b {
+:where(b) {
 	/* TODO */
 }
 
-u {
+:where(u) {
 	/* TODO */
 }
 
-mark {
+:where(mark) {
 	/* TODO */
 }
 
 /* Edits */
 
-ins {
+:where(ins) {
 	/* TODO */
 }
 
-del {
+:where(del) {
 	/* TODO */
 }
 

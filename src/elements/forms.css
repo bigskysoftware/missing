@@ -3,15 +3,15 @@
  https://html.spec.whatwg.org/multipage/forms.html
  ***/
 
-form {
+:where(form) {
 	/* TODO */
 }
 
-label {
+:where(label) {
 	/* TODO */
 }
 
-input {
+:where(input) {
 	&[type="text"],
 	&[type="search"],
 	&[type="tel"],
@@ -52,38 +52,39 @@ input {
 	}
 }
 
-button,
-input[type="submit"],
-input[type="reset"],
-input[type="button"] {
+:where(
+	button,
+	input[type="submit"],
+	input[type="reset"],
+	input[type="button"]) {
 	/* TODO */
 }
 
-select {
+:where(select) {
 	/* TODO */
 }
 
-textarea {
+:where(textarea) {
 	/* TODO */
 }
 
-output {
+:where(output) {
 	/* TODO */
 }
 
-progress {
+:where(progress) {
 	/* TODO */
 }
 
-meter {
+:where(meter) {
 	/* TODO */
 }
 
-fieldset {
+:where(fieldset) {
 	/* TODO */
 }
 
-legend {
+:where(legend) {
 	/* TODO */
 }
 

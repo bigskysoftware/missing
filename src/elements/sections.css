@@ -7,74 +7,74 @@
  https://html.spec.whatwg.org/multipage/sections.html
  ***/
 
-html {
+:where(html) {
 	font-family: var(--main-font);
 	line-height: var(--rhythm);
 }
 
-body {
+:where(body) {
 	margin: 0;
 }
 
-article {
+:where(article) {
 	/* TODO */
 }
 
-section {
+:where(section) {
 	/* TODO */
 }
 
-nav {
+:where(nav) {
 	/* TODO */
 }
 
-aside {
+:where(aside) {
 	/* TODO */
 }
 
-:--heading {
+:where(:--heading) {
 	margin-block-end: var(--rhythm);
 	font-family: var(--display-font);
 }
 
-	h1 {
+	:where(h1) {
 		font-size: 2.5em;
 		line-height: calc(2.5 * var(--rhythm));
 		margin-block-start: calc(2.5 * var(--rhythm));
 	}
 
-	h2 {
+	:where(h2) {
 		font-size: 2em;
 		line-height: calc(2 * var(--rhythm));
 		margin-block-start: calc(2 * var(--rhythm));
 	}
 
-	h3 {
+	:where(h3) {
 		font-size: 1.5em;
 		line-height: calc(1.5 * var(--rhythm));
 		margin-block-start: calc(1.5 * var(--rhythm));
 	}
 
-	h4, h5, h6 {
+	:where(h4, h5, h6) {
 		font-size: 1em;
 		margin-block-start: var(--rhythm);
 	}
 
-	h5 {
+	:where(h5) {
 		font-variant: small-caps;
 	}
 
-	h6 {
+	:where(h6) {
 		font-weight: normal;
 		font-style: italic;
 	}
 
-:is(:--heading) + :is(:--heading) {
+:where(:--heading) + :where(:--heading) {
 	margin-top: var(--rhythm);
 }
 
-header {
-	@nest body > & {
+:where(header) {
+	@nest :where(body) > & {
 		/***
 		 A header directly at the start of the body is a navbar.
 		 ***/
@@ -98,23 +98,23 @@ header {
 		flex-flow: row;
 		justify-content: space-between;
 
-		& nav ul[role="list"] {
+		& :where(nav ul[role="list"]) {
 			display: flex;
 			flex-flow: row wrap;
 			gap: var(--rhythm);
 		}
 
-		& a {
+		& :where(a) {
 			text-decoration: none;
 		}
 	}
 }
 
-footer {
+:where(footer) {
 	/* TODO */
 }
 
-address {
+:where(address) {
 	/* TODO */
 }
 

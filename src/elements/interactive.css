@@ -3,12 +3,12 @@
  https://html.spec.whatwg.org/multipage/interactive-elements.html#interactive-elements
  ***/
 
-details {
+:where(details) {
 }
 
-summary {
+:where(summary) {
 }
 
-dialog {
+:where(dialog) {
 }
 

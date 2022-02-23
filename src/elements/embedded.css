@@ -3,15 +3,15 @@
  https://html.spec.whatwg.org/multipage/embedded-content.html
  ***/
 
-img {
+:where(img) {
 	/* TODO */
 }
 
-video {
+:where(video) {
 	/* TODO */
 }
 
-audio {
+:where(audio) {
 	/* TODO */
 }
 

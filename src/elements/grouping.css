@@ -4,16 +4,16 @@
  https://html.spec.whatwg.org/multipage/grouping-content.html
  ***/
 
-p {
+:where(p) {
 	margin-block: var(--rhythm);
 }
 
-hr {
+:where(hr) {
 	color: inherit;
 	height: 0;
 }
 
-pre {
+:where(pre) {
 	font-family: var(--mono-font);
 	font-size: .9em;
 	line-height: var(--rhythm);
@@ -31,23 +31,23 @@ pre {
 	border: 1px solid var(--accent-muted);
 }
 
-blockquote {
+:where(blockquote) {
 	font-size: 1.1em;
 	line-height: var(--rhythm);
 	font-style: italic;
 	color: var(--muted-fg);
 
-	& :--italic {
+	& :where(:--italic) {
 		font-style: normal;
 	}
 
-	& > footer {
+	& :where(footer) {
 		text-align: right;
 		text-align: end;
 	}
 }
 
-:--list {
+:where(:--list) {
 	padding-left: calc(1.5 * var(--rhythm));
 
 	&:where([role="list"]) {
@@ -56,44 +56,44 @@ blockquote {
 	}
 }
 
-ul {
+:where(ul) {
 	list-style: square;
 }
 
-ol {
+:where(ol) {
 	list-style: decimal;
 }
 
-:--list[role="list"] {
+:where(:--list[role="list"]) {
 	padding-inline-start: 0;
 	list-style: none;
 }
 
-li {
+:where(li) {
 	/* TODO */
 }
 
-dl {
+:where(dl) {
 	/* TODO */
 
-	& dt {
+	& :where(dt) {
 	}
 
-	& dd {
+	& :where(dd) {
 	}
 
-	& > div {
+	& > :where(div) {
 	}
 }
 
-figure {
+:where(figure) {
 	/* TODO */
 
-	figcaption {
+	:where(figcaption) {
 	}
 }
 
-main {
+:where(main) {
 	max-width: var(--eff-line-length);
 	margin: auto;
 }
