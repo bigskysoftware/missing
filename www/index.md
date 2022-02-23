@@ -25,8 +25,9 @@ start with a good out of the box experience, then build common components using 
 then, only if necessary, apply a minimal number of classes to achieve.
 
 <aside class="missing-card info">
+<block-label>Did you know?</block-label>
 
-<block-label>Did you know?</block-label> The `<main>` element can only have these elements as ancestors:
+The `<main>` element can only have these elements as ancestors:
 `<html>`, `<body>`, `<div>`, `<form>` without an accessible name, and autonomous custom elements.
 
 </aside>
