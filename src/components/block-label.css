@@ -12,6 +12,7 @@
 
 	font-size: 1em;
 	font-weight: bold;
+	line-height: var(--rhythm);
 
 	background: var(--accent);
 	color: var(--bg);
