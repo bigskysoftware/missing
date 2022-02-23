@@ -1,5 +1,6 @@
 ---
 permalink: rfp/
+layout: layout.html
 ---
 
 # missing CSS Library RFP

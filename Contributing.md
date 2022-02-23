@@ -2,6 +2,32 @@
 # Contribute to missing.css
 
 
+## Issues
+
+PRs are not the only form of contributing. Reporting issues is also important
+and helps a lot. And, like PRs, issues that don't match the project's goals or
+standards of quality will not be accepted.
+
+Don't be afraid! We take it upon ourselves to help people contribute. You might
+get follow-up questions or asked for more information when you submit an issue.
+It's not productive to close issues just because we don't like them.
+
+For feature requests, prefer [Discussions][] instead of Issues, unless the
+feature is directly in our [RFP][] or [Concepts][] pages. Otherwise, once a
+feature is agreed upon and there is interest in implementing it, issues can be
+created.
+
+missing.css is developed on a "free to use, pay to demand" basis. Contributors
+are not beholden to users and can work on whatever they like. If you need a
+specific feature or bugfix for your business, consider putting up a bounty.
+(Not recommended: Making an unsolicited donation and then demanding. That's not
+how buying services works).
+
+[RFP]: https://missing.style/rfp/
+[Concepts]: https://missing.style/concepts/
+[Discussions]: https://github.com/bigskysoftware/missing/discussions
+
+
 ## Development Environment
 
 Node.js and npm are needed.
