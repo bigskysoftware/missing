@@ -12,7 +12,7 @@
 		used with a background of --c-bg and --c-bg-2 -- check contrast! */
 
 	--bg: #fff; /* Page background. */
-	--bg-2: #efefff; /* Background for blocks: cards, admonitions etc. */
+	--bg-2: #f8f8ff; /* Background for blocks: cards, admonitions etc. */
 
 	--shadow: #777; /* Box shadows. */
 
