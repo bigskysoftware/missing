@@ -2,6 +2,7 @@
 .block-label, block-label, [block-label] {
 	position: absolute;
 
+	margin: 0;
 	padding-inline: calc(.5 * var(--rhythm));
 	transform: translate(
 		calc(-1.1 * var(--rhythm)), calc(-1.5 * var(--rhythm))
@@ -9,6 +10,7 @@
 
 	border-radius: calc(.25 * var(--rhythm));
 
+	font-size: 1em;
 	font-weight: bold;
 
 	background: var(--accent);
