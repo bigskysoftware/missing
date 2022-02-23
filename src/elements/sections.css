@@ -69,6 +69,10 @@ aside {
 		font-style: italic;
 	}
 
+:is(:--heading) + :is(:--heading) {
+	margin-top: var(--rhythm);
+}
+
 header {
 	@nest body > & {
 		/***
