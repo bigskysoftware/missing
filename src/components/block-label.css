@@ -5,11 +5,10 @@
 	margin: 0;
 	padding-inline: calc(.5 * var(--rhythm));
 	transform: translate(
-		calc(-1 * var(--rhythm) - 1px), calc(-.5 * var(--rhythm))
+		calc(-1.1 * var(--rhythm)), calc(-.5 * var(--rhythm))
 	);
 
 	border-radius: calc(.25 * var(--rhythm));
-	border-end-start-radius: 0;
 
 	font-size: 1em;
 	font-weight: bold;
