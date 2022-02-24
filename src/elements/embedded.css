@@ -3,6 +3,12 @@
  https://html.spec.whatwg.org/multipage/embedded-content.html
  ***/
 
+:where(img, video, audio, iframe, object, embed) {
+	max-width: 100%;
+	width: 100%;
+	height: auto;
+}
+
 :where(img) {
 	/* TODO */
 }
@@ -13,5 +19,13 @@
 
 :where(audio) {
 	/* TODO */
+}
+
+:where(iframe, object, embed) {
+	aspect-ratio: 16 / 9;
+
+	border: none;
+	background: white;
+	box-shadow: 0 .1em .2em var(--shadow) inset;
 }
 
