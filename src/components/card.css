@@ -23,11 +23,5 @@
 		calc(.5 * var(--rhythm))
 		calc(-.2 * var(--rhythm))
 		var(--muted-fg);
-
-	& :--heading {
-		font-size: inherit;
-		line-height: inherit;
-		margin-block: calc(var(--rhythm));
-	}
 }
 
