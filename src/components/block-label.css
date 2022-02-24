@@ -17,8 +17,5 @@
 
 	background: var(--accent);
 	color: var(--bg);
-	box-shadow:
-		0 calc(.05 * var(--rhythm)) calc(.1 * var(--rhythm))
-		var(--muted-fg);
 }
 
