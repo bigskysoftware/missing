@@ -8,7 +8,7 @@
 :root {
 	/* Colors */
 	--fg: #000; /* Text. */
-	--muted-fg: #555; /* De-emphasized or disabled elements' text. Will be
+	--muted-fg: #777; /* De-emphasized or disabled elements' text. Will be
 		used with a background of --c-bg and --c-bg-2 -- check contrast! */
 
 	--bg: #fff; /* Page background. */
