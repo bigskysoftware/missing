@@ -11,6 +11,10 @@
 :where(a) {
 	color: var(--link-fg, var(--accent));
 
+	@nest :where(.list-of-links &) {
+		text-decoration: none;
+	}
+
 	&:hover {
 		text-decoration: underline;
 	}

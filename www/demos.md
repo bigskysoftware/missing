@@ -6,9 +6,11 @@ layout: layout.html
 
 # Demos
 
-{% for demo in collections.demos %}
-- [{{demo.data.name}}]({{demo.url}})
+<ul class='list-of-links'>
+{% for demo in collections.demos -%}
+<li><p><a href="{{demo.url}}">{{demo.data.name}}</a>
 {% endfor %}
+</ul>
 
 </main>
 
