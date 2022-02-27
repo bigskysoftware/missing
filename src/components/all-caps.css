@@ -1,0 +1,5 @@
+
+all-caps, .all-caps, [all-caps] {
+	text-transform: uppercase;
+	letter-spacing: .1em;
+}

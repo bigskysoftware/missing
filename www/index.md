@@ -7,7 +7,7 @@ layout: layout.html
 <big-screen>
 <div>
 
-# missing<wbr>.css<v-h>:</v-h> <sub-title>The Missing CSS Stylesheet</sub-title>
+# <all-caps>missing<wbr>.css<v-h>:</v-h></all-caps> <sub-title>The Missing CSS Stylesheet</sub-title>
 
 Add it to your website: <code>&lt;link rel="stylesheet" href="<strong>https://the.missing.style</strong>"></code>
 
