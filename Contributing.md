@@ -69,8 +69,8 @@ Node.js and npm are needed.
           * `forms.css` -- 4.10 Forms
           * `interactive.css` -- 4.11 Interactive elements
       * `components/` -- components. Each component can be used as
-        a class (`<div class="my-component">`),
-        an attribute (<div my-component>) or a custom tag (`<my-component>`).
+        a class (`<div class="my-component">`),an attribute 
+        (`<div my-component>`) or a custom tag (`<my-component>`).
 
         Each component should have a documentation comment, explaining its
         purpose, appearance and usage.
