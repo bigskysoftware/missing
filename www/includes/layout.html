@@ -43,5 +43,20 @@ nav: {
 	</header>
 
 	{{ content | safe }}
+
+	<footer>
+		<fieldset><legend>Font</legend>
+			<radio-buttons>
+				<input type="radio" name="font" id="font-system-ui" checked>
+				<label for="font-system-ui">system-ui</label>
+
+				<input type="radio" name="font" id="font-fira-sans">
+				<label for="font-fira-sans">Fira Sans</label>
+
+				<input type="radio" name="font" id="font-source-serif">
+				<label for="font-source-serif">Source Serif</label>
+			</radio-buttons>
+		</fieldset>
+	</footer>
 </body>
 

@@ -112,6 +112,14 @@
 
 :where(footer) {
 	/* TODO */
+	@nest :where(body) > & {
+		margin-block-end: 2em;
+		padding-inline: var(--gutter-width);
+		padding-block-start: calc(2 * var(--rhythm));
+		margin-block-start: calc(2 * var(--rhythm));
+
+		text-align: center;
+	}
 }
 
 :where(address) {

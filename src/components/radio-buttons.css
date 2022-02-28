@@ -1,0 +1,51 @@
+
+radio-buttons, [radio-buttons], .radio-buttons {
+	display: inline-flex;
+	flex-flow: row;
+	width: max-content;
+	font-size: 0;
+	position: relative;
+
+	& input[type="radio"] {
+		opacity: 0;
+		width: 0;
+		height: 0;
+		position: absolute;
+	}
+
+	& label {
+		padding-inline: calc(var(--rhythm) / 2);
+		margin: 0;
+
+		font-size: 1rem;
+
+		background: var(--bg-3);
+		border: 1px solid var(--accent);
+		border-inline-end: none;
+		--radio-buttons-box-shadow: 0 .1em .2em -.1em var(--shadow) inset;
+		box-shadow: var(--radio-buttons-box-shadow);
+	}
+
+	& label:first-of-type {
+		border-start-start-radius: .2em;
+		border-end-start-radius: .2em;
+	}
+
+	& label:last-of-type {
+		border-start-end-radius: .2em;
+		border-end-end-radius: .2em;
+		border-inline-end: 1px solid var(--accent);
+	}
+
+	& input:is(:focus-visible, :active) + label {
+		box-shadow: var(--radio-buttons-box-shadow), 0 0 0 .05em var(--accent) inset;
+	}
+
+	& input:checked + label {
+		--radio-buttons-box-shadow: 0 .1em .2em var(--shadow);
+		z-index: 10;
+		color: var(--fg);
+		background: var(--bg-2);
+	}
+}
+
