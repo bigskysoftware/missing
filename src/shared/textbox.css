@@ -7,6 +7,7 @@
 	width: 100%;
 
 	font-size: 1rem;
+	font-family: var(--main-font);
 
 	background: var(--bg);
 	border: 1px solid var(--muted-fg);
