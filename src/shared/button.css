@@ -1,0 +1,28 @@
+
+%button {
+	padding: calc(var(--rhythm) / 4) calc(var(--rhythm) / 2);
+	margin: calc(var(--rhythm) / 4) 0;
+
+	font-size: 1rem;
+
+	background: var(--bg-3);
+	border: 1px solid var(--muted-fg);
+	border-radius: .2em;
+	box-shadow: var(--button-default-box-shadow);
+
+	--button-default-box-shadow: 0 .1em .2em var(--shadow);
+	--button-pressed-box-shadow: 0 .05em .1em var(--shadow);
+
+	&:hover, &:focus-visible {
+		background: var(--bg-2);
+		border: 1px solid var(--accent);
+		outline: .1em solid var(--accent);
+	}
+
+	&:active {
+		background: var(--bg-3);
+		border: 1px solid var(--accent);
+		box-shadow: var(--button-pressed-box-shadow);
+	}
+}
+

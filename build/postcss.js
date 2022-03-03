@@ -7,6 +7,7 @@ const postcss = require('postcss')
 const presetEnv = require('postcss-preset-env')
 const atImport = require('postcss-import')
 const importGlob = require('postcss-import-ext-glob')
+const extend = require('postcss-extend-rule')
 const cssnano = require('cssnano')
 
 
@@ -27,6 +28,7 @@ module.exports = async () => {
 				'logical-properties-and-values': false,
 			},
 		}),
+		extend(),
 	])
 
 	const pcMinifier = postcss([cssnano({ preset: 'default' })])

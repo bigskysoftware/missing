@@ -4,9 +4,27 @@
  ***/
 
 :where(details) {
+	@extend %card;
 }
 
 :where(summary) {
+	margin-inline: calc(0px - var(--rhythm));
+	padding: inherit;
+
+	font-weight: bold;
+
+	background: var(--accent);
+	color: var(--bg);
+
+	cursor: pointer;
+
+	&::marker {
+		list-style: disc;
+	}
+
+	@nest :where(details[open]) & {
+		border-bottom: 1px solid var(--accent);
+	}
 }
 
 :where(dialog) {

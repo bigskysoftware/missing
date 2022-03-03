@@ -4,6 +4,7 @@
 
 @import-glob "./components/*.css";
 @import-glob "./elements/*.css";
+@import-glob "./shared/*.css";
 
 :root {
 	/* Colors */

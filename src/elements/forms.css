@@ -24,7 +24,7 @@
 	&[type="time"],
 	&[type="datetime-local"],
 	&[type="number"] {
-		/* TODO */
+		@extend %textbox;
 	}
 
 	&[type="range"] {
@@ -56,12 +56,26 @@
 	button,
 	input[type="submit"],
 	input[type="reset"],
-	input[type="button"]) {
-	/* TODO */
+	input[type="button"]
+) {
+	@extend %button;
 }
 
-:where(select) {
-	/* TODO */
+:where(select:not([multiple])) {
+	@extend %button;
+	display: block;
+	width: 100%;
+}
+
+:where(select[multiple]) {
+	@extend %form-assoc;
+	@extend %textbox;
+	vertical-align: top;
+}
+
+:where(optgroup)::before {
+	color: var(--muted-fg);
+	font-style: normal;
 }
 
 :where(textarea) {

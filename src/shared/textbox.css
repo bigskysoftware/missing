@@ -1,0 +1,26 @@
+
+%textbox {
+	display: block;
+
+	padding: calc(var(--rhythm) / 4) calc(var(--rhythm) / 4);
+	margin-block-start:  calc(var(--rhythm) / 2);
+	width: 100%;
+
+	font-size: 1rem;
+
+	background: var(--bg);
+	border: 1px solid var(--muted-fg);
+	border-radius: .2em;
+
+	&:focus-visible {
+		border: 1px solid var(--accent);
+		outline: 1px solid var(--accent);
+	}
+
+	&::placeholder {
+		color: var(--muted-fg);
+		opacity: 1;
+		text-align: end;
+	}
+}
+

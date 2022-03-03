@@ -14,14 +14,10 @@ radio-buttons, [radio-buttons], .radio-buttons {
 	}
 
 	& label {
-		padding-inline: calc(var(--rhythm) / 2);
-		margin: 0;
-
-		font-size: 1rem;
-
-		background: var(--bg-3);
-		border: 1px solid var(--accent);
+		@extend %button;
 		border-inline-end: none;
+		border-radius: 0;
+		margin-inline: 0;
 		--radio-buttons-box-shadow: 0 .1em .2em -.1em var(--shadow) inset;
 		box-shadow: var(--radio-buttons-box-shadow);
 	}
