@@ -1,0 +1,5 @@
+
+missing-container, [missing-container], .missing-container {
+	max-width: var(--eff-line-length);
+	margin-inline: auto;
+}
