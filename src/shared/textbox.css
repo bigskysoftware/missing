@@ -10,7 +10,7 @@
 	font-family: var(--main-font);
 
 	background: var(--bg);
-	border: 1px solid var(--muted-fg);
+	border: 1px solid var(--faded-fg);
 	border-radius: .2em;
 
 	&:focus-visible {
