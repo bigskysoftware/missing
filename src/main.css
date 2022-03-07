@@ -9,8 +9,10 @@
 :root {
 	/* Colors */
 	--fg: #000; /* Text. */
-	--muted-fg: #777; /* De-emphasized or disabled elements' text. Will be
+	--muted-fg: #444; /* De-emphasized or disabled elements' text. Will be
 		used with a background of --c-bg and --c-bg-2 -- check contrast! */
+	--faded-fg: #777; /* De-emphasized or disabled graphical elements. Will not
+		be used as a text color. */
 
 	--bg: #fff; /* Page background. */
 	--bg-2: #f8f8ff; /* Background for blocks: cards, admonitions etc. */
