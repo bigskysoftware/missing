@@ -106,6 +106,18 @@
 :where(kbd) {
 	/* TODO */
 }
+	:where(kbd kbd) {
+		display: inline-block;
+
+		padding: 0 .3em;
+		font-size: .8em;
+		line-height: 1.1em;
+
+		background: var(--bg-3);
+		border: 1px outset var(--faded-fg);
+		border-block-end-width: 3px;
+		border-radius: .3em;
+	}
 
 :where(sub) {
 	/* TODO */
