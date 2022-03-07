@@ -16,6 +16,6 @@
 		calc(.2 * var(--rhythm))
 		calc(.5 * var(--rhythm))
 		calc(-.2 * var(--rhythm))
-		var(--muted-fg);
+		var(--shadow);
 }
 
