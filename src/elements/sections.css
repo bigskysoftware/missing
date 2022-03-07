@@ -35,38 +35,28 @@
 :where(:--heading) {
 	margin-block-end: var(--rhythm);
 	font-family: var(--display-font);
+	font-size: 1em;
+	margin-block-start: calc(2 * var(--rhythm));
 }
 
 	:where(h1) {
-		font-size: 2.5em;
-		line-height: calc(2.5 * var(--rhythm));
-		margin-block-start: calc(2.5 * var(--rhythm));
+		font-size: 1.8em;
+		line-height: calc(2 * var(--rhythm));
 	}
 
 	:where(h2) {
-		font-size: 2em;
-		line-height: calc(2 * var(--rhythm));
-		margin-block-start: calc(2 * var(--rhythm));
-	}
-
-	:where(h3) {
-		font-size: 1.5em;
+		font-size: 1.4em;
 		line-height: calc(1.5 * var(--rhythm));
-		margin-block-start: calc(1.5 * var(--rhythm));
 	}
 
-	:where(h4, h5, h6) {
+	:where(h2, h3) {
+		border-bottom: 1px solid var(--muted-fg);
+	}
+
+	:where(h3, h4, h5, h6) {
 		font-size: 1em;
+		line-height: calc(1 * var(--rhythm));
 		margin-block-start: var(--rhythm);
-	}
-
-	:where(h5) {
-		font-variant: small-caps;
-	}
-
-	:where(h6) {
-		font-weight: normal;
-		font-style: italic;
 	}
 
 :where(:--heading) + :where(:--heading) {
