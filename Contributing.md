@@ -75,6 +75,12 @@ Node.js and npm are needed.
         Each component should have a documentation comment, explaining its
         purpose, appearance and usage.
 
+      * `shared/` -- base declarations that we use with [`@extend`][pcss-extend]
+
+        Avoid `@extend`-ing any style declarations outside this directory, and
+        make sure that all rules inside this directory are `%placeholder-rules`.
+        This way, we can always easily find the source of an @extend.
+
   * `www/` -- the project website, built with eleventy
       * `demos/` demo pages. These should have a `name` specified in the
         frontmatter. They will be listed in the demo page (`../demos.md`).
@@ -88,3 +94,4 @@ Node.js and npm are needed.
       * `missing.min.css.br` -- minified + gzip compressed
       * `missing.min.css.gz` -- minified + brotli compressed
 
+[pcss-extend]: https://github.com/csstools/postcss-extend-rule
