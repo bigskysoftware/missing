@@ -58,7 +58,15 @@
 	input[type="reset"],
 	input[type="button"]
 ) {
-	@extend %button;
+	@extend %button-like;
+
+	&:hover, &:focus-visible {
+		@extend %targeted-button;
+	}
+
+	&:active {
+		@extend %active-button;
+	}
 }
 
 :where(select:not([multiple])) {
