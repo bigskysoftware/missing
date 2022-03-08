@@ -28,7 +28,9 @@ module.exports = async () => {
 				'logical-properties-and-values': false,
 			},
 		}),
-		extend(),
+		extend({
+			onUnusedExtend: 'throw',
+		}),
 	])
 
 	const pcMinifier = postcss([cssnano({ preset: 'default' })])

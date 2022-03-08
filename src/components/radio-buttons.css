@@ -1,10 +1,11 @@
 
 radio-buttons, [radio-buttons], .radio-buttons {
+	@extend %button-like;
+
 	display: inline-flex;
 	flex-flow: row;
 	width: max-content;
-	font-size: 0;
-	position: relative;
+	padding-inline: 0;
 
 	& input[type="radio"] {
 		opacity: 0;
@@ -14,34 +15,27 @@ radio-buttons, [radio-buttons], .radio-buttons {
 	}
 
 	& label {
-		@extend %button;
-		border-inline-end: none;
-		border-radius: 0;
-		margin-inline: 0;
-		--radio-buttons-box-shadow: 0 .1em .2em -.1em var(--shadow) inset;
-		box-shadow: var(--radio-buttons-box-shadow);
-	}
+		font-size: 1rem;
+		margin-block: calc(var(--rhythm) / -4);
+		padding-block: inherit;
+		padding-inline: calc(var(--rhythm) / 2);
+		z-index: 0;
 
-	& label:first-of-type {
-		border-start-start-radius: .2em;
-		border-end-start-radius: .2em;
-	}
+		&:not(:last-child) {
+			border-inline-end: 1px solid var(--accent);
+		}
 
-	& label:last-of-type {
-		border-start-end-radius: .2em;
-		border-end-end-radius: .2em;
-		border-inline-end: 1px solid var(--accent);
-	}
-
-	& input:is(:focus-visible, :active) + label {
-		box-shadow: var(--radio-buttons-box-shadow), 0 0 0 .05em var(--accent) inset;
+		&:active {
+			@extend %active-button;
+		}
 	}
 
 	& input:checked + label {
-		--radio-buttons-box-shadow: 0 .1em .2em var(--shadow);
-		z-index: 10;
-		color: var(--fg);
-		background: var(--bg-2);
+		@extend %pressed-button;
+	}
+
+	& input:is(:focus-visible, :active) + label {
+		@extend %button:active;
 	}
 }
 

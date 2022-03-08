@@ -64,39 +64,6 @@
 }
 
 :where(header) {
-	@nest :where(body) > & {
-		/***
-		 A header directly at the start of the body is a navbar.
-		 ***/
-
-		position: sticky;
-		inset-block-start: 0;
-		inset-inline: 0;
-		z-index: 10;
-
-		margin: 0;
-		padding: 0 var(--rhythm);
-
-		background: var(--accent);
-		color: var(--bg);
-
-		& a { color: var(--bg); }
-
-		/* Inner layout */
-		display: flex;
-		flex-flow: row;
-		justify-content: space-between;
-
-		& :where(nav ul[role="list"]) {
-			display: flex;
-			flex-flow: row wrap;
-			gap: var(--rhythm);
-		}
-
-		& :where(a) {
-			text-decoration: none;
-		}
-	}
 }
 
 :where(footer) {

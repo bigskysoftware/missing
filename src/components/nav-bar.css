@@ -1,0 +1,33 @@
+
+header[is="nav-bar"] {
+	position: sticky;
+	inset-block-start: 0;
+	inset-inline: 0;
+	z-index: 10;
+
+	margin: 0;
+	padding: 0 var(--rhythm);
+
+	background: var(--accent);
+	color: var(--bg);
+
+	/* Inner layout */
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	gap: calc(2 * var(--rhythm));
+	
+	overflow-x: auto;
+
+	& :where(nav ul[role="list"]) {
+		display: flex;
+		flex-flow: row nowrap;
+		gap: var(--rhythm);
+	}
+
+	& :where(a) {
+		color: var(--bg);
+		font-weight: bold;
+		text-decoration: none;
+	}
+}

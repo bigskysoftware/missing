@@ -62,13 +62,12 @@
 }
 
 :where(select:not([multiple])) {
-	@extend %button;
+	@extend %button-like;
 	display: block;
 	width: 100%;
 }
 
 :where(select[multiple]) {
-	@extend %form-assoc;
 	@extend %textbox;
 	vertical-align: top;
 }
