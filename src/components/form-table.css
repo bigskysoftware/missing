@@ -1,0 +1,17 @@
+
+:is(form-table, [is="form-table"]) {
+	display: table;
+	width: 100%;
+	border-spacing: 0 calc(var(--rhythm) / 1);
+
+	& p {
+		display: table-row;
+
+		& > * {
+			display: table-cell;
+			vertical-align: baseline;
+			margin: 0;
+		}
+	}
+
+}
