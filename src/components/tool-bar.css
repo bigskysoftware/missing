@@ -1,0 +1,6 @@
+
+tool-bar, [is="tool-bar"] {
+	display: flex;
+	flex-flow: row wrap;
+	gap: 0 calc(var(--rhythm) / 2);
+}
