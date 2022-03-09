@@ -44,7 +44,11 @@
 	}
 
 	&[type="file"] {
-		/* TODO */
+		&::file-selector-button {
+			@extend %button-like;
+			margin-block: 0;
+			margin-inline-end: 1ch;
+		}
 	}
 
 	&[type="image"] {
