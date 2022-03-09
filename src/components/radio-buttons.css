@@ -5,7 +5,7 @@ radio-buttons, [radio-buttons], .radio-buttons {
 	display: inline-flex;
 	flex-flow: row;
 	width: max-content;
-	padding-inline: 0;
+	padding: 0;
 
 	& input[type="radio"] {
 		opacity: 0;
@@ -15,11 +15,7 @@ radio-buttons, [radio-buttons], .radio-buttons {
 	}
 
 	& label {
-		font-size: 1rem;
-		margin-block: calc(var(--rhythm) / -4);
-		padding-block: inherit;
-		padding-inline: calc(var(--rhythm) / 2);
-		z-index: 0;
+		padding: calc(var(--rhythm) / 4) calc(var(--rhythm) / 2);
 
 		&:not(:last-child) {
 			border-inline-end: 1px solid var(--accent);

@@ -18,6 +18,7 @@ nav: {
 	<meta name="viewport" content="width=device-width">
 
 	<link rel="stylesheet" href="/missing.css">
+	<script src="https://unpkg.com/hyperscript.org"></script>
 </head>
 <body>
 	<header is="nav-bar">
@@ -46,16 +47,49 @@ nav: {
 
 	<footer>
 		<fieldset><legend>Font</legend>
-			<radio-buttons>
-				<input type="radio" name="font" id="font-system-ui" checked>
+			<radio-buttons _="
+				set :fontUrls to {
+					'Fira Sans': 'https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,700;1,400&family=Source+Sans+3&display=swap',
+					'Source Serif 4': 'https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,700;1,400&display=swap'
+				}
+				on load
+					get #{localStorage.fontSelection}
+					set it.checked to true
+					send change to it
+					log it
+				on change
+					set fontFamily to target's value
+					set localStorage.fontSelection to target's id
+					add {
+						--main-font: ${`'${fontFamily}'`}, system-ui;
+						--display-font: ${`'${fontFamily}'`}, system-ui;
+					} to document.documentElement
+
+					set stylesheetId to 'stylesheet-' + fontFamily.split(' ').join('-')
+					if :fontUrls[fontFamily] and no #{stylesheetId} then
+						make a <link />
+						set its id to stylesheetId
+						set its rel to 'stylesheet'
+						set its href to :fontUrls[fontFamily]
+						put it at the end of document's head
+
+						add [@aria-busy='true'] then remove @hidden from #font-loading
+						wait for load from it
+						remove @aria-busy then add @hidden to #font-loading
+					end
+			">
+				<input type="radio" name="font" id="font-system-ui" checked value="system-ui">
 				<label for="font-system-ui">system-ui</label>
 
-				<input type="radio" name="font" id="font-fira-sans">
+				<input type="radio" name="font" id="font-fira-sans" value="Fira Sans">
 				<label for="font-fira-sans">Fira Sans</label>
 
-				<input type="radio" name="font" id="font-source-serif">
+				<input type="radio" name="font" id="font-source-serif" value="Source Serif 4">
 				<label for="font-source-serif">Source Serif</label>
 			</radio-buttons>
+			<button>asdasd</button>
+
+			<progress hidden id="font-loading"></progress>
 		</fieldset>
 	</footer>
 </body>

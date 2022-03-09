@@ -2,11 +2,13 @@
 %textbox {
 	display: block;
 
-	padding: calc(var(--rhythm) / 4) calc(var(--rhythm) / 4);
+	padding: calc(var(--rhythm) / 4) calc(var(--rhythm) / 2);
+	margin: calc(var(--rhythm) / 4) 0;
 	margin-block-start:  calc(var(--rhythm) / 2);
 	width: 100%;
 
 	font-size: 1rem;
+	line-height: 1;
 	font-family: var(--main-font);
 
 	background: var(--bg);

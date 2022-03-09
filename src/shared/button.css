@@ -4,11 +4,12 @@
 	margin: calc(var(--rhythm) / 4) 0;
 
 	font-size: 1rem;
+	line-height: var(--rhythm);
 
 	background: var(--bg-3);
 	border: 1px solid var(--accent);
 	border-radius: .2em;
-	box-shadow: 0 .1em .2em var(--shadow);
+	box-shadow: 0 .1em .3em -.02em var(--shadow);
 }
 
 %targeted-button {
