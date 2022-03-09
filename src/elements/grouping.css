@@ -48,10 +48,10 @@
 }
 
 :where(:--list) {
-	padding-left: calc(1.5 * var(--rhythm));
+	padding-inline-start: calc(1.5 * var(--rhythm));
 
 	&:where([role="list"]) {
-		padding-left: 0;
+		padding-inline-start: 0;
 		list-style: none;
 	}
 }
@@ -69,29 +69,23 @@
 	list-style: none;
 }
 
-:where(li) {
-	/* TODO */
-}
-
 :where(dl) {
-	/* TODO */
-
-	& :where(dt) {
-	}
-
-	& :where(dd) {
-	}
-
-	& > :where(div) {
-	}
 }
+	:where(dt) {
+		font-weight: bold;
+	}
+
+	:where(dd) {
+		margin-inline-start: calc(1.5 * var(--rhythm));
+	}
 
 :where(figure) {
-	/* TODO */
-
-	:where(figcaption) {
-	}
+	display: flow-root;
 }
+	:where(figcaption) {
+		color: var(--muted-fg);
+		letter-spacing: .02em;
+	}
 
 :where(main) {
 	max-width: var(--eff-line-length);
