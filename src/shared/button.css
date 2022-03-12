@@ -4,6 +4,7 @@
 	margin: calc(var(--rhythm) / 4) 0;
 
 	font-size: 1rem;
+	font-family: var(--main-font);
 	line-height: var(--rhythm);
 
 	background: var(--bg-3);
