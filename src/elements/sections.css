@@ -10,6 +10,7 @@
 :where(html) {
 	font-family: var(--main-font);
 	line-height: var(--rhythm);
+	font-size: 6mm;
 }
 
 :where(body) {
@@ -25,7 +26,10 @@
 }
 
 :where(nav) {
-	/* TODO */
+	& a {
+		text-decoration: none;
+		color: var(--accent);
+	}
 }
 
 :where(aside) {

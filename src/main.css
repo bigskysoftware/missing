@@ -46,8 +46,7 @@
 			(
 				100vw                      /* Viewport width */
 				- var(--eff-line-length) /* minus line width */
-			) / 2                        /* Divide by 2: there are two page margins */
-		);
+			) / 2);                        /* Divide by 2: there are two page margins */
 }
 
 @custom-selector :--list ul, ol;
