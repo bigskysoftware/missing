@@ -10,7 +10,7 @@
 :where(html) {
 	font-family: var(--main-font);
 	line-height: var(--rhythm);
-	font-size: 6mm;
+	font-size: 120%;
 }
 
 :where(body) {
