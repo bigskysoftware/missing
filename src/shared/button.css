@@ -9,18 +9,19 @@
 
 	background: var(--bg-3);
 	border: 1px solid var(--accent);
+	box-shadow: 0 .1em var(--accent);
 	border-radius: .2em;
-	box-shadow: 0 .1em .3em -.02em var(--shadow);
 }
 
 %targeted-button {
 	background: var(--bg-2);
-	outline: .1em solid var(--accent);
+	outline: 1px solid var(--accent);
 }
 
 %active-button {
-	background: var(--muted-accent);
-	box-shadow: 0 .05em .1em var(--shadow);
+	outline: 1px solid var(--accent);
+	box-shadow: none;
+	transform: translateY(.1em);
 }
 
 %pressed-button {
