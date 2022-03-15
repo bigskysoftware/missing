@@ -2,15 +2,22 @@
 :is(form-table, [is="form-table"]) {
 	display: table;
 	width: 100%;
-	border-spacing: 0 calc(var(--rhythm) / 1);
+	margin-block: var(--gap);
+	padding-block: calc(0 - var(--gap));
 
 	& p {
 		display: table-row;
+	}
 
+	& p, & fieldset {
 		& > * {
 			display: table-cell;
 			vertical-align: baseline;
 			margin: 0;
+		}
+
+		&:not(:first-child) > :is(label, legend) {
+			border-top: var(--rhythm) solid transparent;
 		}
 	}
 

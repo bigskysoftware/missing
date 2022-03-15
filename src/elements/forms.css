@@ -107,6 +107,13 @@
 
 :where(fieldset) {
 	/* TODO */
+
+	&[is="label-like"] {
+		display: contents;
+
+		& legend {
+		}
+	}
 }
 
 :where(legend) {

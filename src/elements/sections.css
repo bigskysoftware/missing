@@ -37,10 +37,10 @@
 }
 
 :where(:--heading) {
-	margin-block-end: var(--rhythm);
+	margin-block-end: var(--gap);
 	font-family: var(--display-font);
 	font-size: 1em;
-	margin-block-start: calc(2 * var(--rhythm));
+	margin-block-start: calc(2 * var(--gap));
 }
 
 	:where(h1) {
@@ -60,11 +60,11 @@
 	:where(h3, h4, h5, h6) {
 		font-size: 1em;
 		line-height: calc(1 * var(--rhythm));
-		margin-block-start: var(--rhythm);
+		margin-block-start: var(--gap);
 	}
 
 :where(:--heading) + :where(:--heading) {
-	margin-top: var(--rhythm);
+	margin-block-start: var(--gap);
 }
 
 :where(header) {
@@ -75,8 +75,8 @@
 	@nest :where(body) > & {
 		margin-block-end: 2em;
 		padding-inline: var(--gutter-width);
-		padding-block-start: calc(2 * var(--rhythm));
-		margin-block-start: calc(2 * var(--rhythm));
+		padding-block-start: calc(2 * var(--gap));
+		margin-block-start: calc(2 * var(--gap));
 
 		text-align: center;
 	}

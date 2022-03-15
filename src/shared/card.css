@@ -2,8 +2,8 @@
 %card {
 	display: block;
 	border: 1px solid transparent;
-	margin: calc(2 * var(--rhythm)) 0;
-	padding: 0 var(--rhythm);
+	margin: calc(2 * var(--gap)) 0;
+	padding: 0 var(--gap);
 
 	border-radius: calc(var(--rhythm) / 4);
 

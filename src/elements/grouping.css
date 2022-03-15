@@ -5,7 +5,7 @@
  ***/
 
 :where(p) {
-	margin-block: var(--rhythm);
+	margin-block: var(--gap);
 }
 
 :where(hr) {
@@ -20,7 +20,7 @@
 	tab-size: 2;
 
 	padding: calc(.5 * var(--rhythm));
-	margin: var(--rhythm) 0;
+	margin: var(--gap) 0;
 	border-radius: .5em;
 
 	overflow-x: auto;

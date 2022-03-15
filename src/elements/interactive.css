@@ -8,7 +8,7 @@
 }
 
 :where(summary) {
-	margin-inline: calc(0px - var(--rhythm));
+	margin-inline: calc(0px - var(--gap));
 	padding: inherit;
 
 	font-weight: bold;

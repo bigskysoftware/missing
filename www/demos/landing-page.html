@@ -1,0 +1,97 @@
+---
+layout: layout.html
+name: Landing Page
+---
+
+<main class="density:airy">
+    <big-screen>
+        <h1>So easy, even a programmer can do it</h1>
+        
+        <p>
+            Missing.css is the stylesheet you've been looking for. Build an enticing 
+            landing page, an admin dashboard, or even an online shop with the design
+            work already done.
+        </p>
+    
+        <tool-bar>
+            <button type="button">Sign up</button>
+            <a class="button" href="#">Learn more</a>
+        </tool-bar>
+    </big-screen>
+
+    <form class="missing-card">
+        <h4>Sign up to our mailing list</h4>
+        <form-table>
+            <p>
+                <label for="email-in">Email</label>
+                <input type="email" name="email" id="email-in" placeholder="you@example.com">
+            </p>
+            <fieldset is="label-like">
+                <legend>Update frequency</legend>
+                <radio-buttons>
+                    <input type="radio" name="upd-freq-in" id="upd-all" checked>
+                    <label for="upd-all">All updates</label>
+
+                    <input type="radio" name="upd-freq-in" id="upd-important">
+                    <label for="upd-important">Most important</label>
+
+                    <input type="radio" name="upd-freq-in" id="upd-weekly">
+                    <label for="upd-weekly">Weekly digest</label>
+                </radio-buttons>
+            </fieldset>
+        </form-table>
+        <p><button>Sign Up</button></p>
+    </form>
+
+    <p>
+        <b class="lede">
+            All websites these days look the same anyway,
+            so why should it be so much work to design one?
+        </b>
+        We want to unleash the power of classless CSS. Lorem ipsum dolor sit 
+        amet consectetur adipisicing elit. Aliquam odit animi iure autem magni
+        molestiae architecto, earum, quaerat quisquam, totam at sequi eum. 
+        Rerum ipsam consequatur autem eaque et velit?
+    </p>
+
+    <ul role="list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(15ch, 1fr)); gap: var(--rhythm); margin-block: calc(0 - var(--gap))">
+        <li class="missing-card">
+            <h4>Beautiful by default</h4>
+            <p>Just drop the stylesheet in and use semantic HTML.</p>
+        </li>
+        <li class="missing-card">
+            <h4>Accessible Structures</h4>
+            <p>Mark up tabs and other components and we'll handle the styling.</p>
+        </li>
+        <li class="missing-card">
+            <h4>Useful components</h4>
+            <p>...such as these cards!</p>
+        </li>
+    </ul>
+</main>
+
+<footer>
+    <nav>
+        <h4>Company</h4>
+        <ul role="list">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Certifications</a></li>
+        </ul>
+
+        <h4>Product</h4>
+        <ul role="list">
+            <li><a href="#">Missing.css</a></li>
+            <li><a href="#">Documenatıon</a></li>
+            <li><a href="#">Developers</a></li>
+        </ul>
+
+        <h4>Legal</h4>
+        <ul role="list">
+            <li><a href="#">Privacy Statement</a></li>
+            <li><a href="#">End User License Agreement</a></li>
+        </ul>
+    </nav>
+
+    <p><small>&copy; 2022 Fictitious CSS Industries</small></p>
+</footer>

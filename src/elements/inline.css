@@ -28,6 +28,15 @@
 			content: '\2197' / 'external';
 		}
 	}
+
+	&.button {
+		@extend %button-like;
+		color: var(--fg);
+		text-decoration: none;
+
+		&:hover, &:focus-visible { @extend %targeted-button }
+		&:active { @extend %active-button }
+	}
 }
 
 :where(em) {
@@ -132,7 +141,11 @@
 }
 
 :where(b) {
-	/* TODO */
+	&.lede {
+		font-size: 1.2em;
+		line-height: calc(1.2 * var(--rhythm));
+		font-weight: normal;
+	}
 }
 
 :where(u) {

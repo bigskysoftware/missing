@@ -34,6 +34,9 @@
 	--display-font: var(--main-font); /* Headings etc. */
 	--mono-font: monospace, monospace; /* monospace twice stops browsers from
 		shrinking this */
+	
+	/* Density */
+	--density: 1;
 
 	/* Do not set these. */
 	--eff-line-length: /* Effective line length for prose. */
@@ -48,7 +51,11 @@
 				100vw                      /* Viewport width */
 				- var(--eff-line-length) /* minus line width */
 			) / 2);                        /* Divide by 2: there are two page margins */
+	
+	--gap: calc(var(--rhythm) * var(--density));
 }
+
+.density\:airy { --density: 3; }
 
 @custom-selector :--list ul, ol;
 @custom-selector :--italic em, cite, dfn, var, i, address;

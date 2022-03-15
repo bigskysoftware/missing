@@ -1,8 +1,6 @@
 
 radio-buttons, [radio-buttons], .radio-buttons {
-	
-	display: inline-flex;
-	flex-flow: row;
+	font-size: 0;
 	width: max-content;
 	padding: 0;
 	
@@ -15,8 +13,8 @@ radio-buttons, [radio-buttons], .radio-buttons {
 	
 	& label {
 		@extend %button-like;
+		font-size: 1rem;
 		position: relative;
-		padding: calc(var(--rhythm) / 4) calc(var(--rhythm) / 2);
 
 		&:not(:last-of-type) {
 			border-end-end-radius: 0;
