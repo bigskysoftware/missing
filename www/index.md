@@ -9,6 +9,15 @@ layout: layout.html
 
 # <all-caps>missing<wbr>.css<v-h>:</v-h></all-caps> <sub-title>The Missing CSS Stylesheet</sub-title>
 
+<nav>
+
+[Home](/) &middot;
+[Demo](/demos/) &middot;
+[GitHub](https://github.com/bigskysoftware/missing) &middot;
+[Discord](https://htmx.org/discord)
+
+</nav>
+
 Add it to your website: <code>&lt;link rel="stylesheet" href="<strong>https://the.missing.style</strong>"></code>
 
 </div>

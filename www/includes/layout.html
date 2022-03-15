@@ -1,14 +1,4 @@
 ---
-nav: {
-	pages: {
-		"Home": /,
-		"Demo": /demos/,
-	},
-	external: {
-		"GitHub": "https://github.com/bigskysoftware/missing",
-		"Discord": "https://htmx.org/discord",
-	},
-}
 ---
 
 <!doctype html>
@@ -21,28 +11,6 @@ nav: {
 	<script src="https://unpkg.com/hyperscript.org"></script>
 </head>
 <body>
-	<header is="nav-bar">
-		<nav aria-label="site">
-			<ul role="list">
-			{% for name, href in nav.pages %}
-				<li><a
-					href="{{ href }}"
-					{{ 'aria-current="page"' if href == page.url }}
-					>{{ name }}</a>
-			{% endfor %}
-		</nav>
-		<nav aria-label="external links">
-			<ul role="list">
-			{% for name, href in nav.external %}
-				<li><a
-					rel="noopener noreferrer nofollow"
-					href="{{ href }}"
-					>{{ name }}</a>
-			{% endfor %}
-			</ul>
-		</nav>
-	</header>
-
 	{{ content | safe }}
 
 	<footer>
