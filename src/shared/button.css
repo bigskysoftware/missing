@@ -11,6 +11,7 @@
 	border: 1px solid var(--accent);
 	box-shadow: 0 .1em var(--accent);
 	border-radius: .2em;
+	transform: translateY(-.1em);
 }
 
 %targeted-button {
@@ -21,11 +22,11 @@
 %active-button {
 	outline: 1px solid var(--accent);
 	box-shadow: none;
-	transform: translateY(.1em);
+	transform: none;
 }
 
 %pressed-button {
-	@extend %active-button;
-	background: var(--accent);
-	color: var(--bg);
+	box-shadow: 0 .05em var(--accent);
+	transform: translateY(-.05em);
+	background: var(--bg-4);
 }

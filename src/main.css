@@ -17,6 +17,7 @@
 	--bg: #fff; /* Page background. */
 	--bg-2: #f8f8ff; /* Background for blocks: cards, admonitions etc. */
 	--bg-3: #dfdfe1; /* Background for interactive elements */
+	--bg-4: #c3c3ca; /* Background for pressed interactive elements */
 
 	--shadow: #777; /* Box shadows. */
 

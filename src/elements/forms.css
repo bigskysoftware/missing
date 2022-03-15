@@ -46,7 +46,7 @@
 	&[type="file"] {
 		&::file-selector-button {
 			@extend %button-like;
-			margin-block: 0;
+			margin-block: .1em 0;
 			margin-inline-end: 1ch;
 		}
 	}

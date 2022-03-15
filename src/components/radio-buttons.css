@@ -1,24 +1,37 @@
 
 radio-buttons, [radio-buttons], .radio-buttons {
-	@extend %button-like;
-
+	
 	display: inline-flex;
 	flex-flow: row;
 	width: max-content;
 	padding: 0;
-
+	
 	& input[type="radio"] {
 		opacity: 0;
 		width: 0;
 		height: 0;
 		position: absolute;
 	}
-
+	
 	& label {
+		@extend %button-like;
+		position: relative;
 		padding: calc(var(--rhythm) / 4) calc(var(--rhythm) / 2);
 
-		&:not(:last-child) {
-			border-inline-end: 1px solid var(--accent);
+		&:not(:last-of-type) {
+			border-end-end-radius: 0;
+			border-start-end-radius: 0;
+			border-inline-end-width: 0;
+		}
+
+		&:not(:first-of-type) {
+			border-end-start-radius: 0;
+			border-start-start-radius: 0;
+		}
+
+		&:hover {
+			@extend %targeted-button;
+			z-index: 100;
 		}
 
 		&:active {
