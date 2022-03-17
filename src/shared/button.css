@@ -16,11 +16,9 @@
 
 %targeted-button {
 	background: var(--bg-2);
-	outline: 1px solid var(--accent);
 }
 
 %active-button {
-	outline: 1px solid var(--accent);
 	box-shadow: none;
 	transform: none;
 }
