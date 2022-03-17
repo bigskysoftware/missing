@@ -1,24 +1,30 @@
-const fs = require('node:fs/promises')
-const path = require('node:path')
-const zlib = require('node:zlib')
+import { readFile, mkdir, writeFile } from 'node:fs/promises'
+import { join, dirname } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { brotliCompress as brotli, gzip } from 'node:zlib'
 
-const postcss = require('postcss')
+import postcss from 'postcss'
 
-const presetEnv = require('postcss-preset-env')
-const atImport = require('postcss-import')
-const importGlob = require('postcss-import-ext-glob')
-const extend = require('postcss-extend-rule')
-const cssnano = require('cssnano')
+// Plugins
+import presetEnv from 'postcss-preset-env'
+import atImport from 'postcss-import'
+import importGlob from 'postcss-import-ext-glob'
+import extend from 'postcss-extend-rule'
+import cssnano from 'cssnano'
 
 
-const entrypoint = path.join(__dirname, '../src/main.css')
-const dist       = path.join(__dirname, '../dist')
+// Paths
+const __dirname = dirname(fileURLToPath(import.meta.url))
 
-const prodTarget = path.join(dist, '/missing.min.css')
-const devTarget  = path.join(dist, '/missing.css')
+const entrypoint = join(__dirname, '../src/main.css')
+const dist       = join(__dirname, '../dist/')
 
-module.exports = async () => {
-	const pcMain = postcss([
+const prodTarget = join(dist, '/missing.min.css')
+const devTarget  = join(dist, '/missing.css')
+
+
+const build = async () => {
+	const postcssMain = postcss([
 		importGlob(),
 		atImport(),
 		presetEnv({
@@ -33,30 +39,39 @@ module.exports = async () => {
 		}),
 	])
 
-	const pcMinifier = postcss([cssnano({ preset: 'default' })])
+	const postcssMinifier = postcss([cssnano({ preset: 'default' })])
 
-	const css = await fs.readFile(entrypoint, { encoding: 'utf8' })
+	const css = await readFile(entrypoint, { encoding: 'utf8' })
 
-	await fs.mkdir(dist, { recursive: true })
+	await mkdir(dist, { recursive: true })
 
 	const result =
-		await pcMain.process(css, { from: entrypoint, to: devTarget })
-	await fs.writeFile(devTarget, result.css, { flag: 'w' })
+		await postcssMain.process(css, { from: entrypoint, to: devTarget })
+	await w(result.css, devTarget)
 
-	const minified =
-		await pcMinifier.process(result, { from: entrypoint, to: prodTarget })
-	await fs.writeFile(prodTarget, minified.css, { flag: 'w' })
+	const { css: minifiedCSS } =
+		await postcssMinifier.process(result, { from: entrypoint, to: prodTarget })
+	await w(minifiedCSS, prodTarget)
 
-	zlib.brotliCompress(minified.css, (err, brotlied) => {
-		if (err) throw err
-		fs.writeFile(prodTarget + '.br', brotlied, { flag: 'w' })
-	})
-
-	zlib.gzip(minified.css, (err, gzipped) => {
-		if (err) throw err
-		fs.writeFile(prodTarget + '.gz', gzipped, { flag: 'w' })
-	})
+	await Promise.all([
+		compress(minifiedCSS, brotli).then(c => w(c, prodTarget + ".br")),
+		compress(minifiedCSS, gzip  ).then(c => w(c, prodTarget + ".gz")),
+	])
 }
 
-module.exports()
+const compress = (data, compressor) => new Promise((resolve, reject) =>
+	compressor(data, (err, compressed) => {
+		if (err) reject(err)
+		else resolve(compressed)
+	})
+)
+
+const w = async (data, path) => {
+	await writeFile(path, data, { flag: "w" })
+	console.log("Wrote " + path)
+}
+
+build()
+
+export default build
 
