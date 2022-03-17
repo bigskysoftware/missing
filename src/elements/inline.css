@@ -34,8 +34,8 @@
 		color: var(--fg);
 		text-decoration: none;
 
-		&:hover, &:focus-visible { @extend %targeted-button }
-		&:active { @extend %active-button }
+		&:hover, &:focus-visible { @extend %targeted-button; }
+		&:active { @extend %active-button; }
 	}
 }
 
