@@ -7,11 +7,11 @@
 
 	border-radius: calc(var(--rhythm) / 4);
 
-  flex: 1 0 30ch;
+	flex: 1 0 30ch;
 
 	background: var(--bg-2);
 	border: 1px solid var(--accent);
-  box-shadow:
+	box-shadow:
 		0
 		calc(.2 * var(--rhythm))
 		calc(.5 * var(--rhythm))
