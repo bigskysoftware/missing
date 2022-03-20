@@ -1,0 +1,15 @@
+
+.ok {
+    --bg-2: var(--ok-bg);
+    --accent: var(--ok-fg);
+}
+
+.warn {
+    --bg-2: var(--warn-bg);
+    --accent: var(--warn-fg);
+}
+
+.bad {
+    --bg-2: var(--bad-bg);
+    --accent: var(--bad-fg);
+}

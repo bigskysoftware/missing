@@ -120,11 +120,13 @@
 	}
 
 :where(sub) {
-	/* TODO */
+	vertical-align: bottom;
+	line-height: 1;
 }
 
 :where(sup) {
-	/* TODO */
+	vertical-align: top;
+	line-height: 1;
 }
 
 :where(i) {
@@ -144,16 +146,19 @@
 }
 
 :where(mark) {
-	/* TODO */
+	background: var(--warn-bg);
+	color: var(--warn-fg);
 }
 
 /* Edits */
 
 :where(ins) {
-	/* TODO */
+	background: var(--ok-bg);
+	color: var(--ok-fg);
 }
 
 :where(del) {
-	/* TODO */
+	background: var(--bad-bg);
+	color: var(--bad-fg);
 }
 
