@@ -48,6 +48,10 @@
 			@extend %button-like;
 			margin-block: .1em 0;
 			margin-inline-end: 1ch;
+
+			&:hover, &:focus { @extend %targeted-button; }
+
+			&:active { @extend %active-button; }
 		}
 	}
 
