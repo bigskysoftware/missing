@@ -9,8 +9,8 @@
   },
   "scripts": {
     "build": "node build/postcss.js",
-    "www": "eleventy --config=www/.eleventy.js",
-    "dev": "eleventy --config=www/.eleventy.js --serve",
+    "www": "eleventy --config=www/.eleventy.cjs",
+    "dev": "eleventy --config=www/.eleventy.cjs --serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
