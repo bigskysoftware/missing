@@ -3,3 +3,15 @@ all-caps, .allcaps {
 	text-transform: uppercase;
 	letter-spacing: .1rem;
 }
+
+.monospace {
+	font-family: var(--mono-font);
+}
+
+.color {
+	color: var(--accent);
+}
+
+.bg {
+	background: var(--bg-2);
+}
