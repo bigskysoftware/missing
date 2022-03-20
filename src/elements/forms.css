@@ -94,7 +94,7 @@
 }
 
 :where(textarea) {
-	/* TODO */
+	@extend %textbox;
 }
 
 :where(output) {
