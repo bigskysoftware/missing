@@ -1,6 +1,6 @@
 
-tool-bar, [is="tool-bar"] {
+tool-bar, [tool-bar], .tool-bar {
 	display: flex;
 	flex-flow: row wrap;
-	gap: 0 calc(var(--rhythm) / 2);
+	gap: calc(var(--rhythm) / 2);
 }
