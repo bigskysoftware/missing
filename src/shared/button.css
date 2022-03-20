@@ -1,4 +1,13 @@
 
+.button {
+	@extend %button-like;
+	color: var(--fg);
+	text-decoration: none;
+
+	&:hover, &:focus-visible { @extend %targeted-button; }
+	&:active { @extend %active-button; }
+}
+
 %button-like {
 	display: inline-block;
 	padding: calc(var(--rhythm) / 4) calc(var(--rhythm) / 2);

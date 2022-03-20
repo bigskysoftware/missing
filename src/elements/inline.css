@@ -28,15 +28,6 @@
 			content: '\2197' / 'external';
 		}
 	}
-
-	&.button {
-		@extend %button-like;
-		color: var(--fg);
-		text-decoration: none;
-
-		&:hover, &:focus-visible { @extend %targeted-button; }
-		&:active { @extend %active-button; }
-	}
 }
 
 :where(em) {
