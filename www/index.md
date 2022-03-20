@@ -13,6 +13,7 @@ layout: layout.html
 
 [Home](/) &middot;
 [Demo](/demos/) &middot;
+[Playground](/playground/) &middot;
 [GitHub](https://github.com/bigskysoftware/missing) &middot;
 [Discord](https://htmx.org/discord)
 
