@@ -41,8 +41,12 @@ radio-buttons, [radio-buttons], .radio-buttons {
 		@extend %pressed-button;
 	}
 
-	& input:is(:focus-visible, :active) + label {
+	& input:active + label {
 		@extend %active-button;
+	}
+
+	& input:focus-visible + label {
+		@extend :focus-visible;
 	}
 }
 

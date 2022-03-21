@@ -229,6 +229,11 @@
     display: none !important;
 }
 
+:focus-visible {
+    outline: .2em solid var(--accent);
+    z-index: 32;
+}
+
 /*
  * Add the correct display in Safari.
  */

@@ -1,0 +1,38 @@
+
+[role="tablist"] {
+    display: flex;
+    gap: calc(var(--rhythm) / 2)
+}
+
+[role="tab"] {
+    padding: 0 calc(var(--rhythm) / 2);
+
+    border: 1px solid var(--faded-fg);
+    background: var(--bg-3);
+    box-shadow: none;
+
+    transform: translateY(1px);
+
+    border-end-start-radius: 0;
+    border-end-end-radius: 0;
+
+    &:focus {
+        outline-bottom: none;
+    }
+
+    &:active {
+        transform: translateY(calc(.1em + 1px));
+        padding-bottom: -.1em;    
+    }
+
+    &[aria-selected="true"] {
+        background: var(--bg);
+        border-block-start: 4px solid var(--accent);
+        border-block-end: 1px solid var(--bg);
+    }
+}
+
+[role="tabpanel"] {
+    padding-inline: var(--gap);
+    border: 1px solid var(--faded-fg);
+}
