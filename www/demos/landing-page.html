@@ -3,7 +3,7 @@ layout: layout.html
 name: Landing Page
 ---
 
-<main class="density:airy">
+<main class="airy">
     <big-screen>
         <h1>So easy, even a programmer can do it</h1>
         
@@ -14,34 +14,45 @@ name: Landing Page
         </p>
     
         <tool-bar>
-            <button type="button">Sign up</button>
+            <button aria-controls="signup-form" aria-expanded="false" type="button" _="
+                on click
+                    if @aria-expanded is 'true'
+                        set @aria-expanded to 'false'
+                    else
+                        set @aria-expanded to 'true'
+                    end
+                    add [@hidden] to #signup-form when @aria-expanded is 'false'
+                end
+            ">Sign up</button>
             <a class="button" href="#">Learn more</a>
         </tool-bar>
+        
+        <div>
+            <form hidden id="signup-form" class="missing-card crowded">
+                <h4>Sign up to our mailing list</h4>
+                <form-table>
+                    <p>
+                        <label for="email-in">Email</label>
+                        <input type="email" name="email" id="email-in" placeholder="you@example.com">
+                    </p>
+                    <fieldset is="label-like">
+                        <legend>Update frequency</legend>
+                        <radio-buttons>
+                            <input type="radio" name="upd-freq-in" id="upd-all" checked>
+                            <label for="upd-all">All updates</label>
+        
+                            <input type="radio" name="upd-freq-in" id="upd-important">
+                            <label for="upd-important">Most important</label>
+        
+                            <input type="radio" name="upd-freq-in" id="upd-weekly">
+                            <label for="upd-weekly">Weekly digest</label>
+                        </radio-buttons>
+                    </fieldset>
+                </form-table>
+                <p><button>Sign Up</button></p>
+            </form>
+        </div>
     </big-screen>
-
-    <form class="missing-card">
-        <h4>Sign up to our mailing list</h4>
-        <form-table>
-            <p>
-                <label for="email-in">Email</label>
-                <input type="email" name="email" id="email-in" placeholder="you@example.com">
-            </p>
-            <fieldset is="label-like">
-                <legend>Update frequency</legend>
-                <radio-buttons>
-                    <input type="radio" name="upd-freq-in" id="upd-all" checked>
-                    <label for="upd-all">All updates</label>
-
-                    <input type="radio" name="upd-freq-in" id="upd-important">
-                    <label for="upd-important">Most important</label>
-
-                    <input type="radio" name="upd-freq-in" id="upd-weekly">
-                    <label for="upd-weekly">Weekly digest</label>
-                </radio-buttons>
-            </fieldset>
-        </form-table>
-        <p><button>Sign Up</button></p>
-    </form>
 
     <p>
         <b class="lede">
@@ -54,16 +65,16 @@ name: Landing Page
         Rerum ipsam consequatur autem eaque et velit?
     </p>
 
-    <ul role="list" class="basicgrid" style="--col-width: 15ch; --grid-gap: calc(2 * var(--rhythm))">
-        <li class="missing-card">
+    <ul role="list" class="basicgrid dense" style="--col-width: 15ch; --grid-gap: calc(2 * var(--rhythm))">
+        <li class="missing-card crowded">
             <h4>Beautiful by default</h4>
             <p>Just drop the stylesheet in and use semantic HTML.</p>
         </li>
-        <li class="missing-card">
+        <li class="missing-card crowded">
             <h4>Accessible Structures</h4>
             <p>Mark up tabs and other components and we'll handle the styling.</p>
         </li>
-        <li class="missing-card">
+        <li class="missing-card crowded">
             <h4>Useful components</h4>
             <p>...such as these cards!</p>
         </li>

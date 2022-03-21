@@ -6,6 +6,7 @@
 
 	&:hover, &:focus-visible { @extend %targeted-button; }
 	&:active { @extend %active-button; }
+	&[aria-pressed="true"], &[aria-expanded="true"] { @extend %pressed-button; }
 }
 
 %button-like {

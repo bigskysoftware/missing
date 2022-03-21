@@ -58,11 +58,11 @@
 				100vw                      /* Viewport width */
 				- var(--eff-line-length) /* minus line width */
 			) / 2);                        /* Divide by 2: there are two page margins */
-	
-	--gap: calc(var(--rhythm) * var(--density));
 }
 
-.density\:airy { --density: 3; }
+* {
+	--gap: calc(var(--rhythm) * var(--density));
+}
 
 @custom-selector :--list ul, ol;
 @custom-selector :--italic em, cite, dfn, var, i, address;

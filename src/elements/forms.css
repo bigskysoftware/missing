@@ -67,24 +67,16 @@
 	input[type="button"]
 ) {
 	@extend %button-like;
-
-	&:hover, &:focus-visible {
-		@extend %targeted-button;
-	}
-
-	&:active {
-		@extend %active-button;
-	}
+	&:hover, &:focus-visible { @extend %targeted-button; }
+	&:active { @extend %active-button; }
+	&[aria-pressed="true"], &[aria-expanded="true"] { @extend %pressed-button; }
 }
 
-:where(select:not([multiple])) {
-	@extend %button-like;
-	display: block;
-	width: 100%;
+:where(select) {
+	@extend %textbox;
 }
 
 :where(select[multiple]) {
-	@extend %textbox;
 	vertical-align: top;
 }
 

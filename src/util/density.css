@@ -1,0 +1,4 @@
+
+.airy    { --density: 3; }
+.dense   { --density: 1; }
+.crowded { --density: .5; }

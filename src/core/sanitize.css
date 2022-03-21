@@ -225,6 +225,10 @@
     display: none;
 }
 
+[hidden] {
+    display: none !important;
+}
+
 /*
  * Add the correct display in Safari.
  */
@@ -251,18 +255,4 @@
 
 :where([aria-disabled="true" i], [disabled]) {
     cursor: not-allowed;
-}
-
-/*
- * Change the display on visually hidden accessible elements
- * in all browsers (opinionated).
- */
-
-:where([aria-hidden="false" i][hidden]) {
-    display: initial;
-}
-
-:where([aria-hidden="false" i][hidden]:not(:focus)) {
-    clip: rect(0, 0, 0, 0);
-    position: absolute;
 }
