@@ -17,7 +17,7 @@
 		}
 
 		&:not(:first-child) > :is(label, legend) {
-			border-top: var(--rhythm) solid transparent;
+			border-top: calc(var(--rhythm) / 2) solid transparent;
 		}
 	}
 

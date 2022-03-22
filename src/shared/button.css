@@ -11,7 +11,7 @@
 
 %button-like {
 	display: inline-block;
-	padding: calc(var(--rhythm) / 4) calc(var(--rhythm) / 2);
+	padding: 0 calc(var(--rhythm) / 2);
 
 	font-size: 1rem;
 	font-family: var(--main-font);

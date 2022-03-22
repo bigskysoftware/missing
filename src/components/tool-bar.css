@@ -2,5 +2,5 @@
 tool-bar, [tool-bar], .tool-bar {
 	display: flex;
 	flex-flow: row wrap;
-	gap: calc(var(--rhythm) / 2);
+	gap: calc(var(--gap) / 2);
 }

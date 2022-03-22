@@ -2,13 +2,11 @@
 %textbox {
 	display: block;
 
-	padding: calc(var(--rhythm) / 4) calc(var(--rhythm) / 2);
-	margin: calc(var(--rhythm) / 4) 0;
-	margin-block-start:  calc(var(--rhythm) / 2);
+	padding: .05em calc(var(--rhythm) / 2);
 	width: 100%;
 
 	font-size: 1rem;
-	line-height: 1;
+	line-height: inherit;
 	font-family: var(--main-font);
 
 	background: var(--bg);
@@ -17,7 +15,6 @@
 
 	&:focus-visible {
 		border: 1px solid var(--accent);
-		outline: 1px solid var(--accent);
 	}
 
 	&::placeholder {
