@@ -47,16 +47,26 @@
 		float: right;
 		clear: right;
 
-		--sidenote-width: 30ch;
+		--sidenote-width: 20ch;
 
 		max-width: var(--sidenote-width);
 		padding-inline: 1.5ch 1ch;
 
-		margin-inline-end: max( /* the margin is negative so we use max not min */
-			calc(0px - var(--gutter-width)),
-			calc(0 - var(--sidenote-width)) /* Go no further than my own width, stay close to text */
-		);
+		margin-inline-end: calc(1em - var(--sidenote-width));
 		margin-block-end: var(--rhythm);
+
+		background: var(--bg);
+
+		transition: transform .1s ease-in-out;
+
+		&:hover, &:focus-within {
+			border: 1px solid var(--faded-fg);
+			border-radius: .2em;
+			transform: translateX(calc(
+				0px - var(--sidenote-width)
+				+ min(var(--gutter-width), var(--sidenote-width))
+			))
+		}
 	}
 }
 
