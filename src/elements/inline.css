@@ -63,7 +63,7 @@
 		margin-block-end: var(--rhythm);
 
 		background: var(--bg);
-		border: 1px solid tranaparent;
+		border: 1px solid transparent;
 
 		transition: transform .1s ease-in-out;
 
