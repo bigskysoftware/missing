@@ -18,23 +18,6 @@
 	&:hover {
 		text-decoration: underline;
 	}
-
-	&[href^="https://"], &[href^="//"] {
-		/***
-		 External link.
-		 ***/
-		&::after {
-			content: '\2197';
-			content: '\2197' / 'external';
-		}
-	}
-
-	&[href^="mailto:"] {
-		&::after {
-			content: '\2709';
-			content: '\2709' / 'mailto link';
-		}
-	}
 }
 
 :where(em) {
