@@ -34,8 +34,8 @@
 		 Sidenote
 		 ***/
 		display: block;
-		float: end;
-		clear: end;
+		float: inline-end;
+		clear: inline-end;
 
 		--sidenote-width: 20ch;
 
