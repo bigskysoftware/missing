@@ -77,7 +77,7 @@
 }
 
 :where(select[multiple]) {
-	vertical-align: top;
+	vertical-align: start;
 }
 
 :where(optgroup)::before {

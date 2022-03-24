@@ -23,7 +23,7 @@
 	}
 
 	@nest :where(details[open]) & {
-		border-bottom: 1px solid var(--accent);
+		border-block-end: 1px solid var(--accent);
 	}
 }
 

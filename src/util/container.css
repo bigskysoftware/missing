@@ -1,5 +1,5 @@
 
 .container {
-	max-width: var(--eff-line-length);
+	max-inline-size: var(--eff-line-length);
 	margin-inline: auto;
 }

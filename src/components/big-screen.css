@@ -3,7 +3,7 @@
 	 A tall, vertically centered block. Because it uses flex, it disrupts margin
 	 collapsing. Use with an inner wrapper.
 	 ***/
-	min-height: min(60vh, 60vw);
+	min-block-size: min(60vh, 60vw);
 
 	display: flex;
 	flex-flow: column nowrap;

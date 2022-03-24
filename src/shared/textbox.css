@@ -3,7 +3,7 @@
 	display: block;
 
 	padding: .05em calc(var(--rhythm) / 2);
-	width: 100%;
+	inline-size: 100%;
 
 	font-size: 1rem;
 	line-height: inherit;

@@ -169,7 +169,7 @@
 
 ::-webkit-inner-spin-button,
 ::-webkit-outer-spin-button {
-    height: auto;
+    block-size: auto;
 }
 
 /**
@@ -210,15 +210,14 @@
     background-color: white;
     border: solid;
     color: black;
-    height: -moz-fit-content;
-    height: fit-content;
-    left: 0;
+    block-size: -moz-fit-content;
+    block-size: fit-content;
+    inline-inset: 0;
     margin: auto;
     padding: 1em;
     position: absolute;
-    right: 0;
-    width: -moz-fit-content;
-    width: fit-content;
+    inline-size: -moz-fit-content;
+    inline-size: fit-content;
 }
 
 :where(dialog:not([open])) {

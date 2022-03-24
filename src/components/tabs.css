@@ -17,12 +17,12 @@
     border-end-end-radius: 0;
 
     &:focus {
-        outline-bottom: none;
+        outline-block-end: none;
     }
 
     &:active {
         transform: translateY(calc(.1em + 1px));
-        padding-bottom: -.1em;    
+        padding-block-end: -.1em;    
     }
 
     &[aria-selected="true"] {

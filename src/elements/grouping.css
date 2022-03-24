@@ -10,7 +10,7 @@
 
 :where(hr) {
 	color: inherit;
-	height: 0;
+	block-size: 0;
 }
 
 :where(pre) {
@@ -24,7 +24,7 @@
 	border-radius: .5em;
 
 	overflow-x: auto;
-	scrollbar-width: thin;
+	scrollbar-inline-size: thin;
 	scrollbar-color: var(--accent) transparent;
 
 	background: var(--bg);
@@ -88,7 +88,7 @@
 	}
 
 :where(main) {
-	max-width: var(--eff-line-length);
+	max-inline-size: var(--eff-line-length);
 	margin: auto;
 }
 

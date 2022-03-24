@@ -1,7 +1,7 @@
 
 :is(form-table, [is="form-table"]) {
 	display: table;
-	width: 100%;
+	inline-size: 100%;
 	margin-block: var(--gap);
 	padding-block: calc(0 - var(--gap));
 
@@ -17,7 +17,7 @@
 		}
 
 		&:not(:first-child) > :is(label, legend) {
-			border-top: calc(var(--rhythm) / 2) solid transparent;
+			border-block-start: calc(var(--rhythm) / 2) solid transparent;
 		}
 	}
 

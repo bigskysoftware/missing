@@ -4,9 +4,9 @@
  ***/
 
 :where(img, video, audio, iframe, object, embed) {
-	max-width: 100%;
-	width: 100%;
-	height: auto;
+	max-inline-size: 100%;
+	inline-size: 100%;
+	block-size: auto;
 }
 
 :where(img) {

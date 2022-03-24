@@ -1,13 +1,13 @@
 
 radio-buttons, [radio-buttons], .radio-buttons {
 	font-size: 0;
-	width: max-content;
+	inline-size: max-content;
 	padding: 0;
 	
 	& input[type="radio"] {
 		opacity: 0;
-		width: 0;
-		height: 0;
+		inline-size: 0;
+		block-size: 0;
 		position: absolute;
 	}
 	

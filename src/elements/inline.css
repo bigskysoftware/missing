@@ -34,12 +34,12 @@
 		 Sidenote
 		 ***/
 		display: block;
-		float: right;
-		clear: right;
+		float: end;
+		clear: end;
 
 		--sidenote-width: 20ch;
 
-		max-width: var(--sidenote-width);
+		max-inline-size: var(--sidenote-width);
 		padding-inline: 1.5ch 1ch;
 
 		margin-inline-end: calc(1em - var(--sidenote-width));
@@ -124,12 +124,12 @@
 	}
 
 :where(sub) {
-	vertical-align: bottom;
+	vertical-align: end;
 	line-height: 1;
 }
 
 :where(sup) {
-	vertical-align: top;
+	vertical-align: start;
 	line-height: 1;
 }
 
