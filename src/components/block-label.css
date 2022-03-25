@@ -3,7 +3,7 @@
 	position: absolute;
 
 	margin: 0;
-	padding-inline: calc(.5 * var(--rhythm));
+	padding-inline: calc(.2 * var(--rhythm));
 	
 	transform: translate(
 		calc(-1.1 * var(--rhythm)), calc(-1 * var(--rhythm))
