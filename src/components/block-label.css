@@ -9,7 +9,7 @@
 		calc(-1.1 * var(--rhythm)), calc(-1 * var(--rhythm))
 	);
 
-	@nest :is(missing-card, .missing-card) &:first-child {
+	@nest :is(missing-card, .missing-card) > &:first-child {
 		transform: translate(
 			calc(-1.1 * var(--rhythm)), calc(-.5 * var(--rhythm))
 		);
