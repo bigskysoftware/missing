@@ -1,5 +1,7 @@
 
 %block-label {
+	display: inline-block;
+	
 	padding-inline: calc(.2 * var(--rhythm));
 	width: max-content;
 	max-width: 100%;
