@@ -1,18 +1,9 @@
 
-.block-label, block-label, [block-label] {
-	position: absolute;
-
+%block-label {
 	margin: 0;
 	padding-inline: calc(.2 * var(--rhythm));
-	
-	@nest p > & {
-		transform: translate(
-			calc(-1.1 * var(--rhythm)), calc(-1.4 * var(--rhythm))
-		);
-	}
-	transform: translate(
-		calc(-1.1 * var(--rhythm)), calc(-1.1 * var(--rhythm))
-	);
+	width: max-content;
+	max-width: 100%;
 
 	border-radius: calc(.25 * var(--rhythm));
 
@@ -24,3 +15,6 @@
 	color: var(--bg);
 }
 
+.block-label {
+	@extend %block-label;
+}

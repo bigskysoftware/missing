@@ -34,8 +34,7 @@ The objective of missing.css is to minimize the neccessary intervention in the H
 start with a good out of the box experience, then build common components using plain, semantic HTML and
 then, only if necessary, apply a minimal number of classes to achieve.
 
-<aside class="missing-card info">
-<block-label>Did you know?</block-label>
+<aside class="missing-card" data-label="Did you know?">
 
 The `<main>` element can only have these elements as ancestors:
 `<html>`, `<body>`, `<div>`, `<form>` without an accessible name, and autonomous custom elements.

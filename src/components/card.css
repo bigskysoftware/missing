@@ -1,11 +1,16 @@
-/*********************************************************
- The Card Component
-
- TODO - document, link to all the layouts?
- Style: custom-tag, custom-attribute
- *********************************************************/
 
 .missing-card, missing-card, [missing-card] {
 	@extend %card;
+
+	&[data-label]::before {
+		@extend %block-label;
+		content: attr(data-label);
+
+		position: absolute;
+
+		transform: translate(
+			calc(-1 * var(--rhythm)), calc(-.5 * var(--rhythm))
+		);
+	}
 }
 
