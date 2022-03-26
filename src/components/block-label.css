@@ -5,8 +5,13 @@
 	margin: 0;
 	padding-inline: calc(.2 * var(--rhythm));
 	
+	@nest p > & {
+		transform: translate(
+			calc(-1.1 * var(--rhythm)), calc(-1.4 * var(--rhythm))
+		);
+	}
 	transform: translate(
-		calc(-1.1 * var(--rhythm)), calc(-1.4 * var(--rhythm))
+		calc(-1.1 * var(--rhythm)), calc(-1.1 * var(--rhythm))
 	);
 
 	border-radius: calc(.25 * var(--rhythm));
