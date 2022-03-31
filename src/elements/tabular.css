@@ -3,39 +3,39 @@
  https://html.spec.whatwg.org/multipage/tables.html
  ***/
 
-:where(table) {
+table {
 	font-variant-numeric: tabular-nums;
 }
 
-:where(caption) {
+caption {
 	text-align: start;
 	font-style: italic;
 }
 
-:where(tbody) {
+tbody {
 	border-block: 1px solid var(--fg);
 }
 
-:where(thead) {
+thead {
 }
 
-:where(tfoot) {
+tfoot {
 }
 
-:where(tr) {
+tr {
 
 }
 
-:where(td, th) {
+td, th {
 	&:not(:last-child) {
 		padding-inline-end: var(--rhythm);
 	}
 }
 
-	:where(td) {
+	td {
 	}
 
-	:where(th) {
+	th {
 		text-align: start;
 	}
 

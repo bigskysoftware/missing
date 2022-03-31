@@ -31,7 +31,7 @@
  * 6. Prevent adjustments of font size after orientation changes in iOS.
  */
 
-:where(:root) {
+:root {
     cursor: default; /* 1 */
     overflow-wrap: break-word; /* 3 */
     -webkit-tap-highlight-color: transparent; /* 5 */
@@ -45,7 +45,7 @@
  * Add the correct text decoration in Safari.
  */
 
-:where(abbr[title]) {
+abbr[title] {
     text-decoration: underline;
     text-decoration: underline dotted;
 }
@@ -72,7 +72,7 @@
  * Add the correct font size in all browsers.
  */
 
-:where(small) {
+small {
     font-size: 80%;
 }
 
@@ -83,7 +83,7 @@
  * Change the alignment on media elements in all browsers (opinionated).
  */
 
-:where(audio, canvas, iframe, img, svg, video) {
+audio, canvas, iframe, img, svg, video {
     vertical-align: middle;
 }
 
@@ -91,7 +91,7 @@
  * Change the fill color to match the text color in all browsers (opinionated).
  */
 
-:where(svg:not([fill])) {
+svg:not([fill]) {
     fill: currentColor;
 }
 
@@ -104,7 +104,7 @@
  * 3. Remove text indentation from table contents in Chrome, Edge, and Safari.
  */
 
-:where(table) {
+table {
     border-collapse: collapse; /* 1 */
     border-color: currentColor; /* 2 */
     text-indent: 0; /* 3 */
@@ -117,7 +117,7 @@
  * Remove the margin on controls in Safari.
  */
 
-:where(button, input, select) {
+button, input, select {
     margin: 0;
 }
 
@@ -125,7 +125,7 @@
  * Correct the inability to style buttons in iOS and Safari.
  */
 
-:where(button, [type="button" i], [type="reset" i], [type="submit" i]) {
+button, [type="button" i], [type="reset" i], [type="submit" i] {
     -webkit-appearance: button;
 }
 
@@ -133,7 +133,7 @@
  * Change the inconsistent appearance in all browsers (opinionated).
  */
 
-:where(fieldset) {
+fieldset {
     border: 1px solid #a0a0a0;
 }
 
@@ -141,7 +141,7 @@
  * Add the correct vertical alignment in Chrome, Edge, and Firefox.
  */
 
-:where(progress) {
+progress {
     vertical-align: baseline;
 }
 
@@ -149,7 +149,7 @@
  * 1. Remove the margin in Firefox and Safari.
  */
 
-:where(textarea) {
+textarea {
     margin: 0; /* 1 */
 }
 
@@ -158,7 +158,7 @@
  * 2. Correct the outline style in Safari.
  */
 
-:where([type="search" i]) {
+[type="search" i] {
     -webkit-appearance: textfield; /* 1 */
     outline-offset: -2px; /* 2 */
 }
@@ -206,7 +206,7 @@
  * Add the correct styles in Safari.
  */
 
-:where(dialog) {
+dialog {
     background-color: white;
     border: solid;
     color: black;
@@ -220,7 +220,7 @@
     inline-size: fit-content;
 }
 
-:where(dialog:not([open])) {
+dialog:not([open]) {
     display: none;
 }
 
@@ -237,7 +237,7 @@
  * Add the correct display in Safari.
  */
 
-:where(details > summary:first-of-type) {
+details > summary:first-of-type {
     display: list-item;
 }
 
@@ -248,7 +248,7 @@
  * Change the cursor on busy elements in all browsers (opinionated).
  */
 
-:where([aria-busy="true" i]) {
+[aria-busy="true" i] {
     cursor: progress;
 }
 
@@ -257,6 +257,6 @@
  * inoperable elements in all browsers (opinionated).
  */
 
-:where([aria-disabled="true" i], [disabled]) {
+[aria-disabled="true" i], [disabled] {
     cursor: not-allowed;
 }

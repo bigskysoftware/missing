@@ -8,10 +8,10 @@
 
 /* Text-level semantics */
 
-:where(a) {
+a {
 	color: var(--link-fg, var(--accent));
 
-	@nest :where(.list-of-links &) {
+	@nest .list-of-links & {
 		text-decoration: none;
 	}
 
@@ -20,15 +20,15 @@
 	}
 }
 
-:where(em) {
+em {
 	/* TODO */
 }
 
-:where(strong) {
+strong {
 	/* TODO */
 }
 
-:where(small) {
+small {
 	@nest span > &:only-child {
 		/***
 		 Sidenote
@@ -61,56 +61,56 @@
 	}
 }
 
-:where(s) {
+s {
 	/* TODO */
 }
 
-:where(cite) {
+cite {
 	/* TODO */
 }
 
-:where(q) {
+q {
 	/* TODO */
 }
 
-:where(dfn) {
+dfn {
 	/* TODO */
 }
 
-:where(abbr) {
+abbr {
 	/* TODO */
 }
 
-:where(ruby) {
+ruby {
 	/* TODO */
 
-	& :where(rt) {
+	& rt {
 	}
 
-	* :where(rp) {
+	* rp {
 	}
 }
 
-:where(time) {
+time {
 	/* TODO */
 }
 
-:where(code) {
+code {
 	/* TODO */
 }
 
-:where(var) {
+var {
 	/* TODO */
 }
 
-:where(samp) {
+samp {
 	/* TODO */
 }
 
-:where(kbd) {
+kbd {
 	/* TODO */
 }
-	:where(kbd kbd) {
+	kbd kbd {
 		display: inline-block;
 
 		padding: 0 .3em;
@@ -123,21 +123,21 @@
 		border-radius: .3em;
 	}
 
-:where(sub) {
+sub {
 	vertical-align: end;
 	line-height: 1;
 }
 
-:where(sup) {
+sup {
 	vertical-align: start;
 	line-height: 1;
 }
 
-:where(i) {
+i {
 	/* TODO */
 }
 
-:where(b) {
+b {
 	&.lede {
 		font-size: 1.2em;
 		line-height: calc(1.2 * var(--rhythm));
@@ -145,23 +145,23 @@
 	}
 }
 
-:where(u) {
+u {
 	/* TODO */
 }
 
-:where(mark) {
+mark {
 	background: var(--warn-bg);
 	color: var(--warn-fg);
 }
 
 /* Edits */
 
-:where(ins) {
+ins {
 	background: var(--ok-bg);
 	color: var(--ok-fg);
 }
 
-:where(del) {
+del {
 	background: var(--bad-bg);
 	color: var(--bad-fg);
 }

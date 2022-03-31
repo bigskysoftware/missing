@@ -4,16 +4,16 @@
  https://html.spec.whatwg.org/multipage/grouping-content.html
  ***/
 
-:where(p) {
+p {
 	margin-block: var(--gap);
 }
 
-:where(hr) {
+hr {
 	color: inherit;
 	block-size: 0;
 }
 
-:where(pre) {
+pre {
 	font-family: var(--mono-font);
 	font-size: .9em;
 	line-height: var(--rhythm);
@@ -31,63 +31,63 @@
 	border: 1px solid var(--accent-muted);
 }
 
-:where(blockquote) {
+blockquote {
 	font-size: 1.1em;
 	line-height: var(--rhythm);
 	font-style: italic;
 	color: var(--muted-fg);
 
-	& :where(:--italic) {
+	& :--italic {
 		font-style: normal;
 	}
 
-	& :where(footer) {
+	& footer {
 		text-align: right;
 		text-align: end;
 	}
 }
 
-:where(:--list) {
+:--list {
 	padding-inline-start: calc(1.5 * var(--rhythm));
 
-	&:where([role="list"]) {
+	&[role="list"] {
 		padding-inline-start: 0;
 		list-style: none;
 	}
 }
 
-:where(ul) {
+ul {
 	list-style: square;
 }
 
-:where(ol) {
+ol {
 	list-style: decimal;
 }
 
-:where(:--list[role="list"]) {
+:--list[role="list"] {
 	padding-inline-start: 0;
 	list-style: none;
 }
 
-:where(dl) {
+dl {
 }
-	:where(dt) {
+	dt {
 		font-weight: bold;
 	}
 
-	:where(dd) {
+	dd {
 		margin-inline-start: calc(1.5 * var(--rhythm));
 	}
 
-:where(figure) {
+figure {
 	display: flow-root;
 }
-	:where(figcaption) {
+	figcaption {
 		color: var(--muted-fg);
 		letter-spacing: .02em;
 	}
 
-:where(main) {
+main {
 	max-inline-size: var(--eff-line-length);
 	margin: auto;
 }

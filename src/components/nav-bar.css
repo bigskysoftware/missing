@@ -19,13 +19,13 @@ header[is="nav-bar"] {
 	
 	overflow-x: auto;
 
-	& :where(nav ul[role="list"]) {
+	& nav ul[role="list"] {
 		display: flex;
 		flex-flow: row nowrap;
 		gap: var(--rhythm);
 	}
 
-	& :where(a) {
+	& a {
 		color: var(--bg);
 		font-weight: bold;
 		text-decoration: none;

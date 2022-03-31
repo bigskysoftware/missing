@@ -3,11 +3,11 @@
  https://html.spec.whatwg.org/multipage/interactive-elements.html#interactive-elements
  ***/
 
-:where(details) {
+details {
 	@extend %card;
 }
 
-:where(summary) {
+summary {
 	margin-inline: calc(0px - var(--gap));
 	padding: inherit;
 
@@ -22,11 +22,11 @@
 		list-style: disc;
 	}
 
-	@nest :where(details[open]) & {
+	@nest details[open] & {
 		border-block-end: 1px solid var(--accent);
 	}
 }
 
-:where(dialog) {
+dialog {
 }
 

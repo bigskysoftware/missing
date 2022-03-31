@@ -3,15 +3,15 @@
  https://html.spec.whatwg.org/multipage/forms.html
  ***/
 
-:where(form) {
+form {
 	/* TODO */
 }
 
-:where(label) {
+label {
 	/* TODO */
 }
 
-:where(input) {
+input {
 	&[type="text"],
 	&[type="search"],
 	&[type="tel"],
@@ -60,7 +60,7 @@
 	}
 }
 
-:where(
+:is(
 	button,
 	input[type="submit"],
 	input[type="reset"],
@@ -72,36 +72,36 @@
 	&[aria-pressed="true"], &[aria-expanded="true"] { @extend %pressed-button; }
 }
 
-:where(select) {
+select {
 	@extend %textbox;
 }
 
-:where(select[multiple]) {
+select[multiple] {
 	vertical-align: start;
 }
 
-:where(optgroup)::before {
+optgroup::before {
 	color: var(--muted-fg);
 	font-style: normal;
 }
 
-:where(textarea) {
+textarea {
 	@extend %textbox;
 }
 
-:where(output) {
+output {
 	/* TODO */
 }
 
-:where(progress) {
+progress {
 	/* TODO */
 }
 
-:where(meter) {
+meter {
 	/* TODO */
 }
 
-:where(fieldset) {
+fieldset {
 	/* TODO */
 
 	&[is="label-like"] {
@@ -112,7 +112,7 @@
 	}
 }
 
-:where(legend) {
+legend {
 	/* TODO */
 }
 

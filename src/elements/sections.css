@@ -7,72 +7,72 @@
  https://html.spec.whatwg.org/multipage/sections.html
  ***/
 
-:where(html) {
+html {
 	font-family: var(--main-font);
 	line-height: var(--rhythm);
 	font-size: 120%;
 }
 
-:where(body) {
+body {
 	margin: 0;
 }
 
-:where(article) {
+article {
 	/* TODO */
 }
 
-:where(section) {
+section {
 	/* TODO */
 }
 
-:where(nav) {
+nav {
 	& a {
 		text-decoration: none;
 		color: var(--accent);
 	}
 }
 
-:where(aside) {
+aside {
 	/* TODO */
 }
 
-:where(:--heading) {
+:--heading {
 	margin-block-end: var(--gap);
 	font-family: var(--display-font);
 	font-size: 1em;
 	margin-block-start: calc(2 * var(--gap));
 }
 
-	:where(h1) {
+	h1 {
 		font-size: 1.8em;
 		line-height: calc(2 * var(--rhythm));
 	}
 
-	:where(h2) {
+	h2 {
 		font-size: 1.4em;
 		line-height: calc(1.5 * var(--rhythm));
 	}
 
-	:where(h2, h3) {
+	h2, h3 {
 		border-block-end: 1px solid var(--muted-fg);
 	}
 
-	:where(h3, h4, h5, h6) {
+	h3, h4, h5, h6 {
 		font-size: 1em;
 		line-height: calc(1 * var(--rhythm));
 		margin-block-start: var(--gap);
 	}
 
-:where(:--heading) + :where(:--heading) {
+:--heading + :--heading {
 	margin-block-start: var(--gap);
 }
 
-:where(header) {
+header {
 }
 
-:where(footer) {
+footer {
 	/* TODO */
-	@nest :where(body) > & {
+	@nest body > & {
 		margin-block-end: 2em;
 		padding-inline: var(--gutter-width);
 		padding-block-start: calc(2 * var(--gap));
@@ -82,7 +82,7 @@
 	}
 }
 
-:where(address) {
+address {
 	/* TODO */
 }
 
