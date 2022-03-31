@@ -1,7 +1,7 @@
 
 [role="tablist"] {
     display: flex;
-    gap: calc(var(--rhythm) / 2)
+    gap: calc(var(--rhythm) / 2);
 }
 
 [role="tab"] {
@@ -22,7 +22,7 @@
 
     &:active {
         transform: translateY(calc(.1em + 1px));
-        padding-block-end: -.1em;    
+        padding-block-end: -.1em;
     }
 
     &[aria-selected="true"] {

@@ -15,3 +15,7 @@ all-caps, .allcaps {
 .bg {
 	background: var(--bg-2);
 }
+
+.border {
+	border: var(--accent);
+}
