@@ -1,0 +1,17 @@
+
+.table {
+    display: table;
+    width: 100%;
+    border-spacing: 0 var(--gap);
+}
+
+.row, .rows > * {
+    display: table-row;
+    & + & {
+        margin-block-start: var(--gap);
+    }
+    & > * {
+        display: table-cell;
+        vertical-align: middle;
+    }
+}
