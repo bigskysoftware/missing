@@ -1,5 +1,5 @@
 
-.missing-card, missing-card, [missing-card] {
+.missing-card, missing-card {
 	@extend %card;
 }
 
