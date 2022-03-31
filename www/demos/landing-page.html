@@ -32,14 +32,14 @@ name: Landing Page
     <div>
         <form hidden id="signup-form" class="missing-card crowded">
             <h4>Sign up to our mailing list</h4>
-            <form-table>
+            <div class="table rows">
                 <p>
                     <label for="email-in">Email</label>
                     <input type="email" name="email" id="email-in" placeholder="you@example.com">
                 </p>
-                <fieldset is="label-like">
-                    <legend>Update frequency</legend>
-                    <radio-buttons>
+                <p>
+                    <label for="update-freq">Update frequency</label>
+                    <radio-buttons id="update-freq">
                         <input type="radio" name="upd-freq-in" id="upd-all" checked>
                         <label for="upd-all">All updates</label>
     
@@ -49,7 +49,7 @@ name: Landing Page
                         <input type="radio" name="upd-freq-in" id="upd-weekly">
                         <label for="upd-weekly">Weekly digest</label>
                     </radio-buttons>
-                </fieldset>
+                </p>
             </form-table>
             <p><button>Sign Up</button></p>
         </form>
@@ -83,26 +83,32 @@ name: Landing Page
 </main>
 
 <footer>
-    <nav>
-        <h4>Company</h4>
-        <ul role="list">
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Certifications</a></li>
-        </ul>
+    <nav class="basicgrid">
+        <div>
+            <h4>Company</h4>
+            <ul role="list">
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="#">Certifications</a></li>
+            </ul>
+        </div>
 
-        <h4>Product</h4>
-        <ul role="list">
-            <li><a href="#">Missing.css</a></li>
-            <li><a href="#">Documentation</a></li>
-            <li><a href="#">Developers</a></li>
-        </ul>
+        <div>
+            <h4>Product</h4>
+            <ul role="list">
+                <li><a href="#">Missing.css</a></li>
+                <li><a href="#">Documentation</a></li>
+                <li><a href="#">Developers</a></li>
+            </ul>
+        </div>
 
-        <h4>Legal</h4>
-        <ul role="list">
-            <li><a href="#">Privacy Statement</a></li>
-            <li><a href="#">End User License Agreement</a></li>
-        </ul>
+        <div>
+            <h4>Legal</h4>
+            <ul role="list">
+                <li><a href="#">Privacy Statement</a></li>
+                <li><a href="#">End User License Agreement</a></li>
+            </ul>
+        </div>
     </nav>
 
     <p><small>&copy; 2022 Fictitious CSS Industries</small></p>

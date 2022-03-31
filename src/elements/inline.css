@@ -137,14 +137,6 @@ i {
 	/* TODO */
 }
 
-b {
-	&.lede {
-		font-size: 1.2em;
-		line-height: calc(1.2 * var(--rhythm));
-		font-weight: normal;
-	}
-}
-
 u {
 	/* TODO */
 }

@@ -4,8 +4,7 @@ layout: layout.html
 
 <main>
 
-<big-screen>
-<div>
+<header>
 
 # <all-caps>missing<wbr>.css<v-h>:</v-h></all-caps> <sub-title>The Missing CSS Stylesheet</sub-title>
 
@@ -21,8 +20,7 @@ layout: layout.html
 
 Add it to your website: <code>&lt;link rel="stylesheet" href="<strong>https://the.missing.style</strong>"></code>
 
-</div>
-</big-screen>
+</header>
 
 missing.css is the missing CSS library that we all wished existed:
 

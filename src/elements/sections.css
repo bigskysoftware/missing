@@ -21,8 +21,8 @@ article {
 	/* TODO */
 }
 
-section {
-	/* TODO */
+header, footer, section {
+	margin-block: calc(2 * var(--gap));
 }
 
 nav {
@@ -63,7 +63,7 @@ aside {
 		margin-block-start: var(--gap);
 	}
 
-:--heading + :--heading {
+:--heading + :--heading, :--heading:first-child {
 	margin-block-start: var(--gap);
 }
 
