@@ -64,6 +64,7 @@
 
 * {
 	--gap: calc(var(--rhythm) * var(--density));
+	accent-color: var(--accent);
 }
 
 @custom-selector :--list ul, ol;
