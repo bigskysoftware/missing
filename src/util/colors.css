@@ -1,4 +1,9 @@
 
+.info {
+    --bg-2: var(--info-bg);
+    --accent: var(--info-fg);
+}
+
 .ok {
     --bg-2: var(--ok-bg);
     --accent: var(--ok-fg);

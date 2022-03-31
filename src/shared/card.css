@@ -11,11 +11,9 @@
 
 	background: var(--bg-2);
 	border: 1px solid var(--accent);
-	box-shadow:
-		0
-		calc(.2 * var(--rhythm))
-		calc(.5 * var(--rhythm))
-		calc(-.2 * var(--rhythm))
-		var(--shadow);
+	
+	& & {
+		background: var(--bg-3);
+	}
 }
 

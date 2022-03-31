@@ -14,6 +14,7 @@
 		used with a background of --c-bg and --c-bg-2 -- check contrast! */
 	--faded-fg: #777; /* De-emphasized or disabled graphical elements. Will not
 		be used as a text color. */
+	--info-fg: #01a;
 	--ok-fg: #060;
 	--bad-fg: #a00;
 	--warn-fg: #550;
@@ -22,6 +23,7 @@
 	--bg-2: #f8f8ff; /* Background for blocks: cards, admonitions etc. */
 	--bg-3: #dfdfe1; /* Background for interactive elements */
 	--bg-4: #c3c3ca; /* Background for pressed interactive elements */
+	--info-bg: #f8f8ff;
 	--ok-bg: #bfb;
 	--bad-bg: #fcc;
 	--warn-bg: #ff8;
