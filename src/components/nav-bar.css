@@ -1,6 +1,5 @@
 
 header[is="nav-bar"] {
-	position: sticky;
 	inset-block-start: 0;
 	inset-inline: 0;
 	z-index: 10;
@@ -13,11 +12,9 @@ header[is="nav-bar"] {
 
 	/* Inner layout */
 	display: flex;
-	flex-flow: row nowrap;
+	flex-flow: row wrap;
 	justify-content: space-around;
 	gap: calc(2 * var(--rhythm));
-	
-	overflow-x: auto;
 
 	& nav ul[role="list"] {
 		display: flex;
