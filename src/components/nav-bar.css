@@ -7,7 +7,6 @@ header[is="nav-bar"] {
 
 	margin: 0;
 	padding: 0 var(--rhythm);
-	max-width: 100%;
 
 	background: var(--bg-2);
 	border-block-end: 1px solid var(--accent);
