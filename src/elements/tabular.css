@@ -28,6 +28,8 @@ tr {
 }
 
 td, th {
+	vertical-align: top;
+	
 	&:not(:last-child) {
 		padding-inline-end: var(--rhythm);
 	}
