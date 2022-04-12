@@ -5,7 +5,7 @@
 
 img, video, audio, iframe, object, embed {
 	max-inline-size: 100%;
-	inline-size: 100%;
+	inline-size: max-content;
 	block-size: auto;
 }
 
