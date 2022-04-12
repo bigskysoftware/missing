@@ -14,7 +14,7 @@ header[is="nav-bar"] {
 	/* Inner layout */
 	display: flex;
 	flex-flow: row nowrap;
-	justify-content: space-between;
+	justify-content: space-around;
 	gap: calc(2 * var(--rhythm));
 	
 	overflow-x: auto;
