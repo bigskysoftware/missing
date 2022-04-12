@@ -5,6 +5,7 @@
 
 table {
 	font-variant-numeric: tabular-nums;
+	font: inherit;
 }
 
 caption {
