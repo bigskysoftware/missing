@@ -80,7 +80,6 @@ dl {
 	}
 
 figure {
-	display: flow-root;
 }
 	figcaption {
 		color: var(--muted-fg);
