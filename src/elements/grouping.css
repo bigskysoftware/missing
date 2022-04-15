@@ -30,6 +30,8 @@ pre {
 
 blockquote {
 	margin-inline: var(--rhythm);
+	margin-block: var(--rhythm);
+	
 	font-size: 1.1em;
 	line-height: var(--rhythm);
 	font-style: italic;
