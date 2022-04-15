@@ -32,6 +32,7 @@ pre {
 }
 
 blockquote {
+	margin-inline: var(--rhythm);
 	font-size: 1.1em;
 	line-height: var(--rhythm);
 	font-style: italic;
@@ -88,7 +89,7 @@ figure {
 }
 	figcaption {
 		margin-block: var(--rhythm);
-		
+
 		color: var(--muted-fg);
 		letter-spacing: .02em;
 	}
