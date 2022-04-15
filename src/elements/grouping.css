@@ -80,8 +80,15 @@ dl {
 	}
 
 figure {
+	margin-inline: 0;
+	padding-inline: var(--rhythm);
+
+	border: 1px solid var(--faded-fg);
+	border-radius: calc(var(--rhythm) / 4);
 }
 	figcaption {
+		margin-block: var(--rhythm);
+		
 		color: var(--muted-fg);
 		letter-spacing: .02em;
 	}
