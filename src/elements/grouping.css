@@ -19,16 +19,13 @@ pre {
 	line-height: var(--rhythm);
 	tab-size: 2;
 
-	padding: calc(.5 * var(--rhythm));
 	margin: var(--gap) 0;
-	border-radius: .5em;
 
 	overflow-x: auto;
 	scrollbar-inline-size: thin;
 	scrollbar-color: var(--accent) transparent;
 
 	background: var(--bg);
-	border: 1px solid var(--accent-muted);
 }
 
 blockquote {
