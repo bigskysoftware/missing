@@ -35,6 +35,8 @@ blockquote {
 	font-size: 1.1em;
 	line-height: var(--rhythm);
 	font-style: italic;
+
+	border: 1px solid var(--faded-fg);
 	color: var(--muted-fg);
 
 	& :--italic {
