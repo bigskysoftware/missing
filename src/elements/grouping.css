@@ -29,8 +29,8 @@ pre {
 }
 
 blockquote {
-	margin-inline: var(--rhythm);
-	margin-block: var(--rhythm);
+	margin-inline: var(--gap);
+	margin-block: var(--gap);
 	
 	font-size: 1.1em;
 	line-height: var(--rhythm);
@@ -81,13 +81,13 @@ dl {
 
 figure {
 	margin-inline: 0;
-	padding-inline: var(--rhythm);
+	padding-inline: var(--gap);
 
 	border: 1px solid var(--faded-fg);
 	border-radius: calc(var(--rhythm) / 4);
 }
 	figcaption {
-		margin-block: var(--rhythm);
+		margin-block: var(--gap);
 
 		color: var(--muted-fg);
 		letter-spacing: .02em;
