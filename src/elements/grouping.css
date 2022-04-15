@@ -46,7 +46,7 @@ blockquote {
 }
 
 :--list {
-	padding-inline-start: calc(1.5 * var(--rhythm));
+	padding-inline-start: var(--rhythm);
 
 	&[role="list"] {
 		padding-inline-start: 0;
