@@ -29,14 +29,15 @@ pre {
 }
 
 blockquote {
-	margin-inline: var(--gap);
+	margin-inline: 0 var(--gap);
+	padding-inline: var(--gap) 0;
 	margin-block: var(--gap);
 	
 	font-size: 1.1em;
 	line-height: var(--rhythm);
 	font-style: italic;
 
-	border: 1px solid var(--faded-fg);
+	border-inline-start: 1px solid var(--faded-fg);
 	color: var(--muted-fg);
 
 	& :--italic {
