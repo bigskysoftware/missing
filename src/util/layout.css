@@ -4,9 +4,13 @@
     grid-template-columns: repeat(auto-fit, minmax(var(--col-width, 15ch), 1fr));
     grid-auto-rows: 1fr;
     align-items: block-start;
-    gap: var(--grid-gap, var(--rhythm));
+    gap: var(--gap);
 
     & > * {
         margin: 0;
     }
 }
+
+.col-l { --col-width: 35ch }
+.col-m { --col-width: 24ch }
+.col-s { --col-width: 15ch }
