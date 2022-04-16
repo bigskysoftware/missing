@@ -84,8 +84,9 @@ dl {
 	}
 
 figure {
+	width: max-content;
 	margin-inline: 0;
-	padding-inline: var(--gap);
+	padding: var(--gap);
 
 	border: 1px solid var(--faded-fg);
 	border-radius: calc(var(--rhythm) / 4);

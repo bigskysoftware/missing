@@ -125,7 +125,7 @@ button, input, select {
  * Correct the inability to style buttons in iOS and Safari.
  */
 
-button, [type="button" i], [type="reset" i], [type="submit" i] {
+button, [type="button"], [type="reset"], [type="submit"] {
     -webkit-appearance: button;
 }
 
@@ -158,7 +158,7 @@ textarea {
  * 2. Correct the outline style in Safari.
  */
 
-[type="search" i] {
+[type="search"] {
     -webkit-appearance: textfield; /* 1 */
     outline-offset: -2px; /* 2 */
 }
@@ -248,7 +248,7 @@ details > summary:first-of-type {
  * Change the cursor on busy elements in all browsers (opinionated).
  */
 
-[aria-busy="true" i] {
+[aria-busy="true"] {
     cursor: progress;
 }
 
@@ -257,6 +257,6 @@ details > summary:first-of-type {
  * inoperable elements in all browsers (opinionated).
  */
 
-[aria-disabled="true" i], [disabled] {
+[aria-disabled="true"], [disabled] {
     cursor: not-allowed;
 }

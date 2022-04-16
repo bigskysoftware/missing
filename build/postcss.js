@@ -9,7 +9,7 @@ import postcss from 'postcss'
 import presetEnv from 'postcss-preset-env'
 import atImport from 'postcss-import'
 import importGlob from 'postcss-import-ext-glob'
-import extend from 'postcss-extend-rule'
+import mixins from 'postcss-mixins'
 import cssnano from 'cssnano'
 
 
@@ -34,9 +34,7 @@ const build = async () => {
 				'logical-properties-and-values': false,
 			},
 		}),
-		extend({
-			onUnusedExtend: 'throw',
-		}),
+		mixins(),
 	])
 
 	const postcssMinifier = postcss([cssnano({ preset: 'default' })])

@@ -4,12 +4,15 @@
  ***/
 
 details {
-	@extend %card;
+	@mixin box;
+	padding-block-start: 0;
+	&:not([open]) { padding-block-end: 0; }
 }
 
 summary {
-	margin-inline: calc(0px - var(--gap));
-	padding: inherit;
+	margin: calc(0px - var(--gap));
+	margin-bottom: 0;
+	padding-inline: inherit;
 
 	font-weight: bold;
 

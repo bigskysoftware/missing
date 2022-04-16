@@ -33,6 +33,5 @@
 }
 
 [role="tabpanel"] {
-    padding-inline: var(--gap);
     border: 1px solid var(--faded-fg);
 }

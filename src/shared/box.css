@@ -1,0 +1,15 @@
+
+@define-mixin box {
+    display: block;
+    margin: var(--gap) 0;
+    padding: var(--gap);
+    
+    border-radius: calc(var(--rhythm) / 4);
+    background: var(--bg-2);
+    border: 1px solid var(--accent);
+    
+    flex: 1 0 var(--column-width);
+	
+    & > :first-child { margin-block-start: 0; }
+	& > :last-child  { margin-block-end:   0; }
+}

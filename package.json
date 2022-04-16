@@ -28,9 +28,11 @@
     "cssnano": "^5.0.17",
     "fs-extra": "^9.1.0",
     "postcss": "^8.4.6",
-    "postcss-extend-rule": "^4.0.0",
     "postcss-import": "^14.0.2",
     "postcss-import-ext-glob": "^2.0.1",
     "postcss-preset-env": "^7.3.2"
+  },
+  "dependencies": {
+    "postcss-mixins": "^9.0.2"
   }
 }

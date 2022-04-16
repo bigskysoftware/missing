@@ -12,7 +12,6 @@ radio-buttons, .radio-buttons {
 	}
 	
 	& label {
-		@extend %button-like;
 		font-size: 1rem;
 		position: relative;
 
