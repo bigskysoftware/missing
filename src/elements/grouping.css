@@ -73,6 +73,7 @@ ol {
 }
 
 dl {
+	margin-block: var(--gap);
 }
 	dt {
 		font-weight: bold;
