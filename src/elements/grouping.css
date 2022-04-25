@@ -89,14 +89,15 @@ figure {
 	padding: var(--gap);
 
 	border: 1px solid var(--faded-fg);
-	border-radius: calc(var(--rhythm) / 4);
-}
-	figcaption {
-		margin-block: var(--gap);
+	border-radius: calc(var(--rhythm) / 4); 
 
-		color: var(--muted-fg);
-		letter-spacing: .02em;
-	}
+	@mixin padded;
+}
+figcaption {
+	margin-block: var(--gap);
+
+	color: var(--muted-fg);
+}
 
 main {
 	max-inline-size: var(--eff-line-length);
