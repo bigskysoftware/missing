@@ -85,6 +85,7 @@ dl {
 
 figure {
 	width: max-content;
+	max-width: 100%;
 	margin-inline: 0;
 	padding: var(--gap);
 
