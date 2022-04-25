@@ -80,7 +80,7 @@ dl {
 	}
 
 	dd {
-		margin-inline-start: calc(1.5 * var(--rhythm));
+		margin-inline-start: var(--rhythm);
 	}
 
 figure {
