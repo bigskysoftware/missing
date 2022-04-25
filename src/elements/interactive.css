@@ -18,15 +18,19 @@ summary {
 
 	background: var(--accent);
 	color: var(--bg);
+	border-radius: inherit;
 
 	cursor: pointer;
 
-	&::marker {
-		list-style: disc;
+	&:focus-visible, &:active {
+		background: var(--muted-accent);
+		border-color: var(--muted-accent);
 	}
 
 	@nest details[open] & {
 		border-block-end: 1px solid var(--accent);
+		border-end-end-radius: 0;
+		border-end-start-radius: 0;
 	}
 }
 
