@@ -57,6 +57,7 @@ aside {
 		font-size: 1.17em;
 		text-transform: uppercase;
 		line-height: calc(1 * var(--rhythm));
+		letter-spacing: 0.02em;
 	}
 	
 	h4, h5, h6 {
