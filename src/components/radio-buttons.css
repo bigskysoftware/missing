@@ -9,6 +9,13 @@ radio-buttons, .radio-buttons {
 		inline-size: 0;
 		block-size: 0;
 		position: absolute;
+
+
+		@nest &:checked + label {
+			box-shadow: 0 .05em var(--accent);
+			transform: translateY(.05em);
+			background: var(--bg-4);
+		}
 	}
 	
 	& label {
@@ -25,27 +32,6 @@ radio-buttons, .radio-buttons {
 			border-end-start-radius: 0;
 			border-start-start-radius: 0;
 		}
-
-		&:hover {
-			@extend %targeted-button;
-			z-index: 100;
-		}
-
-		&:active {
-			@extend %active-button;
-		}
-	}
-
-	& input:checked + label {
-		@extend %pressed-button;
-	}
-
-	& input:active + label {
-		@extend %active-button;
-	}
-
-	& input:focus-visible + label {
-		@extend :focus-visible;
 	}
 }
 

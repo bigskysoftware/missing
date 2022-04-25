@@ -20,6 +20,7 @@ input::file-selector-button,
 radio-buttons label {
 	display: inline-block;
 	padding: 0 calc(var(--rhythm) / 4);
+	margin-block-end: .1em;
 
 	font-size: 1rem;
 	font-family: var(--main-font);
@@ -27,7 +28,7 @@ radio-buttons label {
 
 	background: var(--bg-3);
 	border: 1px solid var(--accent);
-	box-shadow: 0 -.1em var(--accent) inset;
+	box-shadow: 0 .1em var(--accent);
 	border-radius: .2em;
 
 	&:hover, &:focus-visible {
@@ -37,12 +38,11 @@ radio-buttons label {
 	&:active {
 		box-shadow: none;
 		transform: translateY(calc(.1em));
-		height: calc(var(--rhythm - .1em));
 	}
 	
 	&[aria-pressed="true"], &[aria-expanded="true"] {
 		box-shadow: 0 .05em var(--accent);
-		transform: translateY(-.05em);
+		transform: translateY(.05em);
 		background: var(--bg-4);
 	}
 }
