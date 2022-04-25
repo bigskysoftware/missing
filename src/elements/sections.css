@@ -44,20 +44,22 @@ aside {
 }
 
 	h1 {
-		font-size: 1.8em;
+		font-size: 2em;
 		line-height: calc(2 * var(--rhythm));
 	}
 
 	h2 {
-		font-size: 1.4em;
+		font-size: 1.6em;
 		line-height: calc(1.5 * var(--rhythm));
 	}
 
-	h2, h3 {
-		border-block-end: 1px solid var(--muted-fg);
+	h3 {
+		font-size: 1.17em;
+		text-transform: uppercase;
+		line-height: calc(1 * var(--rhythm));
 	}
-
-	h3, h4, h5, h6 {
+	
+	h4, h5, h6 {
 		font-size: 1em;
 		line-height: calc(1 * var(--rhythm));
 		margin-block-start: var(--gap);
