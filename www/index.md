@@ -10,7 +10,7 @@ layout: layout.html
 
 <nav>
 
-[Home](/) &middot;
+[Docs](/docs/) &middot;
 [Demo](/demos/) &middot;
 [Playground](/playground/) &middot;
 [GitHub](https://github.com/bigskysoftware/missing) &middot;
