@@ -14,3 +14,9 @@
 .col-l { --col-width: 35ch }
 .col-m { --col-width: 24ch }
 .col-s { --col-width: 15ch }
+
+.fullbleed {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50vw);  
+}
