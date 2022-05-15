@@ -28,5 +28,5 @@
 }
 
 .border {
-	border: var(--accent);
+	border-color: var(--accent);
 }
