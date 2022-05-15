@@ -33,6 +33,7 @@
     "postcss-preset-env": "^7.3.2"
   },
   "dependencies": {
+    "@gerhobbelt/markdown-it-container": "^3.0.0-10",
     "markdown-it-attrs": "^4.1.4",
     "markdown-it-deflist": "^2.1.0",
     "postcss-mixins": "^9.0.2"

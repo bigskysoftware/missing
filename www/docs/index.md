@@ -9,5 +9,9 @@ Install it on your website if you haven't already:
 
 Then, see how you can go beyond classless CSS with its features:
 
- * [Learn about ARIA patterns](/docs/aria)
- * [Learn about using color](/docs/colorways)
+ * [Customize with CSS **variables**](/docs/variables)
+ * [Learn about **ARIA patterns**](/docs/aria)
+ * [Get to know our **components**](/docs/components)
+ * [Add color with **colorways**](/docs/colorways)
+ * [Use our **utility classes**](/docs/utils)
+ {.list-of-links}

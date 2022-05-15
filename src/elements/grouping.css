@@ -11,6 +11,11 @@ p {
 hr {
 	color: inherit;
 	block-size: 0;
+
+	&[aria-orientation=vertical] {
+		block-size: 100%;
+		inline-size: 0;
+	}
 }
 
 pre {

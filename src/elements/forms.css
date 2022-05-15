@@ -54,11 +54,8 @@ input[type="datetime-local"],
 input[type="number"],
 select,
 textarea {
-	display: block;
-
 	padding: .05em calc(var(--rhythm) / 2);
-	inline-size: 100%;
-
+	
 	font-size: 1rem;
 	line-height: inherit;
 	font-family: var(--main-font);
@@ -66,6 +63,8 @@ textarea {
 	background: var(--bg);
 	border: 1px solid var(--faded-fg);
 	border-radius: .2em;
+
+	vertical-align: top;
 
 	&:focus-visible {
 		border: 1px solid var(--accent);
@@ -92,6 +91,15 @@ input[type="file"] {
 	&::file-selector-button {
 		margin-block: .1em 0;
 		margin-inline-end: 1ch;
+	}
+}
+
+label[for] {
+	display: block;
+
+	& + * {
+		display: block;
+		width: 100%;
 	}
 }
 

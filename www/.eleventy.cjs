@@ -10,14 +10,16 @@ module.exports = eleventyConfig => {
 
 	eleventyConfig.addCollection('demos', coll => coll.getFilteredByGlob('www/demos/*'))
 
+	const mdContainer = require("../node_modules/@gerhobbelt/markdown-it-container/dist/markdownItContainer.cjs")
 	eleventyConfig.setLibrary('md',
 		require("markdown-it")({
 			html: true,
-			breaks: true,
+			breaks: false,
 			linkify: true
 		})
 		.use(require("markdown-it-attrs"))
 		.use(require("markdown-it-deflist"))
+		.use(mdContainer, "box")
 	)
 
 	return {
