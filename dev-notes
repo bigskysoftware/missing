@@ -1,2 +1,8 @@
-- remove all :is, see what happens
 - how to write docs?
+
+
+== history ==
+
+> - remove all :is, see what happens
+
+2022-04-31 removed all instances of :is and :where. nothing happened
