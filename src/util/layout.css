@@ -1,19 +1,37 @@
 
 .basicgrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(var(--col-width, 15ch), 1fr));
-    grid-auto-rows: 1fr;
-    align-items: block-start;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: stretch;
+    align-items: start;
     gap: var(--gap);
 
     & > * {
+        flex-basis: var(--col-width);
         margin: 0;
+        min-width: 1px;
     }
 }
 
-.col-l { --col-width: 35ch }
-.col-m { --col-width: 24ch }
-.col-s { --col-width: 15ch }
+.-evenrows { grid-auto-rows: 1fr }
+
+.colwidth-l { --col-width: 35ch }
+.colwidth-m { --col-width: 24ch }
+.colwidth-s { --col-width: 15ch }
+
+.col-2  { flex-grow: 2  }
+.col-3  { flex-grow: 3  }
+.col-4  { flex-grow: 4  }
+.col-5  { flex-grow: 5  }
+.col-6  { flex-grow: 6  }
+.col-7  { flex-grow: 7  }
+.col-8  { flex-grow: 8  }
+.col-9  { flex-grow: 9  }
+.col-10 { flex-grow: 10 }
+.col-11 { flex-grow: 11 }
+.col-12 { flex-grow: 12 }
+
+/**/
 
 .fullbleed {
     position: relative;
