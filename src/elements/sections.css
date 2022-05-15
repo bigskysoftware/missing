@@ -80,10 +80,12 @@ aside {
 
 header {
 	border-block-end: 1px solid var(--faded-fg);
+	padding: var(--gap);
 }
 
 footer {
 	border-block-start: 1px solid var(--faded-fg);
+	padding: var(--gap);
 }
 
 address {
