@@ -28,10 +28,10 @@ const build = async () => {
 		importGlob(),
 		atImport(),
 		presetEnv({
-			browsers: 'last 2 versions',
+			browsers: 'supports css-variables',
 			stage: 0,
 			features: {
-				'logical-properties-and-values': false,
+				'custom-properties': false,
 			},
 		}),
 		mixins(),
