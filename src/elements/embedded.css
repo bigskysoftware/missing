@@ -8,12 +8,3 @@ img, video, audio, iframe, object, embed {
 	inline-size: max-content;
 	block-size: auto;
 }
-
-iframe, object, embed {
-	aspect-ratio: 16 / 9;
-
-	border: none;
-	background: white;
-	box-shadow: 0 .1em .2em var(--shadow) inset;
-}
-
