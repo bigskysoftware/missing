@@ -20,14 +20,6 @@ a {
 	}
 }
 
-em {
-	/* TODO */
-}
-
-strong {
-	/* TODO */
-}
-
 small {
 	@nest span > &:only-child {
 		/***
@@ -62,66 +54,48 @@ small {
 }
 
 s {
-	/* TODO */
-}
-
-cite {
-	/* TODO */
+	color: var(--bad-fg);
 }
 
 q {
-	/* TODO */
-}
+	font-style: italic;
 
-dfn {
-	/* TODO */
-}
-
-abbr {
-	/* TODO */
-}
-
-ruby {
-	/* TODO */
-
-	& rt {
-	}
-
-	* rp {
+	& :--italic {
+		font-style: normal;
 	}
 }
 
 time {
-	/* TODO */
-}
-
-code {
-	/* TODO */
-}
-
-var {
-	/* TODO */
+	font-variant-numeric: tabular-nums;
 }
 
 samp {
-	/* TODO */
+	color: var(--ok-fg);
 }
 
-kbd {
-	/* TODO */
+kbd kbd /*
+	We apply the key-like styling to a nested kbd element, a pattern shown in
+	WHATWG HTML for marking up keyboard input:
+
+	> Here the kbd element is used to indicate keys to press:
+	>   ~~~ html
+	>   <p>To make George eat an apple, press <kbd><kbd>Shift</kbd> + <kbd>F3</kbd></kbd></p>
+	>   ~~~
+
+	The plain kbd element can also be used for clicking menus (<kbd>File |
+	New...</kbd>) or voice input (<kbd>Hey Siri, </kbd>)
+*/ {
+	display: inline-block;
+
+	padding: 0 .3em;
+	font-size: .8em;
+	line-height: 1.1em;
+
+	background: var(--bg-3);
+	border: 1px outset var(--faded-fg);
+	border-block-end-width: 3px;
+	border-radius: .3em;
 }
-	kbd kbd {
-		display: inline-block;
-
-		padding: 0 .3em;
-		font-size: .8em;
-		line-height: 1.1em;
-
-		background: var(--bg-3);
-		border: 1px outset var(--faded-fg);
-		border-block-end-width: 3px;
-		border-radius: .3em;
-	}
 
 sub {
 	vertical-align: end;
@@ -131,14 +105,6 @@ sub {
 sup {
 	vertical-align: start;
 	line-height: 1;
-}
-
-i {
-	/* TODO */
-}
-
-u {
-	/* TODO */
 }
 
 mark {

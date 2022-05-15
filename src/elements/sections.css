@@ -17,10 +17,6 @@ body {
 	margin: 0;
 }
 
-article {
-	/* TODO */
-}
-
 header, footer, section {
 	margin-block: calc(2 * var(--gap));
 }
@@ -33,7 +29,13 @@ nav {
 }
 
 aside {
-	/* TODO */
+	@mixin box;
+
+	:--heading {
+		font-size: 1em;
+		text-transform: none;
+		letter-spacing: none;
+	}
 }
 
 :--heading {
@@ -45,12 +47,16 @@ aside {
 
 	h1, .h1 {
 		font-size: 2em;
+		text-transform: none;
 		line-height: calc(2 * var(--rhythm));
+		letter-spacing: 0;
 	}
 
 	h2, .h2 {
 		font-size: 1.6em;
+		text-transform: none;
 		line-height: calc(1.5 * var(--rhythm));
+		letter-spacing: 0;
 	}
 
 	h3, .h3 {
@@ -62,7 +68,9 @@ aside {
 	
 	h4, .h4, h5, .h5, h6, .h6 {
 		font-size: 1em;
+		text-transform: none;
 		line-height: calc(1 * var(--rhythm));
+		letter-spacing: 0;
 		margin-block-start: var(--gap);
 	}
 
@@ -71,21 +79,13 @@ aside {
 }
 
 header {
+	border-block-end: 1px solid var(--faded-fg);
 }
 
 footer {
-	/* TODO */
-	@nest body > & {
-		margin-block-end: 2em;
-		padding-inline: var(--gutter-width);
-		padding-block-start: calc(2 * var(--gap));
-		margin-block-start: calc(2 * var(--gap));
-
-		text-align: center;
-	}
+	border-block-start: 1px solid var(--faded-fg);
 }
 
 address {
-	/* TODO */
+	density: 0;
 }
-

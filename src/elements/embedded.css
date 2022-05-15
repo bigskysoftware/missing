@@ -9,18 +9,6 @@ img, video, audio, iframe, object, embed {
 	block-size: auto;
 }
 
-img {
-	/* TODO */
-}
-
-video {
-	/* TODO */
-}
-
-audio {
-	/* TODO */
-}
-
 iframe, object, embed {
 	aspect-ratio: 16 / 9;
 
