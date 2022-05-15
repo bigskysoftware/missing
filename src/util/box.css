@@ -1,7 +1,8 @@
 
 @define-mixin padded {
-    & > :first-child { margin-block-start: 0; }
-	& > :last-child  { margin-block-end:   0; }
+    /* artificially increase specificity */
+    & > :first-child:first-child:first-child:first-child { margin-block-start: 0; }
+	& > :last-child:last-child:last-child:last-child     { margin-block-end:   0; }
 }
 
 @define-mixin box {
