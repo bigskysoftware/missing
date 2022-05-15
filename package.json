@@ -33,6 +33,8 @@
     "postcss-preset-env": "^7.3.2"
   },
   "dependencies": {
+    "markdown-it-attrs": "^4.1.4",
+    "markdown-it-deflist": "^2.1.0",
     "postcss-mixins": "^9.0.2"
   }
 }
