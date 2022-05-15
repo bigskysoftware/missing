@@ -88,7 +88,7 @@ footer {
 
 body > header,
 body > footer {
-	padding: var(--gutter-width)
+	padding: var(--rhythm) var(--gutter-width)
 }
 
 address {
