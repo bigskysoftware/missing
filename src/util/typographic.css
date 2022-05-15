@@ -7,15 +7,3 @@ all-caps, .allcaps {
 .monospace {
 	font-family: var(--mono-font);
 }
-
-.color {
-	color: var(--accent);
-}
-
-.bg {
-	background: var(--bg-2);
-}
-
-.border {
-	border: var(--accent);
-}

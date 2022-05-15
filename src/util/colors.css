@@ -18,3 +18,15 @@
     --bg-2: var(--bad-bg);
     --accent: var(--bad-fg);
 }
+
+.color {
+	color: var(--accent);
+}
+
+.bg {
+	background: var(--bg-2);
+}
+
+.border {
+	border: var(--accent);
+}
