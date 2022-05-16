@@ -23,16 +23,16 @@ classes; these will be listed in the documentation for that class.
 :   De-emphasized or disabled graphical elements. Will not be used as a text color.
 
 <dfn>--info-fg:</dfn> {#var-info-fg}
-:   —
+:   Foreground color for the `.info` [colorway][].
 
 <dfn>--ok-fg</dfn> {#var-ok-fg}
-:   —
+:   Foreground color for the `.ok` [colorway][].
 
 <dfn>--bad-fg</dfn> {#var-bad-fg}
-:   —
+:   Foreground color for the `.bad` [colorway][].
 
 <dfn>--warn-fg</dfn> {#var-warn-fg}
-:   —
+:   Foreground color for the `.warn` [colorway][].
 
 <dfn>--bg</dfn> {#var-bg}
 :   Page background.
@@ -48,16 +48,16 @@ classes; these will be listed in the documentation for that class.
 :   Background for pressed interactive elements
 
 <dfn>--info-bg</dfn> {#var-info-bg}
-:   —
+:   Background color for the `.info` [colorway][].
 
 <dfn>--ok-bg</dfn> {#var-ok-bg}
-:   —
+:   Background color for the `.ok` [colorway][].
 
 <dfn>--bad-bg</dfn> {#var-bad-bg}
-:   —
+:   Background color for the `.bad` [colorway][].
 
 <dfn>--warn-bg</dfn> {#var-warn-bg}
-:   —
+:   Background color for the `.warn` [colorway][].
 
 <dfn>--shadow</dfn> {#var-shadow}
 :   Box shadows.
@@ -104,4 +104,9 @@ classes; these will be listed in the documentation for that class.
 ## Density
 
 <dfn>--density</dfn> {#var-density}
-:   —
+:   The amount of space between elements (i.e. gaps between paragraphs, padding
+    of boxes), as a multiplier of the line height (`--rhythm`). See
+    [Utilities / Density](/docs/util#density).
+
+
+[colorway]: /docs/colorways

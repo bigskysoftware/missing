@@ -18,7 +18,7 @@ The container class imposes a maximum width on an element and centers it. The
 appropriate for all contexts.
 
 
-## Density
+## Density {#density}
 
 The density utilities set the `--density` [CSS variable][], which
 controls the amount of spacing between elements. The default value of
