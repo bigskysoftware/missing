@@ -94,9 +94,9 @@ classes; these will be listed in the documentation for that class.
     **Tip**: Browsers shrink monospace fonts. You can suppress this behavior by
     specifying `monospace` _twice_:
 
-      ~~~ css
-      --mono-font: "Cascadia Code", monospace, monospace
-      ~~~
+    ~~~ css
+    --mono-font: "Cascadia Code", monospace, monospace
+    ~~~
     :::
 
 ## Density
