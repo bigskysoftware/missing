@@ -63,7 +63,7 @@ const w = async (data: Uint8Array, path: string | URL) => {
 	console.log("Wrote " + path)
 }
 
-build()
+if (import.meta.main) await build()
 
 export default build
 

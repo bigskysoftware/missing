@@ -3,7 +3,7 @@ set -e
 
 root_dist=$(realpath dist)
 
- command -v git grep npm
+command -v git grep npm
 
 rm -rf dist/src.tmp.d
 git clone . dist/src.tmp.d
@@ -15,7 +15,7 @@ git clone . dist/src.tmp.d
             echo "${0}: Checking out $tag"
             git checkout $tag
             echo "${0}: Building $tag"
-            npm run build
+            [ -f ./_build/postcss.ts ] && ./_build/postcss.ts || ./_build/postcss.js
 
             echo "${0}: Built, placing into /$tag/"
             mkdir -p $root_dist/archive/$tag
