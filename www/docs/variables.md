@@ -12,82 +12,82 @@ classes; these will be listed in the documentation for that class.
 
 ## Colors
 
---fg
+--fg {#var-fg}
 :   The text color.
 
---muted-fg
+--muted-fg {#var-muted-fg}
 :   Text color for disabled or de-emphasized elements. It's important that this
     color is readable against all of the background colors.
 
---faded-fg
+--faded-fg {#var-faded-fg}
 :   De-emphasized or disabled graphical elements. Will not be used as a text color.
 
---info-fg:
-:   --
+--info-fg: {#var-info-fg}
+:   —
 
---ok-fg: #060;
-:   --
+--ok-fg {#var-ok-fg}
+:   —
 
---bad-fg: #a00;
-:   --
+--bad-fg {#var-bad-fg}
+:   —
 
---warn-fg: #550;
-:   --
+--warn-fg {#var-warn-fg}
+:   —
 
---bg
+--bg {#var-bg}
 :   Page background.
 
---bg-2
+--bg-2 {#var-bg-2}
 :   Background for blocks: cards, admonitions etc.
 
---bg-3
+--bg-3 {#var-bg-3}
 :   Background for interactive elements
 
 
---bg-4
+--bg-4 {#var-bg-4}
 :   Background for pressed interactive elements
 
---info-bg
-:   --
+--info-bg {#var-info-bg}
+:   —
 
---ok-bg
-:   --
+--ok-bg {#var-ok-bg}
+:   —
 
---bad-bg
-:   --
+--bad-bg {#var-bad-bg}
+:   —
 
---warn-bg
-:   --
+--warn-bg {#var-warn-bg}
+:   —
 
---shadow
+--shadow {#var-shadow}
 :   Box shadows.
 
---accent
+--accent {#var-accent}
 :   Accent color. It's important that this
     color is readable against all of the background colors.
 
---muted-accent
+--muted-accent {#var-muted-accent}
 :   Less vivid version of accent color. Will not be used for text.
 
 
 ## Lengths
 
---rhythm
+--rhythm {#var-rhythm}
 :   Vertical rhythm, line height.
 
---line-length
+--line-length {#var-line-length}
 :   Maximum line length for prose.
 
 ## Fonts
 
---main-font
+--main-font {#var-main-font}
 :   The main font family for text.
 
---display-font
+--display-font {#var-display-font}
 :   A secondary text font. It's a good idea to specify a sans-serif font as it
     will be used for buttons.
 
---mono-font
+--mono-font {#var-mono-font}
 :   Monospace font for code, preformatted text, computer input and output.
 
     ::: box {.info}
@@ -95,11 +95,13 @@ classes; these will be listed in the documentation for that class.
     specifying `monospace` _twice_:
 
       ~~~ css
-      --mono-font: "Cascadia Code", monospace, monospace
+      {
+        --mono-font: "Cascadia Code", monospace, monospace
+      }
       ~~~
     :::
 
 ## Density
 
---density
-:   --
+--density {#var-density}
+:   —

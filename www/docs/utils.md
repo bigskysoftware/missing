@@ -1,0 +1,68 @@
+
+# Utilities
+
+For the minor alterations to the default look that make all the difference,
+missing.css has a collection of classes and custom elements.
+
+## Container
+
+`<div class="container">`
+
+The container class imposes a maximum width on an element and centers it. The
+`<main>` element does the same, but carries semantic baggage that might not be
+appropriate for all contexts.
+
+
+## Density
+
+The density utilities set the `--density` [CSS variable][], which
+controls the amount of spacing between elements. The default value of
+`--density` is `1`, which means the spacing between paragraphs is
+equal to the height of 1 line.
+
+We provide three utility classes that set `--density`:
+
+| Class                  | Density                                    |
+|------------------------|--------------------------------------------|
+| `.crowded` | `--density` = 0.5                 |
+| `.dense`   | `--density` = 1 (same as default) |
+| `.airy`    | `--density` = 3                   |
+
+You can set `--density` yourself in inline styles or your own CSS:
+
+<figure>
+<figcaption>Setting <code>--density</code> with inline styles</figcaption>
+
+  ~~~ html
+  <section id="tagline" style="--density: 2">
+    <h1>So easy, even a programmer can do it.</h1>
+    <p>
+        missing.css makes it easy to ship beautiful applications without
+        locking yourself into classless libraries.
+    </p>
+  </section>
+  ~~~
+</figure>
+
+<figure>
+<figcaption>Setting `--density` in a stylesheet</figcaption>
+
+  ~~~ css
+  .link-embed {
+      --density: .5; /* Embeds shouldn't take up too much space */
+  }
+  ~~~
+
+</figure>
+
+
+## Typography
+
+`.allcaps`
+:   Sets text in all caps and adds appropriate letter spacing.
+
+`.monospace`
+:   Renders the text in the monospace font (`--font-mono`).
+
+
+[CSS variable]: /docs/variables
