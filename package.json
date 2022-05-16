@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "node build/postcss.js",
-    "www": "eleventy --config=www/.eleventy.cjs && build/version-history.sh",
+    "www": "eleventy --config=www/.eleventy.cjs && ./build/version-history.sh",
     "dev": "eleventy --config=www/.eleventy.cjs --serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
