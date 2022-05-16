@@ -15,14 +15,18 @@ header[is="nav-bar"] {
 
 	/* Inner layout */
 	display: flex;
-	flex-flow: row wrap;
+	flex-flow: row;
 	justify-content: space-around;
 	gap: calc(2 * var(--rhythm));
 
+	& * { flex-shrink: 0 }
+
 	& nav ul[role="list"] {
 		display: flex;
-		flex-flow: row wrap;
+		flex-flow: row;
 		gap: var(--rhythm);
+
+		& * { flex-shrink: 0 }
 	}
 
 	& a {
