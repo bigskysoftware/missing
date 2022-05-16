@@ -2,21 +2,20 @@
 [role="tablist"] {
     display: flex;
     gap: .5ch;
-    overfiow-x: auto;
     scrollbar-width: thin;
 }
 
-[role="tab"] {
+[role="tab"][role="tab"] {
     all: initial;
 
     padding: 0 calc(var(--rhythm) / 4);
     margin: 0;
     min-height: var(--rhythm);
 
-    border: 1px solid var(--faded-fg);
+    border: solid var(--accent);
+    border-width: 1px 1px 0 1px;
+    border-block-end-color: transparent;
     background: var(--bg-3);
-
-    transform: translateY(1px);
 
     border-start-start-radius: .4em;
     border-start-end-radius: .4em;
@@ -25,15 +24,12 @@
         outline-bottom: none;
     }
     
-    &:active {
-        transform: translateY(.2em);
-        clip-path: inset(0 0 calc(.2em - 1px) 0);
-        border-block-end: 1px solid var(--bg);
-    }
-    
-    &[aria-selected="true"] {
+    &:active, &[aria-selected="true"] {
+        transform: none;
+        bottom: -1px;
+        position: relative;
         background: var(--bg-2);
-        border-block-end: 1px solid var(--bg);
+        border-block-end: 1px solid var(--bg-2);
     }
 }
 
@@ -42,4 +38,5 @@
     margin-block-start: 0;
     border-start-start-radius: 0;
     border-start-end-radius: 0;
+    z-index: 1;
 }

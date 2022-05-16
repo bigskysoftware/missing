@@ -6,7 +6,9 @@ import { brotliCompress as brotli, gzip } from 'node:zlib'
 import postcss from 'postcss'
 
 // Plugins
-import presetEnv from 'postcss-preset-env'
+
+import nesting from 'postcss-nesting'
+import customSelectors from 'postcss-custom-selectors'
 import atImport from 'postcss-import'
 import importGlob from 'postcss-import-ext-glob'
 import mixins from 'postcss-mixins'
@@ -27,13 +29,8 @@ const build = async () => {
 	const postcssMain = postcss([
 		importGlob(),
 		atImport(),
-		presetEnv({
-			browsers: 'supports css-variables',
-			stage: 0,
-			features: {
-				'custom-properties': false,
-			},
-		}),
+		nesting(),
+		customSelectors(),
 		mixins(),
 	])
 
