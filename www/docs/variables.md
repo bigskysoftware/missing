@@ -12,82 +12,82 @@ classes; these will be listed in the documentation for that class.
 
 ## Colors
 
---fg
+<dfn>--fg</dfn> {#var-fg}
 :   The text color.
 
---muted-fg
+<dfn>--muted-fg</dfn> {#var-muted-fg}
 :   Text color for disabled or de-emphasized elements. It's important that this
     color is readable against all of the background colors.
 
---faded-fg
+<dfn>--faded-fg</dfn> {#var-faded-fg}
 :   De-emphasized or disabled graphical elements. Will not be used as a text color.
 
---info-fg:
-:   --
+<dfn>--info-fg:</dfn> {#var-info-fg}
+:   Foreground color for the `.info` [colorway][].
 
---ok-fg: #060;
-:   --
+<dfn>--ok-fg</dfn> {#var-ok-fg}
+:   Foreground color for the `.ok` [colorway][].
 
---bad-fg: #a00;
-:   --
+<dfn>--bad-fg</dfn> {#var-bad-fg}
+:   Foreground color for the `.bad` [colorway][].
 
---warn-fg: #550;
-:   --
+<dfn>--warn-fg</dfn> {#var-warn-fg}
+:   Foreground color for the `.warn` [colorway][].
 
---bg
+<dfn>--bg</dfn> {#var-bg}
 :   Page background.
 
---bg-2
+<dfn>--bg-2</dfn> {#var-bg-2}
 :   Background for blocks: cards, admonitions etc.
 
---bg-3
+<dfn>--bg-3</dfn> {#var-bg-3}
 :   Background for interactive elements
 
 
---bg-4
+<dfn>--bg-4</dfn> {#var-bg-4}
 :   Background for pressed interactive elements
 
---info-bg
-:   --
+<dfn>--info-bg</dfn> {#var-info-bg}
+:   Background color for the `.info` [colorway][].
 
---ok-bg
-:   --
+<dfn>--ok-bg</dfn> {#var-ok-bg}
+:   Background color for the `.ok` [colorway][].
 
---bad-bg
-:   --
+<dfn>--bad-bg</dfn> {#var-bad-bg}
+:   Background color for the `.bad` [colorway][].
 
---warn-bg
-:   --
+<dfn>--warn-bg</dfn> {#var-warn-bg}
+:   Background color for the `.warn` [colorway][].
 
---shadow
+<dfn>--shadow</dfn> {#var-shadow}
 :   Box shadows.
 
---accent
+<dfn>--accent</dfn> {#var-accent}
 :   Accent color. It's important that this
     color is readable against all of the background colors.
 
---muted-accent
+<dfn>--muted-accent</dfn> {#var-muted-accent}
 :   Less vivid version of accent color. Will not be used for text.
 
 
 ## Lengths
 
---rhythm
+<dfn>--rhythm</dfn> {#var-rhythm}
 :   Vertical rhythm, line height.
 
---line-length
+<dfn>--line-length</dfn> {#var-line-length}
 :   Maximum line length for prose.
 
 ## Fonts
 
---main-font
+<dfn>--main-font</dfn> {#var-main-font}
 :   The main font family for text.
 
---display-font
+<dfn>--display-font</dfn> {#var-display-font}
 :   A secondary text font. It's a good idea to specify a sans-serif font as it
     will be used for buttons.
 
---mono-font
+<dfn>--mono-font</dfn> {#var-mono-font}
 :   Monospace font for code, preformatted text, computer input and output.
 
     ::: box {.info}
@@ -95,11 +95,18 @@ classes; these will be listed in the documentation for that class.
     specifying `monospace` _twice_:
 
     ~~~ css
-    --mono-font: "Cascadia Code", monospace, monospace
+    {
+      --mono-font: "Cascadia Code", monospace, monospace
+    }
     ~~~
     :::
 
 ## Density
 
---density
-:   --
+<dfn>--density</dfn> {#var-density}
+:   The amount of space between elements (i.e. gaps between paragraphs, padding
+    of boxes), as a multiplier of the line height (`--rhythm`). See
+    [Utilities / Density](/docs/util#density).
+
+
+[colorway]: /docs/colorways

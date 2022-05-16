@@ -2,6 +2,39 @@
 # Components
 
 
+## Box
+
+<table>
+<th scope="row">Class<td><dfn><code>.box</code></dfn>
+</table>
+
+A box with a border.
+
+Boxes use the border and background color of the [colorway][].
+
+<figure>
+
+  ~~~ html
+  <div class="box warn">
+    <strong>Warning</strong>: If you're putting <!-- ... -->
+  </div>
+  ~~~
+
+</figure>
+
+::: box {.warn}
+**Warning**: If you're putting something in a box, make sure to clarify
+why it is in a box in some other way. For example, this box has "Warning" in
+bold, in addition to being yellow. This makes your page clearer and prevents
+accessibility failures.
+:::
+
+The above box, in addition to being an example, is also a genuine warning.
+
+The `<figure>`, `<aside>`, `<details>` elements share their appearance with the
+`.box` class.
+
+
 ## Subtitle
 
 A subtitle for a heading.
@@ -44,7 +77,7 @@ A subtitle for a heading.
 A horizontally laid-out collection of controls.
 
 ::: box {.warn}
-Warning: This is not a substitute for the `toolbar` ARIA role, see
+**Warning**: This is not a substitute for the `toolbar` ARIA role, see
 [WAI: Toolbar][] for that.
 :::
 
@@ -114,3 +147,13 @@ A rounded chip, like what you might use for a tag list or contacts.
   ~~~
 
 </figure>
+
+::: box {.info}
+When you have multiple `<nav>` elements on a page, it's a good idea to put
+`aria-label` attributes on them. This is because many assistive programs have
+a feature to jump to the navigation part of a page, which does not work well if
+the user can't tell which nav is which.
+:::
+
+
+[colorway]: /docs/colorways
