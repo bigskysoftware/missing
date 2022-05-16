@@ -4,6 +4,10 @@
 
 ## Box
 
+<table>
+<th scope="row">Class<td><dfn><code>.box</code></dfn>
+</table>
+
 A box with a border.
 
 Boxes use the border and background color of the [colorway][].

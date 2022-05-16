@@ -12,82 +12,82 @@ classes; these will be listed in the documentation for that class.
 
 ## Colors
 
---fg {#var-fg}
+<dfn>--fg</dfn> {#var-fg}
 :   The text color.
 
---muted-fg {#var-muted-fg}
+<dfn>--muted-fg</dfn> {#var-muted-fg}
 :   Text color for disabled or de-emphasized elements. It's important that this
     color is readable against all of the background colors.
 
---faded-fg {#var-faded-fg}
+<dfn>--faded-fg</dfn> {#var-faded-fg}
 :   De-emphasized or disabled graphical elements. Will not be used as a text color.
 
---info-fg: {#var-info-fg}
+<dfn>--info-fg:</dfn> {#var-info-fg}
 :   —
 
---ok-fg {#var-ok-fg}
+<dfn>--ok-fg</dfn> {#var-ok-fg}
 :   —
 
---bad-fg {#var-bad-fg}
+<dfn>--bad-fg</dfn> {#var-bad-fg}
 :   —
 
---warn-fg {#var-warn-fg}
+<dfn>--warn-fg</dfn> {#var-warn-fg}
 :   —
 
---bg {#var-bg}
+<dfn>--bg</dfn> {#var-bg}
 :   Page background.
 
---bg-2 {#var-bg-2}
+<dfn>--bg-2</dfn> {#var-bg-2}
 :   Background for blocks: cards, admonitions etc.
 
---bg-3 {#var-bg-3}
+<dfn>--bg-3</dfn> {#var-bg-3}
 :   Background for interactive elements
 
 
---bg-4 {#var-bg-4}
+<dfn>--bg-4</dfn> {#var-bg-4}
 :   Background for pressed interactive elements
 
---info-bg {#var-info-bg}
+<dfn>--info-bg</dfn> {#var-info-bg}
 :   —
 
---ok-bg {#var-ok-bg}
+<dfn>--ok-bg</dfn> {#var-ok-bg}
 :   —
 
---bad-bg {#var-bad-bg}
+<dfn>--bad-bg</dfn> {#var-bad-bg}
 :   —
 
---warn-bg {#var-warn-bg}
+<dfn>--warn-bg</dfn> {#var-warn-bg}
 :   —
 
---shadow {#var-shadow}
+<dfn>--shadow</dfn> {#var-shadow}
 :   Box shadows.
 
---accent {#var-accent}
+<dfn>--accent</dfn> {#var-accent}
 :   Accent color. It's important that this
     color is readable against all of the background colors.
 
---muted-accent {#var-muted-accent}
+<dfn>--muted-accent</dfn> {#var-muted-accent}
 :   Less vivid version of accent color. Will not be used for text.
 
 
 ## Lengths
 
---rhythm {#var-rhythm}
+<dfn>--rhythm</dfn> {#var-rhythm}
 :   Vertical rhythm, line height.
 
---line-length {#var-line-length}
+<dfn>--line-length</dfn> {#var-line-length}
 :   Maximum line length for prose.
 
 ## Fonts
 
---main-font {#var-main-font}
+<dfn>--main-font</dfn> {#var-main-font}
 :   The main font family for text.
 
---display-font {#var-display-font}
+<dfn>--display-font</dfn> {#var-display-font}
 :   A secondary text font. It's a good idea to specify a sans-serif font as it
     will be used for buttons.
 
---mono-font {#var-mono-font}
+<dfn>--mono-font</dfn> {#var-mono-font}
 :   Monospace font for code, preformatted text, computer input and output.
 
     ::: box {.info}
@@ -103,5 +103,5 @@ classes; these will be listed in the documentation for that class.
 
 ## Density
 
---density {#var-density}
+<dfn>--density</dfn> {#var-density}
 :   —

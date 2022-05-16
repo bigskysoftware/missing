@@ -6,7 +6,7 @@ missing.css has a collection of classes and custom elements.
 
 ## Visually hidden content
 
-`.v-h`, `<v-h>`
+<dfn>`.v-h`</dfn>, <dfn>`<v-h>`</dfn>
 :   Visually hide a content without hiding it from assistive software.
 
 ## Container
@@ -29,9 +29,9 @@ We provide three utility classes that set `--density`:
 
 | Class                  | Density                                    |
 |------------------------|--------------------------------------------|
-| `.crowded` | `--density` = 0.5                 |
-| `.dense`   | `--density` = 1 (same as default) |
-| `.airy`    | `--density` = 3                   |
+| <dfn>`.crowded`</dfn>  | `--density` = 0.5                          |
+| <dfn>`.dense`</dfn>    | `--density` = 1 (same as default)          |
+| <dfn>`.airy`</dfn>     | `--density` = 3                            |
 
 You can set `--density` yourself in inline styles or your own CSS:
 
@@ -63,10 +63,10 @@ You can set `--density` yourself in inline styles or your own CSS:
 
 ## Typography
 
-`.allcaps`
+<dfn>`.allcaps`</dfn>
 :   Sets text in all caps and adds appropriate letter spacing.
 
-`.monospace`
+<dfn>`.monospace`</dfn>
 :   Renders the text in the monospace font (`--font-mono`).
 
 
