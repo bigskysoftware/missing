@@ -7,6 +7,8 @@
     gap: var(--gap);
 
     & > * {
+        flex-grow: 1;
+        flex-shrink: 0;
         flex-basis: var(--col-width);
         margin: 0;
         min-width: 1px;
@@ -19,6 +21,8 @@
 .colwidth-m { --col-width: 24ch }
 .colwidth-s { --col-width: 15ch }
 
+.col-0  { flex-grow: 0  }
+.col-1  { flex-grow: 1  }
 .col-2  { flex-grow: 2  }
 .col-3  { flex-grow: 3  }
 .col-4  { flex-grow: 4  }
@@ -35,6 +39,11 @@
 
 .fullbleed {
     position: relative;
+    width: 100vw;
     left: 50%;
     transform: translateX(-50vw);  
+}
+
+.pad {
+    padding-inline: var(--gap);
 }

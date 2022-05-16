@@ -10,20 +10,31 @@ header[is="nav-bar"] {
 	background: var(--bg-2);
 	border-block-end: 1px solid var(--accent);
 
+	overflow-x: auto;
+	scrollbar-width: thin;
+
 	/* Inner layout */
 	display: flex;
-	flex-flow: row wrap;
-	justify-content: space-around;
+	flex-flow: row;
 	gap: calc(2 * var(--rhythm));
 
+	& :first-child { margin-inline-start: auto; }
+	&  :last-child { margin-inline-end:   auto; }
+	& * { flex-shrink: 0 }
+
 	& nav ul[role="list"] {
+		padding-inline-start: 0;
 		display: flex;
-		flex-flow: row wrap;
+		flex-flow: row;
 		gap: var(--rhythm);
+
+		& * { flex-shrink: 0 }
 	}
 
 	& a {
 		font-weight: bold;
 		text-decoration: none;
 	}
+
+	
 }
