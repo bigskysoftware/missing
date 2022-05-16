@@ -16,9 +16,10 @@ header[is="nav-bar"] {
 	/* Inner layout */
 	display: flex;
 	flex-flow: row;
-	justify-content: space-around;
 	gap: calc(2 * var(--rhythm));
 
+	& :first-child { margin-inline-start: auto; }
+	&  :last-child { margin-inline-end:   auto; }
 	& * { flex-shrink: 0 }
 
 	& nav ul[role="list"] {
@@ -33,4 +34,6 @@ header[is="nav-bar"] {
 		font-weight: bold;
 		text-decoration: none;
 	}
+
+	
 }
