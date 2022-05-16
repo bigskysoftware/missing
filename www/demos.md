@@ -8,8 +8,8 @@ templateEngine: eta,md
 # Demos
 
 <ul class='list-of-links'>
-<% for (const demo in search.pages("demo")) { _%>
-<li><p><a href="<%= demo.url %>"><%= demo.name %></a>
+<% for (const demo of search.pages("demo")) { _%>
+<li><p><a href="<%= demo.data.url %>"><%= demo.data.name %></a>
 <% } %>
 </ul>
 
