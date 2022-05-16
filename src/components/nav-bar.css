@@ -10,6 +10,9 @@ header[is="nav-bar"] {
 	background: var(--bg-2);
 	border-block-end: 1px solid var(--accent);
 
+	overflow-x: auto;
+	scrollbar-width: thin;
+
 	/* Inner layout */
 	display: flex;
 	flex-flow: row wrap;
