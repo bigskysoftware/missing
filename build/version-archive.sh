@@ -3,7 +3,7 @@ set -e
 
 root_dist=$(realpath dist)
 
-command -v git grep npm
+ command -v git grep npm
 
 rm -rf dist/src.tmp.d
 git clone . dist/src.tmp.d

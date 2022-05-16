@@ -1,2 +1,3 @@
-https://the.missing.style/                      https://missing.style/missing.css                 200!
-https://the.missing.style/*                     https://missing.style/archive/:splat/missing.css  200!
+https://the.missing.style/                    https://missing.style/missing.css                   200!
+https://the.missing.style/:version            https://missing.style/archive/:version/missing.css  200!
+https://the.missing.style/:version/*          https://missing.style/archive/:version/:splat       200!
