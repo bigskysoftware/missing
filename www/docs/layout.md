@@ -31,6 +31,11 @@ If you want an element to take up multiple columns, use the `col-*` classes:
  * <dfn>`.col-11`</dfn>
  * <dfn>`.col-12`</dfn>
 
+There's also <dfn>`.col-0`</dfn>, which makes an element take on its intrinsic
+size without regard for the column grid, and <dfn>`.col-1`</dfn>, just for
+completeness' sake.
+
+
 ## Full Bleed
 
 Add the <dfn>`.full-bleed`</dfn> class to make an element go outside its
