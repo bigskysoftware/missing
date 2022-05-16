@@ -1,5 +1,6 @@
 ---
 layout: layout.eta
+templateEngine: eta,md
 ---
 
 <main>
@@ -7,8 +8,8 @@ layout: layout.eta
 # Demos
 
 <ul class='list-of-links'>
-<% for (const demo in collections.demos _%>
-<li><p><a href="<%= demo.url %>"><%= demo.data.name %></a>
+<% for (const demo in search.pages("demo")) { _%>
+<li><p><a href="<%= demo.url %>"><%= demo.name %></a>
 <% } %>
 </ul>
 

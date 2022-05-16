@@ -37,6 +37,6 @@ export default lume(
   .use(highlighting())
   .use(basePath())
   .use(resolveUrls())
-  .use(eta())
+  .use(eta({ extensions: [".eta", ".html"] }))
   .use(myFilters())
   .use(getDatesFromGit())
