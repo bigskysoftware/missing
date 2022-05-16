@@ -10,10 +10,10 @@ layout: layout.eta
 
 <nav>
 
-[Docs](/docs/) |
-[Demo](/demos/) |
-[Playground](/playground/) |
-[GitHub](https://github.com/bigskysoftware/missing) |
+[Docs](/docs/) ·
+[Demo](/demos/) ·
+[Playground](/playground/) ·
+[GitHub](https://github.com/bigskysoftware/missing) ·
 [Discord](https://htmx.org/discord)
 
 </nav>
