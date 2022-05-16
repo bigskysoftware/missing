@@ -32,7 +32,7 @@
     }
     
     &[aria-selected="true"] {
-        background: var(--bg);
+        background: var(--bg-2);
         border-block-end: 1px solid var(--bg);
     }
 }
