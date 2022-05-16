@@ -23,6 +23,7 @@ header[is="nav-bar"] {
 	& * { flex-shrink: 0 }
 
 	& nav ul[role="list"] {
+		padding-inline-start: 0;
 		display: flex;
 		flex-flow: row;
 		gap: var(--rhythm);
