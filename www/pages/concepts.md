@@ -1,6 +1,6 @@
 ---
 permalink: concepts/
-layout: prose.html
+layout: prose.eta
 ---
 
 # Concepts

@@ -1,5 +1,5 @@
 ---
-layout: layout.html
+layout: layout.eta
 ---
 
 <main>
@@ -7,9 +7,9 @@ layout: layout.html
 # Demos
 
 <ul class='list-of-links'>
-{% for demo in collections.demos -%}
-<li><p><a href="{{demo.url}}">{{demo.data.name}}</a>
-{% endfor %}
+<% for (const demo in collections.demos _%>
+<li><p><a href="<%= demo.url %>"><%= demo.data.name %></a>
+<% } %>
 </ul>
 
 </main>

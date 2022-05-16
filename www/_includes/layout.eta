@@ -2,7 +2,7 @@
 ---
 
 <!doctype html>
-<html lang="{{ lang | d(en) }}">
+<html lang="<%= it.lang ?? "en" %>">
 <head>
 	<meta charset="utf=8">
 	<meta name="viewport" content="width=device-width">
@@ -11,7 +11,7 @@
 	<script src="https://unpkg.com/hyperscript.org"></script>
 </head>
 <body>
-	{{ content | safe }}
+	<%~ content %>
 
 	<footer>
 		<p><a href="/">Missing.css</a>, from

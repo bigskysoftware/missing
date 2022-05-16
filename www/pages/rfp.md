@@ -1,6 +1,6 @@
 ---
 permalink: rfp/
-layout: prose.html
+layout: prose.eta
 ---
 
 # missing CSS Library RFP
