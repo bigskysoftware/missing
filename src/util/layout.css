@@ -38,3 +38,7 @@
     left: 50%;
     transform: translateX(-50vw);  
 }
+
+.pad {
+    padding-inline: var(--gap);
+}

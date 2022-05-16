@@ -36,3 +36,7 @@ If you want an element to take up multiple columns, use the `col-*` classes:
 Add the <dfn>`.full-bleed`</dfn> class to make an element go outside its
 container and span the whole width of the viewport.
 
+## Pad
+
+Add some padding with <dfn>`.pad`</dfn>.
+
