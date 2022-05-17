@@ -3,6 +3,8 @@
 
 Mechanisms of creating layouts.
 
+[[toc]]
+
 ## Basic Grid
 
 Applying the <dfn>`.basicgrid`</dfn> class to an element creates a grid with a

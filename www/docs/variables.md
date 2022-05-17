@@ -10,6 +10,8 @@ This is a reference of all the variables you can set on the root `<html>`
 element. There are a few more that are used with specific components or utility
 classes; these will be listed in the documentation for that class.
 
+[[toc]]
+
 ## Colors
 
 <dfn>--fg</dfn> {#var-fg}

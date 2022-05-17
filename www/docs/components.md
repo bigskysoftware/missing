@@ -1,6 +1,7 @@
 
 # Components
 
+[[toc]]
 
 ## Box
 

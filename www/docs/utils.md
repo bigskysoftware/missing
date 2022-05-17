@@ -4,6 +4,8 @@
 For the minor alterations to the default look that make all the difference,
 missing.css has a collection of classes and custom elements.
 
+[[toc]]
+
 ## Visually hidden content
 
 <dfn>`.v-h`</dfn>, <dfn>`<v-h>`</dfn>

@@ -14,6 +14,7 @@ import myFilters                  from "./_build/filters.ts"
 import mdAttrs     from "https://esm.sh/markdown-it-attrs"
 import mdDeflist   from "https://esm.sh/markdown-it-deflist"
 import mdContainer from "https://esm.sh/@gerhobbelt/markdown-it-container"
+import mdToc       from "https://esm.sh/markdown-it-toc-done-right"
 
 import postcss from "../build/postcss.ts"
 
@@ -27,6 +28,7 @@ export default lume(
         plugins: [
           mdAttrs,
           mdDeflist,
+          [mdToc, { level: [2], listType: "ul", containerClass: "box crowded" }],
           [mdContainer, "box"],
         ]
       }
