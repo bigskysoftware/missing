@@ -1,4 +1,20 @@
 
+2022-05-18
+
+I finally got the Deno PostCSS build to work. Turns out that the CSS optimizer
+CSSO was crashing because of invalid syntax.
+
+I spotted the syntax error by pasting the built unminified CSS into an
+[online validator]. I'd rather not have it crash on every syntax error though,
+at least not without a helpful error message.
+
+Integrate a validator into the build. A _very_ cursory search showed this:
+<https://github.com/morishitter/postcss-validator>
+
+[online validator]: https://jigsaw.w3.org/css-validator/
+
+-- dz4k
+
 2022-05-17
 
 Idea for branching structure:
