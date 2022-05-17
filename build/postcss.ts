@@ -4,17 +4,20 @@ import { join, dirname, fromFileUrl } from 'https://deno.land/std@0.139.0/path/m
 import { gzip } from "https://deno.land/x/compress@v0.4.5/mod.ts"
 import { compress as brotli } from 'https://deno.land/x/brotli@v0.1.4/mod.ts'
 
-import postcss from "https://esm.sh/postcss@8.4.13"
+import postcss from "https://esm.sh/postcss"
 
 // Plugins
-import nesting from 'https://esm.sh/postcss-nesting?deps=postcss@8.4.13'
-import customSelectors from 'https://esm.sh/postcss-custom-selectors?deps=postcss@8.4.13'
-import atImport from 'https://esm.sh/postcss-import?deps=postcss@8.4.13'
-import importGlob from 'https://esm.sh/postcss-import-ext-glob?deps=postcss@8.4.13'
-import mixins from 'https://esm.sh/postcss-mixins?deps=postcss@8.4.13'
-import cssnano from 'https://esm.sh/cssnano?deps=postcss@8.4.13'
+import nesting from 'https://esm.sh/postcss-nesting'
+import customSelectors from 'https://esm.sh/postcss-custom-selectors'
+import atImport from 'https://esm.sh/postcss-import'
+import importGlob from 'https://esm.sh/postcss-import-ext-glob'
+import mixins from 'https://esm.sh/postcss-mixins'
+import autoprefixer from 'https://esm.sh/autoprefixer'
+
+import csso from 'https://esm.sh/csso@3.5.1'
 
 // Paths
+console.log(import.meta.url)
 const __dirname = dirname(fromFileUrl(import.meta.url))
 
 const entrypoint = join(__dirname, '../src/main.css')
@@ -28,14 +31,13 @@ const enc = new TextEncoder
 
 const build = async () => {
 	const postcssMain = postcss([
-		nesting(),
-		customSelectors(),
 		importGlob(),
 		atImport(),
+		nesting(),
+		customSelectors(),
 		mixins(),
+		autoprefixer({ overrideBrowserslist: ">1% and not ie 11" }),
 	])
-
-	// const postcssMinifier = postcss([cssnano({ preset: 'default' })])
 
 	const css = dec.decode(await Deno.readFile(entrypoint))
 
@@ -46,15 +48,14 @@ const build = async () => {
 	const outputCss = enc.encode(result.css)
 	await w(outputCss, devTarget)
 
-	// const minifyResult =
-	// 	await postcssMinifier.process(result, { from: entrypoint, to: prodTarget })
-	// const minifiedCSS = enc.encode(minifyResult.css)
-	// await w(minifiedCSS, prodTarget)
+	const minifyResult = csso.minify(result.css)
+	const minifiedCSS = enc.encode(minifyResult.css)
+	await w(minifiedCSS, prodTarget)
 
-	// await Promise.all([
-	// 	w(brotli(minifiedCSS), prodTarget + ".br"),
-	// 	w(gzip  (minifiedCSS), prodTarget + ".gz"),
-	// ])
+	await Promise.all([
+		w(brotli(minifiedCSS), prodTarget + ".br"),
+		w(gzip  (minifiedCSS), prodTarget + ".gz"),
+	])
 }
 
 
