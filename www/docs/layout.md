@@ -45,3 +45,24 @@ container and span the whole width of the viewport.
 
 Add some padding with <dfn>`.pad`</dfn>.
 
+## Fixed Positioning
+
+<dfn>`fixed`</dfn>
+:   Set `position: fixed`.
+
+<dfn>`sticky`</dfn>
+:   Set `position: sticky`.
+
+<dfn>`top`</dfn>
+:   Set `top: 0`. Use together with `.fixed` or `.sticky`.
+
+<dfn>`right`</dfn>
+:   Set `right: 0`. See `.top`.
+
+<dfn>`bottom`</dfn>
+:   Set `bottom: 0`. See `.top`.
+
+<dfn>`left`</dfn>
+:   Set `left: 0`. See `.top`.
+
+

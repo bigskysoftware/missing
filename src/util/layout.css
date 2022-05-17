@@ -44,6 +44,18 @@
     transform: translateX(-50vw);  
 }
 
+/**/
+
 .pad {
     padding-inline: var(--gap);
 }
+
+/**/
+
+.fixed  { position: fixed  }
+.sticky { position: sticky }
+
+.top    { top:    0 }
+.right  { right:  0 }
+.bottom { bottom: 0 }
+.left   { left:   0 }
