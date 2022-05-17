@@ -12,7 +12,7 @@ details {
 summary {
 	margin: calc(0px - var(--gap));
 	margin-bottom: 0;
-	padding-inline: inherit;
+	padding-inline: var(--gap);
 
 	font-weight: bold;
 

@@ -5,10 +5,11 @@
     justify-content: stretch;
     align-items: start;
     gap: var(--gap);
+    --col-width: 15ch;
 
     & > * {
         flex-grow: 1;
-        flex-shrink: 0;
+        flex-shrink: 1;
         flex-basis: var(--col-width);
         margin: 0;
         min-width: 1px;
@@ -21,19 +22,29 @@
 .colwidth-m { --col-width: 24ch }
 .colwidth-s { --col-width: 15ch }
 
-.col-0  { flex-grow: 0  }
-.col-1  { flex-grow: 1  }
-.col-2  { flex-grow: 2  }
-.col-3  { flex-grow: 3  }
-.col-4  { flex-grow: 4  }
-.col-5  { flex-grow: 5  }
-.col-6  { flex-grow: 6  }
-.col-7  { flex-grow: 7  }
-.col-8  { flex-grow: 8  }
-.col-9  { flex-grow: 9  }
-.col-10 { flex-grow: 10 }
-.col-11 { flex-grow: 11 }
-.col-12 { flex-grow: 12 }
+.col-0  { flex-grow: 0 ; flex-basis: calc(0  * var(--col-width)) }
+.col-1  { flex-grow: 1 ; flex-basis: calc(1  * var(--col-width)) }
+.col-2  { flex-grow: 2 ; flex-basis: calc(2  * var(--col-width)) }
+.col-3  { flex-grow: 3 ; flex-basis: calc(3  * var(--col-width)) }
+.col-4  { flex-grow: 4 ; flex-basis: calc(4  * var(--col-width)) }
+.col-5  { flex-grow: 5 ; flex-basis: calc(5  * var(--col-width)) }
+.col-6  { flex-grow: 6 ; flex-basis: calc(6  * var(--col-width)) }
+.col-7  { flex-grow: 7 ; flex-basis: calc(7  * var(--col-width)) }
+.col-8  { flex-grow: 8 ; flex-basis: calc(8  * var(--col-width)) }
+.col-9  { flex-grow: 9 ; flex-basis: calc(9  * var(--col-width)) }
+.col-10 { flex-grow: 10; flex-basis: calc(10 * var(--col-width)) }
+.col-11 { flex-grow: 11; flex-basis: calc(11 * var(--col-width)) }
+.col-12 { flex-grow: 12; flex-basis: calc(12 * var(--col-width)) }
+
+/**/
+
+.textcolumns {
+    --col-width: 30ch;
+    column-width: var(--col-width);
+    column-gap: var(--gap);
+
+    & :first-child { margin-block-start: 0 !important }
+}
 
 /**/
 
@@ -44,6 +55,26 @@
     transform: translateX(-50vw);  
 }
 
+/**/
+
 .pad {
     padding-inline: var(--gap);
 }
+
+/**/
+
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/**/
+
+.fixed  { position: fixed  }
+.sticky { position: sticky }
+
+.top    { top:    0 }
+.right  { right:  0 }
+.bottom { bottom: 0 }
+.left   { left:   0 }
