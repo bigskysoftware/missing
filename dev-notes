@@ -1,8 +1,31 @@
-- how to write docs?
 
 
-== history ==
+2022-05-17
+
+> - how to write docs?
+I'm just writing them in markdown and putting `<dfn>` tags everywhere that I
+can hopefully index somehow. I want any instance of something like
+`` `.class` `` to link to where the class is defined.
+
+I did something kind of like this with [denizaksimsek.com] with Lume, where I
+preprocessed markdown to detect wiki-style links, made an index of what page
+links where, and used that index in my template to generate backlinks.
+
+I was wondering how to generate docs from code comments. I've been writing a
+few small features docs-first lately and it's been great. I wonder if a
+literate programming approach would be a good way to go.
+
+CSS seems like a particularly good candidate for literate programming since
+code doesn't have to be in sequence. However, I didn't find any tools for
+literate programming in CSS and I don't feel like writing and maintaining one.
+
+-- dz4k
+
+
+2022-04-31
 
 > - remove all :is, see what happens
 
-2022-04-31 removed all instances of :is and :where. nothing happened
+removed all instances of :is and :where. nothing happened
+
+-- dz4k
