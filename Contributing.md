@@ -70,12 +70,17 @@ file. The structure is:
 Leave two empty lines between notes.
 
 
+## Branching
+
+TODO. We haven't figured out a branching structure yet.
+
+
 ## Project Structure
 
   * `src/` -- the CSS source code. This is processed with PostCSS (see build/).
       * `main.css` -- definitions used project-wide.
       * `core/`
-        * `sanitize.css` -- a CSS reset
+        * `sanitize.css` -- a CSS normalize
       * `elements/` -- HTML elements, organized by spec
           * `sections.css` -- 4.1 The document element, 4.3 Sections
           * `grouping.css` -- 4.4 Grouping content
@@ -90,12 +95,8 @@ Leave two empty lines between notes.
 
         Each component should have a documentation comment, explaining its
         purpose, appearance and usage.
-
-      * `shared/` -- base declarations that we use with [`@extend`][pcss-extend]
-
-        Avoid `@extend`-ing any style declarations outside this directory, and
-        make sure that all rules inside this directory are `%placeholder-rules`.
-        This way, we can always easily find the source of an @extend.
+      
+      * `util` -- utility classes, incl. layout and colorways.
 
   * `www/` -- the project website, built with eleventy
       * `demos/` demo pages. These should have a `name` specified in the
@@ -103,6 +104,9 @@ Leave two empty lines between notes.
 
   * `build/` -- buildscripts
       * `postcss.js` -- builds the CSS.
+      * `version-archive.sh` -- builds all past releases into the dist folder.
+        The script _should_ run on any POSIX environment with npm and git
+        installed, though it hasn't been tested much.
 
   * `dist/` -- build results. This is also where the built website is.
       * `missing.css` -- unminified dev build
