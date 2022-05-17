@@ -1,7 +1,11 @@
 {
   "importMap": "import_map.json",
   "tasks": {
-    "build": "deno run -A https://deno.land/x/lume@v1.7.4/ci.ts --config=www/_config.ts",
-    "serve": "deno task build -- -s"
+    "prod": "deno task archive && deno task www",
+    "dev": "deno task www -- -s",
+
+    "css": "deno run -A --unstable build/postcss.ts",
+    "archive": "./build/version-archive.sh",
+    "www": "deno run -A https://deno.land/x/lume@v1.7.4/ci.ts --config=www/_config.ts",
   }
 }
