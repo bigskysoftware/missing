@@ -13,9 +13,9 @@ manually set the <dfn>`--col-width`</dfn> variable.
 
 | Class                   | Column width                              |
 |-------------------------|-------------------------------------------|
-| <dfn>`colwidth-s`</dfn> | `--col-width` = 15ch (same as default) |
-| <dfn>`colwidth-m`</dfn> | `--col-width` = 24ch                   |
-| <dfn>`colwidth-l`</dfn> | `--col-width` = 35ch                   |
+| <dfn>`colwidth-s`</dfn> | `--col-width` = 15ch (same as default)    |
+| <dfn>`colwidth-m`</dfn> | `--col-width` = 24ch                      |
+| <dfn>`colwidth-l`</dfn> | `--col-width` = 35ch                      |
 
 If you want an element to take up multiple columns, use the `col-*` classes:
 
@@ -34,6 +34,15 @@ If you want an element to take up multiple columns, use the `col-*` classes:
 There's also <dfn>`.col-0`</dfn>, which makes an element take on its intrinsic
 size without regard for the column grid, and <dfn>`.col-1`</dfn>, just for
 completeness' sake.
+
+
+## Text Columns
+
+The <dfn>`.textcolumns`</dfn> class creates multi-column text using the CSS
+[`column-width`][] property. The column width can be set with the `.colwidth-*`
+classes.
+
+[`column-width`]: https://developer.mozilla.org/en-US/docs/Web/CSS/column-width
 
 
 ## Full Bleed
