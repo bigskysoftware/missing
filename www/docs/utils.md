@@ -27,11 +27,12 @@ equal to the height of 1 line.
 
 We provide three utility classes that set `--density`:
 
-| Class                  | Density                                    |
-|------------------------|--------------------------------------------|
-| <dfn>`.crowded`</dfn>  | `--density` = 0.5                          |
-| <dfn>`.dense`</dfn>    | `--density` = 1 (same as default)          |
-| <dfn>`.airy`</dfn>     | `--density` = 3                            |
+| Class                     | Density                                    |
+|---------------------------|--------------------------------------------|
+| <dfn>`.crowded`</dfn>     | `--density` = 0.5                          |
+| <dfn>`.dense`</dfn>       | `--density` = 1 (same as default)          |
+| <dfn>`.airy`</dfn>        | `--density` = 3                            |
+| <dfn>`.autodensity`</dfn> | sets density based on viewport width       |
 
 You can set `--density` yourself in inline styles or your own CSS:
 
