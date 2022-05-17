@@ -33,6 +33,7 @@ export default lume(
     }
   )
   .addEventListener("afterBuild", postcss)
+  .copy("_redirects")
   .use(date())
   .use(highlighting())
   .use(basePath())
