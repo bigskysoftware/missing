@@ -1,5 +1,5 @@
 
-## Welcome to missing.css!
+# Welcome to missing.css!
 
 Install it on your website if you haven't already:
 

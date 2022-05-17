@@ -1,5 +1,5 @@
 
-## Colorways
+# Colorways
 
 A colorway is a group of shades of a color, with specific roles. For instance,
 here is the `ok` colorway in the missing.css source code:
