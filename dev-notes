@@ -1,4 +1,24 @@
 
+2022-05-17
+
+Idea for branching structure:
+
+No `master` or `main` branch. Different projects use the default branch for
+different purposes, which can be confusing. I don't want people to need to read
+stuff just to send a PR.
+
+The default branch is called `dev`. This means the default branch is the right
+place to open PRs.
+
+There is a `prod` branch, which is what's deployed to Netlify. To release a new
+version, make a git tag and move the prod branch to it. In addition,
+documentation fixes can be made directly against the prod branch.
+
+Feature branches probably won't be used much, and most development will be
+directly on the dev branch. This is because of the difficulty of merging CSS.
+
+-- dz4k
+
 
 2022-05-17
 
