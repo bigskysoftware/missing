@@ -54,6 +54,22 @@ Node.js and npm are needed.
       ~~~
 
 
+## Dev Notes
+
+You can note your thoughts and leave notes for maintainers in the `dev-notes`
+file. The structure is:
+
+  ~~~
+  YYYY-MM-DD
+
+  Your notes here
+
+  -- your-github-username
+  ~~~
+
+Leave two empty lines between notes.
+
+
 ## Project Structure
 
   * `src/` -- the CSS source code. This is processed with PostCSS (see build/).
