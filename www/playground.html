@@ -3,35 +3,37 @@ layout: layout.eta
 permalink: /playground/
 ---
 
-<main>
+<main><div class="fullbleed pad">
 
     <h1>missing.css Playground</h1>
 
-    <textarea id="code" class="monospace" cols="80" rows="10">
+    <div class="basicgrid">
+        <textarea id="code" class="monospace" cols="80" rows="20">
 &lt;main>
     &lt;h1>Hello, World!&lt;/h1>
-&lt;/main>
-    </textarea>
 
-    <iframe id="result"></iframe>
+    &lt;!-- Enter your own code... -->
+&lt;/main>
+        </textarea>
+    
+        <iframe id="result" srcdoc="<!doctype html> :)"></iframe>
+    </div>
 
     <script type="text/hyperscript">
         on load or input from #code
-
-            set #result's srcdoc to `
-                <!DOCTYPE html>
-                <html lang="en">
-                <head>
-                    <meta charset="UTF-8">
-                    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                    <meta name="viewport" content="width=device-width">
-                    <link rel="stylesheet" href="/missing.css">
-                </head>
-                <body>
-                    ${ #code's value}
-                </body>
-                </html>
-            `
+            get "<!DOCTYPE html>"
+            append "<html lang=en>"
+            append "<head>"
+            append "<meta charset=UTF-8>"
+            append "<meta name=viewport content=width=device-width>"
+            append "<link rel=stylesheet href=/missing.css>"
+            append "</head>"
+            append "<body>"
+            append #code's value
+            append "</body>"
+            append "</html>"
+            set #result's srcdoc to the result
+        end
     </script>
 
-</main>
+</div></main>
