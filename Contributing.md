@@ -30,28 +30,26 @@ how buying services works).
 
 ## Development Environment
 
-Node.js and npm are needed.
-
-  * Get set up:
-      ~~~ sh
-      npm install
-      ~~~
+[Deno] is needed to build the project.
 
   * Build just the CSS:
       ~~~ sh
-      npm run build
+      deno task css
       ~~~
 
-  * Build the website, which also builds the CSS:
+  * Build the website, which also builds the CSS and creates the version
+    archive:
       ~~~ sh
-      npm run www
+      deno task prod
       ~~~
 
   * Start a development server, which will watch the code and automatically
     refresh in the browser:
       ~~~ sh
-      npm run dev
+      deno task dev
       ~~~
+
+[Deno]: https://deno.land/
 
 
 ## Dev Notes
@@ -73,6 +71,17 @@ Leave two empty lines between notes.
 ## Branching
 
 TODO. We haven't figured out a branching structure yet.
+
+
+## Publishing a release
+
+To publish a new release:
+
+  * Create a git tag matching the regex `^v\d+\.\d+\.\d+` (i.e.: `v1.2.2`,
+    `v1.3.3-special-build-1`, NOT `1.1.2`, `v3`, `v1.2-alpha`). It's important
+    that the git tag has the correct format since we use the regex above.
+  
+  * :TODO
 
 
 ## Project Structure
@@ -103,7 +112,7 @@ TODO. We haven't figured out a branching structure yet.
         frontmatter. They will be listed in the demo page (`../demos.md`).
 
   * `build/` -- buildscripts
-      * `postcss.js` -- builds the CSS.
+      * `postcss.ts` -- builds the CSS.
       * `version-archive.sh` -- builds all past releases into the dist folder.
         The script _should_ run on any POSIX environment with npm and git
         installed, though it hasn't been tested much.
@@ -113,5 +122,6 @@ TODO. We haven't figured out a branching structure yet.
       * `missing.min.css` -- minified
       * `missing.min.css.br` -- minified + gzip compressed
       * `missing.min.css.gz` -- minified + brotli compressed
+      * `archive` -- past releases of the above
 
 [pcss-extend]: https://github.com/csstools/postcss-extend-rule
