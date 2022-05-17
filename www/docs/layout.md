@@ -9,13 +9,13 @@ Applying the <dfn>`.basicgrid`</dfn> class to an element creates a grid with a
 minimum column width of 15ch.
 
 You can use the following classes to adjust the minimum width for columns or
-manually set the <dfn>`--column-width`</dfn> variable.
+manually set the <dfn>`--col-width`</dfn> variable.
 
 | Class                   | Column width                              |
 |-------------------------|-------------------------------------------|
-| <dfn>`colwidth-s`</dfn> | `--column-width` = 15ch (same as default) |
-| <dfn>`colwidth-m`</dfn> | `--column-width` = 24ch                   |
-| <dfn>`colwidth-l`</dfn> | `--column-width` = 35ch                   |
+| <dfn>`colwidth-s`</dfn> | `--col-width` = 15ch (same as default) |
+| <dfn>`colwidth-m`</dfn> | `--col-width` = 24ch                   |
+| <dfn>`colwidth-l`</dfn> | `--col-width` = 35ch                   |
 
 If you want an element to take up multiple columns, use the `col-*` classes:
 
