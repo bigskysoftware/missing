@@ -31,7 +31,7 @@ nav {
 aside {
 	@mixin box;
 
-	:--heading {
+	& :--heading {
 		font-size: 1em;
 		text-transform: none;
 		letter-spacing: none;
@@ -92,5 +92,5 @@ body > footer {
 }
 
 address {
-	density: 0;
+	--density: 0;
 }

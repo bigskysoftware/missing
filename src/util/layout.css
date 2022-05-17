@@ -42,6 +42,7 @@
     --col-width: 30ch;
     column-width: var(--col-width);
     column-gap: var(--gap);
+    margin-block: var(--gap);
 
     & :first-child { margin-block-start: 0 !important }
 }

@@ -27,7 +27,7 @@ pre {
 	margin: var(--gap) 0;
 
 	overflow-x: auto;
-	scrollbar-inline-size: thin;
+	scrollbar-width: thin;
 	scrollbar-color: var(--accent) transparent;
 
 	background: var(--bg);
