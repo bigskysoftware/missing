@@ -19,10 +19,6 @@
 
     border-start-start-radius: .4em;
     border-start-end-radius: .4em;
-
-    &:focus {
-        outline-bottom: none;
-    }
     
     &:active, &[aria-selected="true"] {
         transform: none;

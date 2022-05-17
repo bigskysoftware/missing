@@ -98,12 +98,12 @@ kbd kbd /*
 }
 
 sub {
-	vertical-align: end;
+	vertical-align: bottom;
 	line-height: 1;
 }
 
 sup {
-	vertical-align: start;
+	vertical-align: top;
 	line-height: 1;
 }
 

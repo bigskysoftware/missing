@@ -104,7 +104,7 @@ label[for] {
 }
 
 select[multiple] {
-	vertical-align: start;
+	vertical-align: top;
 }
 
 optgroup::before {
