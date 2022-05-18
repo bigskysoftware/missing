@@ -233,6 +233,11 @@ dialog:not([open]) {
     z-index: 32;
 }
 
+:target {
+    outline: .2em solid var(--fg);
+    z-index: 32;
+}
+
 /*
  * Add the correct display in Safari.
  */
