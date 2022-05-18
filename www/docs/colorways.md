@@ -2,7 +2,7 @@
 # Colorways
 
 A colorway is a group of shades of a color, with specific roles. For instance,
-here is the `ok` colorway in the missing.css source code:
+here is the `.ok` colorway in the missing.css source code:
 
 <figure>
 
@@ -27,13 +27,13 @@ The following colorways are provided by default:
  * <dfn>`.bad`</dfn> is used for errors, deletions, failure states. {.bad .bg .color}
 
 Applying the colorway class to an element will not change its appearance by 
-default. Use the `bg`, `color` and `border` classes to use an aspect of the
-colorway:
+default. Use the <dfn>`.bg`</dfn>, <dfn>`.color`</dfn> and <dfn>`.border`</dfn>
+classes to use an aspect of the colorway:
 
 <figure>
 
   ~~~ html
-  <p><b class="ok  color">Do:</b> Use color to help users scan information
+  <p><b class="ok color border">Do:</b> Use color to help users scan information
       quickly
   <p><b class="bad color">Don't:</b> Use color as the only way to communicate
       a piece of information

@@ -28,7 +28,7 @@ missing.css is the missing CSS library that we all wished existed:
   * It offers a small set of components based on purely standard, semantic HTML, utilizing ARIA where appropriate, such as tabs.
   * Finally, it offers a small & curated set of class-based utilities for tweaking the styling of a site
 
-The objective of missing.css is to minimize the neccessary intervention in the HTML by allowing developers to
+The objective of missing.css is to minimize the necessary intervention in the HTML by allowing developers to
 start with a good out of the box experience, then build common components using plain, semantic HTML and
 then, only if necessary, apply a minimal number of classes to achieve.
 

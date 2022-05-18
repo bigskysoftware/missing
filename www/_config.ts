@@ -7,9 +7,10 @@ import basePath    from "lume/plugins/base_path.ts"
 import resolveUrls from "lume/plugins/resolve_urls.ts"
 import eta         from "lume/plugins/eta.ts"
 
-import highlighting               from "./_build/highlighting.ts"
-import getDatesFromGit            from "./_build/get-dates-from-git.ts"
-import myFilters                  from "./_build/filters.ts"
+import highlighting     from "./_build/highlighting.ts"
+import getDatesFromGit  from "./_build/get-dates-from-git.ts"
+import myFilters        from "./_build/filters.ts"
+import indexDefinitions from "./_build/index-definitions.ts"
 
 import mdAttrs     from "https://esm.sh/markdown-it-attrs"
 import mdDeflist   from "https://esm.sh/markdown-it-deflist"
@@ -43,3 +44,4 @@ export default lume(
   .use(eta({ extensions: [".eta", ".html"] }))
   .use(myFilters())
   .use(getDatesFromGit())
+  .use(indexDefinitions())

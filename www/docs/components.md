@@ -9,7 +9,7 @@
 <th scope="row">Class<td><dfn><code>.box</code></dfn>
 </table>
 
-A box with a border.
+The <dfn>`.box`</dfn> class creates a padded box with a border.
 
 Boxes use the border and background color of the [colorway][].
 
@@ -38,7 +38,7 @@ The `<figure>`, `<aside>`, `<details>` elements share their appearance with the
 
 ## Subtitle
 
-A subtitle for a heading.
+The <dfn>`<sub-title>`</dfn> custom element subtitle for a heading.
 
 <figure>
 
@@ -75,7 +75,7 @@ A subtitle for a heading.
 
 ## Toolbar
 
-A horizontally laid-out collection of controls.
+A <dfn>`.tool-bar`</dfn> horizontally laid-out collection of controls.
 
 ::: box {.warn}
 **Warning**: This is not a substitute for the `toolbar` ARIA role, see
@@ -112,7 +112,8 @@ A horizontally laid-out collection of controls.
 
 ## Chip
 
-A rounded chip, like what you might use for a tag list or contacts.
+The <dfn>`<chip>`</dfn> class, or the <dfn>`.chip`</dfn> class, creates a
+rounded chip, like what you might use for a tag list or contacts.
 
   ~~~ html
   <a class="chip" href="/@jdoe"><img src="profiles/jdoe.webp"> John Doe</a>

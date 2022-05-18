@@ -22,7 +22,7 @@ appropriate for all contexts.
 
 ## Density {#density}
 
-The density utilities set the `--density` [CSS variable][], which
+The density utilities set the <dfn>`--density`</dfn> [CSS variable][], which
 controls the amount of spacing between elements. The default value of
 `--density` is `1`, which means the spacing between paragraphs is
 equal to the height of 1 line.
