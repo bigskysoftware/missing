@@ -28,10 +28,8 @@ export default () => {
                 el.id ||= el.innerText
             })
             document.getElementsByTagName("code").forEach(el => {
-                console.log("innerText", el.innerText)
-                if (!(el.innerText in definitionsIndex)) return
+                if (!(el.childNodes[0].textContent in definitionsIndex)) return
                 if (el.parentElement?.tagName === "DFN") return
-                console.log("accept innerText")
                 const a = document.createElement("a")
                 a.setAttribute("href", definitionsIndex[el.innerText] + "#" + el.innerText)
                 el.before(a)
