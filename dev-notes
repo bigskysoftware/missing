@@ -1,4 +1,19 @@
 
+2022-05-20
+
+I hate forms.
+
+There are so many ways to mark them up, and so many ways they can look. There
+is no correlation between the way a form was marked up and the way the author 
+wants is presented.
+
+The legend element is broken.
+
+I'm looking into what other CSS libraries do.
+
+-- dz4k
+
+
 2022-05-18
 
 I finally got the Deno PostCSS build to work. Turns out that the CSS optimizer

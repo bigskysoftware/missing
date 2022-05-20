@@ -524,7 +524,7 @@ SOFTWARE.
                     </p>
                 </fieldset>
                 <p><a href="#top">[Top]</a></p>
-                <fieldset id="forms__html5">
+                <fieldset id="forms__html5" class="table rows">
                     <legend>HTML5 inputs</legend>
                     <p>
                         <label for="ic">Color input</label>
@@ -567,16 +567,18 @@ SOFTWARE.
                             <option value="Example #3" />
                         </datalist>
                     </p>
-                    <p>
-                        <radio-buttons>
-                            <input type="radio" name="radiobtn" id="radiobtn1">
-                            <label for="radiobtn1">Option 1</label>
+                    <fieldset role="radiogroup">
+                        <legend>Radio buttons</legend>
+                        <div>
+                            <label for="radiobtn1">
+                                <input type="radio" name="radiobtn" id="radiobtn1">
+                                Option 1</label>
                             <input type="radio" name="radiobtn" id="radiobtn2">
                             <label for="radiobtn2">Option 2</label>
                             <input type="radio" name="radiobtn" id="radiobtn3">
                             <label for="radiobtn3">Option 3</label>
-                        </radio-buttons>
-                    </p>
+                        </div>
+                    </fieldset>
                 </fieldset>
                 <p><a href="#top">[Top]</a></p>
                 <fieldset id="forms__action">

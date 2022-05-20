@@ -79,7 +79,6 @@ textarea {
 }
 
 input[type="range"] {
-	display: block;
 	width: 100%;
 }
 
@@ -92,15 +91,6 @@ input[type="file"] {
 	&::file-selector-button {
 		margin-block: .1em 0;
 		margin-inline-end: 1ch;
-	}
-}
-
-label[for] {
-	display: block;
-
-	& + * {
-		display: block;
-		width: 100%;
 	}
 }
 
@@ -121,7 +111,28 @@ meter {
 	/* TODO */
 }
 
+label:not([for]) {
+	display: block;
+}
+
 fieldset {
+	position: relative;
+
+	@mixin padded;
+    padding: var(--gap);
+	& legend + * { margin-block-start: 0; }
+	margin-inline: 0;
 	width: 100%;
 	border-radius: .2em;
+
+	&[role=radiogroup] {
+		padding: 0;
+		border: none;
+		margin-block: var(--gap);
+
+		& legend {
+			padding: 0;
+			margin-inline-end: 1ch;
+		}
+	}
 }

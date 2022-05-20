@@ -265,3 +265,8 @@ details > summary:first-of-type {
 [aria-disabled="true"], [disabled] {
     cursor: not-allowed;
 }
+
+
+datalist {
+    display: none !important;
+}
