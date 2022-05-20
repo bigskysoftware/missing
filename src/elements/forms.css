@@ -8,19 +8,19 @@ input[type="submit"],
 input[type="reset"],
 input[type="button"],
 input[type="color"],
-input::file-selector-button,
-radio-buttons label {
+input::file-selector-button {
 	display: inline-block;
 	padding: 0 calc(var(--rhythm) / 4);
-	margin-block-end: .1em;
 
-	font-size: 1rem;
+	font-size: .9rem;
+	line-height: 1rem;
 	font-family: var(--main-font);
-	line-height: var(--rhythm);
+	min-height: var(--rhythm);
 
 	background: var(--bg-3);
 	border: 1px solid var(--accent);
-	box-shadow: 0 .1em var(--accent);
+	border-block-end-width: 3px;
+	box-sizing: border-box;
 	border-radius: .2em;
 
 	&:hover, &:focus-visible {
@@ -28,8 +28,9 @@ radio-buttons label {
 	}
 
 	&:active {
-		box-shadow: none;
-		transform: translateY(calc(.1em));
+		border-block-end-width: 1px;
+		margin-top: 2px;
+		min-height: calc(var(--rhythm) - 2px);
 	}
 	
 	&[aria-pressed="true"], &[aria-expanded="true"] {
