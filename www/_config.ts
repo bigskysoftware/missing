@@ -19,6 +19,8 @@ import mdToc       from "https://esm.sh/markdown-it-toc-done-right"
 
 import postcss from "../build/postcss.ts"
 
+let watcher: Deno.FsWatcher
+
 export default lume(
     {
       location: new URL("https://missing.style/"),
@@ -35,8 +37,14 @@ export default lume(
       }
     }
   )
-  .addEventListener("afterBuild", postcss)
-  .addEventListener("afterRender", postcss)
+  .addEventListener("afterRender", e => {
+    if (!watcher) {
+      watcher = Deno.watchFs("src");
+      (async () => {
+        for await (const evt of watcher) postcss()
+      })()
+    }
+  })
   .copy("_redirects")
   .use(date())
   .use(highlighting())
