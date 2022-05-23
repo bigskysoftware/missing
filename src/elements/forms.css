@@ -111,28 +111,22 @@ meter {
 	/* TODO */
 }
 
-label:not([for]) {
+label {
 	display: block;
 }
 
 fieldset {
 	position: relative;
 
-	@mixin padded;
-    padding: var(--gap);
-	& legend + * { margin-block-start: 0; }
+    padding-inline: var(--gap);
 	margin-inline: 0;
 	width: 100%;
 	border-radius: .2em;
 
-	&[role=radiogroup] {
-		padding: 0;
-		border: none;
-		margin-block: var(--gap);
+}
 
-		& legend {
-			padding: 0;
-			margin-inline-end: 1ch;
-		}
-	}
+[role=radiogroup] {
+	padding: 0;
+	border: none;
+	margin-block: var(--gap);
 }

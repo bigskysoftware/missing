@@ -567,18 +567,23 @@ SOFTWARE.
                             <option value="Example #3" />
                         </datalist>
                     </p>
-                    <fieldset role="radiogroup">
-                        <legend>Radio buttons</legend>
+                    <div role="radiogroup" aria-labelledby="radio-buttons-lbl">
+                        <span id="radio-buttons-lbl">Radio buttons</span>
                         <div>
-                            <label for="radiobtn1">
+                            <div><label for="radiobtn1">
                                 <input type="radio" name="radiobtn" id="radiobtn1">
                                 Option 1</label>
-                            <input type="radio" name="radiobtn" id="radiobtn2">
-                            <label for="radiobtn2">Option 2</label>
-                            <input type="radio" name="radiobtn" id="radiobtn3">
-                            <label for="radiobtn3">Option 3</label>
+                            </div>
+                            <div><label for="radiobtn2">
+                                <input type="radio" name="radiobtn" id="radiobtn2">
+                                Option 2</label>
+                            </div>
+                            <div><label for="radiobtn3">
+                                <input type="radio" name="radiobtn" id="radiobtn3">
+                                Option 3</label>
+                            </div>
                         </div>
-                    </fieldset>
+                    </div>
                 </fieldset>
                 <p><a href="#top">[Top]</a></p>
                 <fieldset id="forms__action">

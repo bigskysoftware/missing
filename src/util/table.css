@@ -10,6 +10,10 @@
     display: table-row;
     & > * {
         display: table-cell;
-        vertical-align: middle;
+        vertical-align: baseline;
+    }
+
+    & > * + * {
+        padding-inline-start: var(--gap);
     }
 }

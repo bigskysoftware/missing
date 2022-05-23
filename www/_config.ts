@@ -39,6 +39,7 @@ export default lume(
   )
   .addEventListener("afterRender", e => {
     if (!watcher) {
+      postcss()
       watcher = Deno.watchFs("src");
       (async () => {
         for await (const evt of watcher) postcss()
