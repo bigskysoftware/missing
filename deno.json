@@ -6,6 +6,6 @@
 
     "css": "deno run -A --unstable build/postcss.ts",
     "archive": "./build/version-archive.sh",
-    "www": "deno run -A https://deno.land/x/lume@v1.7.4/ci.ts --config=www/_config.ts"
+    "www": "deno run -A build/www.ts --config=www/_config.ts"
   }
 }
