@@ -3,5 +3,5 @@
 publish = "dist"
 command = """
 wget -qO- https://deno.land/x/install/install.sh | sh && \
-./.deno/bin/deno task prod
+/opt/buildhome/.deno/bin/deno task prod
 """
