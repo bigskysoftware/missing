@@ -70,7 +70,16 @@ Leave two empty lines between notes.
 
 ## Branching
 
-TODO. We haven't figured out a branching structure yet.
+You'll notice that we don't have a `master` or `main` branch. Instead, the 
+`dev` branch is the default. This way, the default place to open a pull request
+is the right one.
+
+We use git tags for releases. Any tag matching the regex `^v\d+\.\d+\.\d+` is a
+release (this regex is used by the script `build/version-archive.sh`). After
+creating a tag, move the `prod` branch to it.
+
+That's it! We don't expect to use feature branches that often, instead working
+directly on `dev` because CSS is hard to merge.
 
 
 ## Publishing a release
