@@ -2,6 +2,6 @@
 [build]
 publish = "dist"
 command = """
-wget -qO- https://deno.land/x/install/install.sh | sh && \
+curl -fsSL https://deno.land/x/install/install.sh | sh && \
 /opt/buildhome/.deno/bin/deno task prod
 """
