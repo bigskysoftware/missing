@@ -36,8 +36,6 @@ export default () => {
                 a.append(el)
             })
         })
-
-        site.addEventListener("afterBuild", e => console.log(definitionsIndex))
     }
 }
 
