@@ -1,10 +1,10 @@
 
 @import "./core/sanitize.css";
 
-@import-glob "./shared/*.css";
-@import-glob "./util/*.css";
-@import-glob "./components/*.css";
-@import-glob "./elements/*.css";
+@import "./shared/*.css";
+@import "./util/*.css";
+@import "./components/*.css";
+@import "./elements/*.css";
 
 :root {
 	/* Colors */

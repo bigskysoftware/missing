@@ -9,8 +9,7 @@ import postcss from "https://esm.sh/postcss"
 // Plugins
 import nesting from 'https://esm.sh/postcss-nesting?dev'
 import customSelectors from 'https://esm.sh/postcss-custom-selectors?dev'
-import atImport from 'https://esm.sh/postcss-import?dev'
-import importGlob from 'https://esm.sh/postcss-import-ext-glob?dev'
+import atImport from 'https://esm.sh/postcss-easy-import?dev'
 import mixins from 'https://esm.sh/postcss-mixins?dev'
 import autoprefixer from 'https://esm.sh/autoprefixer?dev'
 
@@ -31,7 +30,6 @@ const enc = new TextEncoder
 
 const build = async () => {
 	const postcssMain = postcss([
-		importGlob(),
 		atImport(),
 		nesting(),
 		customSelectors(),
