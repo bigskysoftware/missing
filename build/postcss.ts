@@ -44,13 +44,13 @@ const build = async () => {
 	const result =
 		await postcssMain.process(css, { from: entrypoint, to: devTarget })
 	const outputCss = enc.encode(result.css)
-	await w(outputCss, devTarget)
-
+	
 	const minifyResult = csso.minify(result.css)
 	const minifiedCSS = enc.encode(minifyResult.css)
-	await w(minifiedCSS, prodTarget)
-
+	
 	await Promise.all([
+		w(outputCss, devTarget),
+		w(minifiedCSS, prodTarget),
 		w(brotli(minifiedCSS), prodTarget + ".br"),
 		w(gzip  (minifiedCSS), prodTarget + ".gz"),
 	])
