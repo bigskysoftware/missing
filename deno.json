@@ -1,7 +1,7 @@
 {
   "importMap": "import_map.json",
   "tasks": {
-    "prod": "deno task archive && deno task www",
+    "prod": "deno task www && deno task archive",
     "dev": "deno task www -- -s",
 
     "css": "deno run -A --unstable build/postcss.ts",
