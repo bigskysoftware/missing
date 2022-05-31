@@ -14,7 +14,7 @@ git clone . dist/src.tmp.d
         echo "${0}: Checking out $tag"
         git checkout $tag
         echo "${0}: Building $tag"
-        deno task build-css
+        deno task css
 
         echo "${0}: Built, placing into /$tag/"
         mkdir -p $root_dist/archive/$tag
@@ -22,3 +22,4 @@ git clone . dist/src.tmp.d
     done
 )
 rm -rf dist/src.tmp.d
+deno task css

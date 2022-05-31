@@ -7,12 +7,11 @@ import { compress as brotli } from 'https://deno.land/x/brotli@v0.1.4/mod.ts'
 import postcss from "https://esm.sh/postcss"
 
 // Plugins
-import nesting from 'https://esm.sh/postcss-nesting'
-import customSelectors from 'https://esm.sh/postcss-custom-selectors'
-import atImport from 'https://esm.sh/postcss-import'
-import importGlob from 'https://esm.sh/postcss-import-ext-glob'
-import mixins from 'https://esm.sh/postcss-mixins'
-import autoprefixer from 'https://esm.sh/autoprefixer'
+import nesting from 'https://esm.sh/postcss-nesting?dev'
+import customSelectors from 'https://esm.sh/postcss-custom-selectors?dev'
+import atImport from 'https://esm.sh/postcss-easy-import?dev'
+import mixins from 'https://esm.sh/postcss-mixins?dev'
+import autoprefixer from 'https://esm.sh/autoprefixer?dev'
 
 import csso from 'https://esm.sh/csso@3.5.1'
 
@@ -31,7 +30,6 @@ const enc = new TextEncoder
 
 const build = async () => {
 	const postcssMain = postcss([
-		importGlob(),
 		atImport(),
 		nesting(),
 		customSelectors(),
@@ -46,13 +44,13 @@ const build = async () => {
 	const result =
 		await postcssMain.process(css, { from: entrypoint, to: devTarget })
 	const outputCss = enc.encode(result.css)
-	await w(outputCss, devTarget)
-
+	
 	const minifyResult = csso.minify(result.css)
 	const minifiedCSS = enc.encode(minifyResult.css)
-	await w(minifiedCSS, prodTarget)
-
+	
 	await Promise.all([
+		w(outputCss, devTarget),
+		w(minifiedCSS, prodTarget),
 		w(brotli(minifiedCSS), prodTarget + ".br"),
 		w(gzip  (minifiedCSS), prodTarget + ".gz"),
 	])
