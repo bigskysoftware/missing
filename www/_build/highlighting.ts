@@ -1,6 +1,6 @@
 
-import prismHighlight from "https://raw.githubusercontent.com/lumeland/experimental-plugins/main/prism/mod.ts"
-import Prism from "https://raw.githubusercontent.com/lumeland/experimental-plugins/main/prism/deps.ts"
+import prismHighlight from "lume/plugins/prism.ts"
+import Prism from "lume/deps/prism.ts"
 import prismHyperscript from "https://esm.sh/prism-hyperscript"
 import type { Site } from "lume/core.ts"
 
