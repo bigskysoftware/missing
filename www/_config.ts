@@ -12,10 +12,10 @@ import getDatesFromGit  from "./_build/get-dates-from-git.ts"
 import myFilters        from "./_build/filters.ts"
 import indexDefinitions from "./_build/index-definitions.ts"
 
-import mdAttrs     from "https://esm.sh/markdown-it-attrs"
-import mdDeflist   from "https://esm.sh/markdown-it-deflist"
-import mdContainer from "https://esm.sh/@gerhobbelt/markdown-it-container"
-import mdToc       from "https://esm.sh/markdown-it-toc-done-right"
+import mdAttrs     from "https://esm.sh/markdown-it-attrs?dev"
+import mdDeflist   from "https://esm.sh/markdown-it-deflist?dev"
+import mdContainer from "https://esm.sh/@gerhobbelt/markdown-it-container?dev"
+import mdToc       from "https://esm.sh/markdown-it-toc-done-right?dev"
 
 import postcss from "../build/postcss.ts"
 
@@ -37,7 +37,7 @@ export default lume(
       }
     }
   )
-  .addEventListener("afterRender", e => {
+  .addEventListener("afterUpdate", e => {
     if (!watcher) {
       postcss()
       watcher = Deno.watchFs("src");
