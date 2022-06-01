@@ -16,7 +16,6 @@ import autoprefixer from 'https://esm.sh/autoprefixer?dev'
 import csso from 'https://esm.sh/csso@3.5.1'
 
 // Paths
-console.log(import.meta.url)
 const __dirname = dirname(fromFileUrl(import.meta.url))
 
 const entrypoint = join(__dirname, '../src/main.css')
@@ -62,7 +61,13 @@ const w = async (data: Uint8Array, path: string | URL) => {
 	console.log("Wrote " + path)
 }
 
-if (import.meta.main) await build()
+if (import.meta.main) {
+	if (Deno.args.includes("-s")) {
+		for await (const _ of Deno.watchFs("src")) {
+			await build()
+		}
+	} else await build()
+}
 
 export default build
 
