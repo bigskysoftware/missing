@@ -1,0 +1,42 @@
+---
+layout: prose.eta
+---
+
+<h1>
+    <sub-title class="allcaps">Missing.css</sub-title>
+    Version <%= release %>
+</h1>
+
+<div class="basicgrid colwidth-l">
+    <section class="box">
+        <h2>Download</h2>
+        <p><small>Hotlinking is allowed</small></p>
+        <p class="tool-bar">
+            <strong>Missing.css:</strong>
+            <a download href="https://the.missing.style/v<%= release %>">Plain</a>
+            <a download href="https://the.missing.style/v<%= release %>/missing.min.css">Minified</a>
+            <a download href="https://the.missing.style/v<%= release %>/missing.min.css.gz">Minified+Gzipped</a>
+            <a download href="https://the.missing.style/v<%= release %>/missing.min.css.gz">Minified+Brotlied</a>
+        </p>
+        <p class="tool-bar">
+            <strong>Missing Syntax:</strong>
+            <a download href="https://the.missing.style/v<%= release %>">Plain</a>
+            <a download href="https://the.missing.style/v<%= release %>/missing-syntax.min.css">Minified</a>
+            <a download href="https://the.missing.style/v<%= release %>/missing-syntax.min.css.gz">Minified+Gzipped</a>
+            <a download href="https://the.missing.style/v<%= release %>/missing-syntax.min.css.gz">Minified+Brotlied</a>
+        </p>
+    </section>
+    <section class="box">
+        <h2>Source code</h2>
+        <p>
+            <strong>GitHub:</strong>
+            <a href="https://github.com/bigskysoftware/missing/tree/v<%= release %>">bigskysoftware/missing@v<%= release %></a>
+        </p>
+        <p>
+            <strong>Checkout:</strong>
+            <code class="language-bash">git switch --detach v<%= release %></code>
+        </p>
+    </section>
+</div>
+
+<%~ content %>

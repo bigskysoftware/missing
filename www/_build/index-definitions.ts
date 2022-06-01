@@ -23,7 +23,10 @@ export default () => {
         })
         
         site.process([".md"], (page: Page) => {
-            const document = page.document!
+            const document = page.document
+
+            if (!document) return
+            
             document.getElementsByTagName("dfn").forEach(el => {
                 el.id ||= el.innerText
             })
