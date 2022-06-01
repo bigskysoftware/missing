@@ -7,6 +7,12 @@ Install it on your website if you haven't already:
   <link rel="stylesheet" href="https://the.missing.style">
   ~~~
 
+If you're using Prism.js to highlight code, consider our syntax theme as well:
+
+  ~~~ html
+  <link rel="stylesheet" href="https://the.missing.style/prism">
+  ~~~
+
 Then, see how you can go beyond classless CSS with its features:
 
  * [Customize with CSS **variables**](/docs/variables)

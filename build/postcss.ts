@@ -59,7 +59,7 @@ const buildFile = async (entrypoint: string, targetName: string) => {
 
 const build = () => {
 	buildFile(main, "missing")
-	buildFile(syntax, "missing-syntax")
+	buildFile(syntax, "missing-prism")
 }
 
 const w = async (data: Uint8Array, path: string | URL) => {
