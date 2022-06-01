@@ -18,16 +18,18 @@ import csso from 'https://esm.sh/csso@3.5.1'
 // Paths
 const __dirname = dirname(fromFileUrl(import.meta.url))
 
-const entrypoint = join(__dirname, '../src/main.css')
-const dist       = join(__dirname, '../dist/')
+const main = join(__dirname, '../src/main.css')
+const syntax = join(__dirname, '../src/syntax.css')
 
-const prodTarget = join(dist, '/missing.min.css')
-const devTarget  = join(dist, '/missing.css')
+const dist = join(__dirname, '../dist/')
 
 const dec = new TextDecoder
 const enc = new TextEncoder
 
-const build = async () => {
+const buildFile = async (entrypoint: string, targetName: string) => {
+	const prodTarget = join(dist, targetName + '.min.css')
+	const devTarget  = join(dist, targetName + '.css')
+
 	const postcssMain = postcss([
 		atImport(),
 		nesting(),
@@ -55,6 +57,10 @@ const build = async () => {
 	])
 }
 
+const build = () => {
+	buildFile(main, "missing")
+	buildFile(syntax, "missing-syntax")
+}
 
 const w = async (data: Uint8Array, path: string | URL) => {
 	await Deno.writeFile(path, data)
@@ -62,11 +68,12 @@ const w = async (data: Uint8Array, path: string | URL) => {
 }
 
 if (import.meta.main) {
+	await build()
 	if (Deno.args.includes("-s")) {
 		for await (const _ of Deno.watchFs("src")) {
 			await build()
 		}
-	} else await build()
+	}
 }
 
 export default build

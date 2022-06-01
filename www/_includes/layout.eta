@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width">
 
 	<link rel="stylesheet" href="/missing.css">
+	<link rel="stylesheet" href="/missing-syntax.css">
 	<script src="https://unpkg.com/hyperscript.org"></script>
 </head>
 <body>
