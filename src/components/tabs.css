@@ -17,7 +17,7 @@
     border: solid var(--accent);
     border-width: 1px 1px 0 1px;
     border-block-end-color: transparent;
-    background: var(--bg-3);
+    background: var(--interactive-bg);
 
     border-start-start-radius: .4em;
     border-start-end-radius: .4em;
@@ -26,8 +26,8 @@
         transform: none;
         bottom: -1px;
         position: relative;
-        background: var(--bg-2);
-        border-block-end: 1px solid var(--bg-2);
+        background: var(--colorful-bg);
+        border-block-end: 1px solid var(--colorful-bg);
     }
 }
 

@@ -11,7 +11,7 @@
     padding: var(--gap);
     
     border-radius: calc(var(--rhythm) / 4);
-    background: var(--bg-2);
+    background: var(--colorful-bg);
     border: 1px solid var(--accent);
     
     @mixin padded;

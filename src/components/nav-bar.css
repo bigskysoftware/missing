@@ -3,7 +3,7 @@ header[is="nav-bar"] {
 	margin: 0;
 	padding: 0 var(--rhythm);
 
-	background: var(--bg-2);
+	background: var(--colorful-bg);
 	border-block-end: 1px solid var(--accent);
 
 	overflow-x: auto;

@@ -91,7 +91,7 @@ kbd kbd /*
 	font-size: .8em;
 	line-height: 1.1em;
 
-	background: var(--bg-3);
+	background: var(--interactive-bg);
 	border: 1px outset var(--faded-fg);
 	border-block-end-width: 3px;
 	border-radius: .3em;

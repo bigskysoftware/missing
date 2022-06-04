@@ -1,21 +1,21 @@
 
 .info {
-    --bg-2: var(--info-bg);
+    --colorful-bg: var(--info-bg);
     --accent: var(--info-fg);
 }
 
 .ok {
-    --bg-2: var(--ok-bg);
+    --colorful-bg: var(--ok-bg);
     --accent: var(--ok-fg);
 }
 
 .warn {
-    --bg-2: var(--warn-bg);
+    --colorful-bg: var(--warn-bg);
     --accent: var(--warn-fg);
 }
 
 .bad {
-    --bg-2: var(--bad-bg);
+    --colorful-bg: var(--bad-bg);
     --accent: var(--bad-fg);
 }
 
@@ -24,7 +24,7 @@
 }
 
 .bg {
-	background: var(--bg-2);
+	background: var(--colorful-bg);
 }
 
 .border {

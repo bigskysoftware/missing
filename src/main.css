@@ -19,9 +19,9 @@
 	--warn-fg: #550;
 	
 	--bg: #fff; /* Page background. */
-	--bg-2: #f8f8ff; /* Background for blocks: cards, admonitions etc. */
-	--bg-3: #dfdfe1; /* Background for interactive elements */
-	--bg-4: #c3c3ca; /* Background for pressed interactive elements */
+	--colorful-bg: #f8f8ff; /* Background for blocks: cards, admonitions etc. */
+	--interactive-bg: #dfdfe1; /* Background for interactive elements */
+	--pressed-interactive-bg: #c3c3ca; /* Background for pressed interactive elements */
 	--info-bg: #f8f8ff;
 	--ok-bg: #bfb;
 	--bad-bg: #fcc;

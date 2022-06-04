@@ -39,14 +39,14 @@ classes; these will be listed in the documentation for that class.
 <dfn>--bg</dfn> {#var-bg}
 :   Page background.
 
-<dfn>--bg-2</dfn> {#var-bg-2}
+<dfn>--colorful-bg</dfn> {#var-bg-2}
 :   Background for blocks: cards, admonitions etc.
 
-<dfn>--bg-3</dfn> {#var-bg-3}
+<dfn>--interactive-bg</dfn> {#var-bg-3}
 :   Background for interactive elements
 
 
-<dfn>--bg-4</dfn> {#var-bg-4}
+<dfn>--pressed-interactive-bg</dfn> {#var-bg-4}
 :   Background for pressed interactive elements
 
 <dfn>--info-bg</dfn> {#var-info-bg}

@@ -17,14 +17,14 @@ input::file-selector-button {
 	font-family: var(--main-font);
 	min-height: var(--rhythm);
 
-	background: var(--bg-3);
+	background: var(--interactive-bg);
 	border: 1px solid var(--accent);
 	border-block-end-width: 3px;
 	box-sizing: border-box;
 	border-radius: .2em;
 
 	&:hover, &:focus-visible {
-		background: var(--bg-2);
+		background: var(--colorful-bg);
 	}
 
 	&:active {
@@ -36,7 +36,7 @@ input::file-selector-button {
 	&[aria-pressed="true"], &[aria-expanded="true"] {
 		box-shadow: 0 .05em var(--accent);
 		transform: translateY(.05em);
-		background: var(--bg-4);
+		background: var(--pressed-interactive-bg);
 	}
 }
 

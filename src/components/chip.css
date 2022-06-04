@@ -1,7 +1,7 @@
 
 .chip, chip {
     border: 1px solid var(--accent);
-    background: var(--bg-2);
+    background: var(--colorful-bg);
     border-radius: calc(var(--rhythm) / 2);
     padding-inline: calc(var(--rhythm) / 2);
 }

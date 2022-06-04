@@ -8,7 +8,7 @@ here is the `.ok` colorway in the missing.css source code:
 
   ~~~ css
   .ok {
-    --bg-2: var(--ok-bg);
+    --colorful-bg: var(--ok-bg);
     --accent: var(--ok-fg);
   }
   ~~~
@@ -51,7 +51,7 @@ purpose, as opposed to their specific color.
 
   ~~~ css
   .waiting {
-    --bg-2: lavender;
+    --colorful-bg: lavender;
     --accent: rebeccapurple;
   }
   ~~~
@@ -67,7 +67,7 @@ purpose, as opposed to their specific color.
   <h3 class="h4">Add "waiting" colorway</h3>
   <p>Authored by bob@example.com &middot; 
   <chip class="color" style="
-    --bg-2: lavender;
+    --colorful-bg: lavender;
     --accent: rebeccapurple;">Unmerged</span>
 
   <h3 class="h4">Add "red" colorway</h3>
