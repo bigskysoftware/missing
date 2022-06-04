@@ -12,10 +12,10 @@ import getDatesFromGit  from "./_build/get-dates-from-git.ts"
 import myFilters        from "./_build/filters.ts"
 import indexDefinitions from "./_build/index-definitions.ts"
 
-import mdAttrs     from "https://esm.sh/markdown-it-attrs?dev"
-import mdDeflist   from "https://esm.sh/markdown-it-deflist?dev"
-import mdContainer from "https://esm.sh/@gerhobbelt/markdown-it-container?dev"
-import mdToc       from "https://esm.sh/markdown-it-toc-done-right?dev"
+import mdAttrs     from "https://esm.sh/markdown-it-attrs@4.1.4?dev"
+import mdDeflist   from "https://esm.sh/markdown-it-deflist@2.1.0?dev"
+import mdContainer from "https://esm.sh/@gerhobbelt/markdown-it-container@3.0.0-10?dev"
+import mdToc       from "https://esm.sh/markdown-it-toc-done-right@4.2.0?dev"
 
 export default lume(
     {
