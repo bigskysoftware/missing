@@ -8,6 +8,8 @@
 [role="tab"][role="tab"] {
     all: initial;
 
+    font-family: inherit;
+
     padding: 0 calc(var(--rhythm) / 4);
     margin: 0;
     min-height: var(--rhythm);

@@ -14,8 +14,6 @@
     background: var(--bg-2);
     border: 1px solid var(--accent);
     
-    flex: 1 0 var(--column-width);
-	
     @mixin padded;
 }
 

@@ -57,6 +57,10 @@ container and span the whole width of the viewport.
 
 Add some padding with <dfn>`.pad`</dfn>.
 
+## Margin
+
+Add a margin with <dfn>`.margin`</dfn>.
+
 ## Center
 
 <dfn>`.center`</dfn> does what you'd expect, in both axes.

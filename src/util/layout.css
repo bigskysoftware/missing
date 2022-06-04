@@ -62,6 +62,10 @@
     padding-inline: var(--gap);
 }
 
+.margin {
+    margin: var(--gap);
+}
+
 /**/
 
 .center {
