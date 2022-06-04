@@ -31,7 +31,7 @@ export default () => {
                 el.id ||= el.innerText
             })
             document.getElementsByTagName("code").forEach(el => {
-                if (!(el.childNodes[0].textContent in definitionsIndex)) return
+                if (!(el.innerText in definitionsIndex)) return
                 if (el.parentElement?.tagName === "DFN") return
                 const a = document.createElement("a")
                 a.setAttribute("href", definitionsIndex[el.innerText] + "#" + el.innerText)
