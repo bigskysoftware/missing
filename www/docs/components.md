@@ -115,6 +115,8 @@ A <dfn>`.tool-bar`</dfn> horizontally laid-out collection of controls.
 The <dfn>`<chip>`</dfn> class, or the <dfn>`.chip`</dfn> class, creates a
 rounded chip, like what you might use for a tag list or contacts.
 
+<figure>
+
   ~~~ html
   <a class="chip" href="/@jdoe"><img src="profiles/jdoe.webp"> John Doe</a>
   <chip>#webdev</chip><chip>#design</chip><chip>#css</chip>
@@ -122,11 +124,13 @@ rounded chip, like what you might use for a tag list or contacts.
 
 <chip class=info>#webdev</chip> <chip class=ok>⍻ Merged</chip> <chip>John Doe</chip> <chip class=warn>3 minute read</chip>  
 
+</figure>
+
 
 ## Navbar
 
 <figure>
-<figraption>Code: Navbars</figure>
+<figcaption>Code: Navbars</figcaption>
 
   ~~~ html
   <header is="navbar">
