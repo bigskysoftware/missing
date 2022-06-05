@@ -8,12 +8,13 @@
 
 .row, .rows > * {
     display: table-row;
-    & > * {
+    & > *:not([specificity-hack]) {
         display: table-cell;
-        vertical-align: baseline;
+        vertical-align: top;
     }
 
-    & > * + * {
-        padding-inline-start: var(--gap);
+    & > * + *:not([specificity-hack]) {
+        margin-inline-start: var(--gap);
+        display: inline-block;
     }
 }
