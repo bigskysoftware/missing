@@ -37,7 +37,7 @@ You can use the `.table` and `.rows` classes to create a form with inputs lined 
 
   ~~~ html
   <form class="table rows">
-    <p><label for=inp>Label</label> <input></p>
+    <p><label for=inp>Label</label> <input id=inp></p>
     ...
   ~~~
 
