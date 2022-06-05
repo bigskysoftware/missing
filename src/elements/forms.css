@@ -3,6 +3,9 @@
  https://html.spec.whatwg.org/multipage/forms.html
  ***/
 
+input { display: block; }
+label input { display: inline; }
+
 button,
 input[type="submit"],
 input[type="reset"],
@@ -40,6 +43,7 @@ input::file-selector-button {
 	}
 }
 
+input:not([type]),
 input[type="text"],
 input[type="search"],
 input[type="tel"],
@@ -123,10 +127,4 @@ fieldset {
 	width: 100%;
 	border-radius: .2em;
 
-}
-
-[role=radiogroup] {
-	padding: 0;
-	border: none;
-	margin-block: var(--gap);
 }

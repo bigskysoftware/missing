@@ -2,12 +2,19 @@
 .table {
     display: table;
     width: 100%;
-    border-spacing: 0 var(--gap);
     margin: 0;
 }
 
 .row, .rows > * {
     display: table-row;
+    
+    &:not(:last-child)::after {
+        content: '';
+        display: block;
+        height: var(--gap);
+        width: 0;
+    }
+
     & > *:not([specificity-hack]) {
         display: table-cell;
         vertical-align: top;
