@@ -53,7 +53,10 @@
     position: relative;
     width: 100vw;
     left: 50%;
-    transform: translateX(-50vw);  
+    transform: translateX(-50vw);
+
+    border-radius: 0;
+    border-inline: none;
 }
 
 /**/
