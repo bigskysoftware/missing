@@ -18,7 +18,7 @@ layout: layout.eta
 
 </nav>
 
-Add it to your website: <code>&lt;link rel="stylesheet" href="<strong>https://the.missing.style</strong>"></code>
+Add it to your website: `<link rel="stylesheet" href="https://the.missing.style">`{.lang-html}
 
 </header>
 

@@ -11,6 +11,6 @@ export default () => {
     prismHyperscript(Prism)
 
     return (site: Site) => {
-        site.use(prismHighlight())
+        site.use(prismHighlight({ cssSelector: "code" }))
     }
 }
