@@ -7,15 +7,12 @@
 
 	<link rel="stylesheet" href="/missing.css">
 	<link rel="stylesheet" href="/missing-prism.css">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/inter.min.css">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/cascadia-code.min.css">
 	<style>
 		:root {
 			--main-font: 'Inter', sans-serif;
 			--mono-font: 'Cascadia Code', monospace, monospace;
 		}
 	</style>
-	<script src="https://unpkg.com/hyperscript.org"></script>
 </head>
 <body>
 	<%~ content %>
