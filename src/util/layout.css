@@ -86,3 +86,21 @@
 .right  { right:  0 }
 .bottom { bottom: 0 }
 .left   { left:   0 }
+
+.\^ { top:    0 }
+.\> { right:  0 }
+.\_ { bottom: 0 }
+.\< { left:   0 }
+
+.float\< { float: left  }
+.float\> { float: right }
+
+.transform\^ { transform: translateY(calc(0px - var(--gap))) }
+.transform\> { transform: translateX(var(--gap)) }
+.transform\_ { transform: translateY(var(--gap)) }
+.transform\< { transform: translateX(calc(0px - var(--gap))) }
+
+.transform\^2 { transform: translateY(calc(0px - 2 * var(--gap))) }
+.transform\>2 { transform: translateX(calc(2 * var(--gap))) }
+.transform\_2 { transform: translateY(calc(2 * var(--gap))) }
+.transform\<2 { transform: translateX(calc(0px - var(--gap))) }
