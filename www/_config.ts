@@ -16,6 +16,7 @@ import mdAttrs     from "https://esm.sh/markdown-it-attrs@4.1.4?dev"
 import mdDeflist   from "https://esm.sh/markdown-it-deflist@2.1.0?dev"
 import mdContainer from "https://esm.sh/@gerhobbelt/markdown-it-container@3.0.0-10?dev"
 import mdToc       from "https://esm.sh/markdown-it-toc-done-right@4.2.0?dev"
+import mdAnchor    from "https://esm.sh/markdown-it-anchor@8.6.4?dev"
 
 import postcss from "../build/postcss.ts"
 
@@ -31,6 +32,13 @@ export default lume(
           mdDeflist,
           [mdToc, { level: [2], listType: "ul", containerClass: "box crowded" }],
           [mdContainer, "box"],
+          [mdAnchor, { permalink: mdAnchor.permalink.linkAfterHeader({
+            placement: "after",
+            style: "aria-label",
+            assistiveText: t => "Permalink to " + t,
+            symbol: "§",
+            class: "float> transform^2"
+          }) }]
         ]
       }
     }
