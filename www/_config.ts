@@ -17,6 +17,8 @@ import mdDeflist   from "https://esm.sh/markdown-it-deflist@2.1.0?dev"
 import mdContainer from "https://esm.sh/@gerhobbelt/markdown-it-container@3.0.0-10?dev"
 import mdToc       from "https://esm.sh/markdown-it-toc-done-right@4.2.0?dev"
 
+import postcss from "../build/postcss.ts"
+
 export default lume(
     {
       location: new URL("https://missing.style/"),
@@ -34,6 +36,8 @@ export default lume(
     }
   )
   .copy("_redirects")
+  .addEventListener("afterBuild", postcss)
+  .addEventListener("afterRender", postcss)
   .use(date())
   .use(highlighting())
   .use(basePath())
