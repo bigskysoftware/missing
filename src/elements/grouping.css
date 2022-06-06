@@ -29,8 +29,6 @@ pre {
 	overflow-x: auto;
 	scrollbar-width: thin;
 	scrollbar-color: var(--accent) transparent;
-
-	background: var(--bg);
 }
 
 blockquote {
