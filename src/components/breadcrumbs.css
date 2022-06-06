@@ -2,13 +2,19 @@
 .breadcrumbs[aria-label] {
     & ul, & ol {
         list-style: none;
-        margin-inline-start: 0;
+        padding-inline-start: 0;
     }
 
     & li {
         display: inline;
-        &:not(:first-child)::after {
-            content: '/' / '';
+        &+li::before {
+            content: ' / ' / '';
+            content: ' / ';
+            display: inline;
         }
+    }
+
+    & [aria-current="page"] {
+        font-weight: bold;
     }
 }

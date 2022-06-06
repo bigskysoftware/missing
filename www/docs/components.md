@@ -110,6 +110,27 @@ A <dfn>`.tool-bar`</dfn> horizontally laid-out collection of controls.
 [WAI: Toolbar]: https://www.w3.org/TR/wai-aria-practices/#toolbar
 
 
+## Breadcrumbs
+
+Add <dfn>`.breadcrumbs`</dfn> to a `<nav>` element. Use an `<ul>` or  `<ol>` of
+links inside. Don't forget to add an `aria-label`.
+
+Add the attribute `aria-current=page` to the link representing the current page
+(if any).
+
+<figure>
+  <nav class=breadcrumbs aria-label="Breadcrumbs">
+    <ol>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">User</a></li>
+      <li><a href="#">Advanced</a></li>
+      <li><a href="#">New All</a></li>
+      <li><a href="#" aria-current=page>Quit Sibelius</a></li>
+    </ol>
+  </nav>
+</figure>
+
+
 ## Chip
 
 The <dfn>`<chip>`</dfn> class, or the <dfn>`.chip`</dfn> class, creates a
