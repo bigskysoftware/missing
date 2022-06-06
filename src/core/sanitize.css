@@ -35,7 +35,8 @@
     cursor: default; /* 1 */
     overflow-wrap: break-word; /* 3 */
     -webkit-tap-highlight-color: transparent; /* 5 */
-    text-size-adjust: 100%; /* 6 */
+    text-size-adjust: none;
+    -webkit-text-size-adjust: none;
 }
 
 /* Text-level semantics
