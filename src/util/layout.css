@@ -49,6 +49,11 @@
 
 /**/
 
+.container {
+	max-inline-size: var(--eff-line-length);
+	margin-inline: auto;
+}
+
 .fullbleed {
     position: relative;
     width: 100vw;
@@ -75,6 +80,39 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.dedent {
+    transform: translateX(calc(0px - var(--gap)));
+}
+
+/**/
+
+.table {
+    display: table;
+    width: 100%;
+    margin: 0;
+}
+
+.row, .rows > * {
+    display: table-row;
+    
+    &:not(:last-child)::after {
+        content: '';
+        display: block;
+        height: var(--gap);
+        width: 0;
+    }
+
+    & > *:not([specificity-hack]) {
+        display: table-cell;
+        vertical-align: top;
+    }
+
+    & > * + *:not([specificity-hack]) {
+        margin-inline-start: var(--gap);
+        display: inline-block;
+    }
 }
 
 /**/

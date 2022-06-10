@@ -1,7 +1,0 @@
-
-.colored-box,
-/* deprecated names */
-.missing-card, missing-card {
-	@mixin box;
-}
-

@@ -17,6 +17,6 @@
     @mixin padded;
 }
 
-.box {
+.box, missing-card, .missing-card {
     @mixin box;
 }
