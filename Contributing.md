@@ -20,8 +20,8 @@ created.
 missing.css is developed on a "free to use, pay to demand" basis. Contributors
 are not beholden to users and can work on whatever they like. If you need a
 specific feature or bugfix for your business, consider putting up a bounty.
-(Not recommended: Making an unsolicited donation and then demanding. That's not
-how buying services works).
+(Not recommended: Making an unsolicited donation and then demanding specific
+work. That's not how you buy something).
 
 [RFP]: https://missing.style/rfp/
 [Concepts]: https://missing.style/concepts/
@@ -52,22 +52,6 @@ how buying services works).
 [Deno]: https://deno.land/
 
 
-## Dev Notes
-
-You can note your thoughts and leave notes for maintainers in the `dev-notes`
-file. The structure is:
-
-  ~~~
-  YYYY-MM-DD
-
-  Your notes here
-
-  -- your-github-username
-  ~~~
-
-Leave two empty lines between notes.
-
-
 ## Branching
 
 You'll notice that we don't have a `master` or `main` branch. Instead, the 
@@ -88,9 +72,34 @@ To publish a new release:
 
   * Create a git tag matching the regex `^v\d+\.\d+\.\d+` (i.e.: `v1.2.2`,
     `v1.3.3-special-build-1`, NOT `1.1.2`, `v3`, `v1.2-alpha`). It's important
-    that the git tag has the correct format since we use the regex above.
+    that the git tag has the correct format since we use the regex above in
+    code.
+
+      ~~~ sh
+      git tag v4.2.0
+      ~~~
   
-  * :TODO
+  * Move the `prod` branch to that tag:
+
+      ~~~ sh
+      git branch -f prod v4.2.0
+      ~~~
+
+
+## Dev Notes
+
+You can note your thoughts and leave notes for maintainers in the `dev-notes`
+file. The structure is:
+
+  ~~~
+  YYYY-MM-DD
+
+  Your notes here
+
+  -- your-github-username
+  ~~~
+
+Leave two empty lines between notes.
 
 
 ## Project Structure
