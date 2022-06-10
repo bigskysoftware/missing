@@ -1,5 +1,5 @@
 ---
-permalink: rfp/
+permalink: /rfp/
 layout: prose.eta
 ---
 
