@@ -60,7 +60,7 @@ s {
 q {
 	font-style: italic;
 
-	& :--italic {
+	& em, & cite, & dfn, & var, & i, & address {
 		font-style: normal;
 	}
 }

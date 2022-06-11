@@ -38,43 +38,55 @@ aside {
 	}
 }
 
-:--heading {
+@custom-selector :--heading h1, h2, h3, h4, h5, h6;
+
+h1, h2, h3, h4, h5, h6 {
 	margin-block-end: var(--gap);
 	font-family: var(--display-font);
 	font-size: 1em;
 	margin-block-start: calc(2 * var(--gap));
 }
 
-	h1, .h1 {
-		font-size: 2em;
-		text-transform: none;
-		line-height: calc(2 * var(--rhythm));
-		letter-spacing: 0;
-	}
+h1, .h1 {
+	font-size: 2em;
+	text-transform: none;
+	line-height: calc(2 * var(--rhythm));
+	letter-spacing: 0;
+}
 
-	h2, .h2 {
-		font-size: 1.6em;
-		text-transform: none;
-		line-height: calc(1.5 * var(--rhythm));
-		letter-spacing: 0;
-	}
+h2, .h2 {
+	font-size: 1.6em;
+	text-transform: none;
+	line-height: calc(1.5 * var(--rhythm));
+	letter-spacing: 0;
+}
 
-	h3, .h3 {
-		font-size: 1.17em;
-		text-transform: uppercase;
-		line-height: calc(1 * var(--rhythm));
-		letter-spacing: 0.02em;
-	}
-	
-	h4, .h4, h5, .h5, h6, .h6 {
-		font-size: 1em;
-		text-transform: none;
-		line-height: calc(1 * var(--rhythm));
-		letter-spacing: 0;
-		margin-block-start: var(--gap);
-	}
+h3, .h3 {
+	font-size: 1.17em;
+	text-transform: uppercase;
+	line-height: calc(1 * var(--rhythm));
+	letter-spacing: 0.02em;
+}
 
-:--heading + :--heading, :--heading:first-child {
+h4, .h4, h5, .h5, h6, .h6 {
+	font-size: 1em;
+	text-transform: none;
+	line-height: calc(1 * var(--rhythm));
+	letter-spacing: 0;
+	margin-block-start: var(--gap);
+}
+
+h1 + h2,
+h2 + h3,
+h3 + h4,
+h4 + h5,
+h5 + h6,
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child,
+h6:first-child {
 	margin-block-start: var(--gap);
 }
 

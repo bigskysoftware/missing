@@ -55,7 +55,7 @@ abbr[title] {
  * Add the correct font weight in Chrome, Edge, and Safari.
  */
 
-:--bold {
+strong, b {
     font-weight: bolder;
 }
 
@@ -64,7 +64,7 @@ abbr[title] {
  * 2. Correct the odd `em` font sizing in all browsers.
  */
 
-:--mono {
+ code, samp, kbd, pre {
     font-family: monospace, monospace; /* 1 */
     font-size: 1em; /* 2 */
 }

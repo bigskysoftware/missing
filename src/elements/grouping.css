@@ -43,7 +43,7 @@ blockquote {
 	border-inline-start: 1px solid var(--faded-fg);
 	color: var(--muted-fg);
 
-	& :--italic {
+	& em, & cite, & dfn, & var, & i, & address {
 		font-style: normal;
 	}
 
@@ -53,7 +53,7 @@ blockquote {
 	}
 }
 
-:--list {
+ul, ol {
 	padding-inline-start: var(--rhythm);
 
 	&[role="list"] {
@@ -68,11 +68,6 @@ ul {
 
 ol {
 	list-style: decimal;
-}
-
-:--list[role="list"] {
-	padding-inline-start: 0;
-	list-style: none;
 }
 
 dl {

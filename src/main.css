@@ -65,11 +65,3 @@
 	--gap: calc(var(--rhythm) * var(--density));
 	accent-color: var(--accent);
 }
-
-@custom-selector :--list ul, ol;
-@custom-selector :--italic em, cite, dfn, var, i, address;
-@custom-selector :--bold strong, b, dt;
-@custom-selector :--mono code, samp, kbd, pre;
-@custom-selector :--heading h1, h2, h3, h4, h5, h6;
-@custom-selector :--tcell th, td;
-
