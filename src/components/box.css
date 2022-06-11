@@ -6,7 +6,6 @@
 }
 
 @define-mixin box {
-    display: block;
     margin: var(--gap) 0;
     padding: var(--gap);
     
