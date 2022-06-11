@@ -30,7 +30,7 @@
 .maxwidth-m { max-width: 24ch }
 .maxwidth-s { max-width: 15ch }
 
-.col-0  { flex-grow: 0 ; flex-basis: calc(0  * var(--col-width)) }
+.col-0  { flex-grow: 0 ; }
 .col-1  { flex-grow: 1 ; flex-basis: calc(1  * var(--col-width)) }
 .col-2  { flex-grow: 2 ; flex-basis: calc(2  * var(--col-width)) }
 .col-3  { flex-grow: 3 ; flex-basis: calc(3  * var(--col-width)) }
