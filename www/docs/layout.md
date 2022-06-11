@@ -38,6 +38,20 @@ There's also <dfn>`.col-0`</dfn>, which makes an element take on its intrinsic
 size without regard for the column grid, and <dfn>`.col-1`</dfn>, just for
 completeness' sake.
 
+Use <dfn>`.col-inf`</dfn> to make an element expand as much as possible. This
+will set the column count to an absurdly high number. To set minimum widths on
+other columns (to prevent them from disappearing), use the 
+<dfn>`.minwidth-*`</dfn> classes:
+
+| Class                   | Minimum width      |
+|-------------------------|--------------------|
+| <dfn>`minwidth-s`</dfn> | `min-width` = 15ch |
+| <dfn>`minwidth-m`</dfn> | `min-width` = 24ch |
+| <dfn>`minwidth-l`</dfn> | `min-width` = 35ch |
+
+The values are the same as the <dfn>`.colwidth-*`</dfn> classes, but these
+classes are placed on individual columns as opposed to the whole grid.
+
 
 ## Text Columns
 
