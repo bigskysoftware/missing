@@ -140,6 +140,11 @@
 .\_ { bottom: 0 }
 .\< { left:   0 }
 
+.\^1 { top:    var(--gap) }
+.\>1 { right:  var(--gap) }
+.\_1 { bottom: var(--gap) }
+.\<1 { left:   var(--gap) }
+
 .float\< { float: left  }
 .float\> { float: right }
 
