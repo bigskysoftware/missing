@@ -14,6 +14,7 @@ input[type="color"],
 input::file-selector-button {
 	display: inline-block;
 	padding: 0 calc(var(--rhythm) / 4);
+	vertical-align: top;
 
 	font-size: .9rem;
 	line-height: 1rem;
@@ -59,7 +60,8 @@ input[type="datetime-local"],
 input[type="number"],
 select,
 textarea {
-	padding: .05em calc(var(--rhythm) / 2);
+	padding: 0 calc(var(--rhythm) / 2);
+	vertical-align: top;
 	
 	font-size: 1rem;
 	line-height: inherit;
