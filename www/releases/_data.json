@@ -1,3 +1,5 @@
 {
-    "layout": "release.eta"
+    "layout": "release.eta",
+    "tags": "release",
+    "backTo": "/releases Releases"
 }

@@ -1,3 +1,4 @@
 {
-    "layout": "prose.eta"
+    "layout": "prose.eta",
+    "backTo": "/docs Docs"
 }

@@ -3,5 +3,11 @@ layout: layout.eta
 ---
 
 <main>
+	<% if (it.backTo) { %>
+		<% const [url, ...words] = it.backTo.split(" ") %>
+		<nav aria-label="back">
+			<p><a href="<%= url %>">&larr; <%= words.join(" ") %></a></p>
+		</nav>
+	<% } %>
 	<%~ content %>
 </main>
