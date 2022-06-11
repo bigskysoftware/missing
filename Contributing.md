@@ -70,6 +70,18 @@ directly on `dev` because CSS is hard to merge.
 
 To publish a new release:
 
+  * Make sure there is a changelog in `www/releases/`:
+
+      ~~~ sh
+      cat >www/releases/4.2.0.md <<EOF
+      ---
+      release: 4.2.0
+      ---
+      # Changelog
+       - **Breaking:**{.color.warn} Removed everything
+      EOF
+      ~~~
+
   * Create a git tag matching the regex `^v\d+\.\d+\.\d+` (i.e.: `v1.2.2`,
     `v1.3.3-special-build-1`, NOT `1.1.2`, `v3`, `v1.2-alpha`). It's important
     that the git tag has the correct format since we use the regex above in
@@ -84,6 +96,7 @@ To publish a new release:
       ~~~ sh
       git branch -f prod v4.2.0
       ~~~
+  
 
 
 ## Dev Notes
@@ -106,6 +119,7 @@ Leave two empty lines between notes.
 
   * `src/` -- the CSS source code. This is processed with PostCSS (see build/).
       * `main.css` -- definitions used project-wide.
+      * `syntax.css` -- a [Prism] syntax theme
       * `core/`
         * `sanitize.css` -- a CSS normalize
       * `elements/` -- HTML elements, organized by spec
@@ -122,18 +136,24 @@ Leave two empty lines between notes.
 
         Each component should have a documentation comment, explaining its
         purpose, appearance and usage.
-      
       * `util` -- utility classes, incl. layout and colorways.
+          * `colorway.css` -- colorway definitions and tools for using them.
+          * `density.css` -- utilities for setting density
+          * `generic.css` -- utilities many sites need, e.g. visually hidden
+          * `layout.css` -- layout tools
+          * `typographic.css` -- typesetting tools
 
-  * `www/` -- the project website, built with eleventy
-      * `demos/` demo pages. These should have a `name` specified in the
+  * `www/` -- the project website, built with [Lume]
+      * `demos/` -- demo pages. These should have a `name` specified in the
         frontmatter. They will be listed in the demo page (`../demos.md`).
+      * `releases/` -- release notes.
 
   * `build/` -- buildscripts
       * `postcss.ts` -- builds the CSS.
       * `version-archive.sh` -- builds all past releases into the dist folder.
         The script _should_ run on any POSIX environment with npm and git
         installed, though it hasn't been tested much.
+      * `www.ts` -- a wrapper to run the correct version of [Lume]
 
   * `dist/` -- build results. This is also where the built website is.
       * `missing.css` -- unminified dev build
@@ -142,4 +162,5 @@ Leave two empty lines between notes.
       * `missing.min.css.gz` -- minified + brotli compressed
       * `archive` -- past releases of the above
 
-[pcss-extend]: https://github.com/csstools/postcss-extend-rule
+[Lume]: https://lume.land
+[Prism]: https://prismjs.com
