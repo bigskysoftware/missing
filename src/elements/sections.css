@@ -31,14 +31,17 @@ nav {
 aside {
 	@mixin box;
 
-	& :--heading {
+	& h1,
+	& h2,
+	& h3,
+	& h4,
+	& h5,
+	& h6 {
 		font-size: 1em;
 		text-transform: none;
 		letter-spacing: none;
 	}
 }
-
-@custom-selector :--heading h1, h2, h3, h4, h5, h6;
 
 h1, h2, h3, h4, h5, h6 {
 	margin-block-end: var(--gap);
