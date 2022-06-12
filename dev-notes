@@ -1,4 +1,26 @@
 
+2022-06-12
+
+Got the forms into somewhat of an acceptable state.
+
+Removed a PostCSS plugin, trying to reduce build dependencies.
+
+TODO add utilities for all display: values.
+
+TODO Replace basicgrid with a set of generic flex utilities covering a large
+amount of Flexbox. Basicgrid is just not flexible (ha!) enough.
+
+TODO Make the s, m, l sizes configurable through CSS variables.
+
+TODO Start a missing.css blog. It could be a microblog in this style, written
+in one big YAML file.
+
+I want to make a 0.0.1 release pretty soon. I'll do it when I have the
+hyperscript.org website migrated to missing.css and looking good.
+
+-- dz4k
+
+
 2022-05-20
 
 I hate forms.
