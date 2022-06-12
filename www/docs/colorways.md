@@ -50,7 +50,7 @@ purpose, as opposed to their specific color.
 <figure>
 
   ~~~ css
-  .waiting {
+  .done {
     --colorful-bg: lavender;
     --accent: rebeccapurple;
   }
@@ -62,13 +62,13 @@ purpose, as opposed to their specific color.
   <h3 class="h2">Pull requests</h3>
   <h3 class="h4">Add "ok" colorway</h3>
   <p>Authored by alice@example.com &middot; 
-  <chip class="ok color">Merged</span>
+  <chip class="ok color">Open</span>
 
-  <h3 class="h4">Add "waiting" colorway</h3>
+  <h3 class="h4">Add "done" colorway</h3>
   <p>Authored by bob@example.com &middot; 
   <chip class="color" style="
     --colorful-bg: lavender;
-    --accent: rebeccapurple;">Unmerged</span>
+    --accent: rebeccapurple;">Merged</span>
 
   <h3 class="h4">Add "red" colorway</h3>
   <p>Authored by alice@example.com &middot; 
