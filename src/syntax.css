@@ -23,7 +23,7 @@
 .token.char,
 .token.builtin,
 .token.inserted {
-  color: color(--ok-fg);
+  color: var(--ok-fg);
 }
 
 .token.operator,
