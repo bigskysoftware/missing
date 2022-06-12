@@ -58,13 +58,17 @@ export default () => {
                 if (!values?.classList.contains("attr-value")) return
 
                 values.childNodes.forEach(cn => {
-                    if (("." + cn.textContent) in definitionsIndex) {
-                        const a = document.createElement("a")
-                        a.textContent = cn.textContent
-                        a.setAttribute("href", definitionsIndex["." + cn.textContent] + "#." + cn.textContent)
-                        a.setAttribute("style", codeLinkStyle)
-                        values.replaceChild(a, cn)
-                    }
+                    cn._replaceWith(...cn.textContent.split(/\b/g).map(text => {
+                        console.log(text)
+                        if (("." + text) in definitionsIndex) {
+                            const a = document.createElement("a")
+                            a.textContent = text
+                            a.setAttribute("href", definitionsIndex["." + text] + "#." + text)
+                            a.setAttribute("style", codeLinkStyle)
+                            return a
+                        }
+                        return text
+                    }))
                 })
             })
             document.querySelectorAll(".token.tag > .token.punctuation:first-child").forEach(node => {
