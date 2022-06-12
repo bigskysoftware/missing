@@ -93,6 +93,25 @@ h6:first-child {
 	margin-block-start: var(--gap);
 }
 
+h1:target,
+h2:target,
+h3:target,
+h4:target,
+h5:target,
+h6:target {
+	outline: none;
+
+	&::before {
+		content: '❧';
+		display: inline-block;
+		width: 0;
+		transform: translateX(-1.5ch);
+		font-size: 2em;
+		vertical-align: bottom;
+		color: var(--accent);
+	}
+}
+
 header {
 	border-block-end: 1px solid var(--faded-fg);
 }
