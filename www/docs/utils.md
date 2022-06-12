@@ -53,7 +53,7 @@ You can set `--density` yourself in inline styles or your own CSS:
 </figure>
 
 <figure>
-<figcaption>Setting `--density` in a stylesheet</figcaption>
+<figcaption>Setting <code>--density</code> in a stylesheet</figcaption>
 
   ~~~ css
   .link-embed {
