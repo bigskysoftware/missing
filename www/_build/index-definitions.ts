@@ -45,6 +45,7 @@ export default () => {
             document.querySelectorAll(".token.property").forEach(el => {
                 if (!(el.textContent in definitionsIndex)) return
                 const a = document.createElement("a")
+                a.textContent = el.textContent
                 a.setAttribute("href", definitionsIndex[el.textContent] + "#" + el.textContent)
                 el.parentElement?.replaceChild(a, el)
             })
