@@ -69,6 +69,10 @@ time {
 	font-variant-numeric: tabular-nums;
 }
 
+code, samp, kbd {
+	font-family: var(--mono-font);
+}
+
 samp {
 	color: var(--ok-fg);
 }
