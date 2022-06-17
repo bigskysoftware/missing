@@ -1,0 +1,52 @@
+
+.f-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.f-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.f-switch {
+    display: flex;
+    --col-width: 15ch; /* see ./layout.css */
+
+    & > * {
+        flex-basis: calc((var(--col-width) - 100%) * 999);
+        flex-grow: 1;
+    }
+}
+
+.justify-content\:start    { justify-content: start    }
+.justify-content\:end      { justify-content: end      }
+.justify-content\:baseline { justify-content: baseline }
+.justify-content\:center   { justify-content: center   }
+.justify-content\:stretch  { justify-content: stretch  }
+
+.align-items\:start    { align-items: start    }
+.align-items\:end      { align-items: end      }
+.align-items\:baseline { align-items: baseline }
+.align-items\:center   { align-items: center   }
+.align-items\:stretch  { align-items: stretch  }
+
+.align-self\:start    { align-self: start    }
+.align-self\:end      { align-self: end      }
+.align-self\:baseline { align-self: baseline }
+.align-self\:center   { align-self: center   }
+.align-self\:stretch  { align-self: stretch  }
+
+.grow-0  { flex-grow: 0  }
+.grow-1  { flex-grow: 1  }
+.grow-2  { flex-grow: 2  }
+.grow-3  { flex-grow: 3  }
+.grow-4  { flex-grow: 4  }
+.grow-5  { flex-grow: 5  }
+.grow-6  { flex-grow: 6  }
+.grow-7  { flex-grow: 7  }
+.grow-8  { flex-grow: 8  }
+.grow-9  { flex-grow: 9  }
+.grow-10 { flex-grow: 10 }
+.grow-11 { flex-grow: 11 }
+.grow-12 { flex-grow: 12 }
