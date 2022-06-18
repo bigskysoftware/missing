@@ -2,16 +2,19 @@
 .f-row {
     display: flex;
     flex-direction: row;
+    & > * { margin: 0 }
 }
 
 .f-col {
     display: flex;
     flex-direction: column;
+    & > * { margin: 0 }
 }
 
 .f-switch {
     display: flex;
     --col-width: 15ch; /* see ./layout.css */
+    & > * { margin: 0 }
 
     & > * {
         flex-basis: calc((var(--col-width) - 100%) * 999);
