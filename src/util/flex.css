@@ -2,18 +2,21 @@
 .f-row {
     display: flex;
     flex-direction: row;
+    gap: var(--gap);
     & > * { margin: 0 }
 }
 
 .f-col {
     display: flex;
     flex-direction: column;
+    gap: var(--gap);
     & > * { margin: 0 }
 }
 
 .f-switch {
     display: flex;
     flex-flow: row wrap;
+    gap: var(--gap);
     --col-width: 15ch; /* see ./layout.css */
     & > * { margin: 0 }
 
