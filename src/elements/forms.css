@@ -16,8 +16,8 @@ input::file-selector-button {
 	padding: 0 calc(var(--rhythm) / 4);
 	vertical-align: top;
 
-	font-size: .9rem;
-	line-height: 1rem;
+	font-size: .8rem;
+	line-height: .9rem;
 	font-family: var(--main-font);
 	min-height: var(--rhythm);
 
@@ -34,7 +34,7 @@ input::file-selector-button {
 	&:active {
 		border-block-end-width: 1px;
 		margin-top: 2px;
-		min-height: calc(var(--rhythm) - 2px);
+		min-height: calc(var(--rhythm) - 3px);
 	}
 	
 	&[aria-pressed="true"], &[aria-expanded="true"] {
