@@ -13,6 +13,7 @@
 
 .f-switch {
     display: flex;
+    flex-flow: row wrap;
     --col-width: 15ch; /* see ./layout.css */
     & > * { margin: 0 }
 
