@@ -55,6 +55,10 @@
     & :first-child { margin-block-start: 0 !important }
 }
 
+.textcenter {
+    text-align: center;
+}
+
 /**/
 
 .container {
