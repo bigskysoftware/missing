@@ -130,20 +130,5 @@
 .\_ { bottom: 0 }
 .\< { left:   0 }
 
-.\^1 { top:    var(--gap) }
-.\>1 { right:  var(--gap) }
-.\_1 { bottom: var(--gap) }
-.\<1 { left:   var(--gap) }
-
 .float\< { float: left  }
 .float\> { float: right }
-
-.transform\^ { transform: translateY(calc(0px - var(--gap))) }
-.transform\> { transform: translateX(var(--gap)) }
-.transform\_ { transform: translateY(var(--gap)) }
-.transform\< { transform: translateX(calc(0px - var(--gap))) }
-
-.transform\^2 { transform: translateY(calc(0px - 2 * var(--gap))) }
-.transform\>2 { transform: translateX(calc(2 * var(--gap))) }
-.transform\_2 { transform: translateY(calc(2 * var(--gap))) }
-.transform\<2 { transform: translateX(calc(0px - var(--gap))) }
