@@ -71,6 +71,8 @@ The accepted way to label a group of radio buttons is to use `<fieldset>` and
 This works in missing.css, but these two elements are [notorious] for being
 hard to style. You can use the following pattern instead:
 
+  <figure><figcaption>Note the role, aria-labelledby and the ID on the label itself.</figcaption>
+
   ~~~ html
   <div role=radiogroup aria-labelledby=color-lbl>
     <span id=color-lbl>Color</span>
@@ -81,6 +83,8 @@ hard to style. You can use the following pattern instead:
     </div>
   </div>
   ~~~
+  
+  </figure>
 
 The above will work with [tabular forms](#tabular-form):
 

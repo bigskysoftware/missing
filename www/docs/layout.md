@@ -97,24 +97,29 @@ The <dfn>`.table`</dfn> class makes an element act like a table for the purposes
   </figure>
 
 
-## Fixed Positioning
+## Positioning
 
-<dfn>`fixed`</dfn>
+<dfn>`.fixed`</dfn>
 :   Set `position: fixed`.
 
-<dfn>`sticky`</dfn>
+<dfn>`.sticky`</dfn>
 :   Set `position: sticky`.
 
-<dfn>`top`</dfn>
+<dfn>`.top`</dfn>
 :   Set `top: 0`. Use together with `.fixed` or `.sticky`.
 
-<dfn>`right`</dfn>
+<dfn>`.right`</dfn>
 :   Set `right: 0`. See `.top`.
 
-<dfn>`bottom`</dfn>
+<dfn>`.bottom`</dfn>
 :   Set `bottom: 0`. See `.top`.
 
-<dfn>`left`</dfn>
+<dfn>`.left`</dfn>
 :   Set `left: 0`. See `.top`.
 
+<dfn>`.float<`</dfn>
+:   Set `float: left`.
+
+<dfn>`.float>`</dfn>
+:   Set `float: right`.
 
