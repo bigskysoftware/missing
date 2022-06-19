@@ -40,7 +40,7 @@ completeness' sake.
 
 Use <dfn>`.col-inf`</dfn> to make an element expand as much as possible. This
 will set the column count to an absurdly high number. To set minimum widths on
-other columns (to prevent them from disappearing), use the 
+other columns (to prevent them from disappearing), you can use the 
 <dfn>`.minwidth-*`</dfn> classes:
 
 | Class                   | Minimum width      |
@@ -51,6 +51,8 @@ other columns (to prevent them from disappearing), use the
 
 The values are the same as the <dfn>`.colwidth-*`</dfn> classes, but these
 classes are placed on individual columns as opposed to the whole grid.
+
+There are also matching <dfn>`.minwidth-*`</dfn> classes: <dfn>`minwidth-s`</dfn>, <dfn>`minwidth-m`</dfn> and <dfn>`minwidth-l`</dfn>.
 
 
 ## Text Columns
@@ -67,17 +69,33 @@ classes.
 Add the <dfn>`.full-bleed`</dfn> class to make an element go outside its
 container and span the whole width of the viewport.
 
-## Pad
 
-Add some padding with <dfn>`.pad`</dfn>.
+## Padding & Margin
 
-## Margin
+Add some padding with <dfn>`.pad`</dfn>, or a margin with <dfn>`.margin`</dfn>.
 
-Add a margin with <dfn>`.margin`</dfn>.
 
-## Center
+## Pseudo-tables
 
-<dfn>`.center`</dfn> does what you'd expect, in both axes.
+The <dfn>`.table`</dfn> class makes an element act like a table for the purposes of layout. The <dfn>`.row`</dfn> class can be used to create a table row, or you can make all descendants of an element into rows with <dfn>`.rows`</dfn>.
+
+  <figure><figcaption>A form with aligned labels and inputs.</figcaption>
+
+  ~~~ html
+  <form class="table rows">
+    <p>
+        <label for=name>Name</label>
+        <input type=text id=name name=name>
+    </p>
+    <p>
+        <label for=adr>Address</label>
+        <input type=text id=adr name=adr>
+    </p>
+  </form>
+  ~~~
+
+  </figure>
+
 
 ## Fixed Positioning
 

@@ -16,8 +16,6 @@
     }
 }
 
-.-evenrows { grid-auto-rows: 1fr }
-
 .colwidth-l { --col-width: 35ch }
 .colwidth-m { --col-width: 24ch }
 .colwidth-s { --col-width: 15ch }
@@ -82,18 +80,6 @@
 
 .margin {
     margin: var(--gap);
-}
-
-/**/
-
-.center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.dedent {
-    transform: translateX(calc(0px - var(--gap)));
 }
 
 /**/
