@@ -25,6 +25,8 @@ input::file-selector-button {
 	border: 1px solid var(--accent);
 	box-sizing: border-box;
 	border-radius: .2em;
+	
+	box-shadow: 0 .1em .2em var(--shadow);
 
 	&:hover, &:focus-visible {
 		background: var(--colorful-bg);
