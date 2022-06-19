@@ -24,5 +24,6 @@ Then, see how you can go beyond classless CSS with its features:
  * [Get to know our **components**](/docs/components)
  * [Make a useful **layout**](/docs/layout)
  * [Add color with **colorways**](/docs/colorways)
+ * [Build your own layouts with **flexbox**](/docs/flex)
  * [Use our **utility classes**](/docs/utils)
  {.list-of-links}
