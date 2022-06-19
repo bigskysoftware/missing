@@ -23,7 +23,6 @@ input::file-selector-button {
 
 	background: var(--interactive-bg);
 	border: 1px solid var(--accent);
-	border-block-end-width: 3px;
 	box-sizing: border-box;
 	border-radius: .2em;
 
@@ -32,9 +31,9 @@ input::file-selector-button {
 	}
 
 	&:active {
-		border-block-end-width: 1px;
-		margin-top: 2px;
-		min-height: calc(var(--rhythm) - 3px);
+		box-shadow: none;
+		background-color: var(--accent);
+		color: var(--bg);
 	}
 	
 	&[aria-pressed="true"], &[aria-expanded="true"] {

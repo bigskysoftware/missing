@@ -19,6 +19,8 @@
     border-radius: calc(var(--rhythm) / 4);
     background: var(--colorful-bg);
     border: 1px solid var(--accent);
+
+    box-shadow: 0 .1em .2em var(--shadow);
     
     @mixin padded;
 }
