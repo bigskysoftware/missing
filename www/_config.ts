@@ -33,7 +33,7 @@ export default lume(
           [mdToc, { level: [2], listType: "ul", containerClass: "box crowded" }],
           [mdContainer, "box"],
           [mdAnchor, { permalink: mdAnchor.permalink.linkAfterHeader({
-            placement: "after",
+            placement: "before",
             style: "aria-label",
             assistiveText: t => "Permalink to " + t,
             symbol: "§",
