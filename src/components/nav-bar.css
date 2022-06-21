@@ -1,5 +1,5 @@
 
-header[is="nav-bar"] {
+.navbar, header[is="nav-bar"] {
 	margin: 0;
 	padding: 0 var(--rhythm);
 
