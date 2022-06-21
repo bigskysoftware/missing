@@ -97,11 +97,8 @@
 .row, .rows > * {
     display: table-row;
     
-    &:not(:last-child)::after {
-        content: '';
-        display: block;
-        height: var(--gap);
-        width: 0;
+    &:not(:last-child) > * {
+        margin-bottom: var(--gap);
     }
 
     & > *:not([specificity-hack]) {

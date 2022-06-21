@@ -4,13 +4,12 @@
  ***/
 
 input { display: block; }
-label input { display: inline; }
+label input:not([specificity-hack]) { display: inline; padding-block: 0; }
 
 button,
 input[type="submit"],
 input[type="reset"],
 input[type="button"],
-input[type="color"],
 input::file-selector-button {
 	display: inline-block;
 	padding: 0 calc(var(--rhythm) / 4);
@@ -61,7 +60,7 @@ input[type="datetime-local"],
 input[type="number"],
 select,
 textarea {
-	padding: 0 calc(var(--rhythm) / 2);
+	padding: calc(var(--rhythm) / 4);
 	vertical-align: top;
 	
 	font-size: 1rem;
@@ -87,14 +86,22 @@ textarea {
 
 input[type="range"] {
 	width: 100%;
+	padding: calc(var(--gap) / 4);
 }
 
 input[type="color"] {
-	padding: 1px;
+	padding: 0;
 	margin: 0;
+	height: calc(1.5 * var(--rhythm));
+
+	border: none;
+	background: none;
 }
 
 input[type="file"] {
+	padding: calc(var(--gap) / 4) 0;
+	font-size: inherit;
+	line-height: calc(var(--rhythm) / 2);
 	&::file-selector-button {
 		margin-block: .1em 0;
 		margin-inline-end: 1ch;
@@ -118,16 +125,22 @@ meter {
 	/* TODO */
 }
 
-label {
+form label {
 	display: block;
+	padding-block: calc(var(--gap) / 4);
 }
 
 fieldset {
 	position: relative;
 
-    padding-inline: var(--gap);
-	margin-inline: 0;
+    padding: var(--gap);
+	margin: var(--gap) 0;
 	width: 100%;
 	border-radius: .2em;
 
+	@mixin padded;
+
+	& > legend + * { margin-block-start: 0 }
+
+	border: 1px solid var(--faded-fg);
 }
