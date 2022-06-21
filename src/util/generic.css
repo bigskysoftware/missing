@@ -9,3 +9,6 @@
 	inline-size: 1px;
 }
 
+.reset {
+	all: initial;
+}
