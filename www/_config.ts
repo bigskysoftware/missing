@@ -32,12 +32,10 @@ export default lume(
           mdDeflist,
           [mdToc, { level: [2], listType: "ul", containerClass: "box crowded" }],
           [mdContainer, "box"],
-          [mdAnchor, { permalink: mdAnchor.permalink.linkAfterHeader({
+          [mdAnchor, { permalink: mdAnchor.permalink.linkInsideHeader({
             placement: "before",
-            style: "aria-label",
-            assistiveText: t => "Permalink to " + t,
             symbol: "§",
-            class: "float> transform^2"
+            class: "float> reset"
           }) }]
         ]
       }
