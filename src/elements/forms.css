@@ -125,7 +125,7 @@ meter {
 	/* TODO */
 }
 
-form label {
+label[for] {
 	display: block;
 	padding-block: calc(var(--gap) / 4);
 }
