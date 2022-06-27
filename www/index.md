@@ -18,7 +18,7 @@ layout: layout.eta
 
 </header>
 
-<main>
+<main style="--density: 2">
 
 missing.css is the missing CSS library that we all wished existed. Add it to your website: `<link rel="stylesheet" href="https://the.missing.style">`{.lang-html}
 
@@ -28,7 +28,7 @@ missing.css is the missing CSS library that we all wished existed. Add it to you
    patterns, with ARIA where appropriate. {.box}
  * Finally, it offers a small & curated set of **utility classes** and **custom
    elements** for bespoke elements and layouts. {.box}
-{.basicgrid .align-items:stretch role=list}
+{.basicgrid .dense .align-items:stretch role=list style="margin-block: calc(0px - var(--gap))"}
 
 The goal of missing.css is to reduce needed intervention in HTML. It lets
 authors
@@ -41,7 +41,7 @@ authors
 
  - create unique sites by applying utility classes as needed.
 
-{.textcolumns style="--col-width: 15em; margin-bottom: calc(0px - var(--gap));"}
+{.textcolumns .dense style="--col-width: 15em; margin-bottom: calc(0px - var(--gap));"}
 
 missing.css is not designed to be a complete styling solution for large
 websites. It may serve as a basis for a more completely styled site, but does
