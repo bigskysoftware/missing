@@ -8,6 +8,11 @@
 	<link rel="stylesheet" href="/missing.css">
 	<link rel="stylesheet" href="/missing-prism.css">
 	<link href="https://fonts.bunny.net/css?family=inter:400,700|m-plus-code-latin:400,700" rel="stylesheet" />
+	<style>
+		dfn > code {
+			font-style: normal;
+		}
+	</style>
 </head>
 <body>
 	<%~ content %>
