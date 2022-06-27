@@ -15,7 +15,7 @@ classes; these will be listed in the documentation for that class.
 ## Colors
 
 <dfn>`--fg`</dfn> {#var-fg}
-:   The text color.
+:   <p>The text color.
 
 <dfn>`--muted-fg`</dfn> {#var-muted-fg}
 :   Text color for disabled or de-emphasized elements. It's important that this
@@ -45,10 +45,6 @@ classes; these will be listed in the documentation for that class.
 <dfn>`--interactive-bg`</dfn> {#var-bg-3}
 :   Background for interactive elements
 
-
-<dfn>`--pressed-interactive-bg`</dfn> {#var-bg-4}
-:   Background for pressed interactive elements
-
 <dfn>`--info-bg`</dfn> {#var-info-bg}
 :   Background color for the `.info` [colorway][].
 
@@ -71,6 +67,8 @@ classes; these will be listed in the documentation for that class.
 <dfn>`--muted-accent`</dfn> {#var-muted-accent}
 :   Less vivid version of accent color. Will not be used for text.
 
+    <!-- sparse list -->
+
 
 ## Lengths
 
@@ -79,6 +77,8 @@ classes; these will be listed in the documentation for that class.
 
 <dfn>`--line-length`</dfn> {#var-line-length}
 :   Maximum line length for prose.
+
+    <!-- sparse list -->
 
 ## Fonts
 
@@ -109,6 +109,8 @@ classes; these will be listed in the documentation for that class.
 :   The amount of space between elements (i.e. gaps between paragraphs, padding
     of boxes), as a multiplier of the line height (`--rhythm`). See
     [Utilities / Density](/docs/util#density).
+
+    <!-- sparse list -->
 
 
 [colorway]: /docs/colorways
