@@ -2,8 +2,6 @@
 .basicgrid {
     display: flex;
     flex-flow: row wrap;
-    justify-content: stretch;
-    align-items: start;
     gap: var(--gap);
     --col-width: 15ch;
 

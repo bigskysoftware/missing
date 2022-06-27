@@ -2,8 +2,6 @@
 layout: layout.eta
 ---
 
-<main>
-
 <header>
 
 # <all-caps>missing<wbr>.css<v-h>:</v-h></all-caps> <sub-title>The Missing CSS Stylesheet</sub-title>
@@ -18,32 +16,37 @@ layout: layout.eta
 
 </nav>
 
-Add it to your website: `<link rel="stylesheet" href="https://the.missing.style">`{.lang-html}
-
 </header>
 
-missing.css is the missing CSS library that we all wished existed:
+<main>
 
-  * It starts with decent default styling for vanilla HTML, akin to classless CSS libraries
-  * It offers a small set of components based on purely standard, semantic HTML, utilizing ARIA where appropriate, such as tabs.
-  * Finally, it offers a small & curated set of class-based utilities for tweaking the styling of a site
+missing.css is the missing CSS library that we all wished existed. Add it to your website: `<link rel="stylesheet" href="https://the.missing.style">`{.lang-html}
 
-The objective of missing.css is to minimize the necessary intervention in the HTML by allowing developers to
-start with a good out of the box experience, then build common components using plain, semantic HTML and
-then, only if necessary, apply a minimal number of classes to achieve.
+ * It starts with decent default styling for vanilla HTML, akin to **classless
+   CSS** libraries. {.box}
+ * It offers a small set of **components** based on well-known, semantic markup
+   patterns, with ARIA where appropriate. {.box}
+ * Finally, it offers a small & curated set of **utility classes** and **custom
+   elements** for bespoke elements and layouts. {.box}
+{.basicgrid .align-items:stretch role=list}
 
-<aside class="missing-card">
+The goal of missing.css is to reduce needed intervention in HTML. It lets
+authors
 
-**Did you know?** The `<main>` element can only have these elements as ancestors:
-`<html>`, `<body>`, `<div>`, `<form>` without an accessible name, and autonomous custom elements.
+ - start with a good out-of-the-box experience,
 
-</aside>
+ - customize it easily, even create multiple themes,
 
-missing.css is not designed to be a complete styling solution for large websites.  It may serve as a basis
-for a more completely styled site, but does not attempt to offer the completeness of, say, bootstrap.
+ - build common components using plain, semantic HTML,
 
+ - create unique sites by applying utility classes as needed.
+
+{.textcolumns style="--col-width: 15em; margin-bottom: calc(0px - var(--gap));"}
+
+missing.css is not designed to be a complete styling solution for large
+websites. It may serve as a basis for a more completely styled site, but does
+not try to be as complete as Bootstrap or as versatile as Tailwind.
 It is, however, explicitly designed to be complete enough to use for small sites, internal tools or
 personal projects.
 
 </main>
-
