@@ -16,7 +16,7 @@ input::file-selector-button {
 	vertical-align: top;
 
 	font-size: .8rem;
-	line-height: .9rem;
+	line-height: 1.125em;
 	font-family: var(--main-font);
 	min-height: var(--rhythm);
 
