@@ -16,7 +16,7 @@
 	--faded-fg: #8b8b8b; /* De-emphasized or disabled graphical elements. Will not
 		be used as a text color. */
 	--info-fg: #00386d;
-	--ok-fg: #004908;
+	--ok-fg: #004825;
 	--bad-fg: #830014;
 	--warn-fg: #463d00;
 	
@@ -24,7 +24,7 @@
 	--colorful-bg: #d7fff7; /* Background for blocks: cards, admonitions etc. */
 	--interactive-bg: #e2e2e2; /* Background for interactive elements */
 	--info-bg: #d4e0ff; /* blue */
-	--ok-bg: #72ff6c;
+	--ok-bg: #5dffa2;
 	--bad-bg: #ffddd8;
 	--warn-bg: #ffe53e;
 
