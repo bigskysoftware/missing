@@ -2,5 +2,5 @@
 [build]
 publish = "dist"
 command = """
-brew install deno && deno task prod
+curl -fsSL https://deno.land/install.sh | sh && git fetch --unshallow && deno task prod
 """
