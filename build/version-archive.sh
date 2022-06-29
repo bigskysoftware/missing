@@ -8,7 +8,7 @@ command -v git
 command -v grep
 command -v deno
 
-git clone . $dir
+git clone . $dir --branch prod
 
 cd $dir
 echo "Entered $PWD" >&2
