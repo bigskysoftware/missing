@@ -8,7 +8,7 @@ command -v git
 command -v grep
 command -v deno
 
-git clone $(git remote get-url origin) $dir --branch prod
+git clone . $dir
 
 cd $dir
 echo "Entered $PWD" >&2
