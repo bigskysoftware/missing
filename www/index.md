@@ -11,6 +11,7 @@ layout: layout.eta
 [Docs](/docs/) ·
 [Demo](/demos/) ·
 [Playground](/playground/) ·
+[Releases](/releases/) ·
 [GitHub](https://github.com/bigskysoftware/missing) ·
 [Discord](https://htmx.org/discord)
 

@@ -41,7 +41,7 @@ export default lume(
       }
     }
   )
-  .copy("_redirects")
+  .copy("netlify.redirects", "_redirects")
   .addEventListener("afterBuild", postcss)
   .addEventListener("afterRender", postcss)
   .use(date())

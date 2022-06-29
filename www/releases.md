@@ -8,3 +8,4 @@ templateEngine: eta,md
 <% for (const page of search.pages("release")) { %>
  * [v<%= page.data.release %>](<%= page.data.url %>)
 <% } %>
+{.list-of-links}

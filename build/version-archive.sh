@@ -25,6 +25,6 @@ git clone . $dir
 
         echo "${0}: Built, placing into /$tag/"
         mkdir -p $root_dist/archive/$tag
-        cp dist/missing.* $root_dist/archive/$tag/
+        cp dist/missing* $root_dist/archive/$tag/
     done
 )
