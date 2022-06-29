@@ -4,7 +4,9 @@ set -e
 root_dist=$(realpath dist)
 dir=$(mktemp -d)
 
-command -v git grep deno
+command -v git
+command -v grep
+command -v deno
 
 git clone . $dir
 
