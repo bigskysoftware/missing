@@ -19,7 +19,7 @@ git clone . $dir
     git tag --list | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+' | while read tag
     do
         echo "${0}: Checking out $tag"
-        git checkout $tag
+        git switch --detach $tag
         echo "${0}: Building $tag"
         deno task css
 
