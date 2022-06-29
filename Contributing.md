@@ -97,6 +97,13 @@ To publish a new release:
       git branch -f prod v4.2.0
       ~~~
   
+  * Push:
+
+      ~~~ sh
+      git push --tags
+      git push origin prod
+      ~~~
+  
 
 
 ## Dev Notes

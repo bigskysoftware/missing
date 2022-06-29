@@ -11,7 +11,6 @@ git clone . $dir
 cd $dir
 echo "Entered $PWD" >&2
 
-git fetch --tags
 git tag --list | grep -E '^v[0-9]+\.[0-9]+\.[0-9]+' | while read tag
 do
     echo "${0}: Checking out $tag" >&2
