@@ -9,7 +9,10 @@ command -v grep
 command -v deno
 
 git fetch --tags
+echo tags:
+git tag --list
 git clone . $dir
+git fetch --tags
 
 cd $dir
 echo "Entered $PWD" >&2
