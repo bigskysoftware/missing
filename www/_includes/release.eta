@@ -20,7 +20,7 @@ layout: prose.eta
         </p>
         <p class="tool-bar">
             <strong>Missing Syntax:</strong>
-            <a download href="https://the.missing.style/v<%= release %>">Plain</a>
+            <a download href="https://the.missing.style/v<%= release %>/missing-syntax.css">Plain</a>
             <a download href="https://the.missing.style/v<%= release %>/missing-syntax.min.css">Minified</a>
             <a download href="https://the.missing.style/v<%= release %>/missing-syntax.min.css.gz">Minified+Gzipped</a>
             <a download href="https://the.missing.style/v<%= release %>/missing-syntax.min.css.gz">Minified+Brotlied</a>
