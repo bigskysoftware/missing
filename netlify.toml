@@ -2,5 +2,5 @@
 [build]
 publish = "dist"
 command = """
-git fetch --tags && git tags --list && curl -fsSL https://deno.land/install.sh | sh && PATH=$PATH:/opt/buildhome/.deno/bin/ deno task prod
+git fetch --tags && git tag --list && curl -fsSL https://deno.land/install.sh | sh && PATH=$PATH:/opt/buildhome/.deno/bin/ deno task prod
 """
