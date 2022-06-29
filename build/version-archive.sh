@@ -8,11 +8,7 @@ command -v git
 command -v grep
 command -v deno
 
-git fetch --tags
-echo tags:
-git tag --list
-git clone . $dir
-git fetch --tags
+git clone https://github.com/bigskysoftware/missing $dir
 
 cd $dir
 echo "Entered $PWD" >&2
