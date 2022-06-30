@@ -17,7 +17,7 @@ const docs = [
 <header class="navbar">
     <nav>
         <ul role="list">
-            <li><a href="<%= url %>">&larr; Missing.css Docs</a>
+            <li><a href="<%= it.url %>">&larr; Missing.css Docs</a>
             <% filters.repeat(docs, ([url, name], ctx) => { %>
                 <li><a href="<%= url %>" <%~ url == it.url ? "aria-current='page'" : "" %>><%= name %></a></li>
             <% }) %>
