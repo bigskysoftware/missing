@@ -8,7 +8,7 @@ const docs = [
     ["/docs/aria/", "ARIA"],
     ["/docs/components/", "Components"],
     ["/docs/layout/", "Layout"],
-    ["/docs/colorways/", "Add color with colorways"],
+    ["/docs/colorways/", "Colorways"],
     ["/docs/flex/", "Flexbox"],
     ["/docs/utils/", "Utilities"],
 ]
