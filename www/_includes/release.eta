@@ -13,7 +13,7 @@ layout: prose.eta
         <p><small>Hotlinking is allowed</small></p>
         <p class="tool-bar">
             <strong>Missing.css:</strong>
-            <a download href="https://the.missing.style/v<%= release %>">Plain</a>
+            <a download href="https://the.missing.style/v<%= release %>/missing.css">Plain</a>
             <a download href="https://the.missing.style/v<%= release %>/missing.min.css">Minified</a>
             <a download href="https://the.missing.style/v<%= release %>/missing.min.css.gz">Minified+Gzipped</a>
             <a download href="https://the.missing.style/v<%= release %>/missing.min.css.gz">Minified+Brotlied</a>
