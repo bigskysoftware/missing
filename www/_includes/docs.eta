@@ -1,0 +1,30 @@
+---
+layout: layout.eta
+---
+<%
+const docs = [
+    ["/docs/forms/", "Forms"],
+    ["/docs/variables/", "Variables"],
+    ["/docs/aria/", "ARIA"],
+    ["/docs/components/", "Components"],
+    ["/docs/layout/", "Layout"],
+    ["/docs/colorways/", "Add color with colorways"],
+    ["/docs/flex/", "Flexbox"],
+    ["/docs/utils/", "Utilities"],
+]
+%>
+
+<header class="navbar">
+    <nav>
+        <ul role="list">
+            <li><a href="<%= url %>">&larr; Missing.css Docs</a>
+            <% filters.repeat(docs, ([url, name], ctx) => { %>
+                <li><a href="<%= url %>" <%~ url == it.url ? "aria-current='page'" : "" %>><%= name %></a></li>
+            <% }) %>
+            </ul>
+    </nav>
+</header>
+
+<main>
+    <%~ content %>
+</main>

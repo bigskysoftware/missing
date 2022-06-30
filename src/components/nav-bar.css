@@ -32,5 +32,14 @@
 		text-decoration: none;
 	}
 
-	
+	& a:hover, & a:focus {
+		text-decoration: underline;
+	}
+
+	& [aria-current=page] {
+		background: var(--accent);
+		color: var(--colorful-bg);
+		border-radius: .2em;
+		outline: .2em solid var(--accent);
+	}	
 }

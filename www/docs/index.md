@@ -1,4 +1,5 @@
 ---
+layout: prose.eta
 backTo: ~
 ---
 
