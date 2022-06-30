@@ -7,7 +7,7 @@ layout: prose.eta
     Version <%= release %>
 </h1>
 
-<div class="basicgrid colwidth-m">
+<div class="basicgrid colwidth-m crowded">
     <section class="box">
         <h2>Download</h2>
         <p><small>Hotlinking is allowed</small></p>
