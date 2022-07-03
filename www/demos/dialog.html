@@ -1,0 +1,15 @@
+---
+layout: prose.eta
+name: Dialog
+---
+
+<main>
+    <dialog>
+        <h1 class="titlebar">Dialog</h1>
+        <p>Please confirm that you have opened this dialog.</p>
+        <button onclick="document.querySelectorAll('dialog')[0].close()">Close</button>
+    </dialog>
+    <p>
+        <button onclick="document.querySelectorAll('dialog')[0].showModal()">Open Dialog</button>
+    </p>
+</main>

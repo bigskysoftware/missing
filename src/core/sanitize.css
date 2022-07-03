@@ -193,28 +193,6 @@ textarea {
 /* Interactive
  * ========================================================================== */
 
-/*
- * Add the correct styles in Safari.
- */
-
-dialog {
-    background-color: white;
-    border: solid;
-    color: black;
-    block-size: -moz-fit-content;
-    block-size: fit-content;
-    inline-inset: 0;
-    margin: auto;
-    padding: 1em;
-    position: absolute;
-    inline-size: -moz-fit-content;
-    inline-size: fit-content;
-}
-
-dialog:not([open]) {
-    display: none;
-}
-
 [hidden] {
     display: none !important;
 }

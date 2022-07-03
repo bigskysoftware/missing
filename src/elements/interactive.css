@@ -11,6 +11,7 @@ details {
 
 summary {
 	margin: calc(0px - var(--gap));
+	margin-top: calc(0px - var(--gap));
 	margin-bottom: 0;
 	padding-inline: var(--gap);
 
@@ -18,7 +19,6 @@ summary {
 
 	background: var(--accent);
 	color: var(--bg);
-	border-radius: inherit;
 
 	cursor: pointer;
 
@@ -34,6 +34,37 @@ summary {
 	}
 }
 
+
 dialog {
+	@mixin box;
+    position: absolute;
+    inline-inset: 0;
+    
+	block-size: fit-content;
+    inline-size: fit-content;
+    
+	margin: auto;
+
+    background-color: var(--bg);
+    color: var(--fg);
+
+	box-shadow:
+		0 0 .2em .1em var(--shadow),
+		0 .2em .4em var(--shadow),
+		0 .25em 1em var(--shadow);
 }
 
+dialog[open]::backdrop {
+	display: block;
+	background: black;
+	opacity: .4;
+	animation: bg 2s;
+}
+
+@keyframes bg {
+	from { background: transparent; }
+}
+
+dialog:not([open]) {
+    display: none;
+}

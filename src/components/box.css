@@ -12,6 +12,20 @@
 	& > :last-child>:last-child>:last-child>:last-child     { margin-block-end:   0; }
 }
 
+@define-mixin titlebar {
+    margin-inline: calc(0px - var(--gap));
+    margin-block-end: calc(0px - var(--gap));
+    padding-inline: var(--gap);
+
+    font: inherit;
+    font-weight: bold;
+
+    translate: 0 calc(-1px - var(--gap));
+
+    background: var(--accent);
+    color: var(--bg);
+}
+
 @define-mixin box {
     margin: var(--gap) 0;
     padding: var(--gap);
@@ -25,4 +39,8 @@
 
 .box, missing-card, .missing-card {
     @mixin box;
+}
+
+.titlebar {
+    @mixin titlebar;
 }
