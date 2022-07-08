@@ -80,11 +80,20 @@
     padding-inline: var(--gap);
 }
 
+.pad-block { padding-block: var(--gap) }
+
 .margin {
     margin: var(--gap);
 }
 
+.margin-block  { margin-block:  var(--gap) }
+.margin-inline { margin-inline: var(--gap) }
+
 /**/
+
+.inline { display: inline }
+.block { display: block }
+.contents { display: contents }
 
 .table {
     display: table;
