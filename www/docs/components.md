@@ -32,8 +32,29 @@ accessibility failures.
 
 The above box, in addition to being an example, is also a genuine warning.
 
-The `<figure>`, `<aside>`, `<details>` elements share their appearance with the
-`.box` class.
+The `<figure>`, `<aside>`, `<details>` and `<dialog>` elements share their
+appearance with the `.box` class.
+
+
+## Titlebar
+
+<dfn>`.titlebar`</dfn>: A titlebar for a `.box`.
+
+<figure>
+
+  ~~~ html
+  <div class="box bad">
+    <strong class="block titlebar">Error</strong>
+    Task failed successfully
+  </div>
+  ~~~
+
+  <div class="box bad">
+    <strong class="block titlebar">Error</strong>
+    Task failed successfully
+  </div>
+
+</figure>
 
 
 ## Subtitle
@@ -43,13 +64,13 @@ The <dfn>`<sub-title>`</dfn> custom element subtitle for a heading.
 <figure>
 
   ~~~ html
-  <h2>
+  <h4>
     Conference Talks Considered Harmful<v-h>:</v-h>
     <sub-title>How I Learned To Stop Worrying and Love Baz</sub-title>
-  </h2>
+  </h4>
   ~~~
 
-<h4 class=h2>
+<h4>
   Conference Talks Considered Harmful<v-h>:</v-h>
   <sub-title>How I Learned To Stop Worrying and Love Cliché Titles</sub-title>
 </h4>
@@ -59,13 +80,13 @@ The <dfn>`<sub-title>`</dfn> custom element subtitle for a heading.
 <figure>
 
   ~~~ html
-  <h2>
+  <h4>
     <sub-title class="allcaps">Breaking</sub-title><v-h>:</v-h>
     Bad Thing Happens
-  <h2>
+  <h4>
   ~~~
 
-<h4 class=h2>
+<h4>
   <sub-title class="allcaps">Breaking</sub-title><v-h>:</v-h>
   Bad Thing Happens
 <h4>
@@ -108,6 +129,49 @@ A <dfn>`.tool-bar`</dfn> horizontally laid-out collection of controls.
 </figure>
 
 [WAI: Toolbar]: https://www.w3.org/TR/wai-aria-practices/#toolbar
+
+
+## Sidebar
+
+A `.sidebar`. You can use this component at the top level of your page or
+within a component. Either way, use together with `.f-row` as shown below:
+
+<figure>
+
+  ~~~ html
+  <div class="f-row">
+    <header class="sidebar">
+      <ul role="list">
+        <li><a href="/">Home</a></li>
+        <li><a href="/">Profile</a></li>
+        <li><a href="/">Settings</a></li>
+        <!-- ... -->
+      </ul>
+    </header>
+
+    <div class="col-4">
+      <main></main>
+      <footer></footer>
+    </div>
+  </div>
+  ~~~
+
+  <div class="border f-row">
+    <header class="sidebar minwidth-s">
+      <ul role="list">
+        <li><a href="/">Home</a></li>
+        <li><a href="/">Profile</a></li>
+        <li><a href="/">Settings</a></li>
+        <!-- ... -->
+      </ul>
+    </header>
+    <div class="col-4">
+      <h4>Homepage</h4>
+      <p>Lorem ipsum dolor sit amet.</p>
+    </div>
+  </div>
+
+</figure>
 
 
 ## Breadcrumbs

@@ -20,6 +20,15 @@ The container class imposes a maximum width on an element and centers it. The
 appropriate for all contexts.
 
 
+## `display:` values
+
+| Class                  | Value               |
+|------------------------|---------------------|
+| <dfn>`.inline`</dfn>   | `display: inline`   |
+| <dfn>`.block`</dfn>    | `display: block`    |
+| <dfn>`.contents`</dfn> | `display: contents` |
+
+
 ## Density {#density}
 
 The density utilities set the <dfn>`--density`</dfn> [CSS variable][], which
@@ -31,6 +40,7 @@ We provide three utility classes that set `--density`:
 
 | Class                     | Density                                    |
 |---------------------------|--------------------------------------------|
+| <dfn>`.packed`</dfn>      | `--density` = 0                            |
 | <dfn>`.crowded`</dfn>     | `--density` = 0.5                          |
 | <dfn>`.dense`</dfn>       | `--density` = 1 (same as default)          |
 | <dfn>`.airy`</dfn>        | `--density` = 3                            |

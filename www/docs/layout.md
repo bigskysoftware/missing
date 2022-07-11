@@ -38,10 +38,10 @@ There's also <dfn>`.col-0`</dfn>, which makes an element take on its intrinsic
 size without regard for the column grid, and <dfn>`.col-1`</dfn>, just for
 completeness' sake.
 
-Use <dfn>`.col-inf`</dfn> to make an element expand as much as possible. This
-will set the column count to an absurdly high number. To set minimum widths on
-other columns (to prevent them from disappearing), you can use the 
-<dfn>`.minwidth-*`</dfn> classes:
+Use <dfn>`.col-inf`</dfn> to make an element expand to the end of a row.
+
+
+## Minimum and maximum width
 
 | Class                   | Minimum width      |
 |-------------------------|--------------------|
@@ -52,7 +52,7 @@ other columns (to prevent them from disappearing), you can use the
 The values are the same as the <dfn>`.colwidth-*`</dfn> classes, but these
 classes are placed on individual columns as opposed to the whole grid.
 
-There are also matching <dfn>`.minwidth-*`</dfn> classes: <dfn>`minwidth-s`</dfn>, <dfn>`minwidth-m`</dfn> and <dfn>`minwidth-l`</dfn>.
+There are also matching <dfn>`.maxwidth-*`</dfn> classes: <dfn>`maxwidth-s`</dfn>, <dfn>`maxwidth-m`</dfn> and <dfn>`maxwidth-l`</dfn>.
 
 
 ## Text Columns
@@ -74,6 +74,15 @@ container and span the whole width of the viewport.
 
 Add some padding with <dfn>`.pad`</dfn>, or a margin with <dfn>`.margin`</dfn>.
 
+Add padding or margin in specific axes with <dfn>`.margin-block`</dfn>,
+<dfn>`.margin-inline`</dfn> and <dfn>`.pad-block`</dfn>.
+
+
+## Scrolling
+
+The <dfn>`.scroll`</dfn> class adds `overflow: auto`, which makes an element
+scrollable. To add `overflow: scroll`, which makes scrollbars appear even when
+not needed, use <dfn>`.scroll!`</dfn> with an exclamation mark.
 
 ## Pseudo-tables
 
