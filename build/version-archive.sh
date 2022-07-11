@@ -4,7 +4,7 @@ set -e
     command -v git
     command -v grep
     command -v deno
-} >&-
+} >/dev/null
 
 project_root=$(realpath .)
 repo=$project_root # TODO: add fast path of cloning from existing repo (doesn't work in netlify build)
