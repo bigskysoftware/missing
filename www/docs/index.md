@@ -8,13 +8,13 @@ backTo: ~
 Install it on your website if you haven't already:
 
   ~~~ html
-  <link rel="stylesheet" href="https://the.missing.style">
+  <link rel="stylesheet" href="https://the.missing.style/v0.0.2/missing.min.css">
   ~~~
 
 If you're using Prism.js to highlight code, consider our syntax theme as well:
 
   ~~~ html
-  <link rel="stylesheet" href="https://the.missing.style/prism">
+  <link rel="stylesheet" href="https://the.missing.style/v0.0.2/missing-prism.min.css">
   ~~~
 
 Then, see how you can go beyond classless CSS with its features:
