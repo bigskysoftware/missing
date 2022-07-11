@@ -1,5 +1,5 @@
 
-import { join, dirname, fromFileUrl } from 'https://deno.land/std@0.139.0/path/mod.ts'
+import { join, dirname, fromFileUrl } from 'std/path/mod.ts'
 
 import { gzip } from "https://deno.land/x/compress@v0.4.5/mod.ts"
 import { compress as brotli } from 'https://deno.land/x/brotli@v0.1.4/mod.ts'

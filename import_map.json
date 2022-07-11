@@ -1,5 +1,6 @@
 {
   "imports": {
-    "lume/": "https://deno.land/x/lume@v1.9.1/"
+    "lume/": "https://deno.land/x/lume@v1.10.0/",
+    "std/": "https://deno.land/std@0.144.0/"
   }
 }
