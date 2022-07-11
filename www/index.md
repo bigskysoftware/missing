@@ -19,7 +19,7 @@ layout: layout.eta
 
 </header>
 
-<main style="--density: 2">
+<main style="--density: 2;">
 
 missing.css is the missing CSS library that we all wished existed. Add it to your website: `<link rel="stylesheet" href="https://the.missing.style">`{.lang-html}
 
