@@ -7,7 +7,7 @@ set -e
 } >/dev/null
 
 project_root=$(realpath .)
-repo=$project_root # TODO: add fast path of cloning from existing repo (doesn't work in netlify build)
+repo=https://github.com/bigskysoftware/missing # TODO: add fast path of cloning from existing repo (doesn't work in netlify build)
 cd $(mktemp -d)
 git clone $repo .;                                 echo "Cloned into $PWD" >&2
 
