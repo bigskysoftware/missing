@@ -11,20 +11,14 @@ layout: prose.eta
     <section class="box">
         <h2>Download</h2>
         <p><small>Hotlinking is allowed</small></p>
-        <p class="tool-bar">
-            <strong>Missing.css:</strong>
-            <a download href="https://the.missing.style/v<%= release %>/missing.css">Plain</a>
-            <a download href="https://the.missing.style/v<%= release %>/missing.min.css">Minified</a>
-            <a download href="https://the.missing.style/v<%= release %>/missing.min.css.gz">Minified+Gzipped</a>
-            <a download href="https://the.missing.style/v<%= release %>/missing.min.css.gz">Minified+Brotlied</a>
-        </p>
-        <p class="tool-bar">
-            <strong>Missing Prism:</strong>
-            <a download href="https://the.missing.style/v<%= release %>/missing-prism.css">Plain</a>
-            <a download href="https://the.missing.style/v<%= release %>/missing-prism.min.css">Minified</a>
-            <a download href="https://the.missing.style/v<%= release %>/missing-prism.min.css.gz">Minified+Gzipped</a>
-            <a download href="https://the.missing.style/v<%= release %>/missing-prism.min.css.gz">Minified+Brotlied</a>
-        </p>
+        <% filters.repeat(Object.entries(it.artifacts || {}), ([group, artifacts]) => { %>
+            <p class="tool-bar">
+                <strong><%= group %>:</strong>
+                <% filters.repeat(Object.entries(artifacts || {}), ([artifactname, filename]) => { %>
+                    <a href="https://the.missing.style/v<%= release %>/<%= filename %>" download><%= artifactname %></a>
+                <% }) %>
+            </p>
+        <% }) %>
     </section>
     <section class="box">
         <h2>Source code</h2>
