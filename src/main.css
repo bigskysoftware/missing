@@ -47,19 +47,22 @@
 	/* Density */
 	--density: 1;
 
+	/* Width */
+	--full-width: 100vw;
+
 	/* Do not set these. */
 	--eff-line-length: /* Effective line length for prose. */
 		min(
-			calc( 100vw - (2 * var(--rhythm)) ),
+			calc( var(--full-width) - (2 * var(--rhythm)) ),
 			var(--line-length)
 		);
 
 	--gutter-width: /* Width of spaces at each side of page content. */
 		calc(
 			(
-				100vw                      /* Viewport width */
+				var(--full-width)        /* Viewport width */
 				- var(--eff-line-length) /* minus line width */
-			) / 2);                        /* Divide by 2: there are two page margins */
+			) / 2);                      /* Divide by 2: there are two page margins */
 }
 
 * {

@@ -1,0 +1,23 @@
+
+.sidebar {
+    @mixin box;
+    
+    border-block: none;
+    border-inline-start: none;
+    border-radius: 0;
+    margin: 0;
+
+    font-size: .8em;
+    --rhythm: 1em;
+
+    & li {
+        padding: calc(.5 * var(--gap));
+        margin-inline: calc(-.5 * var(--gap));
+        border-radius: .4em;
+    }
+
+    & a {
+        font-weight: bold;
+        text-decoration: none;
+    }
+}

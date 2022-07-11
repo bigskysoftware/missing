@@ -121,8 +121,9 @@ footer {
 }
 
 body > header,
-body > footer {
-	padding: var(--rhythm) var(--gutter-width)
+body > footer,
+main + footer {
+	padding: var(--rhythm) calc((100% - var(--line-length)) / 2)
 }
 
 address {
