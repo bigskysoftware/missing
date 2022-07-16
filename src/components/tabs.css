@@ -8,7 +8,7 @@
 [role="tab"][role="tab"] {
     all: initial;
 
-    font-family: inherit;
+	font-family: var(--secondary-font);
 
     padding: 0 calc(var(--rhythm) / 4);
     margin: 0;

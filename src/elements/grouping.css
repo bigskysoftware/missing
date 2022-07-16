@@ -82,6 +82,10 @@ dl {
 		margin-inline-start: var(--rhythm);
 	}
 
+li::marker {
+	font-family: var(--secondary-font);
+}
+
 figure {
 	max-width: 100%;
 	margin-inline: 0;
@@ -94,6 +98,8 @@ figure {
 }
 figcaption {
 	margin-block: var(--gap);
+
+	font-family: var(--secondary-font);
 
 	color: var(--muted-fg);
 }

@@ -1,6 +1,8 @@
 
 .sidebar {
     @mixin box;
+
+	font-family: var(--secondary-font);
     
     border-block: none;
     border-inline-start: none;

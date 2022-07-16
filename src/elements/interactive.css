@@ -15,6 +15,7 @@ summary {
 	margin-bottom: 0;
 	padding-inline: var(--gap);
 
+	font-family: var(--secondary-font);
 	font-weight: bold;
 
 	background: var(--accent);
