@@ -45,7 +45,7 @@ aside {
 
 h1, h2, h3, h4, h5, h6 {
 	margin-block-end: var(--gap);
-	font-family: var(--display-font);
+	font-family: var(--secondary-font);
 	font-size: 1em;
 	margin-block-start: calc(2 * var(--gap));
 }
