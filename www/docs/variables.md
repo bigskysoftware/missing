@@ -85,7 +85,7 @@ classes; these will be listed in the documentation for that class.
 <dfn>`--main-font`</dfn> {#var-main-font}
 :   The main font family for text.
 
-<dfn>`--display-font`</dfn> {#var-display-font}
+<dfn>`--secondary-font`</dfn> {#var-display-font}
 :   A secondary text font. It's a good idea to specify a sans-serif font as it
     will be used for buttons.
 
