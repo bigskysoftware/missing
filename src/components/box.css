@@ -18,6 +18,7 @@
     padding-inline: var(--gap);
 
     font: inherit;
+	font-family: var(--secondary-font);
     font-weight: bold;
 
     translate: 0 calc(-1px - var(--gap));

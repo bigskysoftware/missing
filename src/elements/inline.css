@@ -10,6 +10,7 @@
 
 a {
 	color: var(--link-fg, var(--accent));
+	font-family: var(--secondary-font);
 
 	@nest .list-of-links & {
 		text-decoration: none;
@@ -36,6 +37,8 @@ small {
 
 		margin-inline-end: calc(1em - var(--sidenote-width));
 		margin-block-end: var(--rhythm);
+
+		font-family: var(--secondary-font);
 
 		background: var(--bg);
 		border: 1px solid transparent;

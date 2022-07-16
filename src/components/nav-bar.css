@@ -3,6 +3,8 @@
 	margin: 0;
 	padding: 0 var(--rhythm);
 
+	font-family: var(--secondary-font);
+
 	background: var(--colorful-bg);
 	border-block-end: 1px solid var(--accent);
 

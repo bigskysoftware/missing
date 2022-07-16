@@ -40,7 +40,7 @@
 
 	/* Fonts */
 	--main-font: 'Inter', -apple-system, system-ui, sans-serif;
-	--display-font: var(--main-font); /* Headings etc. */
+	--secondary-font: var(--main-font); /* Headings etc. */
 	--mono-font: 'M Plus Code Latin', monospace, monospace; /* monospace twice stops browsers from
 		shrinking this */
 	

@@ -17,10 +17,11 @@ input::file-selector-button {
 
 	font-size: .8rem;
 	line-height: 1.125em;
-	font-family: var(--main-font);
+	font-family: var(--secondary-font);
 	min-height: var(--rhythm);
 
 	background: var(--interactive-bg);
+	color: var(--fg);
 	border: 1px solid var(--accent);
 	box-sizing: border-box;
 	border-radius: .2em;
@@ -68,6 +69,7 @@ textarea {
 	font-family: var(--main-font);
 
 	background: var(--bg);
+	color: var(--fg);
 	border: 1px solid var(--faded-fg);
 	border-radius: .2em;
 
@@ -100,7 +102,7 @@ input[type="color"] {
 
 input[type="file"] {
 	padding: calc(var(--gap) / 4) 0;
-	font-size: inherit;
+	font: inherit;
 	line-height: calc(var(--rhythm) / 2);
 	&::file-selector-button {
 		margin-block: .1em 0;

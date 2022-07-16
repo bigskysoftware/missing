@@ -1,5 +1,7 @@
 
 .breadcrumbs[aria-label] {
+	font-family: var(--secondary-font);
+
     & ul, & ol {
         list-style: none;
         padding-inline-start: 0;

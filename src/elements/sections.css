@@ -113,10 +113,12 @@ h6:target {
 }
 
 header {
+	font-family: var(--secondary-font);
 	border-block-end: 1px solid var(--faded-fg);
 }
 
 footer {
+	font-family: var(--secondary-font);
 	border-block-start: 1px solid var(--faded-fg);
 }
 
