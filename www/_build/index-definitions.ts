@@ -59,7 +59,6 @@ export default () => {
 
                 values.childNodes.forEach(cn => {
                     cn._replaceWith(...cn.textContent.split(/\b/g).map(text => {
-                        console.log(text)
                         if (("." + text) in definitionsIndex) {
                             const a = document.createElement("a")
                             a.textContent = text
