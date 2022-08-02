@@ -1,4 +1,33 @@
 
+2022-08-02
+
+Neither basicgrid nor the flex utilities are good enough because layouts need
+to adapt to device size and for any moderately sophisticated layout, that 
+means media queries. I don't want missing.css to just be Tailwind but worse,
+so `sm:flex-2` is off the table.
+
+I'm writing this after needing to make two different sidebar layouts, and 
+finding the one with custom CSS much easier to write. The one without is also 
+simply broken on mobile.
+
+Maybe just add a CSS Grid tutorial in the docs? In that case, find a way to 
+achieve LoB with CSS.
+
+What I wish existed on the Web:
+  ~~~
+  <section>
+    <style>
+      :scope {
+        background: var(--colorful-bg); /* Adds columns to this section */
+      }
+    </style>
+
+    <p>Lorem ipsum dolor sit amet...
+  </section>
+
+-- dz4k
+
+
 2022-06-21
 
 add an utility for all: initial.
