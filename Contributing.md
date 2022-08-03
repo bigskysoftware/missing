@@ -76,8 +76,21 @@ To publish a new release:
       cat >www/releases/4.2.0.md <<EOF
       ---
       release: 4.2.0
+      artifacts:
+        Missing.css:
+          Plain: missing.css
+          Minified: missing.min.css
+          Min. + Gzipped: missing.min.css.gz
+          Min. + Brotlied: missing.min.css.br
+        Missing Prism:
+          Plain: missing-prism.css
+          Minified: missing.min.css
+          Min. + Gzipped: missing.min.css.gz
+          Min. + Brotlied: missing.min.css.br
       ---
+
       # Changelog
+
        - **Breaking:**{.color.warn} Removed everything
       EOF
       ~~~
@@ -100,8 +113,7 @@ To publish a new release:
   * Push:
 
       ~~~ sh
-      git push --tags
-      git push origin prod
+      git push --tags origin prod
       ~~~
   
 
@@ -129,7 +141,7 @@ Leave two empty lines between notes.
       * `syntax.css` -- a [Prism] syntax theme
       * `core/`
         * `sanitize.css` -- a CSS normalize
-      * `elements/` -- HTML elements, organized by spec
+      * `elements/` -- HTML elements, organized by sections of the [HTML spec][]
           * `sections.css` -- 4.1 The document element, 4.3 Sections
           * `grouping.css` -- 4.4 Grouping content
           * `inline.css` -- 4.5 Text-level semantics, 4.7 Edits
@@ -160,14 +172,15 @@ Leave two empty lines between notes.
       * `version-archive.sh` -- builds all past releases into the dist folder.
         The script _should_ run on any POSIX environment with npm and git
         installed, though it hasn't been tested much.
-      * `www.ts` -- a wrapper to run the correct version of [Lume]
 
   * `dist/` -- build results. This is also where the built website is.
       * `missing.css` -- unminified dev build
       * `missing.min.css` -- minified
       * `missing.min.css.br` -- minified + gzip compressed
       * `missing.min.css.gz` -- minified + brotli compressed
+      * `missing-prism.css` (& `.min.css`, etc.) -- [Prism] theme
       * `archive` -- past releases of the above
 
 [Lume]: https://lume.land
 [Prism]: https://prismjs.com
+[HTML spec]: https://html.spec.whatwg.org/multipage/#toc-semantics
