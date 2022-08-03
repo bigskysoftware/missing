@@ -87,6 +87,22 @@ export default () => {
                     el.replaceChild(a, tn)
                 }
             })
+
+            const $index = document.querySelector("#index-of-everything")
+            if ($index) {
+                const entries = Object.entries(definitionsIndex).sort((a, b) => a[0].localeCompare(b[0]))
+    
+                for (const [term, url] of entries) {
+                    const li = document.createElement("li")
+                    const a = document.createElement("a")
+                    a.setAttribute("href", url + "#" + term)
+                    const code = document.createElement("code")
+                    code.textContent = term
+                    li.append(a)
+                    a.append(code)
+                    $index.append(li)
+                }
+            }
         })
     }
 }
