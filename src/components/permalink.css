@@ -1,0 +1,8 @@
+
+.permalink-anchor {
+    display: none;
+    
+    @nest *:hover > & {
+        display: initial;
+    }
+}
