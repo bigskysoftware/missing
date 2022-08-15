@@ -24,8 +24,7 @@ summary {
 	cursor: pointer;
 
 	&:focus-visible, &:active {
-		background: var(--muted-accent);
-		border-color: var(--muted-accent);
+		filter: brightness(.8);
 	}
 
 	@nest details[open] & {

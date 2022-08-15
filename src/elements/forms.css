@@ -41,9 +41,7 @@ input::file-selector-button,
 	}
 
 	&:active {
-		box-shadow: none;
-		background-color: var(--accent);
-		color: var(--bg);
+		filter: brightness(.8);
 	}
 	
 	&[aria-pressed="true"], &[aria-expanded="true"] {
