@@ -38,7 +38,7 @@ async function buildVersion(gitTag: string) {
       $.logStep(`Copying ${file.path}`)
       await Promise.all([
         $`cp ${file.path} ${cachePath}`.quiet(),
-        $`cp ${file.path} ${cachePath}`.quiet(),
+        $`cp ${file.path} ${dest}`.quiet(),
       ]);
     }
   }
