@@ -14,7 +14,7 @@
     margin: 0;
     min-height: var(--rhythm);
 
-    border: solid var(--accent);
+    border: solid var(--box-border);
     border-width: 1px 1px 0 1px;
     border-block-end-color: transparent;
     background: var(--interactive-bg);
@@ -26,8 +26,8 @@
         transform: none;
         bottom: -1px;
         position: relative;
-        background: var(--colorful-bg);
-        border-block-end: 1px solid var(--colorful-bg);
+        background: var(--box-bg);
+        border-block-end: 1px solid var(--box-bg);
     }
 }
 

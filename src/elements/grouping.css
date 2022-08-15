@@ -89,12 +89,8 @@ li::marker {
 figure {
 	max-width: 100%;
 	margin-inline: 0;
-	padding: var(--gap);
 
-	border: 1px solid var(--faded-fg);
-	border-radius: calc(var(--rhythm) / 4); 
-
-	@mixin padded;
+	@mixin box;
 }
 figcaption {
 	margin-block: var(--gap);

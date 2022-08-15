@@ -8,7 +8,7 @@ here is the `.ok` colorway in the missing.css source code:
 
   ~~~ css
   .ok {
-    --colorful-bg: var(--ok-bg);
+    --box-bg: var(--ok-bg);
     --accent: var(--ok-fg);
   }
   ~~~
@@ -51,7 +51,7 @@ purpose, as opposed to their specific color.
 
   ~~~ css
   .done {
-    --colorful-bg: lavender;
+    --box-bg: lavender;
     --accent: rebeccapurple;
   }
   ~~~
@@ -67,7 +67,7 @@ purpose, as opposed to their specific color.
   <h3 class="h4">Add "done" colorway</h3>
   <p>Authored by bob@example.com &middot; 
   <chip class="color" style="
-    --colorful-bg: lavender;
+    --box-bg: lavender;
     --accent: rebeccapurple;">Merged</span>
 
   <h3 class="h4">Add "red" colorway</h3>

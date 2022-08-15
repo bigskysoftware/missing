@@ -10,7 +10,8 @@ button,
 input[type="submit"],
 input[type="reset"],
 input[type="button"],
-input::file-selector-button {
+input::file-selector-button,
+.\<button\> {
 	display: inline-block;
 	padding: 0 calc(var(--rhythm) / 4);
 	vertical-align: top;
@@ -22,14 +23,21 @@ input::file-selector-button {
 
 	background: var(--interactive-bg);
 	color: var(--fg);
-	border: 1px solid var(--accent);
+	border: 1px solid var(--muted-fg);
 	box-sizing: border-box;
 	border-radius: .2em;
-	
-	box-shadow: 0 .1em .2em var(--shadow);
+
+	/* a-specific resets */
+	color: var(--fg);
+	text-decoration: none;
+	display: grid;
+	place-items: center;
 
 	&:hover, &:focus-visible {
-		background: var(--colorful-bg);
+		filter: brightness(1.1);
+
+		/* a-specific resets */
+		text-decoration: none;
 	}
 
 	&:active {
@@ -42,6 +50,21 @@ input::file-selector-button {
 		box-shadow: 0 .05em var(--accent);
 		transform: translateY(.05em);
 		background: var(--pressed-interactive-bg);
+	}
+
+	&[disabled] {
+		color: var(--muted-fg);
+	}
+
+	@nest strong > & {
+		background: var(--accent);
+		color: var(--bg);
+		border: none;
+
+
+		&[disabled] {
+			color: var(--muted-accent);
+		}
 	}
 }
 

@@ -6,31 +6,34 @@
 @import "./components/*.css";
 @import "./elements/*.css";
 
-/* Colors taken from https://reasonable.work/colors/ */
+/* Colors taken from https://yeun.github.io/open-color/ */
 
 :root {
 	/* Colors */
 	--fg: #000; /* Text. */
-	--muted-fg: #3e3e3e; /* De-emphasized or disabled elements' text. Will be
+	--muted-fg: #495057; /* De-emphasized or disabled elements' text. Will be
 		used with a background of --c-bg and --c-bg-2 -- check contrast! */
-	--faded-fg: #8b8b8b; /* De-emphasized or disabled graphical elements. Will not
+	--faded-fg: #adb5bd; /* De-emphasized or disabled graphical elements. Will not
 		be used as a text color. */
-	--info-fg: #00386d;
-	--ok-fg: #004825;
-	--bad-fg: #830014;
-	--warn-fg: #463d00;
+	
+	--info-fg: #1864ab;
+	--ok-fg: #2b8a3e;
+	--bad-fg: #c92a2a;
+	--warn-fg: #c16400;
 	
 	--bg: #fff; /* Page background. */
-	--colorful-bg: #d7fff7; /* Background for blocks: cards, admonitions etc. */
-	--interactive-bg: #e2e2e2; /* Background for interactive elements */
-	--info-bg: #d4e0ff; /* blue */
-	--ok-bg: #5dffa2;
-	--bad-bg: #ffddd8;
-	--warn-bg: #ffe53e;
+	--box-bg: #f8f9fa; /* Background for blocks: cards, admonitions etc. */
+	--box-border: var(--faded-fg); /* Border for blocks. */
+	--interactive-bg: #dee2e6; /* Background for interactive elements */
+
+	--info-bg: #e7f5ff; /* blue */
+	--ok-bg: #ebfbee;
+	--bad-bg: #fff5f5;
+	--warn-bg: #fff9db;
 
 	--shadow: #777; /* Box shadows. */
 
-	--accent: #007f5f; /* Accent color. Will be used *as a text color* with a
+	--accent: #005f7f; /* Accent color. Will be used *as a text color* with a
 		background of --c-bg and --c-bg-2 -- check contrast! */
 	--muted-accent: #42ffc6; /* Muted accent color. Will not be used for text. */
 

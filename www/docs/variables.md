@@ -39,7 +39,7 @@ classes; these will be listed in the documentation for that class.
 <dfn>`--bg`</dfn> {#var-bg}
 :   Page background.
 
-<dfn>`--colorful-bg`</dfn> {#var-bg-2}
+<dfn>`--box-bg`</dfn> {#var-bg-2}
 :   Background for blocks: cards, admonitions etc.
 
 <dfn>`--interactive-bg`</dfn> {#var-bg-3}

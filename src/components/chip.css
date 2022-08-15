@@ -2,7 +2,7 @@
 .chip, chip {
 	font-family: var(--secondary-font);
     border: 1px solid var(--accent);
-    background: var(--colorful-bg);
+    background: var(--box-bg);
     border-radius: calc(var(--rhythm) / 2);
     padding-inline: calc(var(--rhythm) / 2);
 }

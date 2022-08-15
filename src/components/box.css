@@ -30,10 +30,11 @@
 @define-mixin box {
     margin: var(--gap) 0;
     padding: var(--gap);
+    overflow: clip;
     
     border-radius: calc(var(--rhythm) / 4);
-    background: var(--colorful-bg);
-    border: 1px solid var(--accent);
+    background: var(--box-bg);
+    border: 1px solid var(--box-border);
     
     @mixin padded;
 }

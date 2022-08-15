@@ -18,7 +18,7 @@ What I wish existed on the Web:
   <section>
     <style>
       :scope {
-        background: var(--colorful-bg); /* Adds columns to this section */
+        background: var(--box-bg); /* Adds columns to this section */
       }
     </style>
 

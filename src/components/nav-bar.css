@@ -5,7 +5,7 @@
 
 	font-family: var(--secondary-font);
 
-	background: var(--colorful-bg);
+	background: var(--box-bg);
 	border-block-end: 1px solid var(--accent);
 
 	overflow-x: auto;
@@ -40,7 +40,7 @@
 
 	& [aria-current=page] {
 		background: var(--accent);
-		color: var(--colorful-bg);
+		color: var(--box-bg);
 		border-radius: .2em;
 		outline: .2em solid var(--accent);
 	}	
