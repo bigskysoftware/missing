@@ -24,7 +24,7 @@ layout: layout.eta
 missing.css is the missing CSS library that we all wished existed. Add it to your website: `<link rel="stylesheet" href="https://the.missing.style">`{.lang-html}
 
  * It starts with decent default styling for vanilla HTML, akin to **classless
-   CSS** libraries. {.box}
+   CSS** libraries, that can be customized with **CSS variables.** {.box}
  * It offers a small set of **components** based on well-known, semantic markup
    patterns, with ARIA where appropriate. {.box}
  * Finally, it offers a small & curated set of **utility classes** and **custom
