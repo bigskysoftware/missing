@@ -60,15 +60,10 @@ ul, ol {
 	&[role="list"] {
 		padding-inline-start: 0;
 		list-style: none;
-
-		& li {
-			margin-block: var(--gap);
-		}
 	}
 }
 
 ul {
-	list-style: square;
 }
 
 ol {
