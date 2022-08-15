@@ -59,18 +59,18 @@ purpose, as opposed to their specific color.
 </figure>
 
 <figure>
-  <h3 class="h2">Pull requests</h3>
-  <h3 class="h4">Add "ok" colorway</h3>
+  <h3 class="<h2>">Pull requests</h3>
+  <h3 class="<h4>">Add "ok" colorway</h3>
   <p>Authored by alice@example.com &middot; 
   <chip class="ok color">Open</span>
 
-  <h3 class="h4">Add "done" colorway</h3>
+  <h3 class="<h4>">Add "done" colorway</h3>
   <p>Authored by bob@example.com &middot; 
   <chip class="color" style="
     --box-bg: lavender;
     --accent: rebeccapurple;">Merged</span>
 
-  <h3 class="h4">Add "red" colorway</h3>
+  <h3 class="<h4>">Add "red" colorway</h3>
   <p>Authored by alice@example.com &middot; 
   <chip class="bad color">Closed</span>
 </figure>
