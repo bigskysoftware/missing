@@ -83,4 +83,28 @@ You can set `--density` yourself in inline styles or your own CSS:
 :   Renders the text in the monospace font (`--font-mono`).
 
 
+## Masquerades
+
+The following classes can be used to make one element look like another:
+
+- <dfn>`.<h1>`</dfn>
+- <dfn>`.<h2>`</dfn>
+- <dfn>`.<h3>`</dfn>
+- <dfn>`.<h4>`</dfn>
+- <dfn>`.<h5>`</dfn>
+- <dfn>`.<h6>`</dfn>
+- <dfn>`.<button>`</dfn>
+{role="list" .tool-bar}
+
+<figure>
+
+  ~~~ html
+  <a class="<button>" href="/cta">Call to action</a>
+  ~~~
+
+  <p><a class="<button>" href="#">Call to action</a>
+
+
+</figure>
+
 [CSS variable]: /docs/variables

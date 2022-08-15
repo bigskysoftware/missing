@@ -42,6 +42,9 @@ classes; these will be listed in the documentation for that class.
 <dfn>`--box-bg`</dfn> {#var-bg-2}
 :   Background for blocks: cards, admonitions etc.
 
+<dfn>`--box-border`</dfn> {#var-bg-2}
+:   Border color for blocks: cards, admonitions etc.
+
 <dfn>`--interactive-bg`</dfn> {#var-bg-3}
 :   Background for interactive elements
 
@@ -77,6 +80,9 @@ classes; these will be listed in the documentation for that class.
 
 <dfn>`--line-length`</dfn> {#var-line-length}
 :   Maximum line length for prose.
+
+<dfn>`--border-radius`</dfn> {#var-border-radius}
+:   Border radius. Set to 0 for sharp corners.
 
     <!-- sparse list -->
 
