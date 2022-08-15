@@ -12,7 +12,7 @@ export default () => {
     }
 }
 
-function peekHtml(html: string, n: number = 80) {
+function peekHtml(html: string, n = 80) {
     const text = html.replace(/<\/?[^>]+(>|$)/g, "").replace(/\s+/g, " ")
     if (text.length < n) return text
     else return text.slice(0, n - 1) + "…"
