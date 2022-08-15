@@ -40,6 +40,7 @@
 	/* Lengths */
 	--rhythm: 1.4rem; /* Vertical rhythm, line height. */
 	--line-length: 40rem; /* Maximum line length for prose. */
+	--border-radius: .2rem;
 
 	/* Fonts */
 	--main-font: 'Inter', -apple-system, system-ui, sans-serif;

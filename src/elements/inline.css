@@ -47,7 +47,7 @@ small {
 
 		&:hover, &:focus-within {
 			border: 1px solid var(--faded-fg);
-			border-radius: .2em;
+			border-radius: var(--border-radius);
 			transform: translateX(calc(
 				0px - var(--sidenote-width)
 				+ min(var(--gutter-width), var(--sidenote-width))
@@ -101,7 +101,7 @@ kbd kbd /*
 	background: var(--interactive-bg);
 	border: 1px outset var(--faded-fg);
 	border-block-end-width: 3px;
-	border-radius: .3em;
+	border-radius: var(--border-radius);
 }
 
 sub {

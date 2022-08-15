@@ -41,7 +41,7 @@
 	& [aria-current=page] {
 		background: var(--accent);
 		color: var(--box-bg);
-		border-radius: .2em;
+		border-radius: var(--border-radius);
 		outline: .2em solid var(--accent);
 	}	
 }

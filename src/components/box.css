@@ -32,7 +32,7 @@
     padding: var(--gap);
     overflow: clip;
     
-    border-radius: calc(var(--rhythm) / 4);
+    border-radius: var(--border-radius);
     background: var(--box-bg);
     border: 1px solid var(--box-border);
     

@@ -25,7 +25,7 @@ input::file-selector-button,
 	color: var(--fg);
 	border: 1px solid var(--muted-fg);
 	box-sizing: border-box;
-	border-radius: .2em;
+	border-radius: var(--border-radius);
 
 	/* a-specific resets */
 	color: var(--fg);
@@ -94,7 +94,7 @@ textarea {
 	background: var(--bg);
 	color: var(--fg);
 	border: 1px solid var(--faded-fg);
-	border-radius: .2em;
+	border-radius: var(--border-radius);
 
 	vertical-align: top;
 
@@ -161,7 +161,7 @@ fieldset {
     padding: var(--gap);
 	margin: var(--gap) 0;
 	width: 100%;
-	border-radius: .2em;
+	border-radius: var(--border-radius);
 
 	@mixin padded;
 

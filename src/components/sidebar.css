@@ -15,7 +15,7 @@
     & li {
         padding: calc(.5 * var(--gap));
         margin-inline: calc(-.5 * var(--gap));
-        border-radius: .4em;
+        border-radius: var(--border-radius);
     }
 
     & a {
