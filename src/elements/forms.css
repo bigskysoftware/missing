@@ -30,7 +30,7 @@ input::file-selector-button,
 	/* a-specific resets */
 	color: var(--fg);
 	text-decoration: none;
-	display: grid;
+	display: inline-flex;
 	place-items: center;
 
 	&:hover, &:focus-visible {
@@ -60,7 +60,7 @@ input::file-selector-button,
 		background: var(--accent);
 		color: var(--bg);
 		border: none;
-
+		font-weight: bold;
 
 		&[disabled] {
 			color: var(--muted-accent);
