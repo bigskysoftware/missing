@@ -4,7 +4,11 @@ import $ from "https://deno.land/x/dax@0.9.0/mod.ts";
 
 const projectRoot = $.path.join($.path.fromFileUrl(import.meta.url), "../..");
 const repo = "https://github.com/bigskysoftware/missing"; // TODO: add fast path of cloning from existing repo (doesn't work in netlify build)
-let clonedRepo: string;
+
+const clonedRepo = await Deno.makeTempDir();
+$.logStep(`Cloning repo into ${clonedRepo}`);
+await $.cd(clonedRepo);
+await $`git clone ${repo} .`.quiet();
 
 async function buildVersion(gitTag: string) {
   const dest = $.path.join(projectRoot, "/dist/archive/", gitTag);
@@ -21,13 +25,6 @@ async function buildVersion(gitTag: string) {
     $.logStep("Copying", gitTag, "artifacts from cache");
     await $.fs.copy(cachePath, dest, { overwrite: true });
   } else {
-    if (!clonedRepo) {
-      clonedRepo = await Deno.makeTempDir();
-      $.logStep(`Cloning repo into ${clonedRepo}`);
-      await $.cd(clonedRepo);
-      await $`git clone ${repo} .`.quiet();
-    }
-
     $.logStep("Checking out", `${gitTag}`);
     await $`git switch --detach ${gitTag}`.quiet();
 
