@@ -15,6 +15,9 @@
 		dfn > code {
 			font-style: normal;
 		}
+		code a {
+			font-family: inherit;
+		}
 	</style>
 </head>
 <body>
