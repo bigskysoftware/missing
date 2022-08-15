@@ -35,10 +35,10 @@ async function buildVersion(gitTag: string) {
     $.logStep(`Placing ${gitTag} artifacts into archive/${gitTag}`);
     await Deno.mkdir(cachePath, { recursive: true });
     for await (const file of $.fs.expandGlob("missing*", { root: "dist" })) {
-      $.logStep(`Copying ${file}`)
+      $.logStep(`Copying ${file.path}`)
       await Promise.all([
-        $`cp ${file} ${cachePath}`.quiet(),
-        $`cp ${file} ${cachePath}`.quiet(),
+        $`cp ${file.path} ${cachePath}`.quiet(),
+        $`cp ${file.path} ${cachePath}`.quiet(),
       ]);
     }
   }
