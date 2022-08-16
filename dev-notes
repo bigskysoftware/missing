@@ -1,4 +1,15 @@
 
+2022-08-16
+
+Updating docs is hard and I always forget something. Consider putting docs next
+to code:
+
+- using npm:literate-postcss
+- using some tool that extracts comments from css
+
+-- dz4k
+
+
 2022-08-02
 
 Neither basicgrid nor the flex utilities are good enough because layouts need
