@@ -43,17 +43,11 @@
 	& > :last-child>:last-child>:last-child>:last-child     { margin-block-end:   0; }
 }
 
-.pad {
-    padding-inline: var(--gap);
-    @mixin padded;
-}
+.pad { padding-inline: var(--gap); @mixin padded; }
+.pad-block { padding-block: var(--gap); @mixin padded; }
+.pad-inline { padding-inline: var(--gap) }
 
-.pad-block { padding-block: var(--gap) }
-
-.margin {
-    margin: var(--gap);
-}
-
+.margin { margin: var(--gap) }
 .margin-block  { margin-block:  var(--gap) }
 .margin-inline { margin-inline: var(--gap) }
 
@@ -104,7 +98,6 @@
 
 .float\< { float: left  }
 .float\> { float: right }
-
 
 .scroll { overflow: auto }
 .scroll\! { overflow: scroll }
