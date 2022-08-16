@@ -73,6 +73,19 @@
 
 /**/
 
+@define-mixin padded {
+    /* artificially increase specificity */
+    /* TODO: come up with a better way to do this */
+    & > :first-child:first-child:first-child:first-child,
+    & > :first-child>:first-child:first-child:first-child,
+    & > :first-child>:first-child>:first-child:first-child,
+    & > :first-child>:first-child>:first-child>:first-child { margin-block-start: 0; }
+	& > :last-child:last-child:last-child:last-child,
+	& > :last-child>:last-child:last-child:last-child,
+	& > :last-child>:last-child>:last-child:last-child,
+	& > :last-child>:last-child>:last-child>:last-child     { margin-block-end:   0; }
+}
+
 .pad {
     padding-inline: var(--gap);
     @mixin padded;
