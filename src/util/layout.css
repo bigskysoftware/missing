@@ -75,6 +75,7 @@
 
 .pad {
     padding-inline: var(--gap);
+    @mixin padded;
 }
 
 .pad-block { padding-block: var(--gap) }
