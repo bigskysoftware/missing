@@ -4,7 +4,11 @@ import $ from "https://deno.land/x/dax@0.9.0/mod.ts";
 
 const projectRoot = $.path.join($.path.fromFileUrl(import.meta.url), "../..");
 const repo = "https://github.com/bigskysoftware/missing"; // TODO: add fast path of cloning from existing repo (doesn't work in netlify build)
-let clonedRepo: string;
+
+const clonedRepo = await Deno.makeTempDir();
+$.logStep(`Cloning repo into ${clonedRepo}`);
+await $.cd(clonedRepo);
+await $`git clone ${repo} .`.quiet();
 
 async function buildVersion(gitTag: string) {
   const dest = $.path.join(projectRoot, "/dist/archive/", gitTag);
@@ -21,13 +25,6 @@ async function buildVersion(gitTag: string) {
     $.logStep("Copying", gitTag, "artifacts from cache");
     await $.fs.copy(cachePath, dest, { overwrite: true });
   } else {
-    if (!clonedRepo) {
-      clonedRepo = await Deno.makeTempDir();
-      $.logStep(`Cloning repo into ${clonedRepo}`);
-      await $.cd(clonedRepo);
-      await $`git clone ${repo} .`.quiet();
-    }
-
     $.logStep("Checking out", `${gitTag}`);
     await $`git switch --detach ${gitTag}`.quiet();
 
@@ -37,12 +34,15 @@ async function buildVersion(gitTag: string) {
     $.logStep(`Caching ${gitTag} artifacts`);
     $.logStep(`Placing ${gitTag} artifacts into archive/${gitTag}`);
     await Deno.mkdir(cachePath, { recursive: true });
-    for await (const file of $.fs.expandGlob("missing*", { root: "dist " })) {
-      await Promise.all([
-        $`cp ${file} ${cachePath}`.quiet(),
-        $`cp ${file} ${cachePath}`.quiet(),
-      ]);
-    }
+    await $.logIndent(async () => {
+      for await (const file of $.fs.expandGlob("missing*", { root: "dist" })) {
+        $.logStep(`Copying ${file.path}`);
+        await Promise.all([
+          $`cp ${file.path} ${cachePath}`.quiet(),
+          $`cp ${file.path} ${dest}`.quiet(),
+        ]);
+      }
+    });
   }
 }
 
