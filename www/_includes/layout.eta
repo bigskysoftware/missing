@@ -7,10 +7,10 @@
 
 	<link rel="stylesheet" href="/missing.css">
 	<link rel="stylesheet" href="/missing-prism.css">
-	<link href="https://fonts.bunny.net/css?family=figtree:400,700|m-plus-code-latin:400,700" rel="stylesheet" />
+	<link href="https://fonts.bunny.net/css?family=source-sans-3:400,700|m-plus-code-latin:400,700" rel="stylesheet" />
 	<style>
 		:root {
-			--main-font: "Figtree", -apple-system, system-ui, sans-serif;
+			--main-font: "Source Sans 3", -apple-system, system-ui, sans-serif;
 		}
 		dfn > code {
 			font-style: normal;
