@@ -57,6 +57,10 @@ blockquote {
 ul, ol {
 	padding-inline-start: 0;
 
+	& & {
+		padding-inline-start: var(--gap);
+	}
+
 	&[role="list"] {
 		padding-inline-start: 0;
 		list-style: none;
