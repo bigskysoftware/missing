@@ -21,7 +21,7 @@
     
     border-radius: var(--border-radius);
     background: var(--box-bg);
-    border: 1px solid var(--box-border);
+    border: 1px solid var(--faded-fg);
     
     @mixin padded;
 }

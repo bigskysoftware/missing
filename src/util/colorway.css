@@ -2,25 +2,25 @@
 .info {
     --box-bg: var(--info-bg);
     --accent: var(--info-fg);
-    --box-border: var(--accent);
+    --faded-fg: var(--info-faded-fg);
 }
 
 .ok {
     --box-bg: var(--ok-bg);
     --accent: var(--ok-fg);
-    --box-border: var(--accent);
+    --faded-fg: var(--ok-faded-fg);
 }
 
 .warn {
     --box-bg: var(--warn-bg);
     --accent: var(--warn-fg);
-    --box-border: var(--accent);
+    --faded-fg: var(--warn-faded-fg);
 }
 
 .bad {
     --box-bg: var(--bad-bg);
     --accent: var(--bad-fg);
-    --box-border: var(--accent);
+    --faded-fg: var(--bad-faded-fg);
 }
 
 .color {
@@ -33,5 +33,5 @@
 
 .border {
     border-style: solid;
-	border-color: var(--accent);
+	border-color: var(--faded-fg);
 }

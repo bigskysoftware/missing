@@ -1,41 +1,42 @@
 
 @import "./core/sanitize.css";
+@import "./core/colors.css";
 
 @import "./shared/*.css";
 @import "./util/*.css";
 @import "./components/*.css";
 @import "./elements/*.css";
 
-/* Colors taken from https://yeun.github.io/open-color/ */
-
 :root {
 	/* Colors */
-	--fg: #000; /* Text. */
-	--muted-fg: #495057; /* De-emphasized or disabled elements' text. Will be
+	--fg: var(--gray-13); /* Text. */
+	--muted-fg: var(--gray-10); /* De-emphasized or disabled elements' text. Will be
 		used with a background of --c-bg and --c-bg-2 -- check contrast! */
-	--faded-fg: #adb5bd; /* De-emphasized or disabled graphical elements. Will not
+	--faded-fg: var(--gray-6); /* De-emphasized or disabled graphical elements. Will not
 		be used as a text color. */
 	
-	--info-fg: #1864ab;
-	--ok-fg: #2b8a3e;
-	--bad-fg: #c92a2a;
-	--warn-fg: #c16400;
+	--info-fg: var(--blue-11);
+	--ok-fg: var(--green-11);
+	--bad-fg: var(--red-11);
+	--warn-fg: var(--yellow-11);
+
+	--info-faded-fg: var(--blue-6);
+	--ok-faded-fg: var(--green-6);
+	--bad-faded-fg: var(--red-6);
+	--warn-faded-fg: var(--yellow-6);
 	
-	--bg: #fff; /* Page background. */
-	--box-bg: #f8f9fa; /* Background for blocks: cards, admonitions etc. */
-	--box-border: var(--faded-fg); /* Border for blocks. */
-	--interactive-bg: #dee2e6; /* Background for interactive elements */
+	--bg: var(--gray-0); /* Page background. */
+	--box-bg: var(--gray-1); /* Background for blocks: cards, admonitions etc. */
+	--interactive-bg: var(--gray-3); /* Background for interactive elements */
 
-	--info-bg: #e7f5ff; /* blue */
-	--ok-bg: #ebfbee;
-	--bad-bg: #fff5f5;
-	--warn-bg: #fff9db;
+	--info-bg: var(--blue-1);
+	--ok-bg: var(--green-1);
+	--bad-bg: var(--red-1);
+	--warn-bg: var(--yellow-1);
 
-	--shadow: #777; /* Box shadows. */
-
-	--accent: #005f7f; /* Accent color. Will be used *as a text color* with a
+	--accent: var(--blue-10); /* Accent color. Will be used *as a text color* with a
 		background of --c-bg and --c-bg-2 -- check contrast! */
-	--muted-accent: #42ffc6; /* Muted accent color. Will not be used for text. */
+	--muted-accent: var(--blue-7); /* Muted accent color. Will not be used for text. */
 
 	/* Lengths */
 	--rhythm: 1.4rem; /* Vertical rhythm, line height. */

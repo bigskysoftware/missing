@@ -10,7 +10,9 @@
 html {
 	font-family: var(--main-font);
 	line-height: var(--rhythm);
-	font-size: 120%;
+
+	background: var(--bg);
+	color: var(--fg);
 }
 
 body {
