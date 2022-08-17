@@ -7,7 +7,7 @@
     & :first-child { margin-block-start: 0 !important }
 }
 
-.textcenter {
+.text-align\:center {
     text-align: center;
 }
 
@@ -43,9 +43,9 @@
 	& > :last-child>:last-child>:last-child>:last-child     { margin-block-end:   0; }
 }
 
-.pad { padding-inline: var(--gap); @mixin padded; }
-.pad-block { padding-block: var(--gap); @mixin padded; }
-.pad-inline { padding-inline: var(--gap) }
+.padding { padding-inline: var(--gap); @mixin padded; }
+.padding-block { padding-block: var(--gap); @mixin padded; }
+.padding-inline { padding-inline: var(--gap) }
 
 .margin { margin: var(--gap) }
 .margin-block  { margin-block:  var(--gap) }
@@ -91,13 +91,8 @@
 .bottom { bottom: 0 }
 .left   { left:   0 }
 
-.\^ { top:    0 }
-.\> { right:  0 }
-.\_ { bottom: 0 }
-.\< { left:   0 }
+.float\:left  { float: left  }
+.float\:right { float: right }
 
-.float\< { float: left  }
-.float\> { float: right }
-
-.scroll { overflow: auto }
-.scroll\! { overflow: scroll }
+.overflow\:auto { overflow: auto }
+.overflow\:scroll { overflow: scroll }
