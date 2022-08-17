@@ -11,6 +11,11 @@
     text-align: center;
 }
 
+.center {
+    display: grid;
+    place-items: center;
+}
+
 /**/
 
 .container {
