@@ -19,7 +19,7 @@ body {
 	margin: 0;
 }
 
-header, footer, section {
+header, footer, section + section {
 	margin-block: calc(2 * var(--gap));
 }
 
