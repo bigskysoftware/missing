@@ -14,15 +14,37 @@ classes; these will be listed in the documentation for that class.
 
 ## Colors
 
+<dfn>`--bg`</dfn> {#var-bg}
+:   Page background.
+
 <dfn>`--fg`</dfn> {#var-fg}
-:   <p>The text color.
+:   The text color.
 
 <dfn>`--muted-fg`</dfn> {#var-muted-fg}
 :   Text color for disabled or de-emphasized elements. It's important that this
     color is readable against all of the background colors.
 
 <dfn>`--faded-fg`</dfn> {#var-faded-fg}
-:   De-emphasized or disabled graphical elements. Will not be used as a text color.
+:   De-emphasized graphical elements. Borders. Will not be used as a text color.
+
+<dfn>`--box-bg`</dfn> {#var-bg-2}
+:   Background for blocks: cards, admonitions etc.
+
+<dfn>`--interactive-bg`</dfn> {#var-bg-3}
+:   Background for interactive elements
+
+<dfn>`--accent`</dfn> {#var-accent}
+:   Accent color. It's important that this
+    color is readable against all of the background colors.
+
+<dfn>`--muted-accent`</dfn> {#var-muted-accent}
+:   Less vivid version of accent color. Will not be used for text.
+
+
+### Colorways
+
+<dfn>`--plain-fg`</dfn> {#var-plain-fg}
+:   Foreground color for the `.plain` [colorway][].
 
 <dfn>`--info-fg`</dfn> {#var-info-fg}
 :   Foreground color for the `.info` [colorway][].
@@ -36,17 +58,23 @@ classes; these will be listed in the documentation for that class.
 <dfn>`--warn-fg`</dfn> {#var-warn-fg}
 :   Foreground color for the `.warn` [colorway][].
 
-<dfn>`--bg`</dfn> {#var-bg}
-:   Page background.
+<dfn>`--plain-faded-fg`</dfn> {#var-plain-faded-fg}
+:   Graphical elements (i.e. borders) color for the `.plain` [colorway][].
 
-<dfn>`--box-bg`</dfn> {#var-bg-2}
-:   Background for blocks: cards, admonitions etc.
+<dfn>`--info-faded-fg`</dfn> {#var-info-faded-fg}
+:   Graphical elements (i.e. borders) color for the `.info` [colorway][].
 
-<dfn>`--box-border`</dfn> {#var-bg-2}
-:   Border color for blocks: cards, admonitions etc.
+<dfn>`--ok-faded-fg`</dfn> {#var-ok-faded-fg}
+:   Graphical elements (i.e. borders) color for the `.ok` [colorway][].
 
-<dfn>`--interactive-bg`</dfn> {#var-bg-3}
-:   Background for interactive elements
+<dfn>`--bad-faded-fg`</dfn> {#var-bad-faded-fg}
+:   Graphical elements (i.e. borders) color for the `.bad` [colorway][].
+
+<dfn>`--warn-faded-fg`</dfn> {#var-warn-faded-fg}
+:   Graphical elements (i.e. borders) color for the `.warn` [colorway][].
+
+<dfn>`--plain-bg`</dfn> {#var-plain-bg}
+:   Background color for the `.plain` [colorway][].
 
 <dfn>`--info-bg`</dfn> {#var-info-bg}
 :   Background color for the `.info` [colorway][].
@@ -60,18 +88,6 @@ classes; these will be listed in the documentation for that class.
 <dfn>`--warn-bg`</dfn> {#var-warn-bg}
 :   Background color for the `.warn` [colorway][].
 
-<dfn>`--shadow`</dfn> {#var-shadow}
-:   Box shadows.
-
-<dfn>`--accent`</dfn> {#var-accent}
-:   Accent color. It's important that this
-    color is readable against all of the background colors.
-
-<dfn>`--muted-accent`</dfn> {#var-muted-accent}
-:   Less vivid version of accent color. Will not be used for text.
-
-    <!-- sparse list -->
-
 
 ## Lengths
 
@@ -84,7 +100,6 @@ classes; these will be listed in the documentation for that class.
 <dfn>`--border-radius`</dfn> {#var-border-radius}
 :   Border radius. Set to 0 for sharp corners.
 
-    <!-- sparse list -->
 
 ## Fonts
 
@@ -97,15 +112,12 @@ classes; these will be listed in the documentation for that class.
 
 <dfn>`--mono-font`</dfn> {#var-mono-font}
 :   Monospace font for code, preformatted text, computer input and output.
-
-    ::: box {.info}
-    **Tip**: Browsers shrink monospace fonts. You can suppress this behavior by
+    ::: box {.info .crowded}
+    **Tip**&emsp;Browsers shrink monospace fonts. You can suppress this behavior by
     specifying `monospace` _twice_:
 
     ~~~ css
-    {
-      --mono-font: "Cascadia Code", monospace, monospace
-    }
+    --mono-font: "Cascadia Code", monospace, monospace
     ~~~
     :::
 
@@ -115,8 +127,6 @@ classes; these will be listed in the documentation for that class.
 :   The amount of space between elements (i.e. gaps between paragraphs, padding
     of boxes), as a multiplier of the line height (`--rhythm`). See
     [Utilities / Density](/docs/util#density).
-
-    <!-- sparse list -->
 
 
 [colorway]: /docs/colorways

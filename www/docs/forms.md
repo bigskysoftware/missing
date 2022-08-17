@@ -15,10 +15,10 @@ an element in multiple ways:
   </form>
   ~~~
 
-Because of this, it's near impossible to write a stylesheet that will work with
+Because of this, it's not really possible to write a stylesheet that will work with
 any HTML form.
 
-Missing.css will work well on forms that follow these markup conventions:
+Missing.css will work best on forms that follow these markup conventions:
 
 [[toc]]
 

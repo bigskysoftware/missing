@@ -8,16 +8,18 @@ here is the `.ok` colorway in the missing.css source code:
 
   ~~~ css
   .ok {
-    --box-bg: var(--ok-bg);
-    --accent: var(--ok-fg);
+      --box-bg: var(--ok-bg);
+      --accent: var(--ok-fg);
+      --faded-fg: var(--ok-faded-fg);
   }
   ~~~
 
-<figcaption>src/utils/colors.css</figcaption>
+<figcaption>src/util/colorway.css</figcaption>
 </figure>
 
 The following colorways are provided by default:
 
+ * <dfn>`.plain`</dfn> is the default. {.plain .bg .color}
  * <dfn>`.info`</dfn> is used to highlight information without any emotional 
    affect. {.info .bg .color}
  * <dfn>`.ok`</dfn> is used to indicate successes, insertions, desired

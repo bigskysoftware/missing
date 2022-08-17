@@ -5,54 +5,12 @@ Mechanisms of creating layouts.
 
 [[toc]]
 
-## Basic Grid
 
-Applying the <dfn>`.basicgrid`</dfn> class to an element creates a grid with a
-minimum column width of 15ch.
+## Centering
 
-You can use the <dfn>`.col-width-*`</dfn> classes to adjust the minimum width
-for columns or manually set the <dfn>`--col-width`</dfn> variable.
+An element with class <dfn>`.center`</dfn> centers a single child element using `display: grid; place-items: center`{.lang-css}.
 
-| Class                   | Column width         |
-|-------------------------|----------------------|
-| <dfn>`colwidth-s`</dfn> | `--col-width` = 15ch |
-| <dfn>`colwidth-m`</dfn> | `--col-width` = 24ch |
-| <dfn>`colwidth-l`</dfn> | `--col-width` = 35ch |
-
-If you want an element to take up multiple columns, use the <dfn>`col-*`</dfn>
-classes:
-
- * <dfn>`.col-2`</dfn>
- * <dfn>`.col-3`</dfn>
- * <dfn>`.col-4`</dfn>
- * <dfn>`.col-5`</dfn>
- * <dfn>`.col-6`</dfn>
- * <dfn>`.col-7`</dfn>
- * <dfn>`.col-8`</dfn>
- * <dfn>`.col-9`</dfn>
- * <dfn>`.col-10`</dfn>
- * <dfn>`.col-11`</dfn>
- * <dfn>`.col-12`</dfn>
-
-There's also <dfn>`.col-0`</dfn>, which makes an element take on its intrinsic
-size without regard for the column grid, and <dfn>`.col-1`</dfn>, just for
-completeness' sake.
-
-Use <dfn>`.col-inf`</dfn> to make an element expand to the end of a row.
-
-
-## Minimum and maximum width
-
-| Class                   | Minimum width      |
-|-------------------------|--------------------|
-| <dfn>`minwidth-s`</dfn> | `min-width` = 15ch |
-| <dfn>`minwidth-m`</dfn> | `min-width` = 24ch |
-| <dfn>`minwidth-l`</dfn> | `min-width` = 35ch |
-
-The values are the same as the <dfn>`.colwidth-*`</dfn> classes, but these
-classes are placed on individual columns as opposed to the whole grid.
-
-There are also matching <dfn>`.maxwidth-*`</dfn> classes: <dfn>`maxwidth-s`</dfn>, <dfn>`maxwidth-m`</dfn> and <dfn>`maxwidth-l`</dfn>.
+<dfn>`.text-align:center`</dfn> center-aligns text.
 
 
 ## Text Columns
@@ -72,17 +30,24 @@ container and span the whole width of the viewport.
 
 ## Padding & Margin
 
-Add some padding with <dfn>`.pad`</dfn>, or a margin with <dfn>`.margin`</dfn>.
+Add some padding with <dfn>`.padding`</dfn>, or a margin with
+<dfn>`.margin`</dfn>.
 
 Add padding or margin in specific axes with <dfn>`.margin-block`</dfn>,
-<dfn>`.margin-inline`</dfn> and <dfn>`.pad-block`</dfn>.
+<dfn>`.margin-inline`</dfn>, <dfn>`.padding-block`</dfn> and
+<dfn>`.padding-inline`</dfn>.
 
 
 ## Scrolling
 
-The <dfn>`.scroll`</dfn> class adds `overflow: auto`, which makes an element
-scrollable. To add `overflow: scroll`, which makes scrollbars appear even when
-not needed, use <dfn>`.scroll!`</dfn> with an exclamation mark.
+Set the `overflow` property with these utility classes:
+
+<dfn>`.overflow:auto`</dfn>  
+:   Show scrollbars if needed
+
+<dfn>`.overflow:scroll`</dfn>
+:   Always show scrollbars   
+
 
 ## Pseudo-tables
 
@@ -108,6 +73,15 @@ The <dfn>`.table`</dfn> class makes an element act like a table for the purposes
 
 ## Positioning
 
+<dfn>`.block`</dfn>
+:   Set `display: block`.
+
+<dfn>`.inline`</dfn>
+:   Set `display: inline`.
+
+<dfn>`.contents`</dfn>
+:   Set `display: contents`.
+
 <dfn>`.fixed`</dfn>
 :   Set `position: fixed`.
 
@@ -126,9 +100,9 @@ The <dfn>`.table`</dfn> class makes an element act like a table for the purposes
 <dfn>`.left`</dfn>
 :   Set `left: 0`. See `.top`.
 
-<dfn>`.float<`</dfn>
+<dfn>`.float:left`</dfn>
 :   Set `float: left`.
 
-<dfn>`.float>`</dfn>
+<dfn>`.float:right`</dfn>
 :   Set `float: right`.
 
