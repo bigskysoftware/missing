@@ -3,8 +3,8 @@
 @import "./core/colors.css";
 
 @import "./shared/*.css";
-@import "./util/*.css";
 @import "./components/*.css";
+@import "./util/*.css";
 @import "./elements/*.css";
 
 :root {
