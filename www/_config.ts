@@ -35,7 +35,7 @@ export default lume(
           [mdAnchor, { permalink: mdAnchor.permalink.linkInsideHeader({
             placement: "before",
             symbol: "§",
-            class: "permalink-anchor float>"
+            class: "permalink-anchor float:right"
           }), level: 2 }]
         ]
       }
