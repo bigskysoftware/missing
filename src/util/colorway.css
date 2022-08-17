@@ -1,4 +1,10 @@
 
+.plain {
+    --box-bg: var(--plain-bg);
+    --accent: var(--plain-fg);
+    --faded-fg: var(--plain-faded-fg);
+}
+
 .info {
     --box-bg: var(--info-bg);
     --accent: var(--info-fg);

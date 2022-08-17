@@ -9,26 +9,29 @@
 
 :root {
 	/* Colors */
-	--fg: var(--gray-13); /* Text. */
+	--fg: var(--gray-12); /* Text. */
 	--muted-fg: var(--gray-10); /* De-emphasized or disabled elements' text. Will be
 		used with a background of --c-bg and --c-bg-2 -- check contrast! */
-	--faded-fg: var(--gray-6); /* De-emphasized or disabled graphical elements. Will not
+	--faded-fg: var(--plain-faded-fg); /* De-emphasized or disabled graphical elements. Will not
 		be used as a text color. */
 	
+	--plain-fg: var(--blue-10);
 	--info-fg: var(--blue-11);
 	--ok-fg: var(--green-11);
 	--bad-fg: var(--red-11);
 	--warn-fg: var(--yellow-11);
 
+	--plain-faded-fg: var(--gray-6);
 	--info-faded-fg: var(--blue-6);
 	--ok-faded-fg: var(--green-6);
 	--bad-faded-fg: var(--red-6);
 	--warn-faded-fg: var(--yellow-6);
 	
 	--bg: var(--gray-0); /* Page background. */
-	--box-bg: var(--gray-1); /* Background for blocks: cards, admonitions etc. */
+	--box-bg: var(--plain-bg); /* Background for blocks: cards, admonitions etc. */
 	--interactive-bg: var(--gray-3); /* Background for interactive elements */
 
+	--plain-bg: var(--gray-1);
 	--info-bg: var(--blue-1);
 	--ok-bg: var(--green-1);
 	--bad-bg: var(--red-1);
