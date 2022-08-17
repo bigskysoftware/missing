@@ -5,9 +5,6 @@
     "dev": "deno task www -s --dev",
     "css": "deno run -A --unstable build/postcss.ts",
     "archive": "./build/version-archive.ts",
-    "www": "deno eval \"import 'lume/task.ts'\" -- --config=www/_config.ts",
-    "lume": "deno eval \"import 'lume/task.ts'\" --",
-    "build": "deno task lume",
-    "serve": "deno task lume -s"
+    "www": "deno eval \"import 'lume/task.ts'\" -- --config=www/_config.ts"
   }
 }
