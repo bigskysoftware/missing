@@ -14,6 +14,7 @@
 		}
 		dfn > code {
 			font-style: normal;
+			text-decoration: 1px dashed var(--muted-fg) underline;
 		}
 		code a {
 			font-family: inherit;
