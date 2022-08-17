@@ -1,4 +1,3 @@
-
 import "https://deno.land/x/dotenv@v3.2.0/load.ts"
 
 import lume        from "lume/mod.ts"
@@ -21,26 +20,35 @@ import mdAnchor    from "https://esm.sh/markdown-it-anchor@8.6.4?dev"
 import postcss from "../build/postcss.ts"
 
 export default lume(
-    {
-      location: new URL("https://missing.style/"),
-      src: "www",
-      dest: "dist",
-    }, {
-      markdown: {
-        plugins: [
-          mdAttrs,
-          mdDeflist,
-          [mdToc, { level: [2], listType: "ul", containerClass: "box crowded" }],
-          [mdContainer, "box"],
-          [mdAnchor, { permalink: mdAnchor.permalink.linkInsideHeader({
+  {
+    location: new URL("https://missing.style/"),
+    src: "www",
+    dest: "dist",
+  },
+  {
+    markdown: {
+      plugins: [
+        mdAttrs,
+        mdDeflist,
+        [mdToc, {
+          level: [2],
+          listType: "ul",
+          containerClass: "TableOfContents box crowded",
+          listClass: "padding-inline"
+        }],
+        [mdContainer, "box"],
+        [mdAnchor, {
+          permalink: mdAnchor.permalink.linkInsideHeader({
             placement: "before",
             symbol: "§",
-            class: "permalink-anchor float:right"
-          }), level: 2 }]
-        ]
-      }
-    }
-  )
+            class: "permalink-anchor float:right",
+          }),
+          level: 2,
+        }],
+      ],
+    },
+  },
+)
   .copy("netlify.redirects", "_redirects")
   .addEventListener("afterBuild", postcss)
   .addEventListener("afterRender", postcss)
