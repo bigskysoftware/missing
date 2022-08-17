@@ -29,7 +29,7 @@ missing.css is the missing CSS library that we all wished existed. Add it to you
    patterns, with ARIA where appropriate. {.box}
  * Finally, it offers a small & curated set of **utility classes** and **custom
    elements** for bespoke elements and layouts. {.box}
-{.basicgrid .dense .align-items:stretch role=list}
+{.f-switch .dense .align-items:stretch role=list}
 
 The goal of missing.css is to reduce needed intervention in HTML. It lets
 authors
