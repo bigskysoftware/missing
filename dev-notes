@@ -1,4 +1,20 @@
 
+2022-08-18
+
+i'm going to add a fullwidth utility... class="width:100%" or 
+class="inline-size:100%"?
+
+***
+
+/ chota (https://jenil.github.io/chota/#features) has a grid system i could
+derive inspiration from. i don't like all of it but there are some good things
+in there
+
+class="1 3s 5l" 1 col on desktop or tablet, 3 cols on phone, 5 cols on big
+
+-- dz4k
+
+
 2022-08-16
 
 Updating docs is hard and I always forget something. Consider putting docs next
