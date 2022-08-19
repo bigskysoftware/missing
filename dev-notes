@@ -1,4 +1,27 @@
 
+2022-08-19
+
+Got a proof-of-concept for postcss-literate. However, imported files seem not
+to go through it.
+
+Not a big problem, since our import tree is not that big anyway. We could live
+without imports and just concatenate things.
+
+Possible workflow: Whole repo is a Lume site. CSS is written in .css.md files.
+These files are also pages on the site. CSS code is removed from them. A
+.tmpl.ts file iterates over the collection that has these files and puts them
+through PostCSS to generate the final artifact.
+
+A snag with that workflow is that Lume doesn't provide a way to build just one
+page. So, maybe the .tmpl.ts file should not use Lume collections, but read the
+.css.md files directly, such that it can be invoked in a non-Lume context.
+
+This is all for post-1.0 however. The manual updating of the docs is workable
+for now.
+
+-- dz4k
+
+
 2022-08-18
 
 i'm going to add a fullwidth utility... class="width:100%" or 
