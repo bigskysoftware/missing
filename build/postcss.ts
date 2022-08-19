@@ -4,13 +4,13 @@ import { join, dirname, fromFileUrl } from 'std/path/mod.ts'
 import { gzip } from "https://deno.land/x/compress@v0.4.5/mod.ts"
 import { compress as brotli } from 'https://deno.land/x/brotli@v0.1.4/mod.ts'
 
-import postcss from "https://esm.sh/postcss@8.4.3"
+import postcss from "https://esm.sh/postcss@8.4.16"
 
 // Plugins
-import nesting from "https://esm.sh/postcss-nesting@10.1.7?dev"
-import atImport from "https://esm.sh/postcss-easy-import@4.0.0?dev"
-import mixins from "https://esm.sh/postcss-mixins@9.0.2?dev"
-import autoprefixer from "https://esm.sh/autoprefixer@10.4.7?dev"
+import nesting from "https://esm.sh/postcss-nesting@10.1.7?dev&deps=postcss@8.4.16"
+import atImport from "https://esm.sh/postcss-easy-import@4.0.0?dev&deps=postcss@8.4.16"
+import mixins from "https://esm.sh/postcss-mixins@9.0.2?dev&deps=postcss@8.4.16"
+import autoprefixer from "https://esm.sh/autoprefixer@10.4.7?dev&deps=postcss@8.4.16"
 
 import csso from 'https://esm.sh/csso@3.5.1'
 
