@@ -1,73 +1,50 @@
+import * as path from "std/path/mod.ts";
+import postcss from "https://esm.sh/postcss@8.4.16";
+import nesting from "https://esm.sh/postcss-nesting@10.1.7?dev&deps=postcss@8.4.16";
+import atImport from "https://esm.sh/postcss-easy-import@4.0.0?dev&deps=postcss@8.4.16";
+import mixins from "https://esm.sh/postcss-mixins@9.0.2?dev&deps=postcss@8.4.16";
+import autoprefixer from "https://esm.sh/autoprefixer@10.4.7?dev&deps=postcss@8.4.16";
+import csso from "https://esm.sh/csso@3.5.1";
 
-import { join, dirname, fromFileUrl } from 'std/path/mod.ts'
+const dist = "dist";
 
-import { gzip } from "https://deno.land/x/compress@v0.4.5/mod.ts"
-import { compress as brotli } from 'https://deno.land/x/brotli@v0.1.4/mod.ts'
-
-import postcss from "https://esm.sh/postcss@8.4.16"
-
-// Plugins
-import nesting from "https://esm.sh/postcss-nesting@10.1.7?dev&deps=postcss@8.4.16"
-import atImport from "https://esm.sh/postcss-easy-import@4.0.0?dev&deps=postcss@8.4.16"
-import mixins from "https://esm.sh/postcss-mixins@9.0.2?dev&deps=postcss@8.4.16"
-import autoprefixer from "https://esm.sh/autoprefixer@10.4.7?dev&deps=postcss@8.4.16"
-
-import csso from 'https://esm.sh/csso@3.5.1'
-
-// Paths
-const __dirname = dirname(fromFileUrl(import.meta.url))
-
-const main = join(__dirname, '../src/main.css')
-const syntax = join(__dirname, '../src/syntax.css')
-
-const dist = join(__dirname, '../dist/')
-
-const dec = new TextDecoder
-const enc = new TextEncoder
+const pc = postcss([
+  atImport(),
+  nesting(),
+  mixins(),
+  autoprefixer({ overrideBrowserslist: ">1% and not ie 11" }),
+]);
 
 const buildFile = async (entrypoint: string, targetName: string) => {
-	const prodTarget = join(dist, targetName + '.min.css')
-	const devTarget  = join(dist, targetName + '.css')
+  const src = await Deno.readTextFile(entrypoint);
+  const dest = path.join(dist, targetName + ".css");
+  const destMinified = path.join(dist, targetName + ".min.css");
 
-	const postcssMain = postcss([
-		atImport(),
-		nesting(),
-		mixins(),
-		autoprefixer({ overrideBrowserslist: ">1% and not ie 11" }),
-	])
+  const result = await pc.process(src, {
+    from: entrypoint,
+    to: dest,
+  });
 
-	const css = dec.decode(await Deno.readFile(entrypoint))
+  const output = result.css;
 
-	await Deno.mkdir(dist, { recursive: true })
+  const outputMinified = csso.minify(result.css).css;
 
-	const result =
-		await postcssMain.process(css, { from: entrypoint, to: devTarget })
-	const outputCss = enc.encode(result.css)
-	
-	const minifyResult = csso.minify(result.css)
-	const minifiedCSS = enc.encode(minifyResult.css)
-	
-	await Promise.all([
-		w(outputCss, devTarget),
-		w(minifiedCSS, prodTarget),
-		w(brotli(minifiedCSS), prodTarget + ".br"),
-		w(gzip  (minifiedCSS), prodTarget + ".gz"),
-	])
-}
+  await Deno.mkdir(dist, { recursive: true });
+  await Promise.all([
+    write(output, dest),
+    write(outputMinified, destMinified),
+  ]);
+};
 
 const build = () => {
-	buildFile(main, "missing")
-	buildFile(syntax, "missing-prism")
-}
+  buildFile("src/main.css", "missing");
+  buildFile("src/syntax.css", "missing-prism");
+};
 
-const w = async (data: Uint8Array, path: string | URL) => {
-	await Deno.writeFile(path, data)
-	if (import.meta.main) console.log("Wrote " + path)
-}
+const write = async (data: string, path: string | URL) => {
+  await Deno.writeTextFile(path, data);
+  if (import.meta.main) console.log("Wrote " + path);
+};
 
-if (import.meta.main) {
-	await build()
-}
-
-export default build
-
+export default build;
+if (import.meta.main) await build();
