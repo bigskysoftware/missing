@@ -62,7 +62,7 @@ const build = () => {
 
 const w = async (data: Uint8Array, path: string | URL) => {
 	await Deno.writeFile(path, data)
-	console.log("Wrote " + path)
+	if (import.meta.main) console.log("Wrote " + path)
 }
 
 if (import.meta.main) {
