@@ -12,8 +12,7 @@ export default () => {
   return (site: Site) => {
     site.use(
       prismHighlight({
-        cssSelector:
-          "code:not(.highlighted)", // avoid already highlighted code
+        cssSelector: "code:not(.highlighted)", // avoid already highlighted code
       }),
     );
   };
