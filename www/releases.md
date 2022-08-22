@@ -6,7 +6,7 @@ renderOrder: 1
 
 # <sub-title class="allcaps">Missing.css</sub-title> Releases
 
-<% for (const page of search.pages("release")) { %>
+<% for (const page of search.pages("release", "date=desc")) { %>
  * [v<%= page.data.release %>](<%= page.data.url %>)
 <% } %>
 {.list-of-links}
