@@ -7,10 +7,9 @@ layout: prose.eta
     Version <%= release %>
 </h1>
 
-<div class="basicgrid colwidth-m crowded">
+<div class="f-switch crowded">
     <section class="box">
         <h2>Download</h2>
-        <p><small>Hotlinking is allowed</small></p>
         <% filters.repeat(Object.entries(it.artifacts || {}), ([group, artifacts]) => { %>
             <p class="tool-bar">
                 <strong><%= group %>:</strong>
@@ -19,6 +18,7 @@ layout: prose.eta
                 <% }) %>
             </p>
         <% }) %>
+        <p><small>Hotlinking is allowed</small></p>
     </section>
     <section class="box">
         <h2>Source code</h2>
