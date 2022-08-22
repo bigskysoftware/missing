@@ -47,7 +47,7 @@
 	--border-radius: .2rem;
 
 	/* Fonts */
-	--main-font: 'Inter', -apple-system, system-ui, sans-serif;
+	--main-font: 'Source Sans 3', 'Source Sans Pro', -apple-system, system-ui, sans-serif;
 	--secondary-font: var(--main-font); /* Headings etc. */
 	--mono-font: 'M Plus Code Latin', monospace, monospace; /* monospace twice stops browsers from
 		shrinking this */
