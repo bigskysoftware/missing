@@ -57,3 +57,6 @@
 .flex-grow\:10 { flex-grow: 10 }
 .flex-grow\:11 { flex-grow: 11 }
 .flex-grow\:12 { flex-grow: 12 }
+
+.flex-wrap\:wrap   { flex-wrap: wrap   }
+.flex-wrap\:nowrap { flex-wrap: nowrap }
