@@ -6,13 +6,13 @@ layout: layout.eta
 
 # <all-caps>missing<wbr>.css<v-h>:</v-h></all-caps> <sub-title>The Missing CSS Stylesheet</sub-title>
 
-<nav>
+<nav class="tool-bar">
 
-[Docs](/docs/) ·
-[Demo](/demos/) ·
-[Playground](/playground/) ·
-[Releases](/releases/) ·
-[GitHub](https://github.com/bigskysoftware/missing) ·
+[Docs](/docs/) 
+[Demo](/demos/) 
+[Playground](/playground/) 
+[Releases](/releases/) 
+[GitHub](https://github.com/bigskysoftware/missing) 
 [Discord](https://htmx.org/discord)
 
 </nav>
