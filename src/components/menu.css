@@ -1,0 +1,27 @@
+
+[role="menu"] {
+    @mixin box;
+
+    position: absolute;
+    
+    padding: calc(var(--gap) / 2) 0;
+    margin: 1px 0 0 0;
+
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+[role=menuitem] {
+    padding: 0 calc(var(--gap) / 2);
+
+    display: block;
+
+    text-decoration: none;
+
+    color: var(--fg);
+
+    &:focus {
+        background: var(--accent);
+        color: var(--bg);
+    }
+}
