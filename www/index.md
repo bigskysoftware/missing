@@ -4,9 +4,9 @@ layout: layout.eta
 
 <header>
 
-# <all-caps>missing<wbr>.css<v-h>:</v-h></all-caps> <sub-title>The Missing CSS Stylesheet</sub-title>
+# <span class=allcaps>missing<wbr>.css<v-h>:</v-h></span> <sub-title>The Missing CSS Stylesheet</sub-title>
 
-<nav class="tool-bar">
+<nav>
 
 [Docs](/docs/) 
 [Demo](/demos/) 
@@ -14,6 +14,7 @@ layout: layout.eta
 [Releases](/releases/) 
 [GitHub](https://github.com/bigskysoftware/missing) 
 [Discord](https://htmx.org/discord)
+{.tool-bar}
 
 </nav>
 
