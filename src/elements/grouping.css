@@ -57,7 +57,7 @@ blockquote {
 }
 
 ul, ol {
-	padding-inline-start: 0;
+	padding-inline-start: var(--rhythm);
 
 	& & {
 		padding-inline-start: var(--gap);
