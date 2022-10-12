@@ -1,6 +1,6 @@
 
 
-# MISSING.CSS: The Missing CSS Stylesheet
+# MISSING.CSS<br> The Missing CSS Stylesheet
 
 [Docs](https://missing.style/docs/) ·
 [Demo](https://missing.style/demos/) ·
