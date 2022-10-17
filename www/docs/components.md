@@ -23,12 +23,14 @@ Boxes use the border and background color of the [colorway][].
 
 </figure>
 
-::: box {.warn}
+<div class="box warn">
+
 **Warning**: If you're putting something in a box, make sure to clarify
 why it is in a box in some other way. For example, this box has "Warning" in
 bold, in addition to being yellow. This makes your page clearer and prevents
 accessibility failures.
-:::
+
+</div>
 
 The above box, in addition to being an example, is also a genuine warning.
 
@@ -98,10 +100,12 @@ The <dfn>`<sub-title>`</dfn> custom element subtitle for a heading.
 
 A <dfn>`.tool-bar`</dfn> horizontally laid-out collection of controls.
 
-::: box {.warn}
+<div class="box warn">
+
 **Warning**: This is not a substitute for the `toolbar` ARIA role, see
 [WAI: Toolbar][] for that.
-:::
+
+</div>
 
 <figure>
 
@@ -239,12 +243,14 @@ rounded chip, like what you might use for a tag list or contacts.
 
 </figure>
 
-::: box {.info}
+<div class="box info">
+
 When you have multiple `<nav>` elements on a page, it's a good idea to put
 `aria-label` attributes on them. This is because many assistive programs have
 a feature to jump to the navigation part of a page, which does not work well if
 the user can't tell which nav is which.
-:::
+
+</div>
 
 
 [colorway]: /docs/colorways

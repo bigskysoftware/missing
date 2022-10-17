@@ -10,11 +10,11 @@ import highlighting from "./_build/highlighting.ts";
 import myFilters from "./_build/filters.ts";
 import indexDefinitions from "./_build/index-definitions.ts";
 
-import mdAttrs from "https://esm.sh/markdown-it-attrs@4.1.4?dev";
-import mdDeflist from "https://esm.sh/markdown-it-deflist@2.1.0?dev";
-import mdContainer from "https://esm.sh/@gerhobbelt/markdown-it-container@3.0.0-10?dev";
-import mdToc from "https://esm.sh/markdown-it-toc-done-right@4.2.0?dev";
-import mdAnchor from "https://esm.sh/markdown-it-anchor@8.6.4?dev";
+import mdAttrs from "npm:markdown-it-attrs@4.1.4";
+import mdDeflist from "npm:markdown-it-deflist@2.1.0";
+// import mdContainer from "npm:@gerhobbelt/markdown-it-container@3.0.0-10";
+import mdToc from "npm:markdown-it-toc-done-right@4.2.0";
+import mdAnchor from "npm:markdown-it-anchor@8.6.4";
 
 import postcss from "../build/postcss.ts";
 
@@ -35,7 +35,7 @@ export default lume(
           containerClass: "TableOfContents box crowded",
           listClass: "padding-inline",
         }],
-        [mdContainer, "box"],
+        // [mdContainer, "box"],
         [mdAnchor, {
           permalink: mdAnchor.permalink.linkInsideHeader({
             placement: "before",

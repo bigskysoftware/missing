@@ -112,14 +112,16 @@ classes; these will be listed in the documentation for that class.
 
 <dfn>`--mono-font`</dfn> {#var-mono-font}
 :   Monospace font for code, preformatted text, computer input and output.
-    ::: box {.info .crowded}
+    <div class="box info crowded">
+
     **Tip**&emsp;Browsers shrink monospace fonts. You can suppress this behavior by
     specifying `monospace` _twice_:
 
     ~~~ css
     --mono-font: "Cascadia Code", monospace, monospace
     ~~~
-    :::
+    
+    </div>
 
 ## Density
 
