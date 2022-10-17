@@ -45,15 +45,11 @@ dialog {
 	block-size: fit-content;
     inline-size: fit-content;
     
-	margin: auto;
+	margin: auto !important;
 
     background-color: var(--bg);
     color: var(--fg);
-
-	box-shadow:
-		0 0 .2em .1em var(--shadow),
-		0 .2em .4em var(--shadow),
-		0 .25em 1em var(--shadow);
+	border-color: var(--accent);
 }
 
 dialog[open]::backdrop {
