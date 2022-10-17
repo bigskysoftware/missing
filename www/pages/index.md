@@ -1,5 +1,6 @@
 ---
 layout: layout.eta
+url: /
 ---
 
 <header>

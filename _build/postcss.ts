@@ -1,9 +1,11 @@
+#!/usr/bin/env -S deno run -A --unstable
+
 import * as path from "std/path/mod.ts";
-import postcss from "https://esm.sh/postcss@8.4.16";
-import nesting from "https://esm.sh/postcss-nesting@10.1.7?dev&deps=postcss@8.4.16";
-import atImport from "https://esm.sh/postcss-easy-import@4.0.0?dev&deps=postcss@8.4.16";
-import autoprefixer from "https://esm.sh/autoprefixer@10.4.7?dev&deps=postcss@8.4.16";
-import csso from "https://esm.sh/csso@3.5.1";
+import postcss from "npm:postcss@8.4.16";
+import nesting from "npm:postcss-nesting@10.1.7";
+import atImport from "npm:postcss-easy-import@4.0.0";
+import autoprefixer from "npm:autoprefixer@10.4.7";
+import csso from "npm:csso@3.5.1";
 
 const dist = "dist";
 
