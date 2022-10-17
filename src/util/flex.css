@@ -3,7 +3,8 @@
     display: flex;
     flex-direction: row;
     gap: var(--gap);
-    & > * { margin: 0 }
+    --col-width: 30ch;
+    & > * { margin: 0; flex-basis: var(--col-width); }
 }
 
 .f-col {
