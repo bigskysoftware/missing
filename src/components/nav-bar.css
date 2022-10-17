@@ -1,7 +1,7 @@
 
 .navbar {
-	margin: 0;
-	padding: 0 var(--rhythm);
+	margin: 0 0 var(--gap) 0;
+	padding: var(--rhythm);
 
 	font-family: var(--secondary-font);
 
@@ -14,11 +14,13 @@
 	/* Inner layout */
 	display: flex;
 	flex-flow: row;
+	justify-content: center;
 	gap: calc(2 * var(--rhythm));
 
-	& :first-child { margin-inline-start: auto; }
-	&  :last-child { margin-inline-end:   auto; }
-	& * { flex-shrink: 0 }
+	& * {
+		flex-shrink: 0;
+		margin-block: 0;
+	}
 
 	& nav ul[role="list"] {
 		padding-inline-start: 0;

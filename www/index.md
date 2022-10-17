@@ -43,7 +43,7 @@ authors
 
  - create unique sites by applying utility classes as needed.
 
-{.textcolumns .dense style="--col-width: 15em; margin-bottom: calc(0px - var(--gap));"}
+{.flow-gap .textcolumns .dense style="--col-width: 15em; margin-bottom: calc(0px - var(--gap));"}
 
 missing.css is not designed to be a complete styling solution for large
 websites. It may serve as a basis for a more completely styled site, but does

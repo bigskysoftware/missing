@@ -15,14 +15,15 @@
 
 .f-switch {
     display: flex;
-    flex-flow: row wrap;
+    flex-wrap: wrap;
     gap: var(--gap);
-    --col-width: 15ch;
-    & > * { margin: 0 }
-
+    --f-switch-threshold: 55ch;
+    
     & > * {
-        flex-basis: calc((var(--col-width) - 100%) * 999);
+        margin: 0;
+
         flex-grow: 1;
+        flex-basis: calc((var(--f-switch-threshold) - 100%) * 999);
     }
 }
 

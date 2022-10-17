@@ -7,9 +7,9 @@ templateEngine: eta,md
 
 # Demos
 
-<ul class='list-of-links'>
+<ul class='list-of-links flow-gap'>
 <% for (const demo of search.pages("demo")) { _%>
-<li><p><a href="<%= demo.data.url %>"><%= demo.data.name %></a>
+<li><a href="<%= demo.data.url %>"><%= demo.data.name %></a>
 <% } %>
 </ul>
 

@@ -95,7 +95,7 @@ figure {
 	max-width: 100%;
 	margin-inline: 0;
 
-	@mixin box;
+    /* SEE components/box.css */
 }
 figcaption {
 	margin-block: var(--gap);
@@ -108,5 +108,7 @@ figcaption {
 main {
 	max-inline-size: var(--eff-line-length);
 	margin: auto;
+
+	&:first-child { padding-top: var(--gap); }
 }
 

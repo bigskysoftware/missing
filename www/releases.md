@@ -9,4 +9,4 @@ renderOrder: 1
 <% for (const page of search.pages("release", "date=desc")) { %>
  * [v<%= page.data.release %>](<%= page.data.url %>)
 <% } %>
-{.list-of-links}
+{.list-of-links .flow-gap}

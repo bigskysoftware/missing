@@ -161,8 +161,6 @@ fieldset {
 	width: 100%;
 	border-radius: var(--border-radius);
 
-	@mixin padded;
-
 	& > legend + * { margin-block-start: 0 }
 
 	border: 1px solid var(--faded-fg);

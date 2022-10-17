@@ -31,7 +31,7 @@ nav {
 }
 
 aside {
-	@mixin box;
+    /* SEE components/box.css */
 
 	& h1,
 	& h2,

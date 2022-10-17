@@ -1,5 +1,23 @@
 
-@define-mixin titlebar {
+.box,
+/* defined elsewhere */
+[role=menu],
+.sidebar,
+[role=tabpanel],
+figure,
+details,
+dialog,
+aside {
+    margin: var(--gap) 0;
+    padding: var(--gap);
+    overflow: clip;
+    
+    border-radius: var(--border-radius);
+    background: var(--box-bg);
+    border: 1px solid var(--faded-fg);
+}
+
+.titlebar {
     margin-inline: calc(0px - var(--gap));
     margin-block-end: calc(0px - var(--gap));
     padding-inline: var(--gap);
@@ -12,24 +30,4 @@
 
     background: var(--accent);
     color: var(--bg);
-}
-
-@define-mixin box {
-    margin: var(--gap) 0;
-    padding: var(--gap);
-    overflow: clip;
-    
-    border-radius: var(--border-radius);
-    background: var(--box-bg);
-    border: 1px solid var(--faded-fg);
-    
-    @mixin padded;
-}
-
-.box {
-    @mixin box;
-}
-
-.titlebar {
-    @mixin titlebar;
 }

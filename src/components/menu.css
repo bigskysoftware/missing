@@ -1,7 +1,6 @@
 
 [role="menu"] {
-    @mixin box;
-
+    /* SEE components/box.css */
     position: absolute;
     
     padding: calc(var(--gap) / 2) 0;

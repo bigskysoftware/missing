@@ -50,6 +50,7 @@ export default lume(
   },
 )
   .copy("netlify.redirects", "_redirects")
+  .copy("js")
   .addEventListener("afterRender", postcss)
   .use(date())
   .use(highlighting())

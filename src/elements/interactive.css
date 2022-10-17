@@ -4,7 +4,8 @@
  ***/
 
 details {
-	@mixin box;
+    /* SEE components/box.css */
+
 	padding-block-start: 0;
 	&:not([open]) { padding-block-end: 0; }
 }
@@ -36,7 +37,8 @@ summary {
 
 
 dialog {
-	@mixin box;
+    /* SEE components/box.css */
+	
     position: absolute;
     inline-inset: 0;
     

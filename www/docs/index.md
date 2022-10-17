@@ -19,6 +19,8 @@ If you're using Prism.js to highlight code, consider our syntax theme as well:
 
 Then, see how you can go beyond classless CSS with its features:
 
+<div class=box>
+
  * [Improve your **forms**](/docs/forms)
 
  * [Customize with CSS **variables**](/docs/variables)
@@ -35,8 +37,9 @@ Then, see how you can go beyond classless CSS with its features:
 
  * [Use our **utility classes**](/docs/utils)
 
- {.list-of-links .textcolumns role=list}
+ { .list-of-links .textcolumns .flow-gap role=list}
 
+</div>
 
 ## Index
 

@@ -14,7 +14,7 @@
     margin: 0;
     min-height: var(--rhythm);
 
-    border: solid var(--box-border);
+    border: solid var(--faded-fg);
     border-width: 1px 1px 0 1px;
     border-block-end-color: transparent;
     background: var(--interactive-bg);
@@ -29,10 +29,21 @@
         background: var(--box-bg);
         border-block-end: 1px solid var(--box-bg);
     }
+
+    &:hover {
+        background-color: var(--box-bg);
+    }
+
+    &:focus {
+        background-color: var(--box-bg);
+        border-color: var(--accent);
+        outline: 1px solid var(--accent);
+    }
 }
 
 [role="tabpanel"] {
-    @mixin box;
+    /* SEE components/box.css */
+
     margin-block-start: 0;
     border-start-start-radius: 0;
     border-start-end-radius: 0;

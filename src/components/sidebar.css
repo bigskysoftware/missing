@@ -1,6 +1,6 @@
 
 .sidebar {
-    @mixin box;
+    /* SEE components/box.css */
 
 	font-family: var(--secondary-font);
     
