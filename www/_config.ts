@@ -7,7 +7,6 @@ import resolveUrls from "lume/plugins/resolve_urls.ts";
 import eta from "lume/plugins/eta.ts";
 
 import highlighting from "./_build/highlighting.ts";
-import getDatesFromGit from "./_build/get-dates-from-git.ts";
 import myFilters from "./_build/filters.ts";
 import indexDefinitions from "./_build/index-definitions.ts";
 
@@ -58,5 +57,4 @@ export default lume(
   .use(resolveUrls())
   .use(eta({ extensions: [".eta", ".html"] }))
   .use(myFilters())
-  .use(getDatesFromGit())
   .use(indexDefinitions());
