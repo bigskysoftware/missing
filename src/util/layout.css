@@ -70,7 +70,7 @@
 .row, .rows > * {
     display: table-row;
     
-    &:not(:last-child) > * {
+    &:not(:last-child):not([specificity-hack]) > * {
         margin-bottom: var(--gap);
     }
 
