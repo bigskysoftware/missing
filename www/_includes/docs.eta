@@ -31,8 +31,4 @@ const docs = [
 
 <main>
     <%~ content %>
-
-    <p class="italic">
-        Last updated <time><%= filters.date(it["last modified"]) %></time>
-    </p>
 </main>
