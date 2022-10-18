@@ -1,6 +1,6 @@
 import prismHighlight from "lume/plugins/prism.ts";
 import Prism from "lume/deps/prism.ts";
-import prismHyperscript from "https://esm.sh/prism-hyperscript@1.1.1";
+import prismHyperscript from "npm:prism-hyperscript@1.1.1";
 import type { Site } from "lume/core.ts";
 
 /**

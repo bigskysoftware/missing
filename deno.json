@@ -3,8 +3,11 @@
   "tasks": {
     "prod": "deno task www && deno task archive",
     "dev": "deno task www -s --dev",
-    "css": "deno run -A --unstable build/postcss.ts",
-    "archive": "./build/version-archive.ts",
-    "www": "deno eval \"import 'lume/task.ts'\" -- --config=www/_config.ts"
+    "css": "./_build/postcss.ts",
+    "archive": "./_build/version-archive.ts",
+    "www": "deno eval \"import 'lume/task.ts'\" -- --config=_lume_config.ts",
+    "lume": "deno eval \"import 'lume/task.ts'\" --",
+    "build": "deno task lume",
+    "serve": "deno task lume -s"
   }
 }

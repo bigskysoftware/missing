@@ -12,16 +12,15 @@ import indexDefinitions from "./_build/index-definitions.ts";
 
 import mdAttrs from "npm:markdown-it-attrs@4.1.4";
 import mdDeflist from "npm:markdown-it-deflist@2.1.0";
-// import mdContainer from "npm:@gerhobbelt/markdown-it-container@3.0.0-10";
 import mdToc from "npm:markdown-it-toc-done-right@4.2.0";
 import mdAnchor from "npm:markdown-it-anchor@8.6.4";
 
-import postcss from "../build/postcss.ts";
+import postcss from "./_build/postcss.ts";
 
 export default lume(
   {
     location: new URL("https://missing.style/"),
-    src: "www",
+    includes: "www/_includes",
     dest: "dist",
   },
   {
@@ -35,7 +34,6 @@ export default lume(
           containerClass: "TableOfContents box crowded",
           listClass: "padding-inline",
         }],
-        // [mdContainer, "box"],
         [mdAnchor, {
           permalink: mdAnchor.permalink.linkInsideHeader({
             placement: "before",
@@ -48,8 +46,9 @@ export default lume(
     },
   },
 )
-  .copy("netlify.redirects", "_redirects")
-  .copy("js")
+  .ignore("README.md", "Contributing.md", "dev-notes", "netlify.toml")
+  .copy("www/pages/netlify.redirects", "_redirects")
+  .copy("www/js", "js")
   .addEventListener("afterRender", postcss)
   .use(date())
   .use(highlighting())

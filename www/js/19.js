@@ -9,6 +9,7 @@ const makelogger = (scope) =>
 
 const
 ilog = makelogger("19.js"),
+uncamel = s => s.replace(/[A-Z]/g, (s) => "-" + s.toLowerCase()),
 traverse = (direction) => {
   const advance = direction + "ElementSibling";
   const wrapIt = direction === "next"
@@ -37,14 +38,35 @@ $$ = (scope, sel) => Array.from(scope.querySelectorAll(sel)),
 on = (target, event, listener, options) => {
   const listenerWrapper = e => {
     if (options.addedBy && !options.addedBy.isConnected) off({ target, listenerWrapper, options }); // self-cleaning listener
-    return listener();
+    return listener(e);
   }
   target.addEventListener(event, listener, options);
   return { target, event, listener: listenerWrapper }
 },
 off = ({ target, event, listener }) => target.removeEventListener(event, listener, options),
 dispatch = (el, type, detail) => el.dispatchEvent(new CustomEvent(type, { detail })),
-attr = (el, name, ...args) => args.length > 0 ? el.setAttribute(name, args[0]) : el.getAttribute(name),
+attr = (el, name, ...args) => {
+  if (typeof name === "object") for (at in name) el.setAttribute(uncamel(name), value);
+  else if (args.length > 0) return el.setAttribute(name, args[0]);
+  else return el.getAttribute(name);
+},
+htmlescape = s => {
+  if (s === null || s === undefined) return "";
+  if (s instanceof Node) return s.outerHTML;
+  return String(s)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll("'", "&#x27;")
+    .replaceAll("\"", "&quot;")
+},
+html = (str, ...values) => {
+  // template literal case
+  if ("raw" in str) str = String.raw(str, ...values.map(htmlescape))
+  const tmpl = document.createElement("template");
+  tmpl.innerHTML = str;
+  return tmpl.content;
+},
 next = traverse("next"),
 prev = traverse("previous"),
 hotkey = (hotkeys) => {
@@ -73,6 +95,17 @@ hotkey = (hotkeys) => {
 
   return e => handlers[e.key]?.[modifiersOf(e)]?.(e);
 },
+debounce = (t, f, { mode = "trailing" } = {}) => {
+  let timeout;
+  return (...args) => {
+    if (timeout) clearTimeout(timeout);
+    else if (mode === "leading") f(...args);
+    timeout = setTimeout(() => {
+      if (mode === "trailing") f(...args);
+      timeout = null;
+    }, t);
+  }
+},
 behavior = (selector, init) => {
   const initialized = new WeakSet
   
@@ -85,4 +118,35 @@ behavior = (selector, init) => {
     });
   };
 };
+export
+const
+repeater = (container, { idOf, create, update }) => {
+  return (dataset) => {
+    let cursor;
 
+    const
+    append = (...nodes) => {
+      const oldcursor = cursor;
+      cursor = nodes.at(-1);
+      if (cursor instanceof DocumentFragment) cursor = cursor.lastChild;
+      if (oldcursor) oldcursor.after(...nodes);
+      else container.prepend(...nodes);
+    },
+    clearAfter = () => {
+      if (cursor) while (cursor.nextSibling) cursor.nextSibling.remove();
+      else container.replaceChildren();
+    };
+
+    const root = container.getRootNode();
+
+    // TODO: use an actual morphing algo
+    for (const datum of dataset) {
+      const
+      id = idOf(datum),
+      existing = root.getElementById(id);
+      if (existing) append(update?.(existing) ?? existing);
+      else append(create(datum, { id }));
+    }
+    clearAfter(cursor);
+  }
+}
