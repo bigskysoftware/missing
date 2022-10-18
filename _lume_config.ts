@@ -48,7 +48,7 @@ export default lume(
 )
   .ignore("README.md", "Contributing.md", "dev-notes", "netlify.toml")
   .copy("www/pages/netlify.redirects", "_redirects")
-  .copy("js")
+  .copy("www/js", "js")
   .addEventListener("afterRender", postcss)
   .use(date())
   .use(highlighting())
