@@ -15,10 +15,35 @@ const pc = postcss([
   autoprefixer({ overrideBrowserslist: ">1% and not ie 11" }),
 ]);
 
-const buildFile = async (entrypoint: string, targetName: string) => {
+export const compile = async () => {
+  const builds = await Promise.all([
+    compileFile("src/main.css", "missing"),
+    compileFile("src/syntax.css", "missing-prism"),
+  ])
+  return builds.reduce((acc, cur) => Object.assign(acc, cur), {});
+};
+
+const build = () => {
+  compile().then(write);
+};
+
+const write = async (files: Record<string, string>) => {
+  await Deno.mkdir(dist, { recursive: true });
+
+  await Promise.all(
+    Object.entries(files).map(([filename, content]) =>
+      writeFile(content, filename)
+    ),
+  );
+};
+
+export const compileFile = async (
+  entrypoint: string,
+  targetName: string,
+): Promise<Record<string, string>> => {
   const src = await Deno.readTextFile(entrypoint);
-  const dest = path.join(dist, targetName + ".css");
-  const destMinified = path.join(dist, targetName + ".min.css");
+  const dest = targetName + ".css";
+  const destMinified = targetName + ".min.css";
 
   const result = await pc.process(src, {
     from: entrypoint,
@@ -29,21 +54,13 @@ const buildFile = async (entrypoint: string, targetName: string) => {
 
   const outputMinified = csso.minify(result.css).css;
 
-  await Deno.mkdir(dist, { recursive: true });
-  await Promise.all([
-    write(output, dest),
-    write(outputMinified, destMinified),
-  ]);
+  return { [dest]: output, [destMinified]: outputMinified };
 };
 
-const build = () => {
-  buildFile("src/main.css", "missing");
-  buildFile("src/syntax.css", "missing-prism");
-};
 
-const write = async (data: string, path: string | URL) => {
-  await Deno.writeTextFile(path, data);
-  if (import.meta.main) console.log("Wrote " + path);
+const writeFile = async (data: string, dest: string) => {
+  await Deno.writeTextFile(path.join(dist, dest), data);
+  if (import.meta.main) console.log("Wrote " + dest);
 };
 
 export default build;

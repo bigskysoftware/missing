@@ -29,7 +29,9 @@ async function buildVersion(gitTag: string) {
     await $`git switch --detach ${gitTag}`.quiet();
 
     $.logStep(`Building ${gitTag}`);
-    await $`deno task css`.quiet();
+    await $`deno task css
+      || deno run -A --unstable _build/postcss.ts # work around a bug in 0.3.1
+      `.quiet();
 
     $.logStep(`Caching ${gitTag} artifacts`);
     $.logStep(`Placing ${gitTag} artifacts into archive/${gitTag}`);
