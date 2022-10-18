@@ -47,7 +47,7 @@ export default lume(
   },
 )
   .ignore("README.md", "Contributing.md", "dev-notes", "netlify.toml")
-  .copy("pages/netlify.redirects", "_redirects")
+  .copy("www/pages/netlify.redirects", "_redirects")
   .copy("js")
   .addEventListener("afterRender", postcss)
   .use(date())
