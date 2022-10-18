@@ -48,16 +48,9 @@ async function buildVersion(gitTag: string) {
   }
 }
 
-const gitProcess = Deno.run({
-  cmd: ["git", "tag", "--list"],
-  stdout: "piped",
-});
-
 for (const line of await $`git tag --list`.lines()) {
   if (/^v\d+\.\d+\.\d+/.test(line)) {
     $.logStep(`Building ${line}`);
     await $.logIndent(() => buildVersion(line));
   }
 }
-
-gitProcess.close();
