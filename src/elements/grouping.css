@@ -12,8 +12,8 @@ hr {
 	color: inherit;
 	margin-inline: 0;
 	margin-block: var(--gap);
-
-	flex-grow: 0;
+	
+	flex: 0 1 0px;
 	border-inline-start: 1px solid var(--accent);
 	block-size: auto;
 	border-block-start: 1px solid var(--accent);

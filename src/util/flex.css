@@ -4,7 +4,7 @@
     flex-direction: row;
     gap: var(--gap);
     --col-width: 30ch;
-    & > * { margin: 0; flex-basis: var(--col-width); }
+    @nest :where(& > *) { margin: 0; flex-basis: var(--col-width); }
 }
 
 .f-col {
