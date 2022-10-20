@@ -46,7 +46,7 @@ on = (target, event, listener, options) => {
 off = ({ target, event, listener }) => target.removeEventListener(event, listener, options),
 dispatch = (el, type, detail) => el.dispatchEvent(new CustomEvent(type, { detail })),
 attr = (el, name, ...args) => {
-  if (typeof name === "object") for (at in name) el.setAttribute(uncamel(name), value);
+  if (typeof name === "object") for (const at in name) el.setAttribute(uncamel(name), value);
   else if (args.length > 0) return el.setAttribute(name, args[0]);
   else return el.getAttribute(name);
 },
