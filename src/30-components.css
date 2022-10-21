@@ -1,0 +1,176 @@
+
+.box,
+/* defined elsewhere */
+[role=menu],
+.sidebar,
+[role=tabpanel],
+figure,
+details,
+dialog,
+aside {
+    margin: var(--gap) 0;
+    padding: var(--gap);
+    overflow: clip;
+    
+    border-radius: var(--border-radius);
+    background: var(--box-bg);
+    border: 1px solid var(--faded-fg);
+}
+
+.titlebar {
+    margin-inline: calc(0px - var(--gap));
+    margin-block-end: calc(0px - var(--gap));
+    padding-inline: var(--gap);
+
+    font: inherit;
+	font-family: var(--secondary-font);
+    font-weight: bold;
+
+    translate: 0 calc(-1px - var(--gap));
+
+    background: var(--accent);
+    color: var(--bg);
+}
+
+.sub-title, sub-title {
+	/***
+	 Meant for use in headings. Make sure to also use visually-hidden punctuation
+	 to mark the subtitle as shown below:
+
+	1 | <h1>
+	2 | 	Foo Bar<v-h>:</v-h>
+	3 | 	<sub-title>How I Learned To Stop Worrying and Love Baz</sub-title>
+	4 | </h1>
+
+	1 | <h1>
+	2 | 	<sub-title class="-allcaps">Breaking News</sub-title><v-h>:</v-h>
+	3 | 	Bad Thing Happens
+	4 | <h1>
+	 ***/
+
+	display: block;
+
+	font-weight: normal;
+
+	color: var(--muted-fg);
+}
+
+
+.tool-bar {
+	display: flex;
+	flex-flow: row wrap;
+	gap: calc(var(--gap) / 2);
+
+	& > * { margin: 0; }
+}
+
+.sidebar {
+    /* SEE components/box.css */
+
+	font-family: var(--secondary-font);
+    
+    border-block: none;
+    border-inline-start: none;
+    border-radius: 0;
+    margin: 0;
+
+    font-size: .8em;
+    --rhythm: 1em;
+
+    & li {
+        padding: calc(.5 * var(--gap));
+        margin-inline: calc(-.5 * var(--gap));
+        border-radius: var(--border-radius);
+    }
+
+    & a {
+        font-weight: bold;
+        text-decoration: none;
+    }
+}
+.breadcrumbs[aria-label] {
+	font-family: var(--secondary-font);
+
+    & ul, & ol {
+        list-style: none;
+        padding-inline-start: 0;
+    }
+
+    & li {
+        display: inline;
+        &+li::before {
+            content: ' / ' / '';
+            content: ' / ';
+            display: inline;
+        }
+    }
+
+    & [aria-current="page"] {
+        font-weight: bold;
+    }
+}
+
+.chip, chip {
+	font-family: var(--secondary-font);
+    border: 1px solid var(--accent);
+    background: var(--box-bg);
+    border-radius: calc(var(--rhythm) / 2);
+    padding-inline: calc(var(--rhythm) / 2);
+}
+
+.navbar {
+	margin: 0 0 var(--gap) 0;
+	padding: var(--rhythm);
+
+	font-family: var(--secondary-font);
+
+	background: var(--box-bg);
+	border-block-end: 1px solid var(--accent);
+
+	overflow-x: auto;
+	scrollbar-width: thin;
+
+	/* Inner layout */
+	display: flex;
+	flex-flow: row;
+	justify-content: center;
+	gap: calc(2 * var(--rhythm));
+
+	& * {
+		flex-shrink: 0;
+		margin-block: 0;
+	}
+
+	& nav ul[role="list"] {
+		padding-inline-start: 0;
+		display: flex;
+		flex-flow: row;
+		gap: var(--rhythm);
+
+		& * { flex-shrink: 0 }
+	}
+
+	& a {
+		font-weight: bold;
+		text-decoration: none;
+		padding-inline: .2em;
+	}
+
+	& a:hover, & a:focus {
+		text-decoration: underline;
+	}
+
+	& [aria-current=page] {
+		background: var(--accent);
+		color: var(--box-bg);
+		border-radius: var(--border-radius);
+	}	
+}
+
+.permalink-anchor {
+    display: none;
+    
+    @nest *:hover > & {
+        display: initial;
+    }
+}

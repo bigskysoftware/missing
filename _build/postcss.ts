@@ -3,7 +3,7 @@
 import * as path from "std/path/mod.ts";
 import postcss from "npm:postcss@8.4.16";
 import nesting from "npm:postcss-nesting@10.1.7";
-import atImport from "npm:postcss-easy-import@4.0.0";
+import atImport from "npm:postcss-import@15.0.0";
 import autoprefixer from "npm:autoprefixer@10.4.7";
 import csso from "npm:csso@3.5.1";
 
@@ -17,8 +17,8 @@ const pc = postcss([
 
 export const compile = async () => {
   const builds = await Promise.all([
-    compileFile("src/main.css", "missing"),
-    compileFile("src/syntax.css", "missing-prism"),
+    compileFile("src/missing.css", "missing"),
+    compileFile("src/missing-prism.css", "missing-prism"),
   ])
   return builds.reduce((acc, cur) => Object.assign(acc, cur), {});
 };

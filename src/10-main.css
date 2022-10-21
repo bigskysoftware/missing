@@ -1,0 +1,680 @@
+
+/***
+ 4.1 The document element
+ https://html.spec.whatwg.org/multipage/semantics.html#the-root-element
+
+ 4.3 Sections
+ https://html.spec.whatwg.org/multipage/sections.html
+ ***/
+
+html {
+	font-family: var(--main-font);
+	line-height: var(--rhythm);
+
+	background: var(--bg);
+	color: var(--fg);
+}
+
+body {
+	margin: 0;
+}
+
+header, footer, section + section {
+	margin-block: calc(2 * var(--gap));
+}
+
+nav {
+	& a {
+		text-decoration: none;
+		color: var(--accent);
+	}
+}
+
+aside {
+    /* SEE components/box.css */
+
+	& h1,
+	& h2,
+	& h3,
+	& h4,
+	& h5,
+	& h6 {
+		font-size: 1em;
+		text-transform: none;
+		letter-spacing: none;
+	}
+}
+
+h1, h2, h3, h4, h5, h6,
+.\<h1\>, .\<h2\>, .\<h3\>, .\<h4\>, .\<h5\>, .\<h6\> {
+	margin-block-end: var(--gap);
+	font-family: var(--secondary-font);
+	font-size: 1em;
+	margin-block-start: calc(2 * var(--gap));
+	position: relative;
+}
+
+h1, .\<h1\> {
+	font-size: 2em;
+	text-transform: none;
+	line-height: calc(2 * var(--rhythm));
+	letter-spacing: 0;
+}
+
+h2, .\<h2\> {
+	font-size: 1.6em;
+	text-transform: none;
+	line-height: calc(1.5 * var(--rhythm));
+	letter-spacing: 0;
+}
+
+h3, .\<h3\> {
+	font-size: 1.17em;
+	line-height: calc(1 * var(--rhythm));
+}
+
+h4, .\<h4\>, h5, .\<h5\>, h6, .\<h6\> {
+	font-size: 1em;
+	text-transform: none;
+	line-height: calc(1 * var(--rhythm));
+	letter-spacing: 0;
+	margin-block-start: var(--gap);
+}
+
+h1 + h2,
+h2 + h3,
+h3 + h4,
+h4 + h5,
+h5 + h6,
+h1:first-child,
+h2:first-child,
+h3:first-child,
+h4:first-child,
+h5:first-child,
+h6:first-child {
+	margin-block-start: var(--gap);
+}
+
+h1:target,
+h2:target,
+h3:target,
+h4:target,
+h5:target,
+h6:target {
+	outline: none;
+	&::before {
+		content: "";
+		display: block;
+		position: absolute;
+		left: -.5em;
+		width: 4px;
+		height: 100%;
+		background: var(--accent);
+	}
+}
+
+header {
+	font-family: var(--secondary-font);
+	border-block-end: 1px solid var(--faded-fg);
+}
+
+footer {
+	font-family: var(--secondary-font);
+	border-block-start: 1px solid var(--faded-fg);
+}
+
+body > header,
+body > footer,
+main + footer {
+	padding: var(--rhythm) calc((100% - var(--eff-line-length)) / 2)
+}
+
+address {
+	--density: 0;
+}
+
+/***
+ 4.4 Grouping content
+ https://html.spec.whatwg.org/multipage/grouping-content.html
+ ***/
+
+p {
+	margin-block: var(--gap);
+}
+
+hr {
+	color: inherit;
+	margin-inline: 0;
+	margin-block: var(--gap);
+	
+	flex: 0 1 0px;
+	border-inline-start: 1px solid var(--accent);
+	block-size: auto;
+	border-block-start: 1px solid var(--accent);
+	border-block-end: none;
+	border-inline-end: none;
+}
+
+pre {
+	font-family: var(--mono-font);
+	font-size: .9em;
+	line-height: var(--rhythm);
+	tab-size: 2;
+
+	margin: var(--gap) 0;
+
+	overflow-x: auto;
+	scrollbar-width: thin;
+	scrollbar-color: var(--accent) transparent;
+}
+
+blockquote {
+	margin-inline: 0 var(--gap);
+	padding-inline: var(--gap) 0;
+	margin-block: var(--gap);
+	
+	font-size: 1.1em;
+	line-height: var(--rhythm);
+	font-style: italic;
+
+	border-inline-start: 1px solid var(--faded-fg);
+	color: var(--muted-fg);
+
+	& em, & cite, & dfn, & var, & i, & address {
+		font-style: normal;
+	}
+
+	& footer {
+		text-align: right;
+		text-align: end;
+	}
+}
+
+ul, ol {
+	padding-inline-start: var(--rhythm);
+
+	& & {
+		padding-inline-start: var(--gap);
+	}
+
+	&[role="list"] {
+		padding-inline-start: 0;
+		list-style: none;
+	}
+}
+
+ul {
+}
+
+ol {
+	list-style: decimal;
+}
+
+dl {
+	margin-block: var(--gap);
+}
+	dt {
+		font-weight: bold;
+	}
+
+	dd {
+		margin-inline-start: var(--rhythm);
+	}
+
+li::marker {
+	font-family: var(--secondary-font);
+}
+
+figure {
+	max-width: 100%;
+	margin-inline: 0;
+
+    /* SEE components/box.css */
+}
+figcaption {
+	margin-block: var(--gap);
+
+	font-family: var(--secondary-font);
+
+	color: var(--muted-fg);
+}
+
+main {
+	max-inline-size: var(--eff-line-length);
+	margin: auto;
+
+	&:first-child { padding-top: var(--gap); }
+}
+
+/***
+ 4.5 Text-level semantics
+ https://html.spec.whatwg.org/multipage/text-level-semantics.html
+
+ 4.7 Edits
+ https://html.spec.whatwg.org/multipage/edits.html
+ ***/
+
+/* Text-level semantics */
+
+a {
+	color: var(--link-fg, var(--accent));
+	font-family: var(--secondary-font);
+	border-radius: var(--border-radius);
+	outline-offset: 1px;
+	
+	@nest .list-of-links & {
+		text-decoration: none;
+	}
+	
+	&:hover, &:focus {
+		text-decoration: none;
+		outline: 1px solid;
+		transition: outline-offset .1s ease-in-out;
+	}
+	
+	&:active {
+		outline-offset: 0;
+	}
+}
+
+small {
+	@nest span > &:only-child {
+		/***
+		 Sidenote
+		 ***/
+		display: block;
+		float: inline-end;
+		clear: inline-end;
+
+		--sidenote-width: 20ch;
+
+		max-inline-size: var(--sidenote-width);
+		padding-inline: 1.5ch 1ch;
+
+		margin-inline-end: calc(1em - var(--sidenote-width));
+		margin-block-end: var(--rhythm);
+
+		font-family: var(--secondary-font);
+
+		background: var(--bg);
+		border: 1px solid transparent;
+
+		transition: transform .1s ease-in-out;
+
+		&:hover, &:focus-within {
+			border: 1px solid var(--faded-fg);
+			border-radius: var(--border-radius);
+			transform: translateX(calc(
+				0px - var(--sidenote-width)
+				+ min(var(--gutter-width), var(--sidenote-width))
+			))
+		}
+	}
+}
+
+s {
+	color: var(--bad-fg);
+}
+
+q {
+	font-style: italic;
+
+	& em, & cite, & dfn, & var, & i, & address {
+		font-style: normal;
+	}
+}
+
+time {
+	font-variant-numeric: tabular-nums;
+}
+
+code, samp, kbd {
+	font-family: var(--mono-font);
+}
+
+samp {
+	color: var(--ok-fg);
+}
+
+kbd kbd /*
+	We apply the key-like styling to a nested kbd element, a pattern shown in
+	WHATWG HTML for marking up keyboard input:
+
+	> Here the kbd element is used to indicate keys to press:
+	>   ~~~ html
+	>   <p>To make George eat an apple, press <kbd><kbd>Shift</kbd> + <kbd>F3</kbd></kbd></p>
+	>   ~~~
+
+	The plain kbd element can also be used for clicking menus (<kbd>File |
+	New...</kbd>) or voice input (<kbd>Hey Siri, </kbd>)
+*/ {
+	display: inline-block;
+
+	padding: 0 .3em;
+	font-size: .8em;
+	line-height: 1.1em;
+
+	background: var(--interactive-bg);
+	border: 1px outset var(--faded-fg);
+	border-block-end-width: 3px;
+	border-radius: var(--border-radius);
+}
+
+sub {
+	vertical-align: bottom;
+	line-height: 1;
+}
+
+sup {
+	vertical-align: top;
+	line-height: 1;
+}
+
+mark {
+	background: var(--warn-bg);
+	color: var(--warn-fg);
+}
+
+/* Edits */
+
+ins {
+	background: var(--ok-bg);
+	color: var(--ok-fg);
+}
+
+del {
+	background: var(--bad-bg);
+	color: var(--bad-fg);
+}
+
+/***
+ 4.8 Embedded content
+ https://html.spec.whatwg.org/multipage/embedded-content.html
+ ***/
+
+img, video, audio, iframe, object, embed {
+	max-inline-size: 100%;
+	inline-size: max-content;
+	block-size: auto;
+}
+/***
+ 4.9 Tabular data
+ https://html.spec.whatwg.org/multipage/tables.html
+ ***/
+
+table {
+	font-variant-numeric: tabular-nums;
+	font: inherit;
+}
+
+caption {
+	text-align: start;
+	font-family: var(--secondary-font);
+	font-style: italic;
+}
+
+tbody {
+	border-block: 1px solid var(--fg);
+}
+
+thead {
+}
+
+tfoot {
+}
+
+tr {
+
+}
+
+td, th {
+	vertical-align: top;
+	
+	&:not(:last-child) {
+		padding-inline-end: var(--rhythm);
+	}
+}
+
+	td {
+	}
+
+	th {
+		font-family: var(--secondary-font);
+		text-align: start;
+	}
+
+/***
+ 4.10 Forms
+ https://html.spec.whatwg.org/multipage/forms.html
+ ***/
+
+input { display: block; }
+label input:not([specificity-hack]) { display: inline; padding-block: 0; }
+
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+input::file-selector-button,
+.\<button\> {
+	display: inline-block;
+	padding: 0 calc(var(--rhythm) / 4);
+	vertical-align: top;
+
+	font-size: .8rem;
+	line-height: 1.125em;
+	font-family: var(--secondary-font);
+	min-height: var(--rhythm);
+
+	background: var(--interactive-bg);
+	color: var(--fg);
+	border: 1px solid var(--muted-fg);
+	box-sizing: border-box;
+	border-radius: var(--border-radius);
+
+	/* a-specific resets */
+	color: var(--fg);
+	text-decoration: none;
+	display: inline-flex;
+	place-items: center;
+
+	&:hover, &:focus-visible {
+		filter: brightness(1.1);
+
+		/* a-specific resets */
+		text-decoration: none;
+	}
+
+	&:active {
+		filter: brightness(.8);
+	}
+	
+	&[aria-pressed="true"], &[aria-expanded="true"] {
+		box-shadow: 0 .05em var(--accent);
+		transform: translateY(.05em);
+		background: var(--pressed-interactive-bg);
+	}
+
+	&[disabled] {
+		color: var(--muted-fg);
+	}
+
+	@nest strong > & {
+		background: var(--accent);
+		color: var(--bg);
+		border: none;
+		font-weight: bold;
+
+		&[disabled] {
+			color: var(--muted-accent);
+		}
+	}
+}
+
+input:not([type]),
+input[type="text"],
+input[type="search"],
+input[type="tel"],
+input[type="url"],
+input[type="email"],
+input[type="password"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="number"],
+select,
+textarea {
+	padding: calc(var(--rhythm) / 4);
+	vertical-align: top;
+	
+	font-size: 1rem;
+	line-height: inherit;
+	font-family: var(--main-font);
+
+	background: var(--bg);
+	color: var(--fg);
+	border: 1px solid var(--faded-fg);
+	border-radius: var(--border-radius);
+
+	vertical-align: top;
+
+	&:focus-visible {
+		border: 1px solid var(--accent);
+	}
+
+	&::placeholder {
+		color: var(--muted-fg);
+		opacity: 1;
+		text-align: end;
+	}
+}
+
+input[type="range"] {
+	width: 100%;
+	padding: calc(var(--gap) / 4);
+}
+
+input[type="color"] {
+	padding: 0;
+	margin: 0;
+	height: calc(1.5 * var(--rhythm));
+
+	border: none;
+	background: none;
+}
+
+input[type="file"] {
+	padding: calc(var(--gap) / 4) 0;
+	font: inherit;
+	line-height: calc(var(--rhythm) / 2);
+	&::file-selector-button {
+		margin-block: .1em 0;
+		margin-inline-end: 1ch;
+	}
+}
+
+select[multiple] {
+	vertical-align: top;
+}
+
+optgroup::before {
+	color: var(--muted-fg);
+	font-style: normal;
+}
+
+progress {
+	/* TODO */
+}
+
+meter {
+	/* TODO */
+}
+
+label[for] {
+	display: block;
+	padding-block: calc(var(--gap) / 4);
+}
+
+fieldset {
+	position: relative;
+
+    padding: var(--gap);
+	margin: var(--gap) 0;
+	width: 100%;
+	border-radius: var(--border-radius);
+
+	& > legend + * { margin-block-start: 0 }
+
+	border: 1px solid var(--faded-fg);
+}
+/***
+ 4.11 Interactive elements
+ https://html.spec.whatwg.org/multipage/interactive-elements.html#interactive-elements
+ ***/
+
+details {
+    /* SEE components/box.css */
+
+	padding-block-start: 0;
+	&:not([open]) { padding-block-end: 0; }
+}
+
+summary {
+	margin: calc(0px - var(--gap));
+	margin-top: calc(0px - var(--gap));
+	margin-bottom: 0;
+	padding-inline: var(--gap);
+
+	font-family: var(--secondary-font);
+	font-weight: bold;
+
+	background: var(--accent);
+	color: var(--bg);
+
+	cursor: pointer;
+
+	&:focus-visible, &:active {
+		filter: brightness(.8);
+	}
+
+	@nest details[open] & {
+		border-block-end: 1px solid var(--accent);
+		border-end-end-radius: 0;
+		border-end-start-radius: 0;
+	}
+}
+
+
+dialog {
+    /* SEE components/box.css */
+	
+    position: absolute;
+    inline-inset: 0;
+    
+	block-size: fit-content;
+    inline-size: fit-content;
+    
+	margin: auto !important;
+
+    background-color: var(--bg);
+    color: var(--fg);
+	border-color: var(--accent);
+}
+
+dialog[open]::backdrop {
+	display: block;
+	background: black;
+	opacity: .4;
+	animation: bg 2s;
+}
+
+@keyframes bg {
+	from { background: transparent; }
+}
+
+dialog:not([open]) {
+    display: none;
+}

@@ -1,4 +1,12 @@
 
+2022-10-21
+
+I should add a search function with Lume's Pagefind plugin
+(https://lume.land/plugins/pagefind/).
+
+-- dz4k
+
+
 2022-08-19
 
 Got a proof-of-concept for postcss-literate. However, imported files seem not

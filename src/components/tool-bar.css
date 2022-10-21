@@ -1,8 +1,0 @@
-
-.tool-bar {
-	display: flex;
-	flex-flow: row wrap;
-	gap: calc(var(--gap) / 2);
-
-	& > * { margin: 0; }
-}

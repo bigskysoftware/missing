@@ -1,12 +1,4 @@
 
-@import "./core/sanitize.css";
-@import "./core/colors.css";
-
-@import "./shared/*.css";
-@import "./components/*.css";
-@import "./util/*.css";
-@import "./elements/*.css";
-
 :root {
 	/* Colors */
 	--fg: var(--gray-12); /* Text. */

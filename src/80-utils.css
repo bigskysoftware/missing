@@ -1,0 +1,32 @@
+
+.airy    { --density: 3; }
+.dense   { --density: 1; }
+.crowded { --density: .5; }
+.packed  { --density: 0; }
+
+.autodensity {
+    --density: 1;
+    @media (min-width: 768px)  { --density: 2 }
+    @media (min-width: 1024px) { --density: 3 }
+}
+.vh, v-h {
+	clip: rect(0 0 0 0);
+	clip-path: inset(50%);
+	block-size: 1px;
+	inline-size: 1px;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.all\:initial {
+	all: initial;
+}
+
+.allcaps {
+	text-transform: uppercase;
+	letter-spacing: .1rem;
+}
+
+.monospace {
+	font-family: var(--mono-font);
+}
