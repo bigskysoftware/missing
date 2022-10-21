@@ -51,6 +51,7 @@ h1, h2, h3, h4, h5, h6,
 	font-family: var(--secondary-font);
 	font-size: 1em;
 	margin-block-start: calc(2 * var(--gap));
+	position: relative;
 }
 
 h1, .\<h1\> {
@@ -101,15 +102,14 @@ h4:target,
 h5:target,
 h6:target {
 	outline: none;
-
 	&::before {
-		content: '❧';
-		display: inline-block;
-		width: 0;
-		transform: translateX(-1.5ch);
-		font-size: 2em;
-		vertical-align: bottom;
-		color: var(--accent);
+		content: "";
+		display: block;
+		position: absolute;
+		left: -.5em;
+		width: 4px;
+		height: 100%;
+		background: var(--accent);
 	}
 }
 
