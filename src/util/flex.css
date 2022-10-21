@@ -28,11 +28,14 @@
     }
 }
 
-.justify-content\:start    { justify-content: start    }
-.justify-content\:end      { justify-content: end      }
-.justify-content\:baseline { justify-content: baseline }
-.justify-content\:center   { justify-content: center   }
-.justify-content\:stretch  { justify-content: stretch  }
+.justify-content\:start         { justify-content: start         }
+.justify-content\:end           { justify-content: end           }
+.justify-content\:baseline      { justify-content: baseline      }
+.justify-content\:center        { justify-content: center        }
+.justify-content\:stretch       { justify-content: stretch       }
+.justify-content\:space-between { justify-content: space-between }
+.justify-content\:space-around  { justify-content: space-around  }
+.justify-content\:space-evenly  { justify-content: space-evenly  }
 
 .align-items\:start    { align-items: start    }
 .align-items\:end      { align-items: end      }
