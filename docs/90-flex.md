@@ -43,6 +43,11 @@ The following utility classes are meant to be applied to flex containers:
  - <dfn>`.align-items:stretch`</dfn>
  {role=list .tool-bar}
 
+### `flex-wrap`
+
+ - <dfn>`.flex-wrap:nowrap`</dfn>
+ - <dfn>`.flex-wrap:wrap`</dfn>
+
 
 ## Flex children
 

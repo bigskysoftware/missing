@@ -65,7 +65,8 @@ appearance with the `.box` class.
 
 ## Subtitle
 
-The <dfn>`<sub-title>`</dfn> custom element subtitle for a heading.
+The <dfn>`<sub-title>`</dfn> custom element or the <dfn>`.sub-title`</dfn>
+class is a subtitle for a heading.
 
 <figure>
 
@@ -98,6 +99,13 @@ The <dfn>`<sub-title>`</dfn> custom element subtitle for a heading.
 <h4>
 
 </figure>
+
+
+## Section permalinks
+
+Many pages, including these docs, have links that can be used to jump to a
+section that appear when the heading is hovered. Missing.css provides this
+as the <dfn>`.permalink-anchor`</dfn> class.
 
 
 ## Toolbar
@@ -226,7 +234,7 @@ rounded chip, like what you might use for a tag list or contacts.
 <figcaption>Code: Navbars</figcaption>
 
   ~~~ html
-  <header is="navbar">
+  <header class="navbar">
     <nav aria-label="Site sections">
       <ul role="list">
         <li><a href="/"><img alt="missing.js" src="/logo.png"></a>

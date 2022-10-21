@@ -26,13 +26,18 @@ classes.
 [`column-width`]: https://developer.mozilla.org/en-US/docs/Web/CSS/column-width
 
 
+## Flow gap
+
+The <dfn>`.flow-gap`</dfn> class adds vertical margins between its children.
+
+
 ## Full Bleed
 
-Add the <dfn>`.full-bleed`</dfn> class to make an element go outside its
+Add the <dfn>`.fullbleed`</dfn> class to make an element go outside its
 container and span the whole width of the viewport.
 
 
-## Padding & Margin
+## Layout utilities
 
 Add some padding with <dfn>`.padding`</dfn>, or a margin with
 <dfn>`.margin`</dfn>.
@@ -40,6 +45,8 @@ Add some padding with <dfn>`.padding`</dfn>, or a margin with
 Add padding or margin in specific axes with <dfn>`.margin-block`</dfn>,
 <dfn>`.margin-inline`</dfn>, <dfn>`.padding-block`</dfn> and
 <dfn>`.padding-inline`</dfn>.
+
+Make an element full-width with the <dfn>`.width:100%</dfn> class.
 
 
 ## Scrolling

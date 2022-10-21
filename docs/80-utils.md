@@ -12,16 +12,16 @@ missing.css has a collection of classes and custom elements.
 
 ## Visually hidden content
 
-<dfn>`.v-h`</dfn>, <dfn>`<v-h>`</dfn>
+<dfn>`.vh`</dfn>, <dfn>`<v-h>`</dfn>
 :   Visually hide a content without hiding it from assistive software.
 
 ## Container
 
 `<div class="container">`
 
-The container class imposes a maximum width on an element and centers it. The
-`<main>` element does the same, but carries semantic baggage that might not be
-appropriate for all contexts.
+The <dfn>`.container`</dfn> class imposes a maximum width on an element and 
+centers it. The `<main>` element does the same, but carries semantic baggage
+that might not be appropriate for all contexts.
 
 
 ## Density {#density}
@@ -101,5 +101,12 @@ The following classes can be used to make one element look like another:
 
 
 </figure>
+
+
+## Reset
+
+Use the <dfn>`.all:initial`</dfn> class to reset all CSS properties on an
+element and return it to its browser-default styles.
+
 
 [CSS variable]: /docs/variables
