@@ -1,3 +1,7 @@
+---
+title: Colorways
+url: ./colorways/
+---
 
 # Colorways
 

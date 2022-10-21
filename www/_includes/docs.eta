@@ -1,29 +1,20 @@
 ---
 layout: layout.eta
 ---
-<%
-const docs = [
-    ["/docs/forms/", "Forms"],
-    ["/docs/variables/", "Variables"],
-    ["/docs/aria/", "ARIA"],
-    ["/docs/components/", "Components"],
-    ["/docs/layout/", "Layout"],
-    ["/docs/colorways/", "Colorways"],
-    ["/docs/flex/", "Flexbox"],
-    ["/docs/utils/", "Utilities"],
-]
-%>
 
 <header class="navbar">
     <nav class="contents">
-        <ul role="list">
-            <li><a href="/">&larr; Missing.css</a> 
-            <li><a href="/docs">&larr; Docs</a>
-        </ul>
+        <p>
+            <a href="/">&larr; Missing.css</a> 
+        </p>
         <hr>
         <ul role="list">
-            <% filters.repeat(docs, ([url, name], ctx) => { %>
-                <li><a href="<%= url %>" <%~ url == it.url ? "aria-current='page'" : "" %>><%= name %></a></li>
+            <% filters.repeat(
+                search.pages("docs", "page.src.path"),
+                ({ data: { url, title } }, ctx) => { %>
+                    <li><a href="<%= url %>" 
+                        <%~ url == it.url ? "aria-current='page'" : "" %>
+                        ><%= title %></a></li>
             <% }) %>
         </ul>
     </nav>
@@ -32,3 +23,24 @@ const docs = [
 <main>
     <%~ content %>
 </main>
+
+<footer>
+    <%
+        const
+        prev = search.previousPage(url, "docs", "src.path"),
+        next = search.nextPage(url, "docs", "src.path")
+    %>
+
+    <div class="f-row flex-wrap:wrap justify-content:space-between">
+        <% if (prev) { %>
+            <div>Previous &larr;
+                <strong><a href="<%= prev.data.url %>"><%= prev.data.title %></a></strong>
+            </div>
+        <% } %>
+        <% if (next) { %>
+            <div>Next &rarr;
+                <strong><a href="<%= next.data.url %>"><%= next.data.title %></a></strong>
+            </div>
+        <% } %>
+    </div>
+</footer>

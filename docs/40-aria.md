@@ -1,3 +1,7 @@
+---
+title: ARIA
+url: ./aria/
+---
 
 # ARIA Patterns 
 

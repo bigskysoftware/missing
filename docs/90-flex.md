@@ -1,3 +1,7 @@
+---
+title: Flexbox
+url: ./flex/
+---
 
 # Flexbox
 
@@ -25,6 +29,9 @@ The following utility classes are meant to be applied to flex containers:
  - <dfn>`.justify-content:baseline`</dfn>
  - <dfn>`.justify-content:center`</dfn>
  - <dfn>`.justify-content:stretch`</dfn>
+ - <dfn>`.justify-content:space-between`</dfn>
+ - <dfn>`.justify-content:space-around`</dfn>
+ - <dfn>`.justify-content:space-evenly`</dfn>
  {role=list .tool-bar}
 
 ### `align-items`

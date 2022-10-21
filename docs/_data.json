@@ -1,4 +1,5 @@
 {
     "layout": "docs.eta",
-    "backTo": "/docs Docs"
+    "backTo": "/docs Docs",
+    "tags": "docs"
 }

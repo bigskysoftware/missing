@@ -1,3 +1,7 @@
+---
+title: Variables
+url: ./variables/
+---
 
 # CSS Variables
 
