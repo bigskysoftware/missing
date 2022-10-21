@@ -34,6 +34,7 @@
 	& a {
 		font-weight: bold;
 		text-decoration: none;
+		padding-inline: .2em;
 	}
 
 	& a:hover, & a:focus {
@@ -44,6 +45,5 @@
 		background: var(--accent);
 		color: var(--box-bg);
 		border-radius: var(--border-radius);
-		outline: .2em solid var(--accent);
 	}	
 }

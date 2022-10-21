@@ -12,15 +12,20 @@ a {
 	color: var(--link-fg, var(--accent));
 	font-family: var(--secondary-font);
 	border-radius: var(--border-radius);
-
+	outline-offset: 1px;
+	
 	@nest .list-of-links & {
 		text-decoration: none;
 	}
-
+	
 	&:hover, &:focus {
 		text-decoration: none;
-		outline: 2px solid;
-		outline-offset: 2px;
+		outline: 1px solid;
+		transition: outline-offset .1s ease-in-out;
+	}
+	
+	&:active {
+		outline-offset: 0;
 	}
 }
 
