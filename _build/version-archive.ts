@@ -30,7 +30,7 @@ async function buildVersion(gitTag: string) {
 
     $.logStep(`Building ${gitTag}`);
     await $`deno task css
-      || deno run -A --unstable _build/postcss.ts # work around a bug in 0.3.1
+      || deno run -A --unstable _build/postcss.ts
       `.quiet();
 
     $.logStep(`Caching ${gitTag} artifacts`);
