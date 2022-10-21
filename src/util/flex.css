@@ -3,8 +3,7 @@
     display: flex;
     flex-direction: row;
     gap: var(--gap);
-    --col-width: 30ch;
-    @nest :where(& > *) { margin: 0; flex-basis: var(--col-width); }
+    & > * { margin: 0 }
 }
 
 .f-col {
