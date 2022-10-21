@@ -24,7 +24,7 @@ export default lume(
   .ignore("README.md", "Contributing.md", "dev-notes", "netlify.toml")
   .copy("www/pages/netlify.redirects", "_redirects")
   .copy("www/js", "js")
-  // .addEventListener("afterRender", postcss)
+  .scopedUpdates((path) => path === "/www/missingcss.tmpl.ts" || path.endsWith(".css"))
   .use(date())
   .use(highlighting())
   .use(basePath())
