@@ -37,7 +37,8 @@ Inputs inside labels will be `display: inline`. Inputs outside labels will be
 
 ## Tabular forms {#tabular-form}
 
-You can use the `.table` and `.rows` classes to create a form with inputs lined up.
+You can use the `.table` and `.rows` classes to create a form with inputs lined
+up like cells of a table.
 
   ~~~ html
   <form class="table rows">

@@ -1,5 +1,10 @@
-/// a DOM helper library.
-/// "1 US$ = 18.5842 TR₺ · Oct 16, 2022, 20:52 UTC"
+/** 
+ * a DOM helper library.
+ * "1 US$ = 18.5842 TR₺ · Oct 16, 2022, 20:52 UTC"
+ */
+
+/// <reference lib="es2022" />
+
 export
 const makelogger = (scope) =>
   (...args) => {
@@ -37,7 +42,7 @@ $ = (scope, sel) => scope.querySelector(sel),
 $$ = (scope, sel) => Array.from(scope.querySelectorAll(sel)),
 on = (target, event, listener, options) => {
   const listenerWrapper = e => {
-    if (options.addedBy && !options.addedBy.isConnected) off({ target, listenerWrapper, options }); // self-cleaning listener
+    if (options.addedBy && !options.addedBy.isConnected) off({ target, event, listener: listenerWrapper, options }); // self-cleaning listener
     return listener(e);
   }
   target.addEventListener(event, listener, options);
@@ -148,7 +153,7 @@ repeater = (container, { idOf, create, update }) => {
       if (oldcursor) oldcursor.after(...nodes);
       else container.prepend(...nodes);
     },
-    clearAfter = () => {
+    clearAfter = cursor => {
       if (cursor) while (cursor.nextSibling) cursor.nextSibling.remove();
       else container.replaceChildren();
     };

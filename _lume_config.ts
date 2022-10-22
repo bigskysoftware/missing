@@ -33,7 +33,6 @@ export default lume(
     ui: false,
     indexing: {
       bundleDirectory: "_pagefind",
-      glob: "docs/**/*.html"
     }
   }))
   .use(myFilters())
