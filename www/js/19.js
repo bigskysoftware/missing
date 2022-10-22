@@ -41,18 +41,34 @@ on = (target, event, listener, options) => {
     return listener(e);
   }
   target.addEventListener(event, listener, options);
-  return { target, event, listener: listenerWrapper }
+  return { target, event, options, listener: listenerWrapper }
 },
-off = ({ target, event, listener }) => target.removeEventListener(event, listener, options),
+off = ({ target, event, listener, options }) => target.removeEventListener(event, listener, options),
+halt = (o, f) => {
+  if (f instanceof Function) return (e) => { halt(o, e); f(e); };
+  // f is event:
+  o = o.split(/\s*/g);
+  for (const t of o) {
+    if (t === "default") f.preventDefault();
+    if (t === "bubbling") f.stopPropagation();
+    if (t === "propagation") f.stopImmediatePropagation();
+  }
+  return f;
+},
 dispatch = (el, type, detail) => el.dispatchEvent(new CustomEvent(type, { detail })),
 attr = (el, name, ...args) => {
-  if (typeof name === "object") for (const at in name) el.setAttribute(uncamel(at), value);
+  if (typeof name === "object") for (const at in name) el.setAttribute(uncamel(at), name[at]);
   else if (args.length > 0) return el.setAttribute(name, args[0]);
   else return el.getAttribute(name);
 },
+stringifyNode = node => {
+  const tmp = document.createElement("div");
+  tmp.append(node);
+  return tmp.innerHTML;
+},
 htmlescape = s => {
   if (s === null || s === undefined) return "";
-  if (s instanceof Node) return s.outerHTML;
+  if (s instanceof Node) return stringifyNode(s);
   return String(s)
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
@@ -62,7 +78,7 @@ htmlescape = s => {
 },
 html = (str, ...values) => {
   // template literal case
-  if ("raw" in str) str = String.raw(str, ...values.map(htmlescape))
+  if (str?.raw) str = String.raw(str, ...values.map(htmlescape))
   const tmpl = document.createElement("template");
   tmpl.innerHTML = str;
   return tmpl.content;
@@ -144,7 +160,7 @@ repeater = (container, { idOf, create, update }) => {
       const
       id = idOf(datum),
       existing = root.getElementById(id);
-      if (existing) append(update?.(existing) ?? existing);
+      if (existing) append(update?.(existing, datum) ?? existing);
       else append(create(datum, { id }));
     }
     clearAfter(cursor);

@@ -8,6 +8,13 @@ layout: layout.eta
             <a href="/">&larr; Missing.css</a> 
         </p>
         <hr>
+        <div <% if (!it.excludeFromSearch) { %>data-pagefind-search<% } %>>
+            <script src="/js/pagefind.js" type="module"></script>
+            <label class="bold">
+                Search
+                <input role="combobox" aria-controls="${popupId}" aria-expanded="false">
+            </label>
+        </div>
         <ul role="list">
             <% filters.repeat(
                 search.pages("docs", "page.src.path"),
@@ -20,7 +27,7 @@ layout: layout.eta
     </nav>
 </header>
 
-<main>
+<main data-pagefind-body>
     <%~ content %>
 </main>
 

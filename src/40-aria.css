@@ -75,3 +75,27 @@
         color: var(--bg);
     }
 }
+
+[role=listbox] {
+    & [role=option] {
+        margin-inline: calc(-1 * var(--gap));
+        padding-inline: var(--gap);
+    }
+
+    & [role=option].active {
+        --temporary-bg: var(--accent);
+        --temporary-fg: var(--bg);
+        --temporary-accent: parent-var(--muted-accent);
+        --temporary-muted-accent: parent-var(--box-bg);
+
+        background: var(--temporary-bg);
+        color: var(--temporary-fg);
+        
+        & > * {
+            --bg: var(--temporary-bg);
+            --fg: var(--temporary-fg);
+            --accent: var(--temporary-accent);
+            --muted-accent: var(--temporary-muted-accent);
+        }
+    }
+}

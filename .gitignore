@@ -1,7 +1,9 @@
 /.idea
+node_modules
+
 dist
 .missingcss-releases-cache
-node_modules
+_bin
 
 # Local Netlify folder
 .netlify

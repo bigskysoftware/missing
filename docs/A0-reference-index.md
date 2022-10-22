@@ -1,9 +1,10 @@
 ---
 title: Index
 url: ./index/
+excludeFromSearch: yes
 ---
 
-## Index
+# Index
 
 All classes, variables and elements. Click an item to jump to where it is defined.
 
