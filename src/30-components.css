@@ -133,13 +133,15 @@ aside {
 	/* Inner layout */
 	display: flex;
 	flex-flow: row;
-	justify-content: center;
 	gap: calc(2 * var(--rhythm));
 
 	& * {
 		flex-shrink: 0;
 		margin-block: 0;
 	}
+
+	& > :first-child, & nav > :first-child { margin-inline-start: auto; }
+	& >  :last-child, & nav >  :last-child { margin-inline-end:   auto; }
 
 	& nav ul[role="list"] {
 		padding-inline-start: 0;
