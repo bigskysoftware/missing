@@ -53,6 +53,7 @@ const searchbox = behavior("[data-pagefind-search]", (container, { root }) => {
         if (on) {
             popup.hidden = false;
             attr(input, "aria-expanded", true);
+            input.scrollIntoView({ block: "nearest" })
         } else {
             popup.hidden = true;
             attr(input, "aria-expanded", false);
