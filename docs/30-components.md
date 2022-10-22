@@ -230,6 +230,9 @@ rounded chip, like what you might use for a tag list or contacts.
 
 ## Navbar
 
+A navbar has the <dfn>`.navbar`</dfn> class --- see the following for a markup
+example:
+
 <figure>
 <figcaption>Code: Navbars</figcaption>
 
