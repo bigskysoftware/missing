@@ -1,8 +1,9 @@
 
-.airy    { --density: 3; }
-.dense   { --density: 1; }
-.crowded { --density: .5; }
-.packed  { --density: 0; }
+.airy     { --density: 3;  }
+.spacious { --density: 2;  }
+.dense    { --density: 1;  }
+.crowded  { --density: .5; }
+.packed   { --density: 0;  }
 
 .autodensity {
     --density: 1;

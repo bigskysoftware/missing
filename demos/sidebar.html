@@ -3,8 +3,8 @@ layout: layout.eta
 name: Sidebar
 ---
 
-<div class="f-row" style="gap: 0; height: 100vh">
-    <header class="sidebar minwidth-1">
+<div class="f-row fullscreen">
+    <header class="sidebar minwidth-1 sticky top">
         <nav>
             <ul role="list">
                 <li><a href="#" aria-current="page">Home</a></li>
@@ -23,8 +23,8 @@ name: Sidebar
         </nav>
     </header>
 
-    <div class="flex-grow:5 scroll">
-        <main class="margin" style="max-width: 100%">
+    <div class="flex-grow:5 overflow:auto">
+        <main class="padding width:100%">
             <h2>Dashboard</h2>
 
             <p>This is a simple dashboard.</p>
@@ -70,3 +70,5 @@ name: Sidebar
                 </section>
             </div>
         </main>
+    </div>
+</div>

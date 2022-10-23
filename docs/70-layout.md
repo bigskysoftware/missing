@@ -31,10 +31,12 @@ classes.
 The <dfn>`.flow-gap`</dfn> class adds vertical margins between its children.
 
 
-## Full Bleed
+## Full-size
 
 Add the <dfn>`.fullbleed`</dfn> class to make an element go outside its
 container and span the whole width of the viewport.
+
+The <dfn>`.fullscreen`</dfn> class will size an element to fill the screen.
 
 
 ## Layout utilities
@@ -46,7 +48,8 @@ Add padding or margin in specific axes with <dfn>`.margin-block`</dfn>,
 <dfn>`.margin-inline`</dfn>, <dfn>`.padding-block`</dfn> and
 <dfn>`.padding-inline`</dfn>.
 
-Make an element full-width with the <dfn>`.width:100%</dfn> class.
+Make an element full-width with the <dfn>`.width:100%`</dfn> class.
+Similarly with <dfn>`.height:100%`</dfn>.
 
 
 ## Scrolling

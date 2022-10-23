@@ -38,6 +38,7 @@ We provide three utility classes that set `--density`:
 | <dfn>`.packed`</dfn>      | `--density` = 0                            |
 | <dfn>`.crowded`</dfn>     | `--density` = 0.5                          |
 | <dfn>`.dense`</dfn>       | `--density` = 1 (same as default)          |
+| <dfn>`.spacious`</dfn>    | `--density` = 2                            |
 | <dfn>`.airy`</dfn>        | `--density` = 3                            |
 | <dfn>`.autodensity`</dfn> | sets density based on viewport width       |
 
