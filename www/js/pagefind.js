@@ -34,10 +34,10 @@ const searchbox = behavior("[data-pagefind-search]", (container, { root }) => {
                 Search
                 <input role="combobox" aria-controls="${popupId}" aria-expanded="false">
             </label>
-            <ul role="listbox" class="box flow-gap" id="${popupId}" hidden
+            <ul role="listbox" class="box info flow-gap" id="${popupId}" hidden
                 style="
                     list-style: none;
-                    width: min(100%, 30em);
+                    width: min(calc(100% - 20px), 30em);
                     position: absolute;
                     z-index: 10;"></ul>
         </div>
@@ -74,9 +74,17 @@ const searchbox = behavior("[data-pagefind-search]", (container, { root }) => {
         item.scrollIntoView({ block: "nearest" })
     },
     positionPopup = () => {
-        const rect = input.getBoundingClientRect();
-        popup.style.top = rect.bottom + "px";
-        popup.style.left = rect.left + "px";
+        const
+        inputRect = input.getBoundingClientRect(),
+        popupWidth = popup.clientWidth,
+        viewportWidth = document.documentElement.clientWidth,
+        aLittleSpace = 10,
+        spaceLeftForPopup = viewportWidth - aLittleSpace - inputRect.left,
+        extraSpaceNeeded = Math.max(0, popupWidth - spaceLeftForPopup);
+
+        ilog(inputRect.left, popupWidth, viewportWidth, spaceLeftForPopup, extraSpaceNeeded);
+        popup.style.top = inputRect.bottom + "px";
+        popup.style.left = (inputRect.left - extraSpaceNeeded) + "px";
     };
     
     positionPopup();
