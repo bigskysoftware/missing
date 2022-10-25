@@ -88,13 +88,13 @@ class is a subtitle for a heading.
 
   ~~~ html
   <h4>
-    <sub-title class="allcaps">Breaking</sub-title><v-h>:</v-h>
+    <sub-title class="allcaps">Breaking<v-h>: </v-h></sub-title>
     Bad Thing Happens
   <h4>
   ~~~
 
 <h4>
-  <sub-title class="allcaps">Breaking</sub-title><v-h>:</v-h>
+  <sub-title class="allcaps">Breaking<v-h>: </v-h></sub-title>
   Bad Thing Happens
 <h4>
 
