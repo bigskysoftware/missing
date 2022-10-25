@@ -1,0 +1,21 @@
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 1fr);
+    gap: var(--gap);
+
+    & > * { margin: 0 }
+}
+
+.\31 -col  { grid-template-columns: repeat(1,  1fr) }   .\[1  { grid-column-start: 1  }    .\31 \] { grid-column-end: 2  }
+.\32 -col  { grid-template-columns: repeat(2,  1fr) }   .\[2  { grid-column-start: 2  }    .\32 \] { grid-column-end: 3  }
+.\33 -col  { grid-template-columns: repeat(3,  1fr) }   .\[3  { grid-column-start: 3  }    .\33 \] { grid-column-end: 4  }
+.\34 -col  { grid-template-columns: repeat(4,  1fr) }   .\[4  { grid-column-start: 4  }    .\34 \] { grid-column-end: 5  }
+.\35 -col  { grid-template-columns: repeat(5,  1fr) }   .\[5  { grid-column-start: 5  }    .\35 \] { grid-column-end: 6  }
+.\36 -col  { grid-template-columns: repeat(6,  1fr) }   .\[6  { grid-column-start: 6  }    .\36 \] { grid-column-end: 7  }
+.\37 -col  { grid-template-columns: repeat(7,  1fr) }   .\[7  { grid-column-start: 7  }    .\37 \] { grid-column-end: 8  }
+.\38 -col  { grid-template-columns: repeat(8,  1fr) }   .\[8  { grid-column-start: 8  }    .\38 \] { grid-column-end: 9  }
+.\39 -col  { grid-template-columns: repeat(9,  1fr) }   .\[9  { grid-column-start: 9  }    .\39 \] { grid-column-end: 10 }
+.\31 0-col { grid-template-columns: repeat(10, 1fr) }   .\[10 { grid-column-start: 10 }   .\31 0\] { grid-column-end: 11 }
+.\31 1-col { grid-template-columns: repeat(11, 1fr) }   .\[11 { grid-column-start: 11 }   .\31 1\] { grid-column-end: 12 }
+.\31 2-col { grid-template-columns: repeat(12, 1fr) }   .\[12 { grid-column-start: 12 }   .\31 2\] { grid-column-end: 13 }
