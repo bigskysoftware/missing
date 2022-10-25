@@ -2,7 +2,11 @@
 layout: layout.eta
 ---
 
-<header class="navbar">
+<header class="navbar" data-overflow-nav>
+    <button aria-hidden type="button" data-nav-expander class="absolute right">
+        &#x2630;
+        <script src="/js/overflow-nav.js" type="module"></script>
+    </button>
     <nav class="contents">
         <p>
             <a href="/">&larr; Missing.css</a> 

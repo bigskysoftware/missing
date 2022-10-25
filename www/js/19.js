@@ -127,11 +127,21 @@ debounce = (t, f, { mode = "trailing" } = {}) => {
     }, t);
   }
 },
-behavior = (selector, init) => {
+
+behavior =
+/**
+ * @param {string} selector - Selector to find elements to apply this behavior to.
+ * @param {Behavior} init - The behavior itself.
+ * @returns {(subtree?: ParentNode, options?: any) => void}
+ * 
+ * @callback Behavior
+ * @param {HTMLElement} element - The element to apply thr behavior to.
+ * @param {{ root: Document | ShadowRoot, options: any }} options
+ */ (selector, init) => {
   const initialized = new WeakSet
   
-  return (subtree = document, options) => {
-    const root = subtree.getRootNode();
+  return (subtree = document, options = {}) => {
+    const root = /** @type {Document|ShadowRoot} */ (subtree.getRootNode());
     $$(subtree, selector).forEach(el => {
       if (initialized.has(el)) return;    
       initialized.add(el);
