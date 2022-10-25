@@ -139,17 +139,15 @@ aside {
 	display: flex;
 	flex-flow: row;
 	align-items: center;
-	gap: calc(2 * var(--rhythm));
+	gap: var(--gap);
 
 	&.expanded {
 		flex-flow: column;
 		align-items: start;
-		gap: var(--gap);
 
 		max-height: 90vh;
 		overflow-y: auto;
 
-		& hr { align-self: stretch; }
 		& ul[role="list"] { flex-flow: column; }
 	}
 
@@ -162,6 +160,8 @@ aside {
 		& > :first-child, & nav > :first-child { margin-inline-start: auto; }
 		& >  :last-child, & nav >  :last-child { margin-inline-end:   auto; }
 	}
+
+	& hr { align-self: stretch; }
 
 	& nav ul[role="list"] {
 		display: flex;
