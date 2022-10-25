@@ -54,6 +54,7 @@ const searchbox = behavior("[data-pagefind-search]", (container, { root }) => {
     togglePopup = (on = popup.hidden) => {
         if (on) {
             popup.hidden = false;
+            positionPopup();
             attr(input, "aria-expanded", true);
             input.scrollIntoView({ block: "nearest" })
         } else {
@@ -106,7 +107,7 @@ const searchbox = behavior("[data-pagefind-search]", (container, { root }) => {
             if (item) selectItem(item);
             else selectItem(null);
         }),
-        "Enter": halt("default", _ => selectedItem().click()),
+        "Enter": halt("default", _ => selectedItem()?.click()),
         "ArrowLeft": _ => selectItem(null),
         "ArrowRight": _ => selectItem(null),
         "Home": _ => selectItem(null),
