@@ -31,3 +31,51 @@
 .monospace {
 	font-family: var(--mono-font);
 }
+
+:where(.invert,
+[role=listbox] [role=option].active) /* SEE 40-aria.css */ {
+	--temporary-bg: var(--accent);
+	--temporary-fg: var(--bg);
+	--temporary-accent: var(--muted-accent);
+	--temporary-muted-accent: var(--box-bg);
+	--temporary-muted-fg: var(--plain-bg);
+
+	--temporary-plain-bg: var(--plain-fg);
+	--temporary-plain-fg: var(--plain-bg);
+	
+	--temporary-info-bg: var(--info-fg);
+	--temporary-info-fg: var(--info-bg);
+	
+	--temporary-ok-bg: var(--ok-fg);
+	--temporary-ok-fg: var(--ok-bg);
+	
+	--temporary-warn-bg: var(--warn-fg);
+	--temporary-warn-fg: var(--warn-bg);
+	
+	--temporary-bad-bg: var(--bad-fg);
+	--temporary-bad-fg: var(--bad-bg);
+	
+	& > * {
+		--bg: var(--temporary-bg);
+		--fg: var(--temporary-fg);
+		--accent: var(--temporary-accent);
+		--muted-accent: var(--temporary-muted-accent);
+		--muted-fg: parent-var(--temporary-muted-fg);
+
+		--plain-bg: var(--temporary-plain-bg);
+		--plain-fg: var(--temporary-plain-fg);
+		
+		--info-bg: var(--temporary-info-bg);
+		--info-fg: var(--temporary-info-fg);
+		
+		--ok-bg: var(--temporary-ok-bg);
+		--ok-fg: var(--temporary-ok-fg);
+		
+		--warn-bg: var(--temporary-warn-bg);
+		--warn-fg: var(--temporary-warn-fg);
+		
+		--bad-bg: var(--temporary-bad-bg);
+		--bad-fg: var(--temporary-bad-fg);
+		
+	}
+}
