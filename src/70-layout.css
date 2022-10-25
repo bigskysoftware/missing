@@ -56,11 +56,19 @@
 
 .padding { padding-inline: var(--gap) }
 .padding-block { padding-block: var(--gap) }
+.padding-block-start { padding-block-start: var(--gap) }
+.padding-block-end { padding-block-end: var(--gap) }
 .padding-inline { padding-inline: var(--gap) }
+.padding-inline-start { padding-inline-start: var(--gap) }
+.padding-inline-end { padding-inline-start: var(--gap) }
 
 .margin { margin: var(--gap) }
 .margin-block  { margin-block:  var(--gap) }
+.margin-block-start { margin-block-start: var(--gap) }
+.margin-block-end { margin-block-end: var(--gap) }
 .margin-inline { margin-inline: var(--gap) }
+.margin-inline-start { margin-inline-start: var(--gap) }
+.margin-inline-end { margin-inline-end: var(--gap) }
 
 .flow-gap {
     & > :not(:last-child) {

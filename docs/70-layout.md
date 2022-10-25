@@ -44,9 +44,23 @@ The <dfn>`.fullscreen`</dfn> class will size an element to fill the screen.
 Add some padding with <dfn>`.padding`</dfn>, or a margin with
 <dfn>`.margin`</dfn>.
 
-Add padding or margin in specific axes with <dfn>`.margin-block`</dfn>,
-<dfn>`.margin-inline`</dfn>, <dfn>`.padding-block`</dfn> and
-<dfn>`.padding-inline`</dfn>.
+Add padding or margin in specific axes with these classes:
+
+ - <dfn>`.margin`</dfn>
+ - <dfn>`.margin-inline`</dfn>
+ - <dfn>`.margin-inline-start`</dfn>
+ - <dfn>`.margin-inline-end`</dfn>
+ - <dfn>`.margin-block`</dfn>
+ - <dfn>`.margin-block-start`</dfn>
+ - <dfn>`.margin-block-end`</dfn>
+ - <dfn>`.padding`</dfn>
+ - <dfn>`.padding-inline`</dfn>
+ - <dfn>`.padding-inline-start`</dfn>
+ - <dfn>`.padding-inline-end`</dfn>
+ - <dfn>`.padding-block`</dfn>
+ - <dfn>`.padding-block-start`</dfn>
+ - <dfn>`.padding-block-end`</dfn>
+{.textcolumns}
 
 Make an element full-width with the <dfn>`.width:100%`</dfn> class.
 Similarly with <dfn>`.height:100%`</dfn>.
