@@ -11,12 +11,10 @@ layout: layout.eta
         <p>
             <a href="/" class="allcaps">Missing.css</a> 
         </p>
-        <hr>
-        <div <% if (!it.excludeFromSearch) { %>data-pagefind-search<% } %>>
+        <div>
             <script src="/js/pagefind.js" type="module"></script>
-            <button type="button" data-pagefind-search>Search</button>
+            <strong><button type="button" data-pagefind-search>Search</button></strong>
         </div>
-        <hr>
         <ul role="list">
             <% for (const { data: { url, title } } of search.pages("docs", "page.src.path")) { %>
                     <li><a href="<%= url %>" 

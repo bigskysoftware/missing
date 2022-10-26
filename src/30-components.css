@@ -191,10 +191,26 @@ aside {
 	}
 
 	& [aria-current=page] {
-		background: var(--accent);
-		color: var(--box-bg);
-		border-radius: var(--border-radius);
-	}	
+		position: relative;
+	}
+	
+	& [aria-current=page]::after {
+		width: 100%;
+		height: 6px;
+		content: "";
+		display: block;
+		position: absolute;
+		bottom: calc(-1 * var(--gap));
+		background: currentcolor;
+	}
+
+	&.expanded [aria-current=page]::after {
+		width: 6px;
+		height: 100%;
+		position: absolute;
+		left: calc(-1 * var(--gap));
+		top: 0;
+	}
 }
 
 .permalink-anchor {
