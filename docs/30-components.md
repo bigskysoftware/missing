@@ -110,14 +110,7 @@ as the <dfn>`.permalink-anchor`</dfn> class.
 
 ## Toolbar
 
-A <dfn>`.tool-bar`</dfn> horizontally laid-out collection of controls.
-
-<div class="box warn">
-
-**Warning**: This is not a substitute for the `toolbar` ARIA role, see
-[WAI: Toolbar][] for that.
-
-</div>
+A <dfn>`.tool-bar`</dfn> is a horizontally laid-out collection of controls.
 
 <figure>
 

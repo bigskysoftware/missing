@@ -109,3 +109,10 @@
         }
     }
 }
+
+
+[aria-orientation="vertical"] {
+    flex-direction: column;
+    width: fit-content;
+    text-align: center;
+}

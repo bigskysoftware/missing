@@ -56,7 +56,7 @@ aside {
 }
 
 
-.tool-bar {
+.tool-bar, [role=toolbar] {
 	display: flex;
 	flex-flow: row wrap;
 	gap: calc(var(--gap) / 2);

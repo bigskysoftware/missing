@@ -102,3 +102,22 @@ Use `listbox` and `option` ARIA roles. [WAI: Listbox][].
 </ul>
 
 [WAI: Listbox]: https://www.w3.org/WAI/ARIA/apg/patterns/menu/
+
+
+## Toolbar
+
+Any element with the `toolbar` role will have the same styles as a `.tool-bar`.
+The fiex direction will be set based on `aria-orientation`.
+
+<p class="tool-bar">
+<button type="button">Cut</button>
+<button type="button">Copy</button>
+<button type="button">Paste</button>
+</p>
+
+
+<p class="tool-bar" aria-orientation="vertical">
+<button type="button">Cut</button>
+<button type="button">Copy</button>
+<button type="button">Paste</button>
+</p>
