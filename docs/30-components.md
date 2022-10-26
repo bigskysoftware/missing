@@ -149,14 +149,15 @@ A <dfn>`.tool-bar`</dfn> horizontally laid-out collection of controls.
 
 ## Sidebar
 
-A `.sidebar`. You can use this component at the top level of your page or
-within a component. Either way, use together with `.f-row` as shown below:
+Use the <dfn>`.sidebar-layout`</dfn> class to create a sidebar/main layout.
+Put the sidebar in a `<header>` element directly inside it, and the next
+element will house the rest of the page. See this example:
 
 <figure>
 
   ~~~ html
-  <div class="f-row">
-    <header class="sidebar">
+  <div class="sidebar-layout">
+    <header>
       <ul role="list">
         <li><a href="/">Home</a></li>
         <li><a href="/">Profile</a></li>
@@ -172,20 +173,7 @@ within a component. Either way, use together with `.f-row` as shown below:
   </div>
   ~~~
 
-  <div class="border f-row">
-    <header class="sidebar minwidth-s">
-      <ul role="list">
-        <li><a href="/">Home</a></li>
-        <li><a href="/">Profile</a></li>
-        <li><a href="/">Settings</a></li>
-        <!-- ... -->
-      </ul>
-    </header>
-    <div class="col-4">
-      <h4>Homepage</h4>
-      <p>Lorem ipsum dolor sit amet.</p>
-    </div>
-  </div>
+**<a href="/demos/sidebar" class="<button>">Sidebar demo &rarr;</a>**
 
 </figure>
 

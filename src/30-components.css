@@ -2,7 +2,7 @@
 .box,
 /* defined elsewhere */
 [role=menu],
-.sidebar,
+.sidebar-layout > header,
 [role=tabpanel],
 figure,
 details,
@@ -64,30 +64,35 @@ aside {
 	& > * { margin: 0; }
 }
 
-.sidebar {
-    /* SEE components/box.css */
+.sidebar-layout {
+	& header {
+		& li {
+			margin-block: calc(.5 * var(--gap));
+		}
 
-	font-family: var(--secondary-font);
-    
-    border-block: none;
-    border-inline-start: none;
-    border-radius: 0;
-    margin: 0;
+		& a {
+			font-weight: bold;
+		}
+	}
 
-    font-size: .8em;
-    --rhythm: 1em;
+	@media (min-width: 75ch) {
+		display: grid;
+		grid-template-columns: 25ch 1fr;
+		inset: 0;
+		
+		& > header {
+			border-block: none;
+			border-inline-start: none;
+			margin: 0;
+		}
 
-    & li {
-        padding: calc(.5 * var(--gap));
-        margin-inline: calc(-.5 * var(--gap));
-        border-radius: var(--border-radius);
-    }
-
-    & a {
-        font-weight: bold;
-        text-decoration: none;
-    }
+		& > :nth-child(2) {
+			overflow: scroll;
+			--full-width: calc(100vw - 25ch);
+		}
+	}
 }
+
 .breadcrumbs[aria-label] {
 	font-family: var(--secondary-font);
 
