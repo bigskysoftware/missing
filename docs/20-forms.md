@@ -35,7 +35,7 @@ Inputs inside labels will be `display: inline`. Inputs outside labels will be
 <aside>Inputs without labels will cause nasal demons.</aside>
 
 
-## Tabular forms {#tabular-form}
+## Tabular forms
 
 You can use the `.table` and `.rows` classes to create a form with inputs lined
 up like cells of a table.
