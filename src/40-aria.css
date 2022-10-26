@@ -81,9 +81,15 @@
 }
 
 [role=listbox] {
+    list-style: none;
+
     & [role=option] {
         margin-inline: calc(-1 * var(--gap));
         padding-inline: var(--gap);
+    }
+
+    & [role=option][aria-selected=true] {
+        background: var(--interactive-bg);
     }
 
     & [role=option].active {
