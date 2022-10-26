@@ -40,8 +40,9 @@ const overflowNav = behavior("[data-overflow-nav]", (navbar, { options }) => {
 
     update = () => {
         ilog("update");
+        const wasHidden = expandToggle.hidden
         expandToggle.hidden = !overflows();
-        toggleExpansion(false);
+        if (wasHidden != expandToggle.hidden) toggleExpansion(false);
     };
 
     on(expandToggle, "click", () => {
