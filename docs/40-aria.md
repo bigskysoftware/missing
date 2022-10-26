@@ -46,7 +46,7 @@ appropriately — see [WAI: Tabs][].
 <div id="channels" hidden role="tabpanel">You are enjoying tab 2.</div>
 <div id="users"    hidden role="tabpanel"><img alt="placeholder cat" src="https://placekitten.com/200/200"></div>
 
-[WAI: Tabs]: https://www.w3.org/TR/wai-aria-practices/#tabpanel
+[WAI: Tabs]: https://www.w3.org/WAI/ARIA/apg/patterns/tabpanel/
 
 
 ## Menu
@@ -71,5 +71,34 @@ Use `menu` and `menuitem` roles — see [WAI: Menu][].
 </div>
 </div>
 
+[WAI: Menu]: https://www.w3.org/WAI/ARIA/apg/patterns/menu/
 
 ## Listbox
+
+Use `listbox` and `option` ARIA roles. [WAI: Listbox][].
+
+~~~ html
+<ul role="listbox" class="box flow-gap">
+  <li role="option" aria-selected="true" class="crowded">
+    <strong>Pick me!</strong>
+    <p>I'm clearly the best option.</p>
+  </li>
+  <li role="option" class="crowded">
+    <strong>Pick me instead!</strong>
+    <p>Don't listen to that other guy.</p>
+  </li>
+</ul>
+~~~
+
+<ul role="listbox" class="box flow-gap">
+  <li role="option" aria-selected="true" class="crowded">
+    <strong>Pick me!</strong>
+    <p>I'm clearly the best option.</p>
+  </li>
+  <li role="option" class="crowded">
+    <strong>Pick me instead!</strong>
+    <p>Don't listen to that other guy.</p>
+  </li>
+</ul>
+
+[WAI: Listbox]: https://www.w3.org/WAI/ARIA/apg/patterns/menu/
