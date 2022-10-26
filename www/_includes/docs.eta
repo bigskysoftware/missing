@@ -4,10 +4,12 @@ layout: layout.eta
 
 <header class="navbar" data-overflow-nav>
     <nav class="contents">
-        <button aria-hidden="true" type="button" data-nav-expander class="iconbutton">
-            &#x2630;
-            <script src="/js/overflow-nav.js" type="module"></script>
-        </button>
+        <div>
+            <button aria-hidden="true" type="button" data-nav-expander class="iconbutton">
+                &#x2630;
+                <script src="/js/overflow-nav.js" type="module"></script>
+            </button>
+        </div>
         <p>
             <a href="/" class="allcaps">Missing.css</a> 
         </p>
