@@ -82,6 +82,9 @@
 
 [role=listbox] {
     list-style: none;
+    @nest ul& {
+        padding-inline-start: 0;
+    }
 
     & [role=option] {
         margin-inline: calc(-1 * var(--gap));

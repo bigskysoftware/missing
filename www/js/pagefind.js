@@ -9,14 +9,14 @@ import * as pagefind from "/_pagefind/pagefind.js";
 
 const
 ilog = makelogger("searchbox"),
-loadResults = results => Promise.all(results.slice(0, 5).map(async r => ({ ...r, data: await r.data() }))),
-fixPagefindExcerpt = exc => exc.replace(/<(?!\/?mark)/g, "&lt;"),
+loadResults = results => Promise.all(results.map(async r => ({ ...r, data: await r.data() }))),
+fixPagefindExcerpt = exc => exc.replace(/<(?!\/?mark)/g, "&lt;")
+
+const // HTML components
 createResultItem = (result, { id }) => html`
     <li id="${id}" role="option" onclick="this.querySelector('a').click()" style="border-radius: var(--border-radius);">
-        <header>
-            <a class="bold" style="text-decoration:underline" href="${result.data.url}" tabindex="-1">${result.data.meta.title}</a>
-            <code style="font-size: .8em;">${result.data.url}</code>
-        </header>
+        <strong><a href="${result.data.url}" tabindex="-1">${result.data.meta.title}</a></strong>
+        <code style="font-size: .8em;">${result.data.url}</code>
         <p style="font-size: .8em;">${html(fixPagefindExcerpt(result.data.excerpt))}</p>
     </li>`,
 updateResultItem = (item, result) => {
@@ -24,94 +24,51 @@ updateResultItem = (item, result) => {
     $(item, "code").textContent = result.data.url;
     $(item, "p").innerHTML = fixPagefindExcerpt(result.data.excerpt);
     return item;
-}
-
-const searchbox = behavior("[data-pagefind-search]", (container, { root }) => {
-    const popupId = nanoid();
-    container.replaceChildren(html`
-        <div>
-            <label class="bold">
+},
+searchDialog = () => {
+    const dialog = /** @type {HTMLDialogElement} */ (html`
+        <dialog class="margin f-col" style="max-width: 100%; width: 30em; max-height: 100%; height: 40em">
+            <label for="search-input" class="titlebar" style="margin-inline: calc(-1*var(--gap))">
                 Search
-                <input role="combobox" aria-controls="${popupId}" aria-expanded="false">
             </label>
-            <ul role="listbox" class="box info flow-gap" id="${popupId}" hidden
-                style="
-                    list-style: none;
-                    width: min(calc(100% - 20px), 30em);
-                    position: absolute;
-                    z-index: 10;"></ul>
-        </div>
-    `)
-    const input = $(container, "input"), popup = $(container, "ul");
-    
+            <p><input autofocus id="search-input" class="block width:100%"></p>
+            <div role="listbox" aria-label="results" class="flow-gap padding-inline" style="overflow-y: auto; margin-inline: calc(-1*var(--gap))"></div>
+        </dialog>
+    `.children[0]);
+
+    const input = $(dialog, "input"), results = $(dialog, "[role=listbox]");
     
     const
-    showSearchResults = repeater(popup, {
+    showSearchResults = repeater(results, {
         idOf(result) { return result.id },
         create: createResultItem,
         update: updateResultItem,
     }),
-    togglePopup = (on = popup.hidden) => {
-        if (on) {
-            popup.hidden = false;
-            positionPopup();
-            attr(input, "aria-expanded", true);
-            input.scrollIntoView({ block: "nearest" })
-        } else {
-            popup.hidden = true;
-            attr(input, "aria-expanded", false);
-        }
-    },
-    selectedItem = () => root.getElementById(attr(popup, "aria-activedescendant")),
+    selectedItem = () => $(results, "#" + attr(results, "aria-activedescendant")),
     selectItem = (item) => {
         selectedItem()?.classList.remove("active");
         if (!item) {
-            popup.removeAttribute("aria-activedescendant");
+            results.removeAttribute("aria-activedescendant");
             return;
         }
         item.classList.add("active");
-        attr(popup, "aria-activedescendant", item.id);
+        attr(results, "aria-activedescendant", item.id);
         item.scrollIntoView({ block: "nearest" })
-    },
-    positionPopup = () => {
-        const
-        inputRect = input.getBoundingClientRect(),
-        popupWidth = popup.clientWidth,
-        viewportWidth = document.documentElement.clientWidth,
-        aLittleSpace = 10,
-        spaceLeftForPopup = viewportWidth - aLittleSpace - inputRect.left,
-        extraSpaceNeeded = Math.max(0, popupWidth - spaceLeftForPopup);
-
-        ilog(inputRect.left, popupWidth, viewportWidth, spaceLeftForPopup, extraSpaceNeeded);
-        popup.style.top = inputRect.bottom + "px";
-        popup.style.left = (inputRect.left - extraSpaceNeeded) + "px";
-    };
+    }
     
-    positionPopup();
-    on(window, "resize", positionPopup, { addedBy: container });
-
-    on(input, "blur", _ => togglePopup(false));
-
     on(input, "input", _ => pagefind.preload(input.value));
-    on(input, "input", debounce(300, async _ => {
-        if (input.value === "") {
-            togglePopup(false)
-            return;
-        }
-        togglePopup(true);
-        console.log(input.value);
-        const search = await pagefind.search(input.value);
-        showSearchResults(await loadResults(search.results.slice(5)));
-    }))
+    on(input, "input", async _ => {
+        const search = await pagefind.search(ilog(input.value));
+        showSearchResults(await loadResults(search.results.slice(0, 5)));
+    })
 
     on(input, "keydown", hotkey({
-        "Escape": halt("default", _ => togglePopup(false)),
         "ArrowDown": halt("default", _ => {
-            const item = next(popup, "[role=option]", selectedItem());
+            const item = next(results, "[role=option]", selectedItem());
             if (item) selectItem(item);
         }),
         "ArrowUp": halt("default", _ => {
-            const item = prev(popup, "[role=option]", selectedItem(), { wrap: false });
+            const item = prev(results, "[role=option]", selectedItem(), { wrap: false });
             if (item) selectItem(item);
             else selectItem(null);
         }),
@@ -121,6 +78,15 @@ const searchbox = behavior("[data-pagefind-search]", (container, { root }) => {
         "Home": _ => selectItem(null),
         "End": _ => selectItem(null),
     }))
+
+    document.body.append(dialog);
+
+    return dialog;
+};
+
+const searchbox = behavior("[data-pagefind-search]", (search) => {
+    const dialog = searchDialog()
+    on(search, "click", _ => dialog.showModal())
 });
 
 export default searchbox;

@@ -14,20 +14,15 @@ layout: layout.eta
         <hr>
         <div <% if (!it.excludeFromSearch) { %>data-pagefind-search<% } %>>
             <script src="/js/pagefind.js" type="module"></script>
-            <label class="bold">
-                Search
-                <input role="combobox" aria-controls="${popupId}" aria-expanded="false">
-            </label>
+            <button type="button" data-pagefind-search>Search</button>
         </div>
         <hr>
         <ul role="list">
-            <% filters.repeat(
-                search.pages("docs", "page.src.path"),
-                ({ data: { url, title } }, ctx) => { %>
+            <% for (const { data: { url, title } } of search.pages("docs", "page.src.path")) { %>
                     <li><a href="<%= url %>" 
                         <%~ url == it.url ? "aria-current='page'" : "" %>
                         ><%= title %></a></li>
-            <% }) %>
+            <% } %>
         </ul>
     </nav>
 </header>
