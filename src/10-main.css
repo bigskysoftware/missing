@@ -13,6 +13,7 @@ html {
 
 	background: var(--bg);
 	color: var(--fg);
+	scroll-padding-block-start: calc(4 * var(--gap));
 }
 
 body {
