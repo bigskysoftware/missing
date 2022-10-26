@@ -8,6 +8,8 @@
 	<link rel="stylesheet" href="/missing.css">
 	<link rel="stylesheet" href="/missing-prism.css">
 	<link href="https://fonts.bunny.net/css?family=source-sans-3:400,700|m-plus-code-latin:400,700" rel="stylesheet" />
+	<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz@24" rel="stylesheet" />
+
 	<style>
 		:root {
 			--main-font: "Source Sans 3", -apple-system, system-ui, sans-serif;
