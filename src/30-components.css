@@ -220,3 +220,23 @@ aside {
         display: initial;
     }
 }
+
+button.iconbutton {
+	border: none;
+	background: none;
+	color: currentcolor;
+	padding: 0;
+	line-height: var(--rhythm);
+	font-size: 24px;
+	width: 24px;
+	height: 24px;
+	display: inline-block;
+	text-align: center;
+	border-radius: var(--border-radius);
+	transition: font-weight .2s ease-in-out;
+
+	&[aria-pressed=true] {
+		box-shadow: none;
+		transform: none;
+	}
+}

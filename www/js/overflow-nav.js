@@ -32,9 +32,11 @@ const overflowNav = behavior("[data-overflow-nav]", (navbar, { options }) => {
         if (expand) {
             navbar.classList.add(expandedClass);
             attr(expandToggle, "aria-pressed", true);
+            expandToggle.textContent = "×";
         } else {
             navbar.classList.remove(expandedClass);
             attr(expandToggle, "aria-pressed", false);
+            expandToggle.textContent = "☰";
         }
     },
 
