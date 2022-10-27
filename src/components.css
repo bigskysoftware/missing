@@ -77,7 +77,7 @@ aside {
 
 	@media (min-width: 75ch) {
 		display: grid;
-		grid-template-columns: 25ch 1fr;
+		grid-template-columns: 25ch auto;
 		inset: 0;
 		
 		& > header {
