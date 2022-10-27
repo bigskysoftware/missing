@@ -28,7 +28,7 @@ aside {
 
     translate: 0 calc(-1px - var(--gap));
 
-    background: var(--accent);
+    background: var(--faded-fg);
     color: var(--bg);
 }
 
