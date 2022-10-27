@@ -1,3 +1,4 @@
-https://the.missing.style/                    https://missing.style/missing.css                   200!
-https://the.missing.style/prism               https://missing.style/missing-prism.css             200!
-https://the.missing.style/:version/*          https://missing.style/archive/:version/:splat       200!
+https://the.missing.style/                    https://missing.style/missing.css                             200!
+https://the.missing.style/prism               https://missing.style/missing-prism.css                       200!
+https://the.missing.style/:version/*.css      https://missing.style/archive/:version/:splat.css             200!
+https://the.missing.style/:version/*.js       https://missing.style/archive/:version/missing-js/:splat.js   200!

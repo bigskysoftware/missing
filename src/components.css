@@ -28,7 +28,7 @@ aside {
 
     translate: 0 calc(-1px - var(--gap));
 
-    background: var(--accent);
+    background: var(--faded-fg);
     color: var(--bg);
 }
 
@@ -77,7 +77,7 @@ aside {
 
 	@media (min-width: 75ch) {
 		display: grid;
-		grid-template-columns: 25ch 1fr;
+		grid-template-columns: 25ch auto;
 		inset: 0;
 		
 		& > header {

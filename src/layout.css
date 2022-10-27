@@ -25,9 +25,9 @@
 
 .fullbleed {
     position: relative;
-    width: 100vw;
+    width: var(--full-width);
     left: 50%;
-    transform: translateX(-50vw);
+    transform: translateX(calc(-.5 * var(--full-width)));
 
     border-radius: 0;
     border-inline: none;
