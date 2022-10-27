@@ -8,20 +8,32 @@ url: ./grid/
 To create a CSS Grid-based layout in missing.css, use the <dfn>`.grid`</dfn> class.
 
 By default, the grid will have equal-width columns but uneven rows.
-To override these, you have the <dfn>`.grid-even-rows`</dfn> and <dfn>`.grid-uneven-cols`</dfn> classes.
+To override these, you have the <dfn>`.grid-even-rows`</dfn> and <dfn>`.grid-variable-cols`</dfn> classes.
 
 To specify the row and column an element should occupy, use the `data-cols` and `data-rows` attributes:
 
- - `data-cols="1"` Element will take up first column, next available row
- - `data-cols="1 3"` Element will take up columns 1 to 3 (both 1 and 3 included), next available row
- - `data-cols="1 3" data-rows="2 3"` Element will take up a 3&times;2 space, with a 1 column gap above
+`data-cols="1"`
+: Element will take up first column, next available row
+
+`data-cols="1 3"`
+: Element will take up columns 1 to 3 (both 1 and 3 included), next available row
+
+`data-cols="1 3" data-rows="2 3"`
+: Element will take up a 3&times;2 space, with a 1 column gap above
+
+Note that our column specifications are based on _rows_, not _lines_.
+This means `data-cols="1 2"` spans two columns,
+as opposed to `grid-column: 1 / 2` which spans only one.
+{.box .warn}
 
 We support columns up to 12.
 
-To change the layout based on viewport size, add `@s` or `@l` to the end of the attributes:
+To change the layout based on viewport size,
+add `@s` (small, &le;768px) or `@l` (large, &ge;1024px) to the end of the attributes:
 
- - `data-cols@s="1" data-cols="1 2" data-cols@l="1 3"` Element will take 1 column in small screens,
-   2 columns on medium screens and 3 on large screens
+`data-cols@s="1" data-cols="1 2" data-cols@l="1 3"`
+: Element will take 1 column in small screens,
+  2 columns on medium screens and 3 on large screens
 
 <figure>
 
