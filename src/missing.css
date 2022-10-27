@@ -2,12 +2,12 @@
 @import "./core/sanitize.css";
 @import "./core/colors.css";
 
-@import "./10-main.css";
-@import "./30-components.css";
-@import "./40-aria.css";
-@import "./50-colorways.css";
-@import "./60-variables.css";
-@import "./70-layout.css";
-@import "./80-utils.css";
-@import "./90-flex.css";
-@import "./A0-grid.css";
+@import "./main.css";
+@import "./components.css";
+@import "./aria.css";
+@import "./colorways.css";
+@import "./variables.css";
+@import "./layout.css";
+@import "./utils.css";
+@import "./flex.css";
+@import "./grid.css";

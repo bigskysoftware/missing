@@ -232,8 +232,18 @@ button.iconbutton {
 	height: 24px;
 	display: inline-block;
 	text-align: center;
-	border-radius: var(--border-radius);
+	border-radius: 50%;
 	transition: font-weight .2s ease-in-out;
+
+	&:hover, &:focus-visible {
+		outline: 1px solid var(--accent);
+		outline-offset: 6px;
+	}
+
+	&:active {
+		outline-offset: 3px;
+		background: none;
+	}
 
 	&[aria-pressed=true] {
 		box-shadow: none;

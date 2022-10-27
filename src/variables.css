@@ -21,7 +21,7 @@
 	
 	--bg: var(--gray-0); /* Page background. */
 	--box-bg: var(--plain-bg); /* Background for blocks: cards, admonitions etc. */
-	--interactive-bg: var(--gray-3); /* Background for interactive elements */
+	--interactive-bg: var(--gray-4); /* Background for interactive elements */
 
 	--plain-bg: var(--gray-1);
 	--info-bg: var(--blue-1);
