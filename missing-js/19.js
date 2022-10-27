@@ -5,6 +5,38 @@
 
 /// <reference lib="es2022" />
 
+/**
+ * @template {object} TOptions
+ * @callback Behavior
+ * @arg {ParentNode} subtree
+ * @arg {Partial<TOptions>} [options]
+ */
+
+/**
+ * @template {object} TOptions
+ * @callback BehaviorInit
+ * @arg {Element} element
+ * @arg {BehaviorContext<TOptions>} context
+ */
+
+/**
+ * @template {object} TOptions
+ * @typedef {Object} BehaviorContext
+ * @prop {Root} root
+ * @prop {Partial<TOptions>} options
+ */
+
+/**
+ * @template TOptions
+ * @typedef {object} BehaviorInitOptions
+ * @prop {Root} root
+ * @prop {TOptions} options
+ */
+
+/**
+ * @typedef {Document | ShadowRoot} Root
+ */
+
 export
 const makelogger = (scope) =>
   (...args) => {
@@ -130,16 +162,12 @@ debounce = (t, f, { mode = "trailing" } = {}) => {
 
 behavior =
 /**
+ * @template TOptions
  * @param {string} selector - Selector to find elements to apply this behavior to.
- * @param {Behavior} init - The behavior itself.
- * @returns {(subtree?: ParentNode, options?: any) => void}
- * 
- * @callback Behavior
- * @param {HTMLElement} element - The element to apply thr behavior to.
- * @param {{ root: Document | ShadowRoot, options: any }} options
+ * @param {BehaviorInit<TOptions>} init - The behavior itself.
+ * @returns {Behavior<TOptions>}
  */ (selector, init) => {
   const initialized = new WeakSet
-  
   return (subtree = document, options = {}) => {
     const root = /** @type {Document|ShadowRoot} */ (subtree.getRootNode());
     $$(subtree, selector).forEach(el => {

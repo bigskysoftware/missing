@@ -13,6 +13,8 @@ isOpen = menu => !menu.hidden;
 export
 const
 menu = behavior(sMenu, (menu, { root }) => {
+    if (!(menu instanceof HTMLElement)) return;
+    
     let opener;
     $$(menu, sMenuitem).forEach(item => item.setAttribute("tabindex", "-1"));
     on(menu, "menu:open", e => {
@@ -37,7 +39,7 @@ menu = behavior(sMenu, (menu, { root }) => {
         hotkey({
             "ArrowUp": _ => prev(menu, sMenuitem, root.activeElement).focus(), 
             "ArrowDown": _ => next(menu, sMenuitem, root.activeElement).focus(),
-            "Space": _ => root.activeElement.closest(sMenuitem).click(),
+            "Space": _ => /** @type HTMLElement */ (root.activeElement?.closest(sMenuitem))?.click(),
             "Home": _ => firstItem(menu).focus(),
             "End": _ => lastItem(menu).focus(),
             "Escape": _ => dispatch(menu, "menu:close"),

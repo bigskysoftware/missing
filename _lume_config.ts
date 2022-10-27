@@ -5,6 +5,7 @@ import date from "lume/plugins/date.ts";
 import basePath from "lume/plugins/base_path.ts";
 import resolveUrls from "lume/plugins/resolve_urls.ts";
 import eta from "lume/plugins/eta.ts";
+import esbuild from "lume/plugins/esbuild.ts";
 import pagefind from "lume/plugins/pagefind.ts";
 
 import markdownOptions from "./_build/markdown.ts";
@@ -29,6 +30,14 @@ export default lume(
   .use(basePath())
   .use(resolveUrls())
   .use(eta({ extensions: [".eta", ".html"] }))
+  .use(esbuild({
+    extensions: [".ts", ".js"],
+    options: {
+      bundle: false,
+      keepNames: false,
+      target: "es2020",
+    },
+  }))
   .use(pagefind({
     ui: false,
     indexing: {

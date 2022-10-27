@@ -20,9 +20,12 @@ switchTab = (root, tablist, tab) => {
   tab.focus();
 };
 
-// https://www.w3.org/WAI/ARIA/apg/patterns/tabpanel/
+/**
+ * https://www.w3.org/WAI/ARIA/apg/patterns/tabpanel/
+ */
 export
 const tablist = behavior("[role=tablist]", (tablist, { root }) => {
+  if (!(tablist instanceof HTMLElement)) return;
   tablist.tabIndex = 0;
   tabsOf(tablist).forEach(tab => tab.tabIndex = -1);
   switchTab(root, tablist, currentTab(tablist));
