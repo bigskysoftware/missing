@@ -29,7 +29,7 @@ async function buildVersion(gitTag: string) {
     await $`git switch --detach ${gitTag}`.quiet();
 
     $.logStep(`Building ${gitTag}`);
-    await $`deno task www
+    await $`deno task css
       || deno run -A --unstable _build/postcss.ts
       `.quiet();
 
@@ -37,7 +37,7 @@ async function buildVersion(gitTag: string) {
     $.logStep(`Placing ${gitTag} artifacts into archive/${gitTag}`);
     await Deno.mkdir(cachePath, { recursive: true });
     await $.logIndent(async () => {
-      for await (const file of $.fs.expandGlob("missing**", { root: "dist" })) {
+      for await (const file of $.fs.expandGlob("missing*", { root: "dist" })) {
         $.logStep(`Copying ${file.path}`);
         await Promise.all([
           $`cp -r ${file.path} ${cachePath}`.quiet(),
