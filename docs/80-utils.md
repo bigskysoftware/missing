@@ -72,6 +72,13 @@ You can set `--density` yourself in inline styles or your own CSS:
 
 ## Typography
 
+<dfn>`.bold`</dfn>
+:   Sets text in boldface.
+
+<dfn>`.italic`</dfn>
+:   Sets text in italics. Nested italic elements
+    (`em`, `cite`, `dfn`, `var`, `i`, `address`) will be set in roman instead.
+
 <dfn>`.allcaps`</dfn>
 :   Sets text in all caps and adds appropriate letter spacing.
 

@@ -23,6 +23,14 @@
 	all: initial;
 }
 
+.bold { font-weight: bold }
+.italic {
+	font-style: italic;
+	& em, & cite, & dfn, & var, & i, & address {
+		font-style: normal;
+	}
+}
+
 .allcaps {
 	text-transform: uppercase;
 	letter-spacing: .1rem;
