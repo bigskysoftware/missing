@@ -252,4 +252,18 @@ the user can't tell which nav is which.
 </div>
 
 
+## Icon Button
+
+<dfn>`.iconbutton`</dfn> creates a bare icon.
+
+<figure class="f-row justify-content:space-between">
+<button class=iconbutton type=button>☰</button>
+<button class=iconbutton type=button>&rarr;</button>
+<button class=iconbutton type=button>✀</button>
+<button class=iconbutton type=button>✖</button>
+<button class=iconbutton type=button>⚧</button>
+<button class=iconbutton type=button>☻</button>
+<button class=iconbutton type=button>🎜</button>
+</figure>
+
 [colorway]: /docs/colorways
