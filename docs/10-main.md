@@ -2,6 +2,7 @@
 backTo: ~
 url: ./
 title: Intro
+templateEngine: [eta,md]
 ---
 
 # Welcome to missing.css!
@@ -15,12 +16,14 @@ Missing.css is a simple CSS library that can be used in many ways — you could:
 
 Install it on your website if you haven't already:
 
+<% const version = search.pages("release").at(-1).data.release; %>
+
 <figure>
 
   ~~~ html
-  <link rel="stylesheet" href="https://the.missing.style/v0.3.0/missing.min.css">
+  <link rel="stylesheet" href="https://the.missing.style/<%= version %>/missing.min.css">
   <!-- Prism theme (https://prismjs.com/): -->
-  <link rel="stylesheet" href="https://the.missing.style/v0.3.0/missing-prism.min.css">
+  <link rel="stylesheet" href="https://the.missing.style/<%= version %>/missing-prism.min.css">
   ~~~
 
 </figure>
