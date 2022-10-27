@@ -40,8 +40,8 @@ async function buildVersion(gitTag: string) {
       for await (const file of $.fs.expandGlob("missing*", { root: "dist" })) {
         $.logStep(`Copying ${file.path}`);
         await Promise.all([
-          $`cp ${file.path} ${cachePath}`.quiet(),
-          $`cp ${file.path} ${dest}`.quiet(),
+          $`cp -r ${file.path} ${cachePath}`.quiet(),
+          $`cp -r ${file.path} ${dest}`.quiet(),
         ]);
       }
     });

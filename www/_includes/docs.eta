@@ -7,7 +7,7 @@ layout: layout.eta
         <div>
             <button aria-hidden="true" type="button" data-nav-expander class="iconbutton">
                 &#x2630;
-                <script src="/js/overflow-nav.js" type="module"></script>
+                <script src="/missing-js/overflow-nav.js" type="module"></script>
             </button>
         </div>
         <p>

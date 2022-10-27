@@ -1,6 +1,6 @@
 ---
 title: Index
-url: ./index/
+url: ./ref-index/
 excludeFromSearch: yes
 ---
 

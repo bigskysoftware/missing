@@ -9,4 +9,4 @@ function is-in-docs {
     grep -F "$1" docs/* >/dev/null
 }
 
-selectors src/?0*.css | sed 's/\\//' | while read sel; do is-in-docs "$sel" || echo "$sel"; done
+selectors src/*.css | sed 's/\\//' | while read sel; do is-in-docs "$sel" || echo "$sel"; done

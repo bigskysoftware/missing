@@ -16,6 +16,8 @@ Missing.css will style markup based on ARIA roles. We often reference the
 Mark up your tabs using the `tablist`, `tab` and `tabpanel` roles
 appropriately — see [WAI: Tabs][].
 
+To get the actual behavior of an accessible tabset, you can use [Missing.js &sect; Tabs](/docs/js#tabs).
+
   ~~~ html
   <div role="tablist">
     <button role="tab" aria-controls="servers" aria-selected="true"
@@ -31,7 +33,7 @@ appropriately — see [WAI: Tabs][].
   <div id="users"    role="tabpanel">...</div>
   ~~~
 
-<script type="module" src="/js/tabs.js"></script>
+<script type="module" src="/missing-js/tabs.js"></script>
 
 <div role="tablist">
   <button role="tab" aria-controls="servers" aria-selected="true"
@@ -53,6 +55,8 @@ appropriately — see [WAI: Tabs][].
 
 Use `menu` and `menuitem` roles — see [WAI: Menu][].
 
+To get the actual behavior of an accessible menu, you can use [Missing.js &sect; Menu](/docs/js#menu).
+
 ~~~ html
 <div role="menu" hidden id="my-menu">
   <a role="menuitem">View</a>
@@ -62,7 +66,7 @@ Use `menu` and `menuitem` roles — see [WAI: Menu][].
 ~~~
 
 <div>
-<script type="module" src="/js/menu.js"></script>
+<script type="module" src="/missing-js/menu.js"></script>
 <button aria-haspopup="menu" aria-controls="my-menu" aria-expanded="false">Open menu</button>
 <div role="menu" hidden id="my-menu">
   <a role="menuitem">View</a>

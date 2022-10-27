@@ -239,6 +239,9 @@ example:
 
 </figure>
 
+To make your navbar expand/collapsible on smaller screens,
+you can use [Missing.js &sect; Expand/collapse navbar](/docs/js#expand%2Fcollapse-navbar).
+
 <div class="box info">
 
 When you have multiple `<nav>` elements on a page, it's a good idea to put
