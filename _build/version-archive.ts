@@ -16,7 +16,7 @@ async function buildVersion(gitTag: string) {
   $.logLight("Destination:", dest);
   const cachePath = $.path.join(
     projectRoot,
-    ".missingcss-releases-cache",
+    "releases/_artifacts",
     gitTag,
   );
 
