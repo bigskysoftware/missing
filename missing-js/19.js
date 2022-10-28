@@ -84,7 +84,7 @@ off = ({ target, event, listener, options }) => target.removeEventListener(event
 halt = (o, f) => {
   if (f instanceof Function) return (e) => { halt(o, e); f(e); };
   // f is event:
-  o = o.split(/\s*/g);
+  o = o.split(" ");
   for (const t of o) {
     if (t === "default") f.preventDefault();
     if (t === "bubbling") f.stopPropagation();
