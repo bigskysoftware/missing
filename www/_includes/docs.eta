@@ -5,7 +5,7 @@ layout: layout.eta
 <header class="navbar" data-overflow-nav>
     <nav class="contents">
         <div>
-            <button aria-hidden="true" type="button" data-nav-expander class="iconbutton">
+            <button hidden aria-hidden="true" type="button" data-nav-expander class="iconbutton">
                 &#x2630;
                 <script src="/missing-js/overflow-nav.js" type="module"></script>
             </button>
