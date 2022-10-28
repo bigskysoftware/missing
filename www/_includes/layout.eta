@@ -25,14 +25,16 @@
 <body>
 	<%~ content %>
 
-	<footer>
-		<p><a href="/">Missing.css</a>, from
-		<a href="https://bigsky.software">Big Sky Software</a>.
-
-		<p>Also check out
-		<a href="https://htmx.org">htmx</a>
-		and
-		<a href="https://hyperscript.org">_hyperscript</a>.
-	</footer>
+	<% if (!it.hideFooter) { %>
+		<footer>
+			<p><a href="/">Missing.css</a>, from
+			<a href="https://bigsky.software">Big Sky Software</a>.
+	
+			<p>Also check out
+			<a href="https://htmx.org">htmx</a>
+			and
+			<a href="https://hyperscript.org">_hyperscript</a>.
+		</footer>
+	<% } %>
 </body>
 
