@@ -652,7 +652,6 @@ summary {
 dialog {
     /* SEE components/box.css */
 	
-    position: absolute;
     inline-inset: 0;
     
 	block-size: fit-content;
