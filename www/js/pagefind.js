@@ -1,8 +1,7 @@
 
 /// <reference lib="es2022" />
 
-import { nanoid } from "https://esm.sh/nanoid/non-secure/index.js";
-import { $, attr, next, prev, debounce, behavior, html, on, repeater, makelogger, hotkey, halt } from "./19.js";
+import { $, attr, next, prev, debounce, behavior, html, on, repeater, makelogger, hotkey, halt } from "/missing-js/19.js";
 import * as pagefind from "/_pagefind/pagefind.js";
 
 // TODO: add listbox styling to missing.css
