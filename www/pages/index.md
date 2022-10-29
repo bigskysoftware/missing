@@ -22,7 +22,7 @@ templateEngine: [eta,md]
 
 </header>
 
-<main class="spacious">
+<main>
 
 <% const version = search.pages("release").at(-1).data.release; %>
 
