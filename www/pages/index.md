@@ -26,7 +26,8 @@ templateEngine: [eta,md]
 
 <% const version = search.pages("release").at(-1).data.release; %>
 
-missing.css is the missing CSS library that we all wished existed. Add it to your website: `<link rel="stylesheet" href="https://the.missing.style/<%= version %>/missing.min.css">`{.lang-html}
+missing.css is the CSS library we wished already existed.
+Add it to your website: `<link rel="stylesheet" href="https://the.missing.style/<%= version %>/missing.min.css">`{.lang-html}
 
  * It starts with decent default styling for vanilla HTML, akin to **classless
    CSS** libraries, that can be customized with **CSS variables.** {.box}
@@ -40,19 +41,25 @@ The goal of missing.css is to reduce needed intervention in HTML. It lets
 authors
 
  - start with a good out-of-the-box experience,
-
  - customize it easily, even create multiple themes,
-
  - build common components using plain, semantic HTML,
-
  - create unique sites by applying utility classes as needed.
 
-{.flow-gap .textcolumns .dense style="--col-width: 15em; margin-bottom: calc(0px - var(--gap));"}
+{.flow-gap .dense}
 
-missing.css is not designed to be a complete styling solution for large
-websites. It may serve as a basis for a more completely styled site, but does
-not try to be as complete as Bootstrap or as versatile as Tailwind.
-It is, however, explicitly designed to be complete enough to use for small sites, internal tools or
-personal projects.
+Though it's quite early, there are a few sites using missing.css:
+
+ - <https://hyperscript.org>
+ - <https://denizaksimsek.com>
+ - <https://github.com/chapmandu/cfwheels-htmx-crud>
+ - <https://www.davidaflood.com>
+ - <https://reeds.website>
+
+Missing.css is a notch on the complexity slider
+that's just right for small projects and personal sites
+where classless CSS is not enough, Tailwind is too much
+and Bootstrap just doesn't have the right vibe.
+
+We also have a [JavaScript library](/docs/js) and a [Prism](https://prismjs.com) syntax theme.
 
 </main>
