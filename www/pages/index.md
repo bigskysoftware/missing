@@ -34,7 +34,7 @@ Add it to your website: `<link rel="stylesheet" href="https://the.missing.style/
  * It offers a small set of **components** based on well-known, semantic markup
    patterns, with ARIA where appropriate. {.box}
  * Finally, it offers a small & curated set of **utility classes** and **custom
-   elements** for bespoke elements and layouts. {.box}
+   elements** for the things HTML hasn't caught up with yet. {.box}
 {.f-switch .dense .align-items:stretch role=list}
 
 The goal of missing.css is to reduce needed intervention in HTML. It lets
