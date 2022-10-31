@@ -23,6 +23,7 @@ export default lume(
 )
   .ignore("README.md", "Contributing.md", "dev-notes", "netlify.toml")
   .copy("www/pages/netlify.redirects", "_redirects")
+  .copy("www/pages/netlify.headers", "_headers")
   .copy("www/js", "js")
   .scopedUpdates((path) => path === "/www/missingcss.tmpl.ts" || path.endsWith(".css"))
   .use(date())

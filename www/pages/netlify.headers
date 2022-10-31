@@ -1,0 +1,2 @@
+/archive/:release/missing-js/:file
+  Access-Control-Allow-Origin: *
