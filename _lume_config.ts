@@ -6,6 +6,7 @@ import basePath from "lume/plugins/base_path.ts";
 import resolveUrls from "lume/plugins/resolve_urls.ts";
 import eta from "lume/plugins/eta.ts";
 import esbuild from "lume/plugins/esbuild.ts";
+import sourceMap from "lume/plugins/source_maps.ts";
 import pagefind from "lume/plugins/pagefind.ts";
 
 import markdownOptions from "./_build/markdown.ts";
@@ -39,6 +40,7 @@ export default lume(
       target: "es2020",
     },
   }))
+  .use(sourceMap())
   .use(pagefind({
     ui: false,
     indexing: {
