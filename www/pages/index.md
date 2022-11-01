@@ -27,7 +27,7 @@ templateEngine: [eta,md]
 <% const version = search.pages("release").at(-1).data.release; %>
 
 missing.css is the CSS library we wished already existed.
-Add it to your website: `<link rel="stylesheet" href="https://the.missing.style/<%= version %>/missing.min.css">`{.lang-html}
+Add it to your website: `<link rel="stylesheet" href="https://the.missing.style/v<%= version %>/missing.min.css">`{.lang-html}
 
  * It starts with decent default styling for vanilla HTML, akin to **classless
    CSS** libraries, that can be customized with **CSS variables.** {.box}
