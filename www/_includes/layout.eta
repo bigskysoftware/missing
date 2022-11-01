@@ -29,13 +29,19 @@
 
 	<% if (!it.hideFooter) { %>
 		<footer>
-			<p><a href="/">Missing.css</a>, from
-			<a href="https://bigsky.software">Big Sky Software</a>.
+			<p><a href="/">Missing.css</a>, by
+			<a href="https://denizaksimsek.com">Deniz Akşimşek</a>,
+			funded by
+			<a href="https://bigsky.software">Big Sky Software</a> and
+			<a href="https://commspace.co.za">Commspace</a>.
 	
 			<p>Also check out
 			<a href="https://htmx.org">htmx</a>
 			and
 			<a href="https://hyperscript.org">_hyperscript</a>.
+
+			<p>
+			Made with 💙 in Ankara, Samsun, Rize and Cape Town.
 		</footer>
 	<% } %>
 </body>
