@@ -37,17 +37,40 @@
  * @typedef {Document | ShadowRoot} Root
  */
 
-export
-const makelogger = (scope) =>
+/**
+ * @param {string} scope
+ * @returns {Logger}
+ * 
+ * @typedef {<T>(...args: [..._: any, last: T]) => T} Logger
+ */
+export const makelogger = (scope) =>
   (...args) => {
     console.log("%c%s", "color:green", scope, ...args)
     return args.at(-1);
   };
 
-const
-ilog = makelogger("19.js"),
-uncamel = s => s.replace(/[A-Z]/g, (s) => "-" + s.toLowerCase()),
-traverse = (direction) => {
+const ilog = makelogger("19.js");
+
+/**
+ * Converts camelCase to kebab-case
+ * @param {string} s 
+ * @returns string
+ */
+const camelToKebab = s => s.replace(/[A-Z]/g, (s) => "-" + s.toLowerCase())
+
+/**
+ * Build a function to traverse the DOM forward or backward to find an element.
+ * @param {("next" | "previous")} direction 
+ * @returns {Traverse}
+ * 
+ * @callback Traverse
+ * @param {ParentNode} root
+ * @param {string} selector
+ * @param {Element | null} [current]
+ * @param {object} [options]
+ * @param {boolean} [options.wrap]
+ */
+const traverse = (direction) => {
   const advance = direction + "ElementSibling";
   const wrapIt = direction === "next"
     ? (root, selector) => $(root, selector)
@@ -57,7 +80,7 @@ traverse = (direction) => {
     let cursor = current;
     while (true) {
       while (cursor[advance] === null) {
-        cursor = cursor.parentElement;
+        cursor = /** @type {Element} */ (cursor.parentElement);
         if (cursor === root) return wrap ? wrapIt(root, selector) : null;
       }
       cursor = cursor[advance];
@@ -68,20 +91,50 @@ traverse = (direction) => {
   };
 };
 
-export
-const
-$ = (scope, sel) => scope.querySelector(sel),
-$$ = (scope, sel) => Array.from(scope.querySelectorAll(sel)),
-on = (target, event, listener, options) => {
+/**
+ * @param {ParentNode} scope
+ * @param {string} sel
+ * @returns {Element | null}
+ */
+export const $ = (scope, sel) => scope.querySelector(sel)
+
+/**
+ * @param {ParentNode} scope
+ * @param {string} sel
+ * @returns {Element[]}
+ */
+ export const $$ = (scope, sel) => Array.from(scope.querySelectorAll(sel))
+
+/**
+ * Add an event listener.
+ * @param {EventTarget} target
+ * @param {string} type
+ * @param {EventListener} listener
+ * @param {object} [options]
+ * @param {Element} [options.addedBy] If supplied, the listener will be removed when this element is not in the DOM.
+ * @returns {EventListenerToken}
+ * 
+ * @typedef EventListenerToken
+ * @property {EventTarget} target
+ * @property {string} type
+ * @property {EventListener} listener
+ * @property {object} options
+ */
+export const on = (target, type, listener, options = {}) => {
   const listenerWrapper = e => {
-    if (options.addedBy && !options.addedBy.isConnected) off({ target, event, listener: listenerWrapper, options }); // self-cleaning listener
+    if (options.addedBy && !options.addedBy.isConnected) off({ target, type: type, listener: listenerWrapper, options }); // self-cleaning listener
     return listener(e);
   }
-  target.addEventListener(event, listener, options);
-  return { target, event, options, listener: listenerWrapper }
-},
-off = ({ target, event, listener, options }) => target.removeEventListener(event, listener, options),
-halt = (o, f) => {
+  target.addEventListener(type, listener, /** @type {AddEventListenerOptions} */ (options));
+  return { target, type: type, options, listener: listenerWrapper }
+}
+
+/**
+ * Remove an event listener.
+ * @param {EventListenerToken} listenerToken The return value of {@link on}.
+ */
+export const off = ({ target, type, listener, options }) => target.removeEventListener(type, listener, options)
+export const halt = (o, f) => {
   if (f instanceof Function) return (e) => { halt(o, e); f(e); };
   // f is event:
   o = o.split(" ");
@@ -91,19 +144,55 @@ halt = (o, f) => {
     if (t === "propagation") f.stopImmediatePropagation();
   }
   return f;
-},
-dispatch = (el, type, detail) => el.dispatchEvent(new CustomEvent(type, { detail })),
-attr = (el, name, ...args) => {
-  if (typeof name === "object") for (const at in name) el.setAttribute(uncamel(at), name[at]);
-  else if (args.length > 0) return el.setAttribute(name, args[0]);
-  else return el.getAttribute(name);
-},
-stringifyNode = node => {
+}
+
+/**
+ * Dispatch a {@link CustomEvent}.
+ * @param {EventTarget} el
+ * @param {String} type
+ * @param {any} detail
+ */
+export const dispatch = (el, type, detail) => el.dispatchEvent(new CustomEvent(type, { detail }))
+
+/**
+ * Get, remove or set an attribute.
+ * 
+ * - attr(el, "name") Get the attribute "name"
+ * - attr(el, "name", "value") Set the attribute "name" to "value"
+ * - attr(el, "name", null) Remove the attribute "name"
+ * - attr(el, [ nameA: "valueA", nameB: "valueB" ]) Set the attributes name-a to "valueA", name-b to "valueB"
+ * 
+ * @param {Element} el 
+ * @param {string | object} name 
+ * @param  {any} args 
+ * @returns 
+ */
+export const attr = (el, name, value = undefined) => {
+  if (typeof name === "object") for (const at in name) el.setAttribute(camelToKebab(at), name[at]);
+  else if (value === undefined) return el.getAttribute(name);
+  else if (value === null)      return el.removeAttribute(name);
+  else                          return el.setAttribute(name, value);
+}
+
+/**
+ * Convert a node to equivalent HTML.
+ * @param {Node} node 
+ * @returns {string}
+ */
+export const stringifyNode = node => {
   const tmp = document.createElement("div");
   tmp.append(node);
   return tmp.innerHTML;
-},
-htmlescape = s => {
+}
+
+/**
+ * HTML-escape a string.
+ * If given a DOM node, it will return **unescaped** HTML for it.
+ * Returns empty string when given null or undefined.
+ * @param {string} s 
+ * @returns string
+ */
+export const htmlescape = s => {
   if (s === null || s === undefined) return "";
   if (s instanceof Node) return stringifyNode(s);
   return String(s)
@@ -112,17 +201,48 @@ htmlescape = s => {
     .replaceAll(">", "&gt;")
     .replaceAll("'", "&#x27;")
     .replaceAll("\"", "&quot;")
-},
-html = (str, ...values) => {
+}
+
+/**
+ * Template literal that escapes HTML in interpolated values and returns a DocumentFragment.
+ * Can also be called with a string to parse it as HTML.
+ * To let trusted HTML through escaping, parse it first:
+ *     html`<p>My trusted markup: ${html(trustedMarkup)}</p>`
+ * 
+ * @param {TemplateStringsArray | string} str 
+ * @param  {...any} values 
+ * @returns {DocumentFragment}
+ */
+export const html = (str, ...values) => {
   // template literal case
-  if (str?.raw) str = String.raw(str, ...values.map(htmlescape))
+  if (typeof str === "object" && "raw" in str) str = String.raw(str, ...values.map(htmlescape))
   const tmpl = document.createElement("template");
   tmpl.innerHTML = str;
   return tmpl.content;
-},
-next = traverse("next"),
-prev = traverse("previous"),
-hotkey = (hotkeys) => {
+}
+
+/**
+ * Find the next element matching a given selector, searching deeply throughout the DOM.
+ */
+export const next = traverse("next")
+
+/**
+ * Find the previous element matching a given selector, searching deeply throughout the DOM.
+ */
+export const prev = traverse("previous")
+
+/**
+ * Create a handler for keyboard events using a keyboard shortcut DSL.
+ * 
+ * @param {Hotkeys} hotkeys 
+ * @returns {KeyboardEventListener}
+ * 
+ * @typedef {Record<string, KeyboardEventListener>} Hotkeys
+ * 
+ * @callback KeyboardEventListener
+ * @param {KeyboardEvent} event
+ */
+export const hotkey = (hotkeys) => {
   const alt = 0b1, ctrl = 0b10, meta = 0b100, shift = 0b1000;
   const
   handlers = {}, // handlers[key][modifiers as bitfields]
@@ -147,8 +267,18 @@ hotkey = (hotkeys) => {
   }
 
   return e => handlers[e.key]?.[modifiersOf(e)]?.(e);
-},
-debounce = (t, f, { mode = "trailing" } = {}) => {
+}
+
+/**
+ * Debounce a function.
+ * @template {*[]} TArgs
+ * @param {number} t 
+ * @param {(...args: TArgs) => void} f 
+ * @param {object} options 
+ * @param {("leading" | "trailing")} [options.mode] 
+ * @returns {(...args: TArgs) => void}
+ */
+export const debounce = (t, f, { mode = "trailing" } = {}) => {
   let timeout;
   return (...args) => {
     if (timeout) clearTimeout(timeout);
@@ -158,15 +288,17 @@ debounce = (t, f, { mode = "trailing" } = {}) => {
       timeout = null;
     }, t);
   }
-},
+}
 
-behavior =
 /**
- * @template TOptions
- * @param {string} selector - Selector to find elements to apply this behavior to.
- * @param {BehaviorInit<TOptions>} init - The behavior itself.
- * @returns {Behavior<TOptions>}
- */ (selector, init) => {
+ * Create a behavior that applies to elements matching the given selector.
+ * 
+ * @template {object} TOptions
+ * @param {string} selector 
+ * @param {BehaviorInit<TOptions>} init 
+ * @returns {Behavior<TOptions>} A function that can be called to apply the behavior to new elements within a subtree.
+ */
+export const behavior = (selector, init) => {
   const initialized = new WeakSet
   return (subtree = document, options = {}) => {
     const root = /** @type {Document|ShadowRoot} */ (subtree.getRootNode());
@@ -177,9 +309,19 @@ behavior =
     });
   };
 };
-export
-const
-repeater = (container, { idOf, create, update }) => {
+
+/**
+ * Repeat an element such that the list can be updated when data changes.
+ * 
+ * @template TData
+ * @param {ParentNode} container 
+ * @param {object} context
+ * @param {(data: TData) => string} context.idOf
+ * @param {(data: TData, ctx: { id: string }) => Node} context.create
+ * @param {(el: Element, data: TData) => void} [context.update]
+ * @returns 
+ */
+export const repeater = (container, { idOf, create, update }) => {
   return (dataset) => {
     let cursor;
 
@@ -196,7 +338,7 @@ repeater = (container, { idOf, create, update }) => {
       else container.replaceChildren();
     };
 
-    const root = container.getRootNode();
+    const root = /** @type {Root} */ (container.getRootNode());
 
     // TODO: use an actual morphing algo
     for (const datum of dataset) {
