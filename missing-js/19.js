@@ -92,40 +92,52 @@ const traverse = (direction) => {
 };
 
 /**
+ * @template {Element} [TElement=Element]
  * @param {ParentNode} scope
  * @param {string} sel
- * @returns {Element | null}
+ * @returns {TElement | null}
  */
 export const $ = (scope, sel) => scope.querySelector(sel)
 
 /**
+ * @template {Element} [TElement=Element]
  * @param {ParentNode} scope
  * @param {string} sel
- * @returns {Element[]}
+ * @returns {TElement[]}
  */
- export const $$ = (scope, sel) => Array.from(scope.querySelectorAll(sel))
+export const $$ = (scope, sel) => Array.from(scope.querySelectorAll(sel))
 
 /**
- * Add an event listener.
- * @param {EventTarget} target
- * @param {string} type
- * @param {EventListener} listener
- * @param {object} [options]
- * @param {Element} [options.addedBy] If supplied, the listener will be removed when this element is not in the DOM.
- * @returns {EventListenerToken}
- * 
  * @typedef EventListenerToken
  * @property {EventTarget} target
  * @property {string} type
  * @property {EventListener} listener
  * @property {object} options
  */
+
+/** 
+ * @template {string} TEventType
+ * @callback Listener
+ * @param {unknown extends HTMLElementEventMap[TEventType] ? CustomEvent : HTMLElementEventMap[TEventType]} event
+ */
+
+/**
+ * Add an event listener.
+ * 
+ * @template {string} TEventType
+ * @param {EventTarget} target
+ * @param {TEventType} type
+ * @param {Listener<TEventType>} listener
+ * @param {object} [options]
+ * @param {Element} [options.addedBy] If supplied, the listener will be removed when this element is not in the DOM.
+ * @returns {EventListenerToken}
+ */
 export const on = (target, type, listener, options = {}) => {
   const listenerWrapper = e => {
     if (options.addedBy && !options.addedBy.isConnected) off({ target, type: type, listener: listenerWrapper, options }); // self-cleaning listener
     return listener(e);
   }
-  target.addEventListener(type, listener, /** @type {AddEventListenerOptions} */ (options));
+  target.addEventListener(type, /** @type {EventListener} */ (listener), /** @type {AddEventListenerOptions} */ (options));
   return { target, type: type, options, listener: listenerWrapper }
 }
 
@@ -134,11 +146,20 @@ export const on = (target, type, listener, options = {}) => {
  * @param {EventListenerToken} listenerToken The return value of {@link on}.
  */
 export const off = ({ target, type, listener, options }) => target.removeEventListener(type, listener, options)
+
+/**
+ * @template {Event | EventListener} T
+ * @param {string} o How to halt
+ * @param {T} f 
+ * @returns {T}
+ */
 export const halt = (o, f) => {
-  if (f instanceof Function) return (e) => { halt(o, e); f(e); };
+  if (f instanceof Function) {
+    return /** @type {T} */ ((e) => { halt(o, e); f(e); });
+  }
+
   // f is event:
-  o = o.split(" ");
-  for (const t of o) {
+  for (const t of o.split(" ")) {
     if (t === "default") f.preventDefault();
     if (t === "bubbling") f.stopPropagation();
     if (t === "propagation") f.stopImmediatePropagation();
@@ -150,7 +171,7 @@ export const halt = (o, f) => {
  * Dispatch a {@link CustomEvent}.
  * @param {EventTarget} el
  * @param {String} type
- * @param {any} detail
+ * @param {any} [detail]
  */
 export const dispatch = (el, type, detail) => el.dispatchEvent(new CustomEvent(type, { detail }))
 
@@ -164,14 +185,18 @@ export const dispatch = (el, type, detail) => el.dispatchEvent(new CustomEvent(t
  * 
  * @param {Element} el 
  * @param {string | object} name 
- * @param  {any} args 
- * @returns 
+ * @param  {any} value 
+ * @returns {string | null}
  */
 export const attr = (el, name, value = undefined) => {
-  if (typeof name === "object") for (const at in name) el.setAttribute(camelToKebab(at), name[at]);
+  const curValue = el.getAttribute(name);
+  if (typeof name === "object") {
+    for (const at in name) el.setAttribute(camelToKebab(at), name[at]);
+    return null;
+  }
   else if (value === undefined) return el.getAttribute(name);
-  else if (value === null)      return el.removeAttribute(name);
-  else                          return el.setAttribute(name, value);
+  else if (value === null)      return el.removeAttribute(name), curValue;
+  else                          return el.setAttribute(name, value), value;
 }
 
 /**
@@ -189,7 +214,7 @@ export const stringifyNode = node => {
  * HTML-escape a string.
  * If given a DOM node, it will return **unescaped** HTML for it.
  * Returns empty string when given null or undefined.
- * @param {string} s 
+ * @param {any} s 
  * @returns string
  */
 export const htmlescape = s => {

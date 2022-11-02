@@ -5,10 +5,14 @@ import { $, $$, on, dispatch, attr, next, prev, hotkey, behavior, makelogger } f
 const
 ilog = makelogger("menu"),
 sMenu = "[role=menu]",
-sMenuitem = "[role=menuitem]",
-firstItem = menu => $(menu, sMenuitem),
-lastItem  = menu => $$(menu, sMenuitem).at(-1),
-isOpen = menu => !menu.hidden;
+sMenuitem = "[role=menuitem]";
+/** @returns {HTMLElement[]} */
+const menuItems  = menu => $$(menu, sMenuitem);
+/** @returns {HTMLElement | null} */
+const firstItem = menu => $(menu, sMenuitem)
+/** @returns {HTMLElement | null} */
+const lastItem  = menu => menuItems(menu).at(-1) ?? null;
+const isOpen = menu => !menu.hidden;
 
 export
 const
@@ -18,10 +22,10 @@ menu = behavior(sMenu, (menu, { root }) => {
     let opener;
     $$(menu, sMenuitem).forEach(item => item.setAttribute("tabindex", "-1"));
     on(menu, "menu:open", e => {
-        opener = e.detail.opener;
+        opener = e.detail?.opener;
         menu.hidden = false;
         ilog("menu:open", menu.hidden);
-        firstItem(menu).focus();
+        firstItem(menu)?.focus();
         ilog("menu:open 2", menu.hidden);
     });
     on(menu, "menu:close", _ => {
@@ -30,7 +34,7 @@ menu = behavior(sMenu, (menu, { root }) => {
     });
     on(menu, "focusout", e => {
         if (!isOpen(menu)) return;
-        if (menu.contains(e.relatedTarget)) return;
+        if (menu.contains(/** @type {Node} */ (e.relatedTarget))) return;
         if (opener === e.relatedTarget) return;
         dispatch(menu, "menu:close");
     });
@@ -40,8 +44,8 @@ menu = behavior(sMenu, (menu, { root }) => {
             "ArrowUp": _ => prev(menu, sMenuitem, root.activeElement).focus(), 
             "ArrowDown": _ => next(menu, sMenuitem, root.activeElement).focus(),
             "Space": _ => /** @type HTMLElement */ (root.activeElement?.closest(sMenuitem))?.click(),
-            "Home": _ => firstItem(menu).focus(),
-            "End": _ => lastItem(menu).focus(),
+            "Home": _ => firstItem(menu)?.focus(),
+            "End": _ => lastItem(menu)?.focus(),
             "Escape": _ => dispatch(menu, "menu:close"),
         })(e);
     });
@@ -54,7 +58,9 @@ menu = behavior(sMenu, (menu, { root }) => {
 }),
 menuButton = behavior("[aria-haspopup=menu]", (button, { root }) => {
     const
-    menu = root.getElementById(attr(button, "aria-controls"));
+    menu = root.getElementById(attr(button, "aria-controls") ?? "");
+
+    if (menu === null) return ilog("Error: Menu button", button, "has no menu.");
 
     on(menu, "menu:close", _ => attr(button, "aria-expanded", "false"), { addedBy: button })
     on(menu, "menu:open", _ => attr(button, "aria-expanded", "true"), { addedBy: button })
