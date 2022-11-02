@@ -198,7 +198,7 @@ ul, ol {
 		padding-inline-start: var(--gap);
 	}
 
-	&[role="list"] {
+	&[role="list"], &[role="listbox"] {
 		padding-inline-start: 0;
 		list-style: none;
 	}
