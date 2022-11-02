@@ -242,7 +242,8 @@ figcaption {
 
 main {
 	max-inline-size: var(--eff-line-length);
-	margin: auto;
+	inline-size: 100%;
+	margin-inline: auto;
 
 	&:first-child { padding-top: var(--gap); }
 }
