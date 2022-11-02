@@ -46,7 +46,7 @@ To get the actual behavior of an accessible tabset, you can use [Missing.js &sec
 
 <div id="servers"         role="tabpanel">This is tab 1. <strong>JavaScript sold separately!</strong></div>
 <div id="channels" hidden role="tabpanel">You are enjoying tab 2.</div>
-<div id="users"    hidden role="tabpanel"><img alt="placeholder cat" src="https://placekitten.com/200/200"></div>
+<div id="users"    hidden role="tabpanel"><img alt="placeholder cat" src="https://biber.denizaksimsek.com/img/IMG_2022-07-05_07-16-48-400.webp"></div>
 
 [WAI: Tabs]: https://www.w3.org/WAI/ARIA/apg/patterns/tabpanel/
 
