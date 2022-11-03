@@ -20,7 +20,7 @@ and mark up your tabs with the appropriate ARIA roles.
 Behavior will be added automatically.
 
 ~~~
-<script type="module" src="https://the.missing.style/<%= version %>/missing-js/tabs.js">
+<script type="module" src="https://the.missing.style/v<%= version %>/missing-js/tabs.js">
 ~~~
 
 <div class="info box">
@@ -32,7 +32,7 @@ For dynamically inserted content: initialize it as such:
 <figure class="plain">
 
 ~~~ js
-import tabs from "https://the.missing.style/<%= version %>/missing-js/tabs.js";
+import tabs from "https://the.missing.style/v<%= version %>/missing-js/tabs.js";
 // ... insert some content ...
 tabs(theContentIJustInserted);
 ~~~
@@ -53,7 +53,7 @@ you could pass the whole `document` every time if you wanted to.
 _See [ARIA &sect; menu](/docs/aria/#menu)_
 
 ~~~ html
-<script type="module" src="https://the.missing.style/<%= version %>/missing-js/menu.js">
+<script type="module" src="https://the.missing.style/v<%= version %>/missing-js/menu.js">
 ~~~
 
 All notes above about initializing dynamic content apply here.
@@ -64,7 +64,7 @@ All notes above about initializing dynamic content apply here.
 _See [Components &sect; Navbar](/docs/components/#navbar)_
 
 ~~~ html
-<script type="module" src="https://the.missing.style/<%= version %>/missing-js/overflow-nav.js">
+<script type="module" src="https://the.missing.style/v<%= version %>/missing-js/overflow-nav.js">
 ~~~
 
 Make sure to add:
