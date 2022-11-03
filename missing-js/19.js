@@ -148,24 +148,25 @@ export const on = (target, type, listener, options = {}) => {
 export const off = ({ target, type, listener, options }) => target.removeEventListener(type, listener, options)
 
 /**
- * @template {Event | EventListener} T
  * @param {string} o How to halt
- * @param {T} f 
- * @returns {T}
+ * @param {Event} f 
+ * @returns {void}
  */
 export const halt = (o, f) => {
-  if (f instanceof Function) {
-    return /** @type {T} */ ((e) => { halt(o, e); f(e); });
-  }
-
-  // f is event:
   for (const t of o.split(" ")) {
     if (t === "default") f.preventDefault();
     if (t === "bubbling") f.stopPropagation();
     if (t === "propagation") f.stopImmediatePropagation();
   }
-  return f;
 }
+
+/**
+ * @template {Event} T
+ * @param {string} o 
+ * @param {(e: T) => void} f 
+ * @returns {(e: T) => void}
+ */
+export const halts = (o, f) => e => { halt(o, e); f(e) };
 
 /**
  * Dispatch a {@link CustomEvent}.
@@ -245,6 +246,13 @@ export const html = (str, ...values) => {
   tmpl.innerHTML = str;
   return tmpl.content;
 }
+
+/**
+ * 'Type "Element" cannot be assigned to type "HTMLElement"' SHUT UP
+ * @param {*} [el] 
+ * @returns {HTMLElement | null}
+ */
+export const asHtml = el => el instanceof HTMLElement ? el : null;
 
 /**
  * Find the next element matching a given selector, searching deeply throughout the DOM.
