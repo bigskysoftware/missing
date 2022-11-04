@@ -38,8 +38,17 @@
  */
 
 /**
- * @param {string} scope
- * @returns {Logger}
+ * Creates a logging function.
+ * The {@link scope} will be prepended to each message logged.
+ * 
+ * We usually use `ilog` as a name for the resulting function.
+ * It returns its last argument,
+ * which makes it easier to log intermediate values in an expression:
+ * 
+ *     const x = a + ilog("b:", b); // x = a + b
+ * 
+ * @param {string} scope - The name of the component/module/etc. that will use this logger.
+ * @returns {Logger} The `ilog` function.
  * 
  * @typedef {<T>(...args: [..._: any, last: T]) => T} Logger
  */
@@ -52,23 +61,25 @@ export const makelogger = (scope) =>
 const ilog = makelogger("19.js");
 
 /**
- * Converts camelCase to kebab-case
+ * Converts camelCase to kebab-case.
  * @param {string} s 
  * @returns string
  */
 const camelToKebab = s => s.replace(/[A-Z]/g, (s) => "-" + s.toLowerCase())
 
 /**
- * Build a function to traverse the DOM forward or backward to find an element.
+ * Build a function to traverse the DOM forward or backward from a starting point
+ * to find an element matching some selector.
  * @param {("next" | "previous")} direction 
  * @returns {Traverse}
  * 
  * @callback Traverse
- * @param {ParentNode} root
- * @param {string} selector
- * @param {Element | null} [current]
+ * @param {ParentNode} root - The element within which to look for the next element, e.g. a menu.
+ * @param {string} selector - The selector to look for, e.g. `"[role=menuitem]"`.
+ * @param {Element | null} [current] - The element to start the search from, e.g. the currently selected menu item.
+ *    If missing, the first or last matching element will be returned (depending on search direction).
  * @param {object} [options]
- * @param {boolean} [options.wrap]
+ * @param {boolean} [options.wrap] Whether to wrap around when the end/start of {@link root} is reached.
  */
 const traverse = (direction) => {
   const advance = direction + "ElementSibling";
@@ -92,6 +103,8 @@ const traverse = (direction) => {
 };
 
 /**
+ * Wrapper for {@link scope}.querySelector({@link sel}).
+ * Unlike jQuery, the scope is required to be specified.
  * @template {Element} [TElement=Element]
  * @param {ParentNode} scope
  * @param {string} sel
@@ -100,6 +113,9 @@ const traverse = (direction) => {
 export const $ = (scope, sel) => scope.querySelector(sel)
 
 /**
+ * Wrapper for {@link scope}.querySelectorAll({@link sel}).
+ * Unlike jQuery, the scope is required to be specified.
+ * Returns an Array instead of a NodeList.
  * @template {Element} [TElement=Element]
  * @param {ParentNode} scope
  * @param {string} sel
@@ -109,6 +125,8 @@ export const $$ = (scope, sel) => Array.from(scope.querySelectorAll(sel))
 
 /**
  * @typedef EventListenerToken
+ * Returned by `on`, this is an object you can pass to `off` to remove an event listener,
+ * saving the burden of keeping a handle on the listener function and options.
  * @property {EventTarget} target
  * @property {string} type
  * @property {EventListener} listener
@@ -123,13 +141,12 @@ export const $$ = (scope, sel) => Array.from(scope.querySelectorAll(sel))
 
 /**
  * Add an event listener.
- * 
  * @template {string} TEventType
- * @param {EventTarget} target
- * @param {TEventType} type
- * @param {Listener<TEventType>} listener
+ * @param {EventTarget} target - The element (or other event target) to add the listener to.
+ * @param {TEventType} type - The type of event to listen to, e.g. `"click"`.
+ * @param {Listener<TEventType>} listener - The listener function.
  * @param {object} [options]
- * @param {Element} [options.addedBy] If supplied, the listener will be removed when this element is not in the DOM.
+ * @param {Element} [options.addedBy] - If supplied, the listener will be removed when this element is not in the DOM.
  * @returns {EventListenerToken}
  */
 export const on = (target, type, listener, options = {}) => {
@@ -143,26 +160,31 @@ export const on = (target, type, listener, options = {}) => {
 
 /**
  * Remove an event listener.
- * @param {EventListenerToken} listenerToken The return value of {@link on}.
+ * @param {EventListenerToken} listenerToken - The return value of {@link on}.
  */
 export const off = ({ target, type, listener, options }) => target.removeEventListener(type, listener, options)
 
 /**
- * @param {string} o How to halt
- * @param {Event} f 
+ * "Halt" an event -- convenient wrapper for `preventDefault`, `stopPropagation`, and `stopImmediatePropagation`.
+ * @param {string} o How to halt. Space-separated list of "default", "bubbling" and "propagation".
+ * @param {Event} e The event. 
  * @returns {void}
  */
-export const halt = (o, f) => {
+export const halt = (o, e) => {
   for (const t of o.split(" ")) {
-    if (t === "default") f.preventDefault();
-    if (t === "bubbling") f.stopPropagation();
-    if (t === "propagation") f.stopImmediatePropagation();
+    if (t === "default") e.preventDefault();
+    if (t === "bubbling") e.stopPropagation();
+    if (t === "propagation") e.stopImmediatePropagation();
   }
 }
 
 /**
+ * Decorator for any event listener to call {@link halt}.
+ * 
+ *     on(el, "click", halts("default", e => ...))
+ *
  * @template {Event} T
- * @param {string} o 
+ * @param {string} o See {@link halt~o}.
  * @param {(e: T) => void} f 
  * @returns {(e: T) => void}
  */
@@ -170,9 +192,9 @@ export const halts = (o, f) => e => { halt(o, e); f(e) };
 
 /**
  * Dispatch a {@link CustomEvent}.
- * @param {EventTarget} el
- * @param {String} type
- * @param {any} [detail]
+ * @param {EventTarget} el - the event target
+ * @param {String} type - the event type, e.g. `"myapp:clear-cart"`
+ * @param {any} [detail] - Event.detail
  */
 export const dispatch = (el, type, detail) => el.dispatchEvent(new CustomEvent(type, { detail }))
 
@@ -185,8 +207,9 @@ export const dispatch = (el, type, detail) => el.dispatchEvent(new CustomEvent(t
  * - attr(el, [ nameA: "valueA", nameB: "valueB" ]) Set the attributes name-a to "valueA", name-b to "valueB"
  * 
  * @param {Element} el 
- * @param {string | object} name 
- * @param  {any} value 
+ * @param {string | object} name - The attribute name **or** a map of names to values.
+ *   If an object is passed, camelCase attribute names will be converted to kebab-case.
+ * @param  {any} value - The value of the attribute, when setting. Pass `null` to remove an attribute.
  * @returns {string | null}
  */
 export const attr = (el, name, value = undefined) => {
@@ -215,8 +238,8 @@ export const stringifyNode = node => {
  * HTML-escape a string.
  * If given a DOM node, it will return **unescaped** HTML for it.
  * Returns empty string when given null or undefined.
- * @param {any} s 
- * @returns string
+ * @param {any} s
+ * @returns {string}
  */
 export const htmlescape = s => {
   if (s === null || s === undefined) return "";
@@ -256,16 +279,21 @@ export const asHtml = el => el instanceof HTMLElement ? el : null;
 
 /**
  * Find the next element matching a given selector, searching deeply throughout the DOM.
+ * @see Traverse
  */
 export const next = traverse("next")
 
 /**
  * Find the previous element matching a given selector, searching deeply throughout the DOM.
+ * @see Traverse
  */
 export const prev = traverse("previous")
 
 /**
  * Create a handler for keyboard events using a keyboard shortcut DSL.
+ * 
+ * "ArrowLeft"
+ * "Ctrl+Alt+3"
  * 
  * @param {Hotkeys} hotkeys 
  * @returns {KeyboardEventListener}
@@ -304,11 +332,12 @@ export const hotkey = (hotkeys) => {
 
 /**
  * Debounce a function.
+ * 
  * @template {*[]} TArgs
- * @param {number} t 
- * @param {(...args: TArgs) => void} f 
+ * @param {number} t - The debounce time.
+ * @param {(...args: TArgs) => void} f - The function.
  * @param {object} options 
- * @param {("leading" | "trailing")} [options.mode] 
+ * @param {("leading" | "trailing")} [options.mode] - Leading or trailing debounce.
  * @returns {(...args: TArgs) => void}
  */
 export const debounce = (t, f, { mode = "trailing" } = {}) => {
