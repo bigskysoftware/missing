@@ -1,4 +1,4 @@
-import { $, attr, behavior, makelogger, on } from "./19.js";
+import { $, asHtml, attr, behavior, makelogger, on } from "./19.js";
 
 const ilog = makelogger("overflow-nav");
 
@@ -8,8 +8,7 @@ const ilog = makelogger("overflow-nav");
 const overflowNav = behavior("[data-overflow-nav]", (navbar, {
     options: { expandedClass = "expanded" }
 }) => {
-    /** @type {HTMLElement | null} */
-    const expandToggle = $(navbar, "[data-nav-expander]");
+    const expandToggle = asHtml($(navbar, "[data-nav-expander]"));
 
     if (expandToggle === null) return ilog("Expand toggle missing from navbar ", navbar);
 
@@ -46,9 +45,7 @@ const overflowNav = behavior("[data-overflow-nav]", (navbar, {
         if (wasHidden != expandToggle.hidden) toggleExpansion(false);
     };
 
-    on(expandToggle, "click", () => {
-        toggleExpansion()
-    });
+    on(expandToggle, "click", () => toggleExpansion());
 
     update();
 
