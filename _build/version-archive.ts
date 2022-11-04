@@ -1,6 +1,6 @@
 #!/usr/bin/env -S deno run -A
 
-import $ from "https://deno.land/x/dax@0.9.0/mod.ts";
+import $ from "https://deno.land/x/dax@0.15.0/mod.ts";
 
 const projectRoot = $.path.join($.path.fromFileUrl(import.meta.url), "../..");
 const repo = "https://github.com/bigskysoftware/missing"; // TODO: add fast path of cloning from existing repo (doesn't work in netlify build)
