@@ -52,11 +52,12 @@
  * 
  * @typedef {<T>(...args: [..._: any, last: T]) => T} Logger
  */
-export const makelogger = (scope) =>
-  (...args) => {
-    console.log("%c%s", "color:green", scope, ...args)
+export function makelogger(scope) {
+  return (...args) => {
+    console.log("%c%s", "color:green", scope, ...args);
     return args.at(-1);
   };
+}
 
 const ilog = makelogger("19.js");
 
@@ -65,15 +66,14 @@ const ilog = makelogger("19.js");
  * @param {string} s 
  * @returns string
  */
-const camelToKebab = s => s.replace(/[A-Z]/g, (s) => "-" + s.toLowerCase())
+function camelToKebab(s) {
+  return s.replace(/[A-Z]/g, (s) => "-" + s.toLowerCase());
+}
 
 /**
- * Build a function to traverse the DOM forward or backward from a starting point
+ * Traverse the DOM forward or backward from a starting point
  * to find an element matching some selector.
- * @param {("next" | "previous")} direction 
- * @returns {Traverse}
- * 
- * @callback Traverse
+ * @param {("next" | "previous")} direction
  * @param {ParentNode} root - The element within which to look for the next element, e.g. a menu.
  * @param {string} selector - The selector to look for, e.g. `"[role=menuitem]"`.
  * @param {Element | null} [current] - The element to start the search from, e.g. the currently selected menu item.
@@ -81,26 +81,28 @@ const camelToKebab = s => s.replace(/[A-Z]/g, (s) => "-" + s.toLowerCase())
  * @param {object} [options]
  * @param {boolean} [options.wrap] Whether to wrap around when the end/start of {@link root} is reached.
  */
-const traverse = (direction) => {
+export function traverse(direction, root, selector, current, options) {
+  const { wrap = true } = options ?? {};
+
   const advance = direction + "ElementSibling";
   const wrapIt = direction === "next"
     ? (root, selector) => $(root, selector)
     : (root, selector) => $$(root, selector).at(-1);
-  return (root, selector, current, { wrap = true } = {}) => {
-    if (!current) return wrap ? wrapIt(root, selector) : null;
-    let cursor = current;
-    while (true) {
-      while (cursor[advance] === null) {
-        cursor = /** @type {Element} */ (cursor.parentElement);
-        if (cursor === root) return wrap ? wrapIt(root, selector) : null;
-      }
-      cursor = cursor[advance];
-      const found = cursor.matches(selector) ? cursor : $(cursor, selector);
-      if (found) return found;
+  if (!current)
+    return wrap ? wrapIt(root, selector) : null;
+  let cursor = current;
+  while (true) {
+    while (cursor[advance] === null) {
+      cursor = /** @type {Element} */ (cursor.parentElement);
+      if (cursor === root)
+        return wrap ? wrapIt(root, selector) : null;
     }
-    return cursor;
-  };
-};
+    cursor = cursor[advance];
+    const found = cursor.matches(selector) ? cursor : $(cursor, selector);
+    if (found)
+      return found;
+  }
+}
 
 /**
  * Wrapper for {@link scope}.querySelector({@link sel}).
@@ -110,7 +112,9 @@ const traverse = (direction) => {
  * @param {string} sel
  * @returns {TElement | null}
  */
-export const $ = (scope, sel) => scope.querySelector(sel)
+export function $(scope, sel) {
+  return scope.querySelector(sel);
+}
 
 /**
  * Wrapper for {@link scope}.querySelectorAll({@link sel}).
@@ -121,7 +125,9 @@ export const $ = (scope, sel) => scope.querySelector(sel)
  * @param {string} sel
  * @returns {TElement[]}
  */
-export const $$ = (scope, sel) => Array.from(scope.querySelectorAll(sel))
+export function $$(scope, sel) {
+  return Array.from(scope.querySelectorAll(sel));
+}
 
 /**
  * @typedef EventListenerToken
@@ -149,20 +155,23 @@ export const $$ = (scope, sel) => Array.from(scope.querySelectorAll(sel))
  * @param {Element} [options.addedBy] - If supplied, the listener will be removed when this element is not in the DOM.
  * @returns {EventListenerToken}
  */
-export const on = (target, type, listener, options = {}) => {
+export function on(target, type, listener, options = {}) {
   const listenerWrapper = e => {
-    if (options.addedBy && !options.addedBy.isConnected) off({ target, type: type, listener: listenerWrapper, options }); // self-cleaning listener
+    if (options.addedBy && !options.addedBy.isConnected)
+      off({ target, type: type, listener: listenerWrapper, options }); // self-cleaning listener
     return listener(e);
-  }
-  target.addEventListener(type, /** @type {EventListener} */ (listener), /** @type {AddEventListenerOptions} */ (options));
-  return { target, type: type, options, listener: listenerWrapper }
+  };
+  target.addEventListener(type, /** @type {EventListener} */(listener), /** @type {AddEventListenerOptions} */(options));
+  return { target, type: type, options, listener: listenerWrapper };
 }
 
 /**
  * Remove an event listener.
  * @param {EventListenerToken} listenerToken - The return value of {@link on}.
  */
-export const off = ({ target, type, listener, options }) => target.removeEventListener(type, listener, options)
+export function off({ target, type, listener, options }) {
+  return target.removeEventListener(type, listener, options);
+}
 
 /**
  * "Halt" an event -- convenient wrapper for `preventDefault`, `stopPropagation`, and `stopImmediatePropagation`.
@@ -170,11 +179,14 @@ export const off = ({ target, type, listener, options }) => target.removeEventLi
  * @param {Event} e The event. 
  * @returns {void}
  */
-export const halt = (o, e) => {
+export function halt(o, e) {
   for (const t of o.split(" ")) {
-    if (t === "default") e.preventDefault();
-    if (t === "bubbling") e.stopPropagation();
-    if (t === "propagation") e.stopImmediatePropagation();
+    if (t === "default")
+      e.preventDefault();
+    if (t === "bubbling")
+      e.stopPropagation();
+    if (t === "propagation")
+      e.stopImmediatePropagation();
   }
 }
 
@@ -188,7 +200,9 @@ export const halt = (o, e) => {
  * @param {(e: T) => void} f 
  * @returns {(e: T) => void}
  */
-export const halts = (o, f) => e => { halt(o, e); f(e) };
+export function halts(o, f) {
+  return e => { halt(o, e); f(e); };
+}
 
 /**
  * Dispatch a {@link CustomEvent}.
@@ -196,7 +210,9 @@ export const halts = (o, f) => e => { halt(o, e); f(e) };
  * @param {String} type - the event type, e.g. `"myapp:clear-cart"`
  * @param {any} [detail] - Event.detail
  */
-export const dispatch = (el, type, detail) => el.dispatchEvent(new CustomEvent(type, { detail }))
+export function dispatch(el, type, detail) {
+  return el.dispatchEvent(new CustomEvent(type, { detail }));
+}
 
 /**
  * Get, remove or set an attribute.
@@ -212,15 +228,19 @@ export const dispatch = (el, type, detail) => el.dispatchEvent(new CustomEvent(t
  * @param  {any} value - The value of the attribute, when setting. Pass `null` to remove an attribute.
  * @returns {string | null}
  */
-export const attr = (el, name, value = undefined) => {
+export function attr(el, name, value = undefined) {
   const curValue = el.getAttribute(name);
   if (typeof name === "object") {
-    for (const at in name) el.setAttribute(camelToKebab(at), name[at]);
+    for (const at in name)
+      el.setAttribute(camelToKebab(at), name[at]);
     return null;
   }
-  else if (value === undefined) return el.getAttribute(name);
-  else if (value === null)      return el.removeAttribute(name), curValue;
-  else                          return el.setAttribute(name, value), value;
+  else if (value === undefined)
+    return el.getAttribute(name);
+  else if (value === null)
+    return el.removeAttribute(name), curValue;
+  else
+    return el.setAttribute(name, value), value;
 }
 
 /**
@@ -228,7 +248,7 @@ export const attr = (el, name, value = undefined) => {
  * @param {Node} node 
  * @returns {string}
  */
-export const stringifyNode = node => {
+export function stringifyNode(node) {
   const tmp = document.createElement("div");
   tmp.append(node);
   return tmp.innerHTML;
@@ -241,15 +261,17 @@ export const stringifyNode = node => {
  * @param {any} s
  * @returns {string}
  */
-export const htmlescape = s => {
-  if (s === null || s === undefined) return "";
-  if (s instanceof Node) return stringifyNode(s);
+export function htmlescape(s) {
+  if (s === null || s === undefined)
+    return "";
+  if (s instanceof Node)
+    return stringifyNode(s);
   return String(s)
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
     .replaceAll("'", "&#x27;")
-    .replaceAll("\"", "&quot;")
+    .replaceAll("\"", "&quot;");
 }
 
 /**
@@ -262,9 +284,10 @@ export const htmlescape = s => {
  * @param  {...any} values 
  * @returns {DocumentFragment}
  */
-export const html = (str, ...values) => {
+export function html(str, ...values) {
   // template literal case
-  if (typeof str === "object" && "raw" in str) str = String.raw(str, ...values.map(htmlescape))
+  if (typeof str === "object" && "raw" in str)
+    str = String.raw(str, ...values.map(htmlescape));
   const tmpl = document.createElement("template");
   tmpl.innerHTML = str;
   return tmpl.content;
@@ -275,19 +298,37 @@ export const html = (str, ...values) => {
  * @param {*} [el] 
  * @returns {HTMLElement | null}
  */
-export const asHtml = el => el instanceof HTMLElement ? el : null;
+export function asHtml(el) {
+  return el instanceof HTMLElement ? el : null;
+}
 
 /**
  * Find the next element matching a given selector, searching deeply throughout the DOM.
- * @see Traverse
+ * @see traverse
+ * @param {ParentNode} root - The element within which to look for the next element, e.g. a menu.
+ * @param {string} selector - The selector to look for, e.g. `"[role=menuitem]"`.
+ * @param {Element | null} [current] - The element to start the search from, e.g. the currently selected menu item.
+ *    If missing, the first or last matching element will be returned (depending on search direction).
+ * @param {object} [options]
+ * @param {boolean} [options.wrap] Whether to wrap around when the end/start of {@link root} is reached.
  */
-export const next = traverse("next")
+export function next(root, selector, current, options) {
+  return traverse("next", root, selector, current, options);
+}
 
 /**
  * Find the previous element matching a given selector, searching deeply throughout the DOM.
- * @see Traverse
+ * @see traverse
+ * @param {ParentNode} root - The element within which to look for the next element, e.g. a menu.
+ * @param {string} selector - The selector to look for, e.g. `"[role=menuitem]"`.
+ * @param {Element | null} [current] - The element to start the search from, e.g. the currently selected menu item.
+ *    If missing, the first or last matching element will be returned (depending on search direction).
+ * @param {object} [options]
+ * @param {boolean} [options.wrap] Whether to wrap around when the end/start of {@link root} is reached.
  */
-export const prev = traverse("previous")
+ export function prev(root, selector, current, options) {
+  return traverse("previous", root, selector, current, options);
+}
 
 /**
  * Create a handler for keyboard events using a keyboard shortcut DSL.
@@ -303,24 +344,23 @@ export const prev = traverse("previous")
  * @callback KeyboardEventListener
  * @param {KeyboardEvent} event
  */
-export const hotkey = (hotkeys) => {
+export function hotkey(hotkeys) {
   const alt = 0b1, ctrl = 0b10, meta = 0b100, shift = 0b1000;
   const
-  handlers = {}, // handlers[key][modifiers as bitfields]
-  modifiersOf = e => 0 | (e.altKey && alt) | (e.ctrlKey && ctrl) | (e.metaKey && meta) | (e.shiftKey && shift),
-  parse = hotkeySpec => {
-    const
-    tokens = hotkeySpec.split("+"),
-    key = tokens.pop();
-    let modifiers = 0 | 0;
-    for (const token in tokens) switch (token.toLowerCase()) {
-    case "alt":   modifiers |= alt;   break;
-    case "ctrl":  modifiers |= ctrl;  break;
-    case "meta":  modifiers |= meta;  break;
-    case "shift": modifiers |= shift; break;
-    }
-    return [key, modifiers];
-  };
+    handlers = {}, // handlers[key][modifiers as bitfields]
+    modifiersOf = e => 0 | (e.altKey && alt) | (e.ctrlKey && ctrl) | (e.metaKey && meta) | (e.shiftKey && shift), parse = hotkeySpec => {
+      const
+        tokens = hotkeySpec.split("+"), key = tokens.pop();
+      let modifiers = 0 | 0;
+      for (const token in tokens)
+        switch (token.toLowerCase()) {
+          case "alt": modifiers |= alt; break;
+          case "ctrl": modifiers |= ctrl; break;
+          case "meta": modifiers |= meta; break;
+          case "shift": modifiers |= shift; break;
+        }
+      return [key, modifiers];
+    };
 
   for (const [hotkeySpec, handler] of Object.entries(hotkeys)) {
     const [key, modifiers] = parse(hotkeySpec);
@@ -340,16 +380,19 @@ export const hotkey = (hotkeys) => {
  * @param {("leading" | "trailing")} [options.mode] - Leading or trailing debounce.
  * @returns {(...args: TArgs) => void}
  */
-export const debounce = (t, f, { mode = "trailing" } = {}) => {
+export function debounce(t, f, { mode = "trailing" } = {}) {
   let timeout;
   return (...args) => {
-    if (timeout) clearTimeout(timeout);
-    else if (mode === "leading") f(...args);
+    if (timeout)
+      clearTimeout(timeout);
+    else if (mode === "leading")
+      f(...args);
     timeout = setTimeout(() => {
-      if (mode === "trailing") f(...args);
+      if (mode === "trailing")
+        f(...args);
       timeout = null;
     }, t);
-  }
+  };
 }
 
 /**
@@ -360,17 +403,18 @@ export const debounce = (t, f, { mode = "trailing" } = {}) => {
  * @param {BehaviorInit<TOptions>} init 
  * @returns {Behavior<TOptions>} A function that can be called to apply the behavior to new elements within a subtree.
  */
-export const behavior = (selector, init) => {
-  const initialized = new WeakSet
+export function behavior(selector, init) {
+  const initialized = new WeakSet;
   return (subtree = document, options = {}) => {
     const root = /** @type {Document|ShadowRoot} */ (subtree.getRootNode());
     $$(subtree, selector).forEach(el => {
-      if (initialized.has(el)) return;    
+      if (initialized.has(el))
+        return;
       initialized.add(el);
       init(el, { options, root });
     });
   };
-};
+}
 
 /**
  * Repeat an element such that the list can be updated when data changes.
@@ -383,33 +427,39 @@ export const behavior = (selector, init) => {
  * @param {(el: Element, data: TData) => void} [context.update]
  * @returns 
  */
-export const repeater = (container, { idOf, create, update }) => {
+export function repeater(container, { idOf, create, update }) {
   return (dataset) => {
     let cursor;
 
     const
-    append = (...nodes) => {
-      const oldcursor = cursor;
-      cursor = nodes.at(-1);
-      if (cursor instanceof DocumentFragment) cursor = cursor.lastChild;
-      if (oldcursor) oldcursor.after(...nodes);
-      else container.prepend(...nodes);
-    },
-    clearAfter = cursor => {
-      if (cursor) while (cursor.nextSibling) cursor.nextSibling.remove();
-      else container.replaceChildren();
-    };
+      append = (...nodes) => {
+        const oldcursor = cursor;
+        cursor = nodes.at(-1);
+        if (cursor instanceof DocumentFragment)
+          cursor = cursor.lastChild;
+        if (oldcursor)
+          oldcursor.after(...nodes);
+        else
+          container.prepend(...nodes);
+      }, clearAfter = cursor => {
+        if (cursor)
+          while (cursor.nextSibling)
+            cursor.nextSibling.remove();
+        else
+          container.replaceChildren();
+      };
 
     const root = /** @type {Root} */ (container.getRootNode());
 
     // TODO: use an actual morphing algo
     for (const datum of dataset) {
       const
-      id = idOf(datum),
-      existing = root.getElementById(id);
-      if (existing) append(update?.(existing, datum) ?? existing);
-      else append(create(datum, { id }));
+        id = idOf(datum), existing = root.getElementById(id);
+      if (existing)
+        append(update?.(existing, datum) ?? existing);
+      else
+        append(create(datum, { id }));
     }
     clearAfter(cursor);
-  }
+  };
 }
