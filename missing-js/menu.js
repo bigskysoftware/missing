@@ -70,8 +70,8 @@ export const menu = behavior(sMenu, (menu, { root }) => {
     });
 
     on(menu, "keydown", halts("default", hotkey({
-        "ArrowUp": _ => prev(menu, sMenuitem, root.activeElement).focus(),
-        "ArrowDown": _ => next(menu, sMenuitem, root.activeElement).focus(),
+        "ArrowUp": _ => asHtml(prev(menu, sMenuitem, root.activeElement, {}))?.focus(),
+        "ArrowDown": _ => asHtml(next(menu, sMenuitem, root.activeElement, {}))?.focus(),
         "Space": _ => asHtml(root.activeElement?.closest(sMenuitem))?.click(),
         "Home": _ => firstItem(menu)?.focus(),
         "End": _ => lastItem(menu)?.focus(),

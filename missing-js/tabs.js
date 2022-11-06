@@ -65,8 +65,8 @@ export const tablist = behavior("[role=tablist]", (tablist, { root }) => {
   on(tablist, "focusin", e => switchTab(root, tablist, asHtml(asHtml(e.target)?.closest("[role=tab]"))));
 
   on(tablist, "keydown", hotkey({
-    "ArrowRight": e => next(tablist, "[role=tab]", asHtml(e.target)).focus(),
-    "ArrowLeft":  e => prev(tablist, "[role=tab]", asHtml(e.target)).focus(),
+    "ArrowRight": e => asHtml(next(tablist, "[role=tab]", asHtml(e.target)))?.focus(),
+    "ArrowLeft":  e => asHtml(prev(tablist, "[role=tab]", asHtml(e.target)))?.focus(),
     "Home": _ => tabsOf(tablist).at(0)?.focus(),
     "End": _ => tabsOf(tablist).at(-1)?.focus(),
   }));
