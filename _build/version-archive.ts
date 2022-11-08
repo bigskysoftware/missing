@@ -36,7 +36,7 @@ async function buildVersion(gitTag: string) {
     $.logStep(`Caching ${gitTag} artifacts`);
     $.logStep(`Placing ${gitTag} artifacts into archive/${gitTag}`);
     await Deno.mkdir(cachePath, { recursive: true });
-    await $.logIndent(async () => {
+    await $.logGroup(async () => {
       for await (const file of $.fs.expandGlob("missing*", { root: "dist" })) {
         $.logStep(`Copying ${file.path}`);
         await Promise.all([
