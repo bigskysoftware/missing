@@ -617,7 +617,7 @@ fieldset {
  https://html.spec.whatwg.org/multipage/interactive-elements.html#interactive-elements
  ***/
 
-details {
+details:not(specificity-hack) {
     /* SEE components/box.css */
 
 	padding-block-start: 0;
