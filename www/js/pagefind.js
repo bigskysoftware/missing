@@ -1,7 +1,7 @@
 
 /// <reference lib="es2022" />
 
-import { $, attr, next, prev, debounce, behavior, html, on, repeater, makelogger, hotkey, halt } from "/missing-js/19.js";
+import { $, attr, next, prev, debounce, behavior, html, on, repeater, makelogger, hotkey, halts } from "/missing-js/19.js";
 import * as pagefind from "/_pagefind/pagefind.js";
 
 // TODO: add listbox styling to missing.css
@@ -62,16 +62,16 @@ searchDialog = () => {
     })
 
     on(input, "keydown", hotkey({
-        "ArrowDown": halt("default", _ => {
+        "ArrowDown": halts("default", _ => {
             const item = next(results, "[role=option]", selectedItem());
             if (item) selectItem(item);
         }),
-        "ArrowUp": halt("default", _ => {
+        "ArrowUp": halts("default", _ => {
             const item = prev(results, "[role=option]", selectedItem(), { wrap: false });
             if (item) selectItem(item);
             else selectItem(null);
         }),
-        "Enter": halt("default", _ => selectedItem()?.click()),
+        "Enter": halts("default", _ => selectedItem()?.click()),
         "ArrowLeft": _ => selectItem(null),
         "ArrowRight": _ => selectItem(null),
         "Home": _ => selectItem(null),

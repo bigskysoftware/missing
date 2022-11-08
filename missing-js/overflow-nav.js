@@ -1,16 +1,16 @@
-import { $, attr, behavior, makelogger, on } from "./19.js";
+import { $, asHtml, attr, behavior, makelogger, on } from "./19.js";
 
-export
-const overflowNav = behavior("[data-overflow-nav]", (navbar, { options }) => {
-    const {
-        expandedClass = "expanded"
-    } = options;
+const ilog = makelogger("overflow-nav");
 
-    const
-    expandToggle = $(navbar, "[data-nav-expander]");
+/**
+ * @type {import("./19.js").Behavior<{ expandedClass: string }>}
+ */
+const overflowNav = behavior("[data-overflow-nav]", (navbar, {
+    options: { expandedClass = "expanded" }
+}) => {
+    const expandToggle = asHtml($(navbar, "[data-nav-expander]"));
 
-    const
-    ilog = makelogger("overflow-nav"),
+    if (expandToggle === null) return ilog("Expand toggle missing from navbar ", navbar);
 
     /*
         "The scrollWidth value is equal to the minimum width the element would
@@ -23,12 +23,11 @@ const overflowNav = behavior("[data-overflow-nav]", (navbar, { options }) => {
         scrollWidth is equal to clientWidth"
     -- MDN, "Element.scrollWidth", https://developer.mozilla.org/en-US/docs/Web/API/Element/scrollHeight
      */
-    overflows = () => navbar.scrollWidth > navbar.clientWidth,
+    const overflows = () => navbar.scrollWidth > navbar.clientWidth;
 
-    isExpanded = () => navbar.classList.contains(expandedClass),
+    const isExpanded = () => navbar.classList.contains(expandedClass);
 
-    toggleExpansion = (expand = !isExpanded()) => {
-        ilog("toggleExpansion", expand);
+    const toggleExpansion = (expand = !isExpanded()) => {
         if (expand) {
             navbar.classList.add(expandedClass);
             attr(expandToggle, "aria-pressed", true);
@@ -38,22 +37,20 @@ const overflowNav = behavior("[data-overflow-nav]", (navbar, { options }) => {
             attr(expandToggle, "aria-pressed", false);
             expandToggle.textContent = "☰";
         }
-    },
+    };
 
-    update = () => {
-        ilog("update");
+    const update = () => {
         const wasHidden = expandToggle.hidden
         expandToggle.hidden = !overflows();
         if (wasHidden != expandToggle.hidden) toggleExpansion(false);
     };
 
-    on(expandToggle, "click", () => {
-        toggleExpansion()
-    });
+    on(expandToggle, "click", () => toggleExpansion());
 
     update();
 
     on(window, "resize", () => update(), { addedBy: navbar });
 })
 
+export default overflowNav;
 overflowNav(document);

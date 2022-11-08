@@ -50,9 +50,35 @@
 
 /**/
 
-/* ugh, specificity hacks */
-*:first-child:first-child:first-child { margin-block-start: 0; }
-*:last-child:last-child:last-child    { margin-block-end:   0; }
+/* margin-trim had better be implemented soon */
+:is(
+    body,
+    .box, 
+    [role=menu],
+    .sidebar-layout > header,
+    [role=tabpanel],
+    figure,
+    details,
+    dialog,
+    aside,
+    fieldset,
+    dd,
+    td,
+    th
+) {
+    &>:first-child:first-child:first-child:first-child,
+    &>:first-child>:first-child:first-child:first-child,
+    &>:first-child>:first-child>:first-child:first-child,
+    &>:first-child>:first-child>:first-child>:first-child { margin-block-start: 0; }
+
+
+    &>:last-child:last-child:last-child:last-child,
+    &>:last-child>:last-child:last-child:last-child,
+    &>:last-child>:last-child>:last-child:last-child,
+    &>:last-child>:last-child>:last-child>:last-child { margin-block-end: 0; }
+}
+
+/**/
 
 .padding { padding-inline: var(--gap) }
 .padding-block { padding-block: var(--gap) }
