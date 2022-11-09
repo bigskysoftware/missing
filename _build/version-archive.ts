@@ -51,6 +51,6 @@ async function buildVersion(gitTag: string) {
 for (const line of await $`git tag --list`.lines()) {
   if (/^v\d+\.\d+\.\d+/.test(line)) {
     $.logStep(`Building ${line}`);
-    await $.logIndent(() => buildVersion(line));
+    await $.logGroup(() => buildVersion(line));
   }
 }
