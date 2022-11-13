@@ -461,7 +461,7 @@ input::file-selector-button,
 .\<button\> {
 	display: inline-block;
 	padding: 0 calc(var(--rhythm) / 4);
-	vertical-align: top;
+	vertical-align: middle;
 
 	font-size: .8rem;
 	line-height: 1.125em;
@@ -510,6 +510,13 @@ input::file-selector-button,
 		&[disabled] {
 			color: var(--muted-accent);
 		}
+	}
+
+	@nest &.big {
+		min-block-size: calc(1.5 * var(--rhythm));
+		font-size: 1rem;
+		padding-inline: var(--rhythm);
+		line-height: var(--rhythm);
 	}
 }
 

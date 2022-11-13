@@ -65,6 +65,21 @@ Add padding or margin in specific axes with these classes:
 Make an element full-width with the <dfn>`.width:100%`</dfn> class.
 Similarly with <dfn>`.height:100%`</dfn>.
 
+The <dfn>`.big`</dfn> class makes things bigger, with some special treatment
+for buttons.
+
+<figure>
+
+The following is a big paragraph:
+
+The following is a big button: {.big}
+
+<button class="big">Buy</button>
+<button>Maybe later</button>
+{.f-row}
+
+</figure>
+
 
 ## Scrolling
 
