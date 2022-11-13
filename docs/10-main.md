@@ -21,9 +21,9 @@ Install it on your website if you haven't already:
 <figure>
 
   ~~~ html
-  <link rel="stylesheet" href="https://the.missing.style/<%= version %>/missing.min.css">
+  <link rel="stylesheet" href="https://the.missing.style/v<%= version %>/missing.min.css">
   <!-- Prism theme (https://prismjs.com/): -->
-  <link rel="stylesheet" href="https://the.missing.style/<%= version %>/missing-prism.min.css">
+  <link rel="stylesheet" href="https://the.missing.style/v<%= version %>/missing-prism.min.css">
   ~~~
 
 </figure>
