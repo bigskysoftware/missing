@@ -67,8 +67,8 @@ Similarly with <dfn>`.height:100%`</dfn>.
 
 * * *
 
-The <dfn>`.big`</dfn> class makes things bigger, with some special treatment
-for buttons.
+The <dfn>`.big`</dfn> class makes things bigger, with special treatment for
+some elements:
 
 <figure>
 
@@ -79,6 +79,12 @@ The following is a big button: {.big}
 <button class="big">Buy</button>
 <button>Maybe later</button>
 {.f-row .align-items:center}
+
+<aside class="big">
+
+An `<aside>` with the `.big` class becomes a pull quote.
+
+</aside>
 
 </figure>
 

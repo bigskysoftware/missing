@@ -44,6 +44,18 @@ aside {
 		text-transform: none;
 		letter-spacing: none;
 	}
+
+	&.big {
+		/* Pull quote */
+		background: none;
+		border: none;
+		border-inline-start: 1px solid var(--muted-fg);
+		border-radius: 0;
+		padding: 0;
+		padding-inline-start: var(--rhythm);
+		font-style: italic;
+		color: var(--accent);
+	}
 }
 
 h1, h2, h3, h4, h5, h6,
