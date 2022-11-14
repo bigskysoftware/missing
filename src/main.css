@@ -515,7 +515,7 @@ input::file-selector-button,
 	@nest &.big {
 		min-block-size: calc(1.5 * var(--rhythm));
 		font-size: 1rem;
-		padding-inline: var(--rhythm);
+		padding-inline: calc(.5 * var(--rhythm));
 		line-height: var(--rhythm);
 	}
 }

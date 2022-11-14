@@ -134,6 +134,13 @@
 
 /**/
 
+.big {
+    font-size: 1.4em;
+    line-height: calc(1.5 * var(--rhythm));
+}
+
+/**/
+
 .fixed  { position: fixed  }
 .sticky { position: sticky }
 
