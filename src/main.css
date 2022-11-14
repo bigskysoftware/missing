@@ -344,6 +344,7 @@ time {
 
 code, samp, kbd {
 	font-family: var(--mono-font);
+	font-style: normal;
 }
 
 samp {
