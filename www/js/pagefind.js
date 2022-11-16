@@ -25,7 +25,7 @@ updateResultItem = (item, result) => {
     return item;
 },
 searchDialog = () => {
-    const dialog = /** @type {HTMLDialogElement} */ (html`
+    const markup = (html`
         <dialog class="margin f-col" style="max-width: 100%; width: 30em; max-height: 100%; height: 40em">
             <label for="search-input" class="titlebar" style="margin-inline: calc(-1*var(--gap))">
                 Search
@@ -33,9 +33,9 @@ searchDialog = () => {
             <p><input autofocus id="search-input" class="block width:100%"></p>
             <div role="listbox" aria-label="results" class="flow-gap padding-inline" style="overflow-y: auto; margin-inline: calc(-1*var(--gap))"></div>
         </dialog>
-    `.children[0]);
+    `);
 
-    const input = $(dialog, "input"), results = $(dialog, "[role=listbox]");
+    const dialog = $(markup, "dialog"), input = $(dialog, "input"), results = $(dialog, "[role=listbox]");
     
     const
     showSearchResults = repeater(results, {
