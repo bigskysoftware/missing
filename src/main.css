@@ -128,12 +128,12 @@ h6:target {
 
 header {
 	font-family: var(--secondary-font);
-	border-block-end: 1px solid var(--faded-fg);
+	border-block-end: 1px solid var(--graphical-fg);
 }
 
 footer {
 	font-family: var(--secondary-font);
-	border-block-start: 1px solid var(--faded-fg);
+	border-block-start: 1px solid var(--graphical-fg);
 }
 
 body > header,
@@ -190,7 +190,7 @@ blockquote {
 	line-height: var(--rhythm);
 	font-style: italic;
 
-	border-inline-start: 1px solid var(--faded-fg);
+	border-inline-start: 1px solid var(--graphical-fg);
 	color: var(--muted-fg);
 
 	& em, & cite, & dfn, & var, & i, & address {
@@ -316,7 +316,7 @@ small {
 		transition: transform .1s ease-in-out;
 
 		&:hover, &:focus-within {
-			border: 1px solid var(--faded-fg);
+			border: 1px solid var(--graphical-fg);
 			border-radius: var(--border-radius);
 			transform: translateX(calc(
 				0px - var(--sidenote-width)
@@ -370,7 +370,7 @@ kbd kbd /*
 	line-height: 1.1em;
 
 	background: var(--interactive-bg);
-	border: 1px outset var(--faded-fg);
+	border: 1px outset var(--graphical-fg);
 	border-block-end-width: 3px;
 	border-radius: var(--border-radius);
 }
@@ -558,7 +558,7 @@ textarea {
 
 	background: var(--bg);
 	color: var(--fg);
-	border: 1px solid var(--faded-fg);
+	border: 1px solid var(--graphical-fg);
 	border-radius: var(--border-radius);
 
 	vertical-align: top;
@@ -630,7 +630,7 @@ fieldset {
 
 	& > legend + * { margin-block-start: 0 }
 
-	border: 1px solid var(--faded-fg);
+	border: 1px solid var(--graphical-fg);
 }
 /***
  4.11 Interactive elements

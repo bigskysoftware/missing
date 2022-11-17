@@ -2,31 +2,31 @@
 .plain {
     --box-bg: var(--plain-bg);
     --accent: var(--plain-fg);
-    --faded-fg: var(--plain-faded-fg);
+    --graphical-fg: var(--plain-graphical-fg);
 }
 
 .info {
     --box-bg: var(--info-bg);
     --accent: var(--info-fg);
-    --faded-fg: var(--info-faded-fg);
+    --graphical-fg: var(--info-graphical-fg);
 }
 
 .ok {
     --box-bg: var(--ok-bg);
     --accent: var(--ok-fg);
-    --faded-fg: var(--ok-faded-fg);
+    --graphical-fg: var(--ok-graphical-fg);
 }
 
 .warn {
     --box-bg: var(--warn-bg);
     --accent: var(--warn-fg);
-    --faded-fg: var(--warn-faded-fg);
+    --graphical-fg: var(--warn-graphical-fg);
 }
 
 .bad {
     --box-bg: var(--bad-bg);
     --accent: var(--bad-fg);
-    --faded-fg: var(--bad-faded-fg);
+    --graphical-fg: var(--bad-graphical-fg);
 }
 
 .color {
@@ -39,5 +39,5 @@
 
 .border {
     border-style: solid;
-	border-color: var(--faded-fg);
+	border-color: var(--graphical-fg);
 }

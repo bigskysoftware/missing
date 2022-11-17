@@ -2,9 +2,10 @@
 :root {
 	/* Colors */
 	--fg: var(--gray-12); /* Text. */
-	--muted-fg: var(--gray-10); /* De-emphasized or disabled elements' text. Will be
+	--muted-fg: var(--gray-10); /* Secondary text color. Will be
 		used with a background of --c-bg and --c-bg-2 -- check contrast! */
-	--faded-fg: var(--plain-faded-fg); /* De-emphasized or disabled graphical elements. Will not
+	--faded-fg: var(--gray-6); /* Disabled text color. */
+	--graphical-fg: var(--plain-graphical-fg); /* Graphical elements. Will not
 		be used as a text color. */
 	
 	--plain-fg: var(--blue-10);
@@ -13,11 +14,11 @@
 	--bad-fg: var(--red-11);
 	--warn-fg: var(--yellow-11);
 
-	--plain-faded-fg: var(--gray-6);
-	--info-faded-fg: var(--blue-6);
-	--ok-faded-fg: var(--green-6);
-	--bad-faded-fg: var(--red-6);
-	--warn-faded-fg: var(--yellow-6);
+	--plain-graphical-fg: var(--gray-6);
+	--info-graphical-fg: var(--blue-6);
+	--ok-graphical-fg: var(--green-6);
+	--bad-graphical-fg: var(--red-6);
+	--warn-graphical-fg: var(--yellow-6);
 	
 	--bg: var(--gray-0); /* Page background. */
 	--box-bg: var(--plain-bg); /* Background for blocks: cards, admonitions etc. */

@@ -15,7 +15,7 @@
     min-height: var(--rhythm);
     
     color: var(--fg);
-    border: solid var(--faded-fg);
+    border: solid var(--graphical-fg);
     border-width: 1px 1px 0 1px;
     border-block-end-color: transparent;
     background: var(--interactive-bg);

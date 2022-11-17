@@ -14,7 +14,7 @@ aside {
     
     border-radius: var(--border-radius);
     background: var(--box-bg);
-    border: 1px solid var(--faded-fg);
+    border: 1px solid var(--graphical-fg);
 }
 
 .titlebar {
@@ -28,7 +28,7 @@ aside {
 
     translate: 0 calc(-1px - var(--gap));
 
-    background: var(--faded-fg);
+    background: var(--graphical-fg);
     color: var(--bg);
 }
 

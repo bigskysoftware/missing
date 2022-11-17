@@ -14,7 +14,7 @@ here is the `.ok` colorway in the missing.css source code:
   .ok {
       --box-bg: var(--ok-bg);
       --accent: var(--ok-fg);
-      --faded-fg: var(--ok-faded-fg);
+      --graphical-fg: var(--ok-graphical-fg);
   }
   ~~~
 

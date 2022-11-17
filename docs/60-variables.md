@@ -29,7 +29,10 @@ classes; these will be listed in the documentation for that class.
     color is readable against all of the background colors.
 
 <dfn>`--faded-fg`</dfn> {#var-faded-fg}
-:   De-emphasized graphical elements. Borders. Will not be used as a text color.
+:   Text for disabled interactive components.
+
+<dfn>`--graphical-fg`</dfn> {#var-graphical-fg}
+:   Graphical elements like borders. Not text.
 
 <dfn>`--box-bg`</dfn> {#var-bg-2}
 :   Background for blocks: cards, admonitions etc.
@@ -62,19 +65,19 @@ classes; these will be listed in the documentation for that class.
 <dfn>`--warn-fg`</dfn> {#var-warn-fg}
 :   Foreground color for the `.warn` [colorway][].
 
-<dfn>`--plain-faded-fg`</dfn> {#var-plain-faded-fg}
+<dfn>`--plain-graphical-fg`</dfn> {#var-plain-graphical-fg}
 :   Graphical elements (i.e. borders) color for the `.plain` [colorway][].
 
-<dfn>`--info-faded-fg`</dfn> {#var-info-faded-fg}
+<dfn>`--info-graphical-fg`</dfn> {#var-info-graphical-fg}
 :   Graphical elements (i.e. borders) color for the `.info` [colorway][].
 
-<dfn>`--ok-faded-fg`</dfn> {#var-ok-faded-fg}
+<dfn>`--ok-graphical-fg`</dfn> {#var-ok-graphical-fg}
 :   Graphical elements (i.e. borders) color for the `.ok` [colorway][].
 
-<dfn>`--bad-faded-fg`</dfn> {#var-bad-faded-fg}
+<dfn>`--bad-graphical-fg`</dfn> {#var-bad-graphical-fg}
 :   Graphical elements (i.e. borders) color for the `.bad` [colorway][].
 
-<dfn>`--warn-faded-fg`</dfn> {#var-warn-faded-fg}
+<dfn>`--warn-graphical-fg`</dfn> {#var-warn-graphical-fg}
 :   Graphical elements (i.e. borders) color for the `.warn` [colorway][].
 
 <dfn>`--plain-bg`</dfn> {#var-plain-bg}
