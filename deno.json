@@ -5,6 +5,9 @@
     "dev": "deno task www -s --dev",
     "css": "deno task www",
     "archive": "./_build/version-archive.ts",
-    "www": "deno eval \"import 'lume/task.ts'\" -- --config=_lume_config.ts"
+    "www": "deno eval \"import 'lume/task.ts'\" -- --config=_lume_config.ts",
+    "lume": "echo \"import 'lume/cli.ts'\" | deno run --unstable -A -",
+    "build": "deno task lume",
+    "serve": "deno task lume -s"
   }
 }
