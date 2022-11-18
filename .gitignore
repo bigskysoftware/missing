@@ -6,3 +6,6 @@ _bin
 
 # Local Netlify folder
 .netlify
+
+# esm.sh :[
+deno.lock
