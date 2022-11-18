@@ -505,8 +505,7 @@ input::file-selector-button,
 	}
 	
 	&[aria-pressed="true"], &[aria-expanded="true"] {
-		box-shadow: 0 .05em var(--accent);
-		transform: translateY(.05em);
+		box-shadow: 0 .05em var(--accent) inset;
 		background: var(--pressed-interactive-bg);
 	}
 
