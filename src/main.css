@@ -270,11 +270,14 @@ main {
 
 /* Text-level semantics */
 
-a {
+a, .\<a\> {
 	color: var(--link-fg, var(--accent));
 	font-family: var(--secondary-font);
 	border-radius: var(--border-radius);
 	outline-offset: 1px;
+	background: none;
+	border: none;
+	font-size: 1em;
 	
 	@nest .list-of-links & {
 		text-decoration: none;
@@ -324,6 +327,10 @@ small {
 			))
 		}
 	}
+}
+
+small, .\<small\> {
+	font-size: .8em;
 }
 
 s {
