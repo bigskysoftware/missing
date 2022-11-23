@@ -436,7 +436,7 @@ caption {
 }
 
 tbody {
-	border-block: 1px solid var(--fg);
+	border-block: 1px solid var(--faded-fg);
 }
 
 thead {
