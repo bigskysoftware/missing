@@ -88,6 +88,8 @@ An `<aside>` with the `.big` class becomes a pull quote.
 
 </figure>
 
+To get a smaller font size, use the `.<small>` masquerade.
+
 
 ## Scrolling
 

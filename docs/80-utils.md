@@ -97,6 +97,8 @@ The following classes can be used to make one element look like another:
 - <dfn>`.<h5>`</dfn>
 - <dfn>`.<h6>`</dfn>
 - <dfn>`.<button>`</dfn>
+- <dfn>`.<a>`</dfn>
+- <dfn>`.<small>`</dfn>
 {role="list" .tool-bar}
 
 <figure>
