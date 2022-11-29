@@ -1,0 +1,24 @@
+{
+  "name": "missing.style",
+  "version": "1.0.4",
+  "description": "missing.css is the CSS library we wished already existed.",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bigskysoftware/missing.git"
+  },
+  "keywords": [],
+  "license": "BSD 2-Clause",
+  "bugs": {
+    "url": "https://github.com/bigskysoftware/missing/issues"
+  },
+  "homepage": "https://missing.style",
+  "files": [
+    "LICENSE",
+    "README.md",
+    "dist/missing-js/*.js",
+    "dist/*.css"
+  ]
+}
