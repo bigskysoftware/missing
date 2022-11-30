@@ -24,8 +24,7 @@ jobs:
       - run: npm ci
       - run: |
           echo "new_version=$(echo 'v1.0.4' | cut -c 2-)" >> $GITHUB_ENV
-      - run: |
-          echo "${{env.new_version}}"
+      - run: npm version ${{env.new_version}}
       - run: npm publish --dry-run
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
