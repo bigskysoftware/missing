@@ -26,8 +26,11 @@ jobs:
           git config user.name "GitHub Actions Bot"
           git config user.email "<>"
       - run: |
-          echo "new_version=$(echo 'v1.0.4' | cut -c 2-)" >> $GITHUB_ENV
+          echo "new_version=$(echo '${{env.GITHUB_REF_NAME}}' | cut -c 2-)" >> $GITHUB_ENV
       - run: npm version ${{env.new_version}}
+      - run: cat package.json | grep version
+      - run: git log -1
+      # - run: git push
       - run: npm publish --dry-run
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
