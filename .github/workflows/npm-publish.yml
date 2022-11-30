@@ -23,6 +23,9 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: npm ci
       - run: |
+          git config user.name "GitHub Actions Bot"
+          git config user.email "<>"
+      - run: |
           echo "new_version=$(echo 'v1.0.4' | cut -c 2-)" >> $GITHUB_ENV
       - run: npm version ${{env.new_version}}
       - run: npm publish --dry-run
