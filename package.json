@@ -1,6 +1,6 @@
 {
-  "name": "missing.style",
-  "version": "1.0.4",
+  "name": "missing.css",
+  "version": "1.0.3",
   "description": "missing.css is the CSS library we wished already existed.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

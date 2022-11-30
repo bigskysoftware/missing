@@ -5,6 +5,9 @@ name: Node.js Package
 
 on:
   workflow_dispatch:
+  push:
+    tags:
+      - v*
 jobs:
   publish:
     runs-on: ubuntu-latest
@@ -19,6 +22,7 @@ jobs:
           node-version: 16
           registry-url: https://registry.npmjs.org/
       - run: npm ci
+      - run: echo "{{github.event.ref}}"
       - run: npm publish --dry-run
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
