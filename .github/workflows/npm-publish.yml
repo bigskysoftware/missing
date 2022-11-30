@@ -22,7 +22,7 @@ jobs:
           node-version: 16
           registry-url: https://registry.npmjs.org/
       - run: npm ci
-      - run: echo {{github.event.ref}}
+      - run: echo "v1.0.4" | cut -c 2-
       - run: npm publish --dry-run
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
