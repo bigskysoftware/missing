@@ -1,7 +1,7 @@
 {
   "importMap": "import_map.json",
   "tasks": {
-    "prod": "deno task www && deno task archive",
+    "prod": "deno task www",
     "dev": "deno task www -s --dev",
     
     "www": "deno task lume --config=_lume_config.ts",

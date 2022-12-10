@@ -26,6 +26,7 @@ export default lume(
   .copy("www/pages/netlify.redirects", "_redirects")
   .copy("www/pages/netlify.headers", "_headers")
   .copy("www/js", "js")
+  .copy("releases/_artifacts", "archive")
   .scopedUpdates((path) => path === "/www/missingcss.tmpl.ts" || path.endsWith(".css"))
   .use(date())
   .use(highlighting())
