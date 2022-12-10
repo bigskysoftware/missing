@@ -39,3 +39,7 @@
 .monospace {
 	font-family: var(--mono-font);
 }
+
+.massivetext {
+    font-size: calc(.13 * var(--eff-line-length));
+}
