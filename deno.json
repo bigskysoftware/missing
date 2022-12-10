@@ -3,9 +3,9 @@
   "tasks": {
     "prod": "deno task www && deno task archive",
     "dev": "deno task www -s --dev",
-    "css": "deno task www",
-    "archive": "./_build/version-archive.ts",
+    
     "www": "deno task lume --config=_lume_config.ts",
+
     "lume": "echo \"import 'lume/cli.ts'\" | deno run --unstable -A -"
   }
 }
