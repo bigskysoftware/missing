@@ -295,7 +295,7 @@ a, .\<a\> {
 }
 
 small {
-	@nest span > &:only-child {
+	&[role="note"] {
 		/***
 		 Sidenote
 		 ***/
