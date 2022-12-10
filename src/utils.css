@@ -44,6 +44,8 @@
 
 .massivetext {
     font-size: calc(.13 * var(--eff-line-length));
+	line-height: 1em;
+    letter-spacing: 0;
 }
 
 .aestheticbreak {
