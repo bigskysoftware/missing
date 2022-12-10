@@ -82,8 +82,23 @@ You can set `--density` yourself in inline styles or your own CSS:
 <dfn>`.allcaps`</dfn>
 :   Sets text in all caps and adds appropriate letter spacing.
 
-<dfn>`.monospace`</dfn>
-:   Renders the text in the monospace font (`--font-mono`).
+<dfn>`.primary-font`</dfn>
+:   Renders the text in the primary font (`--primary-font`).
+
+<dfn>`.secondary-font`</dfn>
+:   Renders the text in the secondary font (`--secondary-font`).
+
+<dfn>`.display-font`</dfn>
+:   Renders the text in the display font (`--display-font`).
+
+<dfn>`.mono-font`</dfn>
+:   Renders the text in the monospace font (`--mono-font`).
+
+<dfn>`.massivetext`</dfn>
+:   Makes the font size really big. Scales based on line length.
+
+<dfn>`.aestheticbreak`</dfn>
+:   A line break added for aesthetic purposes. Usage: `<span class="aestheticbreak"></span>`{.language-html}
 
 
 ## Masquerades

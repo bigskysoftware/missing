@@ -36,10 +36,19 @@
 	letter-spacing: .1rem;
 }
 
-.monospace {
-	font-family: var(--mono-font);
-}
+
+.primary-font { font-family: var(--primary-font) }
+.secondary-font { font-family: var(--secondary-font) }
+.display-font { font-family: var(--display-font) }
+.mono-font, .monospace { font-family: var(--mono-font) }
 
 .massivetext {
     font-size: calc(.13 * var(--eff-line-length));
+}
+
+.aestheticbreak {
+    display: block;
+    margin: 0;
+    padding: 0;
+    height: calc(.5 * var(--gap));
 }
