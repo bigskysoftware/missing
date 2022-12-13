@@ -508,11 +508,11 @@ input::file-selector-button,
 	}
 
 	&:active {
-		filter: brightness(.8);
+		box-shadow: 0 .15em .5em var(--muted-fg) inset;
 	}
 	
-	&[aria-pressed="true"], &[aria-expanded="true"] {
-		box-shadow: 0 .05em var(--accent) inset;
+	&:where([aria-pressed="true"], [aria-expanded="true"]) {
+		box-shadow: 0 .1em .5em var(--muted-fg) inset;
 		background: var(--pressed-interactive-bg);
 	}
 
