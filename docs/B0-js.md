@@ -56,6 +56,10 @@ _See [ARIA &sect; menu](/docs/aria/#menu)_
 <script type="module" src="https://the.missing.style/v<%= version %>/missing-js/menu.js">
 ~~~
 
+~~~js
+import { menu, menuButton } from "https://the.missing.style/v<%= version %>/missing-js/menu.js";
+~~~
+
 All notes above about initializing dynamic content apply here.
 
 
