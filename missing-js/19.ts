@@ -68,22 +68,46 @@ export function traverse(
   const { wrap = true } = options;
 
   const advance = direction + "ElementSibling";
-  const wrapIt = direction === "next"
-    ? (root: ParentNode, selector: string) => $(root, selector)
-    : (root: ParentNode, selector: string) => $$(root, selector).at(-1);
-  if (!current)
-    return wrap ? wrapIt(root, selector) : null;
+
+  const wrapIt = () => {
+    // If wrapping is disabled.
+    if (!wrap) return null;
+    // Wrap in the correct direction.
+    return direction === "next"
+      ? $(root, selector)
+      : $$(root, selector).at(-1);
+  }
+  
+  if (!current) return wrapIt();
+  
+  // Traverse left to right, bottom to top.
+  //
+  //                                                  (begin ascii art diagram)
+  //                           (R)
+  //                         /     \   
+  //                    (r)           (4) <- return value
+  //                 /   |   \       /   \
+  //    current -> (1)  (2)  (3)    (*) (*)
+  //                                                              (end diagram)
+  //
+  // In the diagram above, 1, 2, 3 are tested by the selector (assuming we
+  // start at 1). Then, having run out of siblings, we move up (as many times
+  // as needed) before advancing, ending up at 4. 
+  //
+  // To "test" an element, ee call Element#matches, then if that returns false,
+  // querySelector. The querySelector call is how the items marked with
+  // asterisks can be checked. 
   let cursor = current;
   while (true) {
-    while (cursor[advance] === null) {
-      cursor = cursor.parentElement as Element;
-      if (cursor === root)
-        return wrap ? wrapIt(root, selector) : null;
+    while (cursor[advance] === null) { // 3
+      cursor = cursor.parentElement as Element; // 1 to r
+      if (cursor === root) return wrapIt();
     }
-    cursor = cursor[advance];
-    const found = cursor.matches(selector) ? cursor : $(cursor, selector);
-    if (found)
-      return found;
+    cursor = cursor[advance]; // 1 to 2 to 3, r to 4
+    const found = cursor.matches(selector)
+      ? cursor // 4
+      : $(cursor, selector); // asterisks
+    if (found) return found;
   }
 }
 
