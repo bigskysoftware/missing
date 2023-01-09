@@ -53,7 +53,6 @@ Though it's quite early, there are a few sites using missing.css:
  - <https://denizaksimsek.com>
  - <https://github.com/chapmandu/cfwheels-htmx-crud>
  - <https://www.davidaflood.com>
- - <https://reeds.website>
 
 Missing.css is a notch on the complexity slider
 that's just right for small projects and personal sites

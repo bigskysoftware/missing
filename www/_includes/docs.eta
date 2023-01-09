@@ -13,10 +13,10 @@ layout: layout.eta
         <p>
             <a href="/" class="allcaps">Missing.css</a> 
         </p>
-        <div>
+        <!-- <div>
             <script src="/js/pagefind.js" type="module"></script>
             <strong><button type="button" data-pagefind-search>Search</button></strong>
-        </div>
+        </div> -->
         <ul role="list">
             <% for (const { data: { url, title } } of search.pages("docs", "page.src.path")) { %>
                     <li><a href="<%= url %>" 

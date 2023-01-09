@@ -7,7 +7,7 @@ import resolveUrls from "lume/plugins/resolve_urls.ts";
 import eta from "lume/plugins/eta.ts";
 import esbuild from "lume/plugins/esbuild.ts";
 import sourceMap from "lume/plugins/source_maps.ts";
-import pagefind from "lume/plugins/pagefind.ts";
+// import pagefind from "lume/plugins/pagefind.ts";
 
 import markdownOptions from "./_build/markdown.ts";
 import highlighting from "./_build/highlighting.ts";
@@ -42,11 +42,11 @@ export default lume(
     },
   }))
   .use(sourceMap())
-  .use(pagefind({
+  /* .use(pagefind({
     ui: false,
     indexing: {
       bundleDirectory: "_pagefind",
     }
-  }))
+  })) */
   .use(myFilters())
   .use(indexDefinitions());
