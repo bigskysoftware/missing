@@ -279,19 +279,15 @@ a, .\<a\> {
 	background: none;
 	border: none;
 	font-size: 1em;
+	text-decoration: 1px dashed underline;
 	
 	@nest .list-of-links & {
 		text-decoration: none;
 	}
 	
 	&:hover, &:focus {
-		text-decoration: none;
-		outline: 1px solid;
-		transition: outline-offset .1s ease-in-out;
-	}
-	
-	&:active {
-		outline-offset: 0;
+		text-decoration: 1px solid underline;
+		cursor: pointer;
 	}
 }
 
