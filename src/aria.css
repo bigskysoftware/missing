@@ -13,32 +13,31 @@
     padding: 0 calc(var(--rhythm) / 4);
     margin: 0;
     min-height: var(--rhythm);
+    bottom: -1px;
+    position: relative;
     
     color: var(--fg);
     border: solid var(--graphical-fg);
-    border-width: 1px 1px 0 1px;
-    border-block-end-color: transparent;
+    border-width: 1px;
     background: var(--interactive-bg);
-
+    
     border-start-start-radius: .4em;
     border-start-end-radius: .4em;
     
     &:active, &[aria-selected="true"] {
-        transform: none;
-        bottom: -1px;
-        position: relative;
         background: var(--box-bg);
-        border-block-end: 1px solid var(--box-bg);
+        border-block-end: 1px solid transparent;
     }
 
     &:hover {
         background-color: var(--box-bg);
+        box-shadow: none;
     }
 
-    &:focus {
-        background-color: var(--box-bg);
-        border-color: var(--accent);
-        outline: 1px solid var(--accent);
+    &:focus-visible {
+        box-shadow: none;
+        color: var(--accent);
+        text-decoration: underline;
     }
 }
 
