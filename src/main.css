@@ -286,8 +286,9 @@ a, .\<a\> {
 	}
 	
 	&:hover, &:focus {
-		text-decoration: 1px solid underline;
+		text-decoration: 2px solid underline;
 		cursor: pointer;
+		outline: none;
 	}
 }
 
