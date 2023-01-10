@@ -479,7 +479,8 @@ input::file-selector-button,
 	display: inline-block;
 	padding: 0 calc(var(--rhythm) / 4);
 	vertical-align: middle;
-
+	box-sizing: border-box;
+	
 	font-size: .8rem;
 	line-height: 1.125em;
 	font-family: var(--secondary-font);
@@ -488,7 +489,7 @@ input::file-selector-button,
 	background: var(--interactive-bg);
 	color: var(--fg);
 	border: 1px solid var(--muted-fg);
-	box-sizing: border-box;
+	box-shadow: 0 2px 4px -2px var(--fg);
 	border-radius: var(--border-radius);
 
 	/* a-specific resets */
@@ -499,22 +500,24 @@ input::file-selector-button,
 
 	&:hover, &:focus-visible {
 		filter: brightness(1.1);
+		box-shadow: 0 3px 6px -2px var(--fg);
 
 		/* a-specific resets */
 		text-decoration: none;
 	}
 
 	&:active {
-		box-shadow: 0 .15em .5em var(--muted-fg) inset;
+		box-shadow: none;
 	}
 	
 	&:where([aria-pressed="true"], [aria-expanded="true"]) {
-		box-shadow: 0 .1em .5em var(--muted-fg) inset;
+		box-shadow: 0 2px 4px -1px var(--fg) inset;
 		background: var(--pressed-interactive-bg);
 	}
 
 	&[disabled] {
 		color: var(--muted-fg);
+		box-shadow: none;
 	}
 
 	@nest strong > & {
