@@ -8,4 +8,4 @@ _bin
 .netlify
 
 # esm.sh :[
-deno.lock
+# deno.lock

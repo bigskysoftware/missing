@@ -228,6 +228,7 @@ dl {
 }
 	dt {
 		font-weight: bold;
+		font-family: var(--secondary-font);
 	}
 
 	dd {
@@ -278,19 +279,16 @@ a, .\<a\> {
 	background: none;
 	border: none;
 	font-size: 1em;
+	text-decoration: 1px dashed underline;
 	
 	@nest .list-of-links & {
 		text-decoration: none;
 	}
 	
 	&:hover, &:focus {
-		text-decoration: none;
-		outline: 1px solid;
-		transition: outline-offset .1s ease-in-out;
-	}
-	
-	&:active {
-		outline-offset: 0;
+		text-decoration: 2px solid underline;
+		cursor: pointer;
+		outline: none;
 	}
 }
 
@@ -482,7 +480,8 @@ input::file-selector-button,
 	display: inline-block;
 	padding: 0 calc(var(--rhythm) / 4);
 	vertical-align: middle;
-
+	box-sizing: border-box;
+	
 	font-size: .8rem;
 	line-height: 1.125em;
 	font-family: var(--secondary-font);
@@ -491,7 +490,7 @@ input::file-selector-button,
 	background: var(--interactive-bg);
 	color: var(--fg);
 	border: 1px solid var(--muted-fg);
-	box-sizing: border-box;
+	box-shadow: 0 2px 4px -2px var(--fg);
 	border-radius: var(--border-radius);
 
 	/* a-specific resets */
@@ -502,22 +501,24 @@ input::file-selector-button,
 
 	&:hover, &:focus-visible {
 		filter: brightness(1.1);
+		box-shadow: 0 3px 6px -2px var(--fg);
 
 		/* a-specific resets */
 		text-decoration: none;
 	}
 
 	&:active {
-		filter: brightness(.8);
+		box-shadow: none;
 	}
 	
-	&[aria-pressed="true"], &[aria-expanded="true"] {
-		box-shadow: 0 .05em var(--accent) inset;
+	&:where([aria-pressed="true"], [aria-expanded="true"]) {
+		box-shadow: 0 2px 4px -1px var(--fg) inset;
 		background: var(--pressed-interactive-bg);
 	}
 
 	&[disabled] {
 		color: var(--muted-fg);
+		box-shadow: none;
 	}
 
 	@nest strong > & {

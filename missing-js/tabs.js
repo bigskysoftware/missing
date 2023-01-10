@@ -33,7 +33,7 @@ const tabPanelOf = (tab, root) => {
  * @param {HTMLElement | null} tab
  * @returns {void}
  */
-const switchTab = (root, tablist, tab) => {
+const switchTab = (root, tablist, tab, { focusTab = true } = {}) => {
   if (!tab) return;
   const curtab = currentTab(tablist);
 
@@ -47,7 +47,7 @@ const switchTab = (root, tablist, tab) => {
   const tabpanel = tabPanelOf(tab, root);
   if (tabpanel) tabpanel.hidden = false;
 
-  tab.focus();
+  if (focusTab) tab.focus();
 };
 
 /**
@@ -57,7 +57,7 @@ export const tablist = behavior("[role=tablist]", (tablist, { root }) => {
   if (!(tablist instanceof HTMLElement)) return;
   tablist.tabIndex = 0;
   tabsOf(tablist).forEach(tab => tab.tabIndex = -1);
-  switchTab(root, tablist, currentTab(tablist));
+  switchTab(root, tablist, currentTab(tablist), { focusTab: false });
 
   on(tablist, "focus", _ => currentTab(tablist)?.focus());
 
