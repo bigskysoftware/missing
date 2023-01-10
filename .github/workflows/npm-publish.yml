@@ -12,6 +12,9 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
+      - name: exit if not production
+        if: endsWith(github.event.base_ref, 'production') == false
+        run: exit -1
       - uses: actions/checkout@v3
       - uses: denoland/setup-deno@v1
         with:
@@ -21,17 +24,13 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
-      - run: npm ci
       - run: |
-          git config user.name "GitHub Actions Bot"
-          git config user.email "<>"
-      - run: |
-          echo "new_version=$(git describe --abbrev=0 --tags | cut -c 2-)" >> $GITHUB_ENV
-          # echo "new_version=$(echo '${{env.GITHUB_REF_NAME}}' | cut -c 2-)" >> $GITHUB_ENV
-      - run: npm version --git-tag-version=false ${{env.new_version}}
-      - run: git add package.json package-lock.json
-      - run: git commit -m "bump npm version to v${{env.new_version}}"
-      - run: git push
-      - run: npm publish
+          npm ci
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "<>"
+          npm version --git-tag-version=false $(echo '${{github.ref_name}}' | cut -c 2-)
+          git commit -a -m "bump npm version to v$(echo '${{github.ref_name}}' | cut -c 2-)"
+          git push origin HEAD:production
+          npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_ACCESS_TOKEN}}
