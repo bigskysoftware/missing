@@ -514,6 +514,9 @@ input::file-selector-button,
 	&:where([aria-pressed="true"], [aria-expanded="true"]) {
 		box-shadow: 0 2px 4px -1px var(--fg) inset;
 		background: var(--pressed-interactive-bg);
+		&:hover, &:focus-visible {
+			box-shadow: 0 1px 3px -1px var(--fg) inset;
+		}
 	}
 
 	&[disabled] {
