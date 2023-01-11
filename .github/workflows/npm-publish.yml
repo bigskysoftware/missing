@@ -12,8 +12,9 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
+      - run: echo ${{github.event.base_ref}}
       - name: exit if not production
-        if: endsWith(github.event.base_ref, 'production') == false
+        if: endsWith(github.event.base_ref, 'prod') == false
         run: exit -1
       - uses: actions/checkout@v3
       - uses: denoland/setup-deno@v1
@@ -30,7 +31,7 @@ jobs:
           git config --global user.email "<>"
           npm version --git-tag-version=false $(echo '${{github.ref_name}}' | cut -c 2-)
           git commit -a -m "bump npm version to v$(echo '${{github.ref_name}}' | cut -c 2-)"
-          git push origin HEAD:production
+          git push origin HEAD:prod
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_ACCESS_TOKEN}}
