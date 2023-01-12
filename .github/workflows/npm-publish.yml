@@ -12,7 +12,6 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{github.event.base_ref}}
       - name: exit if not production
         if: endsWith(github.event.base_ref, 'prod') == false
         run: exit -1
