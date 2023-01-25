@@ -24,7 +24,7 @@ templateEngine: [eta,md]
 
 <main>
 
-<% const version = search.pages("release").at(-1).data.release; %>
+<% const version = search.pages("release", "release").at(-1).data.release; %>
 
 missing.css is the CSS library we wished already existed.
 Add it to your website: `<link rel="stylesheet" href="https://the.missing.style/v<%= version %>/missing.min.css">`{.lang-html}
