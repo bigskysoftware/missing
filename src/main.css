@@ -497,7 +497,8 @@ input::file-selector-button,
 	color: var(--fg);
 	text-decoration: none;
 	display: inline-flex;
-	place-items: center;
+	justify-content: center;
+	align-items: center;
 
 	&:hover, &:focus-visible {
 		filter: brightness(1.1);
