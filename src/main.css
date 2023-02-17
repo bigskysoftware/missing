@@ -281,7 +281,7 @@ a, .\<a\> {
 	background: none;
 	border: none;
 	font-size: 1em;
-	text-decoration: 1px dashed underline;
+	text-decoration: 1px dotted underline;
 	
 	@nest .list-of-links & {
 		text-decoration: none;
