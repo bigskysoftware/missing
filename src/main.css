@@ -34,6 +34,9 @@ nav {
 aside {
     /* SEE components/box.css */
 
+	font-size: .8em;
+	line-height: calc(var(--rhythm) * 2 / 3);
+
 	& h1,
 	& h2,
 	& h3,
