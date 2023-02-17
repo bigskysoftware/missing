@@ -276,7 +276,6 @@ main {
 
 a, .\<a\> {
 	color: var(--link-fg, var(--accent));
-	font-family: var(--secondary-font);
 	border-radius: var(--border-radius);
 	outline-offset: 1px;
 	background: none;
