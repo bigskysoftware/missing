@@ -136,6 +136,8 @@ header {
 
 footer {
 	font-family: var(--secondary-font);
+	font-size: .8em;
+	line-height: calc(var(--rhythm) * 2 / 3);
 	border-block-start: 1px solid var(--graphical-fg);
 }
 
