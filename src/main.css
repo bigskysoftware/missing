@@ -295,43 +295,42 @@ a, .\<a\> {
 	}
 }
 
-small {
-	&[role="note"] {
-		/***
-		 Sidenote
-		 ***/
-		display: block;
-		float: inline-end;
-		clear: inline-end;
+small[role="note"] {
+	/***
+	 Sidenote
+	 ***/
+	display: block;
+	float: inline-end;
+	clear: inline-end;
 
-		--sidenote-width: 20ch;
+	--sidenote-width: 20ch;
 
-		max-inline-size: var(--sidenote-width);
-		padding-inline: 1.5ch 1ch;
+	max-inline-size: var(--sidenote-width);
+	padding-inline: 1.5ch 1ch;
 
-		margin-inline-end: calc(1em - var(--sidenote-width));
-		margin-block-end: var(--rhythm);
+	margin-inline-end: calc(1em - var(--sidenote-width));
+	margin-block-end: var(--rhythm);
 
-		font-family: var(--secondary-font);
+	font-family: var(--secondary-font);
 
-		background: var(--bg);
-		border: 1px solid transparent;
+	background: var(--bg);
+	border: 1px solid transparent;
 
-		transition: transform .1s ease-in-out;
+	transition: transform .1s ease-in-out;
 
-		&:hover, &:focus-within {
-			border: 1px solid var(--graphical-fg);
-			border-radius: var(--border-radius);
-			transform: translateX(calc(
-				0px - var(--sidenote-width)
-				+ min(var(--gutter-width), var(--sidenote-width))
-			))
-		}
+	&:hover, &:focus-within {
+		border: 1px solid var(--graphical-fg);
+		border-radius: var(--border-radius);
+		transform: translateX(calc(
+			0px - var(--sidenote-width)
+			+ min(var(--gutter-width), var(--sidenote-width))
+		))
 	}
 }
 
 small, .\<small\> {
 	font-size: .8em;
+	line-height: calc(var(--rhythm) * 2 / 3);
 }
 
 s {
