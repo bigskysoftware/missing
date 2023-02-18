@@ -1783,8 +1783,11 @@ button.iconbutton[aria-pressed=true] {
     }
 }
 
-* {
+:root {
 	--gap: calc(var(--rhythm) * var(--density));
+}
+
+* {
 	accent-color: var(--accent);
 }
 
