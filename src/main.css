@@ -34,6 +34,9 @@ nav {
 aside {
     /* SEE components/box.css */
 
+	font-size: .8em;
+	line-height: calc(var(--rhythm) * 2 / 3);
+
 	& h1,
 	& h2,
 	& h3,
@@ -133,6 +136,8 @@ header {
 
 footer {
 	font-family: var(--secondary-font);
+	font-size: .8em;
+	line-height: calc(var(--rhythm) * 2 / 3);
 	border-block-start: 1px solid var(--graphical-fg);
 }
 
@@ -273,13 +278,12 @@ main {
 
 a, .\<a\> {
 	color: var(--link-fg, var(--accent));
-	font-family: var(--secondary-font);
 	border-radius: var(--border-radius);
 	outline-offset: 1px;
 	background: none;
 	border: none;
 	font-size: 1em;
-	text-decoration: 1px dashed underline;
+	text-decoration: 1px dotted underline;
 	
 	@nest .list-of-links & {
 		text-decoration: none;
@@ -292,43 +296,42 @@ a, .\<a\> {
 	}
 }
 
-small {
-	&[role="note"] {
-		/***
-		 Sidenote
-		 ***/
-		display: block;
-		float: inline-end;
-		clear: inline-end;
+small[role="note"] {
+	/***
+	 Sidenote
+	 ***/
+	display: block;
+	float: inline-end;
+	clear: inline-end;
 
-		--sidenote-width: 20ch;
+	--sidenote-width: 20ch;
 
-		max-inline-size: var(--sidenote-width);
-		padding-inline: 1.5ch 1ch;
+	max-inline-size: var(--sidenote-width);
+	padding-inline: 1.5ch 1ch;
 
-		margin-inline-end: calc(1em - var(--sidenote-width));
-		margin-block-end: var(--rhythm);
+	margin-inline-end: calc(1em - var(--sidenote-width));
+	margin-block-end: var(--rhythm);
 
-		font-family: var(--secondary-font);
+	font-family: var(--secondary-font);
 
-		background: var(--bg);
-		border: 1px solid transparent;
+	background: var(--bg);
+	border: 1px solid transparent;
 
-		transition: transform .1s ease-in-out;
+	transition: transform .1s ease-in-out;
 
-		&:hover, &:focus-within {
-			border: 1px solid var(--graphical-fg);
-			border-radius: var(--border-radius);
-			transform: translateX(calc(
-				0px - var(--sidenote-width)
-				+ min(var(--gutter-width), var(--sidenote-width))
-			))
-		}
+	&:hover, &:focus-within {
+		border: 1px solid var(--graphical-fg);
+		border-radius: var(--border-radius);
+		transform: translateX(calc(
+			0px - var(--sidenote-width)
+			+ min(var(--gutter-width), var(--sidenote-width))
+		))
 	}
 }
 
 small, .\<small\> {
 	font-size: .8em;
+	line-height: calc(var(--rhythm) * 2 / 3);
 }
 
 s {
@@ -497,7 +500,8 @@ input::file-selector-button,
 	color: var(--fg);
 	text-decoration: none;
 	display: inline-flex;
-	place-items: center;
+	justify-content: center;
+	align-items: center;
 
 	&:hover, &:focus-visible {
 		filter: brightness(1.1);
@@ -509,11 +513,16 @@ input::file-selector-button,
 
 	&:active {
 		box-shadow: none;
+		&:is([aria-pressed], [aria-expanded]) {
+			color: var(--accent);
+			box-shadow: 0 1px 5px -1px var(--fg) inset;
+		}
 	}
 	
 	&:where([aria-pressed="true"], [aria-expanded="true"]) {
 		box-shadow: 0 2px 4px -1px var(--fg) inset;
 		background: var(--pressed-interactive-bg);
+		color: var(--accent);
 		&:hover, &:focus-visible {
 			box-shadow: 0 1px 3px -1px var(--fg) inset;
 		}

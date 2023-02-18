@@ -98,7 +98,7 @@
 
 .flow-gap {
     & > :not(:last-child) {
-        margin-bottom: 1em;
+        margin-bottom: var(--gap);
     }
 }
 
