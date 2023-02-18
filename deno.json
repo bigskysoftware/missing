@@ -5,5 +5,7 @@
     "dev": "deno task www -s --dev",
     "www": "deno task lume --config=_lume_config.ts",
     "lume": "echo \"import 'lume/cli.ts'\" | deno run --unstable -A -",
+    "build": "deno task lume",
+    "serve": "deno task lume -s"
   }
 }
