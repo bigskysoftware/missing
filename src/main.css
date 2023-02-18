@@ -36,6 +36,8 @@ aside {
 
 	font-size: .8em;
 	line-height: calc(var(--rhythm) * 2 / 3);
+	--gap: calc(var(--rhythm) * 2 / 3);
+	&>* { --rhythm: calc(var(--rhythm) * 2 / 3) }
 
 	& h1,
 	& h2,
@@ -138,6 +140,7 @@ footer {
 	font-family: var(--secondary-font);
 	font-size: .8em;
 	line-height: calc(var(--rhythm) * 2 / 3);
+	&>* { --rhythm: calc(var(--rhythm) * 2 / 3) }
 	border-block-start: 1px solid var(--graphical-fg);
 }
 
@@ -332,6 +335,7 @@ small[role="note"] {
 small, .\<small\> {
 	font-size: .8em;
 	line-height: calc(var(--rhythm) * 2 / 3);
+	&>* { --rhythm: calc(var(--rhythm) * 2 / 3) }
 }
 
 s {
