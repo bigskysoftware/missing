@@ -99,7 +99,10 @@
     }
 }
 
-* {
+:root {
 	--gap: calc(var(--rhythm) * var(--density));
+}
+
+* {
 	accent-color: var(--accent);
 }
