@@ -533,14 +533,18 @@ nav a {
 	}
 
 aside {
-    /* SEE components/box.css */
-
 	font-size: .8em;
 	line-height: calc(var(--rhythm) * 2 / 3);
-	--gap: calc(var(--rhythm) * 2 / 3)
+	--gap: calc(var(--rhythm) * var(--density) * 2 / 3)
 }
 
-aside>* { --rhythm: calc(var(--rhythm) * 2 / 3) }
+aside>* { --rhythm: calc(var(--gap)) }
+
+aside {
+
+	border-block: 1px solid var(--graphical-fg);
+	padding-block: var(--gap)
+}
 
 aside h1,
 	aside h2,
@@ -734,7 +738,8 @@ blockquote footer {
 
 ul, ol {
 	-webkit-padding-start: var(--rhythm);
-	        padding-inline-start: var(--rhythm)
+	        padding-inline-start: var(--rhythm);
+	margin-block: var(--gap)
 }
 
 ul ul, ul ol, ol ul, ol ol {
@@ -1271,8 +1276,7 @@ dialog:not([open]) {
 [role=tabpanel],
 figure,
 details,
-dialog,
-aside {
+dialog {
     margin: var(--gap) 0;
     padding: var(--gap);
     overflow: clip;
