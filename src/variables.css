@@ -99,7 +99,7 @@
     }
 }
 
-:root {
+* {
 	--gap: calc(var(--rhythm) * var(--density));
 }
 
