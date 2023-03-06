@@ -39,6 +39,7 @@ aside {
 
 	border-block: 1px solid var(--graphical-fg);
 	padding-block: var(--gap);
+	margin-block: calc(var(--gap) * 3 / 2);
 
 	& h1,
 	& h2,
