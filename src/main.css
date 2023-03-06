@@ -41,6 +41,10 @@ aside {
 	padding-block: var(--gap);
 	margin-block: calc(var(--gap) * 3 / 2);
 
+	&.bg {
+		padding-inline: var(--gap);
+	}
+
 	& h1,
 	& h2,
 	& h3,
