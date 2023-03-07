@@ -23,7 +23,7 @@ const currentTab = tablist => $(tablist, "[role=tab][aria-selected=true]");
  */
 const tabPanelOf = (tab, root) => {
   const id = attr(tab, "aria-controls");
-  if (id === null) return ilog("Tab", tab, "has no associated tabpanel"), null;
+  if (id === null) return console.error("Tab", tab, "has no associated tabpanel"), null;
   return root.getElementById(id);
 }
 
@@ -56,7 +56,14 @@ const switchTab = (root, tablist, tab, { focusTab = true } = {}) => {
 export const tablist = behavior("[role=tablist]", (tablist, { root }) => {
   if (!(tablist instanceof HTMLElement)) return;
   tablist.tabIndex = 0;
-  tabsOf(tablist).forEach(tab => tab.tabIndex = -1);
+  tabsOf(tablist).forEach(tab => {
+    tab.tabIndex = -1;
+    if (!tab.id) console.error("Tab", tab, "has no id");
+    tabPanelOf(tab).setAttribute("aria-labelledby", tab.id);
+  });
+  if (!(tablist.hasAttribute("aria-labelledby") || tablist.hasAttribute("aria-label")))
+    console.error("Tab list", tablist, "has no accessible name (aria-label or aria-labelledby)");
+  
   switchTab(root, tablist, currentTab(tablist), { focusTab: false });
 
   on(tablist, "focus", _ => currentTab(tablist)?.focus());

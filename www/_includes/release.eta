@@ -7,30 +7,4 @@ layout: prose.eta
     Version <%= release %>
 </h1>
 
-<div class="f-switch crowded">
-    <section class="box">
-        <h2>Download</h2>
-        <% filters.repeat(Object.entries(it.artifacts || {}), ([group, artifacts]) => { %>
-            <p class="tool-bar">
-                <strong><%= group %>:</strong>
-                <% filters.repeat(Object.entries(artifacts || {}), ([artifactname, filename]) => { %>
-                    <a href="https://the.missing.style/v<%= release %>/<%= filename %>" download><%= artifactname %></a>
-                <% }) %>
-            </p>
-        <% }) %>
-        <p><small>Hotlinking is allowed</small></p>
-    </section>
-    <section class="box">
-        <h2>Source code</h2>
-        <p>
-            <strong>GitHub:</strong>
-            <a href="https://github.com/bigskysoftware/missing/tree/v<%= release %>">bigskysoftware/missing@v<%= release %></a>
-        </p>
-        <p>
-            <strong>Checkout:</strong>
-            <code class="language-bash">git switch --detach v<%= release %></code>
-        </p>
-    </section>
-</div>
-
 <%~ content %>
