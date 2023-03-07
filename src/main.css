@@ -35,7 +35,6 @@ aside {
 	font-size: .8em;
 	line-height: calc(var(--rhythm) * 2 / 3);
 	--gap: calc(var(--rhythm) * var(--density) * 2 / 3);
-	&>* { --rhythm: calc(var(--gap)) }
 
 	border-block: 1px solid var(--graphical-fg);
 	padding-block: var(--gap);
