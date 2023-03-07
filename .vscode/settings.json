@@ -1,5 +1,4 @@
 {
     "deno.enable": true,
-    "deno.importMap": "./import_map.json",
-    "deno.enablePaths": ["./_build", "./_lume_config.ts"]
+    "deno.importMap": "./import_map.json"
 }
