@@ -21,12 +21,14 @@ Install it on your website if you haven't already:
 <figure>
 
   ~~~ html
-  <link rel="stylesheet" href="https://the.missing.style/v<%= version %>/missing.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/missing.css@<%= version %>/dist/missing.min.css">
   <!-- Prism theme (https://prismjs.com/): -->
-  <link rel="stylesheet" href="https://the.missing.style/v<%= version %>/missing-prism.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/missing.css@<%= version %>/dist/missing-prism.min.css">
   ~~~
 
 </figure>
+
+You can also install it into an npm project with `npm i -s missing.css`.
 
 This will make your page look a bit like the one you are reading right now,
 without applying any classes.
