@@ -342,7 +342,6 @@ small[role="note"] {
 small, .\<small\> {
 	font-size: .8em;
 	line-height: calc(var(--rhythm) * 2 / 3);
-	&>* { --rhythm: calc(var(--rhythm) * 2 / 3) }
 }
 
 s {
