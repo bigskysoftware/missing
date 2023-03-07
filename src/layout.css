@@ -141,6 +141,12 @@
 
 /**/
 
+.nested-list ul, .nested-list ol {
+    margin-block: 0;
+}
+
+/**/
+
 .fixed  { position: fixed  }
 .sticky { position: sticky }
 

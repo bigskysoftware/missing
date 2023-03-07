@@ -90,6 +90,23 @@ An `<aside>` with the `.big` class becomes a pull quote.
 
 To get a smaller font size, use the `.<small>` masquerade.
 
+***
+
+The <dfn>`.nested-list`</dfn> class removes extraneous margins in nested lists.
+
+  ~~~html
+  <ul class="nested-list">
+    <li>Items
+      <ul>
+        <li>...</li>
+      </ul>
+    <li>Widgets
+      <ul>
+        <li>...</li>
+      </ul>
+  </ul>
+  ~~~
+
 
 ## Scrolling
 
