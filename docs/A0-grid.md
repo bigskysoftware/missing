@@ -40,8 +40,8 @@ add `@s` (small, &le;768px) or `@l` (large, &ge;1024px) to the end of the attrib
 ~~~ html
 <div class="grid grid-even-rows">
     <div class="box info" data-cols="1 2" data-rows="1 2">Sidebar  </div>
-    <div class="box info" data-cols="2 4" data-rows="1 3">Main     </div>
-    <div class="box info" data-cols="5 6" data-rows="2" data-cols@s="2 4" data-rows@s="4">Auxiliary</div>
+    <div class="box info" data-cols="3 5" data-rows="1 3">Main     </div>
+    <div class="box info" data-cols="6" data-rows="2" data-cols@s="3 5" data-rows@s="4">Aux</div>
 </div>
 ~~~
 
