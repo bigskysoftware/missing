@@ -15,6 +15,7 @@ missing.css has a collection of classes and custom elements.
 <dfn>`.vh`</dfn>, <dfn>`<v-h>`</dfn>
 :   Visually hide a content without hiding it from assistive software.
 
+
 ## Container
 
 `<div class="container">`
@@ -105,16 +106,16 @@ You can set `--density` yourself in inline styles or your own CSS:
 
 The following classes can be used to make one element look like another:
 
-- <dfn>`.<h1>`</dfn>
-- <dfn>`.<h2>`</dfn>
-- <dfn>`.<h3>`</dfn>
-- <dfn>`.<h4>`</dfn>
-- <dfn>`.<h5>`</dfn>
-- <dfn>`.<h6>`</dfn>
-- <dfn>`.<button>`</dfn>
-- <dfn>`.<a>`</dfn>
-- <dfn>`.<small>`</dfn>
-{role="list" .tool-bar}
+ - <dfn>`.<h1>`</dfn>
+ - <dfn>`.<h2>`</dfn>
+ - <dfn>`.<h3>`</dfn>
+ - <dfn>`.<h4>`</dfn>
+ - <dfn>`.<h5>`</dfn>
+ - <dfn>`.<h6>`</dfn>
+ - <dfn>`.<button>`</dfn>
+ - <dfn>`.<a>`</dfn>
+ - <dfn>`.<small>`</dfn>
+ {role="list" .tool-bar}
 
 <figure>
 

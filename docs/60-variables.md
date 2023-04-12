@@ -130,6 +130,7 @@ classes; these will be listed in the documentation for that class.
     
     </div>
 
+
 ## Density
 
 <dfn>`--density`</dfn> {#var-density}
