@@ -57,53 +57,62 @@ Use `menu` and `menuitem` roles — see [WAI: Menu][].
 
 To get the actual behavior of an accessible menu, you can use [Missing.js &sect; Menu](/docs/js#menu).
 
-~~~ html
-<div role="menu" hidden id="my-menu">
-  <a role="menuitem">View</a>
-  <a role="menuitem">Edit</a>
-  <a role="menuitem">Delete</a>
-</div>
-~~~
+<figure>
 
-<div>
-<script type="module" src="/missing-js/menu.js"></script>
-<button aria-haspopup="menu" aria-controls="my-menu" aria-expanded="false">Open menu</button>
-<div role="menu" hidden id="my-menu">
-  <a role="menuitem">View</a>
-  <a role="menuitem">Edit</a>
-  <a role="menuitem">Delete</a>
-</div>
-</div>
+  ~~~ html
+  <div role="menu" hidden id="my-menu">
+    <a role="menuitem">View</a>
+    <a role="menuitem">Edit</a>
+    <a role="menuitem">Delete</a>
+  </div>
+  ~~~
+
+  <div>
+  <script type="module" src="/missing-js/menu.js"></script>
+  <button aria-haspopup="menu" aria-controls="my-menu" aria-expanded="false">Open menu</button>
+  <div role="menu" hidden id="my-menu">
+    <a role="menuitem">View</a>
+    <a role="menuitem">Edit</a>
+    <a role="menuitem">Delete</a>
+  </div>
+  </div>
+
+</figure>
 
 [WAI: Menu]: https://www.w3.org/WAI/ARIA/apg/patterns/menu/
+
 
 ## Listbox
 
 Use `listbox` and `option` ARIA roles. [WAI: Listbox][].
 
-~~~ html
-<ul role="listbox" class="box flow-gap">
-  <li role="option" aria-selected="true" class="crowded">
-    <strong>Pick me!</strong>
-    <p>I'm clearly the best option.</p>
-  </li>
-  <li role="option" class="crowded">
-    <strong>Pick me instead!</strong>
-    <p>Don't listen to that other guy.</p>
-  </li>
-</ul>
-~~~
+<figure>
 
-<ul role="listbox" class="box flow-gap">
-  <li role="option" aria-selected="true" class="crowded">
-    <strong>Pick me!</strong>
-    <p>I'm clearly the best option.</p>
-  </li>
-  <li role="option" class="crowded">
-    <strong>Pick me instead!</strong>
-    <p>Don't listen to that other guy.</p>
-  </li>
-</ul>
+  ~~~ html
+  <ul role="listbox" class="box flow-gap">
+    <li role="option" aria-selected="true" class="crowded">
+      <strong>Pick me!</strong>
+      <p>I'm clearly the best option.</p>
+    </li>
+    <li role="option" class="crowded">
+      <strong>Pick me instead!</strong>
+      <p>Don't listen to that other guy.</p>
+    </li>
+  </ul>
+  ~~~
+
+  <ul role="listbox" class="box flow-gap">
+    <li role="option" aria-selected="true" class="crowded">
+      <strong>Pick me!</strong>
+      <p>I'm clearly the best option.</p>
+    </li>
+    <li role="option" class="crowded">
+      <strong>Pick me instead!</strong>
+      <p>Don't listen to that other guy.</p>
+    </li>
+  </ul>
+
+</figure>
 
 [WAI: Listbox]: https://www.w3.org/WAI/ARIA/apg/patterns/menu/
 
@@ -113,15 +122,38 @@ Use `listbox` and `option` ARIA roles. [WAI: Listbox][].
 Any element with the `toolbar` role will have the same styles as a `.tool-bar`.
 The fiex direction will be set based on `aria-orientation`.
 
-<p class="tool-bar">
-<button type="button">Cut</button>
-<button type="button">Copy</button>
-<button type="button">Paste</button>
-</p>
+<figure>
 
+  ~~~ html
+  <p class="tool-bar">
+    <button type="button">Cut</button>
+    <button type="button">Copy</button>
+    <button type="button">Paste</button>
+  </p>
+  ~~~
 
-<p class="tool-bar" aria-orientation="vertical">
-<button type="button">Cut</button>
-<button type="button">Copy</button>
-<button type="button">Paste</button>
-</p>
+  <p class="tool-bar">
+    <button type="button">Cut</button>
+    <button type="button">Copy</button>
+    <button type="button">Paste</button>
+  </p>
+
+</figure>
+
+<figure>
+
+  ~~~ html
+  <p class="tool-bar" aria-orientation="vertical">
+    <button type="button">Cut</button>
+    <button type="button">Copy</button>
+    <button type="button">Paste</button>
+  </p>
+  ~~~
+
+  <p class="tool-bar" aria-orientation="vertical">
+    <button type="button">Cut</button>
+    <button type="button">Copy</button>
+    <button type="button">Paste</button>
+  </p>
+
+</figure>

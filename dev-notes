@@ -51,8 +51,8 @@ class="1 3s 5l" 1 col on desktop or tablet, 3 cols on phone, 5 cols on big
 Updating docs is hard and I always forget something. Consider putting docs next
 to code:
 
-- using npm:literate-postcss
-- using some tool that extracts comments from css
+ - using npm:literate-postcss
+ - using some tool that extracts comments from css
 
 -- dz4k
 

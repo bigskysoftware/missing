@@ -23,14 +23,14 @@ here is the `.ok` colorway in the missing.css source code:
 
 The following colorways are provided by default:
 
- * <dfn>`.plain`</dfn> is the default. {.plain .bg .color}
- * <dfn>`.info`</dfn> is used to highlight information without any emotional 
+ - <dfn>`.plain`</dfn> is the default. {.plain .bg .color}
+ - <dfn>`.info`</dfn> is used to highlight information without any emotional 
    affect. {.info .bg .color}
- * <dfn>`.ok`</dfn> is used to indicate successes, insertions, desired
+ - <dfn>`.ok`</dfn> is used to indicate successes, insertions, desired
    states. {.ok .bg .color}
- * <dfn>`.warn`</dfn> is used to warn the user, although there may not necessarily be a bad
+ - <dfn>`.warn`</dfn> is used to warn the user, although there may not necessarily be a bad
    situation. {.warn .bg .color}
- * <dfn>`.bad`</dfn> is used for errors, deletions, failure states. {.bad .bg .color}
+ - <dfn>`.bad`</dfn> is used for errors, deletions, failure states. {.bad .bg .color}
 
 Applying the colorway class to an element will not change its appearance by 
 default. Use the <dfn>`.bg`</dfn>, <dfn>`.color`</dfn> and <dfn>`.border`</dfn>
@@ -46,6 +46,7 @@ classes to use an aspect of the colorway:
   ~~~
 
 </figure>
+
 
 ## Custom colorways
 

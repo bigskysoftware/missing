@@ -159,7 +159,6 @@ We would like to see the following components:
 * fix-to-top (?)
 * fix-to-left (?)
 
-
 ## Utility Classes
 
 ### Concept

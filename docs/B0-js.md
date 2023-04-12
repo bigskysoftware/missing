@@ -19,9 +19,13 @@ Add `tabs.js` **as a module script** to your page
 and mark up your tabs with the appropriate ARIA roles.
 Behavior will be added automatically.
 
-~~~
-<script type="module" src="https://the.missing.style/v<%= version %>/missing-js/tabs.js">
-~~~
+<figure>
+
+  ~~~ html
+  <script type="module" src="https://the.missing.style/v<%= version %>/missing-js/tabs.js">
+  ~~~
+
+</figure>
 
 <div class="info box">
 
@@ -29,13 +33,13 @@ Behavior will be added automatically.
 
 For dynamically inserted content: initialize it as such:
 
-<figure class="plain">
+<figure>
 
-~~~ js
-import tabs from "https://the.missing.style/v<%= version %>/missing-js/tabs.js";
-// ... insert some content ...
-tabs(theContentIJustInserted);
-~~~
+  ~~~ js
+  import tabs from "https://the.missing.style/v<%= version %>/missing-js/tabs.js";
+  // ... insert some content ...
+  tabs(theContentIJustInserted);
+  ~~~
 
 <figcaption>Initializing a missing.js behavior on newly inserted content</figcaption>
 
@@ -48,17 +52,26 @@ you could pass the whole `document` every time if you wanted to.
 
 </div>
 
+
 ## Menu
 
 _See [ARIA &sect; menu](/docs/aria/#menu)_
 
-~~~ html
-<script type="module" src="https://the.missing.style/v<%= version %>/missing-js/menu.js">
-~~~
+<figure>
 
-~~~js
-import { menu, menuButton } from "https://the.missing.style/v<%= version %>/missing-js/menu.js";
-~~~
+  ~~~ html
+  <script type="module" src="https://the.missing.style/v<%= version %>/missing-js/menu.js">
+  ~~~
+
+or
+
+<figure>
+
+  ~~~js
+  import { menu, menuButton } from "https://the.missing.style/v<%= version %>/missing-js/menu.js";
+  ~~~
+
+</figure>
 
 All notes above about initializing dynamic content apply here.
 
@@ -67,9 +80,13 @@ All notes above about initializing dynamic content apply here.
 
 _See [Components &sect; Navbar](/docs/components/#navbar)_
 
-~~~ html
-<script type="module" src="https://the.missing.style/v<%= version %>/missing-js/overflow-nav.js">
-~~~
+<figure>
+
+  ~~~ html
+  <script type="module" src="https://the.missing.style/v<%= version %>/missing-js/overflow-nav.js">
+  ~~~
+
+</figure>
 
 Make sure to add:
 
@@ -78,14 +95,14 @@ Make sure to add:
 
 <figure>
 
-~~~ html
-<header class="navbar" data-overflow-nav>
+  ~~~ html
+  <header class="navbar" data-overflow-nav>
     <button class="iconbutton" data-nav-expander aria-hidden>
-        &#x2630; <!-- trigram for heaven -->
+      &#x2630; <!-- trigram for heaven -->
     </button>
     <!-- rest of navbar... -->
-</header>
-~~~
+  </header>
+  ~~~
 
 </figure>
 
