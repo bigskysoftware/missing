@@ -8,9 +8,9 @@ layout: prose.eta
 
 untitled.css is a CSS library that
 
- * starts with good default styling, akin to classless CSS libraries
- * offers components based on purely semantic HTML, utilizing ARIA where appropriate (e.g. tabs)
- * finally, offers a small & curated set of class-based utilities for tweaking
+* starts with good default styling, akin to classless CSS libraries
+* offers components based on purely semantic HTML, utilizing ARIA where appropriate (e.g. tabs)
+* finally, offers a small & curated set of class-based utilities for tweaking
 
 untitled.css aims to minimize intervention in the HTML by allowing developers to start with a good out of the box experience,
  then build common components using plain, semantic HTML and only when they need to go beyond that, apply a minimized \
@@ -117,7 +117,6 @@ We would like to see the following high-power CSS classes:
 * modal (?)
 * fix-to-top (?)
 * fix-to-left (?)
-
 
 ## Utility Classes
 
