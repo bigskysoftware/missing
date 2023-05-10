@@ -226,6 +226,7 @@ button.iconbutton {
 	background: none;
 	color: currentcolor;
 	padding: 0;
+	box-shadow: none;
 	line-height: var(--rhythm);
 	font-size: 24px;
 	width: 24px;
@@ -236,11 +237,13 @@ button.iconbutton {
 	transition: font-weight .2s ease-in-out;
 
 	&:hover, &:focus-visible {
+		box-shadow: none;
 		outline: 1px solid var(--accent);
 		outline-offset: 6px;
 	}
 
 	&:active {
+		box-shadow: none;
 		outline-offset: 3px;
 		background: none;
 	}
