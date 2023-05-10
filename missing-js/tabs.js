@@ -1,7 +1,7 @@
 /// a tabs library.
 
 //@deno-types=./19.ts
-import { $, $$, on, attr, next, prev, asHtml, hotkey, behavior, makelogger, identify } from "./19.js";
+import { $, $$, on, attr, next, prev, asHtml, hotkey, behavior, makelogger, identify, dispatch } from "./19.js";
 
 const ilog = makelogger("tabs");
 
@@ -51,6 +51,10 @@ const switchTab = (root, tablist, tab, { focusTab = true } = {}) => {
   if (focusTab) tab.focus();
 
   tablist.tabIndex = -1;
+
+  dispatch(curtab, "missing-switch-away", { to: tab })
+  dispatch(tab, "missing-switch-to", { from: curtab })
+  dispatch(tablist, "missing-change", { from: curtab, to: tab })
 };
 
 /**
