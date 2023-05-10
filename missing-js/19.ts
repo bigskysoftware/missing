@@ -4,6 +4,7 @@
  */
 
 /// <reference lib="es2022" />
+/// <reference lib="dom" />
 
 export type Behavior<TOptions> = (subtree: ParentNode, options?: Partial<TOptions>) => void;
 
@@ -16,7 +17,7 @@ export type BehaviorContext<TOptions> = {
 
 export type Root = Document | ShadowRoot;
 
-export type Logger = <T>(...args: [..._: any, last: T]) => T;
+export type Logger = <T>(...args: [..._: unknown[], last: T]) => T;
 
 /**
  * Creates a logging function.
@@ -32,9 +33,9 @@ export type Logger = <T>(...args: [..._: any, last: T]) => T;
  * @returns The `ilog` function.
  */
 export function makelogger(scope: string): Logger {
-  return (...args) => {
+  return <T>(...args: [..._: unknown[], last: T]) => {
     console.log("%c%s", "color:green", scope, ...args);
-    return args.at(-1);
+    return args.at(-1) as T;
   };
 }
 
@@ -67,7 +68,7 @@ export function traverse(
 ) {
   const { wrap = true } = options;
 
-  const advance = direction + "ElementSibling";
+  const advance = `${direction}ElementSibling` as const;
 
   const wrapIt = () => {
     // If wrapping is disabled.
@@ -103,7 +104,7 @@ export function traverse(
       cursor = cursor.parentElement as Element; // 1 to r
       if (cursor === root) return wrapIt();
     }
-    cursor = cursor[advance]; // 1 to 2 to 3, r to 4
+    cursor = cursor[advance]!; // 1 to 2 to 3, r to 4
     const found = cursor.matches(selector)
       ? cursor // 4
       : $(cursor, selector); // asterisks
@@ -162,6 +163,7 @@ export function on<TEventType extends string>(
   const listenerWrapper: Listener<TEventType> = e => {
     if (options.addedBy && !options.addedBy.isConnected)
       off({ target, type: type, listener: listenerWrapper as EventListener, options }); // self-cleaning listener
+    if ('logEvents19' in window) console.log(e);
     return listener(e);
   };
   target.addEventListener(type, listenerWrapper as EventListener, options as AddEventListenerOptions);
@@ -227,18 +229,31 @@ export function dispatch(el: EventTarget, type: string, detail?: any) {
  *   If an object is passed, camelCase attribute names will be converted to kebab-case.
  * @param value - The value of the attribute, when setting. Pass `null` to remove an attribute.
  */
-export function attr(el: Element, name: string | object, value: any = undefined): string | null {
+export function attr(el: Element, name: string | Record<string, unknown>, value: unknown = undefined): string | null {
   if (typeof name === "object") {
-    for (const at in name) el.setAttribute(camelToKebab(at), name[at]);
+    for (const at in name) el.setAttribute(camelToKebab(at), String(name[at]));
     return null;
+  } else {
+    const curValue = el.getAttribute(name);
+    if (value === undefined)
+      return el.getAttribute(name);
+    else if (value === null)
+      return el.removeAttribute(name), curValue;
+    else
+      return el.setAttribute(name, String(value)), String(value);
   }
-  const curValue = el.getAttribute(name);
-  if (value === undefined)
-    return el.getAttribute(name);
-  else if (value === null)
-    return el.removeAttribute(name), curValue;
-  else
-    return el.setAttribute(name, value), value;
+}
+
+export function mkid() {
+  return Array.from({ length: 21 }, () =>
+    'useandom-26T198340PX75pxJACKVERYMINDBUSHWOLF_GQZbfghjklqvwyzrict'[
+      (Math.random() * 64) | 0
+    ]).join("")
+}
+
+export function identify(el: Element) {
+  if (el.id) return el.id;
+  else return el.id = mkid();
 }
 
 /**
@@ -341,9 +356,10 @@ type KeyboardEventListener = (e: KeyboardEvent) => void;
  */
 export function hotkey(hotkeys: Record<string, KeyboardEventListener>): KeyboardEventListener {
   const alt = 0b1, ctrl = 0b10, meta = 0b100, shift = 0b1000;
-  const handlers = {}; // handlers[key][modifiers as bitfields]
+  // handlers[key][modifiers as bitfields]
+  const handlers: Record<string, Record<number, KeyboardEventListener>> = {};
   const modifiersOf = (e: KeyboardEvent) => ~~(e.altKey && alt) | ~~(e.ctrlKey && ctrl) | ~~(e.metaKey && meta) | ~~(e.shiftKey && shift);
-  const parse = (hotkeySpec: string) => {
+  const parse = (hotkeySpec: string): [string, number] => {
       const
         tokens = hotkeySpec.split("+"), key = tokens.pop()!;
       let modifiers = 0 | 0;
@@ -372,7 +388,7 @@ export function hotkey(hotkeys: Record<string, KeyboardEventListener>): Keyboard
  * @param f - The function.
  * @param [options.mode] - Leading or trailing debounce.
  */
-export function debounce<TArgs extends any[]>(t: number, f: (...args: TArgs) => void, { mode = "trailing" } = {}): typeof f {
+export function debounce<TArgs extends unknown[]>(t: number, f: (...args: TArgs) => void, { mode = "trailing" } = {}): typeof f {
   let timeout: number | null = null;
   return (...args: TArgs) => {
     if (timeout)

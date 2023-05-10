@@ -19,7 +19,7 @@ appropriately — see [WAI: Tabs][].
 To get the actual behavior of an accessible tabset, you can use [Missing.js &sect; Tabs](/docs/js#tabs).
 
   ~~~ html
-  <div role="tablist">
+  <div role="tablist" aria-label="Tabs example">
     <button role="tab" aria-controls="servers" aria-selected="true"
       >Servers</button>
     <button role="tab" aria-controls="channels"
@@ -35,7 +35,7 @@ To get the actual behavior of an accessible tabset, you can use [Missing.js &sec
 
 <script type="module" src="/missing-js/tabs.js"></script>
 
-<div role="tablist">
+<div role="tablist" aria-label="Tabs example">
   <button role="tab" aria-controls="servers" aria-selected="true"
     >Servers</button>
   <button role="tab" aria-controls="channels"

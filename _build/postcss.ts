@@ -5,7 +5,7 @@ import postcss from "https://esm.sh/postcss@8.4.16";
 import nesting from "https://esm.sh/postcss-nesting@10.1.7";
 import atImport from "https://esm.sh/postcss-import@15.0.0";
 import autoprefixer from "https://esm.sh/autoprefixer@10.4.13";
-import csso from "https://esm.sh/csso@3.5.1";
+import * as csso from "https://esm.sh/csso@5.0.5";
 
 const dist = "dist";
 

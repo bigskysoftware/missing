@@ -1,6 +1,7 @@
 /// a tabs library.
 
-import { $, $$, on, attr, next, prev, asHtml, hotkey, behavior, makelogger } from "./19.js";
+//@deno-types=./19.ts
+import { $, $$, on, attr, next, prev, asHtml, hotkey, behavior, makelogger, identify } from "./19.js";
 
 const ilog = makelogger("tabs");
 
@@ -18,7 +19,7 @@ const currentTab = tablist => $(tablist, "[role=tab][aria-selected=true]");
 
 /** 
  * @param {Element} tab
- * @param {import("./19.js").Root} root
+ * @param {import("./19.ts").Root} root
  * @returns {HTMLElement | null}
  */
 const tabPanelOf = (tab, root) => {
@@ -28,7 +29,7 @@ const tabPanelOf = (tab, root) => {
 }
 
 /** 
- * @param {import("./19.js").Root} root
+ * @param {import("./19.ts").Root} root
  * @param {Element} tablist
  * @param {HTMLElement | null} tab
  * @returns {void}
@@ -48,6 +49,8 @@ const switchTab = (root, tablist, tab, { focusTab = true } = {}) => {
   if (tabpanel) tabpanel.hidden = false;
 
   if (focusTab) tab.focus();
+
+  tablist.tabIndex = -1;
 };
 
 /**
@@ -58,8 +61,7 @@ export const tablist = behavior("[role=tablist]", (tablist, { root }) => {
   tablist.tabIndex = 0;
   tabsOf(tablist).forEach(tab => {
     tab.tabIndex = -1;
-    if (!tab.id) console.error("Tab", tab, "has no id");
-    tabPanelOf(tab).setAttribute("aria-labelledby", tab.id);
+    tabPanelOf(tab, root).setAttribute("aria-labelledby", identify(tab));
   });
   if (!(tablist.hasAttribute("aria-labelledby") || tablist.hasAttribute("aria-label")))
     console.error("Tab list", tablist, "has no accessible name (aria-label or aria-labelledby)");
