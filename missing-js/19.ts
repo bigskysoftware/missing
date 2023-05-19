@@ -300,6 +300,17 @@ export function html(str: TemplateStringsArray | string, ...values: any[]): Docu
 }
 
 /**
+ * Create CSSStyleSheet objects. Useful for Custom Elements.
+ */
+export function css(str: TemplateStringsArray | string, ...values: any[]): CSSStyleSheet {
+  const ss = new CSSStyleSheet();
+  if (typeof str === "object" && "raw" in str)
+    str = String.raw(str, ...values);
+  ss.replaceSync(str);
+  return ss
+}
+
+/**
  * 'Type "Element" cannot be assigned to type "HTMLElement"' SHUT UP
  * @param {*} [el] 
  * @returns {HTMLElement | null}
