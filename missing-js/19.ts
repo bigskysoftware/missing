@@ -29,7 +29,7 @@ export type Logger = <T>(...args: [..._: unknown[], last: T]) => T;
  * 
  *     const x = a + ilog("b:", b); // x = a + b
  * 
- * @param scope - The name of the component/module/etc. that will use this logger.
+ * @param scope The name of the component/module/etc. that will use this logger.
  * @returns The `ilog` function.
  */
 export function makelogger(scope: string): Logger {
@@ -39,7 +39,7 @@ export function makelogger(scope: string): Logger {
   };
 }
 
-const ilog = makelogger("19.js");
+// const ilog = makelogger("19.js");
 
 /**
  * Converts camelCase to kebab-case.
@@ -51,13 +51,13 @@ function camelToKebab(s: string): string {
 /**
  * Traverse the DOM forward or backward from a starting point
  * to find an element matching some selector.
- * @param {("next" | "previous")} direction
- * @param {ParentNode} root - The element within which to look for the next element, e.g. a menu.
- * @param {string} selector - The selector to look for, e.g. `"[role=menuitem]"`.
- * @param {Element | null} [current] - The element to start the search from, e.g. the currently selected menu item.
+ * @param direction
+ * @param root - The element within which to look for the next element, e.g. a menu.
+ * @param selector - The selector to look for, e.g. `"[role=menuitem]"`.
+ * @param current - The element to start the search from, e.g. the currently selected menu item.
  *    If missing, the first or last matching element will be returned (depending on search direction).
- * @param {object} [options]
- * @param {boolean} [options.wrap] Whether to wrap around when the end/start of {@link root} is reached.
+ * @param options
+ * @param options.wrap Whether to wrap around when the end/start of {@link root} is reached.
  */
 export function traverse(
   direction: "next" | "previous",
@@ -113,7 +113,7 @@ export function traverse(
 }
 
 /**
- * Wrapper for {@link scope}.querySelector({@link sel}).
+ * Wrapper for {@linkcode scope}`.querySelector(`{@linkcode sel}`)`.
  * Unlike jQuery, the scope is required to be specified.
  */
 export function $<TElement extends Element>(scope: ParentNode, sel: string): TElement | null {
@@ -121,7 +121,7 @@ export function $<TElement extends Element>(scope: ParentNode, sel: string): TEl
 }
 
 /**
- * Wrapper for {@link scope}.querySelectorAll({@link sel}).
+ * Wrapper for {@linkcode scope}`.querySelectorAll(`{@linkcode sel}`)`.
  * Unlike jQuery, the scope is required to be specified.
  * Returns an Array instead of a NodeList.
  */
@@ -140,19 +140,15 @@ type EventListenerToken = {
   options: object;  
 }
 
-/** 
- * @callbListener
- * @param {unknown extends HTMLElementEventMap[TEventType] ? CustomEvent : HTMLElementEventMap[TEventType]} event
- */
 type Listener<T extends string> = (event: T extends keyof HTMLElementEventMap ? HTMLElementEventMap[T] : CustomEvent) => void;
 
 /**
  * Add an event listener.
- * @param target - The element (or other event target) to add the listener to.
- * @param type - The type of event to listen to, e.g. `"click"`.
- * @param listener - The listener function.
- * @param [options]
- * @param [options.addedBy] - If supplied, the listener will be removed when this element is not in the DOM.
+ * @param target The element (or other event target) to add the listener to.
+ * @param type The type of event to listen to, e.g. `"click"`.
+ * @param listener The listener function.
+ * @param options
+ * @param options.addedBy If supplied, the listener will be removed when this element is not in the DOM.
  */
 export function on<TEventType extends string>(
   target: EventTarget,
@@ -210,10 +206,10 @@ export function halts<T extends Event>(o: string, f: (e: T) => void): (e: T) => 
  * Dispatch a {@link CustomEvent}.
  * @param el - the event target
  * @param type - the event type, e.g. `"myapp:clear-cart"`
- * @param [detail] - Event.detail
+ * @param detail - Event.detail
  */
-export function dispatch(el: EventTarget, type: string, detail?: any) {
-  return el.dispatchEvent(new CustomEvent(type, { detail }));
+export function dispatch(el: EventTarget, type: string, detail?: unknown, options?: CustomEventInit) {
+  return el.dispatchEvent(new CustomEvent(type, { ...options, detail }));
 }
 
 /**
@@ -244,6 +240,9 @@ export function attr(el: Element, name: string | Record<string, unknown>, value:
   }
 }
 
+/**
+ * Generate a random ID, copied from `npm:nanoid`.
+ */
 export function mkid() {
   return Array.from({ length: 21 }, () =>
     'useandom-26T198340PX75pxJACKVERYMINDBUSHWOLF_GQZbfghjklqvwyzrict'[
@@ -251,6 +250,9 @@ export function mkid() {
     ]).join("")
 }
 
+/**
+ * Return an element's ID, setting a generated ID (see {@linkcode mkid}) if it lacks one.
+ */
 export function identify(el: Element) {
   if (el.id) return el.id;
   else return el.id = mkid();
@@ -270,7 +272,7 @@ export function stringifyNode(node: Node): string {
  * If given a DOM node, it will return **unescaped** HTML for it.
  * Returns empty string when given null or undefined.
  */
-export function htmlescape(s: any): string {
+export function htmlescape(s: unknown): string {
   if (s === null || s === undefined)
     return "";
   if (s instanceof Node)
@@ -291,7 +293,7 @@ export function htmlescape(s: any): string {
  * 
  *     html`<p>My trusted markup: ${html(trustedMarkup)}</p>`
  */
-export function html(str: TemplateStringsArray | string, ...values: any[]): DocumentFragment {
+export function html(str: TemplateStringsArray | string, ...values: unknown[]): DocumentFragment {
   const tmpl = document.createElement("template");
   if (typeof str === "object" && "raw" in str)
     str = String.raw(str, ...values.map(htmlescape));
@@ -302,7 +304,7 @@ export function html(str: TemplateStringsArray | string, ...values: any[]): Docu
 /**
  * Create CSSStyleSheet objects. Useful for Custom Elements.
  */
-export function css(str: TemplateStringsArray | string, ...values: any[]): CSSStyleSheet {
+export function css(str: TemplateStringsArray | string, ...values: unknown[]): CSSStyleSheet {
   const ss = new CSSStyleSheet();
   if (typeof str === "object" && "raw" in str)
     str = String.raw(str, ...values);
@@ -311,23 +313,31 @@ export function css(str: TemplateStringsArray | string, ...values: any[]): CSSSt
 }
 
 /**
- * 'Type "Element" cannot be assigned to type "HTMLElement"' SHUT UP
- * @param {*} [el] 
- * @returns {HTMLElement | null}
+ * Template literal tag to create a CSSStyleDeclaration object.
  */
-export function asHtml(el: any): HTMLElement | null {
+export function style(str: TemplateStringsArray | string, ...values: unknown[]): CSSStyleDeclaration {
+  const sd = new CSSStyleDeclaration();
+  if (typeof str === "object" && "raw" in str)
+    str = String.raw(str, ...values);
+  sd.cssText = str;
+  return sd
+}
+
+/**
+ * 'Type "Element" cannot be assigned to type "HTMLElement"' SHUT UP
+ */
+export function asHtml(el: unknown): HTMLElement | null {
   return el instanceof HTMLElement ? el : null;
 }
 
 /**
  * Find the next element matching a given selector, searching deeply throughout the DOM.
  * @see traverse
- * @param root - The element within which to look for the next element, e.g. a menu.
- * @param selector - The selector to look for, e.g. `"[role=menuitem]"`.
- * @param [current] - The element to start the search from, e.g. the currently selected menu item.
+ * @param root The element within which to look for the next element, e.g. a menu.
+ * @param selector The selector to look for, e.g. `"[role=menuitem]"`.
+ * @param current The element to start the search from, e.g. the currently selected menu item.
  *    If missing, the first or last matching element will be returned (depending on search direction).
- * @param [options]
- * @param [options.wrap] Whether to wrap around when the end/start of {@link root} is reached.
+ * @param options.wrap Whether to wrap around when the end/start of {@link root} is reached.
  */
 export function next(
   root: ParentNode,
@@ -341,14 +351,13 @@ export function next(
 /**
  * Find the previous element matching a given selector, searching deeply throughout the DOM.
  * @see traverse
- * @param root - The element within which to look for the next element, e.g. a menu.
- * @param selector - The selector to look for, e.g. `"[role=menuitem]"`.
- * @param [current] - The element to start the search from, e.g. the currently selected menu item.
+ * @param root The element within which to look for the next element, e.g. a menu.
+ * @param selector The selector to look for, e.g. `"[role=menuitem]"`.
+ * @param current The element to start the search from, e.g. the currently selected menu item.
  *    If missing, the first or last matching element will be returned (depending on search direction).
- * @param [options]
- * @param [options.wrap] Whether to wrap around when the end/start of {@link root} is reached.
+ * @param options.wrap Whether to wrap around when the end/start of {@link root} is reached.
  */
- export function prev(
+export function prev(
   root: ParentNode,
   selector: string,
   current: Element | null,
@@ -395,9 +404,9 @@ export function hotkey(hotkeys: Record<string, KeyboardEventListener>): Keyboard
 /**
  * Debounce a function.
  * 
- * @param t - The debounce time.
- * @param f - The function.
- * @param [options.mode] - Leading or trailing debounce.
+ * @param t The debounce time.
+ * @param f The function.
+ * @param options.mode Leading or trailing debounce.
  */
 export function debounce<TArgs extends unknown[]>(t: number, f: (...args: TArgs) => void, { mode = "trailing" } = {}): typeof f {
   let timeout: number | null = null;
@@ -443,10 +452,10 @@ type Repeater<TData> = {
    * @param data The data value
    * @param ctx.id The id the returned element should have.
    */
-  create(data: TData, ctx: { id: string }): Node;
+  create(data: TData, ctx: { id: string }): ChildNode;
 
   /**
-   * 
+   * Update an element for a new data value.
    * @param el The current element.
    * @param data The new data value.
    */
@@ -455,20 +464,14 @@ type Repeater<TData> = {
 
 /**
  * Repeat an element such that the list can be updated when data changes.
- * 
- * @param {object} context
- * @param {(data: TData) => string} context.idOf
- * @param {(data: TData, ctx: { id: string }) => Node} context.create
- * @param {(el: Element, data: TData) => void} [context.update]
- * @returns 
  */
 export function repeater<TData>(container: ParentNode, rep: Repeater<TData>) {
-  return (dataset: any) => {
+  return (dataset: Iterable<TData>) => {
     let cursor: ChildNode | null = null;
 
-    const append = (...nodes: any[]) => {
+    const append = (...nodes: ChildNode[]) => {
       const oldcursor = cursor;
-      cursor = nodes.at(-1);
+      cursor = nodes.at(-1)!;
       if (cursor instanceof DocumentFragment)
         cursor = cursor.lastChild;
       if (oldcursor)
