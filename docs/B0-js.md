@@ -22,10 +22,19 @@ Behavior will be added automatically.
 <figure>
 
   ~~~ html
-  <script type="module" src="https://the.missing.style/v<%= version %>/missing-js/tabs.js">
+  <script type="module" src="https://unpkg.com/missing.css@<%= version %>/dist/missing-js/tabs.js">
   ~~~
 
 </figure>
+
+The tabs behavior emits these custom events:
+
+- **`missing-switch-away`** on a tab after switching away from it.
+  - `detail.to`: the newly active tab
+- **`missing-switch-to`** on a tab when switching to it
+  - `detail.from`: the previously active tab
+- **`missing-change`** on the tablist element when changing tabs
+  - `detail.to`, `detail.from`
 
 <div class="info box">
 
