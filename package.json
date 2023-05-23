@@ -1,6 +1,6 @@
 {
   "name": "missing.css",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "missing.css is the CSS library we wished already existed.",
   "scripts": {
     "prepack": "deno task prod"
