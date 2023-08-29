@@ -7,8 +7,8 @@
 
 	<title>missing.css</title>
 
-	<link rel="stylesheet" href="/missing.css">
-	<link rel="stylesheet" href="/missing-prism.css">
+	<link rel="stylesheet" href="/src/missing.css">
+	<link rel="stylesheet" href="/src/missing-prism.css">
 	<link href="https://fonts.bunny.net/css?family=source-sans-3:400,700|m-plus-code-latin:400,700" rel="stylesheet" />
 
 	<style>

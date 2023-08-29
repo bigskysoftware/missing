@@ -1,13 +1,13 @@
 
-@import "./core/sanitize.css";
-@import "./core/colors.css";
+@import url(core/sanitize.css);
+@import url(core/colors.css);
 
-@import "./main.css";
-@import "./components.css";
-@import "./aria.css";
-@import "./colorways.css";
-@import "./variables.css";
-@import "./layout.css";
-@import "./utils.css";
-@import "./flex.css";
-@import "./grid.css";
+@import url(main.css);
+@import url(components.css);
+@import url(aria.css);
+@import url(colorways.css);
+@import url(variables.css);
+@import url(layout.css);
+@import url(utils.css);
+@import url(flex.css);
+@import url(grid.css);

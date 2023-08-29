@@ -5,7 +5,8 @@
     "dev": "deno task www -s --dev",
     "www": "deno task lume --config=_lume_config.ts",
     "lume": "echo \"import 'lume/cli.ts'\" | deno run --unstable -A -",
-    "build": "deno task lume",
-    "serve": "deno task lume -s"
+    "compile": "lightningcss --nesting --bundle --targets '>= 0.25%'",
+    "minify": "lightningcss --minify",
+    "css": "deno task compile src/missing.css -o dist/missing.css && deno task minify dist/missing.css -o dist/missing.min.css && deno task compile src/missing-prism.css -o dist/missing-prism.css && deno task minify dist/missing-prism.css -o dist/missing-prism.min.css"
   }
 }
