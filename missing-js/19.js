@@ -3,21 +3,41 @@
  * "1 US$ = 18.5842 TR₺ · Oct 16, 2022, 20:52 UTC"
  */
 
+// @ts-check
+
 /// <reference lib="es2022" />
 /// <reference lib="dom" />
 
-export type Behavior<TOptions> = (subtree: ParentNode, options?: Partial<TOptions>) => void;
+/**
+ * @template TOptions
+ * @callback Behavior
+ * @param {ParentNode} subtree
+ * @param {Partial<TOptions>} [options]
+ * @returns {void}
+ */
 
-export type BehaviorInit<TOptions> = (element: Element, context: BehaviorContext<TOptions>) => void;
+/**
+ * @template TOptions
+ * @callback BehaviorInit
+ * @param {Element} element
+ * @param {BehaviorContext<TOptions>} context
+ * @returns void
+ */
 
-export type BehaviorContext<TOptions> = {
-  root: Root;
-  options: Partial<TOptions>
-}
+/**
+ * @template TOptions
+ * @typedef {object} BehaviorContext
+ * @property {Root} root
+ * @property {Partial<TOptions>} options
+ */
 
-export type Root = Document | ShadowRoot;
+/**
+ * @typedef {Document | ShadowRoot} Root
+ */
 
-export type Logger = <T>(...args: [..._: unknown[], last: T]) => T;
+/**
+ * @typedef {<T>(...args: [..._: unknown[], last: T]) => T} Logger
+ */
 
 /**
  * Creates a logging function.
@@ -29,13 +49,13 @@ export type Logger = <T>(...args: [..._: unknown[], last: T]) => T;
  * 
  *     const x = a + ilog("b:", b); // x = a + b
  * 
- * @param scope The name of the component/module/etc. that will use this logger.
- * @returns The `ilog` function.
+ * @param {string} scope The name of the component/module/etc. that will use this logger.
+ * @returns {Logger} The `ilog` function.
  */
-export function makelogger(scope: string): Logger {
-  return <T>(...args: [..._: unknown[], last: T]) => {
+export function makelogger(scope) {
+  return (...args) => {
     console.log("%c%s", "color:green", scope, ...args);
-    return args.at(-1) as T;
+    return /** @type {T} */ (args.at(-1));
   };
 }
 
@@ -43,32 +63,34 @@ export function makelogger(scope: string): Logger {
 
 /**
  * Converts camelCase to kebab-case.
+ * @param {string} s
+ * @returns {string}
  */
-function camelToKebab(s: string): string {
+function camelToKebab(s) {
   return s.replace(/[A-Z]/g, (s) => "-" + s.toLowerCase());
 }
 
 /**
  * Traverse the DOM forward or backward from a starting point
  * to find an element matching some selector.
- * @param direction
- * @param root - The element within which to look for the next element, e.g. a menu.
- * @param selector - The selector to look for, e.g. `"[role=menuitem]"`.
- * @param current - The element to start the search from, e.g. the currently selected menu item.
+ * @param {"next" | "previous"} direction
+ * @param {ParentNode} root - The element within which to look for the next element, e.g. a menu.
+ * @param {string} selector - The selector to look for, e.g. `"[role=menuitem]"`.
+ * @param {Element | null} current - The element to start the search from, e.g. the currently selected menu item.
  *    If missing, the first or last matching element will be returned (depending on search direction).
- * @param options
- * @param options.wrap Whether to wrap around when the end/start of {@link root} is reached.
+ * @param {object} [options]
+ * @param {boolean} [options.wrap] Whether to wrap around when the end/start of {@link root} is reached.
  */
 export function traverse(
-  direction: "next" | "previous",
-  root: ParentNode,
-  selector: string,
-  current: Element | null,
-  options: { wrap?: boolean } = {},
+  direction,
+  root,
+  selector,
+  current,
+  options = {},
 ) {
   const { wrap = true } = options;
 
-  const advance = `${direction}ElementSibling` as const;
+  const advance = /** @type {const} */(`${direction}ElementSibling`);
 
   const wrapIt = () => {
     // If wrapping is disabled.
@@ -101,10 +123,10 @@ export function traverse(
   let cursor = current;
   while (true) {
     while (cursor[advance] === null) { // 3
-      cursor = cursor.parentElement as Element; // 1 to r
+      cursor = /** @type {HTMLElement} */ (cursor.parentElement); // 1 to r
       if (cursor === root) return wrapIt();
     }
-    cursor = cursor[advance]!; // 1 to 2 to 3, r to 4
+    cursor = /** @type {HTMLElement} */ (cursor[advance]); // 1 to 2 to 3, r to 4
     const found = cursor.matches(selector)
       ? cursor // 4
       : $(cursor, selector); // asterisks
@@ -115,71 +137,80 @@ export function traverse(
 /**
  * Wrapper for {@linkcode scope}`.querySelector(`{@linkcode sel}`)`.
  * Unlike jQuery, the scope is required to be specified.
+ * @template {Element} TElement
+ * @param {ParentNode} scope
+ * @param {string} sel
+ * @returns {TElement | null}
  */
-export function $<TElement extends Element>(scope: ParentNode, sel: string): TElement | null {
-  return scope.querySelector<TElement>(sel);
+export function $(scope, sel) {
+  return scope.querySelector(sel);
 }
 
 /**
  * Wrapper for {@linkcode scope}`.querySelectorAll(`{@linkcode sel}`)`.
  * Unlike jQuery, the scope is required to be specified.
  * Returns an Array instead of a NodeList.
+ * @template {Element} TElement
+ * @param {ParentNode} scope
+ * @param {string} sel
+ * @returns {TElement[]}
  */
-export function $$<TElement extends Element>(scope: ParentNode, sel: string): TElement[] {
-  return Array.from(scope.querySelectorAll<TElement>(sel));
+export function $$(scope, sel) {
+  return Array.from(scope.querySelectorAll(sel));
 }
 
 /**
+ * @typedef {object} EventListenerToken
  * Returned by `on`, this is an object you can pass to `off` to remove an event listener,
  * saving the burden of keeping a handle on the listener function and options.
+ * @property {EventTarget} target
+ * @property {string} type
+ * @property {EventListener} listener
+ * @property {object} options  
  */
-type EventListenerToken = {
-  target: EventTarget;
-  type: string;
-  listener: EventListener;
-  options: object;  
-}
 
-type Listener<T extends string> = (event: T extends keyof HTMLElementEventMap ? HTMLElementEventMap[T] : CustomEvent) => void;
+/**
+ * @template T extends string
+ * @callback Listener
+ * @param {T extends keyof HTMLElementEventMap ? HTMLElementEventMap[T] : CustomEvent} event
+ * @returns void
+ */
 
 /**
  * Add an event listener.
- * @param target The element (or other event target) to add the listener to.
- * @param type The type of event to listen to, e.g. `"click"`.
- * @param listener The listener function.
- * @param options
- * @param options.addedBy If supplied, the listener will be removed when this element is not in the DOM.
+ * @template {string} TEventType
+ * @param {EventTarget} target The element (or other event target) to add the listener to.
+ * @param {TEventType} type The type of event to listen to, e.g. `"click"`.
+ * @param {Listener<TEventType>} listener The listener function.
+ * @param {object} [options]
+ * @param {Element} [options.addedBy] If supplied, the listener will be removed when this element is not in the DOM.
  */
-export function on<TEventType extends string>(
-  target: EventTarget,
-  type: TEventType,
-  listener: Listener<TEventType>,
-  options: { addedBy?: Element } = {}
-): EventListenerToken {
-  const listenerWrapper: Listener<TEventType> = e => {
+export function on(target, type, listener, options = {}) {
+  /** @type {Listener<TEventType>} */
+  const listenerWrapper = e => {
     if (options.addedBy && !options.addedBy.isConnected)
-      off({ target, type: type, listener: listenerWrapper as EventListener, options }); // self-cleaning listener
+      off({ target, type: type, listener: /** @type {EventListener} */ (listenerWrapper), options }); // self-cleaning listener
     if ('logEvents19' in window) console.log(e);
     return listener(e);
   };
-  target.addEventListener(type, listenerWrapper as EventListener, options as AddEventListenerOptions);
-  return { target, type: type, options, listener: listenerWrapper as EventListener };
+  target.addEventListener(type, /** @type {EventListener} */ (listenerWrapper), /** @type {AddEventListenerOptions} */ (options));
+  return { target, type: type, options, listener: listenerWrapper };
 }
 
 /**
  * Remove an event listener.
- * @param listenerToken - The return value of {@link on}.
+ * @param {EventListenerToken} listenerToken - The return value of {@link on}.
  */
-export function off({ target, type, listener, options }: EventListenerToken) {
+export function off({ target, type, listener, options }) {
   return target.removeEventListener(type, listener, options);
 }
 
 /**
  * "Halt" an event -- convenient wrapper for `preventDefault`, `stopPropagation`, and `stopImmediatePropagation`.
- * @param o - How to halt. Space-separated list of "default", "bubbling" and "propagation".
- * @param e - The event. 
+ * @param {string} o - How to halt. Space-separated list of "default", "bubbling" and "propagation".
+ * @param {Event} e - The event. 
  */
-export function halt(o: string, e: Event) {
+export function halt(o, e) {
   for (const t of o.split(" ")) {
     if (t === "default")
       e.preventDefault();
@@ -195,20 +226,23 @@ export function halt(o: string, e: Event) {
  * 
  *     on(el, "click", halts("default", e => ...))
  *
- * @param o - See {@link halt~o}.
- * @param f
+ * @template {Event} T
+ * @param {string} o - See {@link halt~o}.
+ * @param {(e: T) => void} f
+ * @returns {(e: T) => void}
  */
-export function halts<T extends Event>(o: string, f: (e: T) => void): (e: T) => void {
+export function halts(o, f) {
   return e => { halt(o, e); f(e); };
 }
 
 /**
  * Dispatch a {@link CustomEvent}.
- * @param el - the event target
- * @param type - the event type, e.g. `"myapp:clear-cart"`
- * @param detail - Event.detail
+ * @param {EventTarget} el - the event target
+ * @param {string} type - the event type, e.g. `"myapp:clear-cart"`
+ * @param {unknown} [detail] - Event.detail
+ * @param {CustomEventInit} [options] CustomEvent constructor options
  */
-export function dispatch(el: EventTarget, type: string, detail?: unknown, options?: CustomEventInit) {
+export function dispatch(el, type, detail, options) {
   return el.dispatchEvent(new CustomEvent(type, { ...options, detail }));
 }
 
@@ -220,12 +254,13 @@ export function dispatch(el: EventTarget, type: string, detail?: unknown, option
  * - attr(el, "name", null) Remove the attribute "name"
  * - attr(el, [ nameA: "valueA", nameB: "valueB" ]) Set the attributes name-a to "valueA", name-b to "valueB"
  * 
- * @param el 
- * @param name - The attribute name **or** a map of names to values.
+ * @param {Element} el 
+ * @param {string | Record<string, unknown>} name - The attribute name **or** a map of names to values.
  *   If an object is passed, camelCase attribute names will be converted to kebab-case.
- * @param value - The value of the attribute, when setting. Pass `null` to remove an attribute.
+ * @param {unknown} value - The value of the attribute, when setting. Pass `null` to remove an attribute.
+ * @returns {string | null}
  */
-export function attr(el: Element, name: string | Record<string, unknown>, value: unknown = undefined): string | null {
+export function attr(el, name, value) {
   if (typeof name === "object") {
     for (const at in name) el.setAttribute(camelToKebab(at), String(name[at]));
     return null;
@@ -252,16 +287,19 @@ export function mkid() {
 
 /**
  * Return an element's ID, setting a generated ID (see {@linkcode mkid}) if it lacks one.
+ * @param {Element} el
  */
-export function identify(el: Element) {
+export function identify(el) {
   if (el.id) return el.id;
   else return el.id = mkid();
 }
 
 /**
  * Convert a node to equivalent HTML.
+ * @param {Node} node
+ * @returns string
  */
-export function stringifyNode(node: Node): string {
+export function stringifyNode(node) {
   const tmp = document.createElement("div");
   tmp.append(node);
   return tmp.innerHTML;
@@ -271,8 +309,10 @@ export function stringifyNode(node: Node): string {
  * HTML-escape a string.
  * If given a DOM node, it will return **unescaped** HTML for it.
  * Returns empty string when given null or undefined.
+ * @param {unknown} s
+ * @returns {string}
  */
-export function htmlescape(s: unknown): string {
+export function htmlescape(s) {
   if (s === null || s === undefined)
     return "";
   if (s instanceof Node)
@@ -292,8 +332,12 @@ export function htmlescape(s: unknown): string {
  * To let trusted HTML through escaping, parse it first:
  * 
  *     html`<p>My trusted markup: ${html(trustedMarkup)}</p>`
+ * 
+ * @param {TemplateStringsArray | string} str
+ * @param {...unknown} values
+ * @returns {DocumentFragment}
  */
-export function html(str: TemplateStringsArray | string, ...values: unknown[]): DocumentFragment {
+export function html(str, ...values) {
   const tmpl = document.createElement("template");
   if (typeof str === "object" && "raw" in str)
     str = String.raw(str, ...values.map(htmlescape));
@@ -303,8 +347,11 @@ export function html(str: TemplateStringsArray | string, ...values: unknown[]): 
 
 /**
  * Create CSSStyleSheet objects. Useful for Custom Elements.
+ * @param {TemplateStringsArray | string} str
+ * @param {...unknown} values
+ * @returns {CSSStyleSheet}
  */
-export function css(str: TemplateStringsArray | string, ...values: unknown[]): CSSStyleSheet {
+export function css(str, ...values) {
   const ss = new CSSStyleSheet();
   if (typeof str === "object" && "raw" in str)
     str = String.raw(str, ...values);
@@ -314,8 +361,11 @@ export function css(str: TemplateStringsArray | string, ...values: unknown[]): C
 
 /**
  * Template literal tag to create a CSSStyleDeclaration object.
+ * @param {TemplateStringsArray | string} str
+ * @param {...unknown} values
+ * @returns {CSSStyleDeclaration}
  */
-export function style(str: TemplateStringsArray | string, ...values: unknown[]): CSSStyleDeclaration {
+export function style(str, ...values) {
   const sd = new CSSStyleDeclaration();
   if (typeof str === "object" && "raw" in str)
     str = String.raw(str, ...values);
@@ -325,63 +375,65 @@ export function style(str: TemplateStringsArray | string, ...values: unknown[]):
 
 /**
  * 'Type "Element" cannot be assigned to type "HTMLElement"' SHUT UP
+ * @param {unknown} el
+ * @returns {HTMLElement | null}
  */
-export function asHtml(el: unknown): HTMLElement | null {
+export function asHtml(el) {
   return el instanceof HTMLElement ? el : null;
 }
 
 /**
  * Find the next element matching a given selector, searching deeply throughout the DOM.
  * @see traverse
- * @param root The element within which to look for the next element, e.g. a menu.
- * @param selector The selector to look for, e.g. `"[role=menuitem]"`.
- * @param current The element to start the search from, e.g. the currently selected menu item.
+ * @param {ParentNode} root The element within which to look for the next element, e.g. a menu.
+ * @param {string} selector The selector to look for, e.g. `"[role=menuitem]"`.
+ * @param {Element | null} current The element to start the search from, e.g. the currently selected menu item.
  *    If missing, the first or last matching element will be returned (depending on search direction).
- * @param options.wrap Whether to wrap around when the end/start of {@link root} is reached.
+ * @param {object} options
+ * @param {boolean} [options.wrap] Whether to wrap around when the end/start of {@link root} is reached.
  */
-export function next(
-  root: ParentNode,
-  selector: string, 
-  current: Element | null, 
-  options: { wrap?: boolean } = {}
-) {
+export function next(root, selector, current, options = {}) {
   return traverse("next", root, selector, current, options);
 }
 
 /**
  * Find the previous element matching a given selector, searching deeply throughout the DOM.
  * @see traverse
- * @param root The element within which to look for the next element, e.g. a menu.
- * @param selector The selector to look for, e.g. `"[role=menuitem]"`.
- * @param current The element to start the search from, e.g. the currently selected menu item.
+ * @param {ParentNode} root The element within which to look for the next element, e.g. a menu.
+ * @param {string} selector The selector to look for, e.g. `"[role=menuitem]"`.
+ * @param {Element | null} current The element to start the search from, e.g. the currently selected menu item.
  *    If missing, the first or last matching element will be returned (depending on search direction).
- * @param options.wrap Whether to wrap around when the end/start of {@link root} is reached.
+ * @param {object} options
+ * @param {boolean} [options.wrap] Whether to wrap around when the end/start of {@link root} is reached.
  */
-export function prev(
-  root: ParentNode,
-  selector: string,
-  current: Element | null,
-  options: { wrap?: boolean } = {}
-) {
+export function prev(root, selector, current, options = {}) {
   return traverse("previous", root, selector, current, options);
 }
 
-type KeyboardEventListener = (e: KeyboardEvent) => void;
+/**
+ * @callback KeyboardEventListener
+ * @param {KeyboardEvent} e
+ * @returns {void}
+ */
 
 /**
  * Create a handler for keyboard events using a keyboard shortcut DSL.
  * 
  * - "ArrowLeft"
  * - "Ctrl+Alt+3"
+ * 
+ * @param {Record<string, KeyboardEventListener>} hotkeys
+ * @returns KeyboardEventListener
  */
-export function hotkey(hotkeys: Record<string, KeyboardEventListener>): KeyboardEventListener {
+export function hotkey(hotkeys) {
   const alt = 0b1, ctrl = 0b10, meta = 0b100, shift = 0b1000;
   // handlers[key][modifiers as bitfields]
-  const handlers: Record<string, Record<number, KeyboardEventListener>> = {};
-  const modifiersOf = (e: KeyboardEvent) => ~~(e.altKey && alt) | ~~(e.ctrlKey && ctrl) | ~~(e.metaKey && meta) | ~~(e.shiftKey && shift);
-  const parse = (hotkeySpec: string): [string, number] => {
+  /** @type {Record<string, Record<number, KeyboardEventListener>>} */
+  const handlers = {};
+  const modifiersOf = (e) => ~~(e.altKey && alt) | ~~(e.ctrlKey && ctrl) | ~~(e.metaKey && meta) | ~~(e.shiftKey && shift);
+  const parse = /** @returns {[string, number]} */ (/** @type {string} */ hotkeySpec) => {
       const
-        tokens = hotkeySpec.split("+"), key = tokens.pop()!;
+        tokens = hotkeySpec.split("+"), key = /** @type {string} */ (tokens.pop());
       let modifiers = 0 | 0;
       for (const token in tokens)
         switch (token.toLowerCase()) {
@@ -398,19 +450,23 @@ export function hotkey(hotkeys: Record<string, KeyboardEventListener>): Keyboard
     (handlers[key] ??= new Array(8))[modifiers] = handler;
   }
 
-  return e => handlers[e.key]?.[modifiersOf(e)]?.(e);
+  return (/** @type {KeyboardEvent} */ e) => handlers[e.key]?.[modifiersOf(e)]?.(e);
 }
 
 /**
  * Debounce a function.
  * 
- * @param t The debounce time.
- * @param f The function.
- * @param options.mode Leading or trailing debounce.
+ * @template {unknown[]} TArgs 
+ * @param {number} t The debounce time.
+ * @param {(...args: TArgs) => void} f The function.
+ * @param {object} [options]
+ * @param {"leading" | "trailing"} [options.mode] Leading or trailing debounce.
+ * @returns {(...args: TArgs) => void}
  */
-export function debounce<TArgs extends unknown[]>(t: number, f: (...args: TArgs) => void, { mode = "trailing" } = {}): typeof f {
-  let timeout: number | null = null;
-  return (...args: TArgs) => {
+export function debounce(t, f, { mode = "trailing" } = {}) {
+  /** @type {number | null} */
+  let timeout = null;
+  return (/** @type {TArgs} */ ...args) => {
     if (timeout)
       clearTimeout(timeout);
     else if (mode === "leading")
@@ -425,12 +481,15 @@ export function debounce<TArgs extends unknown[]>(t: number, f: (...args: TArgs)
 
 /**
  * Create a behavior that applies to elements matching the given selector.
- * @returns A function that can be called to apply the behavior to new elements within a subtree.
+ * @template TOptions
+ * @param {string} selector
+ * @param {BehaviorInit<TOptions>} init
+ * @returns {Behavior<TOptions>} A function that can be called to apply the behavior to new elements within a subtree.
  */
-export function behavior<TOptions>(selector: string, init: BehaviorInit<TOptions>): Behavior<TOptions> {
+export function behavior(selector, init) {
   const initialized = new WeakSet;
   return (subtree = document, options = {}) => {
-    const root = subtree.getRootNode() as Root;
+    const root = /** @type {Root} */ (subtree.getRootNode());
     $$(subtree, selector).forEach(el => {
       if (initialized.has(el))
         return;
@@ -440,38 +499,34 @@ export function behavior<TOptions>(selector: string, init: BehaviorInit<TOptions
   };
 }
 
-type Repeater<TData> = {
-  /**
-   * Returns the HTML id for a given data value.
-   * @param datum The data value.
-   */
-  idOf(datum: TData): string;
-
-  /**
-   * Createsa an element for a data value.
-   * @param data The data value
-   * @param ctx.id The id the returned element should have.
-   */
-  create(data: TData, ctx: { id: string }): ChildNode;
-
-  /**
-   * Update an element for a new data value.
-   * @param el The current element.
-   * @param data The new data value.
-   */
-  update?(el: Element, data: TData): void;
-}
+/**
+ * @template TData
+ * @typedef {object} Repeater
+ * 
+ * @property {(datum: TData) => string} idOf
+ * Returns the HTML id for a given data value.
+ * 
+ * @property {(datum: TData, ctx: { id: string }) => ChildNode} create
+ * Creates a an element for a data value.
+ * 
+ * @property {(el: Element, datum: TData) => Element | null} update
+ * Update an element for a new data value.
+ */
 
 /**
  * Repeat an element such that the list can be updated when data changes.
+ * @template TData
+ * @param {ParentNode} container
+ * @param {Repeater<TData>} rep
  */
-export function repeater<TData>(container: ParentNode, rep: Repeater<TData>) {
-  return (dataset: Iterable<TData>) => {
-    let cursor: ChildNode | null = null;
+export function repeater(container, rep) {
+  return (/** @type {Iterable<TData>} */ dataset) => {
+    /** @type {ChildNode | null} */
+    let cursor = null;
 
-    const append = (...nodes: ChildNode[]) => {
+    const append = (/** @type {ChildNode[]} */ ...nodes) => {
       const oldcursor = cursor;
-      cursor = nodes.at(-1)!;
+      cursor = /** @type {ChildNode} */ (nodes.at(-1));
       if (cursor instanceof DocumentFragment)
         cursor = cursor.lastChild;
       if (oldcursor)
@@ -479,7 +534,7 @@ export function repeater<TData>(container: ParentNode, rep: Repeater<TData>) {
       else
         container.prepend(...nodes);
     };
-    const clearAfter = (cursor: Node | null) => {
+    const clearAfter = (/** @type {Node | null} */ cursor) => {
       if (cursor)
         while (cursor.nextSibling)
           cursor.nextSibling.remove();
@@ -487,7 +542,7 @@ export function repeater<TData>(container: ParentNode, rep: Repeater<TData>) {
         container.replaceChildren();
     };
 
-    const root = container.getRootNode() as Root;
+    const root = /** @type {Root} */ (container.getRootNode());
 
     // TODO: use an actual morphing algo
     for (const datum of dataset) {
