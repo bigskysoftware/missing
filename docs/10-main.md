@@ -16,7 +16,10 @@ Missing.css is a simple CSS library that can be used in many ways — you could:
 
 Install it on your website if you haven't already:
 
-<% const version = search.pages("release").at(-1).data.release; %>
+<% const version = filters.sortSemVer(
+    search.pages("release"),
+    page => page.data.release,
+  ).at(-1).data.release; %>
 
 <figure>
 

@@ -8,7 +8,10 @@ templateEngine: eta,md
 
 Missing.js is a JavaScript library implementing common UI patterns.
 
-<% const version = search.pages("release").at(-1).data.release; %>
+<% const version = filters.sortSemVer(
+    search.pages("release"),
+    page => page.data.release,
+  ).at(-1).data.release; %>
 
 
 ## Tabs
