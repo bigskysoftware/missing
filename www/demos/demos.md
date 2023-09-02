@@ -1,5 +1,5 @@
 ---
-layout: prose.eta
+layout: prose.vto
 templateEngine: eta,md
 url: /demos/
 backTo: / Missing.css

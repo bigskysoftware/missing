@@ -1,6 +1,5 @@
 ---
-permalink: /rfp/
-layout: prose.eta
+url: /rfp/
 ---
 
 # missing CSS Library RFP

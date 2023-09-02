@@ -1,5 +1,7 @@
-<!DOCTYPE html>
-<html lang="en"><head>
+
+<!doctype html>
+<html lang="en">
+<head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
 
@@ -7,7 +9,7 @@
 
 	<link rel="stylesheet" href="/src/missing.css">
 	<link rel="stylesheet" href="/src/missing-prism.css">
-	<link href="https://fonts.bunny.net/css?family=source-sans-3:400,700|m-plus-code-latin:400,700" rel="stylesheet">
+	<link href="https://fonts.bunny.net/css?family=source-sans-3:400,700|m-plus-code-latin:400,700" rel="stylesheet" />
 
 	<style>
 		:root {
@@ -23,35 +25,24 @@
 	</style>
 </head>
 <body>
-	<main>
-					<nav aria-label="back">
-			<p><a href="/releases">← Releases</a></p>
-		</nav>
-		<h1>
-    <sub-title class="allcaps">Missing.css</sub-title>
-    Version 1.0.10</h1>
+	{{ content }}
 
-<h2 id="changelog" tabindex="-1"><a class="permalink-anchor float:right" href="#changelog">§</a> Changelog</h2>
-<ul>
-<li>In elements that use a reduced line height, spacing will adapt accordingly.</li>
-</ul>
-</main>
-
-			<footer>
+	{{ if !it.hideFooter }}
+		<footer>
 			<p><a href="/">Missing.css</a>, by
 			<a href="https://denizaksimsek.com">Deniz Akşimşek</a>,
 			funded by
 			<a href="https://bigsky.software">Big Sky Software</a> and
 			<a href="https://commspace.co.za">Commspace</a>.
 	
-			</p><p>Also check out
+			<p>Also check out
 			<a href="https://htmx.org">htmx</a>
 			and
 			<a href="https://hyperscript.org">_hyperscript</a>.
 
-			</p><p>
+			<p>
 			Made with 💙 in Ankara, Samsun, Rize and Cape Town.
-		</p></footer>
-	
+		</footer>
+	{{ /if }}
+</body>
 
-</body></html>

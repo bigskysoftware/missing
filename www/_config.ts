@@ -5,6 +5,7 @@ import date from "lume/plugins/date.ts";
 import basePath from "lume/plugins/base_path.ts";
 import resolveUrls from "lume/plugins/resolve_urls.ts";
 import eta from "lume/plugins/eta.ts";
+import vento from "lume/plugins/vento.ts";
 // import pagefind from "lume/plugins/pagefind.ts";
 
 import markdownOptions from "./_build/markdown.ts";
@@ -21,12 +22,16 @@ export default lume(
   .copy("netlify.redirects", "_redirects")
   .copy("netlify.headers", "_headers")
   .copy("js")
-  .copy("../src", "src")
+  .addEventListener("afterRender", "cp -r ../src _site/")
+  .data("layout", "docs.vto", "/docs")
+  .data("layout", "prose.vto", "/pages")
+  .data("layout", "release.vto", "/releases")
   .use(date())
   .use(highlighting())
   .use(basePath())
   .use(resolveUrls())
   .use(eta({ extensions: [".eta", ".html"] }))
+  .use(vento())
   /* .use(pagefind({
     ui: false,
     indexing: {

@@ -1,6 +1,5 @@
 ---
-permalink: /concepts/
-layout: prose.eta
+url: /concepts/
 ---
 
 # Concepts

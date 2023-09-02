@@ -1,5 +1,5 @@
 ---
-layout: layout.eta
+layout: layout.vto
 ---
 
 <header class="navbar" data-overflow-nav>
@@ -7,7 +7,7 @@ layout: layout.eta
         <div>
             <button hidden aria-hidden="true" type="button" data-nav-expander class="iconbutton">
                 &#x2630;
-                <script src="/missing-js/overflow-nav.js" type="module"></script>
+                <script src="/src/js/overflow-nav.js" type="module"></script>
             </button>
         </div>
         <p>
@@ -18,36 +18,33 @@ layout: layout.eta
             <strong><button type="button" data-pagefind-search>Search</button></strong>
         </div> -->
         <ul role="list">
-            <% for (const { data: { url, title } } of search.pages("docs", "page.src.path")) { %>
-                    <li><a href="<%= url %>" 
-                        <%~ url == it.url ? "aria-current='page'" : "" %>
-                        ><%= title %></a></li>
-            <% } %>
+            {{ for doc of search.pages("url^=/docs/", "page.src.path") }}
+                    <li><a href="{{ doc.data.url }}" 
+                        {{ url == doc.data.url ? "aria-current=page" : "" }}
+                        >{{ doc.data.title }}</a></li>
+            {{ /for }}
         </ul>
     </nav>
 </header>
 
 <main data-pagefind-body>
-    <%~ content %>
+    {{ content }}
 </main>
 
 <footer>
-    <%
-        const
-        prev = search.previousPage(url, "docs", "src.path"),
-        next = search.nextPage(url, "docs", "src.path")
-    %>
+    {{ set prev = search.previousPage(url, "url^=/docs/", "page.src.path") }}
+    {{ set next = search.nextPage(url, "url^=/docs/", "page.src.path") }}
 
     <div class="f-row flex-wrap:wrap justify-content:space-between">
-        <% if (prev) { %>
+        {{ if prev }}
             <div>Previous &larr;
-                <strong><a href="<%= prev.data.url %>"><%= prev.data.title %></a></strong>
+                <strong><a href="{{ prev.data.url }}">{{ prev.data.title }}</a></strong>
             </div>
-        <% } %>
-        <% if (next) { %>
+        {{ /if }}
+        {{ if next }}
             <div>Next &rarr;
-                <strong><a href="<%= next.data.url %>"><%= next.data.title %></a></strong>
+                <strong><a href="{{ next.data.url }}">{{ next.data.title }}</a></strong>
             </div>
-        <% } %>
+        {{ /if }}
     </div>
 </footer>

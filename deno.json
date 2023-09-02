@@ -1,4 +1,5 @@
 {
+  "importMap": "www/deno.json",
   "tasks": {
     "build": "deno task css && deno task js",
     "serve": "cd www && deno task serve",

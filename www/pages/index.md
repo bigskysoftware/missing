@@ -1,7 +1,7 @@
 ---
-layout: layout.eta
+layout: layout.vto
 url: /
-templateEngine: [eta,md]
+templateEngine: [vento, md]
 ---
 
 <header>
@@ -24,13 +24,13 @@ templateEngine: [eta,md]
 
 <main>
 
-<% const version = filters.sortSemVer(
-    search.pages("release"),
-    page => page.data.release,
-  ).at(-1).data.release; %>
+{{ set version = search.pages("release")
+    |> map(rel => rel.data.release)
+    |> sortSemVer
+    |> at(-1) }}
 
 missing.css is the CSS library we wished already existed.
-Add it to your website: `<link rel="stylesheet" href="https://unpkg.com/missing.css@<%= version %>/dist/missing.min.css">`{.lang-html}
+Add it to your website: `<link rel="stylesheet" href="https://unpkg.com/missing.css@{{version}}/dist/missing.min.css">`{.lang-html}
 
  * It starts with decent default styling for vanilla HTML, akin to **classless
    CSS** libraries, that can be customized with **CSS variables.** {.box}
