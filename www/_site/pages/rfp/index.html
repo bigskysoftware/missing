@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+
+	<title>missing.css</title>
+
+	<link rel="stylesheet" href="/src/missing.css">
+	<link rel="stylesheet" href="/src/missing-prism.css">
+	<link href="https://fonts.bunny.net/css?family=source-sans-3:400,700|m-plus-code-latin:400,700" rel="stylesheet">
+
+	<style>
+		:root {
+			--main-font: "Source Sans 3", -apple-system, system-ui, sans-serif;
+		}
+		dfn > code {
+			font-style: normal;
+			text-decoration: 1px dashed var(--muted-fg) underline;
+		}
+		code a {
+			font-family: inherit;
+		}
+	</style>
+</head>
+<body>
+	<main>
+		<h1>missing CSS Library RFP</h1>
+<p>untitled.css is a CSS library that</p>
+<ul>
+<li>starts with good default styling, akin to classless CSS libraries</li>
+<li>offers components based on purely semantic HTML, utilizing ARIA where appropriate (e.g. tabs)</li>
+<li>finally, offers a small &amp; curated set of class-based utilities for tweaking</li>
+</ul>
+<p>untitled.css aims to minimize intervention in the HTML by allowing developers to start with a good out of the box experience,
+then build common components using plain, semantic HTML and only when they need to go beyond that, apply a minimized <br>
+number of classes to achieve what they want.</p>
+<p>missing CSS Library is a CSS library that, so far as I can tell, does not exist.</p>
+<p>It offers the following features:</p>
+<ul>
+<li>Classless CSS - It renders well out of the box with Vanilla HTML, like a classless CSS library such as pico</li>
+<li>Semantic Power Structure  - It takes advantage of semantic, lesser used tags such as <code class="language-none">nav</code>, <code class="language-none">main</code> and <code class="language-none">section</code> to allow for more elaborate layouts
+in pure HTML</li>
+<li>Aria-Driven Components - It offers "High Power" arias that capture high level components on, as much as is possible, a <em>single</em> CSS element</li>
+<li>Utility Classes - It offers a set of <a href="https://cube.fyi/utility.html">utility classes</a> that captures the 80/20 of libraries like tailwinds</li>
+</ul>
+<p>It does not attempt to</p>
+<ul>
+<li>Be super small</li>
+<li>Offer much beyond what is mentioned above (layer something like tailwinds on top)</li>
+</ul>
+<h1>Details</h1>
+<h2 id="rendering-well-ootb" tabindex="-1"><a class="permalink-anchor float:right" href="#rendering-well-ootb">§</a> Rendering Well OOTB</h2>
+<p>There are many CSS libraries that provide an excellent rendering experience with plain HTML.  pico.css is a cannonical example.
+missing CSS Library will, similarly, offer this functionality.</p>
+<h2 id="opinionated-styling-of-less-commonly-used-element" tabindex="-1"><a class="permalink-anchor float:right" href="#opinionated-styling-of-less-commonly-used-element">§</a> Opinionated Styling of Less Commonly Used Element</h2>
+<p>In keeping with the concept of rendering (and encouraging) semantic, vanilla CSS, missing CSS will render less commonly used
+tags in a more opinionated manner.</p>
+<p>For example, the <code class="language-none">main</code> tag will act like <code class="language-none">container</code> does in many CSS frameworks: it will auto-center and set a max-width
+within it.</p>
+<p><code class="language-none">section</code> tags will pad <code class="language-none">p</code> tags within them to properly indent content</p>
+<p><code class="language-none">nav</code> tags with a <code class="language-none">ul</code> inside of it will render as a horizontal nav element.</p>
+<p>All this without additional classes needed: missing CSS takes interpretive advantage of semantic HTML.</p>
+<h2 id="a-few-high-power-component-classes" tabindex="-1"><a class="permalink-anchor float:right" href="#a-few-high-power-component-classes">§</a> A Few High Power Component Classes</h2>
+<p>In addition to the pure-HTML styling mentioned above, missing CSS will provide a small number of "high power" component
+classes.</p>
+<p>The term "High Power" means that the components will not require multiple uses of classes, but rather a single class
+on a parent element.  An example clarifies.</p>
+<p>Consider the <a href="https://purecss.io/forms/#aligned-form">aligned form</a> example from the excellent pure.css library:</p>
+<pre class="language-html" tabindex="0"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">class</span><span class="token attr-value">="pure-form pure-form-aligned<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>fieldset</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value">="pure-control-group"</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>aligned-name<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Username<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>aligned-name<span class="token punctuation">"</span></span> <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Username<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value">="pure-form-message-inline"</span><span class="token punctuation">&gt;</span></span>This is a required field.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        ...
+</code></pre>
+<p>Note that there are a total of four classes required to achieve the aligned layout.</p>
+<p>In missing CSS, this will be styled like so:</p>
+<pre class="language-html" tabindex="0"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">class</span><span class="token attr-value">="aligned"</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>fieldset</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>aligned-name<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Username<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>text<span class="token punctuation">"</span></span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>aligned-name<span class="token punctuation">"</span></span> <span class="token attr-name">placeholder</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Username<span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">&gt;</span></span>This is a required field.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+        ...
+</code></pre>
+<p>A single "high powered" class, <code class="language-none">aligned</code> will be applied to the form and will flow through the entire structure without
+the need for additional classes.</p>
+<p>Similarly, we would like a <a href="https://piccalil.li/blog/cube-css/"><code class="language-none">card</code> class</a>:</p>
+<pre class="language-html" tabindex="0"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>article</span> <span class="token attr-name">class</span><span class="token attr-value">="card"</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span> <span class="token punctuation">/&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token comment">&lt;!-- our content in here will auto-flow now --&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>article</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<p>which acts like the responsive card specified here, but without any additional classes on sub-elements.</p>
+<p>(Perhaps <code class="language-none">article</code> becomes a card in pure HTML?)</p>
+<p>We would like to see the following high-power CSS classes:</p>
+<ul>
+<li>cards</li>
+<li>tabs</li>
+<li>row
+<ul>
+<li>no need to specify columns: auto break based on # of children and width of viewport</li>
+</ul>
+</li>
+<li>container (?)</li>
+<li>modal (?)</li>
+<li>fix-to-top (?)</li>
+<li>fix-to-left (?)</li>
+</ul>
+<h2 id="utility-classes" tabindex="-1"><a class="permalink-anchor float:right" href="#utility-classes">§</a> Utility Classes</h2>
+<p>Finally, for the small tweaks that make a website "feel right", we would like to offer a reasonably small number of
+utility classes that allow for pragmatic adjustments of elements.</p>
+<p>Tailwinds is an inspiration here, but take the 20 of the 80/20, simplifying things.</p>
+<p>If you need something beyond that, we encourage people to use CSS.</p>
+<h1>RFP</h1>
+<p>We are looking for a senior CSS developer who is interested in leading this project.  Other developers are interested in
+working on the project, but we do not have the CSS expertise necessary to ensure a high quality library.</p>
+<p>The project will be open source and freely available under a BSD license.</p>
+<p>The lead position will be modestly paid.  We have two corporate sponsors lined up, and will solicit additional corporate
+and community funds for the project.</p>
+<p>We would like to do the project in <a href="https://lesscss.org/">less.css</a></p>
+<h1>Inspiration</h1>
+<p>The following libraries provide</p>
+<ul>
+<li><a href="https://picocss.com/">pico.css</a></li>
+<li><a href="https://purecss.io/">purecss.css</a></li>
+<li><a href="https://cube.fyi/">cube.css</a></li>
+</ul>
+</main>
+
+			<footer>
+			<p><a href="/">Missing.css</a>, by
+			<a href="https://denizaksimsek.com">Deniz Akşimşek</a>,
+			funded by
+			<a href="https://bigsky.software">Big Sky Software</a> and
+			<a href="https://commspace.co.za">Commspace</a>.
+	
+			</p><p>Also check out
+			<a href="https://htmx.org">htmx</a>
+			and
+			<a href="https://hyperscript.org">_hyperscript</a>.
+
+			</p><p>
+			Made with 💙 in Ankara, Samsun, Rize and Cape Town.
+		</p></footer>
+	
+
+</body></html>

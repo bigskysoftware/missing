@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+
+	<title>missing.css</title>
+
+	<link rel="stylesheet" href="/src/missing.css">
+	<link rel="stylesheet" href="/src/missing-prism.css">
+	<link href="https://fonts.bunny.net/css?family=source-sans-3:400,700|m-plus-code-latin:400,700" rel="stylesheet">
+
+	<style>
+		:root {
+			--main-font: "Source Sans 3", -apple-system, system-ui, sans-serif;
+		}
+		dfn > code {
+			font-style: normal;
+			text-decoration: 1px dashed var(--muted-fg) underline;
+		}
+		code a {
+			font-family: inherit;
+		}
+	</style>
+</head>
+<body>
+	<header class="navbar" data-overflow-nav="">
+    <nav class="contents">
+        <div>
+            <button hidden="" aria-hidden="true" type="button" data-nav-expander="" class="iconbutton">
+                ☰
+                <script src="/missing-js/overflow-nav.js" type="module"></script>
+            </button>
+        </div>
+        <p>
+            <a href="/" class="allcaps">Missing.css</a> 
+        </p>
+        <!-- <div>
+            <script src="/js/pagefind.js" type="module"></script>
+            <strong><button type="button" data-pagefind-search>Search</button></strong>
+        </div> -->
+        <ul role="list">
+                                <li><a href="/docs/">Intro</a></li>
+                                <li><a href="/docs/forms/">Forms</a></li>
+                                <li><a href="/docs/components/">Components</a></li>
+                                <li><a href="/docs/aria/">ARIA</a></li>
+                                <li><a href="/docs/colorways/">Colorways</a></li>
+                                <li><a href="/docs/variables/">Variables</a></li>
+                                <li><a href="/docs/layout/">Layout</a></li>
+                                <li><a href="/docs/utils/" aria-current="page">Utilities</a></li>
+                                <li><a href="/docs/flex/">Flexbox</a></li>
+                                <li><a href="/docs/grid/">Grid</a></li>
+                                <li><a href="/docs/js/">JS</a></li>
+                                <li><a href="/docs/ref-index/">Index</a></li>
+                    </ul>
+    </nav>
+</header>
+
+<main data-pagefind-body="">
+    <h1>Utilities</h1>
+<p>For the minor alterations to the default look that make all the difference,
+missing.css has a collection of classes and custom elements.</p>
+<nav class="TableOfContents box crowded"><ul class="padding-inline"><li><a href="#visually-hidden-content">Visually hidden content</a></li><li><a href="#container">Container</a></li><li><a href="#density">Density</a></li><li><a href="#typography">Typography</a></li><li><a href="#masquerades">Masquerades</a></li><li><a href="#reset">Reset</a></li></ul></nav><h2 id="visually-hidden-content" tabindex="-1"><a class="permalink-anchor float:right" href="#visually-hidden-content">§</a> Visually hidden content</h2>
+<dl>
+<dt><dfn id=".vh"><code class="language-none">.vh</code></dfn>, <dfn id="<v-h>"><code class="language-none">&lt;v-h&gt;</code></dfn></dt>
+<dd>Visually hide a content without hiding it from assistive software.</dd>
+</dl>
+<h2 id="container" tabindex="-1"><a class="permalink-anchor float:right" href="#container">§</a> Container</h2>
+<p><code class="language-none">&lt;div class="container"&gt;</code></p>
+<p>The <dfn id=".container"><code class="language-none">.container</code></dfn> class imposes a maximum width on an element and
+centers it. The <code class="language-none">&lt;main&gt;</code> element does the same, but carries semantic baggage
+that might not be appropriate for all contexts.</p>
+<h2 id="density" tabindex="-1"><a class="permalink-anchor float:right" href="#density">§</a> Density</h2>
+<p>The density utilities set the <dfn id="--density"><code class="language-none">--density</code></dfn> <a href="/docs/variables">CSS variable</a>, which
+controls the amount of spacing between elements. The default value of
+<a href="/docs/utils/#--density"><code class="language-none">--density</code></a> is <code class="language-none">1</code>, which means the spacing between paragraphs is
+equal to the height of 1 line.</p>
+<p>We provide three utility classes that set <a href="/docs/utils/#--density"><code class="language-none">--density</code></a>:</p>
+<table>
+<thead>
+<tr>
+<th>Class</th>
+<th>Density</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><dfn id=".packed"><code class="language-none">.packed</code></dfn></td>
+<td><a href="/docs/utils/#--density"><code class="language-none">--density</code></a> = 0</td>
+</tr>
+<tr>
+<td><dfn id=".crowded"><code class="language-none">.crowded</code></dfn></td>
+<td><a href="/docs/utils/#--density"><code class="language-none">--density</code></a> = 0.5</td>
+</tr>
+<tr>
+<td><dfn id=".dense"><code class="language-none">.dense</code></dfn></td>
+<td><a href="/docs/utils/#--density"><code class="language-none">--density</code></a> = 1 (same as default)</td>
+</tr>
+<tr>
+<td><dfn id=".spacious"><code class="language-none">.spacious</code></dfn></td>
+<td><a href="/docs/utils/#--density"><code class="language-none">--density</code></a> = 2</td>
+</tr>
+<tr>
+<td><dfn id=".airy"><code class="language-none">.airy</code></dfn></td>
+<td><a href="/docs/utils/#--density"><code class="language-none">--density</code></a> = 3</td>
+</tr>
+<tr>
+<td><dfn id=".autodensity"><code class="language-none">.autodensity</code></dfn></td>
+<td>sets density based on viewport width</td>
+</tr>
+</tbody>
+</table>
+<p>You can set <a href="/docs/utils/#--density"><code class="language-none">--density</code></a> yourself in inline styles or your own CSS:</p>
+<figure>
+<figcaption>Setting <a href="/docs/utils/#--density"><code class="language-none">--density</code></a> with inline styles</figcaption>
+<pre class="language-html" tabindex="0"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>section</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>tagline<span class="token punctuation">"</span></span> <span class="token special-attr"><span class="token attr-name">style</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token value css language-css"><a href="/docs/utils/#--density">--density</a><span class="token punctuation">:</span> 2</span><span class="token punctuation">"</span></span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">&gt;</span></span>So easy, even a programmer can do it.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span>
+      missing.css makes it easy to ship beautiful applications without
+      locking yourself into classless libraries.
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>section</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+</figure>
+<figure>
+<figcaption>Setting <a href="/docs/utils/#--density"><code class="language-none">--density</code></a> in a stylesheet</figcaption>
+<pre class="language-css" tabindex="0"><code class="language-css"><span class="token selector">.link-embed</span> <span class="token punctuation">{</span>
+    <a href="/docs/utils/#--density">--density</a><span class="token punctuation">:</span> .5<span class="token punctuation">;</span> <span class="token comment">/* Embeds shouldn't take up too much space */</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</figure>
+<h2 id="typography" tabindex="-1"><a class="permalink-anchor float:right" href="#typography">§</a> Typography</h2>
+<dl>
+<dt><dfn id=".bold"><code class="language-none">.bold</code></dfn></dt>
+<dd>Sets text in boldface.</dd>
+<dt><dfn id=".italic"><code class="language-none">.italic</code></dfn></dt>
+<dd>Sets text in italics. Nested italic elements
+(<code class="language-none">em</code>, <code class="language-none">cite</code>, <code class="language-none">dfn</code>, <code class="language-none">var</code>, <code class="language-none">i</code>, <code class="language-none">address</code>) will be set in roman instead.</dd>
+<dt><dfn id=".allcaps"><code class="language-none">.allcaps</code></dfn></dt>
+<dd>Sets text in all caps and adds appropriate letter spacing.</dd>
+<dt><dfn id=".primary-font"><code class="language-none">.primary-font</code></dfn></dt>
+<dd>Renders the text in the primary font (<code class="language-none">--primary-font</code>).</dd>
+<dt><dfn id=".secondary-font"><code class="language-none">.secondary-font</code></dfn></dt>
+<dd>Renders the text in the secondary font (<a href="/docs/variables/#--secondary-font"><code class="language-none">--secondary-font</code></a>).</dd>
+<dt><dfn id=".display-font"><code class="language-none">.display-font</code></dfn></dt>
+<dd>Renders the text in the display font (<code class="language-none">--display-font</code>).</dd>
+<dt><dfn id=".mono-font"><code class="language-none">.mono-font</code></dfn></dt>
+<dd>Renders the text in the monospace font (<a href="/docs/variables/#--mono-font"><code class="language-none">--mono-font</code></a>).</dd>
+<dt><dfn id=".massivetext"><code class="language-none">.massivetext</code></dfn></dt>
+<dd>Makes the font size really big. Scales based on line length.</dd>
+<dt><dfn id=".aestheticbreak"><code class="language-none">.aestheticbreak</code></dfn></dt>
+<dd>A line break added for aesthetic purposes. Usage: <code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value">="<a href="/docs/utils/#.aestheticbreak" style="color: inherit; text-decoration-color: var(--fg)">aestheticbreak</a>"</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span></code></dd>
+</dl>
+<h2 id="masquerades" tabindex="-1"><a class="permalink-anchor float:right" href="#masquerades">§</a> Masquerades</h2>
+<p>The following classes can be used to make one element look like another:</p>
+<ul role="list" class="tool-bar">
+<li><dfn id=".<h1>"><code class="language-none">.&lt;h1&gt;</code></dfn></li>
+<li><dfn id=".<h2>"><code class="language-none">.&lt;h2&gt;</code></dfn></li>
+<li><dfn id=".<h3>"><code class="language-none">.&lt;h3&gt;</code></dfn></li>
+<li><dfn id=".<h4>"><code class="language-none">.&lt;h4&gt;</code></dfn></li>
+<li><dfn id=".<h5>"><code class="language-none">.&lt;h5&gt;</code></dfn></li>
+<li><dfn id=".<h6>"><code class="language-none">.&lt;h6&gt;</code></dfn></li>
+<li><dfn id=".<button>"><code class="language-none">.&lt;button&gt;</code></dfn></li>
+<li><dfn id=".<a>"><code class="language-none">.&lt;a&gt;</code></dfn></li>
+<li><dfn id=".<small>"><code class="language-none">.&lt;small&gt;</code></dfn></li>
+</ul>
+<figure>
+<pre class="language-html" tabindex="0"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">class</span><span class="token attr-value">="<a href="/docs/utils/#.<button>" style="color: inherit; text-decoration-color: var(--fg)">&lt;button&gt;</a>"</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/cta<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Call to action<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+  <p><a class="<button>" href="#">Call to action</a>
+</p></figure>
+<h2 id="reset" tabindex="-1"><a class="permalink-anchor float:right" href="#reset">§</a> Reset</h2>
+<p>Use the <dfn id=".all:initial"><code class="language-none">.all:initial</code></dfn> class to reset all CSS properties on an
+element and return it to its browser-default styles.</p>
+</main>
+
+<footer>
+    
+    <div class="f-row flex-wrap:wrap justify-content:space-between">
+                    <div>Previous ←
+                <strong><a href="/docs/variables/">Variables</a></strong>
+            </div>
+                            <div>Next →
+                <strong><a href="/docs/grid/">Grid</a></strong>
+            </div>
+            </div>
+</footer>
+
+			<footer>
+			<p><a href="/">Missing.css</a>, by
+			<a href="https://denizaksimsek.com">Deniz Akşimşek</a>,
+			funded by
+			<a href="https://bigsky.software">Big Sky Software</a> and
+			<a href="https://commspace.co.za">Commspace</a>.
+	
+			</p><p>Also check out
+			<a href="https://htmx.org">htmx</a>
+			and
+			<a href="https://hyperscript.org">_hyperscript</a>.
+
+			</p><p>
+			Made with 💙 in Ankara, Samsun, Rize and Cape Town.
+		</p></footer>
+	
+
+</body></html>

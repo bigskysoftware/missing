@@ -1,0 +1,11 @@
+{
+  "imports": {
+    "lume/": "https://deno.land/x/lume@v1.15.3/",
+    "std/": "https://deno.land/std@0.159.0/"
+  },
+  "tasks": {
+    "build": "deno task lume",
+    "serve": "deno task lume -s --dev",
+    "lume": "echo \"import 'lume/cli.ts'\" | deno run --unstable -A -"
+  }
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+
+	<title>missing.css</title>
+
+	<link rel="stylesheet" href="/src/missing.css">
+	<link rel="stylesheet" href="/src/missing-prism.css">
+	<link href="https://fonts.bunny.net/css?family=source-sans-3:400,700|m-plus-code-latin:400,700" rel="stylesheet">
+
+	<style>
+		:root {
+			--main-font: "Source Sans 3", -apple-system, system-ui, sans-serif;
+		}
+		dfn > code {
+			font-style: normal;
+			text-decoration: 1px dashed var(--muted-fg) underline;
+		}
+		code a {
+			font-family: inherit;
+		}
+	</style>
+</head>
+<body>
+	<main>
+					<nav aria-label="back">
+			<p><a href="/releases">← Releases</a></p>
+		</nav>
+		<h1>
+    <sub-title class="allcaps">Missing.css</sub-title>
+    Version 1.0.0-prerelease.0</h1>
+
+<h2 id="changelog" tabindex="-1"><a class="permalink-anchor float:right" href="#changelog">§</a> Changelog</h2>
+<ul class="flow-gap">
+<li>Added <strong>missing.js</strong>, a small collection of JS libraries implementing common UI patterns.
+Currently contains tabset, menu, and collapsible navbar components.</li>
+<li><strong class="bad bg color">Breaking</strong>: Replaced <code class="language-none">.sidebar</code> with <a href="/docs/components/#.sidebar-layout"><code class="language-none">.sidebar-layout</code></a>, which works a bit differently.</li>
+<li>Added <a href="/docs/components/#.iconbutton"><code class="language-none">.iconbutton</code></a>.</li>
+<li>Added ARIA listbox and toolbar.</li>
+<li>Added CSS Grid support: <a href="/docs/grid/#.grid"><code class="language-none">.grid</code></a> and many associated classes to create your layout.</li>
+<li>Added a few missing utilities for setting <code class="language-none">justify-content</code>, <code class="language-none">padding</code>, <code class="language-none">margin</code>.</li>
+</ul>
+<h3 id="for-developers" tabindex="-1"><a class="permalink-anchor float:right" href="#for-developers">§</a> For developers</h3>
+<ul>
+<li>The source code of missing.css was completely reorganized! The source files
+now line up with the pages of the documentation to make it easier to find
+code.</li>
+<li>Speaking of the docs, they have also received a subtle reorganization.</li>
+<li>The development server will now build changes to the CSS <em>way</em> faster.</li>
+</ul>
+</main>
+
+			<footer>
+			<p><a href="/">Missing.css</a>, by
+			<a href="https://denizaksimsek.com">Deniz Akşimşek</a>,
+			funded by
+			<a href="https://bigsky.software">Big Sky Software</a> and
+			<a href="https://commspace.co.za">Commspace</a>.
+	
+			</p><p>Also check out
+			<a href="https://htmx.org">htmx</a>
+			and
+			<a href="https://hyperscript.org">_hyperscript</a>.
+
+			</p><p>
+			Made with 💙 in Ankara, Samsun, Rize and Cape Town.
+		</p></footer>
+	
+
+</body></html>

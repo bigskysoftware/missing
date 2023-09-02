@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+
+	<title>missing.css</title>
+
+	<link rel="stylesheet" href="/src/missing.css">
+	<link rel="stylesheet" href="/src/missing-prism.css">
+	<link href="https://fonts.bunny.net/css?family=source-sans-3:400,700|m-plus-code-latin:400,700" rel="stylesheet">
+
+	<style>
+		:root {
+			--main-font: "Source Sans 3", -apple-system, system-ui, sans-serif;
+		}
+		dfn > code {
+			font-style: normal;
+			text-decoration: 1px dashed var(--muted-fg) underline;
+		}
+		code a {
+			font-family: inherit;
+		}
+	</style>
+</head>
+<body>
+	<header class="navbar" data-overflow-nav="">
+    <nav class="contents">
+        <div>
+            <button hidden="" aria-hidden="true" type="button" data-nav-expander="" class="iconbutton">
+                ☰
+                <script src="/missing-js/overflow-nav.js" type="module"></script>
+            </button>
+        </div>
+        <p>
+            <a href="/" class="allcaps">Missing.css</a> 
+        </p>
+        <!-- <div>
+            <script src="/js/pagefind.js" type="module"></script>
+            <strong><button type="button" data-pagefind-search>Search</button></strong>
+        </div> -->
+        <ul role="list">
+                                <li><a href="/docs/">Intro</a></li>
+                                <li><a href="/docs/forms/" aria-current="page">Forms</a></li>
+                                <li><a href="/docs/components/">Components</a></li>
+                                <li><a href="/docs/aria/">ARIA</a></li>
+                                <li><a href="/docs/colorways/">Colorways</a></li>
+                                <li><a href="/docs/variables/">Variables</a></li>
+                                <li><a href="/docs/layout/">Layout</a></li>
+                                <li><a href="/docs/utils/">Utilities</a></li>
+                                <li><a href="/docs/flex/">Flexbox</a></li>
+                                <li><a href="/docs/grid/">Grid</a></li>
+                                <li><a href="/docs/js/">JS</a></li>
+                                <li><a href="/docs/ref-index/">Index</a></li>
+                    </ul>
+    </nav>
+</header>
+
+<main data-pagefind-body="">
+    <h1>Forms</h1>
+<p>Missing.css aims to style HTML nicely without authors needing to concern
+themselves over anything other than using HTML tags with correct meanings, but
+this is not always feasible. Forms are a particularly complex part of HTML,
+with multiple ways to mark up the same semantics. For instance, you can label
+an element in multiple ways:</p>
+<pre class="language-html" tabindex="0"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span><span class="token punctuation">&gt;</span></span>Name <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
+  <span class="token comment">&lt;!-- or... --&gt;</span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>adr<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Address<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>adr<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>form</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<p>Because of this, it's not really possible to write a stylesheet that will work with
+any HTML form.</p>
+<p>Missing.css will work best on forms that follow these markup conventions:</p>
+<nav class="TableOfContents box crowded"><ul class="padding-inline"><li><a href="#inputs-and-labels">Inputs and labels</a></li><li><a href="#tabular-forms">Tabular forms</a></li><li><a href="#labeling-radio-buttons">Labeling radio buttons</a></li></ul></nav><h2 id="inputs-and-labels" tabindex="-1"><a class="permalink-anchor float:right" href="#inputs-and-labels">§</a> Inputs and labels</h2>
+<p>Inputs inside labels will be <code class="language-none">display: inline</code>. Inputs outside labels will be
+<code class="language-none">display: block</code>.</p>
+<aside>Inputs without labels will cause nasal demons.</aside>
+<h2 id="tabular-forms" tabindex="-1"><a class="permalink-anchor float:right" href="#tabular-forms">§</a> Tabular forms</h2>
+<p>You can use the <a href="/docs/layout/#.table"><code class="language-none">.table</code></a> and <a href="/docs/layout/#.rows"><code class="language-none">.rows</code></a> classes to create a form with inputs lined
+up like cells of a table.</p>
+<pre class="language-html" tabindex="0"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span> <span class="token attr-name">class</span><span class="token attr-value">="<a href="/docs/layout/#.table" style="color: inherit; text-decoration-color: var(--fg)">table</a> <a href="/docs/layout/#.rows" style="color: inherit; text-decoration-color: var(--fg)">rows</a><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span> <span class="token attr-name">for</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>inp</span><span class="token punctuation">&gt;</span></span>Label<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>inp</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+  ...
+</code></pre>
+<figure>
+  <figcaption>A tabular form</figcaption>
+  <form class="table rows">
+    <p><label for="tf-text">Text</label> <input id="tf-text"></p>
+    <p><label for="tf-sel">Select</label> <select id="tf-sel"><option>Option</option></select></p>
+    <p><label for="tf-textarea">Textarea</label> <textarea id="tf-textarea" rows="4"></textarea></p>
+    <p><label for="tf-text">Text</label> <input id="tf-text"></p>
+  </form>
+</figure>
+<h2 id="labeling-radio-buttons" tabindex="-1"><a class="permalink-anchor float:right" href="#labeling-radio-buttons">§</a> Labeling radio buttons</h2>
+<p>The accepted way to label a group of radio buttons is to use <code class="language-none">&lt;fieldset&gt;</code> and
+<code class="language-none">&lt;legend&gt;</code>:</p>
+<pre class="language-html" tabindex="0"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>fieldset</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>legend</span><span class="token punctuation">&gt;</span></span>Color<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>legend</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>radio</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>color</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ff0000<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Red<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>radio</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>color</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>00ff00<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Green<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>radio</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>color</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0000ff<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Blue<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>fieldset</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<p>This works in missing.css, but these two elements are [notorious] for being
+hard to style. You can use the following pattern instead:</p>
+<figure>
+<figcaption>Note the role, aria-labelledby and the ID on the label itself.</figcaption>
+<pre class="language-html" tabindex="0"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>radiogroup</span> <span class="token attr-name">aria-labelledby</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>color-lbl</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>color-lbl</span><span class="token punctuation">&gt;</span></span>Color<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>radio</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>color</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>ff0000<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span> Red<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>radio</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>color</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>00ff00<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span> Green<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>radio</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>color</span> <span class="token attr-name">value</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0000ff<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span> Blue<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+</figure>
+<p>The above will work with <a href="#tabular-form">tabular forms</a>:</p>
+<figure>
+  <figcaption>A radiogroup in a tabular form</figcaption>
+  <form class="table rows">
+    <div>
+      <label for="item">Item</label>
+      <select>
+        <option>Wallet
+        </option><option>Skyscraper
+        </option><option>Typewriter
+      </option></select>
+    </div>
+    <div role="radiogroup" aria-labelledby="color-lbl">
+      <span id="color-lbl">Color</span>
+      <div>
+        <div><label><input type="radio" name="color" value="ff0000"> Red</label></div>
+        <div><label><input type="radio" name="color" value="00ff00"> Green</label></div>
+        <div><label><input type="radio" name="color" value="0000ff"> Blue</label></div>
+      </div>
+    </div>
+  </form>
+</figure>
+</main>
+
+<footer>
+    
+    <div class="f-row flex-wrap:wrap justify-content:space-between">
+                    <div>Previous ←
+                <strong><a href="/docs/ref-index/">Index</a></strong>
+            </div>
+                            <div>Next →
+                <strong><a href="/docs/aria/">ARIA</a></strong>
+            </div>
+            </div>
+</footer>
+
+			<footer>
+			<p><a href="/">Missing.css</a>, by
+			<a href="https://denizaksimsek.com">Deniz Akşimşek</a>,
+			funded by
+			<a href="https://bigsky.software">Big Sky Software</a> and
+			<a href="https://commspace.co.za">Commspace</a>.
+	
+			</p><p>Also check out
+			<a href="https://htmx.org">htmx</a>
+			and
+			<a href="https://hyperscript.org">_hyperscript</a>.
+
+			</p><p>
+			Made with 💙 in Ankara, Samsun, Rize and Cape Town.
+		</p></footer>
+	
+
+</body></html>

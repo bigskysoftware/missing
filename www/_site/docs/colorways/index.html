@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+
+	<title>missing.css</title>
+
+	<link rel="stylesheet" href="/src/missing.css">
+	<link rel="stylesheet" href="/src/missing-prism.css">
+	<link href="https://fonts.bunny.net/css?family=source-sans-3:400,700|m-plus-code-latin:400,700" rel="stylesheet">
+
+	<style>
+		:root {
+			--main-font: "Source Sans 3", -apple-system, system-ui, sans-serif;
+		}
+		dfn > code {
+			font-style: normal;
+			text-decoration: 1px dashed var(--muted-fg) underline;
+		}
+		code a {
+			font-family: inherit;
+		}
+	</style>
+</head>
+<body>
+	<header class="navbar" data-overflow-nav="">
+    <nav class="contents">
+        <div>
+            <button hidden="" aria-hidden="true" type="button" data-nav-expander="" class="iconbutton">
+                ☰
+                <script src="/missing-js/overflow-nav.js" type="module"></script>
+            </button>
+        </div>
+        <p>
+            <a href="/" class="allcaps">Missing.css</a> 
+        </p>
+        <!-- <div>
+            <script src="/js/pagefind.js" type="module"></script>
+            <strong><button type="button" data-pagefind-search>Search</button></strong>
+        </div> -->
+        <ul role="list">
+                                <li><a href="/docs/">Intro</a></li>
+                                <li><a href="/docs/forms/">Forms</a></li>
+                                <li><a href="/docs/components/">Components</a></li>
+                                <li><a href="/docs/aria/">ARIA</a></li>
+                                <li><a href="/docs/colorways/" aria-current="page">Colorways</a></li>
+                                <li><a href="/docs/variables/">Variables</a></li>
+                                <li><a href="/docs/layout/">Layout</a></li>
+                                <li><a href="/docs/utils/">Utilities</a></li>
+                                <li><a href="/docs/flex/">Flexbox</a></li>
+                                <li><a href="/docs/grid/">Grid</a></li>
+                                <li><a href="/docs/js/">JS</a></li>
+                                <li><a href="/docs/ref-index/">Index</a></li>
+                    </ul>
+    </nav>
+</header>
+
+<main data-pagefind-body="">
+    <h1>Colorways</h1>
+<p>A colorway is a group of shades of a color, with specific roles. For instance,
+here is the <a href="/docs/colorways/#.ok"><code class="language-none">.ok</code></a> colorway in the missing.css source code:</p>
+<figure>
+<pre class="language-css" tabindex="0"><code class="language-css"><span class="token selector">.ok</span> <span class="token punctuation">{</span>
+    <a href="/docs/variables/#--box-bg">--box-bg</a><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--ok-bg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <a href="/docs/variables/#--accent">--accent</a><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--ok-fg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <a href="/docs/variables/#--graphical-fg">--graphical-fg</a><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--ok-graphical-fg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<figcaption>src/util/colorway.css</figcaption>
+</figure>
+<p>The following colorways are provided by default:</p>
+<ul>
+<li class="plain bg color"><dfn id=".plain"><code class="language-none">.plain</code></dfn> is the default.</li>
+<li class="info bg color"><dfn id=".info"><code class="language-none">.info</code></dfn> is used to highlight information without any emotional
+affect.</li>
+<li class="ok bg color"><dfn id=".ok"><code class="language-none">.ok</code></dfn> is used to indicate successes, insertions, desired
+states.</li>
+<li class="warn bg color"><dfn id=".warn"><code class="language-none">.warn</code></dfn> is used to warn the user, although there may not necessarily be a bad
+situation.</li>
+<li class="bad bg color"><dfn id=".bad"><code class="language-none">.bad</code></dfn> is used for errors, deletions, failure states.</li>
+</ul>
+<p>Applying the colorway class to an element will not change its appearance by
+default. Use the <dfn id=".bg"><code class="language-none">.bg</code></dfn>, <dfn id=".color"><code class="language-none">.color</code></dfn> and <dfn id=".border"><code class="language-none">.border</code></dfn>
+classes to use an aspect of the colorway:</p>
+<figure>
+<pre class="language-html" tabindex="0"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>b</span> <span class="token attr-name">class</span><span class="token attr-value">="<a href="/docs/colorways/#.ok" style="color: inherit; text-decoration-color: var(--fg)">ok</a> <a href="/docs/colorways/#.color" style="color: inherit; text-decoration-color: var(--fg)">color</a> <a href="/docs/colorways/#.border" style="color: inherit; text-decoration-color: var(--fg)">border</a><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Do:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>b</span><span class="token punctuation">&gt;</span></span> Use color to help users scan information
+    quickly
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>b</span> <span class="token attr-name">class</span><span class="token attr-value">="<a href="/docs/colorways/#.bad" style="color: inherit; text-decoration-color: var(--fg)">bad</a> <a href="/docs/colorways/#.color" style="color: inherit; text-decoration-color: var(--fg)">color</a><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Don't:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>b</span><span class="token punctuation">&gt;</span></span> Use color as the only way to communicate
+    a piece of information
+</code></pre>
+</figure>
+<h2 id="custom-colorways" tabindex="-1"><a class="permalink-anchor float:right" href="#custom-colorways">§</a> Custom colorways</h2>
+<p>If you want, you can make your own colorway simply with a class that sets the
+appropriate CSS variables. We recommend naming your colorways after their
+purpose, as opposed to their specific color.</p>
+<figure>
+<pre class="language-css" tabindex="0"><code class="language-css"><span class="token selector">.done</span> <span class="token punctuation">{</span>
+  <a href="/docs/variables/#--box-bg">--box-bg</a><span class="token punctuation">:</span> lavender<span class="token punctuation">;</span>
+  <a href="/docs/variables/#--accent">--accent</a><span class="token punctuation">:</span> rebeccapurple<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+</figure>
+<figure>
+  <h3 class="<h2>">Pull requests</h3>
+  <h3 class="<h4>">Add "ok" colorway</h3>
+  <p>Authored by alice@example.com · 
+  <chip class="ok color">Open
+  </chip></p><h3 class="<h4>">Add "done" colorway</h3>
+  <p>Authored by bob@example.com · 
+  <chip class="color" style="
+    --box-bg: lavender;
+    --accent: rebeccapurple;">Merged
+  </chip></p><h3 class="<h4>">Add "red" colorway</h3>
+  <p>Authored by alice@example.com · 
+  <chip class="bad color">Closed
+</chip></p></figure>
+</main>
+
+<footer>
+    
+    <div class="f-row flex-wrap:wrap justify-content:space-between">
+                    <div>Previous ←
+                <strong><a href="/docs/aria/">ARIA</a></strong>
+            </div>
+                            <div>Next →
+                <strong><a href="/docs/variables/">Variables</a></strong>
+            </div>
+            </div>
+</footer>
+
+			<footer>
+			<p><a href="/">Missing.css</a>, by
+			<a href="https://denizaksimsek.com">Deniz Akşimşek</a>,
+			funded by
+			<a href="https://bigsky.software">Big Sky Software</a> and
+			<a href="https://commspace.co.za">Commspace</a>.
+	
+			</p><p>Also check out
+			<a href="https://htmx.org">htmx</a>
+			and
+			<a href="https://hyperscript.org">_hyperscript</a>.
+
+			</p><p>
+			Made with 💙 in Ankara, Samsun, Rize and Cape Town.
+		</p></footer>
+	
+
+</body></html>

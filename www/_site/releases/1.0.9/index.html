@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+
+	<title>missing.css</title>
+
+	<link rel="stylesheet" href="/src/missing.css">
+	<link rel="stylesheet" href="/src/missing-prism.css">
+	<link href="https://fonts.bunny.net/css?family=source-sans-3:400,700|m-plus-code-latin:400,700" rel="stylesheet">
+
+	<style>
+		:root {
+			--main-font: "Source Sans 3", -apple-system, system-ui, sans-serif;
+		}
+		dfn > code {
+			font-style: normal;
+			text-decoration: 1px dashed var(--muted-fg) underline;
+		}
+		code a {
+			font-family: inherit;
+		}
+	</style>
+</head>
+<body>
+	<main>
+					<nav aria-label="back">
+			<p><a href="/releases">← Releases</a></p>
+		</nav>
+		<h1>
+    <sub-title class="allcaps">Missing.css</sub-title>
+    Version 1.0.9</h1>
+
+<h2 id="changelog" tabindex="-1"><a class="permalink-anchor float:right" href="#changelog">§</a> Changelog</h2>
+<ul>
+<li>Links:
+<ul>
+<li>no longer use <a href="/docs/variables/#--secondary-font"><code class="language-none">--secondary-font</code></a>, and will inherit their font family
+instead.</li>
+<li>have a dotted underline instead of dashed.</li>
+</ul>
+</li>
+<li><code class="language-none">&lt;aside&gt;</code> and <code class="language-none">&lt;footer&gt;</code> elements now use a smaller font size and line
+height.</li>
+<li><code class="language-none">&lt;small&gt;</code> elements and elements with the <a href="/docs/utils/#.<small>"><code class="language-none">.&lt;small&gt;</code></a> masquerade now use a
+line height matching their font size.</li>
+<li>Improved interactions on buttons that use <code class="language-none">aria-pressed</code> or <code class="language-none">aria-expanded</code>.</li>
+<li>Fixed the spacing applied by <a href="/docs/layout/#.flow-gap"><code class="language-none">.flow-gap</code></a> not following the <a href="/docs/utils/#--density"><code class="language-none">--density</code></a> variable.</li>
+<li>Fixed button contents not being centered.</li>
+</ul>
+</main>
+
+			<footer>
+			<p><a href="/">Missing.css</a>, by
+			<a href="https://denizaksimsek.com">Deniz Akşimşek</a>,
+			funded by
+			<a href="https://bigsky.software">Big Sky Software</a> and
+			<a href="https://commspace.co.za">Commspace</a>.
+	
+			</p><p>Also check out
+			<a href="https://htmx.org">htmx</a>
+			and
+			<a href="https://hyperscript.org">_hyperscript</a>.
+
+			</p><p>
+			Made with 💙 in Ankara, Samsun, Rize and Cape Town.
+		</p></footer>
+	
+
+</body></html>

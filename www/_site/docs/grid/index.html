@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+
+	<title>missing.css</title>
+
+	<link rel="stylesheet" href="/src/missing.css">
+	<link rel="stylesheet" href="/src/missing-prism.css">
+	<link href="https://fonts.bunny.net/css?family=source-sans-3:400,700|m-plus-code-latin:400,700" rel="stylesheet">
+
+	<style>
+		:root {
+			--main-font: "Source Sans 3", -apple-system, system-ui, sans-serif;
+		}
+		dfn > code {
+			font-style: normal;
+			text-decoration: 1px dashed var(--muted-fg) underline;
+		}
+		code a {
+			font-family: inherit;
+		}
+	</style>
+</head>
+<body>
+	<header class="navbar" data-overflow-nav="">
+    <nav class="contents">
+        <div>
+            <button hidden="" aria-hidden="true" type="button" data-nav-expander="" class="iconbutton">
+                ☰
+                <script src="/missing-js/overflow-nav.js" type="module"></script>
+            </button>
+        </div>
+        <p>
+            <a href="/" class="allcaps">Missing.css</a> 
+        </p>
+        <!-- <div>
+            <script src="/js/pagefind.js" type="module"></script>
+            <strong><button type="button" data-pagefind-search>Search</button></strong>
+        </div> -->
+        <ul role="list">
+                                <li><a href="/docs/">Intro</a></li>
+                                <li><a href="/docs/forms/">Forms</a></li>
+                                <li><a href="/docs/components/">Components</a></li>
+                                <li><a href="/docs/aria/">ARIA</a></li>
+                                <li><a href="/docs/colorways/">Colorways</a></li>
+                                <li><a href="/docs/variables/">Variables</a></li>
+                                <li><a href="/docs/layout/">Layout</a></li>
+                                <li><a href="/docs/utils/">Utilities</a></li>
+                                <li><a href="/docs/flex/">Flexbox</a></li>
+                                <li><a href="/docs/grid/" aria-current="page">Grid</a></li>
+                                <li><a href="/docs/js/">JS</a></li>
+                                <li><a href="/docs/ref-index/">Index</a></li>
+                    </ul>
+    </nav>
+</header>
+
+<main data-pagefind-body="">
+    <h1>Grid</h1>
+<p>To create a CSS Grid-based layout in missing.css, use the <dfn id=".grid"><code class="language-none">.grid</code></dfn> class.</p>
+<p>By default, the grid will have equal-width columns but uneven rows.
+To override these, you have the <dfn id=".grid-even-rows"><code class="language-none">.grid-even-rows</code></dfn> and <dfn id=".grid-variable-cols"><code class="language-none">.grid-variable-cols</code></dfn> classes.</p>
+<p>To specify the row and column an element should occupy, use the <code class="language-none">data-cols</code> and <code class="language-none">data-rows</code> attributes:</p>
+<dl>
+<dt><code class="language-none">data-cols="1"</code></dt>
+<dd>Element will take up first column, next available row</dd>
+<dt><code class="language-none">data-cols="1 3"</code></dt>
+<dd>Element will take up columns 1 to 3 (both 1 and 3 included), next available row</dd>
+<dt><code class="language-none">data-cols="1 3" data-rows="2 3"</code></dt>
+<dd>Element will take up a 3×2 space, with a 1 column gap above</dd>
+</dl>
+<p class="box warn">Note that our column specifications are based on <em>rows</em>, not <em>lines</em>.
+This means <code class="language-none">data-cols="1 2"</code> spans two columns,
+as opposed to <code class="language-none">grid-column: 1 / 2</code> which spans only one.</p>
+<p>We support columns up to 12.</p>
+<p>To change the layout based on viewport size,
+add <code class="language-none">@s</code> (small, ≤768px) or <code class="language-none">@l</code> (large, ≥1024px) to the end of the attributes:</p>
+<dl>
+<dt><code class="language-none">data-cols@s="1" data-cols="1 2" data-cols@l="1 3"</code></dt>
+<dd>Element will take 1 column in small screens,
+2 columns on medium screens and 3 on large screens</dd>
+</dl>
+<figure>
+<pre class="language-html" tabindex="0"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value">="<a href="/docs/grid/#.grid" style="color: inherit; text-decoration-color: var(--fg)">grid</a> <a href="/docs/grid/#.grid-even-rows" style="color: inherit; text-decoration-color: var(--fg)">grid-even-rows</a><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value">="<a href="/docs/components/#.box" style="color: inherit; text-decoration-color: var(--fg)">box</a> <a href="/docs/colorways/#.info" style="color: inherit; text-decoration-color: var(--fg)">info</a><span class="token punctuation">"</span></span> <span class="token attr-name">data-cols</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1 2<span class="token punctuation">"</span></span> <span class="token attr-name">data-rows</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1 2<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Sidebar  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value">="<a href="/docs/components/#.box" style="color: inherit; text-decoration-color: var(--fg)">box</a> <a href="/docs/colorways/#.info" style="color: inherit; text-decoration-color: var(--fg)">info</a><span class="token punctuation">"</span></span> <span class="token attr-name">data-cols</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>3 5<span class="token punctuation">"</span></span> <span class="token attr-name">data-rows</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1 3<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Main     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value">="<a href="/docs/components/#.box" style="color: inherit; text-decoration-color: var(--fg)">box</a> <a href="/docs/colorways/#.info" style="color: inherit; text-decoration-color: var(--fg)">info</a><span class="token punctuation">"</span></span> <span class="token attr-name">data-cols</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>6<span class="token punctuation">"</span></span> <span class="token attr-name">data-rows</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2<span class="token punctuation">"</span></span> <span class="token attr-name">data-cols@s</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>3 5<span class="token punctuation">"</span></span> <span class="token attr-name">data-rows@s</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>4<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Aux<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+  <div class="grid grid-even-rows">
+    <div class="box info" data-cols="1 2" data-rows="1 2">Sidebar  </div>
+    <div class="box info" data-cols="3 5" data-rows="1 3">Main     </div>
+    <div class="box info" data-cols="6" data-rows="2" data-cols@s="3 5" data-rows@s="4">Aux</div>
+  </div>
+</figure>
+</main>
+
+<footer>
+    
+    <div class="f-row flex-wrap:wrap justify-content:space-between">
+                    <div>Previous ←
+                <strong><a href="/docs/utils/">Utilities</a></strong>
+            </div>
+                            <div>Next →
+                <strong><a href="/docs/">Intro</a></strong>
+            </div>
+            </div>
+</footer>
+
+			<footer>
+			<p><a href="/">Missing.css</a>, by
+			<a href="https://denizaksimsek.com">Deniz Akşimşek</a>,
+			funded by
+			<a href="https://bigsky.software">Big Sky Software</a> and
+			<a href="https://commspace.co.za">Commspace</a>.
+	
+			</p><p>Also check out
+			<a href="https://htmx.org">htmx</a>
+			and
+			<a href="https://hyperscript.org">_hyperscript</a>.
+
+			</p><p>
+			Made with 💙 in Ankara, Samsun, Rize and Cape Town.
+		</p></footer>
+	
+
+</body></html>

@@ -486,8 +486,8 @@ button,
 input[type="submit"],
 input[type="reset"],
 input[type="button"],
-input::file-selector-button,
-.\<button\> {
+.\<button\>,
+input::file-selector-button {
 	display: inline-block;
 	padding: 0 calc(var(--rhythm) / 4);
 	vertical-align: middle;
@@ -521,27 +521,9 @@ input::file-selector-button,
 
 	&:active {
 		box-shadow: none;
-		&:is([aria-pressed], [aria-expanded]) {
-			color: var(--accent);
-			box-shadow: 0 1px 5px -1px var(--fg) inset;
-		}
-	}
-	
-	&:where([aria-pressed="true"], [aria-expanded="true"]) {
-		box-shadow: 0 2px 4px -1px var(--fg) inset;
-		background: var(--pressed-interactive-bg);
-		color: var(--accent);
-		&:hover, &:focus-visible {
-			box-shadow: 0 1px 3px -1px var(--fg) inset;
-		}
 	}
 
-	&[disabled] {
-		color: var(--muted-fg);
-		box-shadow: none;
-	}
-
-	@nest strong > & {
+	:is(strong > &) {
 		background: var(--accent);
 		color: var(--bg);
 		border: none;
@@ -551,12 +533,38 @@ input::file-selector-button,
 			color: var(--muted-accent);
 		}
 	}
+}
 
-	@nest &.big {
+
+button,
+input[type="submit"],
+input[type="reset"],
+input[type="button"],
+.\<button\> {
+	&:active:is([aria-pressed], [aria-expanded]) {
+		color: var(--accent);
+		box-shadow: 0 1px 5px -1px var(--fg) inset;
+	}
+
+	&:where([aria-pressed="true"], [aria-expanded="true"]) {
+		box-shadow: 0 2px 4px -1px var(--fg) inset;
+		background: var(--pressed-interactive-bg);
+		color: var(--accent);
+		&:hover, &:focus-visible {
+			box-shadow: 0 1px 3px -1px var(--fg) inset;
+		}
+	}
+
+	&.big {
 		min-block-size: calc(1.5 * var(--rhythm));
 		font-size: 1rem;
 		padding-inline: calc(.5 * var(--rhythm));
 		line-height: var(--rhythm);
+	}
+
+	&:disabled {
+		color: var(--muted-fg);
+		box-shadow: none;
 	}
 }
 

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+
+	<title>missing.css</title>
+
+	<link rel="stylesheet" href="/src/missing.css">
+	<link rel="stylesheet" href="/src/missing-prism.css">
+	<link href="https://fonts.bunny.net/css?family=source-sans-3:400,700|m-plus-code-latin:400,700" rel="stylesheet">
+
+	<style>
+		:root {
+			--main-font: "Source Sans 3", -apple-system, system-ui, sans-serif;
+		}
+		dfn > code {
+			font-style: normal;
+			text-decoration: 1px dashed var(--muted-fg) underline;
+		}
+		code a {
+			font-family: inherit;
+		}
+	</style>
+</head>
+<body>
+	<main>
+    <h1>Tabs</h1>
+
+    <script type="module" src="/missing-js/tabs.js"></script>
+    <div>
+        <div role="tablist">
+            <button role="tab" id="tab-1" aria-controls="panel-1" aria-selected="true">Tab 1</button>
+            <button role="tab" id="tab-2" aria-controls="panel-2">Tab 2</button>
+            <button role="tab" id="tab-3" aria-controls="panel-3">Tab 3</button>
+        </div>
+
+        <div role="tabpanel" id="panel-1" aria-labelledby="tab-1"><p>This is the content for the first tab</p></div>
+        <div role="tabpanel" id="panel-2" aria-labelledby="tab-2" hidden=""><p>This is the content for the second tab</p></div>
+        <div role="tabpanel" id="panel-3" aria-labelledby="tab-3" hidden=""><p>This is the content for the third tab</p></div>
+    </div>
+</main>
+
+			<footer>
+			<p><a href="/">Missing.css</a>, by
+			<a href="https://denizaksimsek.com">Deniz Akşimşek</a>,
+			funded by
+			<a href="https://bigsky.software">Big Sky Software</a> and
+			<a href="https://commspace.co.za">Commspace</a>.
+	
+			</p><p>Also check out
+			<a href="https://htmx.org">htmx</a>
+			and
+			<a href="https://hyperscript.org">_hyperscript</a>.
+
+			</p><p>
+			Made with 💙 in Ankara, Samsun, Rize and Cape Town.
+		</p></footer>
+	
+
+</body></html>

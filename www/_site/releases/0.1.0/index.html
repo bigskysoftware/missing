@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+
+	<title>missing.css</title>
+
+	<link rel="stylesheet" href="/src/missing.css">
+	<link rel="stylesheet" href="/src/missing-prism.css">
+	<link href="https://fonts.bunny.net/css?family=source-sans-3:400,700|m-plus-code-latin:400,700" rel="stylesheet">
+
+	<style>
+		:root {
+			--main-font: "Source Sans 3", -apple-system, system-ui, sans-serif;
+		}
+		dfn > code {
+			font-style: normal;
+			text-decoration: 1px dashed var(--muted-fg) underline;
+		}
+		code a {
+			font-family: inherit;
+		}
+	</style>
+</head>
+<body>
+	<main>
+					<nav aria-label="back">
+			<p><a href="/releases">← Releases</a></p>
+		</nav>
+		<h1>
+    <sub-title class="allcaps">Missing.css</sub-title>
+    Version 0.1.0</h1>
+
+<h2 id="changelog" tabindex="-1"><a class="permalink-anchor float:right" href="#changelog">§</a> Changelog</h2>
+<ul>
+<li>
+<p><strong class="color bg bad">Breaking:</strong> Significant redesign. Inspect your website visually before upgrading.</p>
+</li>
+<li>
+<p><strong class="color bg bad">Breaking:</strong> Renamed classes and variables:</p>
+<table>
+<thead>
+<tr>
+<th>Old</th>
+<th>New</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code class="language-none">--colorful-bg</code></td>
+<td><a href="/docs/variables/#--box-bg"><code class="language-none">--box-bg</code></a></td>
+</tr>
+<tr>
+<td><code class="language-none">.h1</code>, ..., <code class="language-none">.h6</code></td>
+<td><a href="/docs/utils/#.<h1>"><code class="language-none">.&lt;h1&gt;</code></a>, ..., <a href="/docs/utils/#.<h6>"><code class="language-none">.&lt;h6&gt;</code></a></td>
+</tr>
+<tr>
+<td><code class="language-none">.grow-*</code></td>
+<td><code class="language-none">.flex-grow:*</code></td>
+</tr>
+<tr>
+<td><code class="language-none">.reset</code></td>
+<td><a href="/docs/utils/#.all:initial"><code class="language-none">.all:initial</code></a></td>
+</tr>
+<tr>
+<td><code class="language-none">.textcenter</code></td>
+<td><a href="/docs/layout/#.text-align:center"><code class="language-none">.text-align:center</code></a></td>
+</tr>
+<tr>
+<td><code class="language-none">.pad</code></td>
+<td><a href="/docs/layout/#.padding"><code class="language-none">.padding</code></a></td>
+</tr>
+<tr>
+<td><code class="language-none">.pad-block</code></td>
+<td><a href="/docs/layout/#.padding-block"><code class="language-none">.padding-block</code></a></td>
+</tr>
+<tr>
+<td><code class="language-none">.float&lt;</code></td>
+<td><a href="/docs/layout/#.float:left"><code class="language-none">.float:left</code></a></td>
+</tr>
+<tr>
+<td><code class="language-none">.float&gt;</code></td>
+<td><a href="/docs/layout/#.float:right"><code class="language-none">.float:right</code></a></td>
+</tr>
+<tr>
+<td><code class="language-none">.scroll</code></td>
+<td><a href="/docs/layout/#.overflow:auto"><code class="language-none">.overflow:auto</code></a></td>
+</tr>
+<tr>
+<td><code class="language-none">.scroll!</code></td>
+<td><a href="/docs/layout/#.overflow:scroll"><code class="language-none">.overflow:scroll</code></a></td>
+</tr>
+</tbody>
+</table>
+</li>
+<li>
+<p><strong class="color bg bad">Breaking:</strong> Added automatic dark theme. To opt out, add the <code class="language-none">.no-dark-theme</code> class to your root <code class="language-none">&lt;html&gt;</code> element.</p>
+</li>
+<li>
+<p><strong class="color bg bad">Breaking:</strong> Removed <code class="language-none">.basicgrid .colwidth-* .minwidth-* .maxwidth-* .col-*</code>.</p>
+</li>
+<li>
+<p><strong class="color bg bad">Breaking:</strong> Removed <code class="language-none">.&lt; .^ ._ .&gt;</code></p>
+</li>
+<li>
+<p>Added <a href="/docs/variables/#--border-radius"><code class="language-none">--border-radius</code></a> and <code class="language-none">--box-border</code> variable.</p>
+</li>
+<li>
+<p>Added <a href="/docs/utils/#.<button>"><code class="language-none">.&lt;button&gt;</code></a> class.</p>
+</li>
+<li>
+<p>Added <a href="/docs/colorways/#.plain"><code class="language-none">.plain</code></a> colorway.</p>
+</li>
+<li>
+<p>Added <a href="/docs/components/#.permalink-anchor"><code class="language-none">.permalink-anchor</code></a> component.</p>
+</li>
+<li>
+<p>Buttons inside <code class="language-none">&lt;strong&gt;</code> elements will be primary buttons.</p>
+</li>
+<li>
+<p>Stopped distributing compressed builds.</p>
+</li>
+<li>
+<p>Added license (BSD 2-clause). Thanks <a href="https://github.com/michaelsmanley">@michaelsmanley</a>!</p>
+</li>
+<li>
+<p>Added readme.</p>
+</li>
+<li>
+<p>Bash is no longer required to build missing.css. Thanks <a href="https://github.com/dsherret">@dsherret</a> for <a href="https://github.com/dsherret/dax">dax</a>!</p>
+</li>
+<li>
+<p>Upgrade dependencies.</p>
+</li>
+</ul>
+</main>
+
+			<footer>
+			<p><a href="/">Missing.css</a>, by
+			<a href="https://denizaksimsek.com">Deniz Akşimşek</a>,
+			funded by
+			<a href="https://bigsky.software">Big Sky Software</a> and
+			<a href="https://commspace.co.za">Commspace</a>.
+	
+			</p><p>Also check out
+			<a href="https://htmx.org">htmx</a>
+			and
+			<a href="https://hyperscript.org">_hyperscript</a>.
+
+			</p><p>
+			Made with 💙 in Ankara, Samsun, Rize and Cape Town.
+		</p></footer>
+	
+
+</body></html>

@@ -30,26 +30,25 @@ work. That's not how you buy something).
 
 ## Development Environment
 
-[Deno] is needed to build the project.
+Install [Deno][] and [Lightning CSS][].
+
+  * Build all of missing.css (CSS and JS):
+      ~~~ sh
+      deno task build
+      ~~~
 
   * Build just the CSS:
       ~~~ sh
       deno task css
       ~~~
 
-  * Build the website, which also builds the CSS and creates the version
-    archive:
-      ~~~ sh
-      deno task prod
-      ~~~
-
-  * Start a development server, which will watch the code and automatically
-    refresh in the browser:
+  * Start a development server:
       ~~~ sh
       deno task dev
       ~~~
 
 [Deno]: https://deno.land/
+[Lightning CSS]: https://lightningcss.dev/
 
 
 ## Branching
@@ -58,9 +57,9 @@ You'll notice that we don't have a `master` or `main` branch. Instead, the
 `dev` branch is the default. This way, the default place to open a pull request
 is the right one.
 
-We use git tags for releases. Any tag matching the regex `^v\d+\.\d+\.\d+` is a
-release (this regex is used by the script `build/version-archive.sh`). After
-creating a tag, move the `prod` branch to it.
+The `prod` branch will contain the last published version of the code.
+Changes to the website and docs can also be made directly against the
+`prod` branch.
 
 That's it! We don't expect to use feature branches that often, instead working
 directly on `dev` because CSS is hard to merge.
@@ -76,17 +75,6 @@ To publish a new release:
       cat >www/releases/4.2.0.md <<EOF
       ---
       release: 4.2.0
-      artifacts:
-        Missing.css:
-          Plain: missing.css
-          Minified: missing.min.css
-          Min. + Gzipped: missing.min.css.gz
-          Min. + Brotlied: missing.min.css.br
-        Missing Prism:
-          Plain: missing-prism.css
-          Minified: missing.min.css
-          Min. + Gzipped: missing.min.css.gz
-          Min. + Brotlied: missing.min.css.br
       ---
 
       # Changelog
@@ -94,28 +82,14 @@ To publish a new release:
        - **Breaking:**{.color.warn} Removed everything
       EOF
       ~~~
+    
+    Some older changelogs have a list of `artifacts` -- this is a leftover
+    from when we used our own distribution instead of npm.
 
   * Create a git tag matching the regex `^v\d+\.\d+\.\d+` (i.e.: `v1.2.2`,
     `v1.3.3-special-build-1`, NOT `1.1.2`, `v3`, `v1.2-alpha`). It's important
     that the git tag has the correct format since we use the regex above in
     code.
-
-      ~~~ sh
-      git tag v4.2.0
-      ~~~
-  
-  * Move the `prod` branch to that tag:
-
-      ~~~ sh
-      git branch -f prod v4.2.0
-      ~~~
-  
-  * Push:
-
-      ~~~ sh
-      git push --tags origin prod
-      ~~~
-  
 
 
 ## Dev Notes
@@ -136,42 +110,12 @@ Leave two empty lines between notes.
 
 ## Project Structure
 
-  * `src/` -- the CSS source code. This is processed with PostCSS (see build/).
-      * `main.css` -- definitions used project-wide.
-      * `syntax.css` -- a [Prism] syntax theme
-      * `core/`
-        * `sanitize.css` -- a CSS normalize
-      * `elements/` -- HTML elements, organized by sections of the [HTML spec][]
-          * `sections.css` -- 4.1 The document element, 4.3 Sections
-          * `grouping.css` -- 4.4 Grouping content
-          * `inline.css` -- 4.5 Text-level semantics, 4.7 Edits
-          * `embedded.css` -- 4.8 Embedded content
-          * `tabular.css` -- 4.9 Tabular data
-          * `forms.css` -- 4.10 Forms
-          * `interactive.css` -- 4.11 Interactive elements
-      * `components/` -- components. Each component can be used as
-        a class (`<div class="my-component">`),an attribute 
-        (`<div my-component>`) or a custom tag (`<my-component>`).
-
-        Each component should have a documentation comment, explaining its
-        purpose, appearance and usage.
-      * `util` -- utility classes, incl. layout and colorways.
-          * `colorway.css` -- colorway definitions and tools for using them.
-          * `density.css` -- utilities for setting density
-          * `generic.css` -- utilities many sites need, e.g. visually hidden
-          * `layout.css` -- layout tools
-          * `typographic.css` -- typesetting tools
+  * `src/` -- the CSS source code. This is processed with Lightning CSS.
 
   * `www/` -- the project website, built with [Lume]
       * `demos/` -- demo pages. These should have a `name` specified in the
         frontmatter. They will be listed in the demo page (`../demos.md`).
       * `releases/` -- release notes.
-
-  * `build/` -- buildscripts
-      * `postcss.ts` -- builds the CSS.
-      * `version-archive.sh` -- builds all past releases into the dist folder.
-        The script _should_ run on any POSIX environment with npm and git
-        installed, though it hasn't been tested much.
 
   * `dist/` -- build results. This is also where the built website is.
       * `missing.css` -- unminified dev build
@@ -183,4 +127,3 @@ Leave two empty lines between notes.
 
 [Lume]: https://lume.land
 [Prism]: https://prismjs.com
-[HTML spec]: https://html.spec.whatwg.org/multipage/#toc-semantics

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+
+	<title>missing.css</title>
+
+	<link rel="stylesheet" href="/src/missing.css">
+	<link rel="stylesheet" href="/src/missing-prism.css">
+	<link href="https://fonts.bunny.net/css?family=source-sans-3:400,700|m-plus-code-latin:400,700" rel="stylesheet">
+
+	<style>
+		:root {
+			--main-font: "Source Sans 3", -apple-system, system-ui, sans-serif;
+		}
+		dfn > code {
+			font-style: normal;
+			text-decoration: 1px dashed var(--muted-fg) underline;
+		}
+		code a {
+			font-family: inherit;
+		}
+	</style>
+</head>
+<body>
+	<header class="navbar" data-overflow-nav="">
+    <nav class="contents">
+        <div>
+            <button hidden="" aria-hidden="true" type="button" data-nav-expander="" class="iconbutton">
+                ☰
+                <script src="/missing-js/overflow-nav.js" type="module"></script>
+            </button>
+        </div>
+        <p>
+            <a href="/" class="allcaps">Missing.css</a> 
+        </p>
+        <!-- <div>
+            <script src="/js/pagefind.js" type="module"></script>
+            <strong><button type="button" data-pagefind-search>Search</button></strong>
+        </div> -->
+        <ul role="list">
+                                <li><a href="/docs/">Intro</a></li>
+                                <li><a href="/docs/forms/">Forms</a></li>
+                                <li><a href="/docs/components/">Components</a></li>
+                                <li><a href="/docs/aria/">ARIA</a></li>
+                                <li><a href="/docs/colorways/">Colorways</a></li>
+                                <li><a href="/docs/variables/">Variables</a></li>
+                                <li><a href="/docs/layout/">Layout</a></li>
+                                <li><a href="/docs/utils/">Utilities</a></li>
+                                <li><a href="/docs/flex/" aria-current="page">Flexbox</a></li>
+                                <li><a href="/docs/grid/">Grid</a></li>
+                                <li><a href="/docs/js/">JS</a></li>
+                                <li><a href="/docs/ref-index/">Index</a></li>
+                    </ul>
+    </nav>
+</header>
+
+<main data-pagefind-body="">
+    <h1>Flexbox</h1>
+<nav class="TableOfContents box crowded"><ul class="padding-inline"><li><a href="#flex-containers">Flex containers</a><ul class="padding-inline"></ul></li><li><a href="#flex-children">Flex children</a><ul class="padding-inline"></ul></li></ul></nav><h2 id="flex-containers" tabindex="-1"><a class="permalink-anchor float:right" href="#flex-containers">§</a> Flex containers</h2>
+<p><dfn id=".f-row"><code class="language-none">.f-row</code></dfn> and <dfn id=".f-col"><code class="language-none">.f-col</code></dfn> will create non-wrapping Flexbox containers, with <code class="language-none">flex-direction</code> set to <code class="language-none">row</code> and <code class="language-none">column</code> respectively.</p>
+<p><dfn id=".f-switch"><code class="language-none">.f-switch</code></dfn> will create a Flexbox container that will switch from row to column when the width of an individual descendant exceeds the <dfn id="--col-width"><code class="language-none">--col-width</code></dfn> variable (default <code class="language-none">15ch</code>).</p>
+<p>All of <a href="/docs/flex/#.f-row"><code class="language-none">.f-row</code></a>, <a href="/docs/flex/#.f-col"><code class="language-none">.f-col</code></a> and <a href="/docs/flex/#.f-switch"><code class="language-none">.f-switch</code></a> will remove margins from their children, and have a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/gap">gap</a> set to <code class="language-none">--gap</code>.</p>
+<p>The following utility classes are meant to be applied to flex containers:</p>
+<h3 id="justify-content" tabindex="-1"><a class="permalink-anchor float:right" href="#justify-content">§</a> <code class="language-none">justify-content</code></h3>
+<ul role="list" class="tool-bar">
+<li><dfn id=".justify-content:start"><code class="language-none">.justify-content:start</code></dfn></li>
+<li><dfn id=".justify-content:end"><code class="language-none">.justify-content:end</code></dfn></li>
+<li><dfn id=".justify-content:baseline"><code class="language-none">.justify-content:baseline</code></dfn></li>
+<li><dfn id=".justify-content:center"><code class="language-none">.justify-content:center</code></dfn></li>
+<li><dfn id=".justify-content:stretch"><code class="language-none">.justify-content:stretch</code></dfn></li>
+<li><dfn id=".justify-content:space-between"><code class="language-none">.justify-content:space-between</code></dfn></li>
+<li><dfn id=".justify-content:space-around"><code class="language-none">.justify-content:space-around</code></dfn></li>
+<li><dfn id=".justify-content:space-evenly"><code class="language-none">.justify-content:space-evenly</code></dfn></li>
+</ul>
+<h3 id="align-items" tabindex="-1"><a class="permalink-anchor float:right" href="#align-items">§</a> <code class="language-none">align-items</code></h3>
+<ul role="list" class="tool-bar">
+<li><dfn id=".align-items:start"><code class="language-none">.align-items:start</code></dfn></li>
+<li><dfn id=".align-items:end"><code class="language-none">.align-items:end</code></dfn></li>
+<li><dfn id=".align-items:baseline"><code class="language-none">.align-items:baseline</code></dfn></li>
+<li><dfn id=".align-items:center"><code class="language-none">.align-items:center</code></dfn></li>
+<li><dfn id=".align-items:stretch"><code class="language-none">.align-items:stretch</code></dfn></li>
+</ul>
+<h3 id="flex-wrap" tabindex="-1"><a class="permalink-anchor float:right" href="#flex-wrap">§</a> <code class="language-none">flex-wrap</code></h3>
+<ul>
+<li><dfn id=".flex-wrap:nowrap"><code class="language-none">.flex-wrap:nowrap</code></dfn></li>
+<li><dfn id=".flex-wrap:wrap"><code class="language-none">.flex-wrap:wrap</code></dfn></li>
+</ul>
+<h2 id="flex-children" tabindex="-1"><a class="permalink-anchor float:right" href="#flex-children">§</a> Flex children</h2>
+<p>The following utility classes can be used on flex children:</p>
+<h3 id="align-self" tabindex="-1"><a class="permalink-anchor float:right" href="#align-self">§</a> <code class="language-none">align-self</code></h3>
+<ul role="list" class="tool-bar">
+<li><dfn id=".align-self:start"><code class="language-none">.align-self:start</code></dfn></li>
+<li><dfn id=".align-self:end"><code class="language-none">.align-self:end</code></dfn></li>
+<li><dfn id=".align-self:baseline"><code class="language-none">.align-self:baseline</code></dfn></li>
+<li><dfn id=".align-self:center"><code class="language-none">.align-self:center</code></dfn></li>
+<li><dfn id=".align-self:stretch"><code class="language-none">.align-self:stretch</code></dfn></li>
+</ul>
+<h3 id="flex-grow" tabindex="-1"><a class="permalink-anchor float:right" href="#flex-grow">§</a> <code class="language-none">flex-grow</code></h3>
+<ul role="list" class="tool-bar">
+<li><dfn id=".flex-grow:0"><code class="language-none">.flex-grow:0</code></dfn></li>
+<li><dfn id=".flex-grow:1"><code class="language-none">.flex-grow:1</code></dfn></li>
+<li><dfn id=".flex-grow:2"><code class="language-none">.flex-grow:2</code></dfn></li>
+<li><dfn id=".flex-grow:3"><code class="language-none">.flex-grow:3</code></dfn></li>
+<li><dfn id=".flex-grow:4"><code class="language-none">.flex-grow:4</code></dfn></li>
+<li><dfn id=".flex-grow:5"><code class="language-none">.flex-grow:5</code></dfn></li>
+<li><dfn id=".flex-grow:6"><code class="language-none">.flex-grow:6</code></dfn></li>
+<li><dfn id=".flex-grow:7"><code class="language-none">.flex-grow:7</code></dfn></li>
+<li><dfn id=".flex-grow:8"><code class="language-none">.flex-grow:8</code></dfn></li>
+<li><dfn id=".flex-grow:9"><code class="language-none">.flex-grow:9</code></dfn></li>
+<li><dfn id=".flex-grow:10"><code class="language-none">.flex-grow:10</code></dfn></li>
+<li><dfn id=".flex-grow:11"><code class="language-none">.flex-grow:11</code></dfn></li>
+<li><dfn id=".flex-grow:12"><code class="language-none">.flex-grow:12</code></dfn></li>
+</ul>
+</main>
+
+<footer>
+    
+    <div class="f-row flex-wrap:wrap justify-content:space-between">
+                    <div>Previous ←
+                <strong><a href="/docs/layout/">Layout</a></strong>
+            </div>
+                            <div>Next →
+                <strong><a href="/docs/ref-index/">Index</a></strong>
+            </div>
+            </div>
+</footer>
+
+			<footer>
+			<p><a href="/">Missing.css</a>, by
+			<a href="https://denizaksimsek.com">Deniz Akşimşek</a>,
+			funded by
+			<a href="https://bigsky.software">Big Sky Software</a> and
+			<a href="https://commspace.co.za">Commspace</a>.
+	
+			</p><p>Also check out
+			<a href="https://htmx.org">htmx</a>
+			and
+			<a href="https://hyperscript.org">_hyperscript</a>.
+
+			</p><p>
+			Made with 💙 in Ankara, Samsun, Rize and Cape Town.
+		</p></footer>
+	
+
+</body></html>

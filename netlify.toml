@@ -1,6 +1,8 @@
 
 [build]
-publish = "dist"
+publish = "www/_site"
 command = """
-curl -fsSL https://deno.land/x/install/install.sh | sh -s v1.30.0 && PATH="$PATH:/opt/buildhome/.deno/bin/" deno task prod
+curl -fsSL https://deno.land/x/install/install.sh | sh -s v1.30.0 &&
+cd www &&
+PATH="$PATH:/opt/buildhome/.deno/bin/" deno task prod
 """

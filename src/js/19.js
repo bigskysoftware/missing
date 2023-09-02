@@ -53,6 +53,9 @@
  * @returns {Logger} The `ilog` function.
  */
 export function makelogger(scope) {
+  /**
+   * @template T
+   */
   return (...args) => {
     console.log("%c%s", "color:green", scope, ...args);
     return /** @type {T} */ (args.at(-1));
@@ -430,7 +433,9 @@ export function hotkey(hotkeys) {
   // handlers[key][modifiers as bitfields]
   /** @type {Record<string, Record<number, KeyboardEventListener>>} */
   const handlers = {};
-  const modifiersOf = (e) => ~~(e.altKey && alt) | ~~(e.ctrlKey && ctrl) | ~~(e.metaKey && meta) | ~~(e.shiftKey && shift);
+  const modifiersOf = (/** @type {KeyboardEvent} */ e) =>
+    ~~(e.altKey && alt) | ~~(e.ctrlKey && ctrl) |
+    ~~(e.metaKey && meta) | ~~(e.shiftKey && shift);
   const parse = /** @returns {[string, number]} */ (/** @type {string} */ hotkeySpec) => {
       const
         tokens = hotkeySpec.split("+"), key = /** @type {string} */ (tokens.pop());

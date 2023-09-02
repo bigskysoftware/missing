@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+
+	<title>missing.css</title>
+
+	<link rel="stylesheet" href="/src/missing.css">
+	<link rel="stylesheet" href="/src/missing-prism.css">
+	<link href="https://fonts.bunny.net/css?family=source-sans-3:400,700|m-plus-code-latin:400,700" rel="stylesheet">
+
+	<style>
+		:root {
+			--main-font: "Source Sans 3", -apple-system, system-ui, sans-serif;
+		}
+		dfn > code {
+			font-style: normal;
+			text-decoration: 1px dashed var(--muted-fg) underline;
+		}
+		code a {
+			font-family: inherit;
+		}
+	</style>
+</head>
+<body>
+	<header class="navbar" data-overflow-nav="">
+    <nav class="contents">
+        <div>
+            <button hidden="" aria-hidden="true" type="button" data-nav-expander="" class="iconbutton">
+                ☰
+                <script src="/missing-js/overflow-nav.js" type="module"></script>
+            </button>
+        </div>
+        <p>
+            <a href="/" class="allcaps">Missing.css</a> 
+        </p>
+        <!-- <div>
+            <script src="/js/pagefind.js" type="module"></script>
+            <strong><button type="button" data-pagefind-search>Search</button></strong>
+        </div> -->
+        <ul role="list">
+                                <li><a href="/docs/">Intro</a></li>
+                                <li><a href="/docs/forms/">Forms</a></li>
+                                <li><a href="/docs/components/" aria-current="page">Components</a></li>
+                                <li><a href="/docs/aria/">ARIA</a></li>
+                                <li><a href="/docs/colorways/">Colorways</a></li>
+                                <li><a href="/docs/variables/">Variables</a></li>
+                                <li><a href="/docs/layout/">Layout</a></li>
+                                <li><a href="/docs/utils/">Utilities</a></li>
+                                <li><a href="/docs/flex/">Flexbox</a></li>
+                                <li><a href="/docs/grid/">Grid</a></li>
+                                <li><a href="/docs/js/">JS</a></li>
+                                <li><a href="/docs/ref-index/">Index</a></li>
+                    </ul>
+    </nav>
+</header>
+
+<main data-pagefind-body="">
+    <h1>Components</h1>
+<nav class="TableOfContents box crowded"><ul class="padding-inline"><li><a href="#box">Box</a></li><li><a href="#titlebar">Titlebar</a></li><li><a href="#subtitle">Subtitle</a></li><li><a href="#section-permalinks">Section permalinks</a></li><li><a href="#toolbar">Toolbar</a></li><li><a href="#sidebar">Sidebar</a></li><li><a href="#breadcrumbs">Breadcrumbs</a></li><li><a href="#chip">Chip</a></li><li><a href="#navbar">Navbar</a></li><li><a href="#icon-button">Icon Button</a></li></ul></nav><h2 id="box" tabindex="-1"><a class="permalink-anchor float:right" href="#box">§</a> Box</h2>
+<table>
+<tbody><tr><th scope="row">Class</th><td><dfn id=".box"><code class="language-none">.box</code></dfn>
+</td></tr></tbody></table>
+<p>The <dfn id=".box"><code class="language-none">.box</code></dfn> class creates a padded box with a border.</p>
+<p>Boxes use the border and background color of the <a href="/docs/colorways">colorway</a>.</p>
+<figure>
+<pre class="language-html" tabindex="0"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value">="<a href="/docs/components/#.box" style="color: inherit; text-decoration-color: var(--fg)">box</a> <a href="/docs/colorways/#.warn" style="color: inherit; text-decoration-color: var(--fg)">warn</a><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>strong</span><span class="token punctuation">&gt;</span></span>Warning<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>strong</span><span class="token punctuation">&gt;</span></span>: If you're putting <span class="token comment">&lt;!-- ... --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+</figure>
+<div class="box warn">
+<p><strong>Warning</strong>: If you're putting something in a box, make sure to clarify
+why it is in a box in some other way. For example, this box has "Warning" in
+bold, in addition to being yellow. This makes your page clearer and prevents
+accessibility failures.</p>
+</div>
+<p>The above box, in addition to being an example, is also a genuine warning.</p>
+<p>The <code class="language-none">&lt;figure&gt;</code>, <code class="language-none">&lt;aside&gt;</code>, <code class="language-none">&lt;details&gt;</code> and <code class="language-none">&lt;dialog&gt;</code> elements share their
+appearance with the <a href="/docs/components/#.box"><code class="language-none">.box</code></a> class.</p>
+<h2 id="titlebar" tabindex="-1"><a class="permalink-anchor float:right" href="#titlebar">§</a> Titlebar</h2>
+<p><dfn id=".titlebar"><code class="language-none">.titlebar</code></dfn>: A titlebar for a <a href="/docs/components/#.box"><code class="language-none">.box</code></a>.</p>
+<figure>
+<pre class="language-html" tabindex="0"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value">="<a href="/docs/components/#.box" style="color: inherit; text-decoration-color: var(--fg)">box</a> <a href="/docs/colorways/#.bad" style="color: inherit; text-decoration-color: var(--fg)">bad</a><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>strong</span> <span class="token attr-name">class</span><span class="token attr-value">="<a href="/docs/layout/#.block" style="color: inherit; text-decoration-color: var(--fg)">block</a> <a href="/docs/components/#.titlebar" style="color: inherit; text-decoration-color: var(--fg)">titlebar</a><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Error<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>strong</span><span class="token punctuation">&gt;</span></span>
+  Task failed successfully
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+  <div class="box bad">
+    <strong class="block titlebar">Error</strong>
+    Task failed successfully
+  </div>
+</figure>
+<h2 id="subtitle" tabindex="-1"><a class="permalink-anchor float:right" href="#subtitle">§</a> Subtitle</h2>
+<p>The <dfn id="<sub-title>"><code class="language-none">&lt;sub-title&gt;</code></dfn> custom element or the <dfn id=".sub-title"><code class="language-none">.sub-title</code></dfn>
+class is a subtitle for a heading.</p>
+<figure>
+<pre class="language-html" tabindex="0"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h4</span><span class="token punctuation">&gt;</span></span>
+  Conference Talks Considered Harmful<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><a href="/docs/utils/#<v-h>" style="color: inherit; text-decoration-color: var(--fg)">v-h</a></span><span class="token punctuation">&gt;</span></span>:<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>v-h</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><a href="/docs/components/#<sub-title>" style="color: inherit; text-decoration-color: var(--fg)">sub-title</a></span><span class="token punctuation">&gt;</span></span>How I Learned To Stop Worrying and Love Baz<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sub-title</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h4</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<h4>
+  Conference Talks Considered Harmful<v-h>:</v-h>
+  <sub-title>How I Learned To Stop Worrying and Love Cliché Titles</sub-title>
+</h4>
+</figure>
+<figure>
+<pre class="language-html" tabindex="0"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h4</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><a href="/docs/components/#<sub-title>" style="color: inherit; text-decoration-color: var(--fg)">sub-title</a></span> <span class="token attr-name">class</span><span class="token attr-value">="<a href="/docs/utils/#.allcaps" style="color: inherit; text-decoration-color: var(--fg)">allcaps</a>"</span><span class="token punctuation">&gt;</span></span>Breaking<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><a href="/docs/utils/#<v-h>" style="color: inherit; text-decoration-color: var(--fg)">v-h</a></span><span class="token punctuation">&gt;</span></span>: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>v-h</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>sub-title</span><span class="token punctuation">&gt;</span></span>
+  Bad Thing Happens
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h4</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<h4>
+  <sub-title class="allcaps">Breaking<v-h>: </v-h></sub-title>
+  Bad Thing Happens
+</h4><h4>
+</h4></figure>
+<h2 id="section-permalinks" tabindex="-1"><a class="permalink-anchor float:right" href="#section-permalinks">§</a> Section permalinks</h2>
+<p>Many pages, including these docs, have links that can be used to jump to a
+section that appear when the heading is hovered. Missing.css provides this
+as the <dfn id=".permalink-anchor"><code class="language-none">.permalink-anchor</code></dfn> class.</p>
+<h2 id="toolbar" tabindex="-1"><a class="permalink-anchor float:right" href="#toolbar">§</a> Toolbar</h2>
+<p>A <dfn id=".tool-bar"><code class="language-none">.tool-bar</code></dfn> is a horizontally laid-out collection of controls.</p>
+<figure>
+<pre class="language-html" tabindex="0"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>section</span> <span class="token attr-name">class</span><span class="token attr-value">="<a href="/docs/components/#.tool-bar" style="color: inherit; text-decoration-color: var(--fg)">tool-bar</a>"</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>button</span><span class="token punctuation">&gt;</span></span>Cut<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>button</span><span class="token punctuation">&gt;</span></span>Copy<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>button</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>button</span><span class="token punctuation">&gt;</span></span>Paste<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>button</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>hr</span> <span class="token attr-name">aria-orientation</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>vertical<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>label</span><span class="token punctuation">&gt;</span></span>Find: <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>input</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>text</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>label</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>section</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+  <section class="tool-bar">
+    <button type="button">Cut</button>
+    <button type="button">Copy</button>
+    <button type="button">Paste</button>
+    <hr aria-orientation="vertical">
+    <label>Find: <input type="text"></label>
+  </section>
+</figure>
+<h2 id="sidebar" tabindex="-1"><a class="permalink-anchor float:right" href="#sidebar">§</a> Sidebar</h2>
+<p>Use the <dfn id=".sidebar-layout"><code class="language-none">.sidebar-layout</code></dfn> class to create a sidebar/main layout.
+Put the sidebar in a <code class="language-none">&lt;header&gt;</code> element directly inside it, and the next
+element will house the rest of the page. See this example:</p>
+<figure>
+<pre class="language-html" tabindex="0"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value">="<a href="/docs/components/#.sidebar-layout" style="color: inherit; text-decoration-color: var(--fg)">sidebar-layout</a>"</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>header</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>list<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Home<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Profile<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Settings<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+      <span class="token comment">&lt;!-- ... --&gt;</span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>header</span><span class="token punctuation">&gt;</span></span>
+
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value">="col-4"</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>main</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>main</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>footer</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>footer</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<p><strong><a href="/demos/sidebar" class="<button>">Sidebar demo →</a></strong></p>
+</figure>
+<h2 id="breadcrumbs" tabindex="-1"><a class="permalink-anchor float:right" href="#breadcrumbs">§</a> Breadcrumbs</h2>
+<p>Add <dfn id=".breadcrumbs"><code class="language-none">.breadcrumbs</code></dfn> to a <code class="language-none">&lt;nav&gt;</code> element. Use an <code class="language-none">&lt;ul&gt;</code> or  <code class="language-none">&lt;ol&gt;</code> of
+links inside. Don't forget to add an <code class="language-none">aria-label</code>.</p>
+<p>Add the attribute <code class="language-none">aria-current=page</code> to the link representing the current page
+(if any).</p>
+<figure>
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <ol>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">User</a></li>
+      <li><a href="#">Advanced</a></li>
+      <li><a href="#">New All</a></li>
+      <li><a href="#" aria-current="page">Quit Sibelius</a></li>
+    </ol>
+  </nav>
+</figure>
+<h2 id="chip" tabindex="-1"><a class="permalink-anchor float:right" href="#chip">§</a> Chip</h2>
+<p>The <dfn id="<chip>"><code class="language-none">&lt;chip&gt;</code></dfn> class, or the <dfn id=".chip"><code class="language-none">.chip</code></dfn> class, creates a
+rounded chip, like what you might use for a tag list or contacts.</p>
+<figure>
+<pre class="language-html" tabindex="0"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">class</span><span class="token attr-value">="<a href="/docs/components/#.chip" style="color: inherit; text-decoration-color: var(--fg)">chip</a>"</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/@jdoe<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>profiles/jdoe.webp<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span> John Doe<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><a href="/docs/components/#<chip>" style="color: inherit; text-decoration-color: var(--fg)">chip</a></span><span class="token punctuation">&gt;</span></span>#webdev<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>chip</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><a href="/docs/components/#<chip>" style="color: inherit; text-decoration-color: var(--fg)">chip</a></span><span class="token punctuation">&gt;</span></span>#design<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>chip</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><a href="/docs/components/#<chip>" style="color: inherit; text-decoration-color: var(--fg)">chip</a></span><span class="token punctuation">&gt;</span></span>#css<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>chip</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+<p><chip class="info">#webdev</chip> <chip class="ok">⍻ Merged</chip> <chip>John Doe</chip> <chip class="warn">3 minute read</chip></p>
+</figure>
+<h2 id="navbar" tabindex="-1"><a class="permalink-anchor float:right" href="#navbar">§</a> Navbar</h2>
+<p>A navbar has the <dfn id=".navbar"><code class="language-none">.navbar</code></dfn> class --- see the following for a markup
+example:</p>
+<figure>
+<figcaption>Code: Navbars</figcaption>
+<pre class="language-html" tabindex="0"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>header</span> <span class="token attr-name">class</span><span class="token attr-value">="<a href="/docs/components/#.navbar" style="color: inherit; text-decoration-color: var(--fg)">navbar</a>"</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nav</span> <span class="token attr-name">aria-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Site sections<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>list<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>missing.js<span class="token punctuation">"</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/logo.png<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/docs<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Docs<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/docs<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Contribute<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/docs<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Donate<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>nav</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>nav</span> <span class="token attr-name">aria-label</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Social media links<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span> <span class="token attr-name">role</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>list<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>/<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span><span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://github.com/...<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>GitHub<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span><span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>a</span> <span class="token attr-name">href</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://discord.app/...<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span>Discord<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>a</span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>nav</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>header</span><span class="token punctuation">&gt;</span></span>
+</code></pre>
+</figure>
+<p>To make your navbar expand/collapsible on smaller screens,
+you can use <a href="/docs/js#expand%2Fcollapse-navbar">Missing.js § Expand/collapse navbar</a>.</p>
+<div class="box info">
+<p>When you have multiple <code class="language-none">&lt;nav&gt;</code> elements on a page, it's a good idea to put
+<code class="language-none">aria-label</code> attributes on them. This is because many assistive programs have
+a feature to jump to the navigation part of a page, which does not work well if
+the user can't tell which nav is which.</p>
+</div>
+<h2 id="icon-button" tabindex="-1"><a class="permalink-anchor float:right" href="#icon-button">§</a> Icon Button</h2>
+<p><dfn id=".iconbutton"><code class="language-none">.iconbutton</code></dfn> creates a bare icon.</p>
+<figure class="f-row justify-content:space-between">
+<button class="iconbutton" type="button">☰</button>
+<button class="iconbutton" type="button">→</button>
+<button class="iconbutton" type="button">✀</button>
+<button class="iconbutton" type="button">✖</button>
+<button class="iconbutton" type="button">⚧</button>
+<button class="iconbutton" type="button">☻</button>
+<button class="iconbutton" type="button">🎜</button>
+</figure>
+</main>
+
+<footer>
+    
+    <div class="f-row flex-wrap:wrap justify-content:space-between">
+                            <div>Next →
+                <strong><a href="/docs/layout/">Layout</a></strong>
+            </div>
+            </div>
+</footer>
+
+			<footer>
+			<p><a href="/">Missing.css</a>, by
+			<a href="https://denizaksimsek.com">Deniz Akşimşek</a>,
+			funded by
+			<a href="https://bigsky.software">Big Sky Software</a> and
+			<a href="https://commspace.co.za">Commspace</a>.
+	
+			</p><p>Also check out
+			<a href="https://htmx.org">htmx</a>
+			and
+			<a href="https://hyperscript.org">_hyperscript</a>.
+
+			</p><p>
+			Made with 💙 in Ankara, Samsun, Rize and Cape Town.
+		</p></footer>
+	
+
+</body></html>
