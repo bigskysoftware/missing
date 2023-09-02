@@ -8,7 +8,13 @@ backTo: / Missing.css
 
 # <sub-title class="allcaps">Missing.css</sub-title> Releases
 
-<% for (const releasePage of search.pages("release", "release=desc")) { %>
+
+<% const releases = filters.sortSemVer(
+    search.pages("release"),
+    page => page.data.release,
+  ).reverse() %>
+
+<% for (const releasePage of releases) { %>
 <% if (releasePage === page) continue // TODO: remove "release" tag from this page to avoid this workaround %>
  * [v<%= releasePage.data.release %>](<%= releasePage.data.url %>)
 <% } %>

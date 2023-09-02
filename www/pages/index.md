@@ -24,7 +24,10 @@ templateEngine: [eta,md]
 
 <main>
 
-<% const version = search.pages("release", "release").at(-1).data.release; %>
+<% const version = filters.sortSemVer(
+    search.pages("release"),
+    page => page.data.release,
+  ).at(-1).data.release; %>
 
 missing.css is the CSS library we wished already existed.
 Add it to your website: `<link rel="stylesheet" href="https://unpkg.com/missing.css@<%= version %>/dist/missing.min.css">`{.lang-html}
