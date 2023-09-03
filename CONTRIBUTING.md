@@ -33,7 +33,7 @@ work. That's not how you buy something).
 You will need [Deno][] to build Missing.css.
 Everything else will be downloaded and cached indefinitely by Deno --
 if you plan to go offline for a while, consider doing a full build of everything
-(`deno task build && deno task www`) to cache dependencies.
+(`deno task build`) to cache dependencies.
 
   * Start a development server:
       ~~~ sh
