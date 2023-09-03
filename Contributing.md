@@ -32,6 +32,11 @@ work. That's not how you buy something).
 
 Install [Deno][] and [Lightning CSS][].
 
+  ~~~ sh
+  curl -fsSL deno.land/install.sh | sh # see https://deno.land/manual@v1.36.4/getting_started/installation
+  npm i -g lightningcss-cli
+  ~~~
+
   * Build all of missing.css (CSS and JS):
       ~~~ sh
       deno task build
@@ -44,8 +49,9 @@ Install [Deno][] and [Lightning CSS][].
 
   * Start a development server:
       ~~~ sh
-      deno task dev
+      deno task serve
       ~~~
+    This will serve the missing.css website, which uses the CSS directly from source.
 
 [Deno]: https://deno.land/
 [Lightning CSS]: https://lightningcss.dev/
