@@ -1,24 +1,24 @@
 {
   "name": "missing.css",
   "author": "Deniz Akşimşek <deniz@denizaksimsek.com> (https://dz4k.com)",
-  "version": "1.0.13",
+  "version": "1.1.0",
   "description": "missing.css is the CSS library we wished already existed.",
   "repository": "github:bigskysoftware/missing",
-  "keywords": ["css", "classless-css"],
+  "keywords": [
+    "css",
+    "classless-css"
+  ],
   "license": "BSD 2-Clause",
   "bugs": "https://github.com/bigskysoftware/missing/issues",
   "homepage": "https://missing.style",
-  
   "files": [
     "dist/"
   ],
-  
   "exports": {
     ".": "./dist/missing.min.css",
     "./*": "./dist/*",
     "./prism": "./dist/missing-prism.min.css"
   },
-
   "scripts": {
     "prepack": "deno task build"
   }
