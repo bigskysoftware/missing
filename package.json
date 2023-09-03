@@ -20,6 +20,6 @@
   },
 
   "scripts": {
-    "prepack": "deno task prod"
+    "prepack": "deno task build"
   }
 }
