@@ -101,6 +101,9 @@ You can set `--density` yourself in inline styles or your own CSS:
 <dfn>`.aestheticbreak`</dfn>
 :   A line break added for aesthetic purposes. Usage: `<span class="aestheticbreak"></span>`{.language-html}
 
+<dfn>`.list-of-links`</dfn>
+:   Removes underlines from all links inside an element -- sometimes advisable for lists of links.
+
 
 ## Masquerades
 
@@ -127,6 +130,12 @@ The following classes can be used to make one element look like another:
 
 
 </figure>
+
+
+## No dark theme
+
+Missing.css applies a dark theme based on `prefers-color-scheme`.
+To opt out of this, add the <dfn>`.-no-dark-theme`</dfn> class to your root element.
 
 
 ## Reset
