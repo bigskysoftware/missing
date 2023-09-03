@@ -6,9 +6,9 @@
   },
   "tasks": {
     "build": "deno task css && deno task js && deno task www",
-    "serve": "cd www && deno task lume -s --dev",
-    "www": "cd www && deno task lume",
-    "lume": "echo \"import 'lume/cli.ts'\" | deno run --unstable -A -",
+    "serve": "deno task lume -s --dev",
+    "www": "deno task lume",
+    "lume": "cd www && echo \"import 'lume/cli.ts'\" | deno run --unstable -A -",
     "css": "deno run -qA tool/css.ts src/missing.css && deno run -qA tool/css.ts src/missing-prism.css",
     "js": "rm -rf dist/js && cp -r src/js dist/js"
   },
