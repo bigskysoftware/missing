@@ -30,12 +30,16 @@ work. That's not how you buy something).
 
 ## Development Environment
 
-Install [Deno][] and [Lightning CSS][].
+You will need [Deno][] to build Missing.css.
+Everything else will be downloaded and cached indefinitely by Deno --
+if you plan to go offline for a while, consider doing a full build of everything
+(`deno task build && deno task www`) to cache dependencies.
 
-  ~~~ sh
-  curl -fsSL deno.land/install.sh | sh # see https://deno.land/manual@v1.36.4/getting_started/installation
-  npm i -g lightningcss-cli
-  ~~~
+  * Start a development server:
+      ~~~ sh
+      deno task serve
+      ~~~
+    This will serve the missing.css website, which uses the CSS directly from source.
 
   * Build all of missing.css (CSS and JS):
       ~~~ sh
@@ -47,14 +51,17 @@ Install [Deno][] and [Lightning CSS][].
       deno task css
       ~~~
 
-  * Start a development server:
+  * Build just the JS:
       ~~~ sh
-      deno task serve
+      deno task js
       ~~~
-    This will serve the missing.css website, which uses the CSS directly from source.
+  
+  * Build the website:
+      ~~~ sh
+      deno task www
+      ~~~
 
 [Deno]: https://deno.land/
-[Lightning CSS]: https://lightningcss.dev/
 
 
 ## Branching

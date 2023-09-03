@@ -1,12 +1,11 @@
 {
   "importMap": "www/deno.json",
+  "nodeModulesDir": false,
   "tasks": {
     "build": "deno task css && deno task js",
     "serve": "cd www && deno task serve",
     "www": "cd www && deno task build",
-    "css": "deno task compile src/missing.css -o dist/missing.css && deno task minify dist/missing.css -o dist/missing.min.css && deno task compile src/missing-prism.css -o dist/missing-prism.css && deno task minify dist/missing-prism.css -o dist/missing-prism.min.css",
-    "compile": "lightningcss --nesting --bundle --targets '>= 0.25%'",
-    "minify": "lightningcss --minify",
+    "css": "deno run -qA tool/css.ts src/missing.css && deno run -qA tool/css.ts src/missing-prism.css",
     "js": "rm -rf dist/js && cp -r src/js dist/js"
   }
 }
