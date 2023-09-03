@@ -219,7 +219,7 @@ details,
 .permalink-anchor {
     display: none;
     
-    @nest *:hover > & {
+    *:hover > & {
         display: initial;
     }
 }

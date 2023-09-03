@@ -293,7 +293,7 @@ a, .\<a\> {
 	font-size: 1em;
 	text-decoration: 1px dotted underline;
 	
-	@nest .list-of-links & {
+	.list-of-links & {
 		text-decoration: none;
 	}
 	
