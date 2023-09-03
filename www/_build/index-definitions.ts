@@ -57,7 +57,7 @@ export default () => {
       });
 
       document.querySelectorAll(".token.attr-name").forEach((node) => {
-        let el = node as Element;
+        const el = node as Element;
         if (el.textContent !== "class") return;
 
         const values = el.nextElementSibling;

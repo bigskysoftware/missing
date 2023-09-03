@@ -12,11 +12,14 @@ export default () => {
   };
 };
 
-export function sortSemVer(arr, mapper = i => i) {
+export function sortSemVer<T = string>(
+  arr: T[],
+  mapper: (t: T) => string = String,
+) {
   return arr.sort((a, b) => compareSemVer(mapper(a), mapper(b)));
 }
 
-export function compareSemVer(a, b) {
+export function compareSemVer(a: string, b: string) {
   // intentionally lax regex
   // ignoring prerelease tags for now since missing doesn't have any
   const svre = /^v?(\d+)\.(\d+)\.(\d+)(-[^\+]*)?/;
@@ -25,12 +28,12 @@ export function compareSemVer(a, b) {
   const [, bMajor, bMinor, bPatch, bPrerelease] = svre.exec(b)!;
   const aPrerelTags = aPrerelease?.split(".") ?? [];
   const bPrerelTags = bPrerelease?.split(".") ?? [];
-  
+
   let cmp = Number(aMajor) - Number(bMajor);
   if (cmp === 0) cmp = Number(aMinor) - Number(bMinor);
   if (cmp === 0) cmp = Number(aPatch) - Number(bPatch);
   if (cmp === 0) {
-    if      (aPrerelTags.length === 0 && bPrerelTags.length > 0) cmp = 1;
+    if (aPrerelTags.length === 0 && bPrerelTags.length > 0) cmp = 1;
     else if (aPrerelTags.length > 0 && bPrerelTags.length === 0) cmp = -1;
     else cmp = aPrerelTags.length - bPrerelTags.length;
   }
