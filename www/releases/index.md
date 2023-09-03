@@ -13,7 +13,9 @@ backTo: / Missing.css
   |> sortSemVer(page => page.data.release)
   |> reverse }}
 
-{{ for releasePage of releases }}
- * [v{{ releasePage.data.release }}]({{ releasePage.data.url }})
+<ul role="list" class="list-of-links f-row flex-wrap:wrap">
+{{ for rel of releases }}
+<li class="mono-font" style="flex-basis:18ch">
+  <a href="{{ rel.data.url }}">{{ rel.data.release }}</a>
 {{ /for }}
-{.list-of-links .flow-gap}
+</ul>

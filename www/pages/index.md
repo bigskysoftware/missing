@@ -24,7 +24,7 @@ templateEngine: [vento, md]
 
 <main>
 
-{{ set version = search.pages("release")
+{{ set version = search.pages("release!=undefined")
     |> map(rel => rel.data.release)
     |> sortSemVer
     |> at(-1) }}

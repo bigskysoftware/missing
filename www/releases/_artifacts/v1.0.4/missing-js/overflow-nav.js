@@ -1,3 +1,0 @@
-import{$ as f,asHtml as g,attr as d,behavior as p,makelogger as m,on as l}from"./19.js";const w=m("overflow-nav"),a=p("[data-overflow-nav]",(t,{options:{expandedClass:o="expanded"}})=>{const e=g(f(t,"[data-nav-expander]"));if(e===null)return w("Expand toggle missing from navbar ",t);const c=()=>t.scrollWidth>t.clientWidth,r=()=>t.classList.contains(o),n=(s=!r())=>{s?(t.classList.add(o),d(e,"aria-pressed",!0),e.textContent="\xD7"):(t.classList.remove(o),d(e,"aria-pressed",!1),e.textContent="\u2630")},i=()=>{const s=e.hidden;e.hidden=!c(),s!=e.hidden&&n(!1)};l(e,"click",()=>n()),i(),l(window,"resize",()=>i(),{addedBy:t})});var h=a;a(document);export{h as default};
-
-/*# sourceMappingURL=./overflow-nav.js.map */

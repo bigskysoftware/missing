@@ -1,6 +1,6 @@
 ---
 layout: prose.vto
-templateEngine: eta,md
+templateEngine: vto,md
 url: /demos/
 backTo: / Missing.css
 ---
@@ -9,10 +9,9 @@ backTo: / Missing.css
 
 # Demos
 
-<% for (const demo of search.pages("demo")) { _%>
-<% if (demo === page) continue; %>
- - [<%= demo.data.name %>](<%= demo.data.url %>)
-<% } %>
+{{ for demo of search.pages("demo") |> filter((demo) => demo !== page) }}
+ - [{{ demo.data.name }}]({{ demo.data.url }})
+{{ /for }}
 {.list-of-links .flow-gap}
 
 </main>
