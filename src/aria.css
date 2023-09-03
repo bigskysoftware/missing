@@ -82,16 +82,17 @@
 [role=listbox] {
     list-style: none;
 
-    & [role=option] {
+    [role=option] {
         margin-inline: calc(-1 * var(--gap));
         padding-inline: var(--gap);
+        border-radius: 0;
     }
 
-    & [role=option][aria-selected=true] {
+    [role=option][aria-selected=true] {
         background: var(--interactive-bg);
     }
 
-    & [role=option].active {
+    [role=option].active {
         --temporary-bg: var(--accent);
         --temporary-fg: var(--bg);
         --temporary-accent: parent-var(--muted-accent);
@@ -100,7 +101,7 @@
         background: var(--temporary-bg);
         color: var(--temporary-fg);
         
-        & > * {
+        > * {
             --bg: var(--temporary-bg);
             --fg: var(--temporary-fg);
             --accent: var(--temporary-accent);

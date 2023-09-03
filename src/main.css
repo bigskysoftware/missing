@@ -709,7 +709,7 @@ dialog {
 
     background-color: var(--bg);
     color: var(--fg);
-	border-color: var(--accent);
+	border-color: var(--fg);
 }
 
 dialog[open]::backdrop {

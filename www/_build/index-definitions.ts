@@ -1,3 +1,7 @@
+/**
+ * Links classes, variables and elements to where they're defined in the docs.
+ */
+
 import { Element } from "lume/deps/dom.ts";
 import { Page, Site } from "lume/core.ts";
 
@@ -30,7 +34,6 @@ export default () => {
       });
       document.getElementsByTagName("code").forEach((el) => {
         if (!(el.innerText in definitionsIndex)) return;
-        if (el.parentElement?.tagName === "DFN") return;
         const a = document.createElement("a");
         a.setAttribute(
           "href",

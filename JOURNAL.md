@@ -1,5 +1,5 @@
 
-2022-10-21
+# 2022-10-21
 
 I should add a search function with Lume's Pagefind plugin
 (https://lume.land/plugins/pagefind/).
@@ -7,7 +7,7 @@ I should add a search function with Lume's Pagefind plugin
 -- dz4k
 
 
-2022-08-19
+# 2022-08-19
 
 Got a proof-of-concept for postcss-literate. However, imported files seem not
 to go through it.
@@ -30,7 +30,7 @@ for now.
 -- dz4k
 
 
-2022-08-18
+# 2022-08-18
 
 i'm going to add a fullwidth utility... class="width:100%" or 
 class="inline-size:100%"?
@@ -46,7 +46,7 @@ class="1 3s 5l" 1 col on desktop or tablet, 3 cols on phone, 5 cols on big
 -- dz4k
 
 
-2022-08-16
+# 2022-08-16
 
 Updating docs is hard and I always forget something. Consider putting docs next
 to code:
@@ -57,7 +57,7 @@ to code:
 -- dz4k
 
 
-2022-08-02
+# 2022-08-02
 
 Neither basicgrid nor the flex utilities are good enough because layouts need
 to adapt to device size and for any moderately sophisticated layout, that 
@@ -82,17 +82,18 @@ What I wish existed on the Web:
 
     <p>Lorem ipsum dolor sit amet...
   </section>
+  ~~~
 
 -- dz4k
 
 
-2022-06-21
+# 2022-06-21
 
 add an utility for all: initial.
 
 -- dz4k
 
-2022-06-12
+# 2022-06-12
 
 Got the forms into somewhat of an acceptable state.
 
@@ -114,7 +115,7 @@ hyperscript.org website migrated to missing.css and looking good.
 -- dz4k
 
 
-2022-05-20
+# 2022-05-20
 
 I hate forms.
 
@@ -129,7 +130,7 @@ I'm looking into what other CSS libraries do.
 -- dz4k
 
 
-2022-05-18
+# 2022-05-18
 
 I finally got the Deno PostCSS build to work. Turns out that the CSS optimizer
 CSSO was crashing because of invalid syntax.
@@ -145,7 +146,7 @@ Integrate a validator into the build. A _very_ cursory search showed this:
 
 -- dz4k
 
-2022-05-17
+# 2022-05-17
 
 Idea for branching structure:
 
@@ -166,7 +167,7 @@ directly on the dev branch. This is because of the difficulty of merging CSS.
 -- dz4k
 
 
-2022-05-17
+# 2022-05-17
 
 > - how to write docs?
 I'm just writing them in markdown and putting `<dfn>` tags everywhere that I
@@ -188,7 +189,7 @@ literate programming in CSS and I don't feel like writing and maintaining one.
 -- dz4k
 
 
-2022-04-31
+# 2022-04-31
 
 > - remove all :is, see what happens
 

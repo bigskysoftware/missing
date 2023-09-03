@@ -7,58 +7,16 @@ import type { Site } from "lume/core.ts";
  */
 export default () => {
   return (site: Site) => {
-    site.filter("peekHtml", peekHtml);
-    site.filter("repeat", repeat);
     site.filter("sortSemVer", sortSemVer);
+    site.filter("compareSemVer", compareSemVer);
   };
 };
 
-function peekHtml(html: string, n = 80) {
-  const text = html.replace(/<\/?[^>]+(>|$)/g, "").replace(/\s+/g, " ");
-  if (text.length < n) return text;
-  else return text.slice(0, n - 1) + "…";
-}
-
-interface LoopContext {
-  i: number;
-  first: boolean;
-  last?: boolean;
-  sep(s: string): string;
-}
-
-function repeat<T>(
-  root: Iterable<T>,
-  cb: (t: T, loop: LoopContext) => void,
-): void {
-  // deno-lint-ignore no-explicit-any
-  function hasLength(a: any): a is { length: number } {
-    return "length" in a && typeof a.length === "number";
-  }
-
-  let i = 0;
-  for (const t of root) {
-    const ctx: LoopContext = {
-      i,
-      first: i === 0,
-      sep(s) {
-        return this.last ? "" : s;
-      },
-    };
-
-    if (hasLength(root)) {
-      ctx.last = i === root.length - 1;
-    }
-
-    cb(t, ctx);
-    i++;
-  }
-}
-
-function sortSemVer(arr, mapper = i => i) {
+export function sortSemVer(arr, mapper = i => i) {
   return arr.sort((a, b) => compareSemVer(mapper(a), mapper(b)));
 }
 
-function compareSemVer(a, b) {
+export function compareSemVer(a, b) {
   // intentionally lax regex
   // ignoring prerelease tags for now since missing doesn't have any
   const svre = /^v?(\d+)\.(\d+)\.(\d+)(-[^\+]*)?/;

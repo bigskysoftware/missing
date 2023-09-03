@@ -4,13 +4,13 @@ import lume from "lume/mod.ts";
 import date from "lume/plugins/date.ts";
 import basePath from "lume/plugins/base_path.ts";
 import resolveUrls from "lume/plugins/resolve_urls.ts";
+import prismHighlight from "lume/plugins/prism.ts";
 import vento from "lume/plugins/vento.ts";
-// import pagefind from "lume/plugins/pagefind.ts";
+import pagefind from "lume/plugins/pagefind.ts";
 
 import markdownOptions from "./_build/markdown.ts";
-import highlighting from "./_build/highlighting.ts";
-import myFilters from "./_build/filters.ts";
 import indexDefinitions from "./_build/index-definitions.ts";
+import semver from "./_build/semver.ts";
 
 import { Page } from "lume/core.ts";
 
@@ -34,15 +34,15 @@ export default lume(
     }
   })
   .use(date())
-  .use(highlighting())
   .use(basePath())
   .use(resolveUrls())
+  .use(prismHighlight())
   .use(vento())
-  /* .use(pagefind({
+  .use(pagefind({
     ui: false,
     indexing: {
       bundleDirectory: "_pagefind",
     }
-  })) */
-  .use(myFilters())
+  }))
+  .use(semver())
   .use(indexDefinitions());

@@ -6,7 +6,7 @@
 [role=tabpanel],
 figure,
 details,
-dialog {
+:where(dialog) {
     margin: var(--gap) 0;
     padding: var(--gap);
     overflow: clip;
@@ -24,11 +24,14 @@ dialog {
     font: inherit;
 	font-family: var(--secondary-font);
     font-weight: bold;
-
+	
     translate: 0 calc(-1px - var(--gap));
-
+	
     background: var(--graphical-fg);
     color: var(--bg);
+	text-shadow: 0 .1em .2em var(--fg);
+	border-bottom: 1px solid;
+	border-bottom-color: inherit;
 }
 
 .sub-title, sub-title {
