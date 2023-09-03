@@ -7,6 +7,6 @@
     "css": "deno task compile src/missing.css -o dist/missing.css && deno task minify dist/missing.css -o dist/missing.min.css && deno task compile src/missing-prism.css -o dist/missing-prism.css && deno task minify dist/missing-prism.css -o dist/missing-prism.min.css",
     "compile": "lightningcss --nesting --bundle --targets '>= 0.25%'",
     "minify": "lightningcss --minify",
-    "js": "rm -r dist/js && cp -r src/js dist/js"
+    "js": "rm -rf dist/js && cp -r src/js dist/js"
   }
 }
