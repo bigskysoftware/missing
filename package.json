@@ -1,7 +1,7 @@
 {
   "name": "missing.css",
   "author": "Deniz Akşimşek <deniz@denizaksimsek.com> (https://dz4k.com)",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "missing.css is the CSS library we wished already existed.",
   "repository": "github:bigskysoftware/missing",
   "keywords": [
@@ -14,6 +14,7 @@
   "files": [
     "dist/"
   ],
+  "main": "./dist/missing.min.css",
   "exports": {
     ".": "./dist/missing.min.css",
     "./*": "./dist/*",
