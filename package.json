@@ -11,6 +11,7 @@
   "license": "BSD 2-Clause",
   "bugs": "https://github.com/bigskysoftware/missing/issues",
   "homepage": "https://missing.style",
+  "main": "dist/missing.min.css",
   "files": [
     "dist/"
   ],
