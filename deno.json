@@ -2,7 +2,7 @@
   "imports": {
     "lume/": "https://deno.land/x/lume@v1.18.5/",
     "std/": "https://deno.land/std@0.200.0/",
-    "https://deno.land/x/vento@v0.7.1/": "https://deno.land/x/vento@v0.7.3/"
+    "https://deno.land/x/vento@v0.7.1/": "https://deno.land/x/vento@v0.8.0/"
   },
   "tasks": {
     "build": "deno task css && deno task js && deno task www",

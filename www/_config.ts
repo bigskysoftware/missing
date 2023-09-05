@@ -37,7 +37,7 @@ export default lume(
   .use(basePath())
   .use(resolveUrls())
   .use(prismHighlight())
-  .use(vento())
+  .use(vento({ options: { autoescape: true } }))
   .use(pagefind({
     ui: false,
     indexing: {
