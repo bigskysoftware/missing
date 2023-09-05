@@ -376,7 +376,24 @@
     "https://deno.land/x/vento@v0.7.3/plugins/set.ts": "e8b4b17ff2205d6c232b5d0ca819f56d9c4842118bd520846533c96fd987816d",
     "https://deno.land/x/vento@v0.7.3/src/environment.ts": "2c27ac023a2569e1bbd5fbf100b96c78a72c7c99bdfef97b04f9fe077d41c968",
     "https://deno.land/x/vento@v0.7.3/src/loader.ts": "eb01b0dca7ea8bcdcdfd30b1f90f2fad28fb7f2cfd943900322a85bfaa86130c",
-    "https://deno.land/x/vento@v0.7.3/src/tokenizer.ts": "08f6601103094dfb38a9ce1c4b6234c67b96d4af7a5de62d58060798fd7fbdc3"
+    "https://deno.land/x/vento@v0.7.3/src/tokenizer.ts": "08f6601103094dfb38a9ce1c4b6234c67b96d4af7a5de62d58060798fd7fbdc3",
+    "https://deno.land/x/vento@v0.8.0/deps.ts": "c4bd9903c671fcc5979c62b37021ac11cf258cb2b47c4a2deb776d216bfaa127",
+    "https://deno.land/x/vento@v0.8.0/mod.ts": "4b086d346c490faf4fe8d5cc63491f0764e70c77b5d4e3423959e84ff7015f5f",
+    "https://deno.land/x/vento@v0.8.0/plugins/echo.ts": "f7c064fb6d34b29852f46f6e01583ed87656dcbbc5cae51c8f29198d6951d0cf",
+    "https://deno.land/x/vento@v0.8.0/plugins/escape.ts": "02fa73683472bc05e7f6b33dee25e47c30097fcf3fab82fc02720a74b1b1ee17",
+    "https://deno.land/x/vento@v0.8.0/plugins/export.ts": "1eb81c5ff1b3b8bfa4210fe87e04d71d541bdaa0afbf08bb7c1ff34cc08a5f36",
+    "https://deno.land/x/vento@v0.8.0/plugins/for.ts": "6313e139a23ed17ca8b0852031f8d9e11aeb7520b228e68b9233418d25745414",
+    "https://deno.land/x/vento@v0.8.0/plugins/function.ts": "cdf610a98493e4a093c53473abdad7d47cbcff40aa8362d280e39910620cb8d6",
+    "https://deno.land/x/vento@v0.8.0/plugins/if.ts": "9de295f8675cacaec7866ad21068b6b089bfcadf72d3c62e1df50ca378c04279",
+    "https://deno.land/x/vento@v0.8.0/plugins/import.ts": "09fadcdbc0940bbbe5c1ee7fabe590ee99ed1773d77ffdf6c2cababa4f482e61",
+    "https://deno.land/x/vento@v0.8.0/plugins/include.ts": "4615c64f0222c65421ba87d5b84b33b6427e61600c6536698520661c36440611",
+    "https://deno.land/x/vento@v0.8.0/plugins/js.ts": "2c50d60061e9c5b6280a145266e617181534b8767e91127d59d5cf5febdcfb03",
+    "https://deno.land/x/vento@v0.8.0/plugins/layout.ts": "83fc43eba48cb2ea25862abc887a4229cf46c9d9f268a08b494630c4b78fad72",
+    "https://deno.land/x/vento@v0.8.0/plugins/set.ts": "e8b4b17ff2205d6c232b5d0ca819f56d9c4842118bd520846533c96fd987816d",
+    "https://deno.land/x/vento@v0.8.0/plugins/unescape.ts": "cd3508e95fdf6837a86705405944754ef13da6bb9a7d94ae2799f2ddb7fac4aa",
+    "https://deno.land/x/vento@v0.8.0/src/environment.ts": "2568a5ed37c4b6ccba188efe024d302af5cd242bdc1de8ce4dd1f731c4c1cf72",
+    "https://deno.land/x/vento@v0.8.0/src/loader.ts": "eb01b0dca7ea8bcdcdfd30b1f90f2fad28fb7f2cfd943900322a85bfaa86130c",
+    "https://deno.land/x/vento@v0.8.0/src/tokenizer.ts": "57052c7badf591600f5c7e370cee9a6c187fb0dc21135aac6c013092304dfee9"
   },
   "npm": {
     "specifiers": {
