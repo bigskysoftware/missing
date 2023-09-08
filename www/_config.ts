@@ -28,11 +28,13 @@ export default lume(
   .data("layout", "prose.vto", "/pages")
   .data("layout", "release.vto", "/releases")
   .data("url", (p: Page) => p.src.path + "/", "/releases")
+  .data("url", (p: Page) => p.src.path + "/", "/demos")
   .preprocess([".md"], (p: Page) => {
     if (p.src.path.match(/^\/releases\/\d/)) {
       p.data.release = p.src.path.split("/").at(-1);
     }
   })
+  .loadPages([".html"])
   .use(date())
   .use(basePath())
   .use(resolveUrls())
