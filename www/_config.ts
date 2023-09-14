@@ -18,12 +18,18 @@ export default lume(
   {
     location: new URL("https://missing.style/"),
   },
-  { markdown: markdownOptions },
+  { markdown: {
+    ...markdownOptions,
+    options: {
+      html: true,
+    }
+  } },
 )
   .copy("netlify.redirects", "_redirects")
   .copy("netlify.headers", "_headers")
   .copy("js")
-  .addEventListener("afterRender", "cp -r ../src _site/")
+  .addEventListener("afterRender",
+    "cd .. && deno task css && deno task js && cp -r dist src www/_site/")
   .data("layout", "docs.vto", "/docs")
   .data("layout", "prose.vto", "/pages")
   .data("layout", "release.vto", "/releases")
@@ -38,7 +44,7 @@ export default lume(
   .use(date())
   .use(basePath())
   .use(resolveUrls())
-  .use(prismHighlight())
+//  .use(prismHighlight())
   .use(vento({ options: { autoescape: true } }))
   .use(pagefind({
     ui: false,

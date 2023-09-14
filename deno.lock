@@ -332,6 +332,7 @@
     "https://deno.land/x/lume@v1.18.5/deps/flags.ts": "4d8553e27887f9864834c71b459e7d92c3d6e2ac078e728e3c5fc2e40b0ceacd",
     "https://deno.land/x/lume@v1.18.5/deps/front_matter.ts": "b4f46915fb57ef9b8f3a6de8282f5f94ffdc5efccdc67f0ed92e297a39b1bfdc",
     "https://deno.land/x/lume@v1.18.5/deps/fs.ts": "16aed657010ceacff5d732226796c719735112d1aec1b75367521b36f076e7ba",
+    "https://deno.land/x/lume@v1.18.5/deps/highlight.ts": "e949067730c5e9c57bc4c102ccafa3bec0ea1cf681c921fe8336b1a6bd0c4f33",
     "https://deno.land/x/lume@v1.18.5/deps/http.ts": "c164ae90d92ef2892366c0d44775494185a8b2b63405f7e9ae54bbe1ac921283",
     "https://deno.land/x/lume@v1.18.5/deps/jsonc.ts": "887ea799fba0bc3198b972706dbfff7c952bd436c11596ccf40e41b223daeb82",
     "https://deno.land/x/lume@v1.18.5/deps/markdown_it.ts": "7c3fbdf2e162dfe61a6bf1ed2c823209b70f1e6baa420205df6fd03ae9eebd1e",
@@ -348,6 +349,7 @@
     "https://deno.land/x/lume@v1.18.5/middlewares/reload_client.js": "34d75e01503fae8180796de882af42b1125fac88f22a010a99d5548de1ba7d72",
     "https://deno.land/x/lume@v1.18.5/mod.ts": "149acd75b0e3a25347930c547c64e1d122604111d92647962063e15fd3ee1fbe",
     "https://deno.land/x/lume@v1.18.5/plugins/base_path.ts": "0241df3cf2696eed446ca8c983d2c2ca36ae57bd46fb2c6d92f582c1909b095b",
+    "https://deno.land/x/lume@v1.18.5/plugins/code_highlight.ts": "424ab3300cde79f3042f57d7baecb558bd4563b7c0d7d60dbaf3b51431533e3e",
     "https://deno.land/x/lume@v1.18.5/plugins/date.ts": "5b5b4a5715db86c39b4342366d3cc1e5ee67fd57d58acc0d0d793f90de4d53f6",
     "https://deno.land/x/lume@v1.18.5/plugins/json.ts": "ca6bf1bc6d42639f7bdf581dc9318832d8c2eaf83ae3ecdab6f02dfc738896bf",
     "https://deno.land/x/lume@v1.18.5/plugins/markdown.ts": "c9964181ff61f15c9820cba7e98292973fae3ace9ea4cfe460b648ae3c6e4ae2",
@@ -401,6 +403,7 @@
       "@types/react@18.2.18": "@types/react@18.2.18",
       "browserslist": "browserslist@4.21.10",
       "date-fns@2.30.0": "date-fns@2.30.0",
+      "highlight.js@11.8.0": "highlight.js@11.8.0",
       "lightningcss@1.21.7": "lightningcss@1.21.7",
       "markdown-it-anchor@8.6.4": "markdown-it-anchor@8.6.4_@types+markdown-it@13.0.1_markdown-it@13.0.1",
       "markdown-it-attrs@4.1.4": "markdown-it-attrs@4.1.4_markdown-it@13.0.1",
@@ -510,6 +513,10 @@
       },
       "escalade@3.1.1": {
         "integrity": "sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==",
+        "dependencies": {}
+      },
+      "highlight.js@11.8.0": {
+        "integrity": "sha512-MedQhoqVdr0U6SSnWPzfiadUcDHfN/Wzq25AkXiQv9oiOO/sG0S7XkvpFIqWBl9Yq1UYyYOOVORs5UW2XlPyzg==",
         "dependencies": {}
       },
       "js-tokens@4.0.0": {

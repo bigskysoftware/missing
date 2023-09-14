@@ -18,7 +18,6 @@ here is the `.ok` colorway in the missing.css source code:
   }
   ~~~
 
-<figcaption>src/util/colorway.css</figcaption>
 </figure>
 
 The following colorways are provided by default:

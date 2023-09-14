@@ -30,14 +30,14 @@ export default () => {
       if (!document) return;
 
       document.getElementsByTagName("dfn").forEach((el) => {
-        el.id ||= el.innerText;
+        el.id ||= el.textContent;
       });
       document.getElementsByTagName("code").forEach((el) => {
-        if (!(el.innerText in definitionsIndex)) return;
+        if (!(el.textContent in definitionsIndex)) return;
         const a = document.createElement("a");
         a.setAttribute(
           "href",
-          definitionsIndex[el.innerText] + "#" + el.innerText,
+          definitionsIndex[el.textContent] + "#" + el.textContent,
         );
         el.before(a);
         a.append(el);

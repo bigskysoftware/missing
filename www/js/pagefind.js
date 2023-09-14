@@ -2,7 +2,7 @@
 /// <reference lib="es2022" />
 
 // @deno-types="../../src/js/19.js"
-import { $, attr, next, prev, behavior, html, on, repeater, makelogger, hotkey, halts } from "/src/js/19.js";
+import { $, attr, next, prev, behavior, html, on, repeater, makelogger, hotkey, halts } from "/dist/js/19.js";
 import * as pagefind from "/_pagefind/pagefind.js";
 
 // TODO: add listbox styling to missing.css

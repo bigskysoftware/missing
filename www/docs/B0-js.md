@@ -25,7 +25,7 @@ Behavior will be added automatically.
 <figure>
 
   ~~~ html
-  <script type="module" src="https://unpkg.com/missing.css@{{ version }}/js/tabs.js">
+  <script type="module" src="https://unpkg.com/missing.css@{{ version }}/js/tabs.js"></script>
   ~~~
 
 </figure>
