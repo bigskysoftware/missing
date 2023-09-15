@@ -14,7 +14,7 @@ import semver from "./_build/semver.ts";
 
 import { Page } from "lume/core.ts";
 
-export default lume(
+const site = lume(
   {
     location: new URL("https://missing.style/"),
   },
@@ -54,3 +54,7 @@ export default lume(
   }))
   .use(semver())
   .use(indexDefinitions());
+
+site.hooks.markdownIt((engine) => engine.disable("code"));
+
+export default site;
