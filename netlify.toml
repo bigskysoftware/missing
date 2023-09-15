@@ -2,8 +2,7 @@
 [build]
 publish = "www/_site"
 command = """
-curl -fsSL https://deno.land/x/install/install.sh | sh -s v1.30.0 && \
+curl -fsSL https://deno.land/x/install/install.sh | sh -s v1.36.1 && \
 export PATH="$PATH:/opt/buildhome/.deno/bin/" && \
-cd www && \
 deno task www
 """
