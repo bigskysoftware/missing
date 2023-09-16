@@ -12,5 +12,6 @@
     "css": "deno run -qA tool/css.ts src/missing.css && deno run -qA tool/css.ts src/missing-prism.css",
     "js": "rm -rf dist/js && cp -r src/js dist/js"
   },
-  "nodeModulesDir": false
+  "nodeModulesDir": false,
+  "lock": false
 }
