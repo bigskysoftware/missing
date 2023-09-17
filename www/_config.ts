@@ -8,7 +8,7 @@ import prismHighlight from "lume/plugins/prism.ts";
 import vento from "lume/plugins/vento.ts";
 import pagefind from "lume/plugins/pagefind.ts";
 
-import markdownOptions from "./_build/markdown.ts";
+// import markdownOptions from "./_build/markdown.ts";
 import indexDefinitions from "./_build/index-definitions.ts";
 import semver from "./_build/semver.ts";
 
@@ -19,7 +19,7 @@ const site = lume(
     location: new URL("https://missing.style/"),
   },
   { markdown: {
-    ...markdownOptions,
+    // ...markdownOptions,
     options: {
       html: true,
     }
