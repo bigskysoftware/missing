@@ -21,7 +21,6 @@ export function sortSemVer<T = string>(
 
 export function compareSemVer(a: string, b: string) {
   // intentionally lax regex
-  // ignoring prerelease tags for now since missing doesn't have any
   const svre = /^v?(\d+)\.(\d+)\.(\d+)(-[^\+]*)?/;
   const digitsre = /^\d+$/;
   const [, aMajor, aMinor, aPatch, aPrerelease] = svre.exec(a)!;
