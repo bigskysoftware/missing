@@ -28,8 +28,10 @@ const site = lume(
   .copy("netlify.redirects", "_redirects")
   .copy("netlify.headers", "_headers")
   .copy("js")
+  .copy("missing-js")
   .addEventListener("afterRender",
     "cd .. && deno task css && deno task js && cp -r dist src www/_site/")
+  .addEventListener("afterRender", "cp -r ../src _site/")
   .data("layout", "docs.vto", "/docs")
   .data("layout", "prose.vto", "/pages")
   .data("layout", "release.vto", "/releases")
