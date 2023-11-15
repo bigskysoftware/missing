@@ -10,7 +10,7 @@
     "www": "deno task lume",
     "lume": "cd www && echo \"import 'lume/cli.ts'\" | deno run --unstable -A -",
     "css": "deno run -qA tool/css.ts src/missing.css && deno run -qA tool/css.ts src/missing-prism.css",
-    "js": "rm -rf dist/js && cp -r src/js dist/js"
+    "js": "rm -rf dist/js && cp -r src/js dist/js && cp -r dist/js www/missing-js"
   },
   "nodeModulesDir": false,
   "lock": false
