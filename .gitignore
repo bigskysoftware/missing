@@ -3,6 +3,7 @@ node_modules
 
 dist
 www/_site
+www/missing-js
 _bin
 
 # Local Netlify folder
