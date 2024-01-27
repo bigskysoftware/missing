@@ -8,7 +8,7 @@ templateEngine: [vto, md]
 
 Missing.js is a JavaScript library implementing common UI patterns.
 
-{{ set version = search.pages("release")
+{{ set version = search.pages("release!=undefined")
     |> map(rel => rel.data.release)
     |> sortSemVer
     |> at(-1) }}
@@ -25,7 +25,7 @@ Behavior will be added automatically.
 <figure>
 
   ~~~ html
-  <script type="module" src="https://unpkg.com/missing.css@{{ version }}/js/tabs.js"></script>
+  <script type="module" src="https://unpkg.com/missing.css@{{ version }}/dist/js/tabs.js"></script>
   ~~~
 
 </figure>
@@ -48,7 +48,7 @@ For dynamically inserted content: initialize it as such:
 <figure>
 
   ~~~ js
-  import tabs from "https://unpkg.com/missing.css@{{ version }}/js/tabs.js";
+  import tabs from "https://unpkg.com/missing.css@{{ version }}/dist/js/tabs.js";
   // ... insert some content ...
   tabs(theContentIJustInserted);
   ~~~
@@ -72,7 +72,7 @@ _See [ARIA &sect; menu](/docs/aria/#menu)_
 <figure>
 
   ~~~ html
-  <script type="module" src="https://unpkg.com/missing.css@{{ version }}/js/menu.js">
+  <script type="module" src="https://unpkg.com/missing.css@{{ version }}/dist/js/menu.js">
   ~~~
 
 </figure>
@@ -82,7 +82,7 @@ or
 <figure>
 
   ~~~js
-  import { menu, menuButton } from "https://unpkg.com/missing.css@{{ version }}/js/menu.js";
+  import { menu, menuButton } from "https://unpkg.com/missing.css@{{ version }}/dist/js/menu.js";
   ~~~
 
 </figure>
@@ -97,7 +97,7 @@ _See [Components &sect; Navbar](/docs/components/#navbar)_
 <figure>
 
   ~~~ html
-  <script type="module" src="https://unpkg.com/missing.css@{{ version }}/js/overflow-nav.js">
+  <script type="module" src="https://unpkg.com/missing.css@{{ version }}/dist/js/overflow-nav.js">
   ~~~
 
 </figure>
