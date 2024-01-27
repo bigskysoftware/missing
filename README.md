@@ -12,7 +12,7 @@
 missing.css is the missing CSS library that we all wished existed. Add it to your website:
 
 ```html
-<link rel="stylesheet" href="https://the.missing.style">
+<link rel="stylesheet" href="https://unpkg.com/missing.css">
 ```
 
  * It starts with decent default styling for vanilla HTML, akin to **classless
