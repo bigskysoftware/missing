@@ -1,4 +1,5 @@
-https://the.missing.style/                    https://unpkg.com/missing.css                  200!
-https://the.missing.style/prism               https://unpkg.com/missing.css/prism            200!
-https://the.missing.style/:version            https://unpkg.com/missing.css@:version         200!
-https://the.missing.style/:version/*          https://unpkg.com/missing.css@:version/:splat  200!
+https://the.missing.style                     https://unpkg.com/missing.css                  301
+https://the.missing.style/                    https://unpkg.com/missing.css                  301
+https://the.missing.style/prism               https://unpkg.com/missing.css/prism            301
+https://the.missing.style/:version            https://unpkg.com/missing.css@:version         301
+https://the.missing.style/:version/*          https://unpkg.com/missing.css@:version/:splat  301
