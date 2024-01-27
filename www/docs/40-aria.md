@@ -114,7 +114,7 @@ Use `listbox` and `option` ARIA roles. [WAI: Listbox][].
 
 </figure>
 
-[WAI: Listbox]: https://www.w3.org/WAI/ARIA/apg/patterns/menu/
+[WAI: Listbox]: https://www.w3.org/WAI/ARIA/apg/patterns/listbox/
 
 
 ## Toolbar
