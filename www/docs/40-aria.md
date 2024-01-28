@@ -33,7 +33,7 @@ To get the actual behavior of an accessible tabset, you can use [Missing.js &sec
   <div id="users"    role="tabpanel">...</div>
   ~~~
 
-<script type="module" src="/missing-js/tabs.js"></script>
+<script type="module" src="/dist/js/tabs.js"></script>
 
 <div role="tablist" aria-label="Tabs example">
   <button role="tab" aria-controls="servers" aria-selected="true"
@@ -60,6 +60,9 @@ To get the actual behavior of an accessible menu, you can use [Missing.js &sect;
 <figure>
 
   ~~~ html
+  <button aria-haspopup="menu" aria-controls="my-menu" aria-expanded="false">
+    Open menu
+  </button>
   <div role="menu" hidden id="my-menu">
     <a role="menuitem">View</a>
     <a role="menuitem">Edit</a>
@@ -68,7 +71,7 @@ To get the actual behavior of an accessible menu, you can use [Missing.js &sect;
   ~~~
 
   <div>
-  <script type="module" src="/missing-js/menu.js"></script>
+  <script type="module" src="/dist/js/menu.js"></script>
   <button aria-haspopup="menu" aria-controls="my-menu" aria-expanded="false">Open menu</button>
   <div role="menu" hidden id="my-menu">
     <a role="menuitem">View</a>
