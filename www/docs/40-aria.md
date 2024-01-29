@@ -60,6 +60,9 @@ To get the actual behavior of an accessible menu, you can use [Missing.js &sect;
 <figure>
 
   ~~~ html
+  <button aria-haspopup="menu" aria-controls="my-menu" aria-expanded="false">
+    Open menu
+  </button>
   <div role="menu" hidden id="my-menu">
     <a role="menuitem">View</a>
     <a role="menuitem">Edit</a>
