@@ -480,7 +480,9 @@ td, th {
  ***/
 
 input { display: block; }
-label input:not([specificity-hack]) { display: inline; padding-block: 0; }
+label :is(input, select):not([specificity-hack]) {
+	display: inline; padding-block: 0;
+}
 
 button,
 input[type="submit"],
