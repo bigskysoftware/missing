@@ -39,7 +39,7 @@ const focusOutsideFeed = article => asHtml(article.parentElement.closest(sArticl
 
 
 /**
- * @param {HTMLElement} article
+ * @param {HTMLElement} activeElement
  * @returns {null}
  */
 const focusInsideFeed = activeElement => asHtml($(activeElement.closest(sArticle), sArticle))?.focus();
