@@ -1,0 +1,80 @@
+---
+layout: layout.vto
+name: Feed
+---
+
+<main>
+    <h1>Feeds</h1>
+
+    <script type="module" src="/missing-js/feed.js"></script>
+
+    <p>
+      Keyboard navigation:
+      <ul>
+        <li><kbd><kbd>PageUp</kbd></kbd> Previous article</li>
+        <li><kbd><kbd>PageDown</kbd></kbd> Next article</li>
+        <li><kbd><kbd>Ctrl</kbd></kbd>+<kbd><kbd>Home</kbd></kbd> First focusable before feed</li>
+        <li><kbd><kbd>Ctrl</kbd></kbd>+<kbd><kbd>End</kbd></kbd> First focusable after feed</li>
+        <li><kbd><kbd>Alt</kbd></kbd>+<kbd><kbd>PageUp</kbd></kbd> Previous article in parent feed</li>
+        <li><kbd><kbd>Alt</kbd></kbd>+<kbd><kbd>PageDown</kbd></kbd> First focusable in nested feed</li>
+      </ul>
+    </p>
+    <a href="#">A focusable element before the feeds</a>
+    <div role="feed">
+      <article class="box">
+         <h2>Article 1</h2>
+         <p>Some content for the article.</p>
+         <a href="#">A focusable link</a>
+      </article>
+      <article class="box">
+         <h2>Article 2</h2>
+         <p>Some content for the article.</p>
+         <a href="#">A focusable link</a>
+      </article>
+      <article class="box">
+         <h2>Article 3</h2>
+         <p>Some content for the article.</p>
+         <a href="#">A focusable link</a>
+      </article>
+    </div>
+
+    <a href="#">A focusable element betweeen feeds</a>
+
+    <div role="feed">
+      <article class="box">
+         <h2>Article 1</h2>
+         <p>Some content for the article.</p>
+         <a href="#">A focusable link</a>
+         <div role="feed">
+          <article class="box ok">
+            <h3>Comment #1</h3>
+            <p>Some content for the comment.</p>
+            <a href="#">Link 1</a> <a href="#">Link 2</a>
+          </article>
+          <article class="box ok">
+            <h3>Comment #2</h3>
+            <p>Some content for the comment.</p>
+            <a href="#">Link 1</a> <a href="#">Link 2</a>
+          </article>
+         </div>
+      </article>
+      <article class="box">
+         <h2>Article 2</h2>
+         <p>Some content for the article.</p>
+         <a href="#">A focusable link</a>
+         <div role="feed">
+          <article class="box ok">
+            <h3>Comment #1</h3>
+            <p>Some content for the comment.</p>
+            <a href="#">Link 1</a> <a href="#">Link 2</a>
+          </article>
+          <article class="box ok">
+            <h3>Comment #2</h3>
+            <p>Some content for the comment.</p>
+            <a href="#">Link 1</a> <a href="#">Link 2</a>
+          </article>
+         </div>
+      </article>
+    </div>
+    <a href="#">A focusable element after the feeds</a>
+</main>

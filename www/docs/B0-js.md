@@ -90,6 +90,33 @@ or
 All notes above about initializing dynamic content apply here.
 
 
+## Feed
+
+_See [ARIA &sect; feed](/docs/aria/#feed)_
+
+<figure>
+
+  ~~~ html
+  <script type="module" src="https://unpkg.com/missing.css@{{ version }}/js/feed.js">
+  ~~~
+
+</figure>
+
+or
+
+<figure>
+
+  ~~~js
+  import { menu, menuButton } from "https://unpkg.com/missing.css@{{ version }}/js/feed.js";
+  ~~~
+
+</figure>
+
+All notes above about initializing dynamic content apply here.
+
+
+
+
 ## Expand/collapse navbar
 
 _See [Components &sect; Navbar](/docs/components/#navbar)_

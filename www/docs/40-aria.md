@@ -18,6 +18,7 @@ appropriately — see [WAI: Tabs][].
 
 To get the actual behavior of an accessible tabset, you can use [Missing.js &sect; Tabs](/docs/js#tabs).
 
+<figure>
   ~~~ html
   <div role="tablist" aria-label="Tabs example">
     <button role="tab" aria-controls="servers" aria-selected="true"
@@ -32,6 +33,7 @@ To get the actual behavior of an accessible tabset, you can use [Missing.js &sec
   <div id="channels" role="tabpanel">...</div>
   <div id="users"    role="tabpanel">...</div>
   ~~~
+</figure>
 
 <script type="module" src="/missing-js/tabs.js"></script>
 
@@ -157,3 +159,42 @@ The fiex direction will be set based on `aria-orientation`.
   </p>
 
 </figure>
+
+
+## Feed
+
+Use `feed` role with `<article/>` children  — see [WAI: Feed][]. Nested feeds are supported.
+
+To get the actual behavior of an accessible feed, you can use [Missing.js &sect; Feed](/docs/js#feed).
+
+<figure>
+
+  ~~~ html
+  <div role="feed">
+    <article class="box">
+      <h2>Article Title 1</h2>
+      <p>Article content</p>
+    </article>
+    <article class="box">
+      <h2>Article Title 2</h2>
+      <p>Article content</p>
+    </article>
+  </div>
+  ~~~
+
+  <div>
+  <script type="module" src="/missing-js/feed.js"></script>
+  <div role="feed">
+    <article class="box">
+      <h2>Article Title 1</h2>
+      <p>Article content</p>
+    </article>
+    <article class="box">
+      <h2>Article Title 2</h2>
+      <p>Article content</p>
+    </article>
+  </div>
+
+</figure>
+
+[WAI: Menu]: https://www.w3.org/WAI/ARIA/apg/patterns/feed/
