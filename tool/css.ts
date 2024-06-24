@@ -1,6 +1,6 @@
 import {
   browserslistToTargets,
-  bundleAsync,
+  bundle,
   transform,
 } from "npm:lightningcss@1.21.7";
 import browserslist from "npm:browserslist";
@@ -12,13 +12,13 @@ const input = Deno.args[0],
 
 // Compile
 
-const compile = await bundleAsync({
+const compile = bundle({
   filename: input,
   drafts: { nesting: true },
   errorRecovery: true,
   minify: false,
   targets: browserslistToTargets(
-    browserslist(">= 0.25%"),
+    browserslist(">= 0.25% and not ie 11"),
   ),
 });
 
