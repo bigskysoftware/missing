@@ -67,7 +67,7 @@
 }
 
 /* Enable dark theme independently of os preferences*/
-.dark-theme {
+:root.-dark-theme {
 	--fg: var(--gray-0);
 	--muted-fg: var(--gray-2);
 	--faded-fg: var(--gray-7);

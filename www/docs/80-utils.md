@@ -139,7 +139,7 @@ the following classes:
 
 ### Dark theme
 
-Add the <dfn>`.dark-theme`</dfn> class to your root element to use the dark theme.
+Add the <dfn>`.-dark-theme`</dfn> class to your root element to use the dark theme.
 
 ### No dark theme
 
