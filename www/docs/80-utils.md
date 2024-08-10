@@ -131,12 +131,19 @@ The following classes can be used to make one element look like another:
 
 </figure>
 
+## Theme selection
 
-## No dark theme
+Missing.css, by default applies a light or dark theme based on `prefers-color-scheme`.
+To customize the theme independently of the `prefers-color-scheme` you can use
+the following classes:
 
-Missing.css applies a dark theme based on `prefers-color-scheme`.
-To opt out of this, add the <dfn>`.-no-dark-theme`</dfn> class to your root element.
+### Dark theme
 
+Add the <dfn>`.-dark-theme`</dfn> class to your root element to use the dark theme.
+
+### No dark theme
+
+Add the <dfn>`.-no-dark-theme`</dfn> class to your root element to use the light theme.
 
 ## Reset
 
