@@ -725,6 +725,7 @@ dialog[open]::backdrop {
 	from { background: transparent; }
 }
 
-dialog:not([open]) {
+dialog:not([popover], [open]),
+[popover]:not(:popover-over) {
     display: none;
 }
