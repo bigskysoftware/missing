@@ -25,7 +25,7 @@ header, footer, section + section {
 }
 
 nav {
-	& :is(a, .\<a\>) {
+	& :where(a, .\<a\>) {
 		text-decoration: none;
 		color: var(--accent);
 	}
@@ -485,7 +485,7 @@ label :is(input, select):not([specificity-hack]) {
 	display: inline; padding-block: 0;
 }
 
-:is(
+:where(
   button,
   input[type="submit"],
   input[type="reset"],
@@ -541,7 +541,7 @@ input::file-selector-button {
 }
 
 
-:is(
+:where(
   button,
   input[type="submit"],
   input[type="reset"],

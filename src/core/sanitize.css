@@ -108,7 +108,7 @@ table {
  * Remove the margin on controls in Safari.
  */
 
-:is(button, input, select):not(.\<a\>) {
+:where(button, input, select):not(.\<a\>) {
     margin: 0;
 }
 
@@ -116,7 +116,7 @@ table {
  * Correct the inability to style buttons in iOS and Safari.
  */
 
-:is(button, [type="button"], [type="reset"], [type="submit"]):not(.\<a\>) {
+:where(button, [type="button"], [type="reset"], [type="submit"]):not(.\<a\>) {
     -webkit-appearance: button;
 }
 
