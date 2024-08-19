@@ -25,7 +25,7 @@ header, footer, section + section {
 }
 
 nav {
-	& a {
+	& :is(a, .\<a\>) {
 		text-decoration: none;
 		color: var(--accent);
 	}
@@ -291,6 +291,7 @@ a, .\<a\> {
 	background: none;
 	border: none;
 	font-size: 1em;
+  font-family: inherit;
 	text-decoration: 1px dotted underline;
 	
 	.list-of-links & {
@@ -484,11 +485,13 @@ label :is(input, select):not([specificity-hack]) {
 	display: inline; padding-block: 0;
 }
 
-button,
-input[type="submit"],
-input[type="reset"],
-input[type="button"],
-.\<button\>,
+:is(
+  button,
+  input[type="submit"],
+  input[type="reset"],
+  input[type="button"],
+  .\<button\>
+):not(.\<a\>),
 input::file-selector-button {
 	display: inline-block;
 	padding: 0 calc(var(--rhythm) / 4);
@@ -538,11 +541,13 @@ input::file-selector-button {
 }
 
 
-button,
-input[type="submit"],
-input[type="reset"],
-input[type="button"],
-.\<button\> {
+:is(
+  button,
+  input[type="submit"],
+  input[type="reset"],
+  input[type="button"],
+  .\<button\>
+):not(.\<a\>) {
 	&:active:is([aria-pressed], [aria-expanded]) {
 		color: var(--accent);
 		box-shadow: 0 1px 5px -1px var(--fg) inset;

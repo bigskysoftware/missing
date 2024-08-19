@@ -183,14 +183,14 @@ details,
 		padding-inline-start: 0;
 	}
 
-	& a {
+	& :is(a, .\<a\>) {
 		font-weight: bold;
 		text-decoration: none;
 		padding-inline: .2em;
-	}
 
-	& a:hover, & a:focus {
-		text-decoration: underline;
+	  &:hover, &:focus {
+  		text-decoration: underline;
+    }
 	}
 
 	& [aria-current=page] {
