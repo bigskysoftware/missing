@@ -714,7 +714,7 @@ dialog {
 	border-color: var(--fg);
 }
 
-dialog[open]::backdrop {
+dialog:is([open], [popover])::backdrop {
 	display: block;
 	background: black;
 	opacity: .4;
