@@ -32,3 +32,6 @@ This will make your page look a bit like the one you are reading right now,
 without applying any classes.
 
 Then, see how you can go beyond classless CSS with its features.
+
+P.S. you can click any class, variable or custom element name in these docs to
+jump to its definition. Try it: `.tool-bar`
