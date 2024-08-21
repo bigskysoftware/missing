@@ -25,7 +25,7 @@ header, footer, section + section {
 }
 
 nav {
-	& :where(a, .\<a\>) {
+	& :where(a:not(.\<button\>), .\<a\>) {
 		text-decoration: none;
 		color: var(--accent);
 	}
@@ -284,7 +284,7 @@ main {
 
 /* Text-level semantics */
 
-a, .\<a\> {
+a:not(.\<button\>), .\<a\> {
 	color: var(--link-fg, var(--accent));
 	border-radius: var(--border-radius);
 	outline-offset: 1px;
@@ -511,6 +511,7 @@ input::file-selector-button {
 
 	/* a-specific resets */
 	color: var(--fg);
+  cursor: default;
 	text-decoration: none;
 	display: inline-flex;
 	justify-content: center;

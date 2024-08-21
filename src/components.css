@@ -183,7 +183,7 @@ details,
 		padding-inline-start: 0;
 	}
 
-	& :where(a, .\<a\>) {
+	& :where(a:not(.\<button\>), .\<a\>) {
 		font-weight: bold;
 		text-decoration: none;
 		padding-inline: .2em;
