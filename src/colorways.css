@@ -1,32 +1,22 @@
 
 .plain {
-    --box-bg: var(--plain-bg);
-    --accent: var(--plain-fg);
-    --graphical-fg: var(--plain-graphical-fg);
+    --accent: var(--base-accent);
 }
 
 .info {
-    --box-bg: var(--info-bg);
-    --accent: var(--info-fg);
-    --graphical-fg: var(--info-graphical-fg);
+    --accent: var(--info-accent);
 }
 
 .ok {
-    --box-bg: var(--ok-bg);
-    --accent: var(--ok-fg);
-    --graphical-fg: var(--ok-graphical-fg);
+    --accent: var(--ok-accent);
 }
 
 .warn {
-    --box-bg: var(--warn-bg);
-    --accent: var(--warn-fg);
-    --graphical-fg: var(--warn-graphical-fg);
+    --accent: var(--warn-accent);
 }
 
 .bad {
-    --box-bg: var(--bad-bg);
-    --accent: var(--bad-fg);
-    --graphical-fg: var(--bad-graphical-fg);
+    --accent: var(--bad-accent);
 }
 
 .color {
