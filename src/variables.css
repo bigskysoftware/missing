@@ -41,7 +41,8 @@
 
 	/* Fonts */
 	--main-font: 'Source Sans 3', 'Source Sans Pro', -apple-system, system-ui, sans-serif;
-	--secondary-font: var(--main-font); /* Headings etc. */
+	--secondary-font: var(--main-font); /* UI elements and captions */
+  --display-font: var(--secondary-font); /* Headings */
 	--mono-font: 'M Plus Code Latin', monospace, monospace; /* monospace twice stops browsers from
 		shrinking this */
 	
