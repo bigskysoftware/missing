@@ -12,7 +12,7 @@ url: ./flex/
 
 <dfn>`.f-row`</dfn> and <dfn>`.f-col`</dfn> will create non-wrapping Flexbox containers, with `flex-direction` set to `row` and `column` respectively.
 
-<dfn>`.f-switch`</dfn> will create a Flexbox container that will switch from row to column when the width of an individual descendant exceeds the <dfn>`--col-width`</dfn> variable (default `15ch`).
+<dfn>`.f-switch`</dfn> will create a Flexbox container that will switch from row to column when the width of an individual descendant exceeds the <dfn>`--f-switch-threshold`</dfn> variable (default `15ch`).
 
 All of `.f-row`, `.f-col` and `.f-switch` will remove margins from their children, and have a [gap] set to `--gap`.
 

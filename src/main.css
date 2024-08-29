@@ -71,7 +71,7 @@ aside {
 h1, h2, h3, h4, h5, h6,
 .\<h1\>, .\<h2\>, .\<h3\>, .\<h4\>, .\<h5\>, .\<h6\> {
 	margin-block-end: var(--gap);
-	font-family: var(--secondary-font);
+	font-family: var(--display-font);
 	font-size: 1em;
 	margin-block-start: calc(2 * var(--gap));
 	position: relative;
@@ -137,7 +137,7 @@ h6:target {
 }
 
 header {
-	font-family: var(--secondary-font);
+	font-family: var(--display-font);
 	border-block-end: 1px solid var(--graphical-fg);
 }
 
