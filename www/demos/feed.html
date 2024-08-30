@@ -6,7 +6,7 @@ name: Feed
 <main>
     <h1>Feeds</h1>
 
-    <script type="module" src="/missing-js/feed.js"></script>
+    <script type="module" src="/dist/js/feed.js"></script>
 
     <p>
       Keyboard navigation:
@@ -21,18 +21,18 @@ name: Feed
     </p>
     <a href="#">A focusable element before the feeds</a>
     <div role="feed">
-      <article class="box">
-         <h2>Article 1</h2>
+      <article class="box" aria-labelledby="f1-a1-label">
+         <h2 id="f1-a1-label">Article 1</h2>
          <p>Some content for the article.</p>
          <a href="#">A focusable link</a>
       </article>
-      <article class="box">
-         <h2>Article 2</h2>
+      <article class="box" aria-labelledby="f1-a2-label">
+         <h2 id="f1-a2-label">Article 2</h2>
          <p>Some content for the article.</p>
          <a href="#">A focusable link</a>
       </article>
-      <article class="box">
-         <h2>Article 3</h2>
+      <article class="box" aria-labelledby="f1-a3-label">
+         <h2 id="f1-a3-label">Article 3</h2>
          <p>Some content for the article.</p>
          <a href="#">A focusable link</a>
       </article>
@@ -41,35 +41,35 @@ name: Feed
     <a href="#">A focusable element betweeen feeds</a>
 
     <div role="feed">
-      <article class="box">
-         <h2>Article 1</h2>
+      <article class="box" aria-labelledby="f2-a1-label">
+         <h2 id="f2-a1-label">Article 1</h2>
          <p>Some content for the article.</p>
          <a href="#">A focusable link</a>
          <div role="feed">
-          <article class="box ok">
-            <h3>Comment #1</h3>
+          <article class="box ok" aria-labelledby="f2-a1-c1-label">
+            <h3 id="f2-a1-c1-label">Comment #1</h3>
             <p>Some content for the comment.</p>
             <a href="#">Link 1</a> <a href="#">Link 2</a>
           </article>
-          <article class="box ok">
-            <h3>Comment #2</h3>
+          <article class="box ok" aria-labelledby="f2-a1-c2-label">
+            <h3 id="f2-a1-c2-label">Comment #2</h3>
             <p>Some content for the comment.</p>
             <a href="#">Link 1</a> <a href="#">Link 2</a>
           </article>
          </div>
       </article>
-      <article class="box">
-         <h2>Article 2</h2>
+      <article class="box" aria-labelledby="f2-a2-label">
+         <h2 id="f2-a2-label">Article 2</h2>
          <p>Some content for the article.</p>
          <a href="#">A focusable link</a>
          <div role="feed">
-          <article class="box ok">
-            <h3>Comment #1</h3>
+          <article class="box ok" aria-labelledby="f2-a2-c1-label">
+            <h3 id="f2-a2-c1-label">Comment #1</h3>
             <p>Some content for the comment.</p>
             <a href="#">Link 1</a> <a href="#">Link 2</a>
           </article>
-          <article class="box ok">
-            <h3>Comment #2</h3>
+          <article class="box ok" aria-labelledby="f2-a2-c2-label">
+            <h3 id="f2-a2-c2-label">Comment #2</h3>
             <p>Some content for the comment.</p>
             <a href="#">Link 1</a> <a href="#">Link 2</a>
           </article>

@@ -97,7 +97,7 @@ _See [ARIA &sect; feed](/docs/aria/#feed)_
 <figure>
 
   ~~~ html
-  <script type="module" src="https://unpkg.com/missing.css@{{ version }}/js/feed.js">
+  <script type="module" src="https://unpkg.com/missing.css@{{ version }}/dist/js/feed.js">
   ~~~
 
 </figure>
@@ -107,7 +107,7 @@ or
 <figure>
 
   ~~~js
-  import { menu, menuButton } from "https://unpkg.com/missing.css@{{ version }}/js/feed.js";
+  import { feed } from "https://unpkg.com/missing.css@{{ version }}/dist/js/feed.js";
   ~~~
 
 </figure>
