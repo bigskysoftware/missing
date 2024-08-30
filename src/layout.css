@@ -80,13 +80,13 @@
 
 /**/
 
-.padding { padding-inline: var(--gap) }
+.padding { padding: var(--gap) }
 .padding-block { padding-block: var(--gap) }
 .padding-block-start { padding-block-start: var(--gap) }
 .padding-block-end { padding-block-end: var(--gap) }
 .padding-inline { padding-inline: var(--gap) }
 .padding-inline-start { padding-inline-start: var(--gap) }
-.padding-inline-end { padding-inline-start: var(--gap) }
+.padding-inline-end { padding-inline-end: var(--gap) }
 
 .margin { margin: var(--gap) }
 .margin-block  { margin-block:  var(--gap) }

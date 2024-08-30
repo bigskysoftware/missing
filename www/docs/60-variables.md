@@ -113,9 +113,12 @@ classes; these will be listed in the documentation for that class.
 <dfn>`--main-font`</dfn> {#var-main-font}
 :   The main font family for text.
 
-<dfn>`--secondary-font`</dfn> {#var-display-font}
+<dfn>`--secondary-font`</dfn> {#var-secondary-font}
 :   A secondary text font. It's a good idea to specify a sans-serif font as it
-    will be used for buttons.
+    will be used for buttons and captions.
+
+<dfn>`--display-font`</dfn> {#var-display-font}
+:   A display font used for headings.
 
 <dfn>`--mono-font`</dfn> {#var-mono-font}
 :   Monospace font for code, preformatted text, computer input and output.

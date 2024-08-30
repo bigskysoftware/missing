@@ -31,7 +31,8 @@
 
 	/* Fonts */
 	--main-font: 'Source Sans 3', 'Source Sans Pro', -apple-system, system-ui, sans-serif;
-	--secondary-font: var(--main-font); /* Headings etc. */
+	--secondary-font: var(--main-font); /* UI elements and captions */
+  --display-font: var(--secondary-font); /* Headings */
 	--mono-font: 'M Plus Code Latin', monospace, monospace; /* monospace twice stops browsers from
 		shrinking this */
 
@@ -58,17 +59,19 @@
 
 /* Enable dark theme independently of os preferences*/
 :root.-dark-theme {
-    --fg: lch(from var(--accent) 96% calc(.1*C) H);
-	--bg: lch(from var(--accent) 1% calc(.02*C) H);
-	--muted-fg: lch(from var(--accent) 93% calc(.15*C) H);
-	--faded-fg: lch(from var(--accent) 90% calc(.05*C) H);
-	--graphical-fg: lch(from var(--accent) calc(.9*L) calc(.9*C) H);
+    &,* {
+        --fg: lch(from var(--accent) 96% calc(.1*C) H);
+    	--bg: lch(from var(--accent) 1% calc(.02*C) H);
+    	--muted-fg: lch(from var(--accent) 93% calc(.15*C) H);
+    	--faded-fg: lch(from var(--accent) 90% calc(.05*C) H);
+    	--graphical-fg: lch(from var(--accent) calc(.9*L) calc(.9*C) H);
 
-	--base-accent: var(--blue-2);
-	--muted-accent: lch(from var(--accent) calc(.7*L) calc(.8*C) H);
+    	--base-accent: var(--blue-2);
+    	--muted-accent: lch(from var(--accent) calc(.7*L) calc(.8*C) H);
 
-   	--box-bg: lch(from var(--accent) 12% 5% H); /* Background for blocks: cards, admonitions etc. */
-	--interactive-bg: lch(from var(--accent) 4% 3% H); /* Background for interactive elements */
+    	--box-bg: lch(from var(--accent) 12% 5% H); /* Background for blocks: cards, admonitions etc. */
+        --interactive-bg: lch(from var(--accent) 20% 10% H); /* Background for interactive elements */
+    }
 }
 
 @media (prefers-color-scheme: dark) {
