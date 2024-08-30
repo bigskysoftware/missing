@@ -3,7 +3,7 @@ title: ARIA
 url: ./aria/
 ---
 
-# ARIA Patterns 
+# ARIA Patterns
 
 Missing.css will style markup based on ARIA roles. We often reference the
 [<cite>WAI-ARIA Authoring Practices</cite>][WAI].
@@ -19,6 +19,7 @@ appropriately — see [WAI: Tabs][].
 To get the actual behavior of an accessible tabset, you can use [Missing.js &sect; Tabs](/docs/js#tabs).
 
 <figure>
+
   ~~~ html
   <div role="tablist" aria-label="Tabs example">
     <button role="tab" aria-controls="servers" aria-selected="true"
@@ -28,11 +29,12 @@ To get the actual behavior of an accessible tabset, you can use [Missing.js &sec
     <button role="tab" aria-controls="users"
       >Users</button>
   </div>
-  
-  <div id="servers"  role="tabpanel">...</div>
-  <div id="channels" role="tabpanel">...</div>
-  <div id="users"    role="tabpanel">...</div>
+
+  <div id="servers"         role="tabpanel">...</div>
+  <div id="channels" hidden role="tabpanel">...</div>
+  <div id="users"    hidden role="tabpanel">...</div>
   ~~~
+
 </figure>
 
 <script type="module" src="/dist/js/tabs.js"></script>
