@@ -10,7 +10,7 @@ details,
     margin: var(--gap) 0;
     padding: var(--gap);
     overflow: clip;
-    
+
     border-radius: var(--border-radius);
     background: var(--box-bg);
     border: 1px solid var(--graphical-fg);
@@ -24,12 +24,11 @@ details,
     font: inherit;
 	font-family: var(--secondary-font);
     font-weight: bold;
-	
+
     translate: 0 calc(-1px - var(--gap));
-	
+
     background: var(--graphical-fg);
     color: var(--bg);
-	text-shadow: 0 .1em .2em var(--fg);
 	border-bottom: 1px solid;
 	border-bottom-color: inherit;
 }
@@ -81,7 +80,7 @@ details,
 		display: grid;
 		grid-template-columns: 25ch auto;
 		inset: 0;
-		
+
 		& > header {
 			border-block: none;
 			border-inline-start: none;
@@ -163,7 +162,7 @@ details,
 		flex-shrink: 0;
 		margin-block: 0;
 	}
-	
+
 	&:not(.expanded) {
 		& > :first-child, & nav > :first-child { margin-inline-start: auto; }
 		& >  :last-child, & nav >  :last-child { margin-inline-end:   auto; }
@@ -175,10 +174,10 @@ details,
 		display: flex;
 		flex-flow: row;
 		gap: var(--rhythm);
-		
+
 		& * { flex-shrink: 0 }
 	}
-	
+
 	& nav ul[role="list"] {
 		padding-inline-start: 0;
 	}
@@ -196,7 +195,7 @@ details,
 	& [aria-current=page] {
 		position: relative;
 	}
-	
+
 	& [aria-current=page]::after {
 		width: 100%;
 		height: 6px;
@@ -218,7 +217,7 @@ details,
 
 .permalink-anchor {
     display: none;
-    
+
     *:hover > & {
         display: initial;
     }

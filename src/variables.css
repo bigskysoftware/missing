@@ -1,38 +1,28 @@
 
 :root {
 	/* Colors */
-	--fg: var(--gray-12); /* Text. */
-	--muted-fg: var(--gray-10); /* Secondary text color. Will be
-		used with a background of --c-bg and --c-bg-2 -- check contrast! */
-	--faded-fg: var(--gray-6); /* Disabled text color. */
-	--graphical-fg: var(--plain-graphical-fg); /* Graphical elements. Will not
-		be used as a text color. */
-	
-	--plain-fg: var(--blue-10);
-	--info-fg: var(--blue-11);
-	--ok-fg: var(--green-11);
-	--bad-fg: var(--red-11);
-	--warn-fg: var(--yellow-11);
-
-	--plain-graphical-fg: var(--gray-6);
-	--info-graphical-fg: var(--blue-6);
-	--ok-graphical-fg: var(--green-6);
-	--bad-graphical-fg: var(--red-6);
-	--warn-graphical-fg: var(--yellow-6);
-	
-	--bg: var(--gray-0); /* Page background. */
-	--box-bg: var(--plain-bg); /* Background for blocks: cards, admonitions etc. */
-	--interactive-bg: var(--gray-4); /* Background for interactive elements */
-
-	--plain-bg: var(--gray-1);
-	--info-bg: var(--blue-1);
-	--ok-bg: var(--green-1);
-	--bad-bg: var(--red-1);
-	--warn-bg: var(--yellow-1);
-
-	--accent: var(--blue-10); /* Accent color. Will be used *as a text color* with a
+	--base-accent: var(--blue-10); /* Accent color. Will be used *as a text color* with a
 		background of --c-bg and --c-bg-2 -- check contrast! */
-	--muted-accent: var(--blue-7); /* Muted accent color. Will not be used for text. */
+	--accent: var(--base-accent);
+	&,* {
+    	--fg: lch(from var(--accent) 2% calc(.1*C) H); /* Text. */
+    	--bg: lch(from var(--accent) 98% calc(.02*C) H);
+    	--muted-fg: lch(from var(--accent) 7% calc(.15*C) H); /* Secondary text color. Will be
+    		used with a background of --c-bg and --c-bg-2 -- check contrast! */
+    	--faded-fg: lch(from var(--accent) 15% calc(.05*C) H); /* Disabled text color. */
+    	--graphical-fg: lch(from var(--accent) calc(.9*L) calc(.9*C) H); /* Graphical elements. Will not
+    		be used as a text color. */
+
+    	--muted-accent: lch(from var(--accent) calc(2*L) calc(.8*C) H);
+
+    	--info-accent: lch(from var(--base-accent) L calc(.8*C) 270deg);
+    	--ok-accent: lch(from var(--base-accent) L calc(.8*C) 120deg);
+    	--bad-accent: lch(from var(--base-accent) L calc(.8*C) 20deg);
+    	--warn-accent: lch(from var(--base-accent) L calc(.8*C) 80deg);
+
+    	--box-bg: lch(from var(--accent) 94% 8% H); /* Background for blocks: cards, admonitions etc. */
+    	--interactive-bg: lch(from var(--accent) 90% 3% H); /* Background for interactive elements */
+	}
 
 	/* Lengths */
 	--rhythm: 1.4rem; /* Vertical rhythm, line height. */
@@ -45,7 +35,7 @@
   --display-font: var(--secondary-font); /* Headings */
 	--mono-font: 'M Plus Code Latin', monospace, monospace; /* monospace twice stops browsers from
 		shrinking this */
-	
+
 	/* Density */
 	--density: 1;
 
@@ -69,61 +59,36 @@
 
 /* Enable dark theme independently of os preferences*/
 :root.-dark-theme {
-	--fg: var(--gray-0);
-	--muted-fg: var(--gray-2);
-	--faded-fg: var(--gray-7);
-	--plain-bg: var(--gray-11);
-	--info-bg: var(--blue-12);
-	--ok-bg: var(--green-12);
-	--bad-bg: var(--red-12);
-	--warn-bg: var(--yellow-12);
-	--plain-faded-fg: var(--blue-6);
-	--info-faded-fg: var(--blue-6);
-	--ok-faded-fg: var(--green-6);
-	--bad-faded-fg: var(--red-6);
-	--warn-faded-fg: var(--yellow-6);
-	--bg: var(--gray-12);
-	--box-bg: var(--gray-10);
-	--interactive-bg: var(--gray-8);
-	--plain-fg: var(--blue-2);
-	--info-fg: var(--blue-2);
-	--ok-fg: var(--green-2);
-	--bad-fg: var(--red-2);
-	--warn-fg: var(--yellow-2);
-	--accent: var(--blue-2);
-	--muted-accent: var(--blue-5)
+    &,* {
+        --fg: lch(from var(--accent) 96% calc(.1*C) H);
+    	--bg: lch(from var(--accent) 1% calc(.02*C) H);
+    	--muted-fg: lch(from var(--accent) 93% calc(.15*C) H);
+    	--faded-fg: lch(from var(--accent) 90% calc(.05*C) H);
+    	--graphical-fg: lch(from var(--accent) calc(.9*L) calc(.9*C) H);
+
+    	--base-accent: var(--blue-2);
+    	--muted-accent: lch(from var(--accent) calc(.7*L) calc(.8*C) H);
+
+    	--box-bg: lch(from var(--accent) 12% 5% H); /* Background for blocks: cards, admonitions etc. */
+        --interactive-bg: lch(from var(--accent) 20% 10% H); /* Background for interactive elements */
+    }
 }
 
 @media (prefers-color-scheme: dark) {
     :root:not(.-no-dark-theme) {
-    	--fg: var(--gray-0);
-    	--muted-fg: var(--gray-2);
-    	--faded-fg: var(--gray-7);
+        &,* {
+            --fg: lch(from var(--accent) 96% calc(.1*C) H);
+           	--bg: lch(from var(--accent) 1% calc(.02*C) H);
+           	--muted-fg: lch(from var(--accent) 93% calc(.15*C) H);
+           	--faded-fg: lch(from var(--accent) 90% calc(.05*C) H);
+           	--graphical-fg: lch(from var(--accent) calc(.9*L) calc(.9*C) H);
 
-		--plain-bg: var(--gray-11);
-    	--info-bg: var(--blue-12);
-    	--ok-bg: var(--green-12);
-    	--bad-bg: var(--red-12);
-    	--warn-bg: var(--yellow-12);
+           	--base-accent: var(--blue-2);
+           	--muted-accent: lch(from var(--accent) calc(.7*L) calc(.8*C) H);
 
-		--plain-faded-fg: var(--blue-6);
-		--info-faded-fg: var(--blue-6);
-		--ok-faded-fg: var(--green-6);
-		--bad-faded-fg: var(--red-6);
-		--warn-faded-fg: var(--yellow-6);
-
-    	--bg: var(--gray-12);
-    	--box-bg: var(--gray-10);
-    	--interactive-bg: var(--gray-8);
-
-		--plain-fg: var(--blue-2);
-    	--info-fg: var(--blue-2);
-    	--ok-fg: var(--green-2);
-    	--bad-fg: var(--red-2);
-    	--warn-fg: var(--yellow-2);
-
-    	--accent: var(--blue-2);
-    	--muted-accent: var(--blue-5);
+           	--box-bg: lch(from var(--accent) 12% 5% H); /* Background for blocks: cards, admonitions etc. */
+           	--interactive-bg: lch(from var(--accent) 20% 10% H); /* Background for interactive elements */
+        }
     }
 }
 
