@@ -165,7 +165,7 @@ The fiex direction will be set based on `aria-orientation`.
 
 ## Feed
 
-Use `feed` role with `<article/>` children  — see [WAI: Feed][]. Nested feeds are supported.
+Use `feed` role with `<article>` children  — see [WAI: Feed][]. Nested feeds are supported.
 
 To get the actual behavior of an accessible feed, you can use [Missing.js &sect; Feed](/docs/js#feed).
 
@@ -200,3 +200,191 @@ To get the actual behavior of an accessible feed, you can use [Missing.js &sect;
 </figure>
 
 [WAI: Menu]: https://www.w3.org/WAI/ARIA/apg/patterns/feed/
+
+
+## Toggle Switch
+
+Use `switch` role with `<input type="checkbox">` or `aria-pressed` with `<button>`.
+
+If using `<button>`, you must provide the JavaScript to toggle `[aria-pressed]`.
+
+Using `<input>` degrades nicely in the absense of JavaScript and also allows for an "indeterminate" state.
+
+<figure>
+<figcaption>Code: Toggle Switches</figcaption>
+
+  ~~~ html
+  <div class="f-switch">
+    <fieldset class="f-col">
+      <legend>Toggles inside labels</legend>
+      <label>
+        <input type="checkbox" role="switch"> Toggle me
+      </label>
+      <label>
+        <input type="checkbox" role="switch"> But not me
+      </label>
+      <label>
+        <input type="checkbox" role="switch"> I'm not sure
+      </label>
+    </fieldset>
+    <fieldset class="f-col">
+      <legend>Toggles inside labels, flipped</legend>
+      <label>
+        Toggle me <input type="checkbox" role="switch">
+      </label>
+      <label>
+        But not me <input type="checkbox" role="switch">
+      </label>
+      <label>
+        I'm not sure <input type="checkbox" role="switch">
+      </label>
+    </fieldset>
+  </div>
+  ~~~
+
+  <div class="f-switch">
+    <fieldset class="f-col">
+      <legend>Toggles inside labels</legend>
+      <label>
+        <input type="checkbox" role="switch"> Toggle me
+      </label>
+      <label>
+        <input type="checkbox" role="switch"> But not me
+      </label>
+      <label>
+        <input type="checkbox" role="switch"> I'm not sure
+      </label>
+    </fieldset>
+    <fieldset class="f-col">
+      <legend>Toggles inside labels, flipped</legend>
+      <label>
+        Toggle me <input type="checkbox" role="switch">
+      </label>
+      <label>
+        But not me <input type="checkbox" role="switch">
+      </label>
+      <label>
+        I'm not sure <input type="checkbox" role="switch">
+      </label>
+    </fieldset>
+  </div>
+
+  ~~~ html
+  <div class="f-switch">
+    <fieldset class="f-col">
+      <legend>Toggles before labels</legend>
+      <div>
+        <input id="toggle-1" type="checkbox" role="switch">
+        <label for="toggle-1">Toggle me</label>
+      </div>
+      <div>
+        <input id="toggle-2"type="checkbox" role="switch">
+        <label for="toggle-2">But not me</label>
+      </div>
+      <div>
+        <input if="toggle-3" type="checkbox" role="switch">
+        <label for="toggle-3">I'm not sure</label>
+      </div>
+    </fieldset>
+    <fieldset class="f-col">
+      <legend>Toggles after labels</legend>
+      <div>
+        <label for="toggle-4">Toggle me</label>
+        <input id="toggle-4" type="checkbox" role="switch">
+      </div>
+      <div>
+        <label for="toggle-5">But not me</label>
+        <input id="toggle-5" type="checkbox" role="switch">
+      </div>
+      <div>
+        <label for="toggle-6">I'm not sure</label>
+        <input id="toggle-6" type="checkbox" role="switch">
+      </div>
+    </fieldset>
+  </div>
+  ~~~
+
+  <div class="f-switch">
+    <fieldset class="f-col">
+      <legend>Toggles before labels</legend>
+      <div>
+        <input id="toggle-1" type="checkbox" role="switch">
+        <label for="toggle-1">Toggle me</label>
+      </div>
+      <div>
+        <input id="toggle-2"type="checkbox" role="switch">
+        <label for="toggle-2">But not me</label>
+      </div>
+      <div>
+        <input if="toggle-3" type="checkbox" role="switch">
+        <label for="toggle-3">I'm not sure</label>
+      </div>
+    </fieldset>
+    <fieldset class="f-col">
+      <legend>Toggles after labels</legend>
+      <div>
+        <label for="toggle-4">Toggle me</label>
+        <input id="toggle-4" type="checkbox" role="switch">
+      </div>
+      <div>
+        <label for="toggle-5">But not me</label>
+        <input id="toggle-5" type="checkbox" role="switch">
+      </div>
+      <div>
+        <label for="toggle-6">I'm not sure</label>
+        <input id="toggle-6" type="checkbox" role="switch">
+      </div>
+    </fieldset>
+  </div>
+
+
+  ~~~ html
+  <div class="f-switch">
+    <fieldset class="f-col">
+      <legend>Button toggles</legend>
+      <button type="button" aria-pressed="false">
+        Toggle me
+      </button>
+      <button type="button" aria-pressed="true">
+        But not me
+      </button>
+    </fieldset>
+    <fieldset class="f-col">
+      <legend>Button toggles, flipped</legend>
+      <button type="button" aria-pressed="false" onclick="this.ariaPressed = this.ariaPressed != 'true'">
+        Toggle me
+      </button>
+      <button type="button" aria-pressed="true" onclick="this.ariaPressed = this.ariaPressed != 'true'">
+        But not me
+      </button>
+    </fieldset>
+  </div>
+  ~~~
+
+  <div class="f-switch">
+    <fieldset class="f-col">
+      <legend>Button toggles</legend>
+      <button type="button" aria-pressed="false">
+        Toggle me
+      </button>
+      <button type="button" aria-pressed="true">
+        But not me
+      </button>
+    </fieldset>
+    <fieldset class="f-col">
+      <legend>Button toggles, flipped</legend>
+      <button type="button" aria-pressed="false" onclick="this.ariaPressed = this.ariaPressed != 'true'">
+        Toggle me
+      </button>
+      <button type="button" aria-pressed="true" onclick="this.ariaPressed = this.ariaPressed != 'true'">
+        But not me
+      </button>
+    </fieldset>
+  </div>
+
+  <strong>TODO</strong>
+  <ul>
+  <li>RTL
+  <li>Indeterminate state
+  </ul>
+</figure>

@@ -116,3 +116,49 @@
     width: fit-content;
     text-align: center;
 }
+
+label:has([role=switch]:last-child) {
+  display: flex;
+  justify-content: space-between;
+}
+label[for] + [role=switch] {
+  padding-block: calc(var(--gap) / 4);
+}
+
+label[for]:has(+ [role=switch]),
+label[for] + [role=switch],
+[role=switch]:has(+ label[for]),
+[role=switch] + label[for] {
+  display: inline-block;
+}
+
+[role=switch], [aria-pressed] {
+  --toggle-border-width: 0.2em;
+  all: unset;
+  appearance: none;
+  cursor: pointer;
+  transition: all 0.25s ease-in-out;
+  vertical-align: bottom;
+
+  &::before, &::after {
+    content: '';
+    display: inline-block;
+    height: var(--rhythm);
+    border: var(--toggle-border-width) solid var(--graphical-fg);
+  }
+  &::before {
+    width: calc(2 * var(--rhythm));
+    background-color: var(--bg);
+    border-radius: var(--rhythm);
+  }
+  &::after {
+    width: var(--rhythm);
+    background-color: var(--interactive-bg);
+    border-radius: 50%;
+    transform: translateX(calc(-2 * var(--rhythm)));
+  }
+  &:is(:checked, [aria-pressed=true]) {
+    &::before { background-color: var(--accent); }
+    &::after  { transform: translateX(calc(-1 * var(--rhythm))); }
+  }
+}
