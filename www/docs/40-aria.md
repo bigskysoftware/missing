@@ -173,33 +173,32 @@ To get the actual behavior of an accessible feed, you can use [Missing.js &sect;
 
   ~~~ html
   <div role="feed">
-    <article class="box">
-      <h2>Article Title 1</h2>
+    <article class="box" aria-labelledby="article-1-label">
+      <h2 id="article-1-label">Article Title 1</h2>
       <p>Article content</p>
     </article>
-    <article class="box">
-      <h2>Article Title 2</h2>
+    <article class="box" aria-labelledby="article-2-label">
+      <h2 id="article-2-label">Article Title 2</h2>
       <p>Article content</p>
     </article>
   </div>
   ~~~
 
   <div>
-  <script type="module" src="/missing-js/feed.js"></script>
+  <script type="module" src="/dist/js/feed.js"></script>
   <div role="feed">
-    <article class="box">
-      <h2>Article Title 1</h2>
+    <article class="box" aria-labelledby="article-1-label">
+      <h2 id="article-1-label">Article Title 1</h2>
       <p>Article content</p>
     </article>
-    <article class="box">
-      <h2>Article Title 2</h2>
+    <article class="box" aria-labelledby="article-2-label">
+      <h2 id="article-2-label">Article Title 2</h2>
       <p>Article content</p>
     </article>
   </div>
 
 </figure>
-
-[WAI: Menu]: https://www.w3.org/WAI/ARIA/apg/patterns/feed/
+[WAI: Feed]: https://www.w3.org/WAI/ARIA/apg/patterns/feed/
 
 
 ## Toggle Switch
