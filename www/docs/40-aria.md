@@ -221,7 +221,7 @@ Using `<input>` degrades nicely in the absense of JavaScript and also allows for
         <input type="checkbox" role="switch"> Toggle me
       </label>
       <label>
-        <input type="checkbox" role="switch"> But not me
+        <input type="checkbox" role="switch" checked> But not me
       </label>
       <label>
         <input type="checkbox" role="switch"> I'm not sure
@@ -233,7 +233,7 @@ Using `<input>` degrades nicely in the absense of JavaScript and also allows for
         Toggle me <input type="checkbox" role="switch">
       </label>
       <label>
-        But not me <input type="checkbox" role="switch">
+        But not me <input type="checkbox" role="switch" checked>
       </label>
       <label>
         I'm not sure <input type="checkbox" role="switch">
@@ -249,7 +249,7 @@ Using `<input>` degrades nicely in the absense of JavaScript and also allows for
         <input type="checkbox" role="switch"> Toggle me
       </label>
       <label>
-        <input type="checkbox" role="switch"> But not me
+        <input type="checkbox" role="switch" checked> But not me
       </label>
       <label>
         <input type="checkbox" role="switch"> I'm not sure
@@ -261,7 +261,7 @@ Using `<input>` degrades nicely in the absense of JavaScript and also allows for
         Toggle me <input type="checkbox" role="switch">
       </label>
       <label>
-        But not me <input type="checkbox" role="switch">
+        But not me <input type="checkbox" role="switch" checked>
       </label>
       <label>
         I'm not sure <input type="checkbox" role="switch">
@@ -273,30 +273,30 @@ Using `<input>` degrades nicely in the absense of JavaScript and also allows for
   <div class="f-switch">
     <fieldset class="f-col">
       <legend>Toggles before labels</legend>
-      <div>
+      <div class="f-row">
         <input id="toggle-1" type="checkbox" role="switch">
         <label for="toggle-1">Toggle me</label>
       </div>
-      <div>
-        <input id="toggle-2"type="checkbox" role="switch">
+      <div class="f-row">
+        <input id="toggle-2"type="checkbox" role="switch" checked>
         <label for="toggle-2">But not me</label>
       </div>
-      <div>
+      <div class="f-row">
         <input if="toggle-3" type="checkbox" role="switch">
         <label for="toggle-3">I'm not sure</label>
       </div>
     </fieldset>
     <fieldset class="f-col">
       <legend>Toggles after labels</legend>
-      <div>
+      <div class="f-row justify-content:space-between">
         <label for="toggle-4">Toggle me</label>
         <input id="toggle-4" type="checkbox" role="switch">
       </div>
-      <div>
+      <div class="f-row justify-content:space-between">
         <label for="toggle-5">But not me</label>
-        <input id="toggle-5" type="checkbox" role="switch">
+        <input id="toggle-5" type="checkbox" role="switch" checked>
       </div>
-      <div>
+      <div class="f-row justify-content:space-between">
         <label for="toggle-6">I'm not sure</label>
         <input id="toggle-6" type="checkbox" role="switch">
       </div>
@@ -307,30 +307,30 @@ Using `<input>` degrades nicely in the absense of JavaScript and also allows for
   <div class="f-switch">
     <fieldset class="f-col">
       <legend>Toggles before labels</legend>
-      <div>
+      <div class="f-row">
         <input id="toggle-1" type="checkbox" role="switch">
         <label for="toggle-1">Toggle me</label>
       </div>
-      <div>
-        <input id="toggle-2"type="checkbox" role="switch">
+      <div class="f-row">
+        <input id="toggle-2"type="checkbox" role="switch" checked>
         <label for="toggle-2">But not me</label>
       </div>
-      <div>
+      <div class="f-row">
         <input if="toggle-3" type="checkbox" role="switch">
         <label for="toggle-3">I'm not sure</label>
       </div>
     </fieldset>
     <fieldset class="f-col">
       <legend>Toggles after labels</legend>
-      <div>
+      <div class="f-row justify-content:space-between">
         <label for="toggle-4">Toggle me</label>
         <input id="toggle-4" type="checkbox" role="switch">
       </div>
-      <div>
+      <div class="f-row justify-content:space-between">
         <label for="toggle-5">But not me</label>
-        <input id="toggle-5" type="checkbox" role="switch">
+        <input id="toggle-5" type="checkbox" role="switch" checked>
       </div>
-      <div>
+      <div class="f-row justify-content:space-between">
         <label for="toggle-6">I'm not sure</label>
         <input id="toggle-6" type="checkbox" role="switch">
       </div>

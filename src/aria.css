@@ -119,10 +119,8 @@
 
 label:has([role=switch]:last-child) {
   display: flex;
+  gap: var(--gap);
   justify-content: space-between;
-}
-label[for] + [role=switch] {
-  padding-block: calc(var(--gap) / 4);
 }
 
 label[for]:has(+ [role=switch]),
@@ -130,13 +128,16 @@ label[for] + [role=switch],
 [role=switch]:has(+ label[for]),
 [role=switch] + label[for] {
   display: inline-block;
+  padding-block: calc(var(--gap) / 4);
 }
 
 [role=switch], [aria-pressed] {
-  --toggle-border-width: 0.2em;
+  --toggle-border-width: 0.15em;
   all: unset;
   appearance: none;
   cursor: pointer;
+  display: grid !important;
+  grid-gap: 0;
   transition: all 0.25s ease-in-out;
   vertical-align: bottom;
 
@@ -150,15 +151,28 @@ label[for] + [role=switch],
     width: calc(2 * var(--rhythm));
     background-color: var(--bg);
     border-radius: var(--rhythm);
+    grid-row: 1;
+    grid-column: 1 / 3;
   }
   &::after {
     width: var(--rhythm);
     background-color: var(--interactive-bg);
     border-radius: 50%;
-    transform: translateX(calc(-2 * var(--rhythm)));
+    grid-row: 1;
+    grid-column: 1 / 2;
   }
   &:is(:checked, [aria-pressed=true]) {
     &::before { background-color: var(--accent); }
-    &::after  { transform: translateX(calc(-1 * var(--rhythm))); }
+    &::after  { grid-column: 2 / 3; }
+  }
+
+  &:is(:hover, :focus-visible) {
+    /* Reset button styles */
+    filter: unset;
+    box-shadow: none;
+  }
+  &:active {
+    box-shadow: none;
+    color: inherit;
   }
 }
