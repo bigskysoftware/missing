@@ -35,6 +35,8 @@ add `@s` (small, &le;768px) or `@l` (large, &ge;1024px) to the end of the attrib
 : Element will take 1 column in small screens,
   2 columns on medium screens and 3 on large screens
 
+To change the layout for printing, add `@p` to the end of the attributes.
+
 <figure>
 
   ~~~ html
