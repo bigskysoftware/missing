@@ -165,7 +165,7 @@ The fiex direction will be set based on `aria-orientation`.
 
 ## Feed
 
-Use `feed` role with `<article/>` children  — see [WAI: Feed][]. Nested feeds are supported.
+Use `feed` role with `<article>` children  — see [WAI: Feed][]. Nested feeds are supported.
 
 To get the actual behavior of an accessible feed, you can use [Missing.js &sect; Feed](/docs/js#feed).
 
@@ -198,5 +198,125 @@ To get the actual behavior of an accessible feed, you can use [Missing.js &sect;
   </div>
 
 </figure>
-
 [WAI: Feed]: https://www.w3.org/WAI/ARIA/apg/patterns/feed/
+
+
+## Toggle Switch
+
+Use `switch` role with `<input type="checkbox">`. The indeterminate state is supported, but it must be set with JavaScript.
+
+<figure>
+<figcaption>Code: Toggle Switches</figcaption>
+
+  ~~~ html
+  <div class="f-switch">
+    <fieldset class="f-col">
+      <legend>Toggles inside labels</legend>
+      <label><input type="checkbox" role="switch">Toggle me</label>
+      <label><input type="checkbox" role="switch" checked>But not me</label>
+      <label><input type="checkbox" role="switch" class="indeterminate">I'm not sure</label>
+    </fieldset>
+    <fieldset class="f-col">
+      <legend>Toggles inside labels, flipped</legend>
+      <label class="justify-content:space-between">Toggle me<input type="checkbox" role="switch"></label>
+      <label class="justify-content:space-between">But not me <input type="checkbox" role="switch" checked></label>
+      <label class="justify-content:space-between">I'm not sure <input type="checkbox" role="switch" class="indeterminate"></label>
+    </fieldset>
+    <script>
+      document.querySelectorAll('.indeterminate').forEach(
+        el => {el.indeterminate = true;}
+      )
+    </script>
+  </div>
+  ~~~
+
+  <div class="f-switch">
+    <fieldset class="f-col">
+      <legend>Toggles inside labels</legend>
+      <label><input type="checkbox" role="switch">Toggle me</label>
+      <label><input type="checkbox" role="switch" checked>But not me</label>
+      <label><input type="checkbox" role="switch" class="indeterminate">I'm not sure</label>
+    </fieldset>
+    <fieldset class="f-col">
+      <legend>Toggles inside labels, flipped</legend>
+      <label class="justify-content:space-between">Toggle me<input type="checkbox" role="switch"></label>
+      <label class="justify-content:space-between">But not me <input type="checkbox" role="switch" checked></label>
+      <label class="justify-content:space-between">I'm not sure <input type="checkbox" role="switch" class="indeterminate"></label>
+    </fieldset>
+  </div>
+
+  ~~~ html
+  <div class="f-switch">
+    <fieldset class="table rows">
+      <legend>Toggles before labels</legend>
+      <div>
+        <input id="toggle-1" type="checkbox" role="switch">
+        <label for="toggle-1">Toggle me</label>
+      </div>
+      <div>
+        <input id="toggle-2"type="checkbox" role="switch" checked>
+        <label for="toggle-2">But not me</label>
+      </div>
+      <div>
+        <input id="toggle-3" type="checkbox" role="switch" class="indeterminate">
+        <label for="toggle-3">I'm not sure</label>
+      </div>
+    </fieldset>
+    <fieldset class="table rows">
+      <legend>Toggles after labels</legend>
+      <div>
+        <label for="toggle-4">Toggle me</label>
+        <input id="toggle-4" type="checkbox" role="switch">
+      </div>
+      <div>
+        <label for="toggle-5">But not me</label>
+        <input id="toggle-5" type="checkbox" role="switch" checked>
+      </div>
+      <div>
+        <label for="toggle-6">I'm not sure</label>
+        <input id="toggle-6" type="checkbox" role="switch" class="indeterminate">
+      </div>
+    </fieldset>
+    <script>
+      document.querySelectorAll('.indeterminate').forEach(
+        el => {el.indeterminate = true;}
+      )
+    </script>
+  </div>
+  ~~~
+
+  <div class="f-switch">
+    <fieldset class="table rows">
+      <legend>Toggles before labels</legend>
+      <div>
+        <input id="toggle-1" type="checkbox" role="switch">
+        <label for="toggle-1">Toggle me</label>
+      </div>
+      <div>
+        <input id="toggle-2"type="checkbox" role="switch" checked>
+        <label for="toggle-2">But not me</label>
+      </div>
+      <div>
+        <input id="toggle-3" type="checkbox" role="switch" class="indeterminate">
+        <label for="toggle-3">I'm not sure</label>
+      </div>
+    </fieldset>
+    <fieldset class="table rows">
+      <legend>Toggles after labels</legend>
+      <div>
+        <label for="toggle-4">Toggle me</label>
+        <input id="toggle-4" type="checkbox" role="switch">
+      </div>
+      <div>
+        <label for="toggle-5">But not me</label>
+        <input id="toggle-5" type="checkbox" role="switch" checked>
+      </div>
+      <div>
+        <label for="toggle-6">I'm not sure</label>
+        <input id="toggle-6" type="checkbox" role="switch" class="indeterminate">
+      </div>
+    </fieldset>
+  </div>
+
+  <script>document.querySelectorAll('.indeterminate').forEach(el => {el.indeterminate = true;})</script>
+</figure>

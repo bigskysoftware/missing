@@ -116,7 +116,7 @@ button, input, select {
  * Correct the inability to style buttons in iOS and Safari.
  */
 
-button, [type="button"], [type="reset"], [type="submit"]) {
+button, [type="button"], [type="reset"], [type="submit"] {
     -webkit-appearance: button;
 }
 
