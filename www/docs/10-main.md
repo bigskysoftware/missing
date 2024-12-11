@@ -26,7 +26,7 @@ Install it on your website if you haven't already:
   ~~~ html
   <link rel="stylesheet" href="https://unpkg.com/missing.css@{{ version }}">
   <!-- Prism theme (https://prismjs.com/): -->
-  <link rel="stylesheet" href="https://unpkg.com/missing.css@{{ version }}/prism">
+  <link rel="stylesheet" href="https://unpkg.com/missing.css@{{ version }}/dist/missing-prism.min.css" />
   ~~~
 
 </figure>

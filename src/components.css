@@ -91,7 +91,7 @@ details,
 		& > :nth-child(2) {
 			overflow: auto;
 			--full-width: calc(100vw - 25ch);
-			margin-top: var(--gap);
+			padding-top: var(--gap);
 		}
 	}
 }
