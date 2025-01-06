@@ -210,7 +210,7 @@ If you want to preserve the `<ol>` numbering, use the `type` attribute.
 
   ~~~ html
   <header class="packed">
-    <h1>Checkout</h1>
+    <strong class="<h1>">Checkout</strong>
     <nav class=breadcrumbs aria-label="Breadcrumbs">
       <ol type="i">
         <li><a href="#">Cart</a></li>
@@ -224,7 +224,7 @@ If you want to preserve the `<ol>` numbering, use the `type` attribute.
   ~~~
 
   <header class="packed">
-    <h1>Checkout</h1>
+    <strong class="<h1>">Checkout</strong>
     <nav class=breadcrumbs aria-label="Breadcrumbs">
       <ol type="i">
         <li><a href="#">Cart</a></li>
