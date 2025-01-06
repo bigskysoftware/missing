@@ -100,20 +100,22 @@ details,
 	font-family: var(--secondary-font);
 
     & ul, & ol {
-        list-style: none;
         padding-inline-start: 0;
+    }
+    & :is(ul, ol):not([type]) {
+        list-style: none;
     }
 
     & li {
-        display: inline;
-        &+li::before {
+        display: inline list-item;
+        &:not(:last-child)::after {
             content: ' / ' / '';
             content: ' / ';
             display: inline;
         }
     }
 
-    & [aria-current="page"] {
+    & [aria-current="page"], & [aria-current="step"] {
         font-weight: bold;
     }
 }

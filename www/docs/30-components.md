@@ -176,10 +176,12 @@ element will house the rest of the page. See this example:
 Add <dfn>`.breadcrumbs`</dfn> to a `<nav>` element. Use an `<ul>` or  `<ol>` of
 links inside. Don't forget to add an `aria-label`.
 
-Add the attribute `aria-current=page` to the link representing the current page
-(if any).
+Add the attribute `aria-current=page` (or `step`) to the link representing the current
+page or step (if any).
 
 <figure>
+
+  ~~~ html
   <nav class=breadcrumbs aria-label="Breadcrumbs">
     <ol>
       <li><a href="#">Home</a></li>
@@ -189,6 +191,50 @@ Add the attribute `aria-current=page` to the link representing the current page
       <li><a href="#" aria-current=page>Quit Sibelius</a></li>
     </ol>
   </nav>
+  ~~~
+
+  <nav class=breadcrumbs aria-label="Breadcrumbs">
+    <ol>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">User</a></li>
+      <li><a href="#">Advanced</a></li>
+      <li><a href="#">New All</a></li>
+      <li><a href="#" aria-current=page>Quit Sibelius</a></li>
+    </ol>
+  </nav>
+</figure>
+
+If you want to preserve the `<ol>` numbering, use the `type` attribute.
+
+<figure>
+
+  ~~~ html
+  <header class="packed">
+    <h1>Checkout</h1>
+    <nav class=breadcrumbs aria-label="Breadcrumbs">
+      <ol type="i">
+        <li><a href="#">Cart</a></li>
+        <li><a href="#" aria-current=step>Account</a></li>
+        <li>Info</li>
+        <li>Payment</li>
+        <li>Review</li>
+      </ol>
+    </nav>
+  </header>
+  ~~~
+
+  <header class="packed">
+    <h1>Checkout</h1>
+    <nav class=breadcrumbs aria-label="Breadcrumbs">
+      <ol type="i">
+        <li><a href="#">Cart</a></li>
+        <li><a href="#" aria-current=step>Account</a></li>
+        <li>Info</li>
+        <li>Payment</li>
+        <li>Review</li>
+      </ol>
+    </nav>
+  </header>
 </figure>
 
 
