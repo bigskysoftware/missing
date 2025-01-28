@@ -116,3 +116,77 @@
     width: fit-content;
     text-align: center;
 }
+
+
+input[type=checkbox][role=switch] {
+  all: unset;
+  appearance: none;
+
+  display: inline-grid;
+  vertical-align: middle;
+  grid-template-columns: repeat(2, 1rem);
+  aspect-ratio: 2 / 1;
+  margin-block: auto;
+
+  &::before, &::after {
+    content: '';
+    display: inline-block;
+
+    transition: transform .2s ease-in-out, background-color .2s ease-in-out, background-color .2s ease-in-out;
+  }
+
+  &::before {
+    grid-column: 1 / span 2;
+    grid-row: 1;
+    border: 1px solid var(--graphical-fg);
+    background: var(--bg);
+    border-radius: 9999rem;
+  }
+
+  &::after {
+    --toggle-nub-margin: 2px;
+    grid-column: 1;
+    grid-row: 1;
+    margin: var(--toggle-nub-margin);
+    border-radius: 99999rem;
+    background: var(--graphical-fg);
+  }
+
+  &:checked {
+    &::before {
+      border-color: var(--accent);
+      background: var(--accent);
+    }
+    &::after {
+      transform: translateX(calc(100% + 2 * var(--toggle-nub-margin)));
+      background: var(--bg);
+    }
+  }
+
+  &:indeterminate {
+    &::after {
+      transform: translateX(calc(50% + var(--toggle-nub-margin)));
+      background: var(--bg);
+      border: 1px solid var(--graphical-fg);
+    }
+  }
+
+  &:is(label > *):not(#specificity-hack) {
+    margin-block-end: auto;
+  }
+  &:not(label > *) {
+    padding-block: calc(var(--gap) / 4 + (var(--rhythm) - 1em) / 2);
+  }
+
+  :is(label:has(> &)) {
+    /* Lightning CSS requires :is() when nested selector doesn't start with & */
+    display: flex;
+    gap: var(--gap);
+    flex-direction: row;
+  }
+  :is(label:has(+ &)) {
+    /* Lightning CSS requires :is() when nested selector doesn't start with & */
+    width: 100%;
+  }
+
+}

@@ -37,7 +37,7 @@
 }
 
 
-.primary-font { font-family: var(--primary-font) }
+.main-font, .primary-font { font-family: var(--main-font) }
 .secondary-font { font-family: var(--secondary-font) }
 .display-font { font-family: var(--display-font) }
 .mono-font, .monospace { font-family: var(--mono-font) }

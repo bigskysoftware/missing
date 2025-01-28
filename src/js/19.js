@@ -1,4 +1,4 @@
-/** 
+/**
  * a DOM helper library.
  * "1 US$ = 18.5842 TR₺ · Oct 16, 2022, 20:52 UTC"
  */
@@ -42,13 +42,13 @@
 /**
  * Creates a logging function.
  * The {@link scope} will be prepended to each message logged.
- * 
+ *
  * We usually use `ilog` as a name for the resulting function.
  * It returns its last argument,
  * which makes it easier to log intermediate values in an expression:
- * 
+ *
  *     const x = a + ilog("b:", b); // x = a + b
- * 
+ *
  * @param {string} scope The name of the component/module/etc. that will use this logger.
  * @returns {Logger} The `ilog` function.
  */
@@ -103,14 +103,14 @@ export function traverse(
       ? $(root, selector)
       : $$(root, selector).at(-1);
   }
-  
+
   if (!current) return wrapIt();
-  
+
   // Traverse left to right, bottom to top.
   //
   //                                                  (begin ascii art diagram)
   //                           (R)
-  //                         /     \   
+  //                         /     \
   //                    (r)           (4) <- return value
   //                 /   |   \       /   \
   //    current -> (1)  (2)  (3)    (*) (*)
@@ -118,11 +118,11 @@ export function traverse(
   //
   // In the diagram above, 1, 2, 3 are tested by the selector (assuming we
   // start at 1). Then, having run out of siblings, we move up (as many times
-  // as needed) before advancing, ending up at 4. 
+  // as needed) before advancing, ending up at 4.
   //
   // To "test" an element, ee call Element#matches, then if that returns false,
   // querySelector. The querySelector call is how the items marked with
-  // asterisks can be checked. 
+  // asterisks can be checked.
   let cursor = current;
   while (true) {
     while (cursor[advance] === null) { // 3
@@ -169,7 +169,7 @@ export function $$(scope, sel) {
  * @property {EventTarget} target
  * @property {string} type
  * @property {EventListener} listener
- * @property {object} options  
+ * @property {object} options
  */
 
 /**
@@ -211,7 +211,7 @@ export function off({ target, type, listener, options }) {
 /**
  * "Halt" an event -- convenient wrapper for `preventDefault`, `stopPropagation`, and `stopImmediatePropagation`.
  * @param {string} o - How to halt. Space-separated list of "default", "bubbling" and "propagation".
- * @param {Event} e - The event. 
+ * @param {Event} e - The event.
  */
 export function halt(o, e) {
   for (const t of o.split(" ")) {
@@ -226,7 +226,7 @@ export function halt(o, e) {
 
 /**
  * Decorator for any event listener to call {@link halt}.
- * 
+ *
  *     on(el, "click", halts("default", e => ...))
  *
  * @template {Event} T
@@ -251,13 +251,13 @@ export function dispatch(el, type, detail, options) {
 
 /**
  * Get, remove or set an attribute.
- * 
+ *
  * - attr(el, "name") Get the attribute "name"
  * - attr(el, "name", "value") Set the attribute "name" to "value"
  * - attr(el, "name", null) Remove the attribute "name"
  * - attr(el, [ nameA: "valueA", nameB: "valueB" ]) Set the attributes name-a to "valueA", name-b to "valueB"
- * 
- * @param {Element} el 
+ *
+ * @param {Element} el
  * @param {string | Record<string, unknown>} name - The attribute name **or** a map of names to values.
  *   If an object is passed, camelCase attribute names will be converted to kebab-case.
  * @param {unknown} value - The value of the attribute, when setting. Pass `null` to remove an attribute.
@@ -333,9 +333,9 @@ export function htmlescape(s) {
  * Template literal that escapes HTML in interpolated values and returns a DocumentFragment.
  * Can also be called with a string to parse it as HTML.
  * To let trusted HTML through escaping, parse it first:
- * 
+ *
  *     html`<p>My trusted markup: ${html(trustedMarkup)}</p>`
- * 
+ *
  * @param {TemplateStringsArray | string} str
  * @param {...unknown} values
  * @returns {DocumentFragment}
@@ -421,10 +421,10 @@ export function prev(root, selector, current, options = {}) {
 
 /**
  * Create a handler for keyboard events using a keyboard shortcut DSL.
- * 
+ *
  * - "ArrowLeft"
  * - "Ctrl+Alt+3"
- * 
+ *
  * @param {Record<string, KeyboardEventListener>} hotkeys
  * @returns KeyboardEventListener
  */
@@ -440,7 +440,7 @@ export function hotkey(hotkeys) {
       const
         tokens = hotkeySpec.split("+"), key = /** @type {string} */ (tokens.pop());
       let modifiers = 0 | 0;
-      for (const token in tokens)
+      for (const token of tokens)
         switch (token.toLowerCase()) {
           case "alt": modifiers |= alt; break;
           case "ctrl": modifiers |= ctrl; break;
@@ -460,8 +460,8 @@ export function hotkey(hotkeys) {
 
 /**
  * Debounce a function.
- * 
- * @template {unknown[]} TArgs 
+ *
+ * @template {unknown[]} TArgs
  * @param {number} t The debounce time.
  * @param {(...args: TArgs) => void} f The function.
  * @param {object} [options]
@@ -507,13 +507,13 @@ export function behavior(selector, init) {
 /**
  * @template TData
  * @typedef {object} Repeater
- * 
+ *
  * @property {(datum: TData) => string} idOf
  * Returns the HTML id for a given data value.
- * 
+ *
  * @property {(datum: TData, ctx: { id: string }) => ChildNode} create
  * Creates a an element for a data value.
- * 
+ *
  * @property {(el: Element, datum: TData) => Element | null} update
  * Update an element for a new data value.
  */

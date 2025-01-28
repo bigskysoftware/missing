@@ -91,7 +91,7 @@ details,
 		& > :nth-child(2) {
 			overflow: auto;
 			--full-width: calc(100vw - 25ch);
-			margin-top: var(--gap);
+			padding-top: var(--gap);
 		}
 	}
 }
@@ -183,14 +183,14 @@ details,
 		padding-inline-start: 0;
 	}
 
-	& a {
+	& :is(a:not(.\<button\>, .chip), .\<a\>) {
 		font-weight: bold;
 		text-decoration: none;
 		padding-inline: .2em;
-	}
 
-	& a:hover, & a:focus {
-		text-decoration: underline;
+	  &:hover, &:focus {
+  		text-decoration: underline;
+    }
 	}
 
 	& [aria-current=page] {
