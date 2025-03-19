@@ -198,6 +198,7 @@ To get the actual behavior of an accessible feed, you can use [Missing.js &sect;
   </aria-feed>
 
 </figure>
+
 [WAI: Feed]: https://www.w3.org/WAI/ARIA/apg/patterns/feed/
 
 
