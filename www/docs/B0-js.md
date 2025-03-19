@@ -98,23 +98,14 @@ _See [ARIA &sect; feed](/docs/aria/#feed)_
 
   ~~~ html
   <script type="module" src="https://unpkg.com/missing.css@{{ version }}/dist/js/feed.js">
+  <aria-feed>
+    <article>[...]</article>
+  </aria-feed>
   ~~~
 
 </figure>
 
-or
-
-<figure>
-
-  ~~~js
-  import { feed } from "https://unpkg.com/missing.css@{{ version }}/dist/js/feed.js";
-  ~~~
-
-</figure>
-
-All notes above about initializing dynamic content apply here.
-
-
+The `<aria-feed>` custom element utilizes `MutationObserver`, so dynamic content should "just work."
 
 
 ## Expand/collapse navbar
