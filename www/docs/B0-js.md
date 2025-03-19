@@ -99,7 +99,14 @@ _See [ARIA &sect; feed](/docs/aria/#feed)_
   ~~~ html
   <script type="module" src="https://unpkg.com/missing.css@{{ version }}/dist/js/feed.js">
   <aria-feed>
-    <article>[...]</article>
+    <article class="box" aria-labelledby="article-1-label">
+      <h2 id="article-1-label">Article Title 1</h2>
+      <p>Article content</p>
+    </article>
+    <article class="box" aria-labelledby="article-2-label">
+      <h2 id="article-2-label">Article Title 2</h2>
+      <p>Article content</p>
+    </article>
   </aria-feed>
   ~~~
 
