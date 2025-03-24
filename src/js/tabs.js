@@ -3,9 +3,7 @@
 //@deno-types=./19.ts
 import { $, $$, on, off, halts, attr, next, prev, asHtml, hotkey, identify, dispatch } from "./19.js"
 
-// TODO: Do we need to worry about MutationObserver?
-// TODO: Could we add null safety to attr()?
-// TODO: Is there a better way to do display=block
+
 export class ariaTablist extends HTMLElement {
   /* Custom element implementation of the Tabs Pattern as specified by the
    * ARIA Authoring Practices Guide (APG).
