@@ -165,14 +165,14 @@ The fiex direction will be set based on `aria-orientation`.
 
 ## Feed
 
-Use `feed` role with `<article>` children  — see [WAI: Feed][]. Nested feeds are supported.
+Use the `<aria-feed>` custom element with `<article>` children  — see [WAI: Feed][]. Nested feeds are supported.
 
 To get the actual behavior of an accessible feed, you can use [Missing.js &sect; Feed](/docs/js#feed).
 
 <figure>
 
   ~~~ html
-  <div role="feed">
+  <aria-feed>
     <article class="box" aria-labelledby="article-1-label">
       <h2 id="article-1-label">Article Title 1</h2>
       <p>Article content</p>
@@ -181,12 +181,12 @@ To get the actual behavior of an accessible feed, you can use [Missing.js &sect;
       <h2 id="article-2-label">Article Title 2</h2>
       <p>Article content</p>
     </article>
-  </div>
+  </aria-feed>
   ~~~
 
   <div>
   <script type="module" src="/dist/js/feed.js"></script>
-  <div role="feed">
+  <aria-feed>
     <article class="box" aria-labelledby="article-1-label">
       <h2 id="article-1-label">Article Title 1</h2>
       <p>Article content</p>
@@ -195,9 +195,10 @@ To get the actual behavior of an accessible feed, you can use [Missing.js &sect;
       <h2 id="article-2-label">Article Title 2</h2>
       <p>Article content</p>
     </article>
-  </div>
+  </aria-feed>
 
 </figure>
+
 [WAI: Feed]: https://www.w3.org/WAI/ARIA/apg/patterns/feed/
 
 
