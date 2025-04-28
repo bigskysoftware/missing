@@ -1,11 +1,10 @@
-
-[role="tablist"] {
+aria-tablist, [role="tablist"] {
     display: flex;
     gap: .5ch;
     scrollbar-width: thin;
 }
 
-[role="tab"][role="tab"] {
+aria-tab, [role="tab"] {
     all: initial;
 
 	font-family: var(--secondary-font);
@@ -41,7 +40,7 @@
     }
 }
 
-[role="tabpanel"] {
+aria-tabpanel, [role="tabpanel"] {
     /* SEE components/box.css */
 
     margin-block-start: 0;

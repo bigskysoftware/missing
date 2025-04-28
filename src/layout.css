@@ -57,6 +57,7 @@
     .box, 
     [role=menu],
     .sidebar-layout > header,
+    aria-tabpanel,
     [role=tabpanel],
     figure,
     details,
