@@ -77,11 +77,11 @@
 	--ok-bg: var(--green-12);
 	--bad-bg: var(--red-12);
 	--warn-bg: var(--yellow-12);
-	--plain-faded-fg: var(--blue-6);
-	--info-faded-fg: var(--blue-6);
-	--ok-faded-fg: var(--green-6);
-	--bad-faded-fg: var(--red-6);
-	--warn-faded-fg: var(--yellow-6);
+	--plain-graphical-fg: var(--blue-6);
+	--info-graphical-fg: var(--blue-6);
+	--ok-graphical-fg: var(--green-6);
+	--bad-graphical-fg: var(--red-6);
+	--warn-graphical-fg: var(--yellow-6);
 	--bg: var(--gray-12);
 	--box-bg: var(--gray-10);
 	--interactive-bg: var(--gray-8);
@@ -106,11 +106,11 @@
     	--bad-bg: var(--red-12);
     	--warn-bg: var(--yellow-12);
 
-		--plain-faded-fg: var(--blue-6);
-		--info-faded-fg: var(--blue-6);
-		--ok-faded-fg: var(--green-6);
-		--bad-faded-fg: var(--red-6);
-		--warn-faded-fg: var(--yellow-6);
+		--plain-graphical-fg: var(--blue-6);
+		--info-graphical-fg: var(--blue-6);
+		--ok-graphical-fg: var(--green-6);
+		--bad-graphical-fg: var(--red-6);
+		--warn-graphical-fg: var(--yellow-6);
 
     	--bg: var(--gray-12);
     	--box-bg: var(--gray-10);
