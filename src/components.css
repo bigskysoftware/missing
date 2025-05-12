@@ -111,12 +111,13 @@ details,
         padding-inline-start: 0;
     }
     & :is(ul, ol):not([type]) {
-        list-style: none;
+        list-style-type: "";
     }
 
     & li {
         display: inline list-item;
         &:not(:last-child)::after {
+            content: var(--separator, var(--breadcrumb-page)) / '';
             content: var(--separator, var(--breadcrumb-page));
             display: inline;
         }
