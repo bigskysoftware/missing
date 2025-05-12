@@ -97,7 +97,15 @@ details,
 }
 
 .breadcrumbs[aria-label] {
-	font-family: var(--secondary-font);
+
+    font-family: var(--secondary-font);
+
+    &:has([aria-current="page"]) {
+      --separator: var(--breadcrumb-page);
+    }
+    &:has([aria-current="step"]) {
+      --separator: var(--breadcrumb-step);
+    }
 
     & ul, & ol {
         padding-inline-start: 0;
@@ -109,8 +117,7 @@ details,
     & li {
         display: inline list-item;
         &:not(:last-child)::after {
-            content: ' / ' / '';
-            content: ' / ';
+            content: var(--separator, var(--breadcrumb-page));
             display: inline;
         }
     }

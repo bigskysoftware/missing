@@ -177,7 +177,8 @@ Add <dfn>`.breadcrumbs`</dfn> to a `<nav>` element. Use an `<ul>` or  `<ol>` of
 links inside. Don't forget to add an `aria-label`.
 
 Add the attribute `aria-current=page` (or `step`) to the link representing the current
-page or step (if any).
+page or step (if any). The separator will be set to either `--breadcrumb-page` or `--breadcrumb-step`
+depending on whether `aria-current=page` or `aria-current=step` is used.
 
 <figure>
 
@@ -212,7 +213,7 @@ If you want to preserve the `<ol>` numbering, use the `type` attribute.
   <header class="packed">
     <strong class="<h1>">Checkout</strong>
     <nav class=breadcrumbs aria-label="Breadcrumbs">
-      <ol type="i">
+      <ol type="1">
         <li><a href="#">Cart</a></li>
         <li><a href="#" aria-current=step>Account</a></li>
         <li>Info</li>
@@ -226,7 +227,7 @@ If you want to preserve the `<ol>` numbering, use the `type` attribute.
   <header class="packed">
     <strong class="<h1>">Checkout</strong>
     <nav class=breadcrumbs aria-label="Breadcrumbs">
-      <ol type="i">
+      <ol type="1">
         <li><a href="#">Cart</a></li>
         <li><a href="#" aria-current=step>Account</a></li>
         <li>Info</li>
