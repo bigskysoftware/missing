@@ -45,7 +45,11 @@
   --display-font: var(--secondary-font); /* Headings */
 	--mono-font: 'M Plus Code Latin', monospace, monospace; /* monospace twice stops browsers from
 		shrinking this */
-	
+
+  /* Markers */
+  --breadcrumb-page: ' / ';
+  --breadcrumb-step: ' › ';
+
 	/* Density */
 	--density: 1;
 
