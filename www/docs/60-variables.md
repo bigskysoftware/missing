@@ -134,6 +134,14 @@ classes; these will be listed in the documentation for that class.
     </div>
 
 
+## Markers
+
+<dfn>`--breadcrumb-page`</dfn> {#var-breadcrumb-page}
+:   The default separator for breadcrumbs.
+
+<dfn>`--breadcrumb-step`</dfn> {#var-breadcrumb-page}
+:   The separator for breadcrumbs that use `[aria-current=page]`.
+
 ## Density
 
 <dfn>`--density`</dfn> {#var-density}
