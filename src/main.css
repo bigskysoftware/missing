@@ -514,9 +514,7 @@ input::file-selector-button {
 	display: inline-flex;
 	justify-content: center;
 	align-items: center;
-  &:is(a) {
-    cursor: default;
-  }
+  cursor: default;
 
 	&:hover, &:focus-visible {
 		filter: brightness(1.1);
@@ -529,17 +527,30 @@ input::file-selector-button {
 	&:active {
 		box-shadow: none;
 	}
+}
 
-	:is(strong > &) {
-		background: var(--accent);
-		color: var(--bg);
-		border: none;
-		font-weight: bold;
-
-		&[disabled] {
-			color: var(--muted-accent);
-		}
-	}
+strong > :where(
+  button,
+  input[type="submit"],
+  input[type="reset"],
+  input[type="button"],
+  .\<button\>
+):not(.\<a\>),
+strong > input::file-selector-button {
+  /* Can't use nested css with ::file-selector-button pseudo-element */
+	background: var(--accent);
+	color: var(--bg);
+	border: none;
+	font-weight: bold;
+}
+strong > :is(
+  button:disabled,
+  input[type="submit"]:disabled,
+  input[type="reset"]:disabled,
+  input[type="button"]:disabled,
+),
+strong > input:disabled::file-selector-button {
+  color: var(--muted-accent);
 }
 
 
