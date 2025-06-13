@@ -147,8 +147,11 @@ Add the <dfn>`.-no-dark-theme`</dfn> class to your root element to use the light
 
 ## Reset
 
-Use the <dfn>`.all:initial`</dfn> class to reset all CSS properties on an
-element and return it to its browser-default styles.
+~~Use the <dfn>`.all:initial`</dfn> class to reset all CSS properties on an
+element and return it to its browser-default styles.~~
+
+**Depreciated:**{.color .bad} This class has been depreciated and will be removed in version 2.0.
+
 
 
 [CSS variable]: /docs/variables
