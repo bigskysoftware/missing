@@ -86,6 +86,9 @@ You can set `--density` yourself in inline styles or your own CSS:
 <dfn>`.main-font`</dfn>
 :   Renders the text in the main font (`--main-font`).
 
+<dfn>`.primary-font`</dfn>
+:   <strong class="bad color">Depreciated:</strong> Use `.main-font` instead. Will be removed in version 2.0.
+
 <dfn>`.secondary-font`</dfn>
 :   Renders the text in the secondary font (`--secondary-font`).
 
