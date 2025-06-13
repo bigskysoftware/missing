@@ -86,6 +86,7 @@ To get the actual behavior of an accessible menu, you can use [Missing.js &sect;
 [WAI: Menu]: https://www.w3.org/WAI/ARIA/apg/patterns/menu/
 
 
+<!--
 ## Listbox
 
 Use `listbox` and `option` ARIA roles. [WAI: Listbox][].
@@ -119,7 +120,7 @@ Use `listbox` and `option` ARIA roles. [WAI: Listbox][].
 </figure>
 
 [WAI: Listbox]: https://www.w3.org/WAI/ARIA/apg/patterns/listbox/
-
+-->
 
 ## Toolbar
 
