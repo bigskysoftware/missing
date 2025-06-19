@@ -104,8 +104,77 @@ classes; these will be listed in the documentation for that class.
 <dfn>`--line-length`</dfn> {#var-line-length}
 :   Maximum line length for prose.
 
+
+## Borders
+   
+<dfn>`--border-width`</dfn> {#var-border-width}
+:   Shortcut for uniform border widths on various `.box` related components. Defaults to `unset`.
+
+<dfn>`--border-block-start-width`</dfn> {#var-border-block-start-width}
+:   Width of the "top" border. Defaults to `--border-width` if it is set, otherwise `1px`.
+
+<dfn>`--border-block-end-width`</dfn> {#var-border-block-end-width}
+:   Width of the "bottom" border. Defaults to `--border-width` if it is set, otherwise `1px`.
+
+<dfn>`--border-inline-start-width`</dfn> {#var-border-inline-start-width}
+:   Width of the "left" border. Defaults to `--border-width` if it is set, otherwise `1px`.
+
+<dfn>`--border-inline-end-width`</dfn> {#var-border-inline-end-width}
+:   Width of the "right" border. Defaults to `--border-width` if it is set, otherwise `1px`.
+
+<dfn>`--border-style`</dfn> {#var-border-style}
+:   Shortcut for uniform border styles on various `.box` related components. Defaults to `unset`.
+
+<dfn>`--border-block-start-style`</dfn> {#var-border-block-start-style}
+:   Style of the "top" border. Defaults to `--border-style` if it is set, otherwise `1px`.
+
+<dfn>`--border-block-end-style`</dfn> {#var-border-block-end-style}
+:   Style of the "bottom" border. Defaults to `--border-style` if it is set, otherwise `1px`.
+
+<dfn>`--border-inline-start-style`</dfn> {#var-border-inline-start-style}
+:   Style of the "left" border. Defaults to `--border-style` if it is set, otherwise `1px`.
+
+<dfn>`--border-inline-end-style`</dfn> {#var-border-inline-end-style}
+:   Style of the "right" border. Defaults to `--border-style` if it is set, otherwise `1px`.
+
 <dfn>`--border-radius`</dfn> {#var-border-radius}
-:   Border radius. Set to 0 for sharp corners.
+:   Border radius for various `.box` related components. Accepts any valid CSS value, e.g. `1em 2em` or `50% 20% / 10% 40%`. Defaults to 0.2rem.
+
+<dfn>`--interactive-border-width`</dfn> {#var-interactive-border-width}
+:   Border width used in buttons, inputs, etc. Must be a single value; defaults to `1px`.
+
+<dfn>`--interactive-border-style`</dfn> {#var-interactive-border-style}
+:   Border style used in buttons, inputs, etc. Must be a single value; defaults to `solid`.
+
+<dfn>`--interactive-border-radius`</dfn> {#var-interactive-border-radius}
+:   Border radius used in buttons, inputs, etc. Must be a single value; defaults to `.2rem`.
+
+<dfn>`--tab-border-radius`</dfn> {#var-tab-border-radius}
+:   Border radius for the ARIA tabs component. Must be a single value; defaults to 0.4em.
+
+
+## Button Shadows
+
+<dfn>`--shadow`</dfn> {#var-shadow}
+:   The value for the `box-shadow` property on buttons.
+
+<dfn>`--shadow-focus`</dfn> {#var-shadow-focus}
+:   The value for the `box-shadow` property on button with `:hover` or `:focus-visible` state.
+
+<dfn>`--shadow-active`</dfn> {#var-shadow-active}
+:   The value for the `box-shadow` property on button with `:active` state.
+
+<dfn>`--shadow-disabled`</dfn> {#var-shadow-disabled}
+:   The value for the `box-shadow` property on button with `:disabled` state.
+
+<dfn>`--shadow-pressed`</dfn> {#var-shadow-pressed}
+:   The value for the `box-shadow` property on buttons with `[aria-pressed=true]` or `[aria-expended=true]`.
+
+<dfn>`--shadow-pressed-focus`</dfn> {#var-shadow-pressed-focus}
+:   The value for the `box-shadow` property on buttons with `[aria-pressed=true]` or `[aria-expended=true]` in the `:hover` or `:focus-visible` state.
+
+<dfn>`--shadow-pressed-active`</dfn> {#var-shadow-pressed-active}
+:   The value for the `box-shadow` property on buttons with `[aria-pressed=true]` or `[aria-expended=true]` in the `:active` state.
 
 
 ## Fonts

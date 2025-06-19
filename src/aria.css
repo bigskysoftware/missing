@@ -13,20 +13,19 @@
     padding: 0 calc(var(--rhythm) / 4);
     margin: 0;
     min-height: var(--rhythm);
-    bottom: -1px;
+    bottom: calc(-1 * var(--border-block-start-width));
     position: relative;
     
     color: var(--fg);
-    border: solid var(--graphical-fg);
-    border-width: 1px;
+    border: var(--border-block-start-width) var(--border-block-start-style) var(--graphical-fg);
     background: var(--interactive-bg);
     
-    border-start-start-radius: .4em;
-    border-start-end-radius: .4em;
+    border-start-start-radius: var(--tab-border-radius);
+    border-start-end-radius: var(--tab-border-radius);
     
     &:active, &[aria-selected="true"] {
         background: var(--box-bg);
-        border-block-end: 1px solid transparent;
+        border-block-end: var(--border-block-start-width) var(--border-block-start-style) transparent;
     }
 
     &:hover {
@@ -138,7 +137,7 @@ input[type=checkbox][role=switch] {
   &::before {
     grid-column: 1 / span 2;
     grid-row: 1;
-    border: 1px solid var(--graphical-fg);
+    border: var(--interactive-border-width) var(--interactive-border-style) var(--graphical-fg);
     background: var(--bg);
     border-radius: 9999rem;
   }
@@ -164,10 +163,12 @@ input[type=checkbox][role=switch] {
   }
 
   &:indeterminate {
+    &::before {
+      border: var(--interactive-border-width) var(--interactive-border-style) var(--interactive-bg);
+    }
     &::after {
       transform: translateX(calc(50% + var(--toggle-nub-margin)));
-      background: var(--bg);
-      border: 1px solid var(--graphical-fg);
+      background: var(--interactive-bg);
     }
   }
 

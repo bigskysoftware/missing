@@ -62,8 +62,25 @@ Add padding or margin in specific axes with these classes:
  - <dfn>`.padding-block-end`</dfn>
 {.textcolumns}
 
+To remove margin or padding, we recommend setting it directly using the `style` attribute: `style="margin-block: 0"`.
+
 Make an element full-width with the <dfn>`.width:100%`</dfn> class.
 Similarly with <dfn>`.height:100%`</dfn>.
+
+
+## Border utilities
+
+Add a border with <dfn>`.border`</dfn>; you can target specific axes with these classes:
+
+ - <dfn>`.border-inline`</dfn>
+ - <dfn>`.border-inline-start`</dfn>
+ - <dfn>`.border-inline-end`</dfn>
+ - <dfn>`.border-block`</dfn>
+ - <dfn>`.border-block-start`</dfn>
+ - <dfn>`.border-block-end`</dfn>
+{.textcolumns}
+
+As with margin and padding, we recommend removing borders using the `style` attribute: `style="border-block: none"`.
 
 * * *
 
@@ -106,6 +123,40 @@ The <dfn>`.nested-list`</dfn> class removes extraneous margins in nested lists.
       </ul>
   </ul>
   ~~~
+
+
+## Aspect Ratio
+
+To set the aspect ratio of an element, use the `aspect-ratio` CSS property:
+
+<figure>
+
+  ~~~html
+  <style>#aspect-ratio-example > .box { height: 10vh }</style>
+  <div id="aspect-ratio-example" class="f-row flex-wrap:wrap">
+    <div class="box" style="aspect-ratio: 1/1">1:1</div>
+    <div class="box" style="aspect-ratio: 4/3">4:3</div>
+    <div class="box" style="aspect-ratio: 16/9">16:9</div>
+    <div class="box" style="aspect-ratio: 2/1">2:1</div>
+    <div class="box" style="aspect-ratio: 2/3">2:3</div>
+    <div class="box" style="aspect-ratio: 16/10">16:10</div>
+    <div class="box" style="aspect-ratio: 21/9">21:9</div>
+    <div class="box" style="aspect-ratio: 4/1">4:1</div>
+  </div>
+  ~~~
+
+  <style>#aspect-ratio-example > .box { height: 10vh }</style>
+  <div id="aspect-ratio-example" class="f-row flex-wrap:wrap">
+    <div class="box" style="aspect-ratio: 1/1">1:1</div>
+    <div class="box" style="aspect-ratio: 4/3">4:3</div>
+    <div class="box" style="aspect-ratio: 16/9">16:9</div>
+    <div class="box" style="aspect-ratio: 2/1">2:1</div>
+    <div class="box" style="aspect-ratio: 2/3">2:3</div>
+    <div class="box" style="aspect-ratio: 16/10">16:10</div>
+    <div class="box" style="aspect-ratio: 21/9">21:9</div>
+  </div>
+
+</figure>
 
 
 ## Scrolling
