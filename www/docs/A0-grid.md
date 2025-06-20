@@ -21,7 +21,7 @@ To specify the row and column an element should occupy, use the `data-cols` and 
 `data-cols="1 3" data-rows="2 3"`
 : Element will take up a 3&times;2 space, with a 1 column gap above
 
-Note that our column specifications are based on _rows_, not _lines_.
+**Warning**:&emsp;Our column specifications are based on _rows_, not _lines_.
 This means `data-cols="1 2"` spans two columns,
 as opposed to `grid-column: 1 / 2` which spans only one.
 {.box .warn}
@@ -36,6 +36,7 @@ add `@s` (small, &le;768px) or `@l` (large, &ge;1024px) to the end of the attrib
   2 columns on medium screens and 3 on large screens
 
 <figure>
+<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Grid markup for even rows</figcaption>
 
   ~~~ html
   <div class="grid grid-even-rows">
@@ -44,6 +45,8 @@ add `@s` (small, &le;768px) or `@l` (large, &ge;1024px) to the end of the attrib
     <div class="box info" data-cols="6" data-rows="2" data-cols@s="3 5" data-rows@s="4">Aux</div>
   </div>
   ~~~
+
+  <hr>
 
   <div class="grid grid-even-rows">
     <div class="box info" data-cols="1 2" data-rows="1 2">Sidebar  </div>

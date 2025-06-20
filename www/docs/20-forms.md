@@ -34,11 +34,42 @@ Inputs inside labels will be `display: inline`. Inputs outside labels will be
 
 <aside>Inputs without labels will cause nasal demons.</aside>
 
+## Buttons
+
+Wrap a `<button>` in a `<strong>` tag to get a primary button.
+The `[aria-pressed]` and `[aria-expanded]` attributes are supported.
+
+<figure>
+<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Button markup</figcaption>
+
+  ~~~ html
+  <div class="f-row">
+    <button type=reset>Reset</button>
+    <button formaction=dialog>Close</button>
+    <button type=button onclick="this.ariaPressed = (this.ariaPressed !== 'true')"
+      >Pause</button>
+    <strong><button>Submit</button></strong>
+  </div>
+  ~~~
+
+  <hr>
+
+  <div class="f-row">
+    <button type=reset>Reset</button>
+    <button formaction=dialog>Close</button>
+    <button type=button onclick="this.ariaPressed = (this.ariaPressed !== 'true')"
+      >Pause</button>
+    <strong><button>Submit</button></strong>
+  </div>
+</figure>
 
 ## Tabular forms
 
 You can use the `.table` and `.rows` classes to create a form with inputs lined
 up like cells of a table.
+
+<figure>
+<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Tabular form markup</figcaption>
 
   ~~~ html
   <form class="table rows">
@@ -46,8 +77,8 @@ up like cells of a table.
     ...
   ~~~
 
-<figure>
-  <figcaption>A tabular form</figcaption>
+  <hr>
+
   <form class="table rows">
     <p><label for=tf-text>Text</label> <input id=tf-text></p>
     <p><label for=tf-sel>Select</label> <select id=tf-sel><option>Option</select></p>
@@ -74,10 +105,13 @@ The accepted way to label a group of radio buttons is to use `<fieldset>` and
   ~~~
 
 This works in missing.css, but these two elements are [notorious] for being
-hard to style. You can use the following pattern instead:
+hard to style. You can use the following pattern instead, which will work with
+[tabular forms](#tabular-forms). Note the role, aria-labelledby and the ID on
+the label itself.
+
 
 <figure>
-<figcaption>Note the role, aria-labelledby and the ID on the label itself.</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Radio group markup for tabular forms</figcaption>
 
   ~~~ html
   <div role=radiogroup aria-labelledby=color-lbl>
@@ -90,12 +124,8 @@ hard to style. You can use the following pattern instead:
   </div>
   ~~~
 
-</figure>
+  <hr>
 
-The above will work with [tabular forms](#tabular-form):
-
-<figure>
-  <figcaption>A radiogroup in a tabular form</figcaption>
   <form class="table rows">
     <div>
       <label for="item">Item</label>

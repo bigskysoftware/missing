@@ -31,7 +31,10 @@ searchDialog = () => {
             <label for="search-input" class="titlebar" style="margin-inline: calc(-1*var(--gap))">
                 Search
             </label>
-            <p><input autofocus id="search-input" class="block width:100%"></p>
+            <div class="f-row">
+                <input autofocus id="search-input" class="block width:100%">
+                <button class="float:right" onclick="this.closest('dialog').close();">Close</button>
+            </div>
             <div role="listbox" aria-label="results" class="flow-gap padding-inline" style="overflow-y: auto; margin-inline: calc(-1*var(--gap))"></div>
         </dialog>
     `);

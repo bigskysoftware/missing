@@ -17,11 +17,11 @@ An element with class <dfn>`.center`</dfn> centers a single child element using 
 <dfn>`.text-align:center`</dfn> center-aligns text.
 
 
-## Text Columns
+## Text columns
 
-The <dfn>`.textcolumns`</dfn> class creates multi-column text using the CSS
-[`column-width`][] property. The column width can be set with the `.colwidth-*`
-classes.
+The <dfn>`.textcolumns`</dfn> class creates multi-column text using the CSS [`column-width`][] property.
+The column width can be set with the `--col-width` variable.
+Protip: consider using the `ch` unit to set column widths.
 
 [`column-width`]: https://developer.mozilla.org/en-US/docs/Web/CSS/column-width
 
@@ -71,20 +71,35 @@ The <dfn>`.big`</dfn> class makes things bigger, with special treatment for
 some elements:
 
 <figure>
+<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Using the <code>.big</code> class</figcaption>
 
-The following is a big paragraph:
+  ~~~ html
+  <p>The following is a big paragraph:
+  <p class=big>The following is a big button:
 
-The following is a big button: {.big}
+  <div class="f-row align-items:center">
+    <button class=big>Buy</button>
+    <button>Maybe later</button>
+  </div>
 
-<button class="big">Buy</button>
-<button>Maybe later</button>
-{.f-row .align-items:center}
+  <aside class="big">
+    An `&lt;aside&gt;` with the `.big` class becomes a pull quote.
+  </aside>
+  ~~~
 
-<aside class="big">
+  <hr>
 
-An `<aside>` with the `.big` class becomes a pull quote.
+  <p>The following is a big paragraph:
+  <p class=big>The following is a big button:
 
-</aside>
+  <div class="f-row align-items:center">
+    <button class=big>Buy</button>
+    <button>Maybe later</button>
+  </div>
+
+  <aside class="big">
+    An `&lt;aside&gt;` with the `.big` class becomes a pull quote.
+  </aside>
 
 </figure>
 
@@ -94,18 +109,60 @@ To get a smaller font size, use the `.<small>` masquerade.
 
 The <dfn>`.nested-list`</dfn> class removes extraneous margins in nested lists.
 
+<figure>
+<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Nested lists</figcaption>
+
   ~~~html
-  <ul class="nested-list">
-    <li>Items
-      <ul>
-        <li>...</li>
+  <div class="f-switch">
+    <div>
+      <strong>Regular list</strong>
+      <ul><li>Items
+          <ul><li>Item 1
+              <li>Item 2</ul>
+          <li>Widgets
+          <ul><li>Widget 1
+              <li>Widget 2</ul>
       </ul>
-    <li>Widgets
-      <ul>
-        <li>...</li>
+    </div>
+    <div>
+      <strong>Nested list</strong>
+      <ul class="nested-list">
+        <li>Items
+          <ul><li>Item 1
+              <li>Item 2</ul>
+        <li>Widgets
+          <ul><li>Widget 1
+              <li>Widget 2</ul>
       </ul>
-  </ul>
+    </div>
+  </div>
   ~~~
+
+  <div class="f-switch">
+    <div>
+      <strong>Regular list</strong>
+      <ul><li>Items
+          <ul><li>Item 1
+              <li>Item 2</ul>
+          <li>Widgets
+          <ul><li>Widget 1
+              <li>Widget 2</ul>
+      </ul>
+    </div>
+    <div>
+      <strong>Nested list</strong>
+      <ul class="nested-list">
+        <li>Items
+          <ul><li>Item 1
+              <li>Item 2</ul>
+        <li>Widgets
+          <ul><li>Widget 1
+              <li>Widget 2</ul>
+      </ul>
+    </div>
+  </div>
+
+</figure>
 
 
 ## Scrolling
@@ -123,7 +180,8 @@ Set the `overflow` property with these utility classes:
 
 The <dfn>`.table`</dfn> class makes an element act like a table for the purposes of layout. The <dfn>`.row`</dfn> class can be used to create a table row, or you can make all descendants of an element into rows with <dfn>`.rows`</dfn>.
 
-  <figure><figcaption>A form with aligned labels and inputs.</figcaption>
+<figure>
+<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Using pseudo-tables to align forms</figcaption>
 
   ~~~ html
   <form class="table rows">
@@ -138,7 +196,20 @@ The <dfn>`.table`</dfn> class makes an element act like a table for the purposes
   </form>
   ~~~
 
-  </figure>
+  <hr>
+
+  <form class="table rows">
+    <p>
+        <label for=name>Name</label>
+        <input type=text id=name name=name>
+    </p>
+    <p>
+        <label for=adr>Address</label>
+        <input type=text id=adr name=adr>
+    </p>
+  </form>
+
+</figure>
 
 
 ## Positioning

@@ -13,6 +13,7 @@ Missing.js is a JavaScript library implementing common UI patterns.
     |> sortSemVer
     |> at(-1) }}
 
+[[toc]]
 
 ## Tabs
 
@@ -43,7 +44,7 @@ The tabs behavior emits these custom events:
 
 ### Initializing dynamic content {.titlebar}
 
-For dynamically inserted content: initialize it as such:
+**Info**:&emsp;For dynamically inserted content, initialize it as such:
 
 <figure>
 
@@ -53,7 +54,7 @@ For dynamically inserted content: initialize it as such:
   tabs(theContentIJustInserted);
   ~~~
 
-<figcaption>Initializing a missing.js behavior on newly inserted content</figcaption>
+  <figcaption>Initializing a missing.js behavior on newly inserted content</figcaption>
 
 </figure>
 
@@ -63,7 +64,6 @@ All of our components will find elements that need initialization within the sub
 you could pass the whole `document` every time if you wanted to.
 
 </div>
-
 
 ## Menu
 
@@ -86,6 +86,13 @@ or
   ~~~
 
 </figure>
+
+The menu behavior emits these custom events:
+
+- **`menu:close`** on a menu after it closes
+  - `detail.opener`: the `[aria-haspopup=menu]` element used to close the menu
+- **`menu:open`** on a menu after it opens
+  - `detail.opener`: the `[aria-haspopup=menu]` element used to open the menu
 
 All notes above about initializing dynamic content apply here.
 
@@ -135,6 +142,7 @@ Make sure to add:
  - inside that navbar, a button with a `data-nav-expander` attribute.
 
 <figure>
+<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Collapsing navbar markup</figcaption>
 
   ~~~ html
   <header class="navbar" data-overflow-nav>

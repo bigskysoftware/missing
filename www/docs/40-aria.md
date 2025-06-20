@@ -10,6 +10,7 @@ Missing.css will style markup based on ARIA roles. We often reference the
 
 [WAI]: https://www.w3.org/TR/wai-aria-practices/
 
+[[toc]]
 
 ## Tabs
 
@@ -19,8 +20,10 @@ appropriately — see [WAI: Tabs][].
 To get the actual behavior of an accessible tabset, you can use [Missing.js &sect; Tabs](/docs/js#tabs).
 
 <figure>
+<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Tab markup</figcaption>
 
   ~~~ html
+  <script type="module" src="/dist/js/tabs.js"></script>
   <div role="tablist" aria-label="Tabs example">
     <button role="tab" aria-controls="servers" aria-selected="true"
       >Servers</button>
@@ -35,22 +38,24 @@ To get the actual behavior of an accessible tabset, you can use [Missing.js &sec
   <div id="users"    hidden role="tabpanel">...</div>
   ~~~
 
+  <hr>
+
+  <script type="module" src="/dist/js/tabs.js"></script>
+  <div role="tablist" aria-label="Tabs example">
+    <button role="tab" aria-controls="servers" aria-selected="true"
+      >Servers</button>
+    <button role="tab" aria-controls="channels"
+      >Channels</button>
+    <button role="tab" aria-controls="users"
+      >Users</button>
+  </div>
+  
+  <div id="servers"         role="tabpanel">This is tab 1. <strong>JavaScript sold separately!</strong></div>
+  <div id="channels" hidden role="tabpanel">You are enjoying tab 2.</div>
+  <div id="users"    hidden role="tabpanel"><img alt="placeholder cat" src="https://biber.denizaksimsek.com/img/IMG_2022-07-05_07-16-48-400.webp"></div>
+
 </figure>
 
-<script type="module" src="/dist/js/tabs.js"></script>
-
-<div role="tablist" aria-label="Tabs example">
-  <button role="tab" aria-controls="servers" aria-selected="true"
-    >Servers</button>
-  <button role="tab" aria-controls="channels"
-    >Channels</button>
-  <button role="tab" aria-controls="users"
-    >Users</button>
-</div>
-
-<div id="servers"         role="tabpanel">This is tab 1. <strong>JavaScript sold separately!</strong></div>
-<div id="channels" hidden role="tabpanel">You are enjoying tab 2.</div>
-<div id="users"    hidden role="tabpanel"><img alt="placeholder cat" src="https://biber.denizaksimsek.com/img/IMG_2022-07-05_07-16-48-400.webp"></div>
 
 [WAI: Tabs]: https://www.w3.org/WAI/ARIA/apg/patterns/tabpanel/
 
@@ -62,8 +67,12 @@ Use `menu` and `menuitem` roles — see [WAI: Menu][].
 To get the actual behavior of an accessible menu, you can use [Missing.js &sect; Menu](/docs/js#menu).
 
 <figure>
+<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Menu markup</figcaption>
 
   ~~~ html
+  <script type="module" src="/dist/js/menu.js"></script>
+  <button aria-haspopup="menu" aria-controls="my-menu" aria-expanded="false"
+    >Open menu</button>
   <div role="menu" hidden id="my-menu">
     <a role="menuitem">View</a>
     <a role="menuitem">Edit</a>
@@ -71,9 +80,12 @@ To get the actual behavior of an accessible menu, you can use [Missing.js &sect;
   </div>
   ~~~
 
-  <div>
+  <hr>
+
   <script type="module" src="/dist/js/menu.js"></script>
-  <button aria-haspopup="menu" aria-controls="my-menu" aria-expanded="false">Open menu</button>
+  <div>
+  <button aria-haspopup="menu" aria-controls="my-menu" aria-expanded="false"
+    >Open menu</button>
   <div role="menu" hidden id="my-menu">
     <a role="menuitem">View</a>
     <a role="menuitem">Edit</a>
@@ -92,6 +104,7 @@ To get the actual behavior of an accessible menu, you can use [Missing.js &sect;
 Use `listbox` and `option` ARIA roles. [WAI: Listbox][].
 
 <figure>
+<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Listbox markup</figcaption>
 
   ~~~ html
   <ul role="listbox" class="box flow-gap">
@@ -128,37 +141,43 @@ Any element with the `toolbar` role will have the same styles as a `.tool-bar`.
 The fiex direction will be set based on `aria-orientation`.
 
 <figure>
+<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Horizontal toolbar markup</figcaption>
 
   ~~~ html
-  <p class="tool-bar">
-    <button type="button">Cut</button>
-    <button type="button">Copy</button>
-    <button type="button">Paste</button>
+  <p role=toolbar>
+    <button type=button>Cut</button>
+    <button type=button>Copy</button>
+    <button type=button>Paste</button>
   </p>
   ~~~
 
-  <p class="tool-bar">
-    <button type="button">Cut</button>
-    <button type="button">Copy</button>
-    <button type="button">Paste</button>
+  <hr>
+
+  <p role=toolbar>
+    <button type=button>Cut</button>
+    <button type=button>Copy</button>
+    <button type=button>Paste</button>
   </p>
 
 </figure>
 
 <figure>
+<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Vertical toolbar markup</figcaption>
 
   ~~~ html
-  <p class="tool-bar" aria-orientation="vertical">
-    <button type="button">Cut</button>
-    <button type="button">Copy</button>
-    <button type="button">Paste</button>
+  <p role=toolbar aria-orientation=vertical>
+    <button type=button>Cut</button>
+    <button type=button>Copy</button>
+    <button type=button>Paste</button>
   </p>
   ~~~
 
-  <p class="tool-bar" aria-orientation="vertical">
-    <button type="button">Cut</button>
-    <button type="button">Copy</button>
-    <button type="button">Paste</button>
+  <hr>
+
+  <p role=toolbar aria-orientation=vertical>
+    <button type=button>Cut</button>
+    <button type=button>Copy</button>
+    <button type=button>Paste</button>
   </p>
 
 </figure>
@@ -166,13 +185,15 @@ The fiex direction will be set based on `aria-orientation`.
 
 ## Feed
 
-Use `feed` role with `<article/>` children  — see [WAI: Feed][]. Nested feeds are supported.
+Use `feed` role with `<article>` children  — see [WAI: Feed][]. Nested feeds are supported.
 
 To get the actual behavior of an accessible feed, you can use [Missing.js &sect; Feed](/docs/js#feed).
 
 <figure>
+<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Feed markup</figcaption>
 
   ~~~ html
+  <script type="module" src="/dist/js/feed.js"></script>
   <div role="feed">
     <article class="box" aria-labelledby="article-1-label">
       <h2 id="article-1-label">Article Title 1</h2>
@@ -184,6 +205,8 @@ To get the actual behavior of an accessible feed, you can use [Missing.js &sect;
     </article>
   </div>
   ~~~
+
+  <hr>
 
   <div>
   <script type="module" src="/dist/js/feed.js"></script>
