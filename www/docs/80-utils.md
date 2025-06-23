@@ -120,7 +120,7 @@ You can set `--density` yourself in inline styles or your own CSS:
       rgba(42, 123, 155, 1) 0%,
       rgba(87, 199, 133, 1) 50%,
       rgba(237, 221, 83, 1) 100%
-    ); /* Note: must use the `background-image` property, not just `background`
+    ); /* Note: must use the `background-image` property, not just `background` */
 
     --stroke-width: 2px;
     --stroke-color: black;
