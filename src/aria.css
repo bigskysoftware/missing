@@ -10,9 +10,9 @@
 
 	font-family: var(--secondary-font);
     
-    padding: 0 calc(var(--rhythm) / 4);
+    padding: 0 calc(var(--rhythm, 1rlh) / 4);
     margin: 0;
-    min-height: var(--rhythm);
+    min-height: var(--rhythm, 1rlh);
     bottom: -1px;
     position: relative;
     
@@ -175,7 +175,7 @@ input[type=checkbox][role=switch] {
     margin-block-end: auto;
   }
   &:not(label > *) {
-    padding-block: calc(var(--gap) / 4 + (var(--rhythm) - 1em) / 2);
+    padding-block: calc(var(--gap) / 4 + (var(--rhythm, 1rlh) - 1em) / 2);
   }
 
   :is(label:has(> &)) {

@@ -132,12 +132,12 @@ details,
 	font-family: var(--secondary-font);
     border: 1px solid var(--accent);
     background: var(--box-bg);
-    border-radius: calc(var(--rhythm) / 2);
-    padding-inline: calc(var(--rhythm) / 2);
+    border-radius: calc(var(--rhythm, 1rlh) / 2);
+    padding-inline: calc(var(--rhythm, 1rlh) / 2);
 }
 
 .navbar {
-	padding: var(--rhythm);
+	padding: var(--rhythm, 1rlh);
 
 	font-family: var(--secondary-font);
 
@@ -184,7 +184,7 @@ details,
 	& nav ul[role="list"] {
 		display: flex;
 		flex-flow: row;
-		gap: var(--rhythm);
+		gap: var(--rhythm, 1rlh);
 		
 		& * { flex-shrink: 0 }
 	}
@@ -240,7 +240,7 @@ button.iconbutton {
 	color: currentcolor;
 	padding: 0;
 	box-shadow: none;
-	line-height: var(--rhythm);
+	line-height: var(--rhythm, 1rlh);
 	font-size: 24px;
 	width: 24px;
 	height: 24px;
