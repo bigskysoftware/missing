@@ -98,11 +98,70 @@ You can set `--density` yourself in inline styles or your own CSS:
 <dfn>`.massivetext`</dfn>
 :   Makes the font size really big. Scales based on line length.
 
+<dfn>`.background-clip:text`</dfn>
+:   Clips the background to the foreground text. <strong class="info color">Note:</strong> You must specify the background using either the `background-color` or `background-image` properties; using the short-hand `background` property will result in overwriting the `background-clip` property set by the class.
+
+<dfn>`.text-stroke`</dfn>
+:   Adds a stroke to the text, dictated by the `--stroke-width` and `--stroke-color` variables. By default, `--stroke-color` attempts to calculate a color with sufficient contrast to the `currentcolor` of the text, but you might need to set it explicitly. <strong class="warn color">Warning:</strong> Due to the current browser implementation of `-webkit-text-stroke`, the resulting effect is highly dependent on the particular font used.
+
 <dfn>`.aestheticbreak`</dfn>
 :   A line break added for aesthetic purposes. Usage: `<span class="aestheticbreak"></span>`{.language-html}
 
 <dfn>`.list-of-links`</dfn>
 :   Removes underlines from all links inside an element -- sometimes advisable for lists of links.
+
+<figure>
+<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Background clip</figcaption>
+
+  ~~~ css
+  .gradient {
+    background-image: linear-gradient(
+      90deg,
+      rgba(42, 123, 155, 1) 0%,
+      rgba(87, 199, 133, 1) 50%,
+      rgba(237, 221, 83, 1) 100%
+    ); /* Note: must use the `background-image` property, not just `background`
+
+    --stroke-width: 2px;
+    --stroke-color: black;
+  }
+  ~~~
+  ~~~ html
+  <div class="packed" style="color: var(--bg); --display-font: Georgia">
+    <h2 class="massivetext text-stroke background-clip:text gradient display-font">
+      Serif stroke
+    </h2>
+    <h2 class="massivetext text-stroke background-clip:text gradient mono-font">
+      Mono stroke
+    </h2>
+  </div>
+  ~~~
+
+  <hr>
+
+  <style>
+    .gradient {
+      background-image: linear-gradient(
+        90deg,
+        rgba(42, 123, 155, 1) 0%,
+        rgba(87, 199, 133, 1) 50%,
+        rgba(237, 221, 83, 1) 100%
+      );
+      --stroke-width: 2px;
+      --stroke-color: black;
+    }
+  </style>
+  <div class="packed" style="color: var(--bg); --display-font: Georgia">
+    <h2 class="massivetext text-stroke background-clip:text gradient display-font">
+      Serif stroke
+    </h2>
+    <h2 class="massivetext text-stroke background-clip:text gradient mono-font">
+      Mono stroke
+    </h2>
+  </div>
+
+
+</figure>
 
 
 ## Masquerades

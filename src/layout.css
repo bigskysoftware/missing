@@ -15,6 +15,8 @@
     display: grid;
     place-items: center;
 }
+.align-content\:center { align-content: center }
+.align-content\:end    { align-content: end    }
 
 /**/
 
@@ -159,5 +161,6 @@
 .float\:left  { float: left  }
 .float\:right { float: right }
 
-.overflow\:auto { overflow: auto }
+.overflow\:auto   { overflow: auto   }
 .overflow\:scroll { overflow: scroll }
+.overflow\:clip   { overflow: clip   }

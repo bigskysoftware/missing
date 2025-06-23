@@ -12,9 +12,14 @@ Mechanisms of creating layouts.
 
 ## Centering
 
-An element with class <dfn>`.center`</dfn> centers a single child element using `display: grid; place-items: center`{.lang-css}.
-
 <dfn>`.text-align:center`</dfn> center-aligns text.
+
+~~An element with class <dfn>`.center`</dfn> centers a single child element using `display: grid; place-items: center`{.lang-css}.~~
+<strong class="bad color">Depreciated:</strong> Now that `align-content` works in flex, grid, and regular block containers, we recommend using the following new utility classes:
+
+<dfn>`.align-content:center`</dfn> aligns content in the center of the alignment container.
+
+<dfn>`.align-content:end`</dfn> aligns content against the end edge of the alignment container.
 
 
 ## Text Columns
@@ -168,6 +173,9 @@ Set the `overflow` property with these utility classes:
 
 <dfn>`.overflow:scroll`</dfn>
 :   Always show scrollbars   
+
+<dfn>`.overflow:clip`</dfn>
+:   Overflow content is clipped at the element's padding box. Can be extended using the `overflow-clip-margin` property.
 
 
 ## Pseudo-tables
