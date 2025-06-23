@@ -133,17 +133,55 @@ The following classes can be used to make one element look like another:
 
 ## Theme selection
 
-Missing.css, by default applies a light or dark theme based on `prefers-color-scheme`.
-To customize the theme independently of the `prefers-color-scheme` you can use
-the following classes:
+By default, missing.css applies a light or dark theme based on the visitor's OS settings.
+To customize the theme independently of `prefers-color-scheme` you can use the following:
 
 ### Dark theme
 
-Add the <dfn>`.-dark-theme`</dfn> class to your root element to use the dark theme.
+~~Add the <dfn>`.-dark-theme`</dfn> class to your root element to use the dark theme.~~ <strong class="bad color">Depreciated:</strong> Will be removed in version 2.0. Use `<meta name=color-scheme content=dark>` instead.
 
 ### No dark theme
 
-Add the <dfn>`.-no-dark-theme`</dfn> class to your root element to use the light theme.
+~~Add the <dfn>`.-no-dark-theme`</dfn> class to your root element to use the light theme.~~ <strong class="bad color">Depreciated:</strong> Will be removed in version 2.0. Use `<meta name=color-scheme content=light>` instead.
+
+<figure>
+<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Theme toggle markup</figcaption>
+
+  ~~~ css
+  :root:has([name=theme][value=light]:checked) { color-scheme: light      }
+  :root:has([name=theme][value=dark]:checked)  { color-scheme: dark       }
+  :root:has([name=theme][value=auto]:checked)  { color-scheme: light dark }
+  ~~~
+
+  ~~~ html
+  <fieldset>
+    <legend>Select theme</legend>
+    <div>
+    <div><label><input type=radio name=theme value=light> Light</label></div>
+    <div><label><input type=radio name=theme value=dark> Dark</label></div>
+    <div><label><input type=radio name=theme value=auto> Auto</label></div>
+    </div>
+  </fieldset>
+  ~~~
+
+  <hr>
+
+  <style>
+    :root:has([name=theme][value=light]:checked) { color-scheme: light      }
+    :root:has([name=theme][value=dark]:checked)  { color-scheme: dark       }
+    :root:has([name=theme][value=auto]:checked)  { color-scheme: light dark }
+  </style>
+  <fieldset>
+    <legend>Select theme</legend>
+    <div>
+    <div><label><input type=radio name=theme value=light> Light</label></div>
+    <div><label><input type=radio name=theme value=dark> Dark</label></div>
+    <div><label><input type=radio name=theme value=auto> Auto</label></div>
+    </div>
+  </fieldset>
+
+</figure>
+
 
 ## Reset
 

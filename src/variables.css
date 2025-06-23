@@ -1,38 +1,38 @@
-
 :root {
 	/* Colors */
-	--fg: var(--gray-12); /* Text. */
-	--muted-fg: var(--gray-10); /* Secondary text color. Will be
+	--fg: light-dark(var(--gray-12), var(--gray-0)); /* Text. */
+	--muted-fg: light-dark(var(--gray-10), var(--gray-2)); /* Secondary text color. Will be
 		used with a background of --c-bg and --c-bg-2 -- check contrast! */
-	--faded-fg: var(--gray-6); /* Disabled text color. */
+	--faded-fg: light-dark(var(--gray-6), var(--gray-7)); /* Disabled text color. */
 	--graphical-fg: var(--plain-graphical-fg); /* Graphical elements. Will not
 		be used as a text color. */
 	
-	--plain-fg: var(--blue-10);
-	--info-fg: var(--blue-11);
-	--ok-fg: var(--green-11);
-	--bad-fg: var(--red-11);
-	--warn-fg: var(--yellow-11);
+	--plain-fg: light-dark(var(--blue-10), var(--blue-2)); /* TODO: is blue-10 a typo? */
+	--info-fg: light-dark(var(--blue-11), var(--blue-2));
+	--ok-fg: light-dark(var(--green-11), var(--green-2));
+	--bad-fg: light-dark(var(--red-11), var(--red-2));
+	--warn-fg: light-dark(var(--yellow-11), var(--yellow-2));
 
-	--plain-graphical-fg: var(--gray-6);
-	--info-graphical-fg: var(--blue-6);
-	--ok-graphical-fg: var(--green-6);
-	--bad-graphical-fg: var(--red-6);
-	--warn-graphical-fg: var(--yellow-6);
+	--plain-graphical-fg: light-dark(var(--gray-6), var(--blue-6));
+	--info-graphical-fg: light-dark(var(--blue-6), var(--blue-6));
+	--ok-graphical-fg: light-dark(var(--green-6), var(--green-6));
+	--bad-graphical-fg: light-dark(var(--red-6), var(--red-6));
+	--warn-graphical-fg: light-dark(var(--yellow-6), var(--yellow-6));
 	
-	--bg: var(--gray-0); /* Page background. */
-	--box-bg: var(--plain-bg); /* Background for blocks: cards, admonitions etc. */
-	--interactive-bg: var(--gray-4); /* Background for interactive elements */
+	--bg: light-dark(var(--gray-0), var(--gray-12)); /* Page background. */
+  /* TODO: Should box-bg both be --plain-bg? */
+	--box-bg: light-dark(var(--plain-bg), var(--gray-10)); /* Background for blocks: cards, admonitions etc. */
+	--interactive-bg: light-dark(var(--gray-4), var(--gray-8)); /* Background for interactive elements */
 
-	--plain-bg: var(--gray-1);
-	--info-bg: var(--blue-1);
-	--ok-bg: var(--green-1);
-	--bad-bg: var(--red-1);
-	--warn-bg: var(--yellow-1);
+	--plain-bg: light-dark(var(--gray-1), var(--gray-11));
+	--info-bg: light-dark(var(--blue-1), var(--blue-12));
+	--ok-bg: light-dark(var(--green-1), var(--green-12));
+	--bad-bg: light-dark(var(--red-1), var(--red-12));
+	--warn-bg: light-dark(var(--yellow-1), var(--yellow-12));
 
-	--accent: var(--blue-10); /* Accent color. Will be used *as a text color* with a
+	--accent: light-dark(var(--blue-10), var(--blue-2)); /* Accent color. Will be used *as a text color* with a
 		background of --c-bg and --c-bg-2 -- check contrast! */
-	--muted-accent: var(--blue-7); /* Muted accent color. Will not be used for text. */
+	--muted-accent: light-dark(var(--blue-7), var(--blue-5)); /* Muted accent color. Will not be used for text. */
 
 	/* Lengths */
 	--rhythm: 1.4rem; /* Vertical rhythm, line height. */
@@ -71,64 +71,11 @@
 			) / 2);                      /* Divide by 2: there are two page margins */
 }
 
-/* Enable dark theme independently of os preferences*/
-:root.-dark-theme {
-	--fg: var(--gray-0);
-	--muted-fg: var(--gray-2);
-	--faded-fg: var(--gray-7);
-	--plain-bg: var(--gray-11);
-	--info-bg: var(--blue-12);
-	--ok-bg: var(--green-12);
-	--bad-bg: var(--red-12);
-	--warn-bg: var(--yellow-12);
-	--plain-graphical-fg: var(--blue-6);
-	--info-graphical-fg: var(--blue-6);
-	--ok-graphical-fg: var(--green-6);
-	--bad-graphical-fg: var(--red-6);
-	--warn-graphical-fg: var(--yellow-6);
-	--bg: var(--gray-12);
-	--box-bg: var(--gray-10);
-	--interactive-bg: var(--gray-8);
-	--plain-fg: var(--blue-2);
-	--info-fg: var(--blue-2);
-	--ok-fg: var(--green-2);
-	--bad-fg: var(--red-2);
-	--warn-fg: var(--yellow-2);
-	--accent: var(--blue-2);
-	--muted-accent: var(--blue-5)
-}
-
-@media (prefers-color-scheme: dark) {
-    :root:not(.-no-dark-theme) {
-    	--fg: var(--gray-0);
-    	--muted-fg: var(--gray-2);
-    	--faded-fg: var(--gray-7);
-
-		--plain-bg: var(--gray-11);
-    	--info-bg: var(--blue-12);
-    	--ok-bg: var(--green-12);
-    	--bad-bg: var(--red-12);
-    	--warn-bg: var(--yellow-12);
-
-		--plain-graphical-fg: var(--blue-6);
-		--info-graphical-fg: var(--blue-6);
-		--ok-graphical-fg: var(--green-6);
-		--bad-graphical-fg: var(--red-6);
-		--warn-graphical-fg: var(--yellow-6);
-
-    	--bg: var(--gray-12);
-    	--box-bg: var(--gray-10);
-    	--interactive-bg: var(--gray-8);
-
-		--plain-fg: var(--blue-2);
-    	--info-fg: var(--blue-2);
-    	--ok-fg: var(--green-2);
-    	--bad-fg: var(--red-2);
-    	--warn-fg: var(--yellow-2);
-
-    	--accent: var(--blue-2);
-    	--muted-accent: var(--blue-5);
-    }
+/* Respect the depreciated .-dark-theme and .-no-dark-theme classes */
+:root:not(:has(meta[name=color-scheme])) {
+  &.-dark-theme    { color-scheme: dark  }
+  &.-no-dark-theme { color-scheme: light }
+  &:not(.-dark-theme, .-no-dark-theme) { color-scheme: light dark }
 }
 
 * {
