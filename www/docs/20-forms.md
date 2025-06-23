@@ -43,7 +43,7 @@ The `[aria-pressed]` and `[aria-expanded]` attributes are supported.
 <figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Button markup</figcaption>
 
   ~~~ html
-  <div class="f-row">
+  <div class="flex-row">
     <button type=reset>Reset</button>
     <button formaction=dialog>Close</button>
     <button type=button onclick="this.ariaPressed = (this.ariaPressed !== 'true')"
@@ -54,7 +54,7 @@ The `[aria-pressed]` and `[aria-expanded]` attributes are supported.
 
   <hr>
 
-  <div class="f-row">
+  <div class="flex-row">
     <button type=reset>Reset</button>
     <button formaction=dialog>Close</button>
     <button type=button onclick="this.ariaPressed = (this.ariaPressed !== 'true')"

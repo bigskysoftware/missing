@@ -150,8 +150,8 @@ in the documentation for their respective class or component.
 
 ## Component-specific variables
 
-<dfn>`--f-switch-threshold`</dfn> {#var-f-switch-threshold}
-:   Sets the threshold at which `.f-switch` switches from row to column. Default is `15ch`.
+<dfn>`--flex-switch-threshold`</dfn> {#var-flex-switch-threshold}
+:   Sets the threshold at which `.flex-switch` switches from row to column. Default is `15ch`.
 
 <dfn>`--col-width`</dfn> {#var-col-width}
 :   Sets the width of a column for `.textcolumns`. Default is `30ch`.

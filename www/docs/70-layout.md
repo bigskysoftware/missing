@@ -77,7 +77,7 @@ some elements:
   <p>The following is a big paragraph:
   <p class=big>The following is a big button:
 
-  <div class="f-row align-items:center">
+  <div class="flex-row align-items:center">
     <button class=big>Buy</button>
     <button>Maybe later</button>
   </div>
@@ -92,7 +92,7 @@ some elements:
   <p>The following is a big paragraph:
   <p class=big>The following is a big button:
 
-  <div class="f-row align-items:center">
+  <div class="flex-row align-items:center">
     <button class=big>Buy</button>
     <button>Maybe later</button>
   </div>
@@ -113,7 +113,7 @@ The <dfn>`.nested-list`</dfn> class removes extraneous margins in nested lists.
 <figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Nested lists</figcaption>
 
   ~~~html
-  <div class="f-switch">
+  <div class="flex-switch">
     <div>
       <strong>Regular list</strong>
       <ul><li>Items
@@ -138,7 +138,7 @@ The <dfn>`.nested-list`</dfn> class removes extraneous margins in nested lists.
   </div>
   ~~~
 
-  <div class="f-switch">
+  <div class="flex-switch">
     <div>
       <strong>Regular list</strong>
       <ul><li>Items

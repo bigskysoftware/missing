@@ -90,7 +90,7 @@ You can set `--density` yourself in inline styles or your own CSS:
 :   Renders the text in the main font (`--main-font`).
 
 <dfn>~~`.primary-font`~~</dfn>
-:   <strong class="bad color">Depreciated:</strong> Use `.main-font` instead. Will be removed in version 2.0.
+:   **Deprecated:{.bad .color} Will be removed in version 2.0. Use `.main-font` instead.
 
 <dfn>`.secondary-font`</dfn>
 :   Renders the text in the secondary font (`--secondary-font`).
@@ -156,7 +156,7 @@ the following classes:
 ~~Use the <dfn>`.all:initial`</dfn> class to reset all CSS properties on an
 element and return it to its browser-default styles.~~
 
-**Depreciated:**{.color .bad} This class has been depreciated and will be removed in version 2.0.
+**Deprecated:**{.bad .color} Will be removed in version 2.0.
 
 
 
