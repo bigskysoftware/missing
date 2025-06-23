@@ -36,7 +36,8 @@ aside {
 	line-height: calc(var(--rhythm, 1rlh) * 2 / 3);
 	--gap: calc(var(--rhythm, 1rlh) * var(--density) * 2 / 3);
 
-	border-block: 1px solid var(--graphical-fg);
+	border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--graphical-fg);
+	border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--graphical-fg);
 	padding-block: var(--gap);
 	margin-block: calc(var(--gap) * 3 / 2);
 
@@ -55,11 +56,11 @@ aside {
 		letter-spacing: none;
 	}
 
-	&.big {
+	&:is(.big, .\<big\>) {
 		/* Pull quote */
 		background: none;
 		border: none;
-		border-inline-start: 1px solid var(--muted-fg);
+		border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) var(--muted-fg);
 		border-radius: 0;
 		padding: 0;
 		padding-inline-start: var(--rhythm, 1rlh);
@@ -138,14 +139,14 @@ h6:target {
 
 header {
 	font-family: var(--display-font);
-	border-block-end: 1px solid var(--graphical-fg);
+	border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--graphical-fg);
 }
 
 footer {
 	font-family: var(--secondary-font);
 	font-size: .8em;
 	line-height: calc(var(--rhythm, 1rlh) * 2 / 3);
-	border-block-start: 1px solid var(--graphical-fg);
+	border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--graphical-fg);
 }
 
 body > header,
@@ -173,9 +174,9 @@ hr {
 	margin-block: var(--gap);
 	
 	flex: 0 1 0px;
-	border-inline-start: 1px solid var(--accent);
+	border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) var(--accent);
 	block-size: auto;
-	border-block-start: 1px solid var(--accent);
+	border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--accent);
 	border-block-end: none;
 	border-inline-end: none;
 }
@@ -202,7 +203,7 @@ blockquote {
 	line-height: var(--rhythm, 1rlh);
 	font-style: italic;
 
-	border-inline-start: 1px solid var(--graphical-fg);
+	border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) var(--graphical-fg);
 	color: var(--muted-fg);
 
 	& em, & cite, & dfn, & var, & i, & address {
@@ -285,7 +286,7 @@ main {
 
 a, .\<a\> {
 	color: var(--link-fg, var(--accent));
-	border-radius: var(--border-radius);
+	border-radius: var(--interactive-border-radius);
 	outline-offset: 1px;
 	background: none;
 	border: none;
@@ -323,12 +324,15 @@ small[role="note"] {
 	font-family: var(--secondary-font);
 
 	background: var(--bg);
-	border: 1px solid transparent;
+	border-block-start: var(--border-block-start-width) var(--border-block-start-style) transparent;
+	border-block-end: var(--border-block-end-width) var(--border-block-end-style) transparent;
+	border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) transparent;
+	border-inline-end: var(--border-inline-end-width) var(--border-inline-end-style) transparent;
 
 	transition: transform .1s ease-in-out;
 
 	&:hover, &:focus-within {
-		border: 1px solid var(--graphical-fg);
+		border-color: var(--graphical-fg);
 		border-radius: var(--border-radius);
 		transform: translateX(calc(
 			0px - var(--sidenote-width)
@@ -388,7 +392,7 @@ kbd kbd /*
 	background: var(--interactive-bg);
 	border: 1px outset var(--graphical-fg);
 	border-block-end-width: 3px;
-	border-radius: var(--border-radius);
+	border-radius: var(--interactive-border-radius);
 }
 
 sub {
@@ -445,7 +449,8 @@ caption {
 }
 
 tbody {
-	border-block: 1px solid var(--faded-fg);
+	border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--faded-fg);
+	border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--faded-fg);
 }
 
 thead {
@@ -504,9 +509,9 @@ input::file-selector-button {
 
 	background: var(--interactive-bg);
 	color: var(--fg);
-	border: 1px solid var(--muted-fg);
-	box-shadow: 0 2px 4px -2px var(--fg);
-	border-radius: var(--border-radius);
+	border: var(--interactive-border-width) var(--interactive-border-style) var(--muted-fg);
+	box-shadow: var(--shadow);
+	border-radius: var(--interactive-border-radius);
 
 	/* a-specific resets */
 	color: var(--fg);
@@ -518,14 +523,14 @@ input::file-selector-button {
 
 	&:hover, &:focus-visible {
 		filter: brightness(1.1);
-		box-shadow: 0 3px 6px -2px var(--fg);
+		box-shadow: var(--shadow-focus);
 
 		/* a-specific resets */
 		text-decoration: none;
 	}
 
 	&:active {
-		box-shadow: none;
+		box-shadow: var(--shadow-active);
 	}
 }
 
@@ -563,19 +568,19 @@ strong > input:disabled::file-selector-button {
 ):not(.\<a\>) {
 	&:active:is([aria-pressed], [aria-expanded]) {
 		color: var(--accent);
-		box-shadow: 0 1px 5px -1px var(--fg) inset;
+		box-shadow: var(--shadow-pressed-active);
 	}
 
 	&:where([aria-pressed="true"], [aria-expanded="true"]) {
-		box-shadow: 0 2px 4px -1px var(--fg) inset;
+		box-shadow: var(--shadow-pressed);
 		background: var(--pressed-interactive-bg);
 		color: var(--accent);
 		&:hover, &:focus-visible {
-			box-shadow: 0 1px 3px -1px var(--fg) inset;
+			box-shadow: var(--shadow-pressed-focus);
 		}
 	}
 
-	&.big {
+	&:is(.big, .\<big\>) {
 		min-block-size: calc(1.5 * var(--rhythm, 1rlh));
 		font-size: 1rem;
 		padding-inline: calc(.5 * var(--rhythm, 1rlh));
@@ -584,7 +589,7 @@ strong > input:disabled::file-selector-button {
 
 	&:disabled {
 		color: var(--muted-fg);
-		box-shadow: none;
+		box-shadow: var(--shadow-disabled);
 	}
 }
 
@@ -613,13 +618,13 @@ textarea {
 
 	background: var(--bg);
 	color: var(--fg);
-	border: 1px solid var(--graphical-fg);
-	border-radius: var(--border-radius);
+	border: var(--interactive-border-width) var(--interactive-border-style) var(--graphical-fg);
+	border-radius: var(--interactive-border-radius);
 
 	vertical-align: top;
 
 	&:focus-visible {
-		border: 1px solid var(--accent);
+		border: var(--interactive-border-width) var(--interactive-border-style) var(--accent);
 	}
 
 	&::placeholder {
@@ -685,7 +690,11 @@ fieldset {
 
 	& > legend + * { margin-block-start: 0 }
 
-	border: 1px solid var(--graphical-fg);
+  border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--graphical-fg);
+  border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--graphical-fg);
+  border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) var(--graphical-fg);
+  border-inline-end: var(--border-inline-end-width) var(--border-inline-end-style) var(--graphical-fg);
+
 }
 /***
  4.11 Interactive elements

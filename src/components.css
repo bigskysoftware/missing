@@ -13,7 +13,10 @@ details,
     
     border-radius: var(--border-radius);
     background: var(--box-bg);
-    border: 1px solid var(--graphical-fg);
+    border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--graphical-fg);
+    border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--graphical-fg);
+    border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) var(--graphical-fg);
+    border-inline-end: var(--border-inline-end-width) var(--border-inline-end-style) var(--graphical-fg);
 }
 
 .titlebar {
@@ -25,13 +28,11 @@ details,
 	font-family: var(--secondary-font);
     font-weight: bold;
 	
-    translate: 0 calc(-1px - var(--gap));
+    translate: 0 calc(0px - var(--gap));
 	
     background: var(--graphical-fg);
     color: var(--bg);
 	text-shadow: 0 .1em .2em var(--fg);
-	border-bottom: 1px solid;
-	border-bottom-color: inherit;
 }
 
 .sub-title, sub-title {
@@ -130,7 +131,7 @@ details,
 
 .chip, chip {
 	font-family: var(--secondary-font);
-    border: 1px solid var(--accent);
+    border: var(--border-width) var(--border-style) var(--accent);
     background: var(--box-bg);
     border-radius: calc(var(--rhythm, 1rlh) / 2);
     padding-inline: calc(var(--rhythm, 1rlh) / 2);
@@ -142,7 +143,7 @@ details,
 	font-family: var(--secondary-font);
 
 	background: var(--box-bg);
-	border-block-end: 1px solid var(--accent);
+	border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--accent);
 
 	overflow-x: auto;
 	scrollbar-width: thin;
@@ -251,7 +252,7 @@ button.iconbutton {
 
 	&:hover, &:focus-visible {
 		box-shadow: none;
-		outline: 1px solid var(--accent);
+		outline: var(--interactive-border-width) var(--interactive-border-style) var(--accent);
 		outline-offset: 6px;
 	}
 
