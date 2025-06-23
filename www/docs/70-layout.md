@@ -14,12 +14,10 @@ Mechanisms of creating layouts.
 
 <dfn>`.text-align:center`</dfn> center-aligns text.
 
-~~An element with class <dfn>`.center`</dfn> centers a single child element using `display: grid; place-items: center`{.lang-css}.~~
-**Deprecated:**{.bad .color} Will be removed in version 2.0. Now that `align-content` works in flex, grid, and regular block containers, we recommend using the following new utility classes:
+An element with class <dfn>`.center`</dfn> centers a single child element using `display: grid; place-items: center`{.lang-css}.
 
-<dfn>`.align-content:center`</dfn> aligns content in the center of the alignment container.
-
-<dfn>`.align-content:end`</dfn> aligns content against the end edge of the alignment container.
+<dfn>`.align-content:center`</dfn> vertically aligns content in the center of the alignment container. Flexbox no longer required!
+We also provide <dfn>`.align-content:end`</dfn>.
 
 
 ## Text Columns
@@ -49,7 +47,8 @@ The <dfn>`.fullscreen`</dfn> class will size an element to fill the screen.
 Add some padding with <dfn>`.padding`</dfn>, or a margin with
 <dfn>`.margin`</dfn>.
 
-Add padding or margin in specific axes with these classes:
+Add padding or margin in specific axes with these classes.
+The amount of margin or padding is determined by the [density utilities][].
 
  - <dfn>`.margin`</dfn>
  - <dfn>`.margin-inline`</dfn>
@@ -65,6 +64,16 @@ Add padding or margin in specific axes with these classes:
  - <dfn>`.padding-block`</dfn>
  - <dfn>`.padding-block-start`</dfn>
  - <dfn>`.padding-block-end`</dfn>
+{.textcolumns}
+
+Automatic margin is provided with the following:
+
+ - <dfn>`.margin-inline:auto`</dfn>
+ - <dfn>`.margin-inline-start:auto`</dfn>
+ - <dfn>`.margin-inline-end:auto`</dfn>
+ - <dfn>`.margin-block:auto`</dfn>
+ - <dfn>`.margin-block-start:auto`</dfn>
+ - <dfn>`.margin-block-end:auto`</dfn>
 {.textcolumns}
 
 To remove padding or margin, use one of the following classes:
@@ -87,6 +96,8 @@ To remove padding or margin, use one of the following classes:
 
 Make an element full-width with the <dfn>`.width:100%`</dfn> class.
 Similarly with <dfn>`.height:100%`</dfn>.
+
+[density utilities]: /docs/utils/#density
 
 
 ## Border utilities
@@ -234,4 +245,3 @@ The <dfn>`.table`</dfn> class makes an element act like a table for the purposes
 
 <dfn>`.float:right`</dfn>
 :   Set `float: right`.
-
