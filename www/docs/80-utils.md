@@ -177,18 +177,50 @@ The following classes can be used to make one element look like another:
  - <dfn>`.<button>`</dfn>
  - <dfn>`.<a>`</dfn>
  - <dfn>`.<small>`</dfn>
+ - <dfn>`.<big>`</dfn>
  {role="list" .tool-bar}
 
+To get a smaller font size, use the `.<small>` masquerade.
+
+The <dfn>`.<big>`</dfn> class makes things bigger, with special treatment for some elements.
+<strong class="bad color">Deprecated:</strong> We have converted our `.big` class to a masquerade in honor of W3C deprecating the `<big>` HTML tag.
+The <dfn>`.big`</dfn> class will be removed in version 2.0.
+
 <figure>
+<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></subtitle>Masquerade markups</figcaption>
 
   ~~~ html
-  <a class="<button>" href="/cta">Call to action</a>
+  <p>This is a paragraph.</p>
+  <p class="<big>">This is a big paragraph.</p>
+ 
+  <div class="f-row align-items:center">
+    <button class="<big>">Big Button</button>
+    <a class="<button>" href="#">&lt;a&gt; Button</a>
+  </div>
+  
+  <aside class="<big>">
+    An `<aside>` with the `.<big>` class becomes a pull quote.
+  </aside>
   ~~~
 
-  <p><a class="<button>" href="#">Call to action</a>
+  <hr>
 
+  <p>This is a paragraph</p>
+  <p class="<big>">This is a big paragraph</p>
+ 
+  <div class="f-row align-items:center">
+    <button class="<big>">Big Button</button>
+    <a class="<button>" href="#">&lt;a&gt; Button</a>
+  </div>
+  
+  <aside class="<big>">
+
+    An `<aside>` with the `.<big>` class becomes a pull quote.
+
+  </aside>
 
 </figure>
+
 
 ## Theme selection
 

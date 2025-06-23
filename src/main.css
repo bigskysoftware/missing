@@ -56,7 +56,7 @@ aside {
 		letter-spacing: none;
 	}
 
-	&.big {
+	&:is(.big, .\<big\>) {
 		/* Pull quote */
 		background: none;
 		border: none;
@@ -580,7 +580,7 @@ strong > input:disabled::file-selector-button {
 		}
 	}
 
-	&.big {
+	&:is(.big, .\<big\>) {
 		min-block-size: calc(1.5 * var(--rhythm));
 		font-size: 1rem;
 		padding-inline: calc(.5 * var(--rhythm));

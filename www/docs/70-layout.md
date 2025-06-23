@@ -112,31 +112,6 @@ Borders can be removed by using <dfn>`.border:none`</dfn> or one of the followin
 {.textcolumns}
 
 
-* * *
-
-The <dfn>`.big`</dfn> class makes things bigger, with special treatment for
-some elements:
-
-<figure>
-
-The following is a big paragraph:
-
-The following is a big button: {.big}
-
-<button class="big">Buy</button>
-<button>Maybe later</button>
-{.f-row .align-items:center}
-
-<aside class="big">
-
-An `<aside>` with the `.big` class becomes a pull quote.
-
-</aside>
-
-</figure>
-
-To get a smaller font size, use the `.<small>` masquerade.
-
 ***
 
 The <dfn>`.nested-list`</dfn> class removes extraneous margins in nested lists.
