@@ -15,7 +15,7 @@ Mechanisms of creating layouts.
 <dfn>`.text-align:center`</dfn> center-aligns text.
 
 ~~An element with class <dfn>`.center`</dfn> centers a single child element using `display: grid; place-items: center`{.lang-css}.~~
-<strong class="bad color">Depreciated:</strong> Now that `align-content` works in flex, grid, and regular block containers, we recommend using the following new utility classes:
+**Deprecated:**{.bad .color} Will be removed in version 2.0. Now that `align-content` works in flex, grid, and regular block containers, we recommend using the following new utility classes:
 
 <dfn>`.align-content:center`</dfn> aligns content in the center of the alignment container.
 
