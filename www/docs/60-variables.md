@@ -99,7 +99,7 @@ classes; these will be listed in the documentation for that class.
 ## Lengths
 
 <dfn>~~`--rhythm`~~</dfn> {#var-rhythm}
-:   ~~Vertical rhythm, line height.~~ <strong class="bad color">Depreciated:</strong> Will be removed in version 2.0. Set a value for the `line-height` property on the `html` element instead.
+:   ~~Vertical rhythm, line height.~~ **Deprecated:**{.bad .color} Will be removed in version 2.0. Set a value for the `line-height` property on the `html` element instead.
 
 <dfn>`--line-length`</dfn> {#var-line-length}
 :   Maximum line length for prose.
