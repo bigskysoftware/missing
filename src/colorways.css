@@ -63,3 +63,11 @@
 .border-inline-end {
   border-inline-end: var(--border-inline-end-width) var(--border-inline-end-style) var(--graphical-fg);
 }
+
+.border\:none { border: none }
+.border-block\:none { border-block: none }
+.border-block-start\:none { border-block-start: none }
+.border-block-end\:none { border-block-end: none }
+.border-inline\:none { border-inline: none }
+.border-inline-start\:none { border-inline-start: none }
+.border-inline-end\:none { border-inline-end: none }

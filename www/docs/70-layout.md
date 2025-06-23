@@ -67,7 +67,23 @@ Add padding or margin in specific axes with these classes:
  - <dfn>`.padding-block-end`</dfn>
 {.textcolumns}
 
-To remove margin or padding, we recommend setting it directly using the `style` attribute: `style="margin-block: 0"`.
+To remove padding or margin, use one of the following classes:
+
+ - <dfn>`.margin:0`</dfn>
+ - <dfn>`.margin-inline:0`</dfn>
+ - <dfn>`.margin-inline-start:0`</dfn>
+ - <dfn>`.margin-inline-end:0`</dfn>
+ - <dfn>`.margin-block:0`</dfn>
+ - <dfn>`.margin-block-start:0`</dfn>
+ - <dfn>`.margin-block-end:0`</dfn>
+ - <dfn>`.padding:0`</dfn>
+ - <dfn>`.padding-inline:0`</dfn>
+ - <dfn>`.padding-inline-start:0`</dfn>
+ - <dfn>`.padding-inline-end:0`</dfn>
+ - <dfn>`.padding-block:0`</dfn>
+ - <dfn>`.padding-block-start:0`</dfn>
+ - <dfn>`.padding-block-end:0`</dfn>
+{.textcolumns}
 
 Make an element full-width with the <dfn>`.width:100%`</dfn> class.
 Similarly with <dfn>`.height:100%`</dfn>.
@@ -85,7 +101,16 @@ Add a border with <dfn>`.border`</dfn>; you can target specific axes with these 
  - <dfn>`.border-block-end`</dfn>
 {.textcolumns}
 
-As with margin and padding, we recommend removing borders using the `style` attribute: `style="border-block: none"`.
+Borders can be removed by using <dfn>`.border:none`</dfn> or one of the following classes:
+
+ - <dfn>`.border-inline:none`</dfn>
+ - <dfn>`.border-inline-start:none`</dfn>
+ - <dfn>`.border-inline-end:none`</dfn>
+ - <dfn>`.border-block:none`</dfn>
+ - <dfn>`.border-block-start:none`</dfn>
+ - <dfn>`.border-block-end:none`</dfn>
+{.textcolumns}
+
 
 * * *
 

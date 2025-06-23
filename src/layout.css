@@ -91,6 +91,14 @@
 .padding-inline-start { padding-inline-start: var(--gap) }
 .padding-inline-end { padding-inline-end: var(--gap) }
 
+.padding\:0 { padding: 0 }
+.padding-block\:0 { padding-block: 0 }
+.padding-block-start\:0 { padding-block-start: 0 }
+.padding-block-end\:0 { padding-block-end: 0 }
+.padding-inline\:0 { padding-inline: 0 }
+.padding-inline-start\:0 { padding-inline-start: 0 }
+.padding-inline-end\:0 { padding-inline-end: 0 }
+
 .margin { margin: var(--gap) }
 .margin-block  { margin-block:  var(--gap) }
 .margin-block-start { margin-block-start: var(--gap) }
@@ -98,6 +106,14 @@
 .margin-inline { margin-inline: var(--gap) }
 .margin-inline-start { margin-inline-start: var(--gap) }
 .margin-inline-end { margin-inline-end: var(--gap) }
+
+.margin\:0 { margin: 0 }
+.margin-block\:0  { margin-block:  0 }
+.margin-block-start\:0 { margin-block-start: 0 }
+.margin-block-end\:0 { margin-block-end: 0 }
+.margin-inline\:0 { margin-inline: 0 }
+.margin-inline-start\:0 { margin-inline-start: 0 }
+.margin-inline-end\:0 { margin-inline-end: 0 }
 
 .flow-gap {
     & > :not(:last-child) {
