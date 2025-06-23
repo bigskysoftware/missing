@@ -7,7 +7,7 @@
 	--graphical-fg: var(--plain-graphical-fg); /* Graphical elements. Will not
 		be used as a text color. */
 	
-	--plain-fg: light-dark(var(--blue-10), var(--blue-2)); /* TODO: is blue-10 a typo? */
+	--plain-fg: light-dark(var(--blue-10), var(--blue-2));
 	--info-fg: light-dark(var(--blue-11), var(--blue-2));
 	--ok-fg: light-dark(var(--green-11), var(--green-2));
 	--bad-fg: light-dark(var(--red-11), var(--red-2));
@@ -20,7 +20,6 @@
 	--warn-graphical-fg: light-dark(var(--yellow-6), var(--yellow-6));
 	
 	--bg: light-dark(var(--gray-0), var(--gray-12)); /* Page background. */
-  /* TODO: Should box-bg both be --plain-bg? */
 	--box-bg: light-dark(var(--plain-bg), var(--gray-10)); /* Background for blocks: cards, admonitions etc. */
 	--interactive-bg: light-dark(var(--gray-4), var(--gray-8)); /* Background for interactive elements */
 
