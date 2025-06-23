@@ -9,7 +9,7 @@
 
 html {
 	font-family: var(--main-font);
-	line-height: var(--rhythm);
+	line-height: var(--rhythm, 1.4rem);
 
 	background: var(--bg);
 	color: var(--fg);
@@ -33,8 +33,8 @@ nav {
 
 aside {
 	font-size: .8em;
-	line-height: calc(var(--rhythm) * 2 / 3);
-	--gap: calc(var(--rhythm) * var(--density) * 2 / 3);
+	line-height: calc(var(--rhythm, 1rlh) * 2 / 3);
+	--gap: calc(var(--rhythm, 1rlh) * var(--density) * 2 / 3);
 
 	border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--graphical-fg);
 	border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--graphical-fg);
@@ -63,7 +63,7 @@ aside {
 		border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) var(--muted-fg);
 		border-radius: 0;
 		padding: 0;
-		padding-inline-start: var(--rhythm);
+		padding-inline-start: var(--rhythm, 1rlh);
 		font-style: italic;
 		color: var(--accent);
 	}
@@ -81,26 +81,26 @@ h1, h2, h3, h4, h5, h6,
 h1, .\<h1\> {
 	font-size: 2em;
 	text-transform: none;
-	line-height: calc(2 * var(--rhythm));
+	line-height: calc(2 * var(--rhythm, 1rlh));
 	letter-spacing: 0;
 }
 
 h2, .\<h2\> {
 	font-size: 1.6em;
 	text-transform: none;
-	line-height: calc(1.5 * var(--rhythm));
+	line-height: calc(1.5 * var(--rhythm, 1rlh));
 	letter-spacing: 0;
 }
 
 h3, .\<h3\> {
 	font-size: 1.17em;
-	line-height: calc(1 * var(--rhythm));
+	line-height: calc(1 * var(--rhythm, 1rlh));
 }
 
 h4, .\<h4\>, h5, .\<h5\>, h6, .\<h6\> {
 	font-size: 1em;
 	text-transform: none;
-	line-height: calc(1 * var(--rhythm));
+	line-height: calc(1 * var(--rhythm, 1rlh));
 	letter-spacing: 0;
 	margin-block-start: var(--gap);
 }
@@ -145,14 +145,14 @@ header {
 footer {
 	font-family: var(--secondary-font);
 	font-size: .8em;
-	line-height: calc(var(--rhythm) * 2 / 3);
+	line-height: calc(var(--rhythm, 1rlh) * 2 / 3);
 	border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--graphical-fg);
 }
 
 body > header,
 body > footer,
 main + footer {
-	padding: var(--rhythm) calc((100% - var(--eff-line-length)) / 2)
+	padding: var(--rhythm, 1rlh) calc((100% - var(--eff-line-length)) / 2)
 }
 
 address {
@@ -184,7 +184,7 @@ hr {
 pre {
 	font-family: var(--mono-font);
 	font-size: .9em;
-	line-height: var(--rhythm);
+	line-height: var(--rhythm, 1rlh);
 	tab-size: 2;
 
 	margin: var(--gap) 0;
@@ -200,7 +200,7 @@ blockquote {
 	margin-block: var(--gap);
 	
 	font-size: 1.1em;
-	line-height: var(--rhythm);
+	line-height: var(--rhythm, 1rlh);
 	font-style: italic;
 
 	border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) var(--graphical-fg);
@@ -217,7 +217,7 @@ blockquote {
 }
 
 ul, ol {
-	padding-inline-start: var(--rhythm);
+	padding-inline-start: var(--rhythm, 1rlh);
 	margin-block: var(--gap);
 
 	& & {
@@ -245,7 +245,7 @@ dl {
 	}
 
 	dd {
-		margin-inline-start: var(--rhythm);
+		margin-inline-start: var(--rhythm, 1rlh);
 	}
 
 li::marker {
@@ -319,7 +319,7 @@ small[role="note"] {
 	padding-inline: 1.5ch 1ch;
 
 	margin-inline-end: calc(1em - var(--sidenote-width));
-	margin-block-end: var(--rhythm);
+	margin-block-end: var(--rhythm, 1rlh);
 
 	font-family: var(--secondary-font);
 
@@ -343,7 +343,7 @@ small[role="note"] {
 
 small, .\<small\> {
 	font-size: .8em;
-	line-height: calc(var(--rhythm) * 2 / 3);
+	line-height: calc(var(--rhythm, 1rlh) * 2 / 3);
 }
 
 s {
@@ -467,7 +467,7 @@ td, th {
 	vertical-align: top;
 	
 	&:not(:last-child) {
-		padding-inline-end: var(--rhythm);
+		padding-inline-end: var(--rhythm, 1rlh);
 	}
 }
 
@@ -498,14 +498,14 @@ label :is(input, select):not([specificity-hack]) {
 ):not(.\<a\>),
 input::file-selector-button {
 	display: inline-block;
-	padding: 0 calc(var(--rhythm) / 4);
+	padding: 0 calc(var(--rhythm, 1rlh) / 4);
 	vertical-align: middle;
 	box-sizing: border-box;
 	
 	font-size: .8rem;
 	line-height: 1.125em;
 	font-family: var(--secondary-font);
-	min-height: var(--rhythm);
+	min-height: var(--rhythm, 1rlh);
 
 	background: var(--interactive-bg);
 	color: var(--fg);
@@ -581,10 +581,10 @@ strong > input:disabled::file-selector-button {
 	}
 
 	&:is(.big, .\<big\>) {
-		min-block-size: calc(1.5 * var(--rhythm));
+		min-block-size: calc(1.5 * var(--rhythm, 1rlh));
 		font-size: 1rem;
-		padding-inline: calc(.5 * var(--rhythm));
-		line-height: var(--rhythm);
+		padding-inline: calc(.5 * var(--rhythm, 1rlh));
+		line-height: var(--rhythm, 1rlh);
 	}
 
 	&:disabled {
@@ -609,7 +609,7 @@ input[type="datetime-local"],
 input[type="number"],
 select,
 textarea {
-	padding: calc(var(--rhythm) / 4);
+	padding: calc(var(--rhythm, 1rlh) / 4);
 	vertical-align: top;
 	
 	font-size: 1rem;
@@ -642,7 +642,7 @@ input[type="range"] {
 input[type="color"] {
 	padding: 0;
 	margin: 0;
-	height: calc(1.5 * var(--rhythm));
+	height: calc(1.5 * var(--rhythm, 1rlh));
 
 	border: none;
 	background: none;
@@ -651,7 +651,7 @@ input[type="color"] {
 input[type="file"] {
 	padding: calc(var(--gap) / 4) 0;
 	font: inherit;
-	line-height: calc(var(--rhythm) / 2);
+	line-height: calc(var(--rhythm, 1rlh) / 2);
 	&::file-selector-button {
 		margin-block: .1em 0;
 		margin-inline-end: 1ch;

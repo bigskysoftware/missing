@@ -162,7 +162,7 @@
 
 .big, .\<big\> {
     font-size: 1.4em;
-    line-height: calc(1.5 * var(--rhythm));
+    line-height: calc(1.5 * var(--rhythm, 1rlh));
 }
 
 /**/

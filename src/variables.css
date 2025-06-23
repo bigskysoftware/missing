@@ -35,7 +35,6 @@
 	--muted-accent: var(--blue-7); /* Muted accent color. Will not be used for text. */
 
 	/* Lengths */
-	--rhythm: 1.4rem; /* Vertical rhythm, line height. */
 	--line-length: 40rem; /* Maximum line length for prose. */
 
   /* Borders */
@@ -86,7 +85,7 @@
 	/* Do not set these. */
 	--eff-line-length: /* Effective line length for prose. */
 		min(
-			calc( var(--full-width) - (2 * var(--rhythm)) ),
+			calc( var(--full-width) - (2 * var(--rhythm, 1rlh)) ),
 			var(--line-length)
 		);
 
@@ -160,7 +159,7 @@
 }
 
 * {
-	--gap: calc(var(--rhythm) * var(--density));
+	--gap: calc(var(--rhythm, 1rlh) * var(--density));
 }
 
 * {
