@@ -20,8 +20,9 @@
 	--warn-graphical-fg: light-dark(var(--yellow-6), var(--yellow-6));
 	
 	--bg: light-dark(var(--gray-0), var(--gray-12)); /* Page background. */
-	--box-bg: light-dark(var(--plain-bg), var(--gray-10)); /* Background for blocks: cards, admonitions etc. */
+	--box-bg: light-dark(var(--plain-bg), var(--plain-bg)); /* Background for blocks: cards, admonitions etc. */
 	--interactive-bg: light-dark(var(--gray-4), var(--gray-8)); /* Background for interactive elements */
+	--pressed-interactive-bg: light-dark(var(--bg), var(--bg)); /* Background for interactive elements with [aria-pressed|expanded=true] */
 
 	--plain-bg: light-dark(var(--gray-1), var(--gray-11));
 	--info-bg: light-dark(var(--blue-1), var(--blue-12));
