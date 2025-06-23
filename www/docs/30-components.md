@@ -210,6 +210,7 @@ Add the attribute `aria-current=page` to the link representing the current page
 (if any).
 
 <figure>
+<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Breadcrumbs markup</figcaption>
 
   ~~~ html
   <nav class=breadcrumbs aria-label="Breadcrumbs">
@@ -243,6 +244,7 @@ The <dfn>`<chip>`</dfn> class, or the <dfn>`.chip`</dfn> class, creates a
 rounded chip, like what you might use for a tag list or contacts.
 
 <figure>
+<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Chip markup</figcaption>
 
   ~~~ html
   <chip class=info>#webdev</chip>
@@ -309,6 +311,7 @@ the user can't tell which nav is which.
 <dfn>`.iconbutton`</dfn> creates a bare icon.
 
 <figure>
+<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Icon button markup</figcaption>
 
   ~~~ html
   <section class="f-row justify-content:space-between">
