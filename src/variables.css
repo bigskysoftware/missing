@@ -70,7 +70,7 @@
 			) / 2);                      /* Divide by 2: there are two page margins */
 }
 
-/* Respect the depreciated .-dark-theme and .-no-dark-theme classes */
+/* Respect the deprecated .-dark-theme and .-no-dark-theme classes */
 :root:not(:has(meta[name=color-scheme])) {
   &.-dark-theme    { color-scheme: dark  }
   &.-no-dark-theme { color-scheme: light }

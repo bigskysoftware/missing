@@ -138,11 +138,11 @@ To customize the theme independently of `prefers-color-scheme` you can use the f
 
 ### Dark theme
 
-~~Add the <dfn>`.-dark-theme`</dfn> class to your root element to use the dark theme.~~ <strong class="bad color">Depreciated:</strong> Will be removed in version 2.0. Use `<meta name=color-scheme content=dark>` instead.
+~~Add the <dfn>`.-dark-theme`</dfn> class to your root element to use the dark theme.~~ **Deprecated:**{.bad .color} Will be removed in version 2.0. Use `<meta name=color-scheme content=dark>` instead.
 
 ### No dark theme
 
-~~Add the <dfn>`.-no-dark-theme`</dfn> class to your root element to use the light theme.~~ <strong class="bad color">Depreciated:</strong> Will be removed in version 2.0. Use `<meta name=color-scheme content=light>` instead.
+~~Add the <dfn>`.-no-dark-theme`</dfn> class to your root element to use the light theme.~~ **Deprecated:**{.bad .color} Will be removed in version 2.0. Use `<meta name=color-scheme content=light>` instead.
 
 <figure>
 <figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Theme toggle markup</figcaption>
