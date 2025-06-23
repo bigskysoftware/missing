@@ -34,11 +34,14 @@ classes; these will be listed in the documentation for that class.
 <dfn>`--graphical-fg`</dfn> {#var-graphical-fg}
 :   Graphical elements like borders. Not text.
 
-<dfn>`--box-bg`</dfn> {#var-bg-2}
+<dfn>`--box-bg`</dfn> {#var-box-bg}
 :   Background for blocks: cards, admonitions etc.
 
-<dfn>`--interactive-bg`</dfn> {#var-bg-3}
-:   Background for interactive elements
+<dfn>`--interactive-bg`</dfn> {#var-interactive-bg}
+:   Background for interactive elements.
+
+<dfn>`--pressed-interactive-bg`</dfn> {#var-pressed-interactive-bg}
+:   Background for interactive elements with `[aria-pressed=true]` or `[aria-expanded=true]`.
 
 <dfn>`--accent`</dfn> {#var-accent}
 :   Accent color. It's important that this
@@ -167,13 +170,13 @@ classes; these will be listed in the documentation for that class.
 <dfn>`--shadow-disabled`</dfn> {#var-shadow-disabled}
 :   The value for the `box-shadow` property on button with `:disabled` state.
 
-<dfn>`--shadow-pressed`</dfn> {#var-shadow-pressed}
+<dfn>`--pressed-shadow`</dfn> {#var-pressed-shadow}
 :   The value for the `box-shadow` property on buttons with `[aria-pressed=true]` or `[aria-expended=true]`.
 
-<dfn>`--shadow-pressed-focus`</dfn> {#var-shadow-pressed-focus}
+<dfn>`--pressed-shadow-focus`</dfn> {#var-pressed-shadow-focus}
 :   The value for the `box-shadow` property on buttons with `[aria-pressed=true]` or `[aria-expended=true]` in the `:hover` or `:focus-visible` state.
 
-<dfn>`--shadow-pressed-active`</dfn> {#var-shadow-pressed-active}
+<dfn>`--pressed-shadow-active`</dfn> {#var-pressed-shadow-active}
 :   The value for the `box-shadow` property on buttons with `[aria-pressed=true]` or `[aria-expended=true]` in the `:active` state.
 
 

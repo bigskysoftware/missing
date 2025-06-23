@@ -62,9 +62,9 @@
   --shadow-focus: 0 3px 6px -2px var(--fg);
   --shadow-active: none;
   --shadow-disabled: none;
-  --shadow-pressed: 0 2px 4px -1px var(--fg) inset;
-  --shadow-pressed-focus:  1 1px 3px -1px var(--fg) inset;
-  --shadow-pressed-active: 0 1px 5px -1px var(--fg) inset;
+  --pressed-shadow: 0 2px 4px -1px var(--fg) inset;
+  --pressed-shadow-focus:  1 1px 3px -1px var(--fg) inset;
+  --pressed-shadow-active: 0 1px 5px -1px var(--fg) inset;
 
 	/* Fonts */
 	--main-font: 'Source Sans 3', 'Source Sans Pro', -apple-system, system-ui, sans-serif;
@@ -116,6 +116,7 @@
 	--bg: var(--gray-12);
 	--box-bg: var(--gray-10);
 	--interactive-bg: var(--gray-8);
+	--pressed-interactive-bg: light-dark(var(--bg), var(--bg));
 	--plain-fg: var(--blue-2);
 	--info-fg: var(--blue-2);
 	--ok-fg: var(--green-2);
