@@ -435,6 +435,11 @@ img, video, audio, iframe, object, embed {
 	inline-size: max-content;
 	block-size: auto;
 }
+:is(object, embed)[type="image/svg+xml"] {
+  /* https://issues.chromium.org/issues/40811132 */
+  color-scheme: light;
+}
+
 /***
  4.9 Tabular data
  https://html.spec.whatwg.org/multipage/tables.html
