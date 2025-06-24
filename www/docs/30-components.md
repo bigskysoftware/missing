@@ -353,7 +353,7 @@ the user can't tell which nav is which.
 
 ## Icon Button
 
-<dfn>`.iconbutton`</dfn> creates a bare icon.
+<dfn>`.iconbutton`</dfn> creates a bare icon; it even works with the `.\<button\>` masquerade!
 We recommend using <a href="https://lucide.dev">Lucide</a> for icons.
 
 <figure>
@@ -380,6 +380,9 @@ We recommend using <a href="https://lucide.dev">Lucide</a> for icons.
     <button class=iconbutton type=button aria-label="Menu">
       <svg aria-hidden=true><use href="#menu-icon"></use></svg>
     </button>
+    <a class="<button> iconbutton" aria-label="Next">
+      <svg aria-hidden=true><use href="#next-icon"></use></svg>
+    </a>
     <!-- ... -->
   </section>
   ~~~
@@ -402,21 +405,21 @@ We recommend using <a href="https://lucide.dev">Lucide</a> for icons.
     <button class=iconbutton type=button aria-label="Menu">
       <svg aria-hidden=true><use href="#menu-icon"></use></svg>
     </button>
-    <button class=iconbutton type=button aria-label="Next">
+    <a class="<button> iconbutton" aria-label="Next">
       <svg aria-hidden=true><use href="#next-icon"></use></svg>
-    </button>
+    </a>
     <button class=iconbutton type=button aria-label="Cut">
       <svg aria-hidden=true><use href="#cut-icon"></use></svg>
     </button>
-    <button class=iconbutton type=button aria-label="Close">
+    <a class="<button> iconbutton" aria-label="Close">
       <svg aria-hidden=true><use href="#close-icon"></use></svg>
-    </button>
+    </a>
     <button class=iconbutton type=button aria-label="Trans">
       <svg aria-hidden=true><use href="#trans-icon"></use></svg>
     </button>
-    <button class=iconbutton type=button aria-label="Smile">
+    <a class="<button> iconbutton" aria-label="Smile">
       <svg aria-hidden=true><use href="#smile-icon"></use></svg>
-    </button>
+    </a>
     <button class=iconbutton type=button aria-label="Music">
       <svg aria-hidden=true><use href="#music-icon"></use></svg>
     </button>

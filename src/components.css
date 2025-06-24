@@ -235,7 +235,7 @@ details,
     }
 }
 
-button.iconbutton {
+.iconbutton {
 	border: none;
 	background: none;
 	color: currentcolor;
@@ -245,7 +245,6 @@ button.iconbutton {
 	font-size: 24px;
 	width: 24px;
 	height: 24px;
-	display: inline-block;
 	text-align: center;
 	border-radius: 50%;
 	transition: font-weight .2s ease-in-out;
