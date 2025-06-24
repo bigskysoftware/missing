@@ -37,49 +37,136 @@ Inputs inside labels will be `display: inline`. Inputs outside labels will be
 ## Buttons
 
 Wrap a `<button>` in a `<strong>` tag to get a primary button.
-Buttons support the `[aria-pressed]` and `[aria-expanded]` attributes (see the "Pause" button  below).
+Buttons support the `[aria-pressed]` and `[aria-expanded]` attributes.
 
-Buttons (and `.<button>` [masquerades][]) support [colorways][] as well. 
+Buttons, `.<button>` [masquerades][], and `<input type=file>` all support [colorways][] as well.
 
 <figure>
 <figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Button markup</figcaption>
 
   ~~~ html
-  <section role=toolbar>
-    <button class=ok>Open</button>
-    <button class=info>Info</button>
-    <button class=warn type=reset>Reset</button>
-    <button class=bad formaction=dialog>Close</button>
-    <button type=button onclick="this.ariaPressed = (this.ariaPressed !== 'true')"
-      >Pause</button>
-  </section>
-  <section role=toolbar>
-    <strong><button class=ok>Open</button></strong>
-    <strong><button class=info>Info</button></strong>
-    <strong><button class=warn type=reset>Reset</button></strong>
-    <strong><button class=bad formaction=dialog>Close</button></strong>
-    <strong><button type=button onclick="this.ariaPressed = (this.ariaPressed !== 'true')"
-      >Pause</button></strong>
+  <script>
+    const toggle = el => (el.ariaPressed = (el.ariaPressed !== 'true'))
+  </script>
+
+  <section tabindex=0 class=overflow:auto>
+    <table id=button-table class=table>
+    <caption>Button demonstration</caption>
+    <thead>
+      <tr><th><th><th><code>.ok</code><th><code>.info</code><th><code>.warn</code><th><code>.bad</code>
+    <tbody>
+      <tr><th scope=row><code>&lt;button&gt;</code>
+          <td><button>Plain</button>
+          <td><button class=ok>Open</button>
+          <!-- ... -->
+      <tr><th scope=row class="padding-inline-start"><code>:disabled</code>
+          <td><button disabled>Plain</button>
+          <td><button disabled class=ok>Open</button>
+          <!-- ... -->
+      <tr><th scope=row class="padding-inline-start"><code>[aria-pressed=true]</code>
+          <td><button aria-pressed=true onclick="toggle(this)">Plain</button>
+          <td><button aria-pressed=true class=ok onclick="toggle(this)">Open</button>
+          <!-- ... -->
+      <tr><th scope=row><code>&lt;strong&gt;&lt;button&gt;</code>
+          <td><strong><button>Plain</button></strong>
+          <td><strong><button class=ok>Open</button></strong>
+          <!-- ... -->
+      <tr><th scope=row class="padding-inline-start"><code>:disabled</code>
+          <td><strong><button disabled>Plain</button></strong>
+          <td><strong><button disabled class=ok>Open</button></strong>
+          <!-- ... -->
+      <tr><th scope=row class="padding-inline-start"><code>[aria-pressed=true]</code>
+          <td><strong><button aria-pressed=true onclick="toggle(this)">Plain</button></strong>
+          <td><strong><button aria-pressed=true class=ok onclick="toggle(this)">Open</button></strong>
+          <!-- ... -->
+      <tr><th scope=row><code>&lt;a class="&lt;button&gt;"&gt;</code>
+          <td><a href="#button-table" class="<button>">Plain</button>
+          <td><a href="#button-table" class="ok <button>">Open</button>
+          <!-- ... -->
+    </table>
   </section>
   ~~~
 
   <hr>
 
-  <section role=toolbar>
-    <button class=ok>Open</button>
-    <button class=info>Info</button>
-    <button class=warn type=reset>Reset</button>
-    <button class=bad formaction=dialog>Close</button>
-    <button type=button onclick="this.ariaPressed = (this.ariaPressed !== 'true')"
-      >Pause</button>
+  <style>
+    #button-table tr > * { padding-block: 0.25em }
+    #button-table th { font-weight: normal }
+  </style>
+  <script>
+    const toggle = el => (el.ariaPressed = (el.ariaPressed !== 'true'))
+  </script>
+
+  <section tabindex=0 class=overflow:auto>
+    <table id=button-table class=table>
+    <caption>Button demonstration</caption>
+    <thead>
+      <tr><th><th><th><code>.ok</code><th><code>.info</code><th><code>.warn</code><th><code>.bad</code>
+    <tbody>
+      <tr><th scope=row><code>&lt;button&gt;</code>
+          <td><button>Plain</button>
+          <td><button class=ok>Open</button>
+          <td><button class=info>Info</button>
+          <td><button class=warn type=reset>Reset</button>
+          <td><button class=bad formaction=dialog>Close</button>
+      <tr><th scope=row class="padding-inline-start"><code>:disabled</code>
+          <td><button disabled>Plain</button>
+          <td><button disabled class=ok>Open</button>
+          <td><button disabled class=info>Info</button>
+          <td><button disabled class=warn type=reset>Reset</button>
+          <td><button disabled class=bad formaction=dialog>Close</button>
+      <tr><th scope=row class="padding-inline-start"><code>[aria-pressed=true]</code>
+          <td><button aria-pressed=true onclick="toggle(this)">Plain</button>
+          <td><button aria-pressed=true class=ok onclick="toggle(this)">Open</button>
+          <td><button aria-pressed=true class=info onclick="toggle(this)">Info</button>
+          <td><button aria-pressed=true class=warn onclick="toggle(this)">Reset</button>
+          <td><button aria-pressed=true class=bad onclick="toggle(this)">Close</button>
+      <tr><th scope=row><code>&lt;strong&gt;&lt;button&gt;</code>
+          <td><strong><button>Plain</button></strong>
+          <td><strong><button class=ok>Open</button></strong>
+          <td><strong><button class=info>Info</button></strong>
+          <td><strong><button class=warn type=reset>Reset</button></strong>
+          <td><strong><button class=bad formaction=dialog>Close</button></strong>
+      <tr><th scope=row class="padding-inline-start"><code>:disabled</code>
+          <td><strong><button disabled>Plain</button></strong>
+          <td><strong><button disabled class=ok>Open</button></strong>
+          <td><strong><button disabled class=info>Info</button></strong>
+          <td><strong><button disabled class=warn type=reset>Reset</button></strong>
+          <td><strong><button disabled class=bad formaction=dialog>Close</button></strong>
+      <tr><th scope=row class="padding-inline-start"><code>[aria-pressed=true]</code>
+          <td><strong><button aria-pressed=true onclick="toggle(this)">Plain</button></strong>
+          <td><strong><button aria-pressed=true class=ok onclick="toggle(this)">Open</button></strong>
+          <td><strong><button aria-pressed=true class=info onclick="toggle(this)">Info</button></strong>
+          <td><strong><button aria-pressed=true class=warn onclick="toggle(this)">Reset</button></strong>
+          <td><strong><button aria-pressed=true class=bad onclick="toggle(this)">Close</button></strong>
+      <tr><th scope=row><code>&lt;a class="&lt;button&gt;"&gt;</code>
+          <td><a href="#button-table" class="<button>">Plain</button>
+          <td><a href="#button-table" class="ok <button>">Open</button>
+          <td><a href="#button-table" class="info <button>">Info</button>
+          <td><a href="#button-table" class="warn <button>">Reset</button>
+          <td><a href="#button-table" class="bad <button>">Close</button>
+    </table>
   </section>
-  <section role=toolbar>
-    <strong><button class=ok>Open</button></strong>
-    <strong><button class=info>Info</button></strong>
-    <strong><button class=warn type=reset>Reset</button></strong>
-    <strong><button class=bad formaction=dialog>Close</button></strong>
-    <strong><button type=button onclick="this.ariaPressed = (this.ariaPressed !== 'true')"
-      >Pause</button></strong>
+</figure>
+
+<figure>
+<figcaption><sub-title class=allcaps>Example<v-h>:</v-h></sub-title>File input buttons</figcaption>
+
+  <section class="crowded flex-switch">
+    <div class="flex-column">
+      <input type=file>
+      <input type=file class="ok">
+      <input type=file class="info">
+      <input type=file class="warn">
+      <input type=file class="bad">
+    </div>
+    <div class="flex-column">
+      <strong><input type=file></strong>
+      <strong><input type=file class="ok"></strong>
+      <strong><input type=file class="info"></strong>
+      <strong><input type=file class="warn"></strong>
+      <strong><input type=file class="bad"></strong>
+    </div>
   </section>
 
 </figure>
