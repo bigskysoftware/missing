@@ -189,6 +189,10 @@
 .float\:left  { float: left  }
 .float\:right { float: right }
 
-.overflow\:auto   { overflow: auto   }
-.overflow\:scroll { overflow: scroll }
-.overflow\:clip   { overflow: clip   }
+.overflow\:auto     { overflow: auto     }
+.overflow\:scroll   { overflow: scroll   }
+.overflow-x\:scroll { overflow-x: scroll }
+.overflow-y\:scroll { overflow-y: scroll }
+.overflow\:clip     { overflow: clip     }
+.overflow-x\:clip   { overflow-x: clip   }
+.overflow-y\:clip   { overflow-y: clip   }
