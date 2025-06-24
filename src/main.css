@@ -9,7 +9,7 @@
 
 html {
 	font-family: var(--main-font);
-	line-height: var(--rhythm);
+	line-height: var(--rhythm, 1.4rem);
 
 	background: var(--bg);
 	color: var(--fg);
@@ -33,10 +33,11 @@ nav {
 
 aside {
 	font-size: .8em;
-	line-height: calc(var(--rhythm) * 2 / 3);
-	--gap: calc(var(--rhythm) * var(--density) * 2 / 3);
+	line-height: calc(var(--rhythm, 1rlh) * 2 / 3);
+	--gap: calc(var(--rhythm, 1rlh) * var(--density) * 2 / 3);
 
-	border-block: 1px solid var(--graphical-fg);
+	border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--graphical-fg);
+	border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--graphical-fg);
 	padding-block: var(--gap);
 	margin-block: calc(var(--gap) * 3 / 2);
 
@@ -55,14 +56,14 @@ aside {
 		letter-spacing: none;
 	}
 
-	&.big {
+	&:is(.big, .\<big\>) {
 		/* Pull quote */
 		background: none;
 		border: none;
-		border-inline-start: 1px solid var(--muted-fg);
+		border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) var(--muted-fg);
 		border-radius: 0;
 		padding: 0;
-		padding-inline-start: var(--rhythm);
+		padding-inline-start: var(--rhythm, 1rlh);
 		font-style: italic;
 		color: var(--accent);
 	}
@@ -80,26 +81,26 @@ h1, h2, h3, h4, h5, h6,
 h1, .\<h1\> {
 	font-size: 2em;
 	text-transform: none;
-	line-height: calc(2 * var(--rhythm));
+	line-height: calc(2 * var(--rhythm, 1rlh));
 	letter-spacing: 0;
 }
 
 h2, .\<h2\> {
 	font-size: 1.6em;
 	text-transform: none;
-	line-height: calc(1.5 * var(--rhythm));
+	line-height: calc(1.5 * var(--rhythm, 1rlh));
 	letter-spacing: 0;
 }
 
 h3, .\<h3\> {
 	font-size: 1.17em;
-	line-height: calc(1 * var(--rhythm));
+	line-height: calc(1 * var(--rhythm, 1rlh));
 }
 
 h4, .\<h4\>, h5, .\<h5\>, h6, .\<h6\> {
 	font-size: 1em;
 	text-transform: none;
-	line-height: calc(1 * var(--rhythm));
+	line-height: calc(1 * var(--rhythm, 1rlh));
 	letter-spacing: 0;
 	margin-block-start: var(--gap);
 }
@@ -138,20 +139,20 @@ h6:target {
 
 header {
 	font-family: var(--display-font);
-	border-block-end: 1px solid var(--graphical-fg);
+	border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--graphical-fg);
 }
 
 footer {
 	font-family: var(--secondary-font);
 	font-size: .8em;
-	line-height: calc(var(--rhythm) * 2 / 3);
-	border-block-start: 1px solid var(--graphical-fg);
+	line-height: calc(var(--rhythm, 1rlh) * 2 / 3);
+	border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--graphical-fg);
 }
 
 body > header,
 body > footer,
 main + footer {
-	padding: var(--rhythm) calc((100% - var(--eff-line-length)) / 2)
+	padding: var(--rhythm, 1rlh) calc((100% - var(--eff-line-length)) / 2)
 }
 
 address {
@@ -173,9 +174,9 @@ hr {
 	margin-block: var(--gap);
 	
 	flex: 0 1 0px;
-	border-inline-start: 1px solid var(--accent);
+	border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) var(--accent);
 	block-size: auto;
-	border-block-start: 1px solid var(--accent);
+	border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--accent);
 	border-block-end: none;
 	border-inline-end: none;
 }
@@ -183,7 +184,7 @@ hr {
 pre {
 	font-family: var(--mono-font);
 	font-size: .9em;
-	line-height: var(--rhythm);
+	line-height: var(--rhythm, 1rlh);
 	tab-size: 2;
 
 	margin: var(--gap) 0;
@@ -199,10 +200,10 @@ blockquote {
 	margin-block: var(--gap);
 	
 	font-size: 1.1em;
-	line-height: var(--rhythm);
+	line-height: var(--rhythm, 1rlh);
 	font-style: italic;
 
-	border-inline-start: 1px solid var(--graphical-fg);
+	border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) var(--graphical-fg);
 	color: var(--muted-fg);
 
 	& em, & cite, & dfn, & var, & i, & address {
@@ -216,7 +217,7 @@ blockquote {
 }
 
 ul, ol {
-	padding-inline-start: var(--rhythm);
+	padding-inline-start: var(--rhythm, 1rlh);
 	margin-block: var(--gap);
 
 	& & {
@@ -244,7 +245,7 @@ dl {
 	}
 
 	dd {
-		margin-inline-start: var(--rhythm);
+		margin-inline-start: var(--rhythm, 1rlh);
 	}
 
 li::marker {
@@ -285,7 +286,7 @@ main {
 
 a, .\<a\> {
 	color: var(--link-fg, var(--accent));
-	border-radius: var(--border-radius);
+	border-radius: var(--interactive-border-radius);
 	outline-offset: 1px;
 	background: none;
 	border: none;
@@ -318,17 +319,20 @@ small[role="note"] {
 	padding-inline: 1.5ch 1ch;
 
 	margin-inline-end: calc(1em - var(--sidenote-width));
-	margin-block-end: var(--rhythm);
+	margin-block-end: var(--rhythm, 1rlh);
 
 	font-family: var(--secondary-font);
 
 	background: var(--bg);
-	border: 1px solid transparent;
+	border-block-start: var(--border-block-start-width) var(--border-block-start-style) transparent;
+	border-block-end: var(--border-block-end-width) var(--border-block-end-style) transparent;
+	border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) transparent;
+	border-inline-end: var(--border-inline-end-width) var(--border-inline-end-style) transparent;
 
 	transition: transform .1s ease-in-out;
 
 	&:hover, &:focus-within {
-		border: 1px solid var(--graphical-fg);
+		border-color: var(--graphical-fg);
 		border-radius: var(--border-radius);
 		transform: translateX(calc(
 			0px - var(--sidenote-width)
@@ -339,7 +343,7 @@ small[role="note"] {
 
 small, .\<small\> {
 	font-size: .8em;
-	line-height: calc(var(--rhythm) * 2 / 3);
+	line-height: calc(var(--rhythm, 1rlh) * 2 / 3);
 }
 
 s {
@@ -388,7 +392,7 @@ kbd kbd /*
 	background: var(--interactive-bg);
 	border: 1px outset var(--graphical-fg);
 	border-block-end-width: 3px;
-	border-radius: var(--border-radius);
+	border-radius: var(--interactive-border-radius);
 }
 
 sub {
@@ -445,7 +449,8 @@ caption {
 }
 
 tbody {
-	border-block: 1px solid var(--faded-fg);
+	border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--faded-fg);
+	border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--faded-fg);
 }
 
 thead {
@@ -462,7 +467,7 @@ td, th {
 	vertical-align: top;
 	
 	&:not(:last-child) {
-		padding-inline-end: var(--rhythm);
+		padding-inline-end: var(--rhythm, 1rlh);
 	}
 }
 
@@ -493,20 +498,20 @@ label :is(input, select):not([specificity-hack]) {
 ):not(.\<a\>),
 input::file-selector-button {
 	display: inline-block;
-	padding: 0 calc(var(--rhythm) / 4);
+	padding: 0 calc(var(--rhythm, 1rlh) / 4);
 	vertical-align: middle;
 	box-sizing: border-box;
 	
 	font-size: .8rem;
 	line-height: 1.125em;
 	font-family: var(--secondary-font);
-	min-height: var(--rhythm);
+	min-height: var(--rhythm, 1rlh);
 
 	background: var(--interactive-bg);
 	color: var(--fg);
-	border: 1px solid var(--muted-fg);
-	box-shadow: 0 2px 4px -2px var(--fg);
-	border-radius: var(--border-radius);
+	border: var(--interactive-border-width) var(--interactive-border-style) var(--muted-fg);
+	box-shadow: var(--shadow);
+	border-radius: var(--interactive-border-radius);
 
 	/* a-specific resets */
 	color: var(--fg);
@@ -518,14 +523,14 @@ input::file-selector-button {
 
 	&:hover, &:focus-visible {
 		filter: brightness(1.1);
-		box-shadow: 0 3px 6px -2px var(--fg);
+		box-shadow: var(--shadow-focus);
 
 		/* a-specific resets */
 		text-decoration: none;
 	}
 
 	&:active {
-		box-shadow: none;
+		box-shadow: var(--shadow-active);
 	}
 }
 
@@ -563,28 +568,28 @@ strong > input:disabled::file-selector-button {
 ):not(.\<a\>) {
 	&:active:is([aria-pressed], [aria-expanded]) {
 		color: var(--accent);
-		box-shadow: 0 1px 5px -1px var(--fg) inset;
+		box-shadow: var(--shadow-pressed-active);
 	}
 
 	&:where([aria-pressed="true"], [aria-expanded="true"]) {
-		box-shadow: 0 2px 4px -1px var(--fg) inset;
+		box-shadow: var(--shadow-pressed);
 		background: var(--pressed-interactive-bg);
 		color: var(--accent);
 		&:hover, &:focus-visible {
-			box-shadow: 0 1px 3px -1px var(--fg) inset;
+			box-shadow: var(--shadow-pressed-focus);
 		}
 	}
 
-	&.big {
-		min-block-size: calc(1.5 * var(--rhythm));
+	&:is(.big, .\<big\>) {
+		min-block-size: calc(1.5 * var(--rhythm, 1rlh));
 		font-size: 1rem;
-		padding-inline: calc(.5 * var(--rhythm));
-		line-height: var(--rhythm);
+		padding-inline: calc(.5 * var(--rhythm, 1rlh));
+		line-height: var(--rhythm, 1rlh);
 	}
 
 	&:disabled {
 		color: var(--muted-fg);
-		box-shadow: none;
+		box-shadow: var(--shadow-disabled);
 	}
 }
 
@@ -604,7 +609,7 @@ input[type="datetime-local"],
 input[type="number"],
 select,
 textarea {
-	padding: calc(var(--rhythm) / 4);
+	padding: calc(var(--rhythm, 1rlh) / 4);
 	vertical-align: top;
 	
 	font-size: 1rem;
@@ -613,13 +618,13 @@ textarea {
 
 	background: var(--bg);
 	color: var(--fg);
-	border: 1px solid var(--graphical-fg);
-	border-radius: var(--border-radius);
+	border: var(--interactive-border-width) var(--interactive-border-style) var(--graphical-fg);
+	border-radius: var(--interactive-border-radius);
 
 	vertical-align: top;
 
 	&:focus-visible {
-		border: 1px solid var(--accent);
+		border: var(--interactive-border-width) var(--interactive-border-style) var(--accent);
 	}
 
 	&::placeholder {
@@ -637,7 +642,7 @@ input[type="range"] {
 input[type="color"] {
 	padding: 0;
 	margin: 0;
-	height: calc(1.5 * var(--rhythm));
+	height: calc(1.5 * var(--rhythm, 1rlh));
 
 	border: none;
 	background: none;
@@ -646,7 +651,7 @@ input[type="color"] {
 input[type="file"] {
 	padding: calc(var(--gap) / 4) 0;
 	font: inherit;
-	line-height: calc(var(--rhythm) / 2);
+	line-height: calc(var(--rhythm, 1rlh) / 2);
 	&::file-selector-button {
 		margin-block: .1em 0;
 		margin-inline-end: 1ch;
@@ -685,7 +690,11 @@ fieldset {
 
 	& > legend + * { margin-block-start: 0 }
 
-	border: 1px solid var(--graphical-fg);
+  border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--graphical-fg);
+  border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--graphical-fg);
+  border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) var(--graphical-fg);
+  border-inline-end: var(--border-inline-end-width) var(--border-inline-end-style) var(--graphical-fg);
+
 }
 /***
  4.11 Interactive elements

@@ -12,9 +12,12 @@ Mechanisms of creating layouts.
 
 ## Centering
 
+<dfn>`.text-align:center`</dfn> center-aligns text.
+
 An element with class <dfn>`.center`</dfn> centers a single child element using `display: grid; place-items: center`{.lang-css}.
 
-<dfn>`.text-align:center`</dfn> center-aligns text.
+<dfn>`.align-content:center`</dfn> vertically aligns content in the center of the alignment container. Flexbox no longer required!
+We also provide <dfn>`.align-content:end`</dfn>.
 
 
 ## Text Columns
@@ -44,7 +47,8 @@ The <dfn>`.fullscreen`</dfn> class will size an element to fill the screen.
 Add some padding with <dfn>`.padding`</dfn>, or a margin with
 <dfn>`.margin`</dfn>.
 
-Add padding or margin in specific axes with these classes:
+Add padding or margin in specific axes with these classes.
+The amount of margin or padding is determined by the [density utilities][].
 
  - <dfn>`.margin`</dfn>
  - <dfn>`.margin-inline`</dfn>
@@ -62,33 +66,62 @@ Add padding or margin in specific axes with these classes:
  - <dfn>`.padding-block-end`</dfn>
 {.textcolumns}
 
+Automatic margin is provided with the following:
+
+ - <dfn>`.margin-inline:auto`</dfn>
+ - <dfn>`.margin-inline-start:auto`</dfn>
+ - <dfn>`.margin-inline-end:auto`</dfn>
+ - <dfn>`.margin-block:auto`</dfn>
+ - <dfn>`.margin-block-start:auto`</dfn>
+ - <dfn>`.margin-block-end:auto`</dfn>
+{.textcolumns}
+
+To remove padding or margin, use one of the following classes:
+
+ - <dfn>`.margin:0`</dfn>
+ - <dfn>`.margin-inline:0`</dfn>
+ - <dfn>`.margin-inline-start:0`</dfn>
+ - <dfn>`.margin-inline-end:0`</dfn>
+ - <dfn>`.margin-block:0`</dfn>
+ - <dfn>`.margin-block-start:0`</dfn>
+ - <dfn>`.margin-block-end:0`</dfn>
+ - <dfn>`.padding:0`</dfn>
+ - <dfn>`.padding-inline:0`</dfn>
+ - <dfn>`.padding-inline-start:0`</dfn>
+ - <dfn>`.padding-inline-end:0`</dfn>
+ - <dfn>`.padding-block:0`</dfn>
+ - <dfn>`.padding-block-start:0`</dfn>
+ - <dfn>`.padding-block-end:0`</dfn>
+{.textcolumns}
+
 Make an element full-width with the <dfn>`.width:100%`</dfn> class.
 Similarly with <dfn>`.height:100%`</dfn>.
 
-* * *
+[density utilities]: /docs/utils/#density
 
-The <dfn>`.big`</dfn> class makes things bigger, with special treatment for
-some elements:
 
-<figure>
+## Border utilities
 
-The following is a big paragraph:
+Add a border with <dfn>`.border`</dfn>; you can target specific axes with these classes:
 
-The following is a big button: {.big}
+ - <dfn>`.border-inline`</dfn>
+ - <dfn>`.border-inline-start`</dfn>
+ - <dfn>`.border-inline-end`</dfn>
+ - <dfn>`.border-block`</dfn>
+ - <dfn>`.border-block-start`</dfn>
+ - <dfn>`.border-block-end`</dfn>
+{.textcolumns}
 
-<button class="big">Buy</button>
-<button>Maybe later</button>
-{.f-row .align-items:center}
+Borders can be removed by using <dfn>`.border:none`</dfn> or one of the following classes:
 
-<aside class="big">
+ - <dfn>`.border-inline:none`</dfn>
+ - <dfn>`.border-inline-start:none`</dfn>
+ - <dfn>`.border-inline-end:none`</dfn>
+ - <dfn>`.border-block:none`</dfn>
+ - <dfn>`.border-block-start:none`</dfn>
+ - <dfn>`.border-block-end:none`</dfn>
+{.textcolumns}
 
-An `<aside>` with the `.big` class becomes a pull quote.
-
-</aside>
-
-</figure>
-
-To get a smaller font size, use the `.<small>` masquerade.
 
 ***
 
@@ -108,6 +141,40 @@ The <dfn>`.nested-list`</dfn> class removes extraneous margins in nested lists.
   ~~~
 
 
+## Aspect Ratio
+
+To set the aspect ratio of an element, use the `aspect-ratio` CSS property:
+
+<figure>
+
+  ~~~html
+  <style>#aspect-ratio-example > .box { height: 10vh }</style>
+  <div id="aspect-ratio-example" class="f-row flex-wrap:wrap">
+    <div class="box" style="aspect-ratio: 1/1">1:1</div>
+    <div class="box" style="aspect-ratio: 4/3">4:3</div>
+    <div class="box" style="aspect-ratio: 16/9">16:9</div>
+    <div class="box" style="aspect-ratio: 2/1">2:1</div>
+    <div class="box" style="aspect-ratio: 2/3">2:3</div>
+    <div class="box" style="aspect-ratio: 16/10">16:10</div>
+    <div class="box" style="aspect-ratio: 21/9">21:9</div>
+    <div class="box" style="aspect-ratio: 4/1">4:1</div>
+  </div>
+  ~~~
+
+  <style>#aspect-ratio-example > .box { height: 10vh }</style>
+  <div id="aspect-ratio-example" class="f-row flex-wrap:wrap">
+    <div class="box" style="aspect-ratio: 1/1">1:1</div>
+    <div class="box" style="aspect-ratio: 4/3">4:3</div>
+    <div class="box" style="aspect-ratio: 16/9">16:9</div>
+    <div class="box" style="aspect-ratio: 2/1">2:1</div>
+    <div class="box" style="aspect-ratio: 2/3">2:3</div>
+    <div class="box" style="aspect-ratio: 16/10">16:10</div>
+    <div class="box" style="aspect-ratio: 21/9">21:9</div>
+  </div>
+
+</figure>
+
+
 ## Scrolling
 
 Set the `overflow` property with these utility classes:
@@ -117,6 +184,9 @@ Set the `overflow` property with these utility classes:
 
 <dfn>`.overflow:scroll`</dfn>
 :   Always show scrollbars   
+
+<dfn>`.overflow:clip`</dfn>
+:   Overflow content is clipped at the element's padding box. Can be extended using the `overflow-clip-margin` property.
 
 
 ## Pseudo-tables
@@ -175,4 +245,3 @@ The <dfn>`.table`</dfn> class makes an element act like a table for the purposes
 
 <dfn>`.float:right`</dfn>
 :   Set `float: right`.
-

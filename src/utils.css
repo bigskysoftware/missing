@@ -15,7 +15,7 @@
 	clip-path: inset(50%);
 	block-size: 1px;
 	inline-size: 1px;
-	overflow: hidden;
+	verflow: hidden;
 	white-space: nowrap;
 }
 
@@ -46,6 +46,19 @@
     font-size: calc(.13 * var(--eff-line-length));
 	line-height: 1em;
     letter-spacing: 0;
+}
+
+.background-clip\:text {
+  background-size: cover;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-stroke {
+  --stroke-width: 1px;
+  --stroke-color: lch(from currentcolor calc(100 - l) c calc(h + 180));
+
+  -webkit-text-stroke: var(--stroke-width) var(--stroke-color);
 }
 
 .aestheticbreak {
