@@ -13,7 +13,10 @@ missing.css has a collection of classes and custom elements.
 ## Visually hidden content
 
 <dfn>`.vh`</dfn>, <dfn>`<v-h>`</dfn>
-:   Visually hide a content without hiding it from assistive software.
+:   Visually hide content without hiding it from assistive software.
+
+This is often used in conjunction with the `<sub-title>` element.
+Other uses include providing instructions for interactive elements or detailed descriptions of complex charts.
 
 
 ## Container
@@ -46,7 +49,7 @@ We provide three utility classes that set `--density`:
 You can set `--density` yourself in inline styles or your own CSS:
 
 <figure>
-<figcaption>Setting <code>--density</code> with inline styles</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Setting <code>--density</code> with inline styles</figcaption>
 
   ~~~ html
   <section id="tagline" style="--density: 2">
@@ -60,7 +63,7 @@ You can set `--density` yourself in inline styles or your own CSS:
 </figure>
 
 <figure>
-<figcaption>Setting <code>--density</code> in a stylesheet</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Setting <code>--density</code> in a stylesheet</figcaption>
 
   ~~~ css
   .link-embed {
@@ -85,6 +88,9 @@ You can set `--density` yourself in inline styles or your own CSS:
 
 <dfn>`.main-font`</dfn>
 :   Renders the text in the main font (`--main-font`).
+
+<dfn>~~`.primary-font`~~</dfn>
+:   **Deprecated:**{.bad .color} Will be removed in version 2.0. Use `.main-font` instead.
 
 <dfn>`.secondary-font`</dfn>
 :   Renders the text in the secondary font (`--secondary-font`).
@@ -228,18 +234,19 @@ Missing.css, by default applies a light or dark theme based on `prefers-color-sc
 To customize the theme independently of the `prefers-color-scheme` you can use
 the following classes:
 
-### Dark theme
+<dfn>`.-dark-theme`</dfn>
+:   Add to your root element (e.g. `<html class="-dark-theme">`) to use the dark theme.
 
-Add the <dfn>`.-dark-theme`</dfn> class to your root element to use the dark theme.
-
-### No dark theme
-
-Add the <dfn>`.-no-dark-theme`</dfn> class to your root element to use the light theme.
+<dfn>`.-no-dark-theme`</dfn>
+:   Add to your root element (e.g. `<html class="-no-dark-theme">`) to use the light theme.
 
 ## Reset
 
-Use the <dfn>`.all:initial`</dfn> class to reset all CSS properties on an
-element and return it to its browser-default styles.
+~~Use the <dfn>`.all:initial`</dfn> class to reset all CSS properties on an
+element and return it to its browser-default styles.~~
+
+**Deprecated:**{.bad .color} Will be removed in version 2.0.
+
 
 
 [CSS variable]: /docs/variables
