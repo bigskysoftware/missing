@@ -265,4 +265,8 @@ details,
 		box-shadow: none;
 		transform: none;
 	}
+
+  &:is(.plain, .info, .ok, .warn, .bad) {
+    color: var(--accent);
+  }
 }

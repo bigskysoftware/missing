@@ -37,31 +37,53 @@ Inputs inside labels will be `display: inline`. Inputs outside labels will be
 ## Buttons
 
 Wrap a `<button>` in a `<strong>` tag to get a primary button.
-The `[aria-pressed]` and `[aria-expanded]` attributes are supported.
+Buttons support the `[aria-pressed]` and `[aria-expanded]` attributes (see the "Pause" button  below).
+
+Buttons (and `.<button>` [masquerades][]) support [colorways][] as well. 
 
 <figure>
 <figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Button markup</figcaption>
 
   ~~~ html
-  <div class="flex-row">
-    <button type=reset>Reset</button>
-    <button formaction=dialog>Close</button>
+  <section role=toolbar>
+    <button class=ok>Open</button>
+    <button class=info>Info</button>
+    <button class=warn type=reset>Reset</button>
+    <button class=bad formaction=dialog>Close</button>
     <button type=button onclick="this.ariaPressed = (this.ariaPressed !== 'true')"
       >Pause</button>
-    <strong><button>Submit</button></strong>
-  </div>
+  </section>
+  <section role=toolbar>
+    <strong><button class=ok>Open</button></strong>
+    <strong><button class=info>Info</button></strong>
+    <strong><button class=warn type=reset>Reset</button></strong>
+    <strong><button class=bad formaction=dialog>Close</button></strong>
+    <strong><button type=button onclick="this.ariaPressed = (this.ariaPressed !== 'true')"
+      >Pause</button></strong>
+  </section>
   ~~~
 
   <hr>
 
-  <div class="flex-row">
-    <button type=reset>Reset</button>
-    <button formaction=dialog>Close</button>
+  <section role=toolbar>
+    <button class=ok>Open</button>
+    <button class=info>Info</button>
+    <button class=warn type=reset>Reset</button>
+    <button class=bad formaction=dialog>Close</button>
     <button type=button onclick="this.ariaPressed = (this.ariaPressed !== 'true')"
       >Pause</button>
-    <strong><button>Submit</button></strong>
-  </div>
+  </section>
+  <section role=toolbar>
+    <strong><button class=ok>Open</button></strong>
+    <strong><button class=info>Info</button></strong>
+    <strong><button class=warn type=reset>Reset</button></strong>
+    <strong><button class=bad formaction=dialog>Close</button></strong>
+    <strong><button type=button onclick="this.ariaPressed = (this.ariaPressed !== 'true')"
+      >Pause</button></strong>
+  </section>
+
 </figure>
+
 
 ## Tabular forms
 
@@ -145,3 +167,7 @@ the label itself.
     </div>
   </form>
 </figure>
+
+
+[masquerades]: /docs/utils/#masquerades
+[colorways]: /docs/colorways

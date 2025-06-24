@@ -532,6 +532,12 @@ input::file-selector-button {
 	&:active {
 		box-shadow: var(--shadow-active);
 	}
+
+  &:is(.plain, .info, .ok, .warn, .bad) {
+    --interactive-bg: var(--box-bg);
+    --muted-fg: var(--graphical-fg);
+    color: var(--accent);
+  }
 }
 
 strong > :where(
@@ -547,6 +553,10 @@ strong > input::file-selector-button {
 	color: var(--bg);
 	border: none;
 	font-weight: bold;
+
+  &:is(.plain, .info, .ok, .warn, .bad) {
+    color: var(--bg);
+  }
 }
 strong > :is(
   button:disabled,
