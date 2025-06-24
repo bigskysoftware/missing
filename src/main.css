@@ -293,11 +293,14 @@ a, .\<a\> {
 	font-size: 1em;
   font-family: inherit;
 	text-decoration: 1px dotted underline;
-	
+
+	/* button-specific resets */
+  padding: 0;
+
 	.list-of-links & {
 		text-decoration: none;
 	}
-	
+
 	&:hover, &:focus {
 		text-decoration: 2px solid underline;
 		cursor: pointer;
@@ -531,7 +534,8 @@ label :is(input, select):not([specificity-hack]) {
 	&:hover, &:focus-visible {
 		filter: brightness(1.1);
 		box-shadow: var(--shadow-focus);
-
+  }
+  &:hover, &:focus {
 		/* a-specific resets */
 		text-decoration: none;
 	}
@@ -567,6 +571,10 @@ label :is(input, select):not([specificity-hack]) {
 		padding-inline: calc(.5 * var(--rhythm, 1rlh));
 		line-height: var(--rhythm, 1rlh);
 	}
+}
+a.\<button\>:not([specificity-hack]) {
+  /* ¯\_(ツ)_/¯ */
+  cursor: default;
 }
 
 strong > :where(
@@ -627,14 +635,6 @@ input::file-selector-button {
 	border: var(--interactive-border-width) var(--interactive-border-style) var(--muted-fg);
 	box-shadow: var(--shadow);
 	border-radius: var(--interactive-border-radius);
-
-	/* a-specific resets */
-	/*color: var(--fg);
-	/*text-decoration: none;
-	/*display: inline-flex;
-	/*justify-content: center;
-	/*align-items: center;
-  /*cursor: default;*/
 }
 input:is(.plain, .info, .ok, .warn, .bad)::file-selector-button {
   --interactive-bg: var(--box-bg);
