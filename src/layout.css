@@ -25,7 +25,8 @@
 	margin-inline: auto;
 }
 
-.fullbleed {
+.fullbleed:not([specificity-hack]) {
+    /* NOTE: Specificity hack needed for e.g. <table class="fullbleed table"> */
     position: relative;
     max-width: none;
     width: var(--full-width);
@@ -99,28 +100,32 @@
 .padding-inline-start\:0 { padding-inline-start: 0 }
 .padding-inline-end\:0 { padding-inline-end: 0 }
 
-.margin { margin: var(--gap) }
-.margin-block { margin-block: var(--gap) }
-.margin-block-start { margin-block-start: var(--gap) }
-.margin-block-end { margin-block-end: var(--gap) }
-.margin-inline { margin-inline: var(--gap) }
-.margin-inline-start { margin-inline-start: var(--gap) }
-.margin-inline-end { margin-inline-end: var(--gap) }
+/* NOTE:
+ * Specificity hack is needed when parent container has e.g. .flex-row
+ *
+ * TODO: Eventually use cascade layers to avoid this hack */
+.margin:not([specificity-hack]) { margin: var(--gap) }
+.margin-block:not([specificity-hack]) { margin-block: var(--gap) }
+.margin-block-start:not([specificity-hack]) { margin-block-start: var(--gap) }
+.margin-block-end:not([specificity-hack]) { margin-block-end: var(--gap) }
+.margin-inline:not([specificity-hack]) { margin-inline: var(--gap) }
+.margin-inline-start:not([specificity-hack]) { margin-inline-start: var(--gap) }
+.margin-inline-end:not([specificity-hack]) { margin-inline-end: var(--gap) }
 
-.margin-block\:auto { margin-block: auto }
-.margin-block-start\:auto { margin-block-start: auto }
-.margin-block-end\:auto { margin-block-end: auto }
-.margin-inline\:auto { margin-inline: auto }
-.margin-inline-start\:auto { margin-inline-start: auto }
-.margin-inline-end\:auto { margin-inline-end: auto }
+.margin-block\:auto:not([specificity-hack]) { margin-block: auto }
+.margin-block-start\:auto:not([specificity-hack]) { margin-block-start: auto }
+.margin-block-end\:auto:not([specificity-hack]) { margin-block-end: auto }
+.margin-inline\:auto:not([specificity-hack]) { margin-inline: auto }
+.margin-inline-start\:auto:not([specificity-hack]) { margin-inline-start: auto }
+.margin-inline-end\:auto:not([specificity-hack]) { margin-inline-end: auto }
 
-.margin\:0 { margin: 0 }
-.margin-block\:0 { margin-block: 0 }
-.margin-block-start\:0 { margin-block-start: 0 }
-.margin-block-end\:0 { margin-block-end: 0 }
-.margin-inline\:0 { margin-inline: 0 }
-.margin-inline-start\:0 { margin-inline-start: 0 }
-.margin-inline-end\:0 { margin-inline-end: 0 }
+.margin\:0:not([specificity-hack]) { margin: 0 }
+.margin-block\:0:not([specificity-hack]) { margin-block: 0 }
+.margin-block-start\:0:not([specificity-hack]) { margin-block-start: 0 }
+.margin-block-end\:0:not([specificity-hack]) { margin-block-end: 0 }
+.margin-inline\:0:not([specificity-hack]) { margin-inline: 0 }
+.margin-inline-start\:0:not([specificity-hack]) { margin-inline-start: 0 }
+.margin-inline-end\:0:not([specificity-hack]) { margin-inline-end: 0 }
 
 .flow-gap {
     & > :not(:last-child) {
