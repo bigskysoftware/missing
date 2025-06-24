@@ -12,7 +12,8 @@ create a dark theme.
 
 This is a reference of all the variables you can set on the root `<html>`
 element. There are a few more that are used with specific components or utility
-classes; these will be listed in the documentation for that class.
+classes; these are grouped together at the bottom, in addition to being mentioned
+in the documentation for their respective class or component.
 
 [[toc]]
 
@@ -23,6 +24,9 @@ classes; these will be listed in the documentation for that class.
 
 <dfn>`--fg`</dfn> {#var-fg}
 :   The text color.
+
+<dfn>`--link-fg`</dfn> {#var-link-fg}
+:   The color used for hyperlinks. Defaults to `--accent`.
 
 <dfn>`--muted-fg`</dfn> {#var-muted-fg}
 :   Text color for disabled or de-emphasized elements. It's important that this
@@ -38,7 +42,10 @@ classes; these will be listed in the documentation for that class.
 :   Background for blocks: cards, admonitions etc.
 
 <dfn>`--interactive-bg`</dfn> {#var-bg-3}
-:   Background for interactive elements
+:   Background for interactive elements.
+
+<dfn>`--pressed-interactive-bg`</dfn> {#var-pressed-interactive-bg}
+:   Background for interactive elements with `[aria-pressed=true]`.
 
 <dfn>`--accent`</dfn> {#var-accent}
 :   Accent color. It's important that this
@@ -46,7 +53,6 @@ classes; these will be listed in the documentation for that class.
 
 <dfn>`--muted-accent`</dfn> {#var-muted-accent}
 :   Less vivid version of accent color. Will not be used for text.
-
 
 ### Colorways
 
@@ -124,7 +130,7 @@ classes; these will be listed in the documentation for that class.
 :   Monospace font for code, preformatted text, computer input and output.
     <div class="box info crowded">
 
-    **Tip**&emsp;Browsers shrink monospace fonts. You can suppress this behavior by
+    **Tip**:&emsp;Browsers shrink monospace fonts. You can suppress this behavior by
     specifying `monospace` _twice_:
 
     ~~~ css
@@ -141,5 +147,22 @@ classes; these will be listed in the documentation for that class.
     of boxes), as a multiplier of the line height (`--rhythm`). See
     [Utilities / Density](/docs/util#density).
 
+
+## Component-specific variables
+
+<dfn>`--flex-switch-threshold`</dfn> {#var-flex-switch-threshold}
+:   Sets the threshold at which `.flex-switch` switches from row to column. Default is `15ch`.
+
+<dfn>`--col-width`</dfn> {#var-col-width}
+:   Sets the width of a column for `.textcolumns`. Default is `30ch`.
+
+<dfn>`--grid-row-width`</dfn> {#var-grid-row-width}
+:   Sets the width of a row in a `.grid`. Default is `1fr`.
+
+<dfn>`--grid-col-width`</dfn> {#var-grid-col-width}
+:   Sets the width of a column in a `.grid`. Default is `1fr`. 
+
+<dfn>`--sidenote-width`</dfn> {#var-sidenote-width}
+:   Sets the width of a `<small role="note">` sidenote. Default is `20ch`.
 
 [colorway]: /docs/colorways
