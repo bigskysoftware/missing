@@ -79,6 +79,9 @@
 }
 
 [role=listbox] {
+    /* This has been removed from docs, but we keep the styling here as a
+     * reference for future implementation.
+     */
     list-style: none;
 
     [role=option] {

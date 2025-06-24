@@ -10,11 +10,13 @@ url: ./flex/
 
 ## Flex containers
 
-<dfn>`.f-row`</dfn> and <dfn>`.f-col`</dfn> will create non-wrapping Flexbox containers, with `flex-direction` set to `row` and `column` respectively.
+<dfn>`.flex-row`</dfn> and <dfn>`.flex-column`</dfn> will create non-wrapping Flexbox containers, with `flex-direction` set to `row` and `column` respectively.
 
-<dfn>`.f-switch`</dfn> will create a Flexbox container that will switch from row to column when the width of an individual descendant exceeds the <dfn>`--f-switch-threshold`</dfn> variable (default `15ch`).
+<dfn>`.flex-switch`</dfn> will create a Flexbox container that will switch from row to column when the width of an individual descendant exceeds the <dfn>`--flex-switch-threshold`</dfn> variable (default `15ch`).
 
-All of `.f-row`, `.f-col` and `.f-switch` will remove margins from their children, and have a [gap] set to `--gap`.
+All of `.flex-row`, `.flex-column` and `.flex-switch` will remove margins from their children, and have a [gap] set to `--gap`.
+
+<strong class="bad color">Deprecated:</strong> The original names for these classes, `.f-row`, `.f-col`, and `.f-switch` (as well as `--f-switch-threshold`), have been deprecated in favor of the more intuitive names given above. The original names will be removed in version 2.0.
 
 [gap]: https://developer.mozilla.org/en-US/docs/Web/CSS/gap
 

@@ -27,11 +27,14 @@ updateResultItem = (item, result) => {
 },
 searchDialog = () => {
     const markup = (html`
-        <dialog class="margin f-col" style="max-width: 100%; width: 30em; max-height: 100%; height: 40em; padding-bottom: 0;">
+        <dialog class="margin flex-col" style="max-width: 100%; width: 30em; max-height: 100%; height: 40em; padding-bottom: 0;">
             <label for="search-input" class="titlebar" style="margin-inline: calc(-1*var(--gap))">
                 Search
             </label>
-            <p><input autofocus id="search-input" class="block width:100%"></p>
+            <div class="flex-row">
+                <input autofocus id="search-input" class="block width:100%">
+                <button class="float:right" onclick="this.closest('dialog').close();">Close</button>
+            </div>
             <div role="listbox" aria-label="results" class="flow-gap padding-inline" style="overflow-y: auto; margin-inline: calc(-1*var(--gap))"></div>
         </dialog>
     `);

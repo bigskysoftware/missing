@@ -6,13 +6,16 @@ backTo: / Missing.css
 renderOrder: 1
 ---
 
-<main>
-
-# Demos
+<header>
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
+    <ol><li><a href="/">Home</a>
+        <li><a href="/demos/" aria-current="page">Demos</a>
+    </ol>
+  </nav>
+  <h1><sub-title class="allcaps">missing.css</sub-title> Demos</h1>
+</header>
 
 {{ for demo of search.pages("url^=/demos/") |> filter((demo) => demo !== page) }}
  - [{{ demo.data.name }}]({{ demo.data.url }})
 {{ /for }}
 {.list-of-links .flow-gap}
-
-</main>

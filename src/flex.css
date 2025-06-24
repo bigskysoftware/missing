@@ -1,29 +1,30 @@
 
-.f-row {
+.flex-row, .f-row {
     display: flex;
     flex-direction: row;
     gap: var(--gap);
     & > * { margin: 0 }
 }
 
-.f-col {
+.flex-column, .f-col {
     display: flex;
     flex-direction: column;
     gap: var(--gap);
     & > * { margin: 0 }
 }
 
-.f-switch {
+.flex-switch, .f-switch {
     display: flex;
     flex-wrap: wrap;
     gap: var(--gap);
-    --f-switch-threshold: 55ch;
-    
+    --f-switch-threshold: 55ch;  /* Deprecated name */
+    --flex-switch-threshold: var(--f-switch-threshold);
+
     & > * {
         margin: 0;
 
         flex-grow: 1;
-        flex-basis: calc((var(--f-switch-threshold) - 100%) * 999);
+        flex-basis: calc((var(--flex-switch-threshold) - 100%) * 999);
     }
 }
 
