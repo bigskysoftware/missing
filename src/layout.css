@@ -84,48 +84,54 @@
 
 /**/
 
+.padding\:0 { padding: 0 }
 .padding { padding: var(--gap) }
+.padding-block\:0 { padding-block: 0 }
 .padding-block { padding-block: var(--gap) }
+.padding-block-start\:0 { padding-block-start: 0 }
 .padding-block-start { padding-block-start: var(--gap) }
+.padding-block-end\:0 { padding-block-end: 0 }
 .padding-block-end { padding-block-end: var(--gap) }
+.padding-inline\:0 { padding-inline: 0 }
 .padding-inline { padding-inline: var(--gap) }
+.padding-inline-start\:0 { padding-inline-start: 0 }
 .padding-inline-start { padding-inline-start: var(--gap) }
+.padding-inline-end\:0 { padding-inline-end: 0 }
 .padding-inline-end { padding-inline-end: var(--gap) }
 
-.padding\:0 { padding: 0 }
-.padding-block\:0 { padding-block: 0 }
-.padding-block-start\:0 { padding-block-start: 0 }
-.padding-block-end\:0 { padding-block-end: 0 }
-.padding-inline\:0 { padding-inline: 0 }
-.padding-inline-start\:0 { padding-inline-start: 0 }
-.padding-inline-end\:0 { padding-inline-end: 0 }
-
 /* NOTE:
- * Specificity hack is needed when parent container has e.g. .flex-row
+ * Specificity hack is needed when parent container has e.g. .flex-row.
+ * TODO: Eventually use cascade layers to avoid this hack.
  *
- * TODO: Eventually use cascade layers to avoid this hack */
-.margin:not([specificity-hack]) { margin: var(--gap) }
-.margin-block:not([specificity-hack]) { margin-block: var(--gap) }
-.margin-block-start:not([specificity-hack]) { margin-block-start: var(--gap) }
-.margin-block-end:not([specificity-hack]) { margin-block-end: var(--gap) }
-.margin-inline:not([specificity-hack]) { margin-inline: var(--gap) }
-.margin-inline-start:not([specificity-hack]) { margin-inline-start: var(--gap) }
-.margin-inline-end:not([specificity-hack]) { margin-inline-end: var(--gap) }
-
-.margin-block\:auto:not([specificity-hack]) { margin-block: auto }
-.margin-block-start\:auto:not([specificity-hack]) { margin-block-start: auto }
-.margin-block-end\:auto:not([specificity-hack]) { margin-block-end: auto }
-.margin-inline\:auto:not([specificity-hack]) { margin-inline: auto }
-.margin-inline-start\:auto:not([specificity-hack]) { margin-inline-start: auto }
-.margin-inline-end\:auto:not([specificity-hack]) { margin-inline-end: auto }
+ * Order matters, e.g. class="margin:0 margin-block-end:auto". */
 
 .margin\:0:not([specificity-hack]) { margin: 0 }
+.margin:not([specificity-hack]) { margin: var(--gap) }
+
 .margin-block\:0:not([specificity-hack]) { margin-block: 0 }
+.margin-block:not([specificity-hack]) { margin-block: var(--gap) }
+.margin-block\:auto:not([specificity-hack]) { margin-block: auto }
+
 .margin-block-start\:0:not([specificity-hack]) { margin-block-start: 0 }
+.margin-block-start:not([specificity-hack]) { margin-block-start: var(--gap) }
+.margin-block-start\:auto:not([specificity-hack]) { margin-block-start: auto }
+
 .margin-block-end\:0:not([specificity-hack]) { margin-block-end: 0 }
+.margin-block-end:not([specificity-hack]) { margin-block-end: var(--gap) }
+.margin-block-end\:auto:not([specificity-hack]) { margin-block-end: auto }
+
 .margin-inline\:0:not([specificity-hack]) { margin-inline: 0 }
+.margin-inline:not([specificity-hack]) { margin-inline: var(--gap) }
+.margin-inline\:auto:not([specificity-hack]) { margin-inline: auto }
+
 .margin-inline-start\:0:not([specificity-hack]) { margin-inline-start: 0 }
+.margin-inline-start:not([specificity-hack]) { margin-inline-start: var(--gap) }
+.margin-inline-start\:auto:not([specificity-hack]) { margin-inline-start: auto }
+
 .margin-inline-end\:0:not([specificity-hack]) { margin-inline-end: 0 }
+.margin-inline-end:not([specificity-hack]) { margin-inline-end: var(--gap) }
+.margin-inline-end\:auto:not([specificity-hack]) { margin-inline-end: auto }
+
 
 .flow-gap {
     & > :not(:last-child) {
