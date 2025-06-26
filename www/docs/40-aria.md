@@ -28,39 +28,35 @@ To get the actual behavior of an accessible tabset, you can use [Missing.js &sec
 <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Tab markup</figcaption>
 
   ~~~ html
-  <script type=module src=/dist/js/tabs.js></script>
+  <script type="module" src="/dist/js/tabs.js"></script>
+  <aria-tablist aria-label="Tabs example">
+    <aria-tab aria-controls="servers" aria-selected="true"
+    >Servers</aria-tab>
+    <aria-tab aria-controls="channels"
+    >Channels</aria-tab>
+    <aria-tab aria-controls="users"
+    >Users</aria-tab>
+  </aria-tablist>
 
-  <div role=tablist aria-label="Tabs example">
-    <button role=tab aria-controls=servers aria-selected=true
-      >Servers</button>
-    <button role=tab aria-controls=channels
-      >Channels</button>
-    <button role=tab aria-controls=users
-      >Users</button>
-  </div>
-
-  <div id=servers         role=tabpanel>...</div>
-  <div id=channels hidden role=tabpanel>...</div>
-  <div id=users    hidden role=tabpanel>...</div>
+  <aria-tabpanel id="servers"        >...</aria-tabpanel>
+  <aria-tabpanel id="channels" hidden>...</aria-tabpanel>
+  <aria-tabpanel id="users"    hidden>...</aria-tabpanel>
   ~~~
 
   <hr>
 
-  <script type=module src=/dist/js/tabs.js></script>
-
-  <div role=tablist aria-label="Tabs example">
-    <button role=tab aria-controls=servers aria-selected=true
-      >Servers</button>
-    <button role=tab aria-controls=channels
-      >Channels</button>
-    <button role=tab aria-controls=users
-      >Users</button>
-  </div>
-  
-  <div id=servers         role=tabpanel>This is tab 1. <strong>JavaScript sold separately!</strong></div>
-  <div id=channels hidden role=tabpanel>You are enjoying tab 2.</div>
-  <div id=users    hidden role=tabpanel><img alt="placeholder cat" src=https://biber.denizaksimsek.com/img/IMG_2022-07-05_07-16-48-400.webp></div>
-
+  <script type="module" src="/dist/js/tabs.js"></script>
+  <aria-tablist aria-label="Tabs example" wrap>
+    <aria-tab aria-controls="servers" aria-selected="true"
+    >Servers</aria-tab>
+    <aria-tab aria-controls="channels"
+    >Channels</aria-tab>
+    <aria-tab aria-controls="users"
+    >Users</aria-tab>
+  </aria-tablist>
+  <aria-tabpanel id="servers"        >This is tab 1. <strong>JavaScript sold separately!</strong></aria-tabpanel>
+  <aria-tabpanel id="channels" hidden>You are enjoying tab 2.</aria-tabpanel>
+  <aria-tabpanel id="users"    hidden><img alt="placeholder cat" src="https://biber.denizaksimsek.com/img/IMG_2022-07-05_07-16-48-400.webp"></aria-tabpanel>
 </figure>
 
 

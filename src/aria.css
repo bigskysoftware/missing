@@ -1,28 +1,28 @@
 
-[role="tablist"] {
+aria-tablist, [role="tablist"] {
     display: flex;
     gap: .5ch;
 }
 
-[role="tab"]:not([specificity-hack]) {
+aria-tab, [role="tab"]:not([specificity-hack]) {
     all: initial;
     color-scheme: light dark;
 
 	font-family: var(--secondary-font);
-    
+
     padding: 0 calc(var(--rhythm, 1rlh) / 4);
     margin: 0;
     min-height: var(--rhythm, 1rlh);
     bottom: calc(-1 * var(--border-block-start-width));
     position: relative;
-    
+
     color: var(--fg);
     border: var(--border-block-start-width) var(--border-block-start-style) var(--graphical-fg);
     background: var(--interactive-bg);
-    
+
     border-start-start-radius: var(--tab-border-radius);
     border-start-end-radius: var(--tab-border-radius);
-    
+
     &:active, &[aria-selected="true"] {
         background: var(--box-bg);
         border-block-end: var(--border-block-start-width) var(--border-block-start-style) transparent;
@@ -40,9 +40,10 @@
     }
 }
 
-[role="tabpanel"] {
+aria-tabpanel, [role="tabpanel"] {
     /* SEE components/box.css */
 
+    display: block;
     margin-block-start: 0;
     border-start-start-radius: 0;
     border-start-end-radius: 0;
@@ -54,7 +55,7 @@
     position: absolute;
 
     z-index: 10;
-    
+
     padding: calc(var(--gap) / 2) 0;
     margin: 1px 0 0 0;
 
@@ -102,7 +103,7 @@
 
         background: var(--temporary-bg);
         color: var(--temporary-fg);
-        
+
         > * {
             --bg: var(--temporary-bg);
             --fg: var(--temporary-fg);
