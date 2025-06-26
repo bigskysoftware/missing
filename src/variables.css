@@ -35,6 +35,7 @@
 	--muted-accent: var(--blue-7); /* Muted accent color. Will not be used for text. */
 
 	/* Lengths */
+  --rhythm: 1.4 rem; /* Deprecated, but must provide in case people use it in calc() */
 	--line-length: 40rem; /* Maximum line length for prose. */
 
   /* Borders */
