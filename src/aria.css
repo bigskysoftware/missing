@@ -5,8 +5,9 @@
     scrollbar-width: thin;
 }
 
-[role="tab"][role="tab"] {
+[role="tab"]:not([specificity-hack]) {
     all: initial;
+    color-scheme: light dark;
 
 	font-family: var(--secondary-font);
     
