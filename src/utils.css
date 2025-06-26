@@ -15,7 +15,7 @@
 	clip-path: inset(50%);
 	block-size: 1px;
 	inline-size: 1px;
-	verflow: hidden;
+	overflow: hidden;
 	white-space: nowrap;
 }
 
