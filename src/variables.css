@@ -35,6 +35,7 @@
 	--muted-accent: var(--blue-7); /* Muted accent color. Will not be used for text. */
 
 	/* Lengths */
+  --rhythm: 1.4rem; /* Deprecated, but must provide in case people use it in calc() */
 	--line-length: 40rem; /* Maximum line length for prose. */
 
   /* Borders */
@@ -53,6 +54,9 @@
   --interactive-border-width: var(--border-width, 1px); /* Single value */
   --interactive-border-style: var(--border-style, solid); /* Single value */
   --interactive-border-radius: .2rem; /* Single value */
+
+  --chip-border-width: var(--border-width, 1px); /* Single value */
+  --chip-border-style: var(--border-style, solid); /* Single value */
 
   --tab-border-radius: .4em; /* Single value */
 

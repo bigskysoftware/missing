@@ -200,8 +200,8 @@ The <dfn>`.big`</dfn> class will be removed in version 2.0.
   <p class="<big>">This is a big paragraph.</p>
  
   <div class="f-row align-items:center">
-    <button class="<big>">Big Button</button>
-    <a class="<button>" href="#">&lt;a&gt; Button</a>
+    <button class="<big> bad">Big Bad Button</button>
+    <a class="bad <button>" href="#">&lt;a&gt; Bad Button</a>
   </div>
   
   <aside class="<big>">
@@ -215,8 +215,8 @@ The <dfn>`.big`</dfn> class will be removed in version 2.0.
   <p class="<big>">This is a big paragraph</p>
  
   <div class="f-row align-items:center">
-    <button class="<big>">Big Button</button>
-    <a class="<button>" href="#">&lt;a&gt; Button</a>
+    <button class="<big> bad">Big Bad Button</button>
+    <a class="bad <button>" href="#">&lt;a&gt; Bad Button</a>
   </div>
   
   <aside class="<big>">

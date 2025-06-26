@@ -37,37 +37,37 @@
 	background: var(--box-bg);
 }
 
+/* Order matters, e.g. class="border:none border-block-end" */
+.border\:none { border: none }
 .border {
   border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--graphical-fg);
   border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--graphical-fg);
   border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) var(--graphical-fg);
   border-inline-end: var(--border-inline-end-width) var(--border-inline-end-style) var(--graphical-fg);
 }
+.border-block\:none { border-block: none }
 .border-block {
   border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--graphical-fg);
   border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--graphical-fg);
 }
+.border-block-start\:none { border-block-start: none }
 .border-block-start {
   border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--graphical-fg);
 }
+.border-block-end\:none { border-block-end: none }
 .border-block-end {
   border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--graphical-fg);
 }
+.border-inline\:none { border-inline: none }
 .border-inline {
   border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) var(--graphical-fg);
   border-inline-end: var(--border-inline-end-width) var(--border-inline-end-style) var(--graphical-fg);
 }
+.border-inline-start\:none { border-inline-start: none }
 .border-inline-start {
   border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) var(--graphical-fg);
 }
+.border-inline-end\:none { border-inline-end: none }
 .border-inline-end {
   border-inline-end: var(--border-inline-end-width) var(--border-inline-end-style) var(--graphical-fg);
 }
-
-.border\:none { border: none }
-.border-block\:none { border-block: none }
-.border-block-start\:none { border-block-start: none }
-.border-block-end\:none { border-block-end: none }
-.border-inline\:none { border-inline: none }
-.border-inline-start\:none { border-inline-start: none }
-.border-inline-end\:none { border-inline-end: none }

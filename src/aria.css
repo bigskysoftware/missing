@@ -97,8 +97,8 @@
     [role=option].active {
         --temporary-bg: var(--accent);
         --temporary-fg: var(--bg);
-        --temporary-accent: parent-var(--muted-accent);
-        --temporary-muted-accent: parent-var(--box-bg);
+        --temporary-accent: var(--muted-accent); /* TODO: was `parent-var` */
+        --temporary-muted-accent: var(--box-bg); /* TODO: was `parent-var` */
 
         background: var(--temporary-bg);
         color: var(--temporary-fg);

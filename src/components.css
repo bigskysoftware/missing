@@ -131,7 +131,7 @@ details,
 
 .chip, chip {
 	font-family: var(--secondary-font);
-    border: var(--border-width) var(--border-style) var(--accent);
+    border: var(--chip-border-width) var(--chip-border-style) var(--accent);
     background: var(--box-bg);
     border-radius: calc(var(--rhythm, 1rlh) / 2);
     padding-inline: calc(var(--rhythm, 1rlh) / 2);
@@ -235,7 +235,7 @@ details,
     }
 }
 
-button.iconbutton {
+.iconbutton {
 	border: none;
 	background: none;
 	color: currentcolor;
@@ -245,7 +245,6 @@ button.iconbutton {
 	font-size: 24px;
 	width: 24px;
 	height: 24px;
-	display: inline-block;
 	text-align: center;
 	border-radius: 50%;
 	transition: font-weight .2s ease-in-out;
@@ -266,4 +265,8 @@ button.iconbutton {
 		box-shadow: none;
 		transform: none;
 	}
+
+  &:is(.plain, .info, .ok, .warn, .bad) {
+    color: var(--accent);
+  }
 }
