@@ -53,7 +53,7 @@ aside {
 	& h6 {
 		font-size: 1em;
 		text-transform: none;
-		letter-spacing: none;
+		letter-spacing: normal;
 	}
 
 	&:is(.big, .\<big\>) {
