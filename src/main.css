@@ -818,7 +818,7 @@ summary {
 dialog {
     /* SEE components/box.css */
 	
-    inline-inset: 0;
+    inset-inline: 0;
     
 	block-size: fit-content;
     inline-size: fit-content;
