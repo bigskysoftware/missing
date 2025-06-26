@@ -99,11 +99,18 @@
 .padding-inline-end\:0 { padding-inline-end: 0 }
 .padding-inline-end { padding-inline-end: var(--gap) }
 
+.padding-start\:0 { padding-block-start: 0; padding-inline-start: 0 }
+.padding-start { padding-block-start: var(--gap); padding-inline-start: var(--gap) }
+.padding-end\:0 { padding-block-end: 0; padding-inline-end: 0 }
+.padding-end { padding-block-end: var(--gap); padding-inline-end: var(--gap) }
+
+
 /* NOTE:
  * Specificity hack is needed when parent container has e.g. .flex-row.
  * TODO: Eventually use cascade layers to avoid this hack.
  *
- * Order matters, e.g. class="margin:0 margin-block-end:auto". */
+ * In order to support e.g. class="margin:0 margin-block-end:auto",
+ * we must be careful what order we define these utils in. */
 
 .margin\:0:not([specificity-hack]) { margin: 0 }
 .margin:not([specificity-hack]) { margin: var(--gap) }
@@ -131,6 +138,32 @@
 .margin-inline-end\:0:not([specificity-hack]) { margin-inline-end: 0 }
 .margin-inline-end:not([specificity-hack]) { margin-inline-end: var(--gap) }
 .margin-inline-end\:auto:not([specificity-hack]) { margin-inline-end: auto }
+
+.margin-start\:0:not([specificity-hack]) {
+  margin-block-start: 0;
+  margin-inline-start: 0;
+}
+.margin-start:not([specificity-hack]) {
+  margin-block-start: var(--gap);
+  margin-inline-start: var(--gap);
+}
+.margin-start\:auto:not([specificity-hack]) {
+  margin-block-start: auto;
+  margin-inline-start: auto;
+}
+
+.margin-end\:0:not([specificity-hack]) {
+  margin-block-end: 0;
+  margin-inline-end: 0;
+}
+.margin-end:not([specificity-hack]) {
+  margin-block-end: var(--gap);
+  margin-inline-end: var(--gap);
+}
+.margin-end\:auto:not([specificity-hack]) {
+  margin-block-end: auto;
+  margin-inline-end: auto;
+}
 
 
 .flow-gap {

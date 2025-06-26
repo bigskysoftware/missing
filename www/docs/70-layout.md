@@ -57,6 +57,8 @@ The amount of margin or padding is determined by the [density utilities][].
  - <dfn>`.margin-block`</dfn>
  - <dfn>`.margin-block-start`</dfn>
  - <dfn>`.margin-block-end`</dfn>
+ - <dfn>`.margin-start`</dfn>
+ - <dfn>`.margin-end`</dfn>
  - <dfn>`.padding`</dfn>
  - <dfn>`.padding-inline`</dfn>
  - <dfn>`.padding-inline-start`</dfn>
@@ -64,6 +66,8 @@ The amount of margin or padding is determined by the [density utilities][].
  - <dfn>`.padding-block`</dfn>
  - <dfn>`.padding-block-start`</dfn>
  - <dfn>`.padding-block-end`</dfn>
+ - <dfn>`.padding-start`</dfn>
+ - <dfn>`.padding-end`</dfn>
 {.textcolumns}
 
 Automatic margin is provided with the following:
@@ -71,9 +75,11 @@ Automatic margin is provided with the following:
  - <dfn>`.margin-inline:auto`</dfn>
  - <dfn>`.margin-inline-start:auto`</dfn>
  - <dfn>`.margin-inline-end:auto`</dfn>
+ - <dfn>`.margin-start:auto`</dfn>
  - <dfn>`.margin-block:auto`</dfn>
  - <dfn>`.margin-block-start:auto`</dfn>
  - <dfn>`.margin-block-end:auto`</dfn>
+ - <dfn>`.margin-end:auto`</dfn>
 {.textcolumns}
 
 To remove padding or margin, use one of the following classes:
@@ -85,6 +91,8 @@ To remove padding or margin, use one of the following classes:
  - <dfn>`.margin-block:0`</dfn>
  - <dfn>`.margin-block-start:0`</dfn>
  - <dfn>`.margin-block-end:0`</dfn>
+ - <dfn>`.margin-start:0`</dfn>
+ - <dfn>`.margin-end:0`</dfn>
  - <dfn>`.padding:0`</dfn>
  - <dfn>`.padding-inline:0`</dfn>
  - <dfn>`.padding-inline-start:0`</dfn>
@@ -92,6 +100,8 @@ To remove padding or margin, use one of the following classes:
  - <dfn>`.padding-block:0`</dfn>
  - <dfn>`.padding-block-start:0`</dfn>
  - <dfn>`.padding-block-end:0`</dfn>
+ - <dfn>`.padding-start:0`</dfn>
+ - <dfn>`.padding-end:0`</dfn>
 {.textcolumns}
 
 Make an element full-width with the <dfn>`.width:100%`</dfn> class.
