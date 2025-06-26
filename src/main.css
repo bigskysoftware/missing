@@ -656,7 +656,7 @@ input::file-selector-button:is(:hover, :focus-visible) {
 input::file-selector-button:active {
 	box-shadow: var(--shadow-active);
 }
-input::file-selector-button:disabled {
+input:disabled::file-selector-button {
   cursor: not-allowed;
 	--fg: var(--muted-fg);
 	box-shadow: var(--shadow-disabled);
@@ -677,7 +677,7 @@ strong > input:is(.plain, .info, .ok, .warn, .bad)::file-selector-button {
   --fg: var(--box-bg);
   --muted-accent: var(--graphical-fg);
 }
-strong > input::file-selector-button:disabled {
+strong > input:disabled::file-selector-button {
   color: var(--muted-accent);
 }
 
