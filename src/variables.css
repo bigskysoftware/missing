@@ -2,7 +2,7 @@
 	/* Colors */
 	--fg: light-dark(var(--gray-12), var(--gray-0)); /* Text. */
 	--muted-fg: light-dark(var(--gray-10), var(--gray-2)); /* Secondary text color. Will be
-		used with a background of --c-bg and --c-bg-2 -- check contrast! */
+		used with a background of --bg and --box-bg -- check contrast! */
 	--faded-fg: light-dark(var(--gray-6), var(--gray-7)); /* Disabled text color. */
 	--graphical-fg: var(--plain-graphical-fg); /* Graphical elements. Will not
 		be used as a text color. */
@@ -20,9 +20,9 @@
 	--warn-graphical-fg: light-dark(var(--yellow-6), var(--yellow-6));
 	
 	--bg: light-dark(var(--gray-0), var(--gray-12)); /* Page background. */
-	--box-bg: light-dark(var(--plain-bg), var(--plain-bg)); /* Background for blocks: cards, admonitions etc. */
+	--box-bg: var(--plain-bg); /* Background for blocks: cards, admonitions etc. */
 	--interactive-bg: light-dark(var(--gray-4), var(--gray-8)); /* Background for interactive elements */
-	--pressed-interactive-bg: light-dark(var(--bg), var(--bg)); /* Background for interactive elements with [aria-pressed|expanded=true] */
+	--pressed-interactive-bg: var(--bg); /* Background for interactive elements with [aria-pressed|expanded=true] */
 
 	--plain-bg: light-dark(var(--gray-1), var(--gray-11));
 	--info-bg: light-dark(var(--blue-1), var(--blue-12));
