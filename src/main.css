@@ -815,7 +815,7 @@ progress {
 }
 
 meter {
-  /* Wrapper element with weird grid-template-rows */
+  /* Wrapper element with weird grid-template-rows UA value */
   &::-webkit-meter-inner-element {
     grid-template-rows: 1fr;
   }
