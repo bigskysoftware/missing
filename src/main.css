@@ -765,12 +765,99 @@ optgroup::before {
 	font-style: normal;
 }
 
-progress {
-	/* TODO */
+progress, meter {
+
+  --border-width: var(--interactive-border-width);
+  --border-style: var(--interactive-border-style);
+  --border-radius: var(--tab-border-radius);
+
+  appearance: none;
+
+  background: var(--box-bg);
+  border: var(--border-width) var(--border-style) var(--graphical-fg);
+  border-radius: var(--border-radius);
+
+  overflow: clip;
+  height: 0.75rem;
+  vertical-align: middle;
+}
+progress::-moz-progress-bar,
+meter::-moz-meter-bar {
+  /* Inner bar */
+  background: var(--accent);
+  border-radius: 0;
 }
 
-meter {
-	/* TODO */
+meter::-webkit-meter-inner-element {
+  /* Wrapper element with weird grid-template-rows */
+  grid-template-rows: 1fr;
+}
+progress::-webkit-progress-value,
+meter::-webkit-meter-even-less-good-value,
+meter::-webkit-meter-suboptimum-value,
+meter::-webkit-meter-optimum-value {
+  /* Inner bar */
+  background: var(--accent);
+  border-radius: 0;
+}
+progress::-webkit-progress-bar,
+meter::-webkit-meter-bar {
+  /* Outer bar */
+  background: var(--box-bg);
+  border-radius: 0;
+}
+
+meter:-moz-meter-optimum {
+  --box-bg: var(--ok-bg);
+  --accent: var(--ok-fg);
+  --graphical-fg: var(--ok-graphical-fg);
+}
+meter::-webkit-meter-optimum-value {
+  /* Only --accent works, cannot use meter:has(::-webkit-meter-optimum-value) */
+  --box-bg: var(--ok-bg);
+  --accent: var(--ok-fg);
+  --graphical-fg: var(--ok-graphical-fg);
+}
+meter:-moz-meter-sub-optimum {
+  --box-bg: var(--warn-bg);
+  --accent: var(--warn-fg);
+  --graphical-fg: var(--warn-graphical-fg);
+}
+meter::-webkit-meter-suboptimum-value {
+  /* Only --accent works, cannot use meter:has(::-webkit-meter-suboptimum-value) */
+  --box-bg: var(--warn-bg);
+  --accent: var(--warn-fg);
+  --graphical-fg: var(--warn-graphical-fg);
+}
+meter:-moz-meter-sub-sub-optimum {
+  --box-bg: var(--bad-bg);
+  --accent: var(--bad-fg);
+  --graphical-fg: var(--bad-graphical-fg);
+}
+meter::-webkit-meter-even-less-good-value {
+  /* Only --accent works, cannot use meter:has(::-webkit-meter-even-less-good-value) */
+  --box-bg: var(--bad-bg);
+  --accent: var(--bad-fg);
+  --graphical-fg: var(--bad-graphical-fg);
+}
+
+progress:not([value])::-moz-progress-bar {
+  /* Indeterminate state */
+  inline-size: 100%;
+  transform-origin: 0% 50%;
+  animation: bouncebar 6s infinite ease-in-out;
+}
+progress:not([value])::-webkit-progress-value {
+  /* Indeterminate state */
+  /* Animation will not work: https://issues.chromium.org/issues/40417491 */
+  inline-size: 100%;
+  transform-origin: 0% 50%;
+  animation: bouncebar 6s infinite ease-in-out;
+}
+@keyframes bouncebar {
+  0%   { transform: translateX(-100%); }
+  50%  { transform: translateX(100%);  }
+  100% { transform: translateX(-100%); }
 }
 
 label[for] {
