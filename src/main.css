@@ -13,7 +13,17 @@ html {
 
 	background: var(--bg);
 	color: var(--fg);
+
 	scroll-padding-block-start: calc(4 * var(--gap));
+  scrollbar-color: var(--accent) transparent;
+}
+@supports not (scrollbar-color: blue) {
+  ::-webkit-scrollbar-thumb {
+    background-color: var(--accent);
+  }
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
 }
 
 body {
@@ -190,8 +200,7 @@ pre {
 	margin: var(--gap) 0;
 
 	overflow-x: auto;
-	scrollbar-width: thin;
-	scrollbar-color: var(--accent) transparent;
+  scrollbar-width: thin;
 }
 
 blockquote {
