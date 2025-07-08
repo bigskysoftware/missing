@@ -765,7 +765,7 @@ optgroup::before {
 	font-style: normal;
 }
 
-progress, meter {
+meter, progress {
 
   --border-width: var(--interactive-border-width);
   --border-style: var(--interactive-border-style);
@@ -773,67 +773,44 @@ progress, meter {
 
   appearance: none;
 
+	box-sizing: border-box;
+  display: inline-block;
+  position: relative;
+
   background: var(--box-bg);
   border: var(--border-width) var(--border-style) var(--graphical-fg);
   border-radius: var(--border-radius);
 
   overflow: clip;
-  height: 0.75rem;
-  vertical-align: middle;
-}
-progress {
-  /* Inner bar */
-  &::-moz-progress-bar {
-    background: var(--accent);
-    border-radius: 0;
-  }
-  &::-webkit-progress-value {
-    background: var(--accent);
-    border-radius: 0;
-  }
+  block-size: 1em;
+  inline-size: unset;
+  min-inline-size: 5em;    /* src: -webkit */
+  vertical-align: -0.2em;  /* src: -moz and -webkit */
 
-  /* Outer bar (webkit only) */
-  &::-webkit-progress-bar {
-    background: var(--box-bg);
-    border-radius: 0;
-  }
-
-  /* Indeterminate state */
-  &:not([value]) {
-    &::-moz-progress-bar {
-      inline-size: 100%;
-      transform-origin: 0% 50%;
-      animation: bouncebar 6s infinite ease-in-out;
-    }
-    &::-webkit-progress-value {
-      /* Animation will not work: https://issues.chromium.org/issues/40417491 */
-      inline-size: 100%;
-      transform-origin: 0% 50%;
-      animation: bouncebar 6s infinite ease-in-out;
-    }
-  }
+  transition: all .1s ease-in-out;
 }
 
 meter {
-  /* Wrapper element with weird grid-template-rows UA value */
   &::-webkit-meter-inner-element {
+    /* Wrapper element */
     grid-template-rows: 1fr;
   }
 
-  /* Inner bar */
   &::-moz-meter-bar {
+    /* Inner bar */
     background: var(--accent);
     border-radius: 0;
   }
   &::-webkit-meter-even-less-good-value,
   &::-webkit-meter-suboptimum-value,
   &::-webkit-meter-optimum-value {
+    /* Inner bar */
     background: var(--accent);
     border-radius: 0;
   }
 
-  /* Outer bar (webkit only) */
   &::-webkit-meter-bar {
+    /* Outer bar (webkit only) */
     background: var(--box-bg);
     border-radius: 0;
   }
@@ -867,10 +844,69 @@ meter {
   }
 }
 
-@keyframes bouncebar {
-  0%   { transform: translateX(-100%); }
-  50%  { transform: translateX(100%);  }
-  100% { transform: translateX(-100%); }
+progress {
+  &::-moz-progress-bar {
+    /* Inner bar */
+    background: var(--accent);
+    border-radius: 0;
+    transition: all .1s ease-in-out;
+  }
+  &::-webkit-progress-value {
+    /* Inner bar */
+    background: var(--accent);
+    border-radius: 0;
+  }
+
+  &::-webkit-progress-bar {
+    /* Outer bar (webkit only) */
+    background: var(--box-bg);
+    border-radius: 0;
+  }
+
+  &:not([value]) {
+    /* Indeterminate state */
+    --track-bg-color: linear-gradient(to right,
+      var(--box-bg) 45%,
+      var(--accent) 0%,
+      var(--accent) 55%,
+      var(--box-bg) 0%
+    );
+    --track-size: 225% 100%;
+    --track-bg-position: right;
+    --track-animation: progress-loading 4s infinite ease-in-out;
+
+    &::after {
+      /* Chromium only */
+      content: "";
+      inset: 0;
+      position: absolute;
+      background: var(--track-bg-color);
+      background-size: var(--track-size);
+      background-position: var(--track-bg-position);
+      animation: var(--track-animation);
+    }
+    &::-webkit-progress-bar {
+      background: var(--track-bg-color);
+      background-size: var(--track-size);
+      background-position: var(--track-bg-position);
+      animation: var(--track-animation);
+    }
+    &::-moz-progress-bar {
+      background: var(--track-bg-color);
+      background-size: var(--track-size);
+      background-position: var(--track-bg-position);
+      animation: var(--track-animation);
+    }
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  progress:not([value]) {
+    --track-bg-position: center;
+    --track-animation: none;
+  }
+}
+@keyframes progress-loading {
+  50% { background-position: left; }
 }
 
 label[for] {
