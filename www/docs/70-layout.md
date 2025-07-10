@@ -135,7 +135,10 @@ Borders can be removed by using <dfn>`.border:none`</dfn> or one of the followin
 
 ***
 
-The <dfn>`.nested-list`</dfn> class removes extraneous margins in nested lists.
+~~The <dfn>`.nested-list`</dfn> class removes extraneous margins in nested lists.~~
+**Deprecated:**{.bad .color} Will be removed in version 2.0.
+In the future, nested lists will not have margins by default.
+You can add them back in using `<li><p>` as needed.
 
 <figure>
 <figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Nested lists</figcaption>
