@@ -15,21 +15,17 @@ html {
 	color: var(--fg);
 
 	scroll-padding-block-start: calc(4 * var(--gap));
-  scrollbar-color: var(--accent) transparent;
-}
-@supports not (scrollbar-color: blue) {
-  ::-webkit-scrollbar-thumb {
-    background-color: var(--accent);
+  @supports selector(::-webkit-scrollbar-thumb) {
+    ::-webkit-scrollbar-thumb { background-color: var(--accent); }
+    ::-webkit-scrollbar-track { background-color: transparent;   }
   }
-  ::-webkit-scrollbar-track {
-    background-color: transparent;
+  @supports (scrollbar-color: gray transparent) {
+    scrollbar-color: var(--accent) transparent;
   }
 }
 html, body {
   scrollbar-width: auto;
-  & * {
-    scrollbar-width: thin;
-  }
+  & * { scrollbar-width: thin; }
 }
 
 body {
@@ -188,7 +184,7 @@ hr {
 	color: inherit;
 	margin-inline: 0;
 	margin-block: var(--gap);
-	
+
 	flex: 0 1 0px;
 	border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) var(--accent);
 	block-size: auto;
@@ -212,7 +208,7 @@ blockquote {
 	margin-inline: 0 var(--gap);
 	padding-inline: var(--gap) 0;
 	margin-block: var(--gap);
-	
+
 	font-size: 1.1em;
 	line-height: var(--rhythm, 1rlh);
 	font-style: italic;
@@ -487,7 +483,7 @@ tr {
 
 td, th {
 	vertical-align: top;
-	
+
 	&:not(:last-child) {
 		padding-inline-end: var(--rhythm, 1rlh);
 	}
@@ -714,7 +710,7 @@ select,
 textarea {
 	padding: calc(var(--rhythm, 1rlh) / 4);
 	vertical-align: top;
-	
+
 	font-size: 1rem;
 	line-height: inherit;
 	font-family: var(--main-font);
@@ -771,76 +767,80 @@ optgroup::before {
 }
 
 meter, progress {
-
   --border-width: var(--interactive-border-width);
   --border-style: var(--interactive-border-style);
   --border-radius: var(--tab-border-radius);
 
-  appearance: none;
+  @supports (
+    selector(::-moz-meter-bar) or
+    selector(::-webkit-meter-bar) or
+    selector(::-moz-progress-bar) or
+    selector(::-webkit-progress-bar)
+  ) {
+    appearance: none;
 
-	box-sizing: border-box;
-  display: inline-block;
-  position: relative;
+  	box-sizing: border-box;
+    display: inline-block;
+    position: relative;
 
-  background: var(--box-bg);
-  border: var(--border-width) var(--border-style) var(--graphical-fg);
-  border-radius: var(--border-radius);
+    background: var(--box-bg);
+    border: var(--border-width) var(--border-style) var(--graphical-fg);
+    border-radius: var(--border-radius);
 
-  overflow: clip;
-  block-size: 1em;
-  inline-size: unset;
-  min-inline-size: 5em;    /* cf: -webkit UA */
-  vertical-align: -0.2em;  /* cf: -moz and -webkit UA */
+    overflow: clip;
+    block-size: 1em;
+    inline-size: unset;
+    min-inline-size: 5em;    /* cf: -webkit UA */
+    vertical-align: -0.2em;  /* cf: -moz and -webkit UA */
 
-  transition: all .1s ease-in-out;
+    transition: all .1s ease-in-out;
+  }
 }
 
 meter {
-  background: var(--plain-bg);
-  border-color: var(--interactive-bg);
+  @supports selector(::-webkit-meter-bar) {
+    &::-webkit-meter-inner-element {
+      /* Wrapper element */
+      grid-template-rows: unset;
+    }
 
-  &::-webkit-meter-inner-element {
-    /* Wrapper element */
-    grid-template-rows: unset;
-  }
+    &::-webkit-meter-bar {
+      /* Outer bar */
+      background: var(--box-bg);
+      border-radius: 0;
+    }
 
-  &::-webkit-meter-bar {
-    /* Outer bar */
-    background: var(--box-bg);
-    border-radius: 0;
-  }
+    &::-webkit-meter-even-less-good-value,
+    &::-webkit-meter-suboptimum-value,
+    &::-webkit-meter-optimum-value {
+      /* Inner bar */
+      background: var(--accent);
+      border-radius: 0;
+    }
 
-  &::-webkit-meter-even-less-good-value,
-  &::-webkit-meter-suboptimum-value,
-  &::-webkit-meter-optimum-value {
-    /* Inner bar */
-    background: var(--accent);
-    border-radius: 0;
+    /* Partial colorway support */
+    background: var(--plain-bg);
+    border-color: var(--interactive-bg);
+    &::-webkit-meter-optimum-value {
+      --accent: var(--ok-fg);
+    }
+    &::-webkit-meter-suboptimum-value {
+      --accent: var(--warn-fg);
+    }
+    &::-webkit-meter-even-less-good-value {
+      --accent: var(--bad-fg);
+    }
   }
-
-  &::-moz-meter-bar {
-    /* Inner bar */
-    background: var(--accent);
-    border-radius: 0;
-  }
-
-  &::-webkit-meter-optimum-value {
-    --accent: var(--ok-fg);
-  }
-  &::-webkit-meter-suboptimum-value {
-    --accent: var(--warn-fg);
-  }
-  &::-webkit-meter-even-less-good-value {
-    --accent: var(--bad-fg);
-  }
-}
-@supports (selector(:-moz-meter-optimum)) {
-  /* Pseudo-classes allow us to fully implement colorways */
-  meter {
+  @supports selector(::-moz-meter-bar) {
+    /* Pseudo-classes allow us to fully implement colorways */
     background: var(--box-bg);
     border-color: var(--graphical-fg);
 
-
+    &::-moz-meter-bar {
+      /* Inner bar */
+      background: var(--accent);
+      border-radius: 0;
+    }
     &:-moz-meter-optimum {
       --box-bg: var(--ok-bg);
       --accent: var(--ok-fg);
@@ -860,24 +860,26 @@ meter {
 }
 
 progress {
-  &::-moz-progress-bar {
-    /* Inner bar */
-    background: var(--accent);
-    border-radius: 0;
-    transition: all .1s ease-in-out;
+  @supports selector(::-moz-progress-bar) {
+    &::-moz-progress-bar {
+      /* Inner bar */
+      background: var(--accent);
+      border-radius: 0;
+      transition: all .1s ease-in-out;
+    }
   }
-  &::-webkit-progress-value {
-    /* Inner bar */
-    background: var(--accent);
-    border-radius: 0;
+  @supports selector(::-webkit-progress-bar) {
+    &::-webkit-progress-bar {
+      /* Outer bar */
+      background: var(--box-bg);
+      border-radius: 0;
+    }
+    &::-webkit-progress-value {
+      /* Inner bar */
+      background: var(--accent);
+      border-radius: 0;
+    }
   }
-
-  &::-webkit-progress-bar {
-    /* Outer bar (webkit only) */
-    background: var(--box-bg);
-    border-radius: 0;
-  }
-
   &:not([value]) {
     /* Indeterminate state */
     --track-bg-color: linear-gradient(to right,
@@ -889,35 +891,39 @@ progress {
     --track-size: 225% 100%;
     --track-bg-position: right;
     --track-animation: progress-loading 4s infinite ease-in-out;
+    @media (prefers-reduced-motion) {
+      --track-bg-position: center;
+      --track-animation: none;
+    }
 
-    &::after {
+    @supports selector(progress::after) {
       /* Chromium only */
-      content: "";
-      inset: 0;
-      position: absolute;
-      background: var(--track-bg-color);
-      background-size: var(--track-size);
-      background-position: var(--track-bg-position);
-      animation: var(--track-animation);
+      &::after {
+        content: "";
+        inset: 0;
+        position: absolute;
+        background: var(--track-bg-color);
+        background-size: var(--track-size);
+        background-position: var(--track-bg-position);
+        animation: var(--track-animation);
+      }
     }
-    &::-webkit-progress-bar {
-      background: var(--track-bg-color);
-      background-size: var(--track-size);
-      background-position: var(--track-bg-position);
-      animation: var(--track-animation);
+    @supports selector(::-webkit-progress-bar) {
+      &::-webkit-progress-bar {
+        background: var(--track-bg-color);
+        background-size: var(--track-size);
+        background-position: var(--track-bg-position);
+        animation: var(--track-animation);
+      }
     }
-    &::-moz-progress-bar {
-      background: var(--track-bg-color);
-      background-size: var(--track-size);
-      background-position: var(--track-bg-position);
-      animation: var(--track-animation);
+    @supports selector(::-moz-progress-bar) {
+      &::-moz-progress-bar {
+        background: var(--track-bg-color);
+        background-size: var(--track-size);
+        background-position: var(--track-bg-position);
+        animation: var(--track-animation);
+      }
     }
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  progress:not([value]) {
-    --track-bg-position: center;
-    --track-animation: none;
   }
 }
 @keyframes progress-loading {
@@ -977,12 +983,12 @@ summary {
 
 dialog {
     /* SEE components/box.css */
-	
+
     inset-inline: 0;
-    
+
 	block-size: fit-content;
     inline-size: fit-content;
-    
+
 	margin: auto !important;
 
     background-color: var(--bg);
