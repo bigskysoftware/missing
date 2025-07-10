@@ -277,17 +277,17 @@ For full-width progress bars, use the `.width:100%` utility class.
   ~~~ html
   <div class=flex-column>
      
-    <label for=p1 class="vh">Upload progress</label>
+    <label for=p1 class="vh">Upload progress...</label>
     <progress id=p1 value=0.5 class="width:100%"></progress>
 
-    <label for=p2>LCARS Scan</label>
+    <label for=p2>LCARS Scan...</label>
     <progress id=p2 class="ok width:100%" value=0.25  style="height: 1.5em; --border-width: 6px; --border-style: double; --border-radius: 0 .5em"></progress>
 
-    <label for=p3>Virus progress</label>
-    <progress id=p3 class="bad width:100%" value=0.75  style="--border-width: 3px; --border-style: inset; --border-radius: 0 .5rem .5rem .5rem"></progress>
+    <label for=p3>Virus progress...</label>
+    <progress id=p3 class="warn width:100%" value=0.75  style="--border-width: 3px; --border-style: inset; --border-radius: 0 .5rem .5rem .5rem"></progress>
 
-    <label for=p4>Indeterminate progress</label>
-    <progress id=p4 class="warn" style="--border-radius: 0;">Indeterminate</progress>
+    <label for=p4>Indeterminate Cylon</label>
+    <progress id=p4 class="bad" style="width: 3em;">Indeterminate Cylon</progress>
 
   </div>
   ~~~
@@ -296,17 +296,17 @@ For full-width progress bars, use the `.width:100%` utility class.
 
   <div class=flex-column>
 
-    <label for=p1 class="vh">Upload progress</label>
+    <label for=p1 class="vh">Upload progress...</label>
     <progress id=p1 value=0.5 class="width:100%"></progress>
 
-    <label for=p2>LCARS Scan</label>
+    <label for=p2>LCARS Scan...</label>
     <progress id=p2 class="ok width:100%" value=0.25  style="height: 1.5em; --border-width: 6px; --border-style: double; --border-radius: 0 .5em"></progress>
 
-    <label for=p3>Virus progress</label>
-    <progress id=p3 class="bad width:100%" value=0.75  style="--border-width: 3px; --border-style: inset; --border-radius: 0 .5rem .5rem .5rem"></progress>
+    <label for=p3>Virus progress...</label>
+    <progress id=p3 class="warn width:100%" value=0.75  style="--border-width: 3px; --border-style: inset; --border-radius: 0 .5rem .5rem .5rem"></progress>
 
-    <label for=p4>Indeterminate progress</label>
-    <progress id=p4 class="warn" style="border-radius: 0;">Indeterminate</progress>
+    <label for=p4>Indeterminate Cylon</label>
+    <progress id=p4 class="bad" style="width: 3em;">Indeterminate Cylon</progress>
 
   </div>
 
