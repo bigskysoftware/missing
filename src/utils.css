@@ -5,6 +5,12 @@
 .crowded  { --density: .5; }
 .packed   { --density: 0;  }
 
+.airy-inside > *     { --density: 3;  }
+.spacious-inside > * { --density: 2;  }
+.dense-inside > *    { --density: 1;  }
+.crowded-inside > *  { --density: .5; }
+.packed-inside > *   { --density: 0;  }
+
 .autodensity {
     --density: 1;
     @media (min-width: 768px)  { --density: 2 }
