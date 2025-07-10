@@ -199,7 +199,7 @@ textarea {
 
 :focus-visible {
     outline: .2em solid var(--accent);
-    z-index: 32;
+    z-index: 2;
 }
 
     iframe:focus-visible,
