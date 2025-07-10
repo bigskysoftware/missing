@@ -784,23 +784,27 @@ meter, progress {
   overflow: clip;
   block-size: 1em;
   inline-size: unset;
-  min-inline-size: 5em;    /* src: -webkit */
-  vertical-align: -0.2em;  /* src: -moz and -webkit */
+  min-inline-size: 5em;    /* cf: -webkit UA */
+  vertical-align: -0.2em;  /* cf: -moz and -webkit UA */
 
   transition: all .1s ease-in-out;
 }
 
 meter {
+  background: var(--plain-bg);
+  border-color: var(--interactive-bg);
+
   &::-webkit-meter-inner-element {
     /* Wrapper element */
-    grid-template-rows: 1fr;
+    grid-template-rows: unset;
   }
 
-  &::-moz-meter-bar {
-    /* Inner bar */
-    background: var(--accent);
+  &::-webkit-meter-bar {
+    /* Outer bar */
+    background: var(--box-bg);
     border-radius: 0;
   }
+
   &::-webkit-meter-even-less-good-value,
   &::-webkit-meter-suboptimum-value,
   &::-webkit-meter-optimum-value {
@@ -809,30 +813,12 @@ meter {
     border-radius: 0;
   }
 
-  &::-webkit-meter-bar {
-    /* Outer bar (webkit only) */
-    background: var(--box-bg);
+  &::-moz-meter-bar {
+    /* Inner bar */
+    background: var(--accent);
     border-radius: 0;
   }
 
-  /* Colorways */
-  &:-moz-meter-optimum {
-    --box-bg: var(--ok-bg);
-    --accent: var(--ok-fg);
-    --graphical-fg: var(--ok-graphical-fg);
-  }
-  &:-moz-meter-sub-optimum {
-    --box-bg: var(--warn-bg);
-    --accent: var(--warn-fg);
-    --graphical-fg: var(--warn-graphical-fg);
-  }
-  &:-moz-meter-sub-sub-optimum {
-    --box-bg: var(--bad-bg);
-    --accent: var(--bad-fg);
-    --graphical-fg: var(--bad-graphical-fg);
-  }
-
-  /* TODO: How to set <meter> border/bg if can't use meter:has(::-webkit...) */
   &::-webkit-meter-optimum-value {
     --accent: var(--ok-fg);
   }
@@ -841,6 +827,30 @@ meter {
   }
   &::-webkit-meter-even-less-good-value {
     --accent: var(--bad-fg);
+  }
+}
+@supports (selector(:-moz-meter-optimum)) {
+  /* Pseudo-classes allow us to fully implement colorways */
+  meter {
+    background: var(--box-bg);
+    border-color: var(--graphical-fg);
+
+
+    &:-moz-meter-optimum {
+      --box-bg: var(--ok-bg);
+      --accent: var(--ok-fg);
+      --graphical-fg: var(--ok-graphical-fg);
+    }
+    &:-moz-meter-sub-optimum {
+      --box-bg: var(--warn-bg);
+      --accent: var(--warn-fg);
+      --graphical-fg: var(--warn-graphical-fg);
+    }
+    &:-moz-meter-sub-sub-optimum {
+      --box-bg: var(--bad-bg);
+      --accent: var(--bad-fg);
+      --graphical-fg: var(--bad-graphical-fg);
+    }
   }
 }
 
