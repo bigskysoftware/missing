@@ -2,7 +2,6 @@
 [role="tablist"] {
     display: flex;
     gap: .5ch;
-    scrollbar-width: thin;
 }
 
 [role="tab"]:not([specificity-hack]) {

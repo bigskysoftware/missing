@@ -25,6 +25,12 @@ html {
     background-color: transparent;
   }
 }
+html, body {
+  scrollbar-width: auto;
+  & * {
+    scrollbar-width: thin;
+  }
+}
 
 body {
 	margin: 0;
@@ -200,7 +206,6 @@ pre {
 	margin: var(--gap) 0;
 
 	overflow-x: auto;
-  scrollbar-width: thin;
 }
 
 blockquote {

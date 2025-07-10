@@ -99,7 +99,7 @@ details,
 
 		& > :nth-child(2) {
 			overflow: auto;
-      scrollbar-width: thin;
+      scrollbar-width: auto;
 			--full-width: calc(100vw - 25ch);
 			padding-top: var(--gap);
 		}
@@ -155,7 +155,6 @@ details,
 	border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--accent);
 
 	overflow-x: auto;
-	scrollbar-width: thin;
 
 	position: sticky;
 	z-index: 5;
@@ -175,7 +174,6 @@ details,
 
 		max-height: 90vh;
 		overflow-y: auto;
-    scrollbar-width: thin;
 
 		& ul[role="list"] { flex-flow: column; }
 	}
