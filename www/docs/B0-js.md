@@ -46,7 +46,7 @@ The tabs behavior emits these custom events:
 
 **Info**:&emsp;For dynamically inserted content, initialize it as such:
 
-<figure>
+<figure class="plain">
 
   ~~~ js
   import tabs from "https://unpkg.com/missing.css@{{ version }}/dist/js/tabs.js";
