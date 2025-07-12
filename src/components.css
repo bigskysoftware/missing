@@ -20,19 +20,27 @@ details,
 }
 
 .titlebar {
-    margin-inline: calc(0px - var(--gap));
-    margin-block-end: calc(0px - var(--gap));
-    padding-inline: var(--gap);
+  display: block;
 
-    font: inherit;
+  margin-inline: calc(0px - var(--gap));
+  margin-block-end: var(--gap);
+  padding-inline: var(--gap);
+
+  font: inherit;
 	font-family: var(--secondary-font);
-    font-weight: bold;
-	
-    translate: 0 calc(0px - var(--gap));
-	
-    background: var(--graphical-fg);
-    color: var(--bg);
+  font-weight: bold;
+
+  background: var(--graphical-fg);
+  color: var(--bg);
 	text-shadow: 0 .1em .2em var(--fg);
+  overflow-y: clip;
+
+  & a {
+    color: var(--bg);
+  }
+}
+:is(.box, dialog):has( > .titlebar ) {
+  padding-block-start: 0;
 }
 
 .sub-title, sub-title {
@@ -91,6 +99,7 @@ details,
 
 		& > :nth-child(2) {
 			overflow: auto;
+      scrollbar-width: auto;
 			--full-width: calc(100vw - 25ch);
 			padding-top: var(--gap);
 		}
@@ -146,7 +155,6 @@ details,
 	border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--accent);
 
 	overflow-x: auto;
-	scrollbar-width: thin;
 
 	position: sticky;
 	z-index: 5;

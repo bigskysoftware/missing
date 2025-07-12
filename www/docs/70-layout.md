@@ -135,7 +135,10 @@ Borders can be removed by using <dfn>`.border:none`</dfn> or one of the followin
 
 ***
 
-The <dfn>`.nested-list`</dfn> class removes extraneous margins in nested lists.
+~~The <dfn>`.nested-list`</dfn> class removes extraneous margins in nested lists.~~
+**Deprecated:**{.bad .color} Will be removed in version 2.0.
+In the future, nested lists will not have margins by default.
+You can add them back in using `<li><p>` as needed.
 
 <figure>
 <figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Nested lists</figcaption>
@@ -229,16 +232,25 @@ To set the aspect ratio of an element, use the `aspect-ratio` CSS property:
 
 ## Scrolling
 
-Set the `overflow` property with these utility classes:
+Set the `overflow` property with these utility classes.
 
 <dfn>`.overflow:auto`</dfn>  
-:   Show scrollbars if needed
+:   Show scrollbars if needed.
 
 <dfn>`.overflow:scroll`</dfn>
-:   Always show scrollbars   
+:   Always show scrollbars (use <dfn>`.overflow-x:scroll`</dfn> or <dfn>`.overflow-y:scroll`</dfn> to set on a specific axis).
 
 <dfn>`.overflow:clip`</dfn>
-:   Overflow content is clipped at the element's padding box. Can be extended using the `overflow-clip-margin` property.
+:   Overflow content is clipped at the element's padding box.
+    Can be set per axis using <dfn>`.overflow-x:clip`</dfn> or <dfn>`.overflow-y:clip`</dfn>, and the clip margin can be extended using the `overflow-clip-margin` CSS property.
+
+<div class="box info">
+
+**Info**:&emsp;When using the `.overflow:scroll` utilities, it is recommended to add
+the element to the tabbing order (e.g., `<div tabindex=0 class=overflow-x:scroll>`)
+so that the container can be scrolled using the keyboard.
+
+</div>
 
 
 ## Pseudo-tables

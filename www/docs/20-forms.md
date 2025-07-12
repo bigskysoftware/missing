@@ -256,5 +256,152 @@ the label itself.
 </figure>
 
 
+## Progress bar
+
+Create a progress bar using the `<progress>` element.
+This element should be used to represent how much of a specific, ongoing process has been completed.
+Be sure to add a `<label>` for accessibility (in conjunction with `.vh` or `<v-h>` if you like).
+
+The element can be put in an indeterminate state by not including the `value` attribute.
+Indeterminate `<progress>` elements will show a pending animation if the user does not have `@prefers-reduced-motion` set.
+
+The element can be styled by setting `--border-width`, `--border-style`, and `--border-radius` variables directly on the `<progress>` element.
+When not explicitly set, the element inherits from `--interactive-border-width`, `--interactive-border-style`, and `--tab-border-radius`.
+For full-width progress bars, use the `.width:100%` utility class.
+[Colorways](colorways) are supported.
+
+
+<figure>
+<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Progress bar markup</figcaption>
+
+  ~~~ html
+  <div class=flex-column>
+     
+    <label for=p1 class="vh">Upload progress...</label>
+    <progress id=p1 value=0.5 class="width:100%"></progress>
+
+    <label for=p2>LCARS Scan...</label>
+    <progress id=p2 class="ok width:100%" value=0.25  style="height: 1.5em; --border-width: 6px; --border-style: double; --border-radius: 0 .5em"></progress>
+
+    <label for=p3>Virus progress...</label>
+    <progress id=p3 class="warn width:100%" value=0.75  style="--border-width: 3px; --border-style: inset; --border-radius: 0 .5rem .5rem .5rem"></progress>
+
+    <label for=p4>Indeterminate Cylon</label>
+    <progress id=p4 class="bad" style="width: 3em;">Indeterminate Cylon</progress>
+
+  </div>
+  ~~~
+
+  <hr>
+
+  <div class=flex-column>
+
+    <label for=p1 class="vh">Upload progress...</label>
+    <progress id=p1 value=0.5 class="width:100%"></progress>
+
+    <label for=p2>LCARS Scan...</label>
+    <progress id=p2 class="ok width:100%" value=0.25  style="height: 1.5em; --border-width: 6px; --border-style: double; --border-radius: 0 .5em"></progress>
+
+    <label for=p3>Virus progress...</label>
+    <progress id=p3 class="warn width:100%" value=0.75  style="--border-width: 3px; --border-style: inset; --border-radius: 0 .5rem .5rem .5rem"></progress>
+
+    <label for=p4>Indeterminate Cylon</label>
+    <progress id=p4 class="bad" style="width: 3em;">Indeterminate Cylon</progress>
+
+  </div>
+
+</figure>
+
+## Meter
+
+Use the `<meter>` element to create a meter guage.
+This element is used to indicate a measurement within a known range and is semantically differen from the `<progress>` element.
+
+Similar to the `<progress>` element, you can style a `<meter>` by setting `--border-width`, `--border-style`, and `--border-radius` directly on the element.
+The `<meter>` element derives its colors from the <code>.ok</code>, <code>.warn</code>, and <code>.bad</code> [colorways]().
+
+<div class="box warn">
+
+**Warning**:&emsp;Due to cross-browser implementation differences, colorways are only fully supported in browsers that pass the `@supports (selector(:-moz-meter-optimum))` check.
+The color of the meter bar is correctly set in all browsers according to the values of `--ok-fg`, `--warn-fg`, and `--bad-fg`. However, only browsers passing the `@supports` rule will also have the appropriate colorway background and border colors.
+
+A suitable fallback choice has been made for these colors (`--plain-bg` for the background and `--interactive-bg` for the border) until browser support improves.
+
+</div>
+
+<figure>
+<figcaption><sub-title class=allcaps>Example</sub-title>Value in optimum range</figcaption>
+
+  ~~~html
+  <strong>Disk usage (optimum is a medium amount of usage)</strong>
+  <label for=disk1>60GB Used:</label>
+  <meter id=disk1 min=0 max=100 value=60 low=30 high=70 optimum=50>60GB of 100GB</meter>
+
+  <strong>Battery level (optimum is full)</strong>
+  <label for=battery1>85% Charged:</label>
+  <meter id=battery1 min=0 max=100 value=85 low=20 high=70 optimum=100>85% charged</meter>
+
+  <strong>Temperature (optimum is low)</strong>
+  <label for=temp1>15°C:</label>
+  <meter id=temp1 min=0 max=50 value=15 low=20 high=30 optimum=0>15°C</meter>
+  ~~~
+
+  <hr>
+
+  <strong>Disk usage (optimum is a medium amount of usage)</strong>
+  <label for=disk1>60GB Used:</label>
+  <meter id=disk1 min=0 max=100 value=60 low=30 high=70 optimum=50>60GB of 100GB</meter>
+
+  <strong>Battery level (optimum is full)</strong>
+  <label for=battery1>85% Charged:</label>
+  <meter id=battery1 min=0 max=100 value=85 low=20 high=70 optimum=100>85% charged</meter>
+
+  <strong>Temperature (optimum is low)</strong>
+  <label for=temp1>15°C:</label>
+  <meter id=temp1 min=0 max=50 value=15 low=20 high=30 optimum=0>15°C</meter>
+
+</figure>
+
+<figure>
+<figcaption><sub-title class=allcaps>Example</sub-title>Value in sub-optimum range</figcaption>
+
+  ~~~html
+  <strong>Disk usage (getting full)</strong>
+  <label for=disk2>80GB Used:</label>
+  <meter id=disk2 min=0 max=100 value=80 low=30 high=70 optimum=50>80GB of 100GB</meter>
+
+  <strong>Battery level (getting low)</strong>
+  <label for=battery2>25% Charged:</label>
+  <meter id=battery2 min=0 max=100 value=25 low=20 high=70 optimum=100>15% charged</meter>
+
+  <strong>Temperature (overheating)</strong>
+  <label for=temp2>40°C:</label>
+  <meter id=temp2 min=0 max=50 value=40 low=10 high=30 optimum=0>40°C</meter>
+
+  <strong>Exam score (failing)</strong>
+  <label for=exam1>20% Score:</label>
+  <meter id=exam1 min=0 max=100 value=20 low=40 high=80 optimum=100>20% score</meter>
+  ~~~
+
+  <hr>
+
+  <strong>Disk usage (getting full)</strong>
+  <label for=disk2>80GB Used:</label>
+  <meter id=disk2 min=0 max=100 value=80 low=30 high=70 optimum=50>80GB of 100GB</meter>
+
+  <strong>Battery level (getting low)</strong>
+  <label for=battery2>25% Charged:</label>
+  <meter id=battery2 min=0 max=100 value=25 low=20 high=70 optimum=100>15% charged</meter>
+
+  <strong>Temperature (overheating)</strong>
+  <label for=temp2>40°C:</label>
+  <meter id=temp2 min=0 max=50 value=40 low=10 high=30 optimum=0>40°C</meter>
+
+  <strong>Exam score (failing)</strong>
+  <label for=exam1>20% Score:</label>
+  <meter id=exam1 min=0 max=100 value=20 low=40 high=80 optimum=100>20% score</meter>
+
+</figure>
+
 [masquerades]: /docs/utils/#masquerades
 [colorways]: /docs/colorways

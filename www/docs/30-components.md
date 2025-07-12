@@ -50,16 +50,16 @@ appearance with the `.box` class.
 
   ~~~ html
   <div class="box bad">
-    <strong class="block titlebar">Error</strong>
-    Task failed successfully
+    <strong class="titlebar">Error</strong>
+    <p>Task failed successfully
   </div>
   ~~~
 
   <hr>
 
   <div class="box bad">
-    <strong class="block titlebar">Error</strong>
-    Task failed successfully
+    <strong class="titlebar">Error</strong>
+    <p>Task failed successfully
   </div>
 
 </figure>
