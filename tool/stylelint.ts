@@ -2,6 +2,8 @@ import stylelint from 'npm:stylelint';
 import noUnsupportedBrowserFeatures from 'npm:stylelint-no-unsupported-browser-features';
 import { resolve } from 'jsr:@std/path/resolve'
 
+import browsers from './browserslist.json' with { type: 'json' }
+
 async function checkCssCompact() {
   const result = await stylelint.lint({
     cwd: resolve(import.meta.dirname, '../'),
@@ -11,7 +13,7 @@ async function checkCssCompact() {
       plugins: [noUnsupportedBrowserFeatures],
       rules: {
         'plugin/no-unsupported-browser-features': [true, {
-          browsers: "> 0.9% and last 2 versions and not dead",
+          browsers: browsers.query,
           ignorePartialSupport: true,
         }],
       },

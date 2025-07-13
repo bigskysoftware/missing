@@ -6,6 +6,8 @@ import {
 import browserslist from "npm:browserslist";
 import { dirname } from "std/path/dirname.ts";
 
+import browsers from './browserslist.json' with { type: 'json' }
+
 const input = Deno.args[0],
   output = Deno.args[1] ?? input.replace("src/", "dist/"),
   outputMin = output.replace(/.css$/i, ".min.css");
@@ -18,7 +20,7 @@ const compile = bundle({
   errorRecovery: true,
   minify: false,
   targets: browserslistToTargets(
-    browserslist(">= 0.25% and not ie 11"),
+    browserslist(browsers.query),
   ),
 });
 
