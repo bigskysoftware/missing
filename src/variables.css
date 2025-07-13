@@ -6,7 +6,7 @@
 	--faded-fg: light-dark(var(--gray-6), var(--gray-7)); /* Disabled text color. */
 	--graphical-fg: var(--plain-graphical-fg); /* Graphical elements. Will not
 		be used as a text color. */
-	
+
 	--plain-fg: light-dark(var(--blue-10), var(--blue-2));
 	--info-fg: light-dark(var(--blue-11), var(--blue-2));
 	--ok-fg: light-dark(var(--green-11), var(--green-2));
@@ -18,7 +18,7 @@
 	--ok-graphical-fg: light-dark(var(--green-6), var(--green-6));
 	--bad-graphical-fg: light-dark(var(--red-6), var(--red-6));
 	--warn-graphical-fg: light-dark(var(--yellow-6), var(--yellow-6));
-	
+
 	--bg: light-dark(var(--gray-0), var(--gray-12)); /* Page background. */
 	--box-bg: var(--plain-bg); /* Background for blocks: cards, admonitions etc. */
 	--interactive-bg: light-dark(var(--gray-4), var(--gray-8)); /* Background for interactive elements */
@@ -113,5 +113,5 @@
 }
 
 * {
-	accent-color: var(--accent);
+	accent-color: var(--accent); /* stylelint-disable-line plugin/browser-compat */
 }

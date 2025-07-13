@@ -16,12 +16,12 @@ backTo: / Missing.css
 </header>
 
 {{ set releases = search.pages("release!=undefined")
-  |> sortSemVer(page => page.data.release)
+  |> sortSemVer(page => page.release)
   |> reverse }}
 
 <ul role="list" class="list-of-links flex-row flex-wrap:wrap">
 {{ for rel of releases }}
 <li class="mono-font" style="flex-basis:18ch">
-  <a href="{{ rel.data.url }}">{{ rel.data.release }}</a>
+  <a href="{{ rel.url }}">{{ rel.release }}</a>
 {{ /for }}
 </ul>

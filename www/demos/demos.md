@@ -15,7 +15,7 @@ renderOrder: 1
   <h1><sub-title class="allcaps">missing.css</sub-title> Demos</h1>
 </header>
 
-{{ for demo of search.pages("url^=/demos/") |> filter((demo) => demo !== page) }}
- - [{{ demo.data.name }}]({{ demo.data.url }})
+{{ for demo of search.pages("url^=/demos/") |> filter((demo) => demo.page !== page) }}
+ - [{{ demo.name }}]({{ demo.url }})
 {{ /for }}
 {.list-of-links .flow-gap}

@@ -3,7 +3,7 @@
 
 // @deno-types="../../src/js/19.js"
 import { $, attr, next, prev, behavior, html, on, repeater, makelogger, hotkey, halts } from "/dist/js/19.js";
-import * as pagefind from "/_pagefind/pagefind.js";
+import * as pagefind from "/pagefind/pagefind.js";
 
 // TODO: add listbox styling to missing.css
 
@@ -40,7 +40,7 @@ searchDialog = () => {
     `);
 
     const dialog = $(markup, "dialog"), input = $(dialog, "input"), results = $(dialog, "[role=listbox]");
-    
+
     const
     showSearchResults = repeater(results, {
         idOf(result) { return result.id },
@@ -58,7 +58,7 @@ searchDialog = () => {
         attr(results, "aria-activedescendant", item.id);
         item.scrollIntoView({ block: "nearest" })
     }
-    
+
     on(input, "input", _ => pagefind.preload(input.value));
     on(input, "input", async _ => {
         const search = await pagefind.search(ilog(input.value));

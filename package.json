@@ -21,6 +21,6 @@
     "./prism": "./dist/missing-prism.min.css"
   },
   "scripts": {
-    "prepack": "deno task build"
+    "prepack": "mise run build"
   }
 }

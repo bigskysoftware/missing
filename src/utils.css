@@ -56,7 +56,7 @@
 
 .background-clip\:text {
   background-size: cover;
-  background-clip: text;
+  background-clip: text; /* stylelint-disable-line plugin/browser-compat */
   color: transparent;
 }
 

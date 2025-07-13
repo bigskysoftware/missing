@@ -1,9 +1,7 @@
 .textcolumns {
     --col-width: 30ch;
-    /* doiuse-disable multicolumn */
     column-width: var(--col-width);
     column-gap: var(--gap);
-    /* doiuse-enable multicolumn */
     margin-block: var(--gap);
 
     & :first-child { margin-block-start: 0 !important }
@@ -59,7 +57,7 @@
 /* margin-trim had better be implemented soon */
 :is(
     body,
-    .box, 
+    .box,
     [role=menu],
     .sidebar-layout > header,
     [role=tabpanel],
@@ -178,9 +176,7 @@
 
 .inline { display: inline }
 .block { display: block }
-/* doiuse-disable css-display-contents */
 .contents { display: contents }
-/* doiuse-enable css-display-contents */
 
 .table {
     display: table;
@@ -190,7 +186,7 @@
 
 .row, .rows > * {
     display: table-row;
-    
+
     &:not(:last-child):not([specificity-hack]) > * {
         margin-bottom: var(--gap);
     }

@@ -16,10 +16,8 @@ Missing.css is a simple CSS library that can be used in many ways — you could:
 
 Install it on your website if you haven't already:
 
-{{ set version = search.pages("release!=undefined")
-    |> map(rel => rel.data.release)
-    |> sortSemVer
-    |> at(-1) }}
+{{ set version = search.pages("release!=undefined") |>
+    map(rel => rel.release) |> sortSemVer |> at(-1) }}
 
 <figure>
 

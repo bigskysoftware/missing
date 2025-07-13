@@ -20,16 +20,12 @@ html {
     ::-webkit-scrollbar-track { background-color: transparent;   }
   }
   @supports (scrollbar-color: gray transparent) {
-    /* doiuse-disable css-scrollbar */
     scrollbar-color: var(--accent) transparent;
-    /* doiuse-enable css-scrollbar */
   }
 }
 html, body {
-  /* doiuse-disable css-scrollbar */
   scrollbar-width: auto;
   & * { scrollbar-width: thin; }
-  /* doiuse-enable css-scrollbar */
 }
 
 body {
@@ -262,9 +258,7 @@ dl {
 		margin-inline-start: var(--rhythm, 1rlh);
 	}
 
-/* doiuse-disable css-marker-pseudo */
-li::marker {
-/* doiuse-enable css-marker-pseudo */
+li::marker {  /* stylelint-disable-line plugin/browser-compat */
 	font-family: var(--secondary-font);
 }
 
@@ -581,9 +575,7 @@ label :is(input, select):not([specificity-hack]) {
 	}
 
 	&:disabled {
-	  /* doiuse-disable css3-cursors */
     cursor: not-allowed;
-	  /* doiuse-enable css3-cursors */
 		--fg: var(--muted-fg);
 		box-shadow: var(--shadow-disabled);
 	}
@@ -675,9 +667,7 @@ input::file-selector-button:active {
 	box-shadow: var(--shadow-active);
 }
 input:disabled::file-selector-button {
-  /* doiuse-disable css3-cursors */
   cursor: not-allowed;
-  /* doiuse-enable css3-cursors */
 	--fg: var(--muted-fg);
 	box-shadow: var(--shadow-disabled);
 }
