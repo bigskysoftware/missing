@@ -30,43 +30,44 @@ work. That's not how you buy something).
 
 ## Development Environment
 
-You will need [Deno][] to build Missing.css.
-Everything else will be downloaded and cached indefinitely by Deno --
-if you plan to go offline for a while, consider doing a full build of everything
-(`deno task build`) to cache dependencies.
+The Missing project uses [mise-en-place] to install tools and run tasks.
+
+  * Install your tools:
+    ~~~
+    mise install
+    ~~~
 
   * Start a development server:
       ~~~ sh
-      deno task serve
+      mise run serve
       ~~~
-    This will serve the missing.css website, which uses the CSS directly from source.
 
   * Build all of missing.css (CSS and JS):
       ~~~ sh
-      deno task build
+      mise run build
       ~~~
 
   * Build just the CSS:
       ~~~ sh
-      deno task css
+      mise run build:css
       ~~~
 
   * Build just the JS:
       ~~~ sh
-      deno task js
-      ~~~
-  
-  * Build the website:
-      ~~~ sh
-      deno task www
+      mise run build:js
       ~~~
 
-[Deno]: https://deno.land/
+  * Build the website:
+      ~~~ sh
+      mise run build:www
+      ~~~
+
+[mise-en-place]: https://mise.jdx.dev/
 
 
 ## Branching
 
-You'll notice that we don't have a `master` or `main` branch. Instead, the 
+You'll notice that we don't have a `master` or `main` branch. Instead, the
 `dev` branch is the default. This way, the default place to open a pull request
 is the right one.
 
@@ -95,7 +96,7 @@ To publish a new release:
        - **Breaking:**{.color.warn} Removed everything
       EOF
       ~~~
-    
+
     Some older changelogs have a list of `artifacts` -- this is a leftover
     from when we used our own distribution instead of npm.
 
@@ -107,11 +108,11 @@ To publish a new release:
 
 ## Dev Notes
 
-You can note your thoughts and leave notes for maintainers in the `dev-notes`
+You can note your thoughts and leave notes for maintainers in the `JOURNAL.md`
 file. The structure is:
 
   ~~~
-  YYYY-MM-DD
+  ## YYYY-MM-DD
 
   Your notes here
 
@@ -123,9 +124,11 @@ Leave two empty lines between notes.
 
 ## Project Structure
 
-  * `src/` -- the CSS source code. This is processed with Lightning CSS.
+  * `src/` -- the CSS source code. This is bundled with esbuild.
 
   * `www/` -- the project website, built with [Lume]
+      * `docs/` -- documentation. The prefixes on the names (e.g. `40-aria.md`)
+        determine the order of pages.
       * `demos/` -- demo pages. These should have a `name` specified in the
         frontmatter. They will be listed in the demo page (`../demos.md`).
       * `releases/` -- release notes.
@@ -133,10 +136,7 @@ Leave two empty lines between notes.
   * `dist/` -- build results. This is also where the built website is.
       * `missing.css` -- unminified dev build
       * `missing.min.css` -- minified
-      * `missing.min.css.br` -- minified + gzip compressed
-      * `missing.min.css.gz` -- minified + brotli compressed
-      * `missing-prism.css` (& `.min.css`, etc.) -- [Prism] theme
-      * `archive` -- past releases of the above
+      * `missing-prism.css` (& `.min.css`) -- [Prism] theme
 
 [Lume]: https://lume.land
 [Prism]: https://prismjs.com
