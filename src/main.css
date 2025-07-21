@@ -258,8 +258,10 @@ dl {
 		margin-inline-start: var(--rhythm, 1rlh);
 	}
 
-li::marker {  /* stylelint-disable-line plugin/browser-compat */
-	font-family: var(--secondary-font);
+@supports selector(li::marker) {
+  li::marker {
+  	font-family: var(--secondary-font);
+  }
 }
 
 figure {

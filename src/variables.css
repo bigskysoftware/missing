@@ -113,5 +113,7 @@
 }
 
 * {
-	accent-color: var(--accent); /* stylelint-disable-line plugin/browser-compat */
+  @supports (accent-color: #000) {
+    accent-color: var(--accent);
+  }
 }
