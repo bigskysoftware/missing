@@ -11,7 +11,7 @@ layout: layout.vto
             </button>
         </div>
         <p>
-            <a href="/" class="allcaps">Missing.css</a> 
+            <a href="/" class="allcaps">Missing.css</a>
         </p>
         <search>
             <strong><button type="button" data-pagefind-search>Search</button></strong>
@@ -19,9 +19,9 @@ layout: layout.vto
         </search>
         <ul role="list">
             {{ for doc of search.pages("url^=/docs/", "page.src.path") }}
-                    <li><a href="{{ doc.data.url }}" 
-                        {{ url == doc.data.url ? "aria-current=page" : "" }}
-                        >{{ doc.data.title }}</a></li>
+                    <li><a href="{{ doc.url }}"
+                        {{ url == doc.url ? "aria-current=page" : "" }}
+                        >{{ doc.title }}</a></li>
             {{ /for }}
         </ul>
     </nav>
@@ -38,12 +38,12 @@ layout: layout.vto
     <div class="f-row flex-wrap:wrap justify-content:space-between">
         {{ if prev }}
             <div>Previous &larr;
-                <strong><a href="{{ prev.data.url }}">{{ prev.data.title }}</a></strong>
+                <strong><a href="{{ prev.url }}">{{ prev.title }}</a></strong>
             </div>
         {{ /if }}
         {{ if next }}
             <div>Next &rarr;
-                <strong><a href="{{ next.data.url }}">{{ next.data.title }}</a></strong>
+                <strong><a href="{{ next.url }}">{{ next.title }}</a></strong>
             </div>
         {{ /if }}
     </div>

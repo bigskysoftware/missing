@@ -1,0 +1,8 @@
+{
+  "imports": {
+    "lume/": "https://deno.land/x/lume@v3.0.4/",
+    "std/": "https://deno.land/std@0.200.0/"
+  },
+  "nodeModulesDir": "none",
+  "lock": false
+}

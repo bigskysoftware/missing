@@ -8,10 +8,8 @@ templateEngine: [vto, md]
 
 Missing.js is a JavaScript library implementing common UI patterns.
 
-{{ set version = search.pages("release!=undefined")
-    |> map(rel => rel.data.release)
-    |> sortSemVer
-    |> at(-1) }}
+{{ set version = search.pages("release!=undefined") |>
+    map(rel => rel.release) |> sortSemVer |> at(-1) }}
 
 [[toc]]
 

@@ -2,8 +2,8 @@
  * Links classes, variables and elements to where they're defined in the docs.
  */
 
+import { Site } from "lume/core.ts";
 import { Element } from "lume/deps/dom.ts";
-import { Page, Site } from "lume/core.ts";
 
 /**
  * Matches:
@@ -17,14 +17,14 @@ export default () => {
   return (site: Site) => {
     const definitionsIndex: Record<string, string> = {};
 
-    site.preprocess([".md"], (page: Page) => {
+    site.preprocess([".md"], (pages) => pages.forEach((page) => {
       if (!page.data.content) return;
       for (const definition of getDefinitions(page.data.content as string)) {
         definitionsIndex[definition] = page.data.url as string;
       }
-    });
+    }));
 
-    site.process([".md"], (page: Page) => {
+    site.process([".md"], (pages) => pages.forEach((page) => {
       const document = page.document;
 
       if (!document) return;
@@ -117,7 +117,7 @@ export default () => {
           $index.append(li);
         }
       }
-    });
+    }));
   };
 };
 
