@@ -67,9 +67,9 @@ The Missing project uses [mise-en-place] to install tools and run tasks.
 
 ## Branching
 
-You'll notice that we don't have a `master` or `main` branch. Instead, the
-`dev` branch is the default. This way, the default place to open a pull request
-is the right one.
+We don't use the `master` or `main` branch. Instead, the `dev` branch
+is the default. This way, the default place to open a pull request is
+the right one.
 
 The `prod` branch will contain the last published version of the code.
 Changes to the website and docs can also be made directly against the
