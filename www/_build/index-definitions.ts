@@ -2,7 +2,7 @@
  * Links classes, variables and elements to where they're defined in the docs.
  */
 
-import { Site } from "lume/core.ts";
+import type { Site } from "lume/core.ts";
 import { Element } from "lume/deps/dom.ts";
 
 /**
