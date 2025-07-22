@@ -145,7 +145,7 @@ in the documentation for their respective class or component.
 <dfn>`--density`</dfn> {#var-density}
 :   The amount of space between elements (i.e. gaps between paragraphs, padding
     of boxes), as a multiplier of the line height (`--rhythm`). See
-    [Utilities / Density](/docs/util#density).
+    [Utilities / Density](/docs/utils/#density).
 
 
 ## Component-specific variables
