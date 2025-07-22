@@ -22,19 +22,18 @@ Install it on your website if you haven't already:
 <figure>
 
   ~~~ html
-  <link rel="stylesheet" href="https://unpkg.com/missing.css@{{ version }}">
+  <link rel=stylesheet href=https://unpkg.com/missing.css@{{ version }}>
   <!-- Prism theme (https://prismjs.com/): -->
-  <link rel="stylesheet" href="https://unpkg.com/missing.css@{{ version }}/dist/missing-prism.min.css" />
+  <link rel=stylesheet href=https://unpkg.com/missing.css@{{ version }}/dist/missing-prism.min.css>
   ~~~
 
 </figure>
 
 You can also install it into an npm project with `npm i -s missing.css`.
 
-This will make your page look a bit like the one you are reading right now,
-without applying any classes.
+This will make your page look a bit like the one you are reading right now, without applying any classes.
 
 Then, see how you can go beyond classless CSS with its features.
 
-P.S. you can click any class, variable or custom element name in these docs to
-jump to its definition. Try it: `.tool-bar`
+**Info**:&emsp;You can click any class, variable or custom element name in these docs to jump to its definition.
+Try it: `.tool-bar` {.info .box}

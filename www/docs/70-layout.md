@@ -14,17 +14,18 @@ Mechanisms of creating layouts.
 
 <dfn>`.text-align:center`</dfn> center-aligns text.
 
-An element with class <dfn>`.center`</dfn> centers a single child element using `display: grid; place-items: center`{.lang-css}.
+An element with class <dfn>`.center`</dfn> centers a single child element using `display: grid; place-items: center`{.language-css}.
 
-<dfn>`.align-content:center`</dfn> vertically aligns content in the center of the alignment container. Flexbox no longer required!
+<dfn>`.align-content:center`</dfn> vertically aligns content in the center of the alignment container.
+Flexbox no longer required!
 We also provide <dfn>`.align-content:end`</dfn>.
 
 
 ## Text columns
 
 The <dfn>`.textcolumns`</dfn> class creates multi-column text using the CSS [`column-width`][] property.
-The column width can be set with the `--col-width` variable.
-Protip: consider using the `ch` unit to set column widths.
+The column width can be set with the `--col-width`{.language-css} variable.
+**Protip**: consider using the `ch`{.language-css} unit to set column widths.
 
 [`column-width`]: https://developer.mozilla.org/en-US/docs/Web/CSS/column-width
 
@@ -36,19 +37,17 @@ The <dfn>`.flow-gap`</dfn> class adds vertical margins between its children.
 
 ## Full-size
 
-Add the <dfn>`.fullbleed`</dfn> class to make an element go outside its
-container and span the whole width of the viewport.
+Add the <dfn>`.fullbleed`</dfn> class to make an element go outside its container and span the whole width of the viewport.
 
 The <dfn>`.fullscreen`</dfn> class will size an element to fill the screen.
 
 
 ## Layout utilities
 
-Add some padding with <dfn>`.padding`</dfn>, or a margin with
-<dfn>`.margin`</dfn>.
-
-Add padding or margin in specific axes with these classes.
+Add some padding with <dfn>`.padding`</dfn>, or a margin with <dfn>`.margin`</dfn>.
 The amount of margin or padding is determined by the [density utilities][].
+
+Add padding or margin in specific axes with the following classes.
 
  - <dfn>`.margin`</dfn>
  - <dfn>`.margin-inline`</dfn>
@@ -138,7 +137,7 @@ Borders can be removed by using <dfn>`.border:none`</dfn> or one of the followin
 ~~The <dfn>`.nested-list`</dfn> class removes extraneous margins in nested lists.~~
 **Deprecated:**{.bad .color} Will be removed in version 2.0.
 In the future, nested lists will not have margins by default.
-You can add them back in using `<li><p>` as needed.
+You can add them back in using `<li><p>`{.language-html} as needed.
 
 <figure>
 <figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Nested lists</figcaption>
@@ -198,13 +197,13 @@ You can add them back in using `<li><p>` as needed.
 
 ## Aspect Ratio
 
-To set the aspect ratio of an element, use the `aspect-ratio` CSS property:
+To set the aspect ratio of an element, use the `aspect-ratio`{.language-css} CSS property:
 
 <figure>
 
   ~~~html
   <style>#aspect-ratio-example > .box { height: 10vh }</style>
-  <div id="aspect-ratio-example" class="f-row flex-wrap:wrap">
+  <div id="aspect-ratio-example" class="flex-row flex-wrap:wrap">
     <div class="box" style="aspect-ratio: 1/1">1:1</div>
     <div class="box" style="aspect-ratio: 4/3">4:3</div>
     <div class="box" style="aspect-ratio: 16/9">16:9</div>
@@ -217,7 +216,7 @@ To set the aspect ratio of an element, use the `aspect-ratio` CSS property:
   ~~~
 
   <style>#aspect-ratio-example > .box { height: 10vh }</style>
-  <div id="aspect-ratio-example" class="f-row flex-wrap:wrap">
+  <div id="aspect-ratio-example" class="flex-row flex-wrap:wrap">
     <div class="box" style="aspect-ratio: 1/1">1:1</div>
     <div class="box" style="aspect-ratio: 4/3">4:3</div>
     <div class="box" style="aspect-ratio: 16/9">16:9</div>
@@ -244,18 +243,13 @@ Set the `overflow` property with these utility classes.
 :   Overflow content is clipped at the element's padding box.
     Can be set per axis using <dfn>`.overflow-x:clip`</dfn> or <dfn>`.overflow-y:clip`</dfn>, and the clip margin can be extended using the `overflow-clip-margin` CSS property.
 
-<div class="box info">
-
-**Info**:&emsp;When using the `.overflow:scroll` utilities, it is recommended to add
-the element to the tabbing order (e.g., `<div tabindex=0 class=overflow-x:scroll>`)
-so that the container can be scrolled using the keyboard.
-
-</div>
+**Info**:&emsp;When using the `.overflow:scroll` utilities, it is recommended to add the element to the tabbing order (`tabindex=0`{.token .attr-name}) so that the container can be scrolled using the keyboard.{.info .box}
 
 
 ## Pseudo-tables
 
-The <dfn>`.table`</dfn> class makes an element act like a table for the purposes of layout. The <dfn>`.row`</dfn> class can be used to create a table row, or you can make all descendants of an element into rows with <dfn>`.rows`</dfn>.
+The <dfn>`.table`</dfn> class makes an element act like a table for the purposes of layout.
+The <dfn>`.row`</dfn> class can be used to create a table row, or you can make all descendants of an element into rows with <dfn>`.rows`</dfn>.
 
 <figure>
 <figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Using pseudo-tables to align forms</figcaption>
@@ -307,16 +301,20 @@ The <dfn>`.table`</dfn> class makes an element act like a table for the purposes
 :   Set `position: sticky`.
 
 <dfn>`.top`</dfn>
-:   Set `top: 0`. Use together with `.fixed` or `.sticky`.
+:   Set `top: 0`.
+    Use together with `.fixed` or `.sticky`.
 
 <dfn>`.right`</dfn>
-:   Set `right: 0`. See `.top`.
+:   Set `right: 0`.
+    See `.top`.
 
 <dfn>`.bottom`</dfn>
-:   Set `bottom: 0`. See `.top`.
+:   Set `bottom: 0`.
+    See `.top`.
 
 <dfn>`.left`</dfn>
-:   Set `left: 0`. See `.top`.
+:   Set `left: 0`.
+    See `.top`.
 
 <dfn>`.float:left`</dfn>
 :   Set `float: left`.

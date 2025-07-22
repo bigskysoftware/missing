@@ -44,7 +44,9 @@ const site = lume(
   .use(date())
   .use(basePath())
   .use(resolveUrls())
-  .use(prismHighlight())
+  .use(prismHighlight({
+    cssSelector: "pre code, code[class*=language-]",
+  }))
   .use(pagefind({
     ui: false,
     indexing: {

@@ -5,11 +5,10 @@ url: ./forms/
 
 # Forms
 
-Missing.css aims to style HTML nicely without authors needing to concern
-themselves over anything other than using HTML tags with correct meanings, but
-this is not always feasible. Forms are a particularly complex part of HTML,
-with multiple ways to mark up the same semantics. For instance, you can label
-an element in multiple ways:
+Missing.css aims to style HTML nicely without authors needing to concern themselves over anything
+other than using HTML tags with correct meanings, but this is not always feasible.
+Forms are a particularly complex part of HTML, with multiple ways to mark up the same semantics.
+For instance, you can label an element in multiple ways:
 
   ~~~ html
   <form>
@@ -19,8 +18,7 @@ an element in multiple ways:
   </form>
   ~~~
 
-Because of this, it's not really possible to write a stylesheet that will work with
-any HTML form.
+Because of this, it's not really possible to write a stylesheet that will work with any HTML form.
 
 Missing.css will work best on forms that follow these markup conventions:
 
@@ -29,17 +27,17 @@ Missing.css will work best on forms that follow these markup conventions:
 
 ## Inputs and labels
 
-Inputs inside labels will be `display: inline`. Inputs outside labels will be
-`display: block`.
+Inputs inside labels will be `display:inline`{.language-css}.
+Inputs outside labels will be `display:block`{.language-css}.
 
 <aside>Inputs without labels will cause nasal demons.</aside>
 
 ## Buttons
 
-Wrap a `<button>` in a `<strong>` tag to get a primary button.
-Buttons support the `[aria-pressed]` and `[aria-expanded]` attributes.
+Wrap a `<button>`{.language-html} in a `<strong>`{.language-html} tag to get a primary button.
+Buttons support the `[aria-pressed]`{.token .attr-name} and `[aria-expanded]`{.token .attr-name} attributes.
 
-Buttons, `.<button>` [masquerades][], and `<input type=file>` all support [colorways][] as well.
+Buttons, `.<button>` [masquerades][], and `<input type=file>`{.language-html} all support [colorways][] as well.
 
 <figure>
 <figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Button markup</figcaption>
@@ -49,39 +47,39 @@ Buttons, `.<button>` [masquerades][], and `<input type=file>` all support [color
     const toggle = el => (el.ariaPressed = (el.ariaPressed !== 'true'))
   </script>
 
-  <section tabindex=0 class=overflow:auto>
-    <table id=button-table class=table>
+  <section tabindex=0 class="overflow:auto">
+    <table id=button-table class="table">
     <caption>Button demonstration</caption>
     <thead>
       <tr><th><th><th><code>.ok</code><th><code>.info</code><th><code>.warn</code><th><code>.bad</code>
     <tbody>
       <tr><th scope=row><code>&lt;button&gt;</code>
           <td><button>Plain</button>
-          <td><button class=ok>Open</button>
+          <td><button class="ok">Open</button>
           <!-- ... -->
       <tr><th scope=row class="padding-inline-start"><code>:disabled</code>
           <td><button disabled>Plain</button>
-          <td><button disabled class=ok>Open</button>
+          <td><button disabled class="ok">Open</button>
           <!-- ... -->
       <tr><th scope=row class="padding-inline-start"><code>[aria-pressed=true]</code>
           <td><button aria-pressed=true onclick="toggle(this)">Plain</button>
-          <td><button aria-pressed=true class=ok onclick="toggle(this)">Open</button>
+          <td><button aria-pressed=true class="ok" onclick="toggle(this)">Open</button>
           <!-- ... -->
       <tr><th scope=row><code>&lt;strong&gt;&lt;button&gt;</code>
           <td><strong><button>Plain</button></strong>
-          <td><strong><button class=ok>Open</button></strong>
+          <td><strong><button class="ok">Open</button></strong>
           <!-- ... -->
       <tr><th scope=row class="padding-inline-start"><code>:disabled</code>
           <td><strong><button disabled>Plain</button></strong>
-          <td><strong><button disabled class=ok>Open</button></strong>
+          <td><strong><button disabled class="ok">Open</button></strong>
           <!-- ... -->
       <tr><th scope=row class="padding-inline-start"><code>[aria-pressed=true]</code>
           <td><strong><button aria-pressed=true onclick="toggle(this)">Plain</button></strong>
-          <td><strong><button aria-pressed=true class=ok onclick="toggle(this)">Open</button></strong>
+          <td><strong><button aria-pressed=true class="ok" onclick="toggle(this)">Open</button></strong>
           <!-- ... -->
       <tr><th scope=row><code>&lt;a class="&lt;button&gt;"&gt;</code>
-          <td><a href="#button-table" class="<button>">Plain</button>
-          <td><a href="#button-table" class="ok <button>">Open</button>
+          <td><a href=#button-table class="<button>">Plain</button>
+          <td><a href=#button-table class="ok <button>">Open</button>
           <!-- ... -->
     </table>
   </section>
@@ -97,60 +95,60 @@ Buttons, `.<button>` [masquerades][], and `<input type=file>` all support [color
     const toggle = el => (el.ariaPressed = (el.ariaPressed !== 'true'))
   </script>
 
-  <section tabindex=0 class=overflow:auto>
-    <table id=button-table class=table>
+  <section tabindex=0 class="overflow:auto">
+    <table id=button-table class="table">
     <caption>Button demonstration</caption>
     <thead>
       <tr><th><th><th><code>.ok</code><th><code>.info</code><th><code>.warn</code><th><code>.bad</code>
     <tbody>
       <tr><th scope=row><code>&lt;button&gt;</code>
           <td><button>Plain</button>
-          <td><button class=ok>Open</button>
-          <td><button class=info>Info</button>
-          <td><button class=warn type=reset>Reset</button>
-          <td><button class=bad formaction=dialog>Close</button>
+          <td><button class="ok">Open</button>
+          <td><button class="info">Info</button>
+          <td><button class="warn" type=reset>Reset</button>
+          <td><button class="bad" formaction=dialog>Close</button>
       <tr><th scope=row class="padding-inline-start"><code>:disabled</code>
           <td><button disabled>Plain</button>
-          <td><button disabled class=ok>Open</button>
-          <td><button disabled class=info>Info</button>
-          <td><button disabled class=warn type=reset>Reset</button>
-          <td><button disabled class=bad formaction=dialog>Close</button>
+          <td><button disabled class="ok">Open</button>
+          <td><button disabled class="info">Info</button>
+          <td><button disabled class="warn" type=reset>Reset</button>
+          <td><button disabled class="bad" formaction=dialog>Close</button>
       <tr><th scope=row class="padding-inline-start"><code>[aria-pressed=true]</code>
           <td><button aria-pressed=true onclick="toggle(this)">Plain</button>
-          <td><button aria-pressed=true class=ok onclick="toggle(this)">Open</button>
-          <td><button aria-pressed=true class=info onclick="toggle(this)">Info</button>
-          <td><button aria-pressed=true class=warn onclick="toggle(this)">Reset</button>
-          <td><button aria-pressed=true class=bad onclick="toggle(this)">Close</button>
+          <td><button aria-pressed=true class="ok" onclick="toggle(this)">Open</button>
+          <td><button aria-pressed=true class="info" onclick="toggle(this)">Info</button>
+          <td><button aria-pressed=true class="warn" onclick="toggle(this)">Reset</button>
+          <td><button aria-pressed=true class="bad" onclick="toggle(this)">Close</button>
       <tr><th scope=row><code>&lt;strong&gt;&lt;button&gt;</code>
           <td><strong><button>Plain</button></strong>
-          <td><strong><button class=ok>Open</button></strong>
-          <td><strong><button class=info>Info</button></strong>
-          <td><strong><button class=warn type=reset>Reset</button></strong>
-          <td><strong><button class=bad formaction=dialog>Close</button></strong>
+          <td><strong><button class="ok">Open</button></strong>
+          <td><strong><button class="info">Info</button></strong>
+          <td><strong><button class="warn" type=reset>Reset</button></strong>
+          <td><strong><button class="bad" formaction=dialog>Close</button></strong>
       <tr><th scope=row class="padding-inline-start"><code>:disabled</code>
           <td><strong><button disabled>Plain</button></strong>
-          <td><strong><button disabled class=ok>Open</button></strong>
-          <td><strong><button disabled class=info>Info</button></strong>
-          <td><strong><button disabled class=warn type=reset>Reset</button></strong>
-          <td><strong><button disabled class=bad formaction=dialog>Close</button></strong>
+          <td><strong><button disabled class="ok">Open</button></strong>
+          <td><strong><button disabled class="info">Info</button></strong>
+          <td><strong><button disabled class="warn" type=reset>Reset</button></strong>
+          <td><strong><button disabled class="bad" formaction=dialog>Close</button></strong>
       <tr><th scope=row class="padding-inline-start"><code>[aria-pressed=true]</code>
           <td><strong><button aria-pressed=true onclick="toggle(this)">Plain</button></strong>
-          <td><strong><button aria-pressed=true class=ok onclick="toggle(this)">Open</button></strong>
-          <td><strong><button aria-pressed=true class=info onclick="toggle(this)">Info</button></strong>
-          <td><strong><button aria-pressed=true class=warn onclick="toggle(this)">Reset</button></strong>
-          <td><strong><button aria-pressed=true class=bad onclick="toggle(this)">Close</button></strong>
+          <td><strong><button aria-pressed=true class="ok" onclick="toggle(this)">Open</button></strong>
+          <td><strong><button aria-pressed=true class="info" onclick="toggle(this)">Info</button></strong>
+          <td><strong><button aria-pressed=true class="warn" onclick="toggle(this)">Reset</button></strong>
+          <td><strong><button aria-pressed=true class="bad" onclick="toggle(this)">Close</button></strong>
       <tr><th scope=row><code>&lt;a class="&lt;button&gt;"&gt;</code>
-          <td><a href="#button-table" class="<button>">Plain</button>
-          <td><a href="#button-table" class="ok <button>">Open</button>
-          <td><a href="#button-table" class="info <button>">Info</button>
-          <td><a href="#button-table" class="warn <button>">Reset</button>
-          <td><a href="#button-table" class="bad <button>">Close</button>
+          <td><a href=#button-table class="<button>">Plain</a></button>
+          <td><a href=#button-table class="ok <button>">Open</a></button>
+          <td><a href=#button-table class="info <button>">Info</a></button>
+          <td><a href=#button-table class="warn <button>">Reset</a></button>
+          <td><a href=#button-table class="bad <button>">Close</a></button>
     </table>
   </section>
 </figure>
 
 <figure>
-<figcaption><sub-title class=allcaps>Example<v-h>:</v-h></sub-title>File input buttons</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>File input buttons</figcaption>
 
   <section class="crowded flex-switch">
     <div class="flex-column">
@@ -174,8 +172,7 @@ Buttons, `.<button>` [masquerades][], and `<input type=file>` all support [color
 
 ## Tabular forms
 
-You can use the `.table` and `.rows` classes to create a form with inputs lined
-up like cells of a table.
+You can use the `.table` and `.rows` classes to create a form with inputs lined up like cells of a table.
 
 <figure>
 <figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Tabular form markup</figcaption>
@@ -199,8 +196,7 @@ up like cells of a table.
 
 ## Labeling radio buttons
 
-The accepted way to label a group of radio buttons is to use `<fieldset>` and
-`<legend>`:
+The accepted way to label a group of radio buttons is to use `<fieldset>`{.language-html} and `<legend>`{.language-html}:
 
   ~~~ html
   <fieldset>
@@ -213,10 +209,9 @@ The accepted way to label a group of radio buttons is to use `<fieldset>` and
   </fieldset>
   ~~~
 
-This works in missing.css, but these two elements are [notorious] for being
-hard to style. You can use the following pattern instead, which will work with
-[tabular forms](#tabular-forms). Note the role, aria-labelledby and the ID on
-the label itself.
+This works in missing.css, but these two elements are [notorious] for being hard to style.
+You can use the following pattern instead, which will work with [tabular forms](#tabular-forms).
+Note the `role`{.token .attr-name}, `aria-labelledby`{.token .attr-name} and the `id`{.token .attr-name} attributes on the label itself.
 
 
 <figure>
@@ -258,14 +253,14 @@ the label itself.
 
 ## Progress bar
 
-Create a progress bar using the `<progress>` element.
+Create a progress bar using the `<progress>`{.language-html} element.
 This element should be used to represent how much of a specific, ongoing process has been completed.
-Be sure to add a `<label>` for accessibility (in conjunction with `.vh` or `<v-h>` if you like).
+Be sure to add a `<label>`{.language-html} for accessibility (in conjunction with `.vh`{.language-css} or `<v-h>`{.language-html} if you like).
 
-The element can be put in an indeterminate state by not including the `value` attribute.
-Indeterminate `<progress>` elements will show a pending animation if the user does not have `@prefers-reduced-motion` set.
+The element can be put in an indeterminate state by not including the `value`{.token .attr-name} attribute.
+Indeterminate `<progress>`{.language-html} elements will show a pending animation if the user does not have `@prefers-reduced-motion`{.language-css} set.
 
-The element can be styled by setting `--border-width`, `--border-style`, and `--border-radius` variables directly on the `<progress>` element.
+The element can be styled by setting `--border-width`, `--border-style`, and `--border-radius` variables directly on the `<progress>`{.language-html} element.
 When not explicitly set, the element inherits from `--interactive-border-width`, `--interactive-border-style`, and `--tab-border-radius`.
 For full-width progress bars, use the `.width:100%` utility class.
 [Colorways](colorways) are supported.
@@ -275,7 +270,7 @@ For full-width progress bars, use the `.width:100%` utility class.
 <figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Progress bar markup</figcaption>
 
   ~~~ html
-  <div class=flex-column>
+  <div class="flex-column">
      
     <label for=p1 class="vh">Upload progress...</label>
     <progress id=p1 value=0.5 class="width:100%"></progress>
@@ -294,7 +289,7 @@ For full-width progress bars, use the `.width:100%` utility class.
 
   <hr>
 
-  <div class=flex-column>
+  <div class="flex-column">
 
     <label for=p1 class="vh">Upload progress...</label>
     <progress id=p1 value=0.5 class="width:100%"></progress>
@@ -314,23 +309,24 @@ For full-width progress bars, use the `.width:100%` utility class.
 
 ## Meter
 
-Use the `<meter>` element to create a meter guage.
-This element is used to indicate a measurement within a known range and is semantically differen from the `<progress>` element.
+Use the `<meter>`{.language-html} element to create a meter guage.
+This element is used to indicate a measurement within a known range and is semantically differen from the `<progress>`{.language-html} element.
 
-Similar to the `<progress>` element, you can style a `<meter>` by setting `--border-width`, `--border-style`, and `--border-radius` directly on the element.
-The `<meter>` element derives its colors from the <code>.ok</code>, <code>.warn</code>, and <code>.bad</code> [colorways]().
+Similar to the `<progress>`{.language-html} element, you can style a `<meter>`{.language-html} by setting `--border-width`, `--border-style`, and `--border-radius` directly on the element.
+The `<meter>`{.language-html} element derives its colors from the `.ok`, `.warn`, and `.bad` [colorways]().
 
-<div class="box warn">
+<div class="warn box">
 
-**Warning**:&emsp;Due to cross-browser implementation differences, colorways are only fully supported in browsers that pass the `@supports (selector(:-moz-meter-optimum))` check.
-The color of the meter bar is correctly set in all browsers according to the values of `--ok-fg`, `--warn-fg`, and `--bad-fg`. However, only browsers passing the `@supports` rule will also have the appropriate colorway background and border colors.
+**Warning**:&emsp;Due to cross-browser implementation differences, colorways are only fully supported in browsers that pass the `@supports (selector(:-moz-meter-optimum))`{.language-css} check.
+The color of the meter bar is correctly set in all browsers according to the values of `--ok-fg`, `--warn-fg`, and `--bad-fg`.
+However, only browsers passing the `@supports`{.language-css} rule will also have the appropriate colorway background and border colors.
 
 A suitable fallback choice has been made for these colors (`--plain-bg` for the background and `--interactive-bg` for the border) until browser support improves.
 
 </div>
 
 <figure>
-<figcaption><sub-title class=allcaps>Example</sub-title>Value in optimum range</figcaption>
+<figcaption><sub-title class="allcaps">Example</sub-title>Value in optimum range</figcaption>
 
   ~~~html
   <strong>Disk usage (optimum is a medium amount of usage)</strong>
@@ -363,7 +359,7 @@ A suitable fallback choice has been made for these colors (`--plain-bg` for the 
 </figure>
 
 <figure>
-<figcaption><sub-title class=allcaps>Example</sub-title>Value in sub-optimum range</figcaption>
+<figcaption><sub-title class="allcaps">Example</sub-title>Value in sub-optimum range</figcaption>
 
   ~~~html
   <strong>Disk usage (getting full)</strong>
