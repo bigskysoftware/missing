@@ -1,0 +1,62 @@
+---
+layout: prose.vto
+name: Alert and Message Dialog
+---
+
+<main>
+
+  <h1>Alert and Message Dialog</h1>
+  <blockquote>
+    <p>
+    An alert is an element that displays a brief, important message in a way that attracts the user's attention without interrupting the user's task.
+    Dynamically rendered alerts are automatically announced by most screen readers, and in some operating systems, they may trigger an alert sound.
+    It is important to note that, at this time, screen readers do not inform users of alerts that are present on the page before page load completes.
+    </p>
+    <small>
+      — <a href="https://www.w3.org/WAI/ARIA/apg/patterns/alert/">Alert Pattern</a>,
+      <cite>WAI ARIA Authoring Practices Guide (APG)</cite>
+    </small>
+  </blockquote>
+
+  <h2>Notes</h2>
+
+  <p>
+  Missing.css uses the <code>&lt;div role=alert class=box&gt;</code> element for alerts.
+  You can use colorways to provide some visual context to the alert, but be sure to also spell it out in writing.
+
+  <h2>Keyboard Interaction</h2>
+
+  <p>Not applicable.
+
+  <h2>Example</h2>
+
+  <noscript><p>This example requires JavaScript to be activated.</p></noscript>
+
+  <figure class="fullbleed">
+    <div class="container">
+
+      <style>[role=alert]:empty { display: none; }</style>
+      <script>
+        function showAlert() {
+          document.getElementById('alert').innerHTML = document.getElementById('alert-template').innerHTML
+        }
+        function resetAlert() {
+          document.getElementById('alert').innerHTML = ""
+        }
+      </script>
+      <script type="text/template" id="alert-template">
+        <p>
+          <strong>Warning</strong>:
+          If you're putting something in a box, make sure to clarify why it is in a box in some other way.
+          For example, this box has "Warning" in bold, in addition to being yellow.
+          This makes your page clearer and prevents accessibility failures.
+        </p>
+      </script>
+
+      <button onclick="showAlert()">Trigger Alert</button>
+      <button onclick="resetAlert()">Reset</button>
+      <div id="alert" role="alert" class="warn box"></div>
+
+    </div>
+  </figure>
+</main>

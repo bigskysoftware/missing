@@ -1,0 +1,94 @@
+---
+layout: layout.vto
+name: Listbox
+---
+
+<main>
+  <h1>Listbox</h1>
+
+  <blockquote>
+    <p>
+    A listbox widget presents a list of options and allows a user to select one or more of them.
+    A listbox that allows a single option to be chosen is a single-select listbox; one that allows multiple options to be selected is a multi-select listbox.
+    </p>
+    <small>
+      — <a href="https://www.w3.org/WAI/ARIA/apg/patterns/listbox/">Listbox Pattern</a>,
+      <cite>WAI ARIA Authoring Practices Guide (APG)</cite>
+    </small>
+  </blockquote>
+
+  <h2>Notes</h2>
+
+  <p>
+  Missing.css provides the <code>&lt;aria-listbox&gt;</code> custom element for listboxes.
+
+  <h2>Keyboard Interaction</h2>
+
+  <p>TODO: Not finished</p>
+  <h3>Menubar</h3>
+  <ul>
+  <li><kbd><kbd>Tab</kbd></kbd>: Tab in and out of the menubar, remembering previous focus.
+  <li><kbd><kbd>Shift</kbd>+<kbd>Tab</kbd></kbd>: Tab in and out of the menubar, remembering previous focus.
+  <li><kbd><kbd>Left Arrow</kbd></kbd>: Move focus to the previous menuitem.
+  <li><kbd><kbd>Right Arrow</kbd></kbd>: Move focus to the next menuitem.
+  <li><kbd><kbd>Home</kbd></kbd>: Move focus to the first menuitem.
+  <li><kbd><kbd>End</kbd></kbd>: Move focus to the last menuitem.
+  <li><kbd><kbd>Enter</kbd></kbd>: 
+  <li><kbd><kbd>Space</kbd></kbd>: 
+  </ul>
+  <h3>Menu</h3>
+  <ul>
+  <li><kbd><kbd>Up Arrow</kbd></kbd>: Move focus to the previous menuitem
+  <li><kbd><kbd>Down Arrow</kbd></kbd>: Move focus to the next menuitem
+  <li><kbd><kbd>Escape</kbd></kbd>: Closes menu and returns focus to menubutton
+  </ul>
+
+  <h2>Example</h2>
+
+  <noscript><p>This example requires JavaScript to be activated.</p></noscript>
+
+  <figure class="fullbleed">
+    <div class="container">
+      <style>
+        [role=listbox] {
+          max-height: 200px;
+          overflow: auto;
+        }
+      </style>
+      <strong>ARIA Patterns</strong>
+      <ul role="listbox" class="crowded box with flow-gap">
+        <li role="option">Accordion
+        <li role="option">Alert
+        <li role="option">Alert and Message Dialogs
+        <li role="option">Breadcrumb
+        <li role="option">Button
+        <li role="option">Carousel
+        <li role="option">Checkbox
+        <li role="option">Combobox
+        <li role="option">Dialog (Modal)
+        <li role="option">Disclosure
+        <li role="option">Feed
+        <li role="option">Grid
+        <li role="option">Landmarks
+        <li role="option">Link
+        <li role="option" aria-selected="true">Listbox
+        <li role="option">Menu and Menubar
+        <li role="option">Menu Button
+        <li role="option">Meter
+        <li role="option">Radio Group
+        <li role="option">Slider
+        <li role="option">Slider (Multi-Thumb)
+        <li role="option">Spinbutton
+        <li role="option">Switch
+        <li role="option">Table
+        <li role="option">Tabs
+        <li role="option">Toolbar
+        <li role="option">Tooltip
+        <li role="option">Tree View
+        <li role="option">Treegrid
+        <li role="option">Window Splitter
+      </ul>
+
+    </div>
+  </figure>
+</main>

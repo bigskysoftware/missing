@@ -1,0 +1,78 @@
+---
+layout: prose.vto
+name: Dialog (Modal)
+---
+
+<main>
+
+  <h1>Dialog (Modal)</h1>
+  <blockquote>
+    <p>
+    A dialog is a window overlaid on either the primary window or another dialog window.
+    Windows under a modal dialog are inert.
+    That is, users cannot interact with content outside an active dialog window.
+    Inert content outside an active dialog is typically visually obscured or dimmed so it is difficult to discern, and in some implementations, attempts to interact with the inert content cause the dialog to close.
+    </p>
+    <small>
+      — <a href="https://www.w3.org/WAI/ARIA/apg/patterns/dialog-modal/">Dailog (Modal) Pattern</a>,
+      <cite>WAI ARIA Authoring Practices Guide (APG)</cite>
+    </small>
+  </blockquote>
+
+  <h2>Notes</h2>
+
+  <p>
+  Missing.css uses the <code>&lt;dialog&gt;</code> element for dialogs (modals).
+  <p>
+  Until the <code>[commandfor]</code> attribute gains wider implementation, visibility must be controlled by JavaScript using the <code>.showModal()</code> and <code>.close()</code> methods.
+  While <code>&lt;dialog id="my-dialog" popover&gt;</code> and <code>&lt;button popovertarget="my-dialog"&gt;</code> might appear to work, the Popover API does not render the dialog as a <em>modal</em>, that is to say it will not block interaction with the rest of the page until the dialog is closed.
+  <p>
+  Don't forget to add an ARIA label to the <code>&lt;dialog&gt;</code> element.
+
+  <h2>Keyboard Interaction</h2>
+
+  <ul>
+  <li><kbd><kbd>Tab</kbd></kbd>: Move focus to the next focusable element in the dialog, with wrap-around.
+  <li><kbd><kbd>Shift</kbd>+<kbd>Tab</kbd></kbd>: Move focus to the previous focusable element in the dialog, with wrap-around.
+  <li><kbd><kbd>Escape</kbd></kbd>: Closes the dialog.
+  </ul>
+
+  <h2>Example</h2>
+
+  <figure class="fullbleed">
+    <div class="container">
+
+      <button onclick="this.nextElementSibling.showModal();">Edit Profile</button>
+      <dialog aria-labelledby="user-info-label">
+        <strong id="user-info-label" class="block titlebar">User Information</strong>
+        <div class="table rows with padding-block">
+          <p>
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" value="Tim Berners-Lee">
+          <p>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" value="timbl@www.com">
+          <p>
+            <label for="occupation">Occupation</label>
+            <input type="text" id="occupation" name="occupation" value="Wizard">
+        </div>
+        <div class="f-row justify-content:end">
+          <button onclick="this.closest('dialog').close()">Update</button>
+          <button onclick="this.closest('dialog').close()">Close</button>
+        </div>
+      </dialog>
+
+      <button onclick="this.nextElementSibling.showModal();">Read Terms</button>
+      <dialog aria-labelledby="terms-label">
+        <strong id="terms-label" class="block titlebar">Terms of Use</strong>
+        <p>
+        By clicking "Disagree" you confirm that you actually do agree with these terms of service.
+        <div class="f-row justify-content:end">
+          <button onclick="this.closest('dialog').close()">Agree</button>
+          <button onclick="this.closest('dialog').close()">Disagree</button>
+        </div>
+      </dialog>
+
+    </div>
+  </figure>
+</main>

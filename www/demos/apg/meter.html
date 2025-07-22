@@ -1,0 +1,68 @@
+---
+layout: prose.vto
+name: Meter
+---
+
+<main>
+
+  <h1>Meter</h1>
+  <blockquote>
+    <p>
+    A meter is a graphical display of a numeric value that varies within a defined range.
+    </p>
+    <small>
+      — <a href="https://www.w3.org/WAI/ARIA/apg/patterns/alert/">Alert Pattern</a>,
+      <cite>WAI ARIA Authoring Practices Guide (APG)</cite>
+    </small>
+  </blockquote>
+
+  <h2>Notes</h2>
+
+  <p>
+  Missing.css uses the <code>&lt;meter&gt;</code> element for meters.
+  To indicate progress, use the <code>&lt;progress&gt;</code> element instead.
+
+  <h2>Keyboard Interaction</h2>
+
+  <p>Not applicable.
+
+  <h2>Example</h2>
+
+  <figure class="fullbleed">
+    <div class="container">
+
+      <fieldset>
+        <legend>Meter Examples</legend>
+        <div class="packed table rows">
+          <p>
+            <label for="disk-meter">Disk Usage</label>
+            <meter id="disk-meter" min="0" max="100" low="33" high="66" optimum="80" value="50">
+          <p>
+            <label for="memory-meter">Memory Usage</label>
+            <meter id="memory-meter" min="0" max="100" low="33" high="66" optimum="20" value="10">
+          <p>
+            <label for="cpu-meter">CPU Load</label>
+            <meter id="cpu-meter" min="0" max="100" low="33" high="66" optimum="50" value="55">
+          <p>
+            <label for="battery-meter">Battery</label>
+            <meter id="battery-meter" min="0" max="100" low="33" high="66" optimum="80" value="20">
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Progress Examples</legend>
+        <div class="packed table rows">
+          <p>
+            <label for="install-progress">Installing...</label>
+            <meter id="install-progress" max="100" value="10">
+          <p>
+            <label for="import-progress">Importing...</label>
+            <meter id="import-progress" max="100" value="80">
+          <p>
+            <label for="upload-progress">Uploading...</label>
+            <meter id="upload-progress" max="100" value="50">
+        </div>
+      </feildset>
+    </div>
+  </figure>
+</main>

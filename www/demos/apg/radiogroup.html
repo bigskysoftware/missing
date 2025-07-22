@@ -1,0 +1,45 @@
+---
+layout: layout.vto
+name: Radio Group
+---
+
+<main>
+  <h1>Radio Group</h1>
+
+  <blockquote>
+    <p>
+    A radio group is a set of checkable buttons, known as radio buttons, where no more than one of the buttons can be checked at a time.
+    Some implementations may initialize the set with all buttons in the unchecked state in order to force the user to check one of the buttons before moving past a certain point in the workflow.
+    </p>
+    <small>
+      — <a href="https://www.w3.org/WAI/ARIA/apg/patterns/radio/">Radio Group Pattern</a>,
+      <cite>WAI ARIA Authoring Practices Guide (APG)</cite>
+    </small>
+  </blockquote>
+
+  <h2>Notes</h2>
+
+  <p>
+  Missing.css uses the <code>&lt;fieldset role=radiogroup&gt;</code> and <code>&lt;input type=radio name=foo&gt;</code> elements for radio groups.
+
+  <h2>Keyboard Interaction</h2>
+
+  <ul>
+  <li><kbd><kbd>Space</kbd></kbd>: Changes the state of the checkbox (when focused).
+  </ul>
+
+  <h2>Example</h2>
+
+  <figure class="fullbleed">
+    <div class="container">
+      <fieldset role="radiogroup">
+        <legend>Color</legend>
+        <ul role="list">
+          <li><label><input type="radio" name="color" value="ff0000">Red</label>
+          <li><label><input type="radio" name="color" value="00ff00">Green</label>
+          <li><label><input type="radio" name="color" value="0000ff">Blue</label>
+        </ul>
+      </fieldset>
+    </div>
+  </figure>
+</main>

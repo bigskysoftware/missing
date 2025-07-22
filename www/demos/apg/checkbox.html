@@ -1,0 +1,47 @@
+---
+layout: layout.vto
+name: Checkbox
+---
+
+<main>
+  <h1>Checkbox</h1>
+
+  <blockquote>
+    <p>
+    WAI-ARIA supports two types of checkbox widgets: dual-state checkboxes toggle between two choices -- checked and not checked -- and tri-state checkboxes, which allow an additional third state known as partially checked.
+    </p>
+    <small>
+      — <a href="https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/">Checkbox Pattern</a>,
+      <cite>WAI ARIA Authoring Practices Guide (APG)</cite>
+    </small>
+  </blockquote>
+
+  <h2>Notes</h2>
+
+  <p>
+  Missing.css uses the <code>&lt;input type=checkbox&gt;</code> element for checkboxes.
+
+  <h2>Keyboard Interaction</h2>
+
+  <ul>
+  <li><kbd><kbd>Space</kbd></kbd>: Changes the state of the checkbox (when focused).
+  </ul>
+
+  <h2>Example</h2>
+
+  <figure class="fullbleed">
+    <div class="container">
+      <fieldset>
+        <legend>Sandwich Condiments</legend>
+          <label><input type="checkbox" name="all"> All Condiments</label>
+          <ul>
+          <li><label><input type="checkbox" name="lettuce">Lettuce</label>
+          <li><label><input type="checkbox" name="tomato">Tomato</label>
+          <li><label><input type="checkbox" name="mustard">Mustard</label>
+          <li><label><input type="checkbox" name="sprouts">Sprouts</label>
+          </ul>
+        </ul>
+      </fieldset>
+    </div>
+  </figure>
+</main>

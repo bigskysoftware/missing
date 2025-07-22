@@ -1,0 +1,92 @@
+---
+layout: layout.vto
+name: Button
+---
+
+<main>
+  <h1>Button</h1>
+
+  <blockquote>
+    <p>
+    A button is a widget that enables users to trigger an action or event, such as submitting a form, opening a dialog, canceling an action, or performing a delete operation.
+    </p>
+    <small>
+      — <a href="https://www.w3.org/WAI/ARIA/apg/patterns/button/">Button Pattern</a>,
+      <cite>WAI ARIA Authoring Practices Guide (APG)</cite>
+    </small>
+  </blockquote>
+
+  <h2>Notes</h2>
+  <p>
+  Missing.css uses the <code>&lt;button&gt;</code> element for buttons.
+  Buttons can be one of the following types:
+  <dl>
+    <dt>Ordinary button
+    <dd>
+      The basic button can trigger an action or event.
+    <dt>Toggle button
+    <dd>
+      A two-state button that can be either off (not pressed) or on (pressed).
+      State is determined by the <code>[aria-pressed]</code> attribute.
+    <dt>Menu button
+    <dd>
+      A button that reveals a hidden menu.
+      Can be used with missing.js' <code>&lt;aria-menu&gt;</code> custom element.
+  </dl>
+  <p>
+  Any of the above buttons can also be disabled using the <code>[disabled]</code> attribute.
+
+  <h2>Keyboard Interaction</h2>
+
+  <ul>
+  <li><kbd><kbd>Enter</kbd></kbd>: Activate the button (when focused).
+  <li><kbd><kbd>Space</kbd></kbd>: Activate the button (when focused).
+  </ul>
+
+  <h2>Example</h2>
+
+  <noscript><p>This example requires JavaScript to be activated.</p></noscript>
+
+  <figure class="fullbleed">
+    <script type="module" src="/dist/js/menu.js"></script>
+
+    <div class="container">
+      <h3>The different types of buttons</h3>
+      <p>TODO: Add a note about <code>&lt;aria-menu&gt;</code> custom element or menu.js behavior.</p>
+
+      <button onclick="alert('You clicked an ordinary button that had an `onclick` handler.')">
+        Ordinary
+      </button>
+
+      <button aria-pressed="false" onclick="this.ariaPressed = (this.ariaPressed !== 'true')">
+        Toggle
+      </button>
+
+      <button aria-controls="my-menu">
+        Menu 1
+      </button>
+      <aria-menu id="my-menu" hidden>
+        <aria-menuitem>Create</aria-menuitem>
+        <aria-menuitem>Read</aria-menuitem>
+        <aria-menuitem>Update</aria-menuitem>
+        <aria-menuitem>Delete</aria-menuitem>
+      </aria-menu>
+
+      <button aria-controls="my-menu">
+        Menu 2
+      </button>
+      <menu id="my-menu" hidden>
+        <li>Create
+        <li>Read
+        <li>Update
+        <li>Delete
+      </menu>
+
+      <button disabled>
+        Disabled
+      </button>
+
+
+    </div>
+  </figure>
+</main>

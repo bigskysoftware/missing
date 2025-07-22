@@ -1,0 +1,53 @@
+---
+layout: layout.vto
+name: Accordion
+---
+
+<main>
+  <h1>Accordion</h1>
+
+  <blockquote>
+    <p>
+    An accordion is a vertically stacked set of interactive headings that each contain a title, content snippet, or thumbnail representing a section of content.
+    The headings function as controls that enable users to reveal or hide their associated sections of content.
+    Accordions are commonly used to reduce the need to scroll when presenting multiple sections of content on a single page.
+    </p>
+    <small>
+      — <a href="https://www.w3.org/WAI/ARIA/apg/patterns/accordion/">Accordion Pattern</a>,
+      <cite>WAI ARIA Authoring Practices Guide (APG)</cite>
+    </small>
+  </blockquote>
+
+  <h2>Notes</h2>
+
+  <p>
+  Missing.css uses the <code>&lt;details name=foo&gt;</code> element for accordions.
+
+  <h2>Keyboard Interaction</h2>
+  <ul>
+  <li><kbd><kbd>Enter</kbd></kbd>: Expand or collapse the associated panel.
+  <li><kbd><kbd>Space</kbd></kbd>: Expand or collapse the associated panel.
+  <li><kbd><kbd>Tab</kbd></kbd>: Move focus to the next focusable element; all headers in the accordion are included in the page Tab sequence.
+  <li><kbd><kbd>Shift</kbd>+<kbd>Tab</kbd></kbd>: Move focus to the previous focusable element.
+  </ul>
+
+  <h2>Example</h2>
+
+  <figure class="fullbleed">
+    <div class="container">
+      <h3>Frequently Asked Questions</h3>
+      <details name="faq">
+        <summary>What is your name?</summary>
+        <p>Sir Galahad of Camelot.</p>
+      </details>
+      <details name="faq">
+        <summary>What is your quest?</summary>
+        <p>I seek the Grail.</p>
+      </details>
+      <details name="faq">
+        <summary>What is your favorite color?</summary>
+        <p>Blue. No, yelloooooo—!</p>
+      </details>
+    </div>
+  </figure>
+</main>

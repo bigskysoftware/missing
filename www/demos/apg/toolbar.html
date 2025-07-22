@@ -1,0 +1,57 @@
+---
+layout: layout.vto
+name: Toolbar
+---
+
+<main>
+  <h1>Toolbar</h1>
+
+  <blockquote>
+    <p>
+    A toolbar is a container for grouping a set of controls, such as buttons, menubuttons, or checkboxes.
+    <p>
+    When a set of controls is visually presented as a group, the toolbar role can be used to communicate the presence and purpose of the grouping to screen reader users.
+    Grouping controls into toolbars can also be an effective way of reducing the number of tab stops in the keyboard interface.
+    </p>
+    <small>
+      — <a href="https://www.w3.org/WAI/ARIA/apg/patterns/toolbar/">Toolbar Pattern</a>,
+      <cite>WAI ARIA Authoring Practices Guide (APG)</cite>
+    </small>
+  </blockquote>
+
+  <h2>Notes</h2>
+
+  <p>
+  Missing.css provides the <code>&lt;aria-toolbar&gt;</code> custom element for toolbars.
+
+  <h2>Keyboard Interaction</h2>
+
+  <ul>
+  <li><kbd><kbd>Tab</kbd></kbd>: Tab in and out of the toolbar, remembering previous focus.
+  <li><kbd><kbd>Shift</kbd>+<kbd>Tab</kbd></kbd>: Tab in and out of the toolbar, remembering previous focus.
+  <li><kbd><kbd>Left Arrow</kbd></kbd>: Move focus to the previous item.
+  <li><kbd><kbd>Right Arrow</kbd></kbd>: Move focus to the next item.
+  <li><kbd><kbd>Home</kbd></kbd>: Move focus to the first item.
+  <li><kbd><kbd>End</kbd></kbd>: Move focus to the last item.
+  <li><kbd><kbd>Enter</kbd></kbd>: Activates the currently focused item.
+  <li><kbd><kbd>Space</kbd></kbd>: Activates the currently focused item.
+  </ul>
+
+  <h2>Example</h2>
+
+  <noscript><p>This example requires JavaScript to be activated.</p></noscript>
+
+  <figure class="fullbleed">
+    <div class="container f-col">
+      <a href="#">Focusable element before the toolbar</a>
+      <section class="tool-bar">
+        <button type=button>Cut</button>
+        <button type=button>Copy</button>
+        <button type=button>Paste</button>
+        <hr aria-orientation="vertical">
+        <label>Find: <input type=text></label>
+      </section>
+      <a href="#">Focusable element after the toolbar</a>
+    </div>
+  </figure>
+</main>

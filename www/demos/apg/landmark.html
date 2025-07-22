@@ -1,0 +1,57 @@
+---
+layout: layout.vto
+name: Landmark
+---
+
+<main>
+  <h1>Landmark</h1>
+
+  <blockquote>
+    <p>
+    Landmarks are a set of eight roles that identify the major sections of a page.
+    Each landmark role enables assistive technology users to perceive the start and end of a feature of the high-level page structure that is usually conveyed visually with placement, spacing, color, or borders.
+    </p>
+    <small>
+      — <a href="https://www.w3.org/WAI/ARIA/apg/patterns/landmark/">Landmark Pattern</a>,
+      <cite>WAI ARIA Authoring Practices Guide (APG)</cite>
+    </small>
+  </blockquote>
+
+  <h2>Notes</h2>
+
+  <p>
+  Missing.css relies on the implicit landmark roles for HTML sectioning elements.
+
+  <table class="table">
+    <caption>Implicit ARIA Landmark Roles</caption>
+    <thead>
+      <tr><th>Landmark<th>HTML Element
+    <tbody>
+      <tr><td>Main<td><code>&lt;main&gt;</code>
+      <tr><td>Navigation<td><code>&lt;nav&gt;</code>
+      <tr><td>Search<td><code>&lt;search&gt;</code>
+      <tr><td>Banner<td><code>&lt;body&gt;&lt;header&gt;</code>
+      <tr><td>Contentinfo<td><code>&lt;body&gt;&lt;footer&gt;</code>
+      <tr><td>Complementary<td><code>&lt;aside&gt;</code>
+      <tr><td>Form<td><code>&lt;form&gt;</code>
+      <tr><td>Region<td><code>&lt;section aria-label="required"&gt;</code>
+  </table>
+
+  <p>
+  The <code>&lt;header&gt;</code> and <code>&lt;footer&gt;</code> elements are only given landmark roles when they are direct descendants of the <code>&lt;body&gt;</code> element.
+  Note that in order for a <code>&lt;section&gt;</code> element to be an implicit landmark role, it must be given a valid <code>[aria-label]</code> or <code>[aria-labelledby]</code> attribute.
+  <p>
+  For best practices, please refer to the <a href="https://www.w3.org/WAI/ARIA/apg/practices/landmark-regions/">APG's Landmark Regions</a> page.
+
+  <h2>Keyboard Interaction</h2>
+
+  <p>Not applicable.
+
+  <h2>Example</h2>
+
+  <figure class="fullbleed">
+    <div class="container">
+      View the official <a href="/demos/landing-page/">landing page</a> example.
+    </div>
+  </figure>
+</main>

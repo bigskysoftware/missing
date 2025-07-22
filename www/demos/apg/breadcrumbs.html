@@ -1,0 +1,64 @@
+---
+layout: layout.vto
+name: Breadcrumb
+---
+
+<main>
+  <h1>Breadcrumb</h1>
+
+  <blockquote>
+    <p>
+    A breadcrumb trail consists of a list of links to the parent pages of the current page in hierarchical order.
+    It helps users find their place within a website or web application.
+    Breadcrumbs are often placed horizontally before a page's main content.
+    </p>
+    <small>
+      — <a href="https://www.w3.org/WAI/ARIA/apg/patterns/breadcrumb/">Breadcrumb Pattern</a>,
+      <cite>WAI ARIA Authoring Practices Guide (APG)</cite>
+    </small>
+  </blockquote>
+
+  <h2>Notes</h2>
+
+  <p>
+  Missing.css uses the <code>&lt;nav class=breadcrumbs&gt;</code> element for breadcrumbs.
+  Use an <code>&lt;ul&gt;</code> or <code>&lt;ol&gt;</code> of links inside.
+  Don't forget to add an aria-label.
+  <p>
+  If you want to display steps in a process, you can use <code>&lt;ol type="1"&gt;</code> and specify the
+  <code>--separator</code> CSS variable.
+  <p>
+  Add the attribute <code>[aria-current=page|step]</code> to the link representing the current page or step (if any).
+
+  <h2>Keyboard Interaction</h2>
+
+  <p>Not applicable.</p>
+
+  <h2>Example</h2>
+
+  <figure class="fullbleed">
+    <div class="container">
+      <h3>Sitemap Navigation</h3>
+      <nav class="breadcrumbs" aria-label="Breadcrumb">
+        <ol>
+        <li><a href="#">Home</a>
+        <li><a href="#">User</a>
+        <li><a href="#">Advanced</a>
+        <li><a href="#">New All</a>
+        <li><a href="#" aria-current="page">Quit Sibelius</a>
+        </ol>
+      </nav>
+
+      <h3>Step Process</h3>
+      <nav class="breadcrumbs" aria-label="Checkout" style="--separator: ' \2192  ';">
+        <ol type="1">
+        <li><a href="#">Cart</a>
+        <li><a href="#">Account</a>
+        <li><a href="#" aria-current="step">Info</a>
+        <li>Payment
+        <li>Review
+        </ol>
+      </nav>
+    </div>
+  </figure>
+</main>

@@ -1,0 +1,73 @@
+---
+layout: layout.vto
+name: Radio Group
+---
+
+<main>
+  <h1>Switch</h1>
+
+  <blockquote>
+    <p>
+    A switch is an input widget that allows users to choose one of two values: "on" or "off".
+    Switches are similar to checkboxes and toggle buttons, which can also serve as binary inputs.
+    One difference, however, is that switches can only be used for binary input while checkboxes and toggle buttons allow implementations the option of supporting a third middle state.
+    </p>
+    <small>
+      — <a href="https://www.w3.org/WAI/ARIA/apg/patterns/switch/">Switch Pattern</a>,
+      <cite>WAI ARIA Authoring Practices Guide (APG)</cite>
+    </small>
+  </blockquote>
+
+  <h2>Notes</h2>
+
+  <p>
+  Missing.css uses the <code>&lt;input type=checkbox role=switch&gt;</code> element for switches.
+  <p>
+  Indeterminate state cannot be set by attributes, JavaScript is required.
+  There is ongoing discussion about whether switches should support indeterminate state and whether they imply instanteous action.
+  https://github.com/w3c/aria-practices/issues/2647
+
+  <h2>Keyboard Interaction</h2>
+
+  <ul>
+  <li><kbd><kbd>Space</kbd></kbd>: When focus is on the switch, changes the state of the switch.
+  </ul>
+
+  <h2>Example</h2>
+
+  <figure class="fullbleed">
+    <div class="container">
+
+      <div class="f-switch">
+        <fieldset class="f-col">
+          <legend>Connectivity</legend>
+          <label>
+            <input type="checkbox" role="switch" name="internet">Internet
+          </label>
+          <label>
+            <input type="checkbox" role="switch" name="bluetooth" checked>Bluetooth
+          </label>
+          <label>
+            <input type="checkbox" role="switch" name="dnd" class="indeterminate">Location
+          </label>
+        </fieldset>
+        <fieldset class="f-col">
+          <legend>Utilities</legend>
+          <label class="justify-content:space-between">
+            Do Not Disturb<input type="checkbox" role="switch" name="dnd">
+          </label>
+          <label class="justify-content:space-between">
+            Flashlight<input type="checkbox" role="switch" name="flashlight" checked>
+          </label>
+          <label class="justify-content:space-between">
+            Battery Saver<input type="checkbox" role="switch" name="battery-saver" class="indeterminate">
+          </label>
+        </fieldset>
+      </div>
+      <script>
+        document.querySelectorAll('.indeterminate').forEach(el => {el.indeterminate = true;})
+      </script>
+
+    </div>
+  </figure>
+</main>

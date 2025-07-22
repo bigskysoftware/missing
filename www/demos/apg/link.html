@@ -1,0 +1,64 @@
+---
+layout: layout.vto
+name: Link
+---
+
+<main>
+  <h1>Link</h1>
+
+  <blockquote>
+    <p>
+    A link widget provides an interactive reference to a resource.
+    The target resource can be either external or local, i.e., either outside or within the current page or application.
+    </p>
+    <small>
+      — <a href="https://www.w3.org/WAI/ARIA/apg/patterns/link/">Link Pattern</a>,
+      <cite>WAI ARIA Authoring Practices Guide (APG)</cite>
+    </small>
+  </blockquote>
+
+  <h2>Notes</h2>
+
+  <p>
+  Missing.css uses the <code>&lt;a&gt;</code> element for links.
+  <p>
+  When an <code>&lt;a&gt;</code> tag is used to link to content on the same page, missing.css will provide the following visual context:
+  <dl>
+  <dt>Headings
+  <dd>A <code>:before</code> pseudo-element whose color is determined by the <code>--accent</code> CSS variable.
+  <dt>Other
+  <dd>An outline of the element whose color is determined by the <code>--fg</code> CSS variable.
+  </dl>
+
+  <h2>Keyboard Interaction</h2>
+
+  <ul>
+  <li><kbd><kbd>Enter</kbd></kbd>: Executes the link and moves focus to the link target (when focused).
+  </ul>
+
+  <h2>Example</h2>
+
+  <figure class="fullbleed">
+    <div class="container">
+
+      <strong>Menu:</strong>
+      <ul role="list" class="packed">
+      <li><a href="#section-label">Jump to Heading</a>
+      <li><a href="#list">Jump to List</a>
+      <li><a href="#">Jump to top</a>
+      </ul>
+
+      <section aria-labelledby="section-label">
+        <h3 id="section-label">Section Heading</h3>
+        <p>
+        This is some content.
+      </section>
+      <ul id="list">
+        <li>Apples
+        <li>Mangos
+        <li>Bananas
+      </ul>
+
+    </div>
+  </figure>
+</main>

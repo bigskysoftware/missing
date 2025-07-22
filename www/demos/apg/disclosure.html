@@ -1,0 +1,53 @@
+---
+layout: layout.vto
+name: Disclosure
+---
+
+<main>
+  <h1>Disclosure</h1>
+
+  <blockquote>
+    <p>
+    A disclosure is a widget that enables content to be either collapsed (hidden) or expanded (visible).
+    It has two elements: a disclosure button and a section of content whose visibility is controlled by the button.
+    When the controlled content is hidden, the button is often styled as a typical push button with a right-pointing arrow or triangle to hint that activating the button will display additional content.
+    When the content is visible, the arrow or triangle typically points down.
+    </p>
+    <small>
+      — <a href="https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/">Disclosure Pattern</a>,
+      <cite>WAI ARIA Authoring Practices Guide (APG)</cite>
+    </small>
+  </blockquote>
+
+  <h2>Notes</h2>
+
+  <p>
+  Missing.css uses the <code>&lt;details&gt;</code> element for disclosures.
+  Disclosures can be made into an accordion by applying a fixed <code>[name]</code> attribute to each <code>&lt;details&gt;</code> element.
+
+  <h2>Keyboard Interaction</h2>
+  <ul>
+  <li><kbd><kbd>Enter</kbd></kbd>: Activate the disclosure control and toggle visibility of the disclosure content.
+  <li><kbd><kbd>Space</kbd></kbd>: Activate the disclosure control and toggle visibility of the disclosure content.
+  </ul>
+
+  <h2>Example</h2>
+
+  <figure class="fullbleed">
+    <div class="container">
+      <h3>Frequently Asked Questions</h3>
+      <details>
+        <summary>What is your name?</summary>
+        <p>Sir Galahad of Camelot.</p>
+      </details>
+      <details>
+        <summary>What is your quest?</summary>
+        <p>I seek the Grail.</p>
+      </details>
+      <details>
+        <summary>What is your favorite color?</summary>
+        <p>Blue. No, yelloooooo—!</p>
+      </details>
+    </div>
+  </figure>
+</main>
