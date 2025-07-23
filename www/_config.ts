@@ -35,6 +35,7 @@ const site = lume(
   .data("layout", "release.vto", "/releases")
   .data("url", (p) => p.src.path + "/", "/releases")
   .data("url", (p) => p.src.path + "/", "/demos")
+  .data("browserslist", Deno.env.get("BROWSERSLIST"), "/") 
   .preprocess([".md"], (ps) => ps.forEach(p => {
     if (p.src.path.match(/^\/releases\/\d/)) {
       p.data.release = p.src.path.split("/").at(-1);
