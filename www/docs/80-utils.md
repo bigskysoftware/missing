@@ -31,7 +31,7 @@ The `<main>`{.language-html} element does the same, but carries semantic baggage
 The density utilities set the <dfn>`--density`</dfn> [CSS variable][], which controls the amount of spacing between elements.
 The default value of `--density` is `1`, which means the spacing between paragraphs is equal to the height of 1 line.
 
-We provide three utility classes that set `--density`:
+We provide the following utility classes that set `--density`:
 
 | Class                     | Density                                    |
 |---------------------------|--------------------------------------------|
@@ -43,6 +43,14 @@ We provide three utility classes that set `--density`:
 | <dfn>`.autodensity`</dfn> | sets density based on viewport width       |
 
 { .table }
+
+You can also use the following classes to set density on child elements while maintaining a separate density for the containing element:
+
+ - <dfn>`.packed-inside`</dfn>
+ - <dfn>`.crowded-inside`</dfn>
+ - <dfn>`.dense-inside`</dfn>
+ - <dfn>`.spacious-inside`</dfn>
+ - <dfn>`.airy-inside`</dfn>
 
 You can set `--density` yourself in inline styles or your own CSS:
 
