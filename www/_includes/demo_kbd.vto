@@ -1,0 +1,9 @@
+## Keyboard Interaction
+
+{{ if shortcuts }}{{ for s of shortcuts }}
+ - <kbd>{{ for key of s.keys }}<kbd>{{ key }}</kbd> {{ /for }}</kbd>: {{ s.text }}
+{{ /for }} { role=list } {{ else }}
+
+Not applicable.
+
+{{ /if }}

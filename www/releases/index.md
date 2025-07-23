@@ -8,20 +8,23 @@ backTo: / Missing.css
 
 <header>
   <nav class="breadcrumbs" aria-label="Breadcrumbs">
-    <ol><li><a href="/">Home</a>
-        <li><a href="/releases/" aria-current="page">Releases</a>
-    </ol>
+
+ - [Home](/)
+ - [Releases](/releases/) { aria-current=page }
+
   </nav>
-  <h1><sub-title class="allcaps">Missing.css</sub-title> Releases</h1>
+
+# <sub-title class="allcaps">missing.css</sub-title> Releases
+
 </header>
 
 {{ set releases = search.pages("release!=undefined")
   |> sortSemVer(page => page.release)
   |> reverse }}
 
-<ul role="list" class="list-of-links flex-row flex-wrap:wrap">
+<ul role=list class="list-of-links flex-row flex-wrap:wrap">
 {{ for rel of releases }}
 <li class="mono-font" style="flex-basis:18ch">
-  <a href="{{ rel.url }}">{{ rel.release }}</a>
+  <a href={{ rel.url }}>{{ rel.release }}</a>
 {{ /for }}
 </ul>

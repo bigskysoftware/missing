@@ -35,7 +35,7 @@ layout: layout.vto
     {{ set prev = search.previousPage(url, "url^=/docs/", "page.src.path") }}
     {{ set next = search.nextPage(url, "url^=/docs/", "page.src.path") }}
 
-    <div class="f-row flex-wrap:wrap justify-content:space-between">
+    <div class="flex-row flex-wrap:wrap justify-content:space-between">
         {{ if prev }}
             <div>Previous &larr;
                 <strong><a href="{{ prev.url }}">{{ prev.title }}</a></strong>

@@ -42,6 +42,8 @@ We provide three utility classes that set `--density`:
 | <dfn>`.airy`</dfn>        | `--density` = 3                            |
 | <dfn>`.autodensity`</dfn> | sets density based on viewport width       |
 
+{ .table }
+
 You can set `--density` yourself in inline styles or your own CSS:
 
 <figure>

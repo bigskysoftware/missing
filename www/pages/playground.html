@@ -7,8 +7,8 @@ url: /playground/
 
   <header>
     <nav class="breadcrumbs" aria-label="Breadcrumbs">
-      <ol><li><a href="/">Home</a>
-          <li><a href="/releases/" aria-current="page">Playground</a>
+      <ol><li><a href=/>Home</a>
+          <li><a href=/releases/ aria-current=page>Playground</a>
       </ol>
     </nav>
     <h1><sub-title class="allcaps">missing.css</sub-title> Playground</h1>
@@ -16,7 +16,7 @@ url: /playground/
 
   <div class="fullbleed pad">
     <div class="grid">
-      <textarea id="code" class="monospace" cols="80" rows="20">
+      <textarea id=code class="monospace" cols=80 rows=20>
 &lt;main>
     &lt;h1>Hello, World!&lt;/h1>
 
@@ -24,11 +24,11 @@ url: /playground/
 &lt;/main>
       </textarea>
 
-      <iframe id="result" srcdoc="<!doctype html> :)"></iframe>
+      <iframe id=result srcdoc="<!doctype html> :)"></iframe>
     </div>
   </div>
 
-  <script type="text/hyperscript">
+  <script type=text/hyperscript>
       on load or input from #code
           get "<!DOCTYPE html>"
           append "<html lang=en>"
@@ -44,6 +44,6 @@ url: /playground/
           set #result's srcdoc to the result
       end
   </script>
-  <script src="https://unpkg.com/hyperscript.org"></script>
+  <script src=https://unpkg.com/hyperscript.org></script>
 
 </main>

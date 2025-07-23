@@ -8,14 +8,17 @@ renderOrder: 1
 
 <header>
   <nav class="breadcrumbs" aria-label="Breadcrumbs">
-    <ol><li><a href="/">Home</a>
-        <li><a href="/demos/" aria-current="page">Demos</a>
-    </ol>
+
+ - [Home](/)
+ - [Demos](/demos/) { aria-current=page }
+
   </nav>
-  <h1><sub-title class="allcaps">missing.css</sub-title> Demos</h1>
+
+# <sub-title class="allcaps">missing.css</sub-title> Demos
+
 </header>
 
 {{ for demo of search.pages("url^=/demos/") |> filter((demo) => demo.page !== page) }}
- - [{{ demo.name }}]({{ demo.url }})
+ - [{{ demo.title }}]({{ demo.url }})
 {{ /for }}
 {.list-of-links .flow-gap}
