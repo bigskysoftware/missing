@@ -40,6 +40,7 @@ const site = lume(
   .preprocess([".md"], (ps) => ps.forEach(p => {
     if (p.src.path.match(/^\/releases\/\d/)) {
       p.data.release = p.src.path.split("/").at(-1);
+			p.data.title = p.data.release;
     }
   }))
   .loadPages([".html"])

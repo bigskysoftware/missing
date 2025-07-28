@@ -1,0 +1,22 @@
+---
+layout: prose.vto
+templateEngine: vto
+renderOrder: 1
+url: ./
+subtitle: missing.css
+title: Releases
+crumbs:
+ - url: /
+   title: Home
+---
+
+{{ set releases = search.pages("release!=undefined")
+	|> sortSemVer(page => page.release)
+	|> reverse }}
+
+<ul role=list class="list-of-links flex-row flex-wrap:wrap">
+{{ for rel of releases }}
+<li class="mono-font" style="flex-basis:18ch">
+	<a href={{ rel.url }}>{{ rel.release }}</a>
+{{ /for }}
+</ul>

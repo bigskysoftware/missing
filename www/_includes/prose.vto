@@ -2,6 +2,16 @@
 layout: layout.vto
 ---
 
+<header>
+	{{ include "breadcrumbs.vto" }}
+	<h1>
+		{{ if subtitle }}
+		<sub-title class="allcaps">{{ subtitle }}<v-h>: </v-h></sub-title>
+		{{ /if }}
+		{{ title }}
+	</h1>
+</header>
+
 <main>
 	{{ content }}
 </main>

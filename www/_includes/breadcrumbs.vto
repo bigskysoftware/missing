@@ -1,0 +1,10 @@
+{{ if crumbs }}
+<nav class="breadcrumbs" aria-label="Breadcrumbs">
+	<ol>
+	{{ for crumb of crumbs }}
+	<li><a href={{ crumb.url }}>{{ crumb.title }}</a>
+	{{ /for }}
+	<li><a href={{ url }} aria-current=page>{{ title }}</a>
+	</ol>
+</nav>
+{{ /if }}
