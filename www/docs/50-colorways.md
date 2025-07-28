@@ -29,7 +29,7 @@ Applying the colorway class to an element will not change its appearance by defa
 Use the <dfn>`.bg`</dfn>, <dfn>`.color`</dfn> and <dfn>`.border`</dfn> classes to use an aspect of the colorway:
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Colorway classes</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Colorway classes</figcaption>
 
   ~~~ html
   <p><b class="ok color border">Do:</b> Use color to help users scan information
@@ -54,7 +54,7 @@ If you want, you can make your own colorway simply with a class that sets the ap
 We recommend naming your colorways after their purpose, as opposed to their specific color.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Defining a custom colorway</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Defining a custom colorway</figcaption>
 
   ~~~ css
   /* style.css */

@@ -45,7 +45,7 @@ Buttons support the `[aria-pressed]`{.token .attr-name} and `[aria-expanded]`{.t
 Buttons, `.<button>` [masquerades][], and `<input type=file>`{.language-html} all support [colorways][] as well.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Button markup</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Button markup</figcaption>
 
   ~~~ html
   <script>
@@ -153,7 +153,7 @@ Buttons, `.<button>` [masquerades][], and `<input type=file>`{.language-html} al
 </figure>
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>File input buttons</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>File input buttons</figcaption>
 
   <section class="crowded flex-switch">
     <div class="flex-column">
@@ -180,7 +180,7 @@ Buttons, `.<button>` [masquerades][], and `<input type=file>`{.language-html} al
 You can use the `.table` and `.rows` classes to create a form with inputs lined up like cells of a table.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Tabular form markup</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Tabular form markup</figcaption>
 
   ~~~ html
   <form class="table rows">
@@ -220,7 +220,7 @@ Note the `role`{.token .attr-name}, `aria-labelledby`{.token .attr-name} and the
 
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Radio group markup for tabular forms</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Radio group markup for tabular forms</figcaption>
 
   ~~~ html
   <div role=radiogroup aria-labelledby=color-lbl>
@@ -272,7 +272,7 @@ For full-width progress bars, use the `.width:100%` utility class.
 
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Progress bar markup</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Progress bar markup</figcaption>
 
   ~~~ html
   <div class="flex-column">
@@ -281,10 +281,10 @@ For full-width progress bars, use the `.width:100%` utility class.
     <progress id=p1 value=0.5 class="width:100%"></progress>
 
     <label for=p2>LCARS Scan...</label>
-    <progress id=p2 class="ok width:100%" value=0.25  style="height: 1.5em; --border-width: 6px; --border-style: double; --border-radius: 0 .5em"></progress>
+    <progress id=p2 class="ok width:100%" value=0.25 style="height: 1.5em; --border-width: 6px; --border-style: double; --border-radius: 0 .5em"></progress>
 
     <label for=p3>Virus progress...</label>
-    <progress id=p3 class="warn width:100%" value=0.75  style="--border-width: 3px; --border-style: inset; --border-radius: 0 .5rem .5rem .5rem"></progress>
+    <progress id=p3 class="warn width:100%" value=0.75 style="--border-width: 3px; --border-style: inset; --border-radius: 0 .5rem .5rem .5rem"></progress>
 
     <label for=p4>Indeterminate Cylon</label>
     <progress id=p4 class="bad" style="width: 3em;">Indeterminate Cylon</progress>
@@ -300,10 +300,10 @@ For full-width progress bars, use the `.width:100%` utility class.
     <progress id=p1 value=0.5 class="width:100%"></progress>
 
     <label for=p2>LCARS Scan...</label>
-    <progress id=p2 class="ok width:100%" value=0.25  style="height: 1.5em; --border-width: 6px; --border-style: double; --border-radius: 0 .5em"></progress>
+    <progress id=p2 class="ok width:100%" value=0.25 style="height: 1.5em; --border-width: 6px; --border-style: double; --border-radius: 0 .5em"></progress>
 
     <label for=p3>Virus progress...</label>
-    <progress id=p3 class="warn width:100%" value=0.75  style="--border-width: 3px; --border-style: inset; --border-radius: 0 .5rem .5rem .5rem"></progress>
+    <progress id=p3 class="warn width:100%" value=0.75 style="--border-width: 3px; --border-style: inset; --border-radius: 0 .5rem .5rem .5rem"></progress>
 
     <label for=p4>Indeterminate Cylon</label>
     <progress id=p4 class="bad" style="width: 3em;">Indeterminate Cylon</progress>
@@ -331,7 +331,7 @@ A suitable fallback choice has been made for these colors (`--plain-bg` for the 
 </div>
 
 <figure>
-<figcaption><sub-title class="allcaps">Example</sub-title>Value in optimum range</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Value in optimum range</figcaption>
 
   ~~~html
   <strong>Disk usage (optimum is a medium amount of usage)</strong>
@@ -364,7 +364,7 @@ A suitable fallback choice has been made for these colors (`--plain-bg` for the 
 </figure>
 
 <figure>
-<figcaption><sub-title class="allcaps">Example</sub-title>Value in sub-optimum range</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Value in sub-optimum range</figcaption>
 
   ~~~html
   <strong>Disk usage (getting full)</strong>

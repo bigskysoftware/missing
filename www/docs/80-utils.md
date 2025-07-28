@@ -61,7 +61,7 @@ You can also use the following classes to set density on child elements while ma
 You can set `--density` yourself in inline styles or your own CSS:
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Setting <code>--density</code> with inline styles</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Setting <code>--density</code> with inline styles</figcaption>
 
   ~~~ html
   <section id=tagline style="--density: 2">
@@ -75,7 +75,7 @@ You can set `--density` yourself in inline styles or your own CSS:
 </figure>
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Setting <code>--density</code> in a stylesheet</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Setting <code>--density</code> in a stylesheet</figcaption>
 
   ~~~ css
   .link-embed {
@@ -138,7 +138,7 @@ using the short-hand `background`{.language-css} property will result in overwri
 :   Removes underlines from all links inside an element -- sometimes advisable for lists of links.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Background clip</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Background clip</figcaption>
 
   ~~~ css
   .gradient {
@@ -214,7 +214,7 @@ The <dfn>`.<big>`</dfn> class makes things bigger, with special treatment for so
 The <dfn>`.big`</dfn> class will be removed in version 2.0.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></subtitle>Masquerade markups</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></subtitle>Masquerade markups</figcaption>
 
   ~~~ html
   <p>This is a paragraph.</p>
@@ -263,7 +263,7 @@ Use `<meta name=color-scheme content=dark>`{.language-html} instead.
 Use `<meta name=color-scheme content=light>`{.language-html} instead.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Theme toggle markup</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Theme toggle markup</figcaption>
 
   ~~~ css
   :root:has([name=theme][value=light]:checked) { color-scheme: light      }

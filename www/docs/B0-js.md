@@ -51,7 +51,7 @@ The tabs behavior emits these custom events:
 
 <figure class="plain">
 
-  <figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Initializing a missing.js behavior on newly inserted content</figcaption>
+  <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Initializing a missing.js behavior on newly inserted content</figcaption>
 
   ~~~ js
   import tabs from "https://unpkg.com/missing.css@{{ version }}/dist/js/tabs.js";
@@ -145,7 +145,7 @@ Make sure to add:
  - inside that `.navbar`{.language-css}, a button with a `data-nav-expander`{.attr .attr-name} attribute.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Collapsing navbar markup</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Collapsing navbar markup</figcaption>
 
   ~~~ html
   <header class="navbar" data-overflow-nav>

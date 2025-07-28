@@ -36,7 +36,7 @@ add `@s` (small, &le;768px) or `@l` (large, &ge;1024px) to the end of the attrib
 To change the layout for printing, add `@p` to the end of the attributes.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Grid markup for even rows</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Grid markup for even rows</figcaption>
 
   ~~~ html
   <div class="grid grid-even-rows">

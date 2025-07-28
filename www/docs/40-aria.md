@@ -25,7 +25,7 @@ Mark up your tabs using the `tablist`{.token .attr-value}, `tab`{.token .attr-va
 To get the actual behavior of an accessible tabset, you can use [Missing.js &sect; Tabs](/docs/js#tabs).
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Tab markup</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Tab markup</figcaption>
 
   ~~~ html
   <script type=module src=/dist/js/tabs.js></script>
@@ -74,7 +74,7 @@ Use `menu`{.token .attr-value} and `menuitem`{.token .attr-value} roles — see 
 To get the actual behavior of an accessible menu, you can use [Missing.js &sect; Menu](/docs/js#menu).
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Menu markup</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Menu markup</figcaption>
 
   ~~~ html
   <script type=module src=/dist/js/menu.js></script>
@@ -112,7 +112,7 @@ To get the actual behavior of an accessible menu, you can use [Missing.js &sect;
 Use `listbox`{.token .attr-value} and `option`{.token .attr-value} ARIA roles. [WAI: Listbox][].
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Listbox markup</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Listbox markup</figcaption>
 
   ~~~ html
   <ul role=listbox class="box flow-gap">
@@ -149,7 +149,7 @@ Any element with the `toolbar`{.token .attr-value} role will have the same style
 The flex direction will be set based on the `aria-orientation`{.token .attr-value} attribute.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Horizontal toolbar markup</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Horizontal toolbar markup</figcaption>
 
   ~~~ html
   <p role=toolbar>
@@ -170,7 +170,7 @@ The flex direction will be set based on the `aria-orientation`{.token .attr-valu
 </figure>
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Vertical toolbar markup</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Vertical toolbar markup</figcaption>
 
   ~~~ html
   <p role=toolbar aria-orientation=vertical>
@@ -199,7 +199,7 @@ Nested feeds are supported.
 To get the actual behavior of an accessible feed, you can use [Missing.js &sect; Feed](/docs/js#feed).
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Feed markup</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Feed markup</figcaption>
 
   ~~~ html
   <script type=module src=/dist/js/feed.js></script>
@@ -241,7 +241,7 @@ Use `switch`{.token .attr-value} role with `<input type=checkbox>`{.language-htm
 The indeterminate state is supported, but it must be set with JavaScript.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Toggle switch markup</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Toggle switch markup</figcaption>
 
   ~~~ html
   <div class="flex-switch">

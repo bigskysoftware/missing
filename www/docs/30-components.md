@@ -19,7 +19,7 @@ The <dfn>`.box`</dfn> class creates a padded box with a border.
 Boxes use the border and background color of the [colorway][].
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Box markup</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Box markup</figcaption>
 
   ~~~ html
   <div class="warn box">
@@ -45,7 +45,7 @@ The `<figure>`{.language-html}, `<details>`{.language-html}, and `<dialog>`{.lan
 <dfn>`.titlebar`</dfn>: A titlebar for a `.box`{.language-css}.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Titlebar markup</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Titlebar markup</figcaption>
 
   ~~~ html
   <div class="bad box">
@@ -70,7 +70,7 @@ The <dfn>`<sub-title>`</dfn> custom element or the <dfn>`.sub-title`</dfn> class
 Visually hiding a colon with the `<v-h>`{.language-html} element can help screen readers parse the heading correctly.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Sub-title after a heading</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Sub-title after a heading</figcaption>
 
   ~~~ html
   <h4>
@@ -89,7 +89,7 @@ Visually hiding a colon with the `<v-h>`{.language-html} element can help screen
 </figure>
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Sub-title before a heading</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Sub-title before a heading</figcaption>
 
   ~~~ html
   <h4>
@@ -114,7 +114,7 @@ Many pages, including these docs, have links that can be used to jump to a secti
 Missing.css provides this as the <dfn>`.permalink-anchor`</dfn> class.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Permalink markup (hover to reveal)</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Permalink markup (hover to reveal)</figcaption>
 
   ~~~ html
   <h2 id=section-permalinks class="packed" tabindex=-1>
@@ -138,7 +138,7 @@ A <dfn>`.tool-bar`</dfn> is a horizontally laid-out collection of controls.
 Alternatively, you can use `[role=toolbar]`{.token .attr-name}.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Toolbar markup</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Toolbar markup</figcaption>
 
   ~~~ html
   <section role="toolbar">
@@ -174,7 +174,7 @@ Put sidebar content in a `<header>`{.language-html} element directly inside `.si
 See this example:
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Sidebar markup</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Sidebar markup</figcaption>
 
   ~~~ html
   <div class="sidebar-layout">
@@ -209,7 +209,7 @@ Add the attribute `aria-current`{.token .attr-name} to the link representing the
 The separator will be set to either `--breadcrumb-page` or `--breadcrumb-step` depending on whether its value is `page`{.token .attr-value} or `step`{.token .attr-value}.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Breadcrumbs markup</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Breadcrumbs markup</figcaption>
 
   ~~~ html
   <nav class="breadcrumbs" aria-label="Breadcrumbs">
@@ -278,7 +278,7 @@ If you want to preserve the `<ol>`{.language-html} numbering, use the `type`{.to
 The <dfn>`<chip>`</dfn> class, or the <dfn>`.chip`</dfn> class, creates a rounded chip, like what you might use for a tag list or contacts.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Chip markup</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Chip markup</figcaption>
 
   ~~~ html
   <chip class="info">#webdev</chip>
@@ -303,7 +303,7 @@ A navbar has the <dfn>`.navbar`</dfn> class --- see the following for a markup
 example:
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Navbar markup</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Navbar markup</figcaption>
 
   ~~~ html
   <header class="navbar">
@@ -341,7 +341,7 @@ This is because many assistive programs have a feature to jump to the navigation
 We recommend using <a href=https://lucide.dev>Lucide</a> for icons.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Icon button markup</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Icon button markup</figcaption>
 
   ~~~ css
   /* style.css */

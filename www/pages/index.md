@@ -11,7 +11,7 @@ templateEngine: [vento, md]
 <nav>
 
 [Docs](/docs/) 
-[Demo](/demos/) 
+[Demos](/demos/) 
 [Playground](/playground/) 
 [Releases](/releases/) 
 [GitHub](https://github.com/bigskysoftware/missing) 

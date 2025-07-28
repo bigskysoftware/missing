@@ -145,7 +145,7 @@ In the future, nested lists will not have margins by default.
 You can add them back in using `<li><p>`{.language-html} as needed.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Nested lists</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Nested lists</figcaption>
 
   ~~~html
   <div class="flex-switch">
@@ -257,7 +257,7 @@ The <dfn>`.table`</dfn> class makes an element act like a table for the purposes
 The <dfn>`.row`</dfn> class can be used to create a table row, or you can make all descendants of an element into rows with <dfn>`.rows`</dfn>.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Using pseudo-tables to align forms</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Using pseudo-tables to align forms</figcaption>
 
   ~~~ html
   <form class="table rows">
