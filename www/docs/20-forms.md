@@ -21,7 +21,7 @@ For instance, you can label an element in multiple ways:
 <form>
   <label>Name <input></label>
   <!-- or... -->
-  <label for="adr">Address</label> <input id="adr">
+  <label for=adr>Address</label> <input id=adr>
 </form>
 ~~~
 
