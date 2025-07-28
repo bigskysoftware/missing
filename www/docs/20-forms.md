@@ -17,13 +17,13 @@ other than using HTML tags with correct meanings, but this is not always feasibl
 Forms are a particularly complex part of HTML, with multiple ways to mark up the same semantics.
 For instance, you can label an element in multiple ways:
 
-  ~~~ html
-  <form>
-    <label>Name <input></label>
-    <!-- or... -->
-    <label for="adr">Address</label> <input id="adr">
-  </form>
-  ~~~
+~~~ html
+<form>
+  <label>Name <input></label>
+  <!-- or... -->
+  <label for="adr">Address</label> <input id="adr">
+</form>
+~~~
 
 Because of this, it's not really possible to write a stylesheet that will work with any HTML form.
 

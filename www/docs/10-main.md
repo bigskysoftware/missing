@@ -16,15 +16,15 @@ Missing.css is a simple CSS library that can be used in many ways — you could:
 Install it on your website if you haven't already:
 
 {{ set version = search.pages("release!=undefined") |>
-    map(rel => rel.release) |> sortSemVer |> at(-1) }}
+   map(rel => rel.release) |> sortSemVer |> at(-1) }}
 
 <figure>
 
-  ~~~ html
-  <link rel=stylesheet href=https://unpkg.com/missing.css@{{ version }}>
-  <!-- Prism theme (https://prismjs.com/): -->
-  <link rel=stylesheet href=https://unpkg.com/missing.css@{{ version }}/dist/missing-prism.min.css>
-  ~~~
+	~~~ html
+	<link rel=stylesheet href=https://unpkg.com/missing.css@{{ version }}>
+	<!-- Prism theme (https://prismjs.com/): -->
+	<link rel=stylesheet href=https://unpkg.com/missing.css@{{ version }}/dist/missing-prism.min.css>
+	~~~
 
 </figure>
 

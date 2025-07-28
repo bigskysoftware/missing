@@ -3,48 +3,46 @@ layout: layout.vto
 ---
 
 <header class="navbar" data-overflow-nav data-pagefind-body>
-    <nav class="contents">
-        <div>
-            <button hidden aria-hidden="true" type="button" data-nav-expander class="iconbutton">
-                &#x2630;
-                <script src="/dist/js/overflow-nav.js" type="module"></script>
-            </button>
-        </div>
-        <p>
-            <a href="/" class="allcaps">Missing.css</a>
-        </p>
-        <search>
-            <strong><button type="button" data-pagefind-search>Search</button></strong>
-            <script src="/js/pagefind.js" type="module"></script>
-        </search>
-        <ul role="list">
-            {{ for doc of search.pages("url^=/docs/", "page.src.path") }}
-                    <li><a href="{{ doc.url }}"
-                        {{ url == doc.url ? "aria-current=page" : "" }}
-                        >{{ doc.title }}</a></li>
-            {{ /for }}
-        </ul>
-    </nav>
+	<nav class="contents">
+		<div>
+			<button hidden aria-hidden=true type=button data-nav-expander class="iconbutton">
+				&#x2630;
+				<script type=module src=/dist/js/overflow-nav.js></script>
+			</button>
+		</div>
+		<p>
+			<a href=/ class="allcaps">Missing.css</a>
+		</p>
+		<search>
+			<strong><button type=button data-pagefind-search>Search</button></strong>
+			<script type=module src=/js/pagefind.js></script>
+		</search>
+		<ul role=list>
+			{{ for doc of search.pages("url^=/docs/", "page.src.path") }}
+			<li><a href={{ doc.url }} {{ url == doc.url ? "aria-current=page" : "" }}>{{ doc.title }}</a>
+			{{ /for }}
+		</ul>
+	</nav>
 </header>
 
 <main data-pagefind-body>
-    {{ content }}
+	{{ content }}
 </main>
 
 <footer>
-    {{ set prev = search.previousPage(url, "url^=/docs/", "page.src.path") }}
-    {{ set next = search.nextPage(url, "url^=/docs/", "page.src.path") }}
+	{{ set prev = search.previousPage(url, "url^=/docs/", "page.src.path") }}
+	{{ set next = search.nextPage(url, "url^=/docs/", "page.src.path") }}
 
-    <div class="flex-row flex-wrap:wrap justify-content:space-between">
-        {{ if prev }}
-            <div>Previous &larr;
-                <strong><a href="{{ prev.url }}">{{ prev.title }}</a></strong>
-            </div>
-        {{ /if }}
-        {{ if next }}
-            <div>Next &rarr;
-                <strong><a href="{{ next.url }}">{{ next.title }}</a></strong>
-            </div>
-        {{ /if }}
-    </div>
+	<div class="flex-row flex-wrap:wrap justify-content:space-between">
+		{{ if prev }}
+		<div>Previous &larr;
+			<strong><a href={{ prev.url }}>{{ prev.title }}</a></strong>
+		</div>
+		{{ /if }}
+		{{ if next }}
+		<div>Next &rarr;
+			<strong><a href={{ next.url }}>{{ next.title }}</a></strong>
+		</div>
+		{{ /if }}
+	</div>
 </footer>
