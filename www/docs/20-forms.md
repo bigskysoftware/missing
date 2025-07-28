@@ -40,7 +40,7 @@ Inputs outside labels will be `display:block`{.language-css}.
 ## Buttons
 
 Wrap a `<button>`{.language-html} in a `<strong>`{.language-html} tag to get a primary button.
-Buttons support the `[aria-pressed]`{.token .attr-name} and `[aria-expanded]`{.token .attr-name} attributes.
+Buttons support the `aria-pressed`{.token .attr-name} and `aria-expanded`{.token .attr-name} attributes.
 
 Buttons, `.<button>` [masquerades][], and `<input type=file>`{.language-html} all support [colorways][] as well.
 
@@ -267,6 +267,7 @@ Indeterminate `<progress>`{.language-html} elements will show a pending animatio
 
 The element can be styled by setting `--border-width`, `--border-style`, and `--border-radius` variables directly on the `<progress>`{.language-html} element.
 When not explicitly set, the element inherits from `--interactive-border-width`, `--interactive-border-style`, and `--tab-border-radius`.
+
 For full-width progress bars, use the `.width:100%` utility class.
 [Colorways](colorways) are supported.
 

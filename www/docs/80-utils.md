@@ -125,8 +125,8 @@ You can set `--density` yourself in inline styles or your own CSS:
 using the short-hand `background`{.language-css} property will result in overwriting the `background-clip`{.language-css} property set by the class.{.info .box}
 
 <dfn>`.text-stroke`</dfn>
-:   Adds a stroke to the text, dictated by the `--stroke-width` and `--stroke-color` variables.
-    By default, `--stroke-color` attempts to calculate a color with sufficient contrast to the `currentcolor` of the text, but you might need to set it explicitly.
+:   Adds a stroke to the text, dictated by the `--stroke-width`{.token .attr-name} and `--stroke-color`{.token .attr-name} variables.
+    By default, `--stroke-color`{.token .attr-name} attempts to calculate a color with sufficient contrast to the `currentcolor` of the text, but you might need to set it explicitly.
 
 **Warning**:&emsp;Due to the current browser implementation of `-webkit-text-stroke`{.language-css}, the resulting effect is highly dependent on the particular font used.{.warn .box}
 

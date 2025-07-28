@@ -135,18 +135,18 @@ Missing.css provides this as the <dfn>`.permalink-anchor`</dfn> class.
 ## Toolbar
 
 A <dfn>`.tool-bar`</dfn> is a horizontally laid-out collection of controls.
-Alternatively, you can use `[role=toolbar]`{.token .attr-name}.
+Alternatively, you can use `role=toolbar`{.token .attr-name}.
 
 <figure>
 <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Toolbar markup</figcaption>
 
   ~~~ html
-  <section role="toolbar">
+  <section role=toolbar>
     <button type=button>Cut</button>
     <button type=button>Copy</button>
     <button type=button>Paste</button>
 
-    <hr aria-orientation="vertical">
+    <hr aria-orientation=vertical>
 
     <label>Find: <input type=text></label>
   </section>
@@ -154,7 +154,7 @@ Alternatively, you can use `[role=toolbar]`{.token .attr-name}.
 
   <hr>
 
-  <section role="toolbar">
+  <section role=toolbar>
     <button type=button>Cut</button>
     <button type=button>Copy</button>
     <button type=button>Paste</button>

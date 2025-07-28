@@ -49,7 +49,7 @@ these are grouped together at the bottom, in addition to being mentioned in the 
 :   Background for interactive elements.
 
 <dfn>`--pressed-interactive-bg`</dfn> {#var-pressed-interactive-bg}
-:   Background for interactive elements with `[aria-pressed=true]`{.token .attr-value} or `[aria-expanded=true]`{.token .attr-value}.
+:   Background for interactive elements with `aria-pressed=true`{.token .attr-name} or `aria-expanded=true`{.token .attr-name}.
 
 <dfn>`--accent`</dfn> {#var-accent}
 :   Accent color.
@@ -111,7 +111,7 @@ these are grouped together at the bottom, in addition to being mentioned in the 
 
 <dfn>~~`--rhythm`~~</dfn> {#var-rhythm}
 :   ~~Vertical rhythm, line height.~~ **Deprecated:**{.bad .color} Will be removed in version 2.0.
-    Set a value for the `line-height` property on the `html` element instead.
+    Set a value for the `line-height`{.token .attr-name} property on the `html` element instead.
 
 <dfn>`--line-length`</dfn> {#var-line-length}
 :   Maximum line length for prose.
@@ -121,88 +121,88 @@ these are grouped together at the bottom, in addition to being mentioned in the 
    
 <dfn>`--border-width`</dfn> {#var-border-width}
 :   Shortcut for uniform border widths on various `.box` related components.
-    Defaults to `unset`.
+    Defaults to `unset`{.token .attr-value}.
 
 <dfn>`--border-block-start-width`</dfn> {#var-border-block-start-width}
 :   Width of the "top" border.
-    Defaults to `--border-width` if it is set, otherwise `1px`.
+    Defaults to `--border-width`{.token .attr-name} if it is set, otherwise `1px`{.token .attr-value}.
 
 <dfn>`--border-block-end-width`</dfn> {#var-border-block-end-width}
 :   Width of the "bottom" border.
-    Defaults to `--border-width` if it is set, otherwise `1px`.
+    Defaults to `--border-width`{.token .attr-name} if it is set, otherwise `1px`{.token .attr-value}.
 
 <dfn>`--border-inline-start-width`</dfn> {#var-border-inline-start-width}
 :   Width of the "left" border.
-    Defaults to `--border-width` if it is set, otherwise `1px`.
+    Defaults to `--border-width`{.token .attr-name} if it is set, otherwise `1px`{.token .attr-value}.
 
 <dfn>`--border-inline-end-width`</dfn> {#var-border-inline-end-width}
 :   Width of the "right" border.
-    Defaults to `--border-width` if it is set, otherwise `1px`.
+    Defaults to `--border-width`{.token .attr-name} if it is set, otherwise `1px`{.token .attr-value}.
 
 <dfn>`--border-style`</dfn> {#var-border-style}
 :   Shortcut for uniform border styles on various `.box` related components.
-    Defaults to `unset`.
+    Defaults to `unset`{.token .attr-value}.
 
 <dfn>`--border-block-start-style`</dfn> {#var-border-block-start-style}
 :   Style of the "top" border.
-    Defaults to `--border-style` if it is set, otherwise `1px`.
+    Defaults to `--border-style`{.token .attr-name} if it is set, otherwise `1px`{.token .attr-value}.
 
 <dfn>`--border-block-end-style`</dfn> {#var-border-block-end-style}
 :   Style of the "bottom" border.
-    Defaults to `--border-style` if it is set, otherwise `1px`.
+    Defaults to `--border-style`{.token .attr-name} if it is set, otherwise `1px`{.token .attr-value}.
 
 <dfn>`--border-inline-start-style`</dfn> {#var-border-inline-start-style}
 :   Style of the "left" border.
-    Defaults to `--border-style` if it is set, otherwise `1px`.
+    Defaults to `--border-style`{.token .attr-name} if it is set, otherwise `1px`{.token .attr-value}.
 
 <dfn>`--border-inline-end-style`</dfn> {#var-border-inline-end-style}
 :   Style of the "right" border.
-    Defaults to `--border-style` if it is set, otherwise `1px`.
+    Defaults to `--border-style`{.token .attr-name} if it is set, otherwise `1px`{.token .attr-value}.
 
 <dfn>`--border-radius`</dfn> {#var-border-radius}
 :   Border radius for various `.box` related components.
-    Accepts any valid CSS value, e.g. `1em 2em` or `50% 20% / 10% 40%`.
-    Defaults to 0.2rem.
+    Accepts any valid CSS value, e.g. `1em 2em`{.token .attr-value} or `50% 20% / 10% 40%`{.token .attr-value}.
+    Defaults to 0.2rem{.token .attr-value}.
 
 <dfn>`--interactive-border-width`</dfn> {#var-interactive-border-width}
 :   Border width used in buttons, inputs, etc.
-    Must be a single value; defaults to `1px`.
+    Must be a single value; defaults to `1px`{.token .attr-value}.
 
 <dfn>`--interactive-border-style`</dfn> {#var-interactive-border-style}
 :   Border style used in buttons, inputs, etc.
-    Must be a single value; defaults to `solid`.
+    Must be a single value; defaults to `solid`{.token .attr-value}.
 
 <dfn>`--interactive-border-radius`</dfn> {#var-interactive-border-radius}
 :   Border radius used in buttons, inputs, etc.
-    Must be a single value; defaults to `.2rem`.
+    Must be a single value; defaults to `.2rem`{.token .attr-value}.
 
 <dfn>`--tab-border-radius`</dfn> {#var-tab-border-radius}
 :   Border radius for the ARIA tabs component.
-    Must be a single value; defaults to 0.4em.
+    Must be a single value; defaults to `0.4em`{.token .attr-value}.
 
 
 ## Button Shadows
 
 <dfn>`--shadow`</dfn> {#var-shadow}
-:   The value for the `box-shadow` property on buttons.
+:   The value for the `box-shadow`{.token .attr-name} property on buttons.
 
 <dfn>`--shadow-focus`</dfn> {#var-shadow-focus}
-:   The value for the `box-shadow` property on button with `:hover` or `:focus-visible` state.
+:   The value for the `box-shadow`{.token .attr-name} property on button with `:hover`{.token .attr-value} or `:focus-visible`{.token .attr-value} state.
 
 <dfn>`--shadow-active`</dfn> {#var-shadow-active}
-:   The value for the `box-shadow` property on button with `:active` state.
+:   The value for the `box-shadow`{.token .attr-name} property on button with `:active`{.token .attr-value} state.
 
 <dfn>`--shadow-disabled`</dfn> {#var-shadow-disabled}
-:   The value for the `box-shadow` property on button with `:disabled` state.
+:   The value for the `box-shadow`{.token .attr-name} property on button with `:disabled`{.token .attr-value} state.
 
 <dfn>`--pressed-shadow`</dfn> {#var-pressed-shadow}
-:   The value for the `box-shadow` property on buttons with `[aria-pressed=true]` or `[aria-expended=true]`.
+:   The value for the `box-shadow`{.token .attr-name} property on buttons with `aria-pressed=true`{.token .attr-name} or `aria-expended=true`{.token .attr-name}.
 
 <dfn>`--pressed-shadow-focus`</dfn> {#var-pressed-shadow-focus}
-:   The value for the `box-shadow` property on buttons with `[aria-pressed=true]` or `[aria-expended=true]` in the `:hover` or `:focus-visible` state.
+:   The value for the `box-shadow`{.token .attr-name} property on buttons with `aria-pressed=true`{.token .attr-name} or `aria-expended=true`{.token .attr-name} in the `:hover`{.token .attr-value} or `:focus-visible`{.token .attr-value} state.
 
 <dfn>`--pressed-shadow-active`</dfn> {#var-pressed-shadow-active}
-:   The value for the `box-shadow` property on buttons with `[aria-pressed=true]` or `[aria-expended=true]` in the `:active` state.
+:   The value for the `box-shadow`{.token .attr-name} property on buttons with `aria-pressed=true`{.token .attr-name} or `aria-expended=true`{.token .attr-name} in the `:active`{.token .attr-value} state.
 
 
 ## Fonts
@@ -222,7 +222,7 @@ these are grouped together at the bottom, in addition to being mentioned in the 
     <div class="crowded info box">
 
     **Tip**:&emsp;Browsers shrink monospace fonts.
-    You can suppress this behavior by specifying `monospace` _twice_:
+    You can suppress this behavior by specifying `monospace`{.token .attr-value} _twice_:
 
     ~~~ css
     --mono-font: "Cascadia Code", monospace, monospace
@@ -237,7 +237,7 @@ these are grouped together at the bottom, in addition to being mentioned in the 
 :   The default separator for breadcrumbs.
 
 <dfn>`--breadcrumb-step`</dfn> {#var-breadcrumb-step}
-:   The separator for breadcrumbs that use `[aria-current=step]`.
+:   The separator for breadcrumbs that use `aria-current=step`{.token .attr-name}.
 
 ## Density
 
@@ -250,22 +250,24 @@ these are grouped together at the bottom, in addition to being mentioned in the 
 
 <dfn>`--flex-switch-threshold`</dfn> {#var-flex-switch-threshold}
 :   Sets the threshold at which `.flex-switch` switches from row to column.
-    Default is `15ch`.
+    Default is `15ch`{.token .attr-value}.
 
 <dfn>`--col-width`</dfn> {#var-col-width}
 :   Sets the width of a column for `.textcolumns`.
-    Default is `30ch`.
+    Default is `30ch`{.token .attr-value}.
 
 <dfn>`--grid-row-width`</dfn> {#var-grid-row-width}
 :   Sets the width of a row in a `.grid`.
-    Default is `1fr`.
+    Default is `1fr`{.token .attr-value}.
 
 <dfn>`--grid-col-width`</dfn> {#var-grid-col-width}
 :   Sets the width of a column in a `.grid`.
-    Default is `1fr`. 
+    Default is `1fr`{.token .attr-value}.
 
+<!--
 <dfn>`--sidenote-width`</dfn> {#var-sidenote-width}
 :   Sets the width of a `<small role=note>`{.language-html} sidenote.
-    Default is `20ch`.
+    Default is `20ch`{.token .attr-value}.
+-->
 
 [colorway]: /docs/colorways

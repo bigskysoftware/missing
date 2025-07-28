@@ -28,7 +28,7 @@ Install it on your website if you haven't already:
 
 </figure>
 
-You can also install it into an npm project with `npm i -s missing.css`.
+You can also install it into an npm project with `npm i -s missing.css`{ .ok .color }.
 
 This will make your page look a bit like the one you are reading right now, without applying any classes.
 

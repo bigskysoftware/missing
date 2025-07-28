@@ -95,9 +95,9 @@ or
 The menu behavior emits these custom events:
 
 - **`menu:close`** on a menu after it closes
-  - `detail.opener`: the `[aria-haspopup=menu]`{.token .attr-name} element used to close the menu
+  - `detail.opener`: the `aria-haspopup=menu`{.token .attr-name} element used to close the menu
 - **`menu:open`** on a menu after it opens
-  - `detail.opener`: the `[aria-haspopup=menu]`{.token .attr-name} element used to open the menu
+  - `detail.opener`: the `aria-haspopup=menu`{.token .attr-name} element used to open the menu
 
 All notes above about initializing dynamic content apply here.
 

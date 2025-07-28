@@ -202,7 +202,7 @@ You can add them back in using `<li><p>`{.language-html} as needed.
 
 ## Aspect Ratio
 
-To set the aspect ratio of an element, use the `aspect-ratio`{.language-css} CSS property:
+To set the aspect ratio of an element, use the `aspect-ratio`{.token .attr-name} CSS property:
 
 <figure>
 
@@ -236,7 +236,7 @@ To set the aspect ratio of an element, use the `aspect-ratio`{.language-css} CSS
 
 ## Scrolling
 
-Set the `overflow` property with these utility classes.
+Set the `overflow`{.token .attr-name} property with these utility classes.
 
 <dfn>`.overflow:auto`</dfn>  
 :   Show scrollbars if needed.
@@ -246,7 +246,7 @@ Set the `overflow` property with these utility classes.
 
 <dfn>`.overflow:clip`</dfn>
 :   Overflow content is clipped at the element's padding box.
-    Can be set per axis using <dfn>`.overflow-x:clip`</dfn> or <dfn>`.overflow-y:clip`</dfn>, and the clip margin can be extended using the `overflow-clip-margin` CSS property.
+    Can be set per axis using <dfn>`.overflow-x:clip`</dfn> or <dfn>`.overflow-y:clip`</dfn>, and the clip margin can be extended using the `overflow-clip-margin`{.token .attr-name} CSS property.
 
 **Info**:&emsp;When using the `.overflow:scroll` utilities, it is recommended to add the element to the tabbing order (`tabindex=0`{.token .attr-name}) so that the container can be scrolled using the keyboard.{.info .box}
 
