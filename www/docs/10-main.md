@@ -1,5 +1,4 @@
 ---
-backTo: ~
 url: ./
 title: Intro
 templateEngine: [vto, md]
