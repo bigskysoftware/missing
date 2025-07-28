@@ -1,10 +1,9 @@
 ---
-layout: demo.vto
 title: Checkbox
 templateEngine: [vento, md]
 apg:
  quote: |
-   WAI-ARIA supports two types of checkbox widgets&colon; dual-state checkboxes toggle between two choices -- checked and not checked -- and tri-state checkboxes, which allow an additional third state known as partially checked.
+  WAI-ARIA supports two types of checkbox widgets&colon; dual-state checkboxes toggle between two choices&mdash;checked and not checked&mdash;and tri-state checkboxes, which allow an additional third state known as partially checked.
  url: https://www.w3.org/WAI/ARIA/apg/patterns/checkbox/
 shortcuts:
  - keys: ["Tab"]
@@ -24,17 +23,17 @@ Missing.css uses the `<input type=checkbox>`{ .language-html } element for check
 ## Example
 
 <figure>
-  <fieldset>
-    <legend>Sandwich Condiments</legend>
-      <label><input type=checkbox name=all> All Condiments</label>
-      <ul>
-      <li><label><input type=checkbox name=lettuce>Lettuce</label>
-      <li><label><input type=checkbox name=tomato>Tomato</label>
-      <li><label><input type=checkbox name=mustard>Mustard</label>
-      <li><label><input type=checkbox name=sprouts>Sprouts</label>
-      </ul>
-    </ul>
-  </fieldset>
+	<fieldset>
+		<legend>Sandwich Condiments</legend>
+			<label><input type=checkbox name=all> All Condiments</label>
+			<ul>
+			<li><label><input type=checkbox name=lettuce>Lettuce</label>
+			<li><label><input type=checkbox name=tomato>Tomato</label>
+			<li><label><input type=checkbox name=mustard>Mustard</label>
+			<li><label><input type=checkbox name=sprouts>Sprouts</label>
+			</ul>
+		</ul>
+	</fieldset>
 </figure>
 
 </main>

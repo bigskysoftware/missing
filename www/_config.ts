@@ -31,6 +31,7 @@ const site = lume(
   .addEventListener("afterRender",
     "cd .. && mise run 'build:{css,js}' && cp -r dist src www/_site/")
   .data("layout", "docs.vto", "/docs")
+  .data("layout", "demo.vto", "/demos")
   .data("layout", "prose.vto", "/pages")
   .data("layout", "release.vto", "/releases")
   .data("url", (p) => p.src.path + "/", "/releases")

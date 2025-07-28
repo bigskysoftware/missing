@@ -1,13 +1,12 @@
 ---
-layout: demo.vto
 title: Disclosure
 templateEngine: [vento, md]
 apg:
  quote: |
-   A disclosure is a widget that enables content to be either collapsed (hidden) or expanded (visible).
-   It has two elements&colon; a disclosure button and a section of content whose visibility is controlled by the button.
-   When the controlled content is hidden, the button is often styled as a typical push button with a right-pointing arrow or triangle to hint that activating the button will display additional content.
-   When the content is visible, the arrow or triangle typically points down.
+  A disclosure is a widget that enables content to be either collapsed (hidden) or expanded (visible).
+  It has two elements&colon; a disclosure button and a section of content whose visibility is controlled by the button.
+  When the controlled content is hidden, the button is often styled as a typical push button with a right-pointing arrow or triangle to hint that activating the button will display additional content.
+  When the content is visible, the arrow or triangle typically points down.
  url: https://www.w3.org/WAI/ARIA/apg/patterns/disclosure/
 shortcuts:
  - keys: ["Enter"]
@@ -29,17 +28,17 @@ Disclosures can be made into an [accordion](/demos/accordion/) by applying a fix
 ## Example
 
 <figure>
-  <h3>Frequently Asked Questions</h3>
-  <details>
-    <summary>What is your name?</summary>
-    <p>Sir Galahad of Camelot.</p>
-  </details>
-  <details>
-    <summary>What is your quest?</summary>
-    <p>I seek the Grail.</p>
-  </details>
-  <details>
-    <summary>What is your favorite color?</summary>
-    <p>Blue. No, yelloooooo—!</p>
-  </details>
+	<h3>Frequently Asked Questions</h3>
+	<details>
+		<summary>What is your name?</summary>
+		<p>Sir Galahad of Camelot.</p>
+	</details>
+	<details>
+		<summary>What is your quest?</summary>
+		<p>I seek the Grail.</p>
+	</details>
+	<details>
+		<summary>What is your favorite color?</summary>
+		<p>Blue. No, yelloooooo—!</p>
+	</details>
 </figure>

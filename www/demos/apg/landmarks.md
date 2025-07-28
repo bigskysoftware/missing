@@ -1,11 +1,10 @@
 ---
-layout: demo.vto
 title: Landmarks
 templateEngine: [vento, md]
 apg:
  quote: |
-   Landmarks are a set of eight roles that identify the major sections of a page.
-   Each landmark role enables assistive technology users to perceive the start and end of a feature of the high-level page structure that is usually conveyed visually with placement, spacing, color, or borders.
+  Landmarks are a set of eight roles that identify the major sections of a page.
+  Each landmark role enables assistive technology users to perceive the start and end of a feature of the high-level page structure that is usually conveyed visually with placement, spacing, color, or borders.
  url: https://www.w3.org/WAI/ARIA/apg/patterns/landmarks/
 ---
 
@@ -41,6 +40,6 @@ For best practices, please refer to the <a href=https://www.w3.org/WAI/ARIA/apg/
 ## Example
 
 <figure>
-  <p>
-  Visit the official <a href=/demos/landing-page/>landing page</a> example and view the source code.
+	<p>
+	Refer to the source code of the <a href=/demos/landing-page/>landing page</a> demo.
 </figure>

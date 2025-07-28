@@ -1,5 +1,4 @@
 ---
-layout: demo.vto
 title: Sidenotes
 ---
 
@@ -15,14 +14,14 @@ This page has a few sidenotes which are implemented using markup similar to the 
 
 ~~~ html
 <small role=note>
-  This is the first sidenote.
-  Be default it will appear in the right-hand margin, provided the margin is larger than `--sidenote-width`.
-  The default value for `--sidenote-width` is `20ch`.
+	This is the first sidenote.
+	Be default it will appear in the right-hand margin, provided the margin is larger than `--sidenote-width`.
+	The default value for `--sidenote-width` is `20ch`.
 </small>
 <small role=note style="--sidenote-width:40ch;">
-  This is the second sidenote.
-  On large screens, it appears in the left-hand margin because the XYZ attribute is set.
-  Since I wanted to change the width of the sidenote, I set the `--sidenote-width` variable to 40ch.
+	This is the second sidenote.
+	On large screens, it appears in the left-hand margin because the XYZ attribute is set.
+	Since I wanted to change the width of the sidenote, I set the `--sidenote-width` variable to 40ch.
 </small>
 ~~~
 
@@ -45,10 +44,10 @@ This is not 'Nam, this is bowling; there are rules.
 Careful, man, there's a beverage here.
 That's just, like, your opinion, man.
 
-<small role=note style="--sidenote-width: 40ch;">
+<small role=note class="float:left" style="--sidenote-width: 40ch;">
 This is the second sidenote.
-On large screens, it appears in the left-hand margin because the XYZ attribute is set.
-If I wanted to change the width of the sidenote, I would set `style="--sidenote-width"` directly on the &lt;small&gt; element.
+On large screens, it appears in the left-hand margin because it has the <code>.float:left</code> class.
+Since I wanted to change the width of the sidenote, I set the <code>--sidenote-width</code> variable to 40ch.
 </small>
 
 My thinking about this case, which has been, like, a lot of ins and outs, a lot of what-have-yous.
