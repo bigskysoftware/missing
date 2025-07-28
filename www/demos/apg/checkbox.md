@@ -26,11 +26,11 @@ Missing.css uses the `<input type=checkbox>`{ .language-html } element for check
 	<fieldset>
 		<legend>Sandwich Condiments</legend>
 			<label><input type=checkbox name=all> All Condiments</label>
-			<ul>
-			<li><label><input type=checkbox name=lettuce>Lettuce</label>
-			<li><label><input type=checkbox name=tomato>Tomato</label>
-			<li><label><input type=checkbox name=mustard>Mustard</label>
-			<li><label><input type=checkbox name=sprouts>Sprouts</label>
+			<ul role=list class="margin-inline">
+			<li><label><input type=checkbox name=lettuce> Lettuce</label>
+			<li><label><input type=checkbox name=tomato> Tomato</label>
+			<li><label><input type=checkbox name=mustard> Mustard</label>
+			<li><label><input type=checkbox name=sprouts> Sprouts</label>
 			</ul>
 		</ul>
 	</fieldset>

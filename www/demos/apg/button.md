@@ -44,43 +44,34 @@ This example requires JavaScript to be activated.
 </noscript>
 
 <figure>
-	<script type=module src=/dist/js/menu.js></script>
-
-	<div>
-		<h3>The different types of buttons</h3>
-
-		<button onclick="alert('You clicked an ordinary button that had an `onclick` handler.')">
-			Ordinary
-		</button>
-
-		<button aria-pressed=false onclick="this.ariaPressed = (this.ariaPressed !== 'true')">
-			Toggle
-		</button>
-
-		<button aria-controls=my-menu>
-			Menu 1
-		</button>
-		<aria-menu id=my-menu hidden>
-			<aria-menuitem>Create</aria-menuitem>
-			<aria-menuitem>Read</aria-menuitem>
-			<aria-menuitem>Update</aria-menuitem>
-			<aria-menuitem>Delete</aria-menuitem>
-		</aria-menu>
-
-		<button aria-controls=my-menu>
-			Menu 2
-		</button>
-		<menu id=my-menu hidden>
-			<li>Create
-			<li>Read
-			<li>Update
-			<li>Delete
-		</menu>
-
-		<button disabled>
-			Disabled
-		</button>
-
-
+	<h3>The different types of buttons</h3>
+	<div class="flex-column">
+    <div>
+  		<button onclick="alert('You clicked an ordinary button that had an `onclick` handler.')">
+  			Ordinary
+  		</button>
+    </div>
+    <div>
+  		<button aria-pressed=false onclick="this.ariaPressed = (this.ariaPressed !== 'true')">
+  			Toggle
+  		</button>
+    </div>
+    <div>
+      <button aria-haspopup=menu aria-controls=my-menu aria-expanded=false>
+        Menu
+      </button>
+      <div role=menu hidden id=my-menu>
+        <a role=menuitem>View</a>
+        <a role=menuitem>Edit</a>
+        <a role=menuitem>Delete</a>
+      </div>
+    </div>
+    <div>
+  		<button disabled>
+  			Disabled
+  		</button>
+    </div>
 	</div>
 </figure>
+
+<script type=module src=/dist/js/menu.js></script>

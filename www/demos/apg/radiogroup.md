@@ -30,9 +30,9 @@ Missing.css uses the `<fieldset role=radiogroup>`{ .language-html } and `<input 
 	<fieldset role=radiogroup>
 		<legend>Color</legend>
 		<ul role=list>
-			<li><label><input type=radio name=color value="ff0000">Red</label>
-			<li><label><input type=radio name=color value="00ff00">Green</label>
-			<li><label><input type=radio name=color value="0000ff">Blue</label>
+			<li><label><input type=radio name=color value="ff0000"> Red</label>
+			<li><label><input type=radio name=color value="00ff00"> Green</label>
+			<li><label><input type=radio name=color value="0000ff"> Blue</label>
 		</ul>
 	</fieldset>
 </figure>

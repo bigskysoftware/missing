@@ -12,46 +12,46 @@ title: Landing Page
 </header>
 
 <main class="airy">
-	<big-screen class="dense">
-			<h1>So easy, even a programmer can do it</h1>
+	<div class="dense">
+		<h1>So easy, even a programmer can do it</h1>
 
-			<p>
-			Missing.css is the stylesheet you've been looking for.
-			Build an enticing landing page, an admin dashboard, or even an online shop with the design work already done.
-			</p>
+		<p>
+		Missing.css is the stylesheet you've been looking for.
+		Build an enticing landing page, an admin dashboard, or even an online shop with the design work already done.
+		</p>
 
-			<tool-bar>
-				<strong><button aria-controls=signup-form aria-expanded=false type=button>Sign up</button></strong>
-				<a class="<button>" href=#>Learn more</a>
-			</tool-bar>
-
-	</big-screen>
-
-	<div>
-		<form hidden id=signup-form class="box dense absolute">
-			<h4>Sign up to our mailing list</h4>
-			<div class="table rows">
-				<p>
-					<label for=email-in>Email</label>
-					<input type=email name=email id=email-in placeholder="you@example.com">
-				</p>
-				<p>
-					<label for=update-freq>Update frequency</label>
-					<radio-buttons id=update-freq>
-						<input type=radio name=upd-freq-in id=upd-all checked>
-						<label for=upd-all>All updates</label>
-
-						<input type=radio name=upd-freq-in id=upd-important>
-						<label for=upd-important>Most important</label>
-
-						<input type=radio name=upd-freq-in id=upd-weekly>
-						<label for=upd-weekly>Weekly digest</label>
-					</radio-buttons>
-				</p>
-			</div>
-			<p><button>Sign Up</button></p>
-		</form>
+		<section role=toolbar>
+			<strong>
+			  <button
+					aria-controls=signup-form
+					aria-expanded=false
+					onclick="this.ariaExpanded = !document.getElementById('signup-form').toggleAttribute('hidden')"
+				>
+				  Sign up
+				</button>
+			</strong>
+			<a class="<button>" href=#>Learn more</a>
+		</section>
 	</div>
+
+	<form hidden id=signup-form class="crowded box">
+		<h4>Sign up to our mailing list</h4>
+		<div class="table rows">
+			<p>
+				<label for=email-in>Email</label>
+				<input type=email name=email id=email-in placeholder="you@example.com">
+			</p>
+			<div role=radiogroup aria-labelledby=update-freq>
+				<span id=update-freq>Update frequency</span>
+				<div>
+					<div><label><input type=radio name=freq value=all checked> All updates</label></div>
+					<div><label><input type=radio name=freq value=most       > Most important</label></div>
+					<div><label><input type=radio name=freq value=week       > Weekly digest</label></div>
+				</div>
+			</div>
+		</div>
+		<p><button>Sign Up</button></p>
+	</form>
 
 	<p>
 		<b class="lede">
