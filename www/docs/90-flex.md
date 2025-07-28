@@ -5,7 +5,12 @@ url: ./flex/
 
 # Flexbox
 
-[[toc]]
+<details>
+  <summary>Contents:</summary>
+
+  [[toc]]
+
+</details>
 
 
 ## Flex containers

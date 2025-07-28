@@ -10,7 +10,13 @@ We often reference the [<cite>WAI-ARIA Authoring Practices</cite>][WAI].
 
 [WAI]: https://www.w3.org/TR/wai-aria-practices/
 
-[[toc]]
+<details>
+  <summary>Contents:</summary>
+
+  [[toc]]
+
+</details>
+
 
 ## Tabs
 

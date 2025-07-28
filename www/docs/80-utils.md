@@ -7,7 +7,13 @@ url: ./utils/
 
 For the minor alterations to the default look that make all the difference, missing.css has a collection of classes and custom elements.
 
-[[toc]]
+<details>
+  <summary>Contents:</summary>
+
+  [[toc]]
+
+</details>
+
 
 ## Visually hidden content
 

@@ -10,8 +10,8 @@ export default {
     [mdToc, {
       level: [2],
       listType: "ul",
-      containerClass: "TableOfContents box crowded",
-      listClass: "padding-inline",
+      containerClass: "table-of-contents",
+      listClass: "nested-list",
     }],
     [mdAnchor, {
       permalink: mdAnchor.permalink.linkInsideHeader({

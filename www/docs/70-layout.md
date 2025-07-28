@@ -7,7 +7,12 @@ url: ./layout/
 
 Mechanisms of creating layouts.
 
-[[toc]]
+<details>
+  <summary>Contents:</summary>
+
+  [[toc]]
+
+</details>
 
 
 ## Centering

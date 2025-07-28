@@ -5,7 +5,12 @@ url: ./components/
 
 # Components
 
-[[toc]]
+<details>
+  <summary>Contents:</summary>
+
+  [[toc]]
+
+</details>
 
 ## Box
 

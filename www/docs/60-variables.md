@@ -13,7 +13,13 @@ This is a reference of all the variables you can set on the root `<html>`{.langu
 There are a few more that are used with specific components or utility classes;
 these are grouped together at the bottom, in addition to being mentioned in the documentation for their respective class or component.
 
-[[toc]]
+<details>
+  <summary>Contents:</summary>
+
+  [[toc]]
+
+</details>
+
 
 ## Colors
 

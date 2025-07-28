@@ -5,6 +5,13 @@ url: ./forms/
 
 # Forms
 
+<details>
+  <summary>Contents:</summary>
+
+  [[toc]]
+
+</details>
+
 Missing.css aims to style HTML nicely without authors needing to concern themselves over anything
 other than using HTML tags with correct meanings, but this is not always feasible.
 Forms are a particularly complex part of HTML, with multiple ways to mark up the same semantics.
@@ -21,8 +28,6 @@ For instance, you can label an element in multiple ways:
 Because of this, it's not really possible to write a stylesheet that will work with any HTML form.
 
 Missing.css will work best on forms that follow these markup conventions:
-
-[[toc]]
 
 
 ## Inputs and labels
