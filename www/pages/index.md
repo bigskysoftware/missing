@@ -27,7 +27,7 @@ templateEngine: [vento, md]
 {{ set version = search.pages("release!=undefined") |>
     map(rel => rel.release) |> sortSemVer |> at(-1) }}
 
-missing.css is the CSS library we wished already existed.
+Missing.css is the CSS library we wished already existed.
 Add it to your website:
 
 `<link rel=stylesheet href=https://unpkg.com/missing.css@{{version}}>`{.language-html}

@@ -67,7 +67,7 @@ You can set `--density` yourself in inline styles or your own CSS:
   <section id=tagline style="--density: 2">
     <h1>So easy, even a programmer can do it.</h1>
     <p>
-        missing.css makes it easy to ship beautiful applications without
+        Missing.css makes it easy to ship beautiful applications without
         locking yourself into classless libraries.
     </p>
   </section>
