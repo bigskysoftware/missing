@@ -1,11 +1,35 @@
 .textcolumns {
-    --col-width: 30ch;
-    column-width: var(--col-width);
-    column-gap: var(--gap);
-    margin-block: var(--gap);
+  --col-width: 30ch;
 
-    & :first-child { margin-block-start: 0 !important }
+  column-width: var(--col-width);
+  column-gap: var(--gap);
+  margin-block: var(--gap);
+
+  & :first-child { margin-block-start: 0 !important }
+
+  &:is(dl) {
+    @supports (break-after: avoid-column) {
+      & dt {
+        break-after: avoid-column;
+        break-inside: avoid-column;
+        orphans: 2;
+        widows: 2;
+      }
+      & dd {
+        break-before: avoid-column;
+        break-inside: avoid-column;
+        orphans: 2;
+        widows: 2;
+      }
+    }
+
+    > div:has(dt):has(dd) {
+      break-inside: avoid-column;
+    }
+  }
 }
+
+
 
 .text-align\:center {
     text-align: center;

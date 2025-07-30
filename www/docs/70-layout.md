@@ -32,7 +32,72 @@ The <dfn>`.textcolumns`</dfn> class creates multi-column text using the CSS [`co
 The column width can be set with the `--col-width`{.language-css} variable.
 **Protip**: consider using the `ch`{.language-css} unit to set column widths.
 
+When combined with the `<dl>`{.language-html} element, missing.css will prevent orphans and widows in [supported browsers][].
+For full support, wrap pairs of `<dt>` and `<dd>` elements in a `<div>`.
+
+<figure>
+  <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Columned details list (partial support)</figcaption>
+
+  ~~~ html
+  <dl class="textcolumns">
+    <dt>Term 1
+    <dd>This is an explaination of the first term.
+    <!-- ... -->
+  </dl>
+  ~~~
+
+  <hr>
+
+  <dl class="textcolumns">
+    <dt>Term 1
+    <dd>This is an explaination of the first term.
+    <dt>Term 2
+    <dd>This is an explaination of the second term.
+    <dt>Term 3
+    <dd>This is an explaination of the third term, and missing.css will prevent it from being split <b>if the browser supports it</b>.
+    <dt>Term 4
+    <dd>This is an explaination of the fourth term.
+  </dl>
+</figure>
+
+<figure>
+  <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Columned details list (full support)</figcaption>
+
+  ~~~ html
+  <dl class="textcolumns">
+    <div>
+    <dt>Term 1
+    <dd>This is an explaination of the first term, and missing.css will make sure it doesn't get split from its sibling `<dt>` tag.
+    </div>
+    <!-- ... -->
+  </dl>
+  ~~~
+
+  <hr>
+
+  <dl class="textcolumns">
+    <div>
+    <dt>Term 1
+    <dd>This is an explaination of the first term.
+    </div>
+    <div>
+    <dt>Term 2
+    <dd>This is an explaination of the second term.
+    </div>
+    <div>
+    <dt>Term 3
+    <dd>This is an explaination of the third term, and missing.css will prevent it from being split <b>in all supported browsers</b>.
+    </div>
+    <div>
+    <dt>Term 4
+    <dd>This is an explaination of the fourth term.
+    </div>
+
+  </dl>
+</figure>
+
 [`column-width`]: https://developer.mozilla.org/en-US/docs/Web/CSS/column-width
+[supported browsers]: https://caniuse.com/?search=avoid-column
 
 
 ## Flow gap
