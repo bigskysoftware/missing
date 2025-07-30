@@ -336,17 +336,12 @@ This is because many assistive programs have a feature to jump to the navigation
 
 ## Icon Button
 
-<dfn>`.iconbutton`</dfn> creates a bare icon; it even works with the `.<button>`{.language-css} masquerade!
+<dfn>`.iconbutton`</dfn> creates a bare icon; it even works with the `.<button>`{.language-css} and `.<big>` masquerades!
 [Colorways][colorway] are supported as well.
 We recommend using <a href=https://lucide.dev>Lucide</a> for icons.
 
 <figure>
 <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Icon button markup</figcaption>
-
-  ~~~ css
-  /* style.css */
-  svg:has(use[href$="-icon"]) { height: 1em; width: 1em; }
-  ~~~
 
   ~~~ html
   <!-- sprite sheet -->
@@ -373,7 +368,6 @@ We recommend using <a href=https://lucide.dev>Lucide</a> for icons.
 
   <hr>
 
-  <style>svg:has(use[href$="-icon"]) { height: 1em; width: 1em; }</style>
   <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <defs>
       <symbol id="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu-icon lucide-menu"><path d="M4 12h16"/><path d="M4 18h16"/><path d="M4 6h16"/></symbol>
@@ -410,5 +404,57 @@ We recommend using <a href=https://lucide.dev>Lucide</a> for icons.
   </section>
 
 </figure>
+
+<figure>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Big icon button markup</figcaption>
+
+  ~~~ html
+  <section class="flex-row justify-content:space-between">
+    <button class="<big> iconbutton" type=button aria-label="Menu">
+      <svg aria-hidden=true><use href=#menu-icon></use></svg>
+    </button>
+    <!-- ... -->
+  </section>
+  ~~~
+
+  <hr>
+
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <defs>
+      <symbol id="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu-icon lucide-menu"><path d="M4 12h16"/><path d="M4 18h16"/><path d="M4 6h16"/></symbol>
+      <symbol id="next-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-big-right-icon lucide-arrow-big-right"><path d="M6 9h6V5l7 7-7 7v-4H6V9z"/></symbol>
+      <symbol id="cut-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-scissors-icon lucide-scissors"><circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/></symbol>
+      <symbol id="close-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
+      <symbol id="trans-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-transgender-icon lucide-transgender"><path d="M12 16v6"/><path d="M14 20h-4"/><path d="M18 2h4v4"/><path d="m2 2 7.17 7.17"/><path d="M2 5.355V2h3.357"/><path d="m22 2-7.17 7.17"/><path d="M8 5 5 8"/><circle cx="12" cy="12" r="4"/></symbol>
+      <symbol id="smile-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-smile-icon lucide-smile"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></symbol>
+      <symbol id="music-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-music-icon lucide-music"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></symbol>
+    </defs>
+  </svg>
+  <section class="flex-row justify-content:space-between">
+    <button class="<big> iconbutton" type=button aria-label="Menu">
+      <svg aria-hidden=true><use href=#menu-icon></use></svg>
+    </button>
+    <a class="<big> info <button> iconbutton" aria-label="Next">
+      <svg aria-hidden=true><use href=#next-icon></use></svg>
+    </a>
+    <button class="<big> ok iconbutton" type=button aria-label="Cut">
+      <svg aria-hidden=true><use href=#cut-icon></use></svg>
+    </button>
+    <a class="<big> warn <button> iconbutton" aria-label="Close">
+      <svg aria-hidden=true><use href=#close-icon></use></svg>
+    </a>
+    <button class="<big> bad iconbutton" type=button aria-label="Trans">
+      <svg aria-hidden=true><use href=#trans-icon></use></svg>
+    </button>
+    <a class="<big> info <button> iconbutton" aria-label="Smile">
+      <svg aria-hidden=true><use href=#smile-icon></use></svg>
+    </a>
+    <button class="<big> ok iconbutton" type=button aria-label="Music">
+      <svg aria-hidden=true><use href=#music-icon></use></svg>
+    </button>
+  </section>
+
+</figure>
+
 
 [colorway]: /docs/colorways
