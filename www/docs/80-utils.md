@@ -308,4 +308,18 @@ element and return it to its browser-default styles.~~
 **Deprecated:**{.bad .color} Will be removed in version 2.0.
 
 
+## Print
+
+The following utilities can be used to fine-tune the display of your webpage when it is being printed.
+Generally speaking, browsers have poor support for specifying page breaks inside of elements with `display:flex`{.language-css} or `display:grid`{.language-css}.
+We recommend using the `.block@print` utility class when reaching for any of the page break utilities.
+
+ - <dfn>`.hidden@screen`</dfn>
+ - <dfn>`.hidden@print`</dfn>
+ - <dfn>`.block@print`</dfn>
+ - <dfn>`.break-before:page`</dfn>
+ - <dfn>`.break-after:page`</dfn>
+ - <dfn>`.break-inside:avoid-page`</dfn>
+ {.textcolumns}
+
 [CSS variable]: /docs/variables

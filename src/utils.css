@@ -75,3 +75,44 @@
     padding: 0;
     height: calc(.5 * var(--gap));
 }
+
+@media screen {
+  .hidden\@screen {
+    display: none;
+    & * { display: none; }
+  }
+}
+
+@media print {
+  /* TODO: naming convention for "config classes",
+   * classes that turn missing.css features on and off */
+  .hidden-adaptations :is(
+    a:not([href^="#"]),
+    abbr[title]
+  )::after {
+    display: none;
+  }
+
+  .hidden\@print {
+    display: none;
+    & * { display: none; }
+  }
+  .block\@print {
+    display: block;
+
+    & :is(
+      .f-row, .flex-row, .f-col,
+      .flex-column, .f-switch, .flex-switch,
+      .grid
+    ) > * { margin: revert; }
+  }
+
+  hr.page-break { break-before: page; display: none; }
+
+  .break-before\:page { break-before: page }
+  .break-after\:page  { break-after: page  }
+  .break-inside\:avoid-page {
+    break-inside: avoid-page;
+    & * { break-inside: avoid-page; }
+  }
+}

@@ -391,3 +391,16 @@ The <dfn>`.row`</dfn> class can be used to create a table row, or you can make a
 
 <dfn>`.float:right`</dfn>
 :   Set `float: right`.
+
+## Printing
+
+Missing.css will attempt to avoid page breaks inside of grouped content and after headings when content is being printed.
+
+During printing, missing.css will display an `::after` pseudo element to reveal the `href`{.token .attr-name} attribute value for hyperlinks and the `title`{.token .attr-name} attribute value for `<abbr>`{.language-html} tags.
+In addition, collapsed `<details>`{.language-html} elements will be revealed during printing in [supported browsers][].
+These can be disabled by placing the following class on a parent element:
+
+<dfn>`.hidden-adaptations`</dfn>
+:   Hides any child print adapations (e.g. print-only pseudo-elements for `<a href>`{.language-html} and `<abbr title>`{.language-html})
+
+[supported browsers]: https://caniuse.com/?search=%3A%3Adetails-content
