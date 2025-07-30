@@ -21,6 +21,9 @@ When an `<a>`{ .language-html } tag is used to link to content on the same page,
 Heading elements (`<h1>`{ .language-html }, `<h2>`{ .language-html }, etc...)
 :	A `:before`{ .language-css } pseudo-element whose color is determined by the `--accent`{ .language-css } CSS variable.
 
+Details elements
+:   On [supported browsers][], the `<details>` element will be opened.
+
 Other elements (aka the current `:target`{ .language-css })
 :	An outline of the element whose color is determined by the `--fg`{ .language-css } CSS variable.
 
@@ -38,6 +41,7 @@ See the example below for visual reference.
 		<ul role=list class="packed">
 		<li><a href=#section-label>Jump to Heading</a>
 		<li><a href=#list>Jump to List</a>
+        <li><a href=#details>Jump to details and open</a>
 		<li><a href=#>Jump to top</a>
 		</ul>
 
@@ -51,6 +55,13 @@ See the example below for visual reference.
 			<li>Mangos
 			<li>Bananas
 		</ul>
-
+        <details id=details>
+          <summary>Details Heading</summary>
+          <p>
+          This is some content.
+          If your browser supports `::details-content`, then clicking the link above will display this.
+        </details>
 	</div>
 </figure>
+
+[supported browsers]: https://caniuse.com/?search=%3A%3Adetails-content

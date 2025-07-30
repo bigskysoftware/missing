@@ -982,6 +982,9 @@ summary {
 	}
 }
 
+@supports selector(::details-content) {
+  details:target::details-content { content-visibility: visible }
+}
 
 dialog {
     /* SEE components/box.css */
