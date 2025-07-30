@@ -36,7 +36,7 @@ When combined with the `<dl>`{.language-html} element, missing.css will prevent 
 For full support, wrap pairs of `<dt>` and `<dd>` elements in a `<div>`.
 
 <figure>
-  <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Columned details list (partial support)</figcaption>
+  <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Columned details list markup (partial support)</figcaption>
 
   ~~~ html
   <dl class="textcolumns">
@@ -61,7 +61,7 @@ For full support, wrap pairs of `<dt>` and `<dd>` elements in a `<div>`.
 </figure>
 
 <figure>
-  <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Columned details list (full support)</figcaption>
+  <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Columned details list markup (full support)</figcaption>
 
   ~~~ html
   <dl class="textcolumns">
@@ -210,7 +210,7 @@ In the future, nested lists will not have margins by default.
 You can add them back in using `<li><p>`{.language-html} as needed.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Nested lists</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Nested list markup</figcaption>
 
   ~~~html
   <div class="flex-switch">
@@ -322,7 +322,7 @@ The <dfn>`.table`</dfn> class makes an element act like a table for the purposes
 The <dfn>`.row`</dfn> class can be used to create a table row, or you can make all descendants of an element into rows with <dfn>`.rows`</dfn>.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Using pseudo-tables to align forms</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Pseudo-table markup for aligning forms</figcaption>
 
   ~~~ html
   <form class="table rows">

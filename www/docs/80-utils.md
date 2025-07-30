@@ -138,7 +138,7 @@ using the short-hand `background`{.language-css} property will result in overwri
 :   Removes underlines from all links inside an element -- sometimes advisable for lists of links.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Background clip</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Background clip markup</figcaption>
 
   ~~~ css
   .gradient {

@@ -153,7 +153,7 @@ Buttons, `.<button>` [masquerades][], and `<input type=file>`{.language-html} al
 </figure>
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>File input buttons</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>File input button markup</figcaption>
 
   <section class="crowded flex-switch">
     <div class="flex-column">

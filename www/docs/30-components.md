@@ -70,7 +70,7 @@ The <dfn>`<sub-title>`</dfn> custom element or the <dfn>`.sub-title`</dfn> class
 Visually hiding a colon with the `<v-h>`{.language-html} element can help screen readers parse the heading correctly.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Sub-title after a heading</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Sub-title markup (after a heading)</figcaption>
 
   ~~~ html
   <h4>
@@ -89,7 +89,7 @@ Visually hiding a colon with the `<v-h>`{.language-html} element can help screen
 </figure>
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Sub-title before a heading</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Sub-title markup (before a heading)</figcaption>
 
   ~~~ html
   <h4>
