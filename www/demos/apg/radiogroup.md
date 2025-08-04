@@ -19,6 +19,10 @@ shortcuts:
 ## Notes
 
 Missing.css uses the `<fieldset role=radiogroup>`{ .language-html } and `<input type=radio name=foo>`{ .language-html } elements for radio groups.
+We also provide an [alternative markup][] for radiogroups used in [tabular forms][].
+
+[alternative markup]: /docs/forms/#labeling-radio-buttons
+[tabular forms]: /docs/forms/#tabular-forms
 
 
 {{ include "demo_kbd.vto" }}

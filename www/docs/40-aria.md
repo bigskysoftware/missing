@@ -79,9 +79,9 @@ To get the actual behavior of an accessible menu, you can use [Missing.js &sect;
   ~~~ html
   <script type=module src=/dist/js/menu.js></script>
 
-  <button aria-haspopup=menu aria-controls=my-menu aria-expanded=false
-    >Open menu</button>
-  <div role=menu hidden id=my-menu>
+  <button id=menubutton aria-haspopup=menu aria-controls=my-menu aria-expanded=false
+    >Options</button>
+  <div role=menu hidden id=my-menu aria-labelledby=menubutton>
     <a role=menuitem>View</a>
     <a role=menuitem>Edit</a>
     <a role=menuitem>Delete</a>
@@ -92,9 +92,9 @@ To get the actual behavior of an accessible menu, you can use [Missing.js &sect;
 
   <script type=module src=/dist/js/menu.js></script>
   <div>
-  <button aria-haspopup=menu aria-controls=my-menu aria-expanded=false
-    >Open menu</button>
-  <div role=menu hidden id=my-menu>
+  <button id=menubutton aria-haspopup=menu aria-controls=my-menu aria-expanded=false
+    >Options</button>
+  <div role=menu hidden id=my-menu aria-labelledby=menubutton>
     <a role=menuitem>View</a>
     <a role=menuitem>Edit</a>
     <a role=menuitem>Delete</a>

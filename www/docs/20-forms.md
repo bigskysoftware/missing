@@ -216,8 +216,7 @@ The accepted way to label a group of radio buttons is to use `<fieldset>`{.langu
 
 This works in missing.css, but these two elements are [notorious] for being hard to style.
 You can use the following pattern instead, which will work with [tabular forms](#tabular-forms).
-Note the `role`{.token .attr-name}, `aria-labelledby`{.token .attr-name} and the `id`{.token .attr-name} attributes on the label itself.
-
+Notice that the wrapper has `role=radiogroup`{.token .attr-name} and its `aria-labelledby`{.token .attr-name} value refers to the `id`{.token .attr-name} of the label for the whole radiogroup.
 
 <figure>
 <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Radio group markup for tabular forms</figcaption>

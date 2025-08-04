@@ -162,7 +162,7 @@ these are grouped together at the bottom, in addition to being mentioned in the 
 <dfn>`--border-radius`</dfn> {#var-border-radius}
 :   Border radius for various `.box` related components.
     Accepts any valid CSS value, e.g. `1em 2em`{.token .attr-value} or `50% 20% / 10% 40%`{.token .attr-value}.
-    Defaults to 0.2rem{.token .attr-value}.
+    Defaults to `0.2rem`{.token .attr-value}.
 
 <dfn>`--interactive-border-width`</dfn> {#var-interactive-border-width}
 :   Border width used in buttons, inputs, etc.
@@ -174,7 +174,7 @@ these are grouped together at the bottom, in addition to being mentioned in the 
 
 <dfn>`--interactive-border-radius`</dfn> {#var-interactive-border-radius}
 :   Border radius used in buttons, inputs, etc.
-    Must be a single value; defaults to `.2rem`{.token .attr-value}.
+    Must be a single value; defaults to `0.2rem`{.token .attr-value}.
 
 <dfn>`--tab-border-radius`</dfn> {#var-tab-border-radius}
 :   Border radius for the ARIA tabs component.
@@ -196,13 +196,13 @@ these are grouped together at the bottom, in addition to being mentioned in the 
 :   The value for the `box-shadow`{.token .attr-name} property on button with `:disabled`{.token .attr-value} state.
 
 <dfn>`--pressed-shadow`</dfn> {#var-pressed-shadow}
-:   The value for the `box-shadow`{.token .attr-name} property on buttons with `aria-pressed=true`{.token .attr-name} or `aria-expended=true`{.token .attr-name}.
+:   The value for the `box-shadow`{.token .attr-name} property on buttons with `aria-pressed=true`{.token .attr-name} or `aria-expanded=true`{.token .attr-name}.
 
 <dfn>`--pressed-shadow-focus`</dfn> {#var-pressed-shadow-focus}
-:   The value for the `box-shadow`{.token .attr-name} property on buttons with `aria-pressed=true`{.token .attr-name} or `aria-expended=true`{.token .attr-name} in the `:hover`{.token .attr-value} or `:focus-visible`{.token .attr-value} state.
+:   The value for the `box-shadow`{.token .attr-name} property on buttons with `aria-pressed=true`{.token .attr-name} or `aria-expanded=true`{.token .attr-name} in the `:hover`{.token .attr-value} or `:focus-visible`{.token .attr-value} state.
 
 <dfn>`--pressed-shadow-active`</dfn> {#var-pressed-shadow-active}
-:   The value for the `box-shadow`{.token .attr-name} property on buttons with `aria-pressed=true`{.token .attr-name} or `aria-expended=true`{.token .attr-name} in the `:active`{.token .attr-value} state.
+:   The value for the `box-shadow`{.token .attr-name} property on buttons with `aria-pressed=true`{.token .attr-name} or `aria-expanded=true`{.token .attr-name} in the `:active`{.token .attr-value} state.
 
 
 ## Fonts
