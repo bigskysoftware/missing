@@ -37,6 +37,9 @@ Inputs outside labels will be `display:block`{.language-css}.
 
 <aside>Inputs without labels will cause nasal demons.</aside>
 
+Input placeholders are styled with `text-align:end`{.language-css} to better distinguish them from actual input.
+
+
 ## Buttons
 
 Wrap a `<button>`{.language-html} in a `<strong>`{.language-html} tag to get a primary button.
