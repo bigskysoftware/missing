@@ -35,6 +35,8 @@ Missing.css provides `<aria-menubar>`{ .language-html } and `<aria-menu>`{ .lang
 		the next sibling of a parent menuitem must be an `<aria-menu>`{ .language-html } element.
 -->
 Missing.css uses `role=menu`{.token .attr-name} and `role=menuitem`{.token .attr-name} to define menus and `aria-haspopup=menu`{.token .attr-name} and `aria-controls`{.token .attr-name} to define menubuttons.
+To get the actual behavior of an accessible menu, you can use [Missing.js &sect; Menu](/docs/js#menu).
+
 Don't forget to set an accessible label for the element with `role=menu`{.token .attr-name}, either by specifying `aria-label`{.token .attr-name} or by setting `aria-labelledby`{.token .attr-name} to the menubutton that controls its display.
 
 

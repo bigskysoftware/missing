@@ -28,6 +28,7 @@ useTag: false
 
 <!-- Missing.css provides the `<aria-feed>`{ .language-html } custom element for feeds.-->
 Missing.css uses the `<section role=feed>`{ .language-html } element to create feeds.
+To get the actual behavior of an accessible feed, you can use [Missing.js &sect; Feed](/docs/js#feed).
 
 
 {{ include "demo_kbd.vto" }}

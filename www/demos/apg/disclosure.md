@@ -19,7 +19,7 @@ shortcuts:
 ## Notes
 
 Missing.css uses the `<details>`{ .language-html } element for disclosures.
-Disclosures can be made into an [accordion](/demos/accordion/) by applying a fixed `name`{ .token .attr-name } attribute to each `<details>`{ .language-html } element.
+Disclosures can be made into an [accordion][] by applying a fixed `name`{ .token .attr-name } attribute to each `<details>`{ .language-html } element.
 
 
 {{ include "demo_kbd.vto" }}
@@ -42,3 +42,5 @@ Disclosures can be made into an [accordion](/demos/accordion/) by applying a fix
 		<p>Blue. No, yelloooooo—!</p>
 	</details>
 </figure>
+
+[accordion]: /demos/apg/accordion/

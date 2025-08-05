@@ -25,13 +25,22 @@ shortcuts:
 
 ## Notes
 
+Missing.css uses `<div role=tablist>`{ .language-html }, `<button role=tab>`{ .language-html }, and `<div role=tabpanel>`{ .language-html } for tabs.
+To get the actual behavior of an accessible tabset, you can use [Missing.js &sect; Tabs](/docs/js#tabs).
+
+ - Don't forget to set an accessible label for the tablist.
+ - You must establish the relationship between `<button role=tab>`{ .language-html } and `<div role=tabpanel>`{ .language-html } elements by including `aria-controls`{ .token .attr-name } attributes on each `<button role=tab>`{ .language-html }.
+   The JavaScript behavior will set the reverse `aria-labelledby`{ .token .attr-name } attributes (generating unique ids if necessary).
+ - You must set the initial state with `<button role=tab aria-selected=true>`{ .language-html } and `<div role=tabpanel hidden>`{ .language-html }).
+
+<!--
 Missing.css provides the `<aria-tablist>`{ .language-html }, `<aria-tab>`{ .language-html }, and `<aria-tabpanel>`{ .language-html } custom elements for tabs.
 
  - Don't forget to set an accessible label for the `<aria-tablist>`{ .language-html }.
  - You must establish the relationship between `<aria-tab>`{ .language-html } and `<aria-tabpanel>`{ .language-html } elements by providing `aria-controls`{ .token .attr-name } attributes to each `<aria-tab>`{ .language-html }.
 		The component will set the reverse `aria-labelledby`{ .token .attr-name } attributes (generating unique ids if necessary).
  - You must set the initial state with `<aria-tab aria-selected=true>`{ .language-html } and `<aria-tabpanel hidden>`{ .language-html }).
-
+-->
 
 {{ include "demo_kbd.vto" }}
 

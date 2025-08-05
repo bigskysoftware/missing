@@ -26,7 +26,7 @@ Missing.css relies on the implicit landmark roles for HTML sectioning elements.
 | Form          | `<form>`{ .language-html }                        |
 | Region        | `<section aria-label=required>`{ .language-html } |
 
-{ .table }
+{ .width:100% }
 
 The `<header>`{ .language-html } and `<footer>`{ .language-html } elements are only given landmark roles when they are direct descendants of the `<body>`{ .language-html } element.
 Note that in order for a `<section>`{ .language-html } element to be an implicit landmark role, it must be given a valid `aria-label`{ .token .attr-name } or `aria-labelledby`{ .token .attr-name } attribute.

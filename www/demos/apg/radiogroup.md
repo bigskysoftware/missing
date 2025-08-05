@@ -39,4 +39,15 @@ We also provide an [alternative markup][] for radiogroups used in [tabular forms
 			<li><label><input type=radio name=color value="0000ff"> Blue</label>
 		</ul>
 	</fieldset>
+	<hr>
+	<form class="table rows">
+		<div role=radiogroup aria-labelledby=color-lbl>
+			<span id=color-lbl>Color</span>
+			<div>
+				<div><label><input type=radio name=color value="ff0000"> Red</label></div>
+				<div><label><input type=radio name=color value="00ff00"> Green</label></div>
+				<div><label><input type=radio name=color value="0000ff"> Blue</label></div>
+			</div>
+		</div>
+	</form>
 </figure>

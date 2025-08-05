@@ -48,7 +48,7 @@ We provide the following utility classes that set `--density`:
 | <dfn>`.airy`</dfn>        | `--density` = 3                            |
 | <dfn>`.autodensity`</dfn> | sets density based on viewport width       |
 
-{ .table }
+{ .width:100% }
 
 You can also use the following classes to set density on child elements while maintaining a separate density for the containing element:
 
