@@ -84,9 +84,7 @@
 }
 
 @media print {
-  /* TODO: naming convention for "config classes",
-   * classes that turn missing.css features on and off */
-  .hidden-adaptations :is(
+  .annotations\@print\:disabled :is(
     a:not([href^="#"]),
     abbr[title]
   )::after {

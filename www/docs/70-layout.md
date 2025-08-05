@@ -394,13 +394,33 @@ The <dfn>`.row`</dfn> class can be used to create a table row, or you can make a
 
 ## Printing
 
-Missing.css will attempt to avoid page breaks inside of grouped content and after headings when content is being printed.
+Missing.css attempts to prevent page breaks inside of grouped content and after headings when printed.
+Additionally, collapsed `<details>`{.language-html} elements will be revealed during printing in [supported browsers][].
 
-During printing, missing.css will display an `::after` pseudo element to reveal the `href`{.token .attr-name} attribute value for hyperlinks and the `title`{.token .attr-name} attribute value for `<abbr>`{.language-html} tags.
-In addition, collapsed `<details>`{.language-html} elements will be revealed during printing in [supported browsers][].
-These can be disabled by placing the following class on a parent element:
+During printing, missing.css will also annotate `<a>`{.language-html} and `<abbr>`{.language-html} tags by displaying an `::after`{.token .attr-name} pseudo-element that contains the `href`{.token .attr-name} or `title`{.token .attr-name} attribute value in parenthesis.
+You can disable these annotations by placing the following class on a parent element:
 
-<dfn>`.hidden-adaptations`</dfn>
-:   Hides any child print adapations (e.g. print-only pseudo-elements for `<a href>`{.language-html} and `<abbr title>`{.language-html})
+<dfn>`.annotations@print:disabled`</dfn>
+:   Disable print annotations on child elements.
+
+<figure id=example:print-annotations>
+  <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Print annotations</figcaption>
+
+  <style>
+    #example\:print-annotations {
+      & a:not([href^="#"]):not(:has(> *))::after {
+        content: " (" attr(href) ")";
+        font-size: 80%;
+      }
+      & abbr[title]::after {
+        content: " (" attr(title) ")";
+      }
+    }
+  </style>
+
+  This is a representation of what <a href=/docs/layout/#printing>print annotations</a> will look like when a webpage is being printed.
+
+  Print annotations utilize <abbr title="Cascading Style Sheets">CSS</abbr> rules in conjunction with semantic <abbr title="HyperText Markup Language">HTML</abbr> tags to display extra information that is typically communicated via hypertext.
+</figure>
 
 [supported browsers]: https://caniuse.com/?search=%3A%3Adetails-content
