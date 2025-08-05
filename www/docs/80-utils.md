@@ -5,37 +5,39 @@ url: ./utils/
 
 # Utilities
 
-For the minor alterations to the default look that make all the difference,
-missing.css has a collection of classes and custom elements.
+For the minor alterations to the default look that make all the difference, missing.css has a collection of classes and custom elements.
 
-[[toc]]
+<details>
+  <summary>Contents:</summary>
+
+  [[toc]]
+
+</details>
+
 
 ## Visually hidden content
 
 <dfn>`.vh`</dfn>, <dfn>`<v-h>`</dfn>
 :   Visually hide content without hiding it from assistive software.
 
-This is often used in conjunction with the `<sub-title>` element.
+This is often used in conjunction with the `<sub-title>`{.language-html} element.
 Other uses include providing instructions for interactive elements or detailed descriptions of complex charts.
 
 
 ## Container
 
-`<div class="container">`
+<dfn>`.container`</dfn>
+:   Imposes a maximum width on an element and centers it.
 
-The <dfn>`.container`</dfn> class imposes a maximum width on an element and 
-centers it. The `<main>` element does the same, but carries semantic baggage
-that might not be appropriate for all contexts.
+The `<main>`{.language-html} element does the same, but carries semantic baggage that might not be appropriate for all contexts.
 
 
 ## Density {#density}
 
-The density utilities set the <dfn>`--density`</dfn> [CSS variable][], which
-controls the amount of spacing between elements. The default value of
-`--density` is `1`, which means the spacing between paragraphs is
-equal to the height of 1 line.
+The density utilities set the <dfn>`--density`</dfn> [CSS variable][], which controls the amount of spacing between elements.
+The default value of `--density` is `1`, which means the spacing between paragraphs is equal to the height of 1 line.
 
-We provide three utility classes that set `--density`:
+We provide the following utility classes that set `--density`:
 
 | Class                     | Density                                    |
 |---------------------------|--------------------------------------------|
@@ -46,16 +48,26 @@ We provide three utility classes that set `--density`:
 | <dfn>`.airy`</dfn>        | `--density` = 3                            |
 | <dfn>`.autodensity`</dfn> | sets density based on viewport width       |
 
+{ .width:100% }
+
+You can also use the following classes to set density on child elements while maintaining a separate density for the containing element:
+
+ - <dfn>`.packed-inside`</dfn>
+ - <dfn>`.crowded-inside`</dfn>
+ - <dfn>`.dense-inside`</dfn>
+ - <dfn>`.spacious-inside`</dfn>
+ - <dfn>`.airy-inside`</dfn>
+
 You can set `--density` yourself in inline styles or your own CSS:
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Setting <code>--density</code> with inline styles</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Setting <code>--density</code> with inline styles</figcaption>
 
   ~~~ html
-  <section id="tagline" style="--density: 2">
+  <section id=tagline style="--density: 2">
     <h1>So easy, even a programmer can do it.</h1>
     <p>
-        missing.css makes it easy to ship beautiful applications without
+        Missing.css makes it easy to ship beautiful applications without
         locking yourself into classless libraries.
     </p>
   </section>
@@ -63,7 +75,7 @@ You can set `--density` yourself in inline styles or your own CSS:
 </figure>
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Setting <code>--density</code> in a stylesheet</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Setting <code>--density</code> in a stylesheet</figcaption>
 
   ~~~ css
   .link-embed {
@@ -80,8 +92,8 @@ You can set `--density` yourself in inline styles or your own CSS:
 :   Sets text in boldface.
 
 <dfn>`.italic`</dfn>
-:   Sets text in italics. Nested italic elements
-    (`em`, `cite`, `dfn`, `var`, `i`, `address`) will be set in roman instead.
+:   Sets text in italics.
+    Nested italic elements (`<em>`{.language-html}, `<cite>`{.language-html}, `<dfn>`{.language-html}, `<var>`{.language-html}, `<i>`{.language-html}, `<address>`{.language-html}) will be set in roman instead.
 
 <dfn>`.allcaps`</dfn>
 :   Sets text in all caps and adds appropriate letter spacing.
@@ -90,7 +102,8 @@ You can set `--density` yourself in inline styles or your own CSS:
 :   Renders the text in the main font (`--main-font`).
 
 <dfn>~~`.primary-font`~~</dfn>
-:   **Deprecated:**{.bad .color} Will be removed in version 2.0. Use `.main-font` instead.
+:   **Deprecated:**{.bad .color} Will be removed in version 2.0.
+    Use `.main-font` instead.
 
 <dfn>`.secondary-font`</dfn>
 :   Renders the text in the secondary font (`--secondary-font`).
@@ -102,22 +115,30 @@ You can set `--density` yourself in inline styles or your own CSS:
 :   Renders the text in the monospace font (`--mono-font`).
 
 <dfn>`.massivetext`</dfn>
-:   Makes the font size really big. Scales based on line length.
+:   Makes the font size really big.
+    Scales based on line length.
 
 <dfn>`.background-clip:text`</dfn>
-:   Clips the background to the foreground text. <strong class="info color">Note:</strong> You must specify the background using either the `background-color` or `background-image` properties; using the short-hand `background` property will result in overwriting the `background-clip` property set by the class.
+:   Clips the background to the foreground text.
+
+**Info**:&emsp;You must specify the background using either the `background-color`{.language-css} or `background-image`{.language-css} CSS properties;
+using the short-hand `background`{.language-css} property will result in overwriting the `background-clip`{.language-css} property set by the class.{.info .box}
 
 <dfn>`.text-stroke`</dfn>
-:   Adds a stroke to the text, dictated by the `--stroke-width` and `--stroke-color` variables. By default, `--stroke-color` attempts to calculate a color with sufficient contrast to the `currentcolor` of the text, but you might need to set it explicitly. <strong class="warn color">Warning:</strong> Due to the current browser implementation of `-webkit-text-stroke`, the resulting effect is highly dependent on the particular font used.
+:   Adds a stroke to the text, dictated by the `--stroke-width`{.token .attr-name} and `--stroke-color`{.token .attr-name} variables.
+    By default, `--stroke-color`{.token .attr-name} attempts to calculate a color with sufficient contrast to the `currentcolor` of the text, but you might need to set it explicitly.
+
+**Warning**:&emsp;Due to the current browser implementation of `-webkit-text-stroke`{.language-css}, the resulting effect is highly dependent on the particular font used.{.warn .box}
 
 <dfn>`.aestheticbreak`</dfn>
-:   A line break added for aesthetic purposes. Usage: `<span class="aestheticbreak"></span>`{.language-html}
+:   A line break added for aesthetic purposes.
+    Usage: `<span class="aestheticbreak"></span>`{.language-html}
 
 <dfn>`.list-of-links`</dfn>
 :   Removes underlines from all links inside an element -- sometimes advisable for lists of links.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Background clip</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Background clip markup</figcaption>
 
   ~~~ css
   .gradient {
@@ -184,24 +205,24 @@ The following classes can be used to make one element look like another:
  - <dfn>`.<a>`</dfn>
  - <dfn>`.<small>`</dfn>
  - <dfn>`.<big>`</dfn>
- {role="list" .tool-bar}
+ {role=list .tool-bar}
 
 To get a smaller font size, use the `.<small>` masquerade.
 
 The <dfn>`.<big>`</dfn> class makes things bigger, with special treatment for some elements.
-<strong class="bad color">Deprecated:</strong> We have converted our `.big` class to a masquerade in honor of W3C deprecating the `<big>` HTML tag.
+**Deprecated:**{.bad .color} We have converted our `.big` class to a masquerade in honor of W3C deprecating the `<big>`{.language-html} HTML tag.
 The <dfn>`.big`</dfn> class will be removed in version 2.0.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></subtitle>Masquerade markups</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></subtitle>Masquerade markups</figcaption>
 
   ~~~ html
   <p>This is a paragraph.</p>
   <p class="<big>">This is a big paragraph.</p>
  
-  <div class="f-row align-items:center">
+  <div class="flex-row align-items:center">
     <button class="<big> bad">Big Bad Button</button>
-    <a class="bad <button>" href="#">&lt;a&gt; Bad Button</a>
+    <a class="bad <button>" href=#>&lt;a&gt; Bad Button</a>
   </div>
   
   <aside class="<big>">
@@ -214,9 +235,9 @@ The <dfn>`.big`</dfn> class will be removed in version 2.0.
   <p>This is a paragraph</p>
   <p class="<big>">This is a big paragraph</p>
  
-  <div class="f-row align-items:center">
+  <div class="flex-row align-items:center">
     <button class="<big> bad">Big Bad Button</button>
-    <a class="bad <button>" href="#">&lt;a&gt; Bad Button</a>
+    <a class="bad <button>" href=#>&lt;a&gt; Bad Button</a>
   </div>
   
   <aside class="<big>">
@@ -231,14 +252,18 @@ The <dfn>`.big`</dfn> class will be removed in version 2.0.
 ## Theme selection
 
 By default, missing.css applies a light or dark theme based on the visitor's OS settings.
-To force the theme independently of `prefers-color-scheme` you can use the following:
+To force the theme independently of `@prefers-color-scheme`{.language-css} you can use the following:
 
-~~Add the <dfn>`.-dark-theme`</dfn> class to your root element to use the dark theme.~~ **Deprecated:**{.bad .color} Will be removed in version 2.0. Use `<meta name=color-scheme content=dark>` instead.
+~~Add the <dfn>`.-dark-theme`</dfn> class to your root element to use the dark theme.~~
+**Deprecated:**{.bad .color} Will be removed in version 2.0.
+Use `<meta name=color-scheme content=dark>`{.language-html} instead.
 
-~~Add the <dfn>`.-no-dark-theme`</dfn> class to your root element to use the light theme.~~ **Deprecated:**{.bad .color} Will be removed in version 2.0. Use `<meta name=color-scheme content=light>` instead.
+~~Add the <dfn>`.-no-dark-theme`</dfn> class to your root element to use the light theme.~~
+**Deprecated:**{.bad .color} Will be removed in version 2.0.
+Use `<meta name=color-scheme content=light>`{.language-html} instead.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Theme toggle markup</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Theme toggle markup</figcaption>
 
   ~~~ css
   :root:has([name=theme][value=light]:checked) { color-scheme: light      }
@@ -279,7 +304,22 @@ To force the theme independently of `prefers-color-scheme` you can use the follo
 ## Reset
     
 ~~Use the <dfn>`.all:initial`</dfn> class to reset all CSS properties on an
-element and return it to its browser-default styles.~~ **Deprecated:**{.bad .color} Will be removed in version 2.0.
+element and return it to its browser-default styles.~~
+**Deprecated:**{.bad .color} Will be removed in version 2.0.
 
+
+## Print
+
+The following utilities can be used to fine-tune the display of your webpage when it is being printed.
+Generally speaking, browsers have poor support for specifying page breaks inside of elements with `display:flex`{.language-css} or `display:grid`{.language-css}.
+We recommend using the `.block@print` utility class when reaching for any of the page break utilities.
+
+ - <dfn>`.hidden@screen`</dfn>
+ - <dfn>`.hidden@print`</dfn>
+ - <dfn>`.block@print`</dfn>
+ - <dfn>`.break-before:page`</dfn>
+ - <dfn>`.break-after:page`</dfn>
+ - <dfn>`.break-inside:avoid-page`</dfn>
+ {.textcolumns}
 
 [CSS variable]: /docs/variables

@@ -1,49 +1,42 @@
 ---
-layout: layout.vto
+layout: prose.vto
 url: /playground/
+subtitle: missing.css
+title: Playground
+crumbs:
+ - url: /
+   title: Home
 ---
 
-<main>
 
-  <header>
-    <nav class="breadcrumbs" aria-label="Breadcrumbs">
-      <ol><li><a href="/">Home</a>
-          <li><a href="/releases/" aria-current="page">Playground</a>
-      </ol>
-    </nav>
-    <h1><sub-title class="allcaps">missing.css</sub-title> Playground</h1>
-  </header>
-
-  <div class="fullbleed pad">
-    <div class="grid">
-      <textarea id="code" class="monospace" cols="80" rows="20">
+<div class="fullbleed padding">
+	<div class="grid">
+		<textarea id=code class="monospace" cols=80 rows=20>
 &lt;main>
-    &lt;h1>Hello, World!&lt;/h1>
+		&lt;h1>Hello, World!&lt;/h1>
 
-    &lt;!-- Enter your own code... -->
+		&lt;!-- Enter your own code... -->
 &lt;/main>
-      </textarea>
+		</textarea>
 
-      <iframe id="result" srcdoc="<!doctype html> :)"></iframe>
-    </div>
-  </div>
+		<iframe id=result srcdoc="<!doctype html> :)"></iframe>
+	</div>
+</div>
 
-  <script type="text/hyperscript">
-      on load or input from #code
-          get "<!DOCTYPE html>"
-          append "<html lang=en>"
-          append "<head>"
-          append "<meta charset=UTF-8>"
-          append "<meta name=viewport content=width=device-width>"
-          append "<link rel=stylesheet href=/dist/missing.css>"
-          append "</head>"
-          append "<body>"
-          append #code's value
-          append "</body>"
-          append "</html>"
-          set #result's srcdoc to the result
-      end
-  </script>
-  <script src="https://unpkg.com/hyperscript.org"></script>
-
-</main>
+<script type=text/hyperscript>
+	on load or input from #code
+		get "<!DOCTYPE html>"
+		append "<html lang=en>"
+		append "<head>"
+		append "<meta charset=UTF-8>"
+		append "<meta name=viewport content=width=device-width>"
+		append "<link rel=stylesheet href=/dist/missing.css>"
+		append "</head>"
+		append "<body>"
+		append #code's value
+		append "</body>"
+		append "</html>"
+		set #result's srcdoc to the result
+	end
+</script>
+<script src=https://unpkg.com/hyperscript.org></script>

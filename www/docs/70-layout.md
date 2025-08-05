@@ -7,26 +7,97 @@ url: ./layout/
 
 Mechanisms of creating layouts.
 
-[[toc]]
+<details>
+  <summary>Contents:</summary>
+
+  [[toc]]
+
+</details>
 
 
 ## Centering
 
 <dfn>`.text-align:center`</dfn> center-aligns text.
 
-An element with class <dfn>`.center`</dfn> centers a single child element using `display: grid; place-items: center`{.lang-css}.
+An element with class <dfn>`.center`</dfn> centers a single child element using `display: grid; place-items: center`{.language-css}.
 
-<dfn>`.align-content:center`</dfn> vertically aligns content in the center of the alignment container. Flexbox no longer required!
+<dfn>`.align-content:center`</dfn> vertically aligns content in the center of the alignment container.
+Flexbox no longer required!
 We also provide <dfn>`.align-content:end`</dfn>.
 
 
 ## Text columns
 
 The <dfn>`.textcolumns`</dfn> class creates multi-column text using the CSS [`column-width`][] property.
-The column width can be set with the `--col-width` variable.
-Protip: consider using the `ch` unit to set column widths.
+The column width can be set with the `--col-width`{.language-css} variable.
+**Protip**: consider using the `ch`{.language-css} unit to set column widths.
+
+When combined with the `<dl>`{.language-html} element, missing.css will prevent orphans and widows in [supported browsers][].
+For full support, wrap pairs of `<dt>` and `<dd>` elements in a `<div>`.
+
+<figure>
+  <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Columned details list markup (partial support)</figcaption>
+
+  ~~~ html
+  <dl class="textcolumns">
+    <dt>Term 1
+    <dd>This is an explaination of the first term.
+    <!-- ... -->
+  </dl>
+  ~~~
+
+  <hr>
+
+  <dl class="textcolumns">
+    <dt>Term 1
+    <dd>This is an explaination of the first term.
+    <dt>Term 2
+    <dd>This is an explaination of the second term.
+    <dt>Term 3
+    <dd>This is an explaination of the third term, and missing.css will prevent it from being split <b>if the browser supports it</b>.
+    <dt>Term 4
+    <dd>This is an explaination of the fourth term.
+  </dl>
+</figure>
+
+<figure>
+  <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Columned details list markup (full support)</figcaption>
+
+  ~~~ html
+  <dl class="textcolumns">
+    <div>
+    <dt>Term 1
+    <dd>This is an explaination of the first term, and missing.css will make sure it doesn't get split from its sibling `<dt>` tag.
+    </div>
+    <!-- ... -->
+  </dl>
+  ~~~
+
+  <hr>
+
+  <dl class="textcolumns">
+    <div>
+    <dt>Term 1
+    <dd>This is an explaination of the first term.
+    </div>
+    <div>
+    <dt>Term 2
+    <dd>This is an explaination of the second term.
+    </div>
+    <div>
+    <dt>Term 3
+    <dd>This is an explaination of the third term, and missing.css will prevent it from being split <b>in all supported browsers</b>.
+    </div>
+    <div>
+    <dt>Term 4
+    <dd>This is an explaination of the fourth term.
+    </div>
+
+  </dl>
+</figure>
 
 [`column-width`]: https://developer.mozilla.org/en-US/docs/Web/CSS/column-width
+[supported browsers]: https://caniuse.com/?search=avoid-column
 
 
 ## Flow gap
@@ -36,19 +107,17 @@ The <dfn>`.flow-gap`</dfn> class adds vertical margins between its children.
 
 ## Full-size
 
-Add the <dfn>`.fullbleed`</dfn> class to make an element go outside its
-container and span the whole width of the viewport.
+Add the <dfn>`.fullbleed`</dfn> class to make an element go outside its container and span the whole width of the viewport.
 
 The <dfn>`.fullscreen`</dfn> class will size an element to fill the screen.
 
 
 ## Layout utilities
 
-Add some padding with <dfn>`.padding`</dfn>, or a margin with
-<dfn>`.margin`</dfn>.
-
-Add padding or margin in specific axes with these classes.
+Add some padding with <dfn>`.padding`</dfn>, or a margin with <dfn>`.margin`</dfn>.
 The amount of margin or padding is determined by the [density utilities][].
+
+Add padding or margin in specific axes with the following classes.
 
  - <dfn>`.margin`</dfn>
  - <dfn>`.margin-inline`</dfn>
@@ -138,10 +207,10 @@ Borders can be removed by using <dfn>`.border:none`</dfn> or one of the followin
 ~~The <dfn>`.nested-list`</dfn> class removes extraneous margins in nested lists.~~
 **Deprecated:**{.bad .color} Will be removed in version 2.0.
 In the future, nested lists will not have margins by default.
-You can add them back in using `<li><p>` as needed.
+You can add them back in using `<li><p>`{.language-html} as needed.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Nested lists</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Nested list markup</figcaption>
 
   ~~~html
   <div class="flex-switch">
@@ -198,13 +267,13 @@ You can add them back in using `<li><p>` as needed.
 
 ## Aspect Ratio
 
-To set the aspect ratio of an element, use the `aspect-ratio` CSS property:
+To set the aspect ratio of an element, use the `aspect-ratio`{.token .attr-name} CSS property:
 
 <figure>
 
   ~~~html
   <style>#aspect-ratio-example > .box { height: 10vh }</style>
-  <div id="aspect-ratio-example" class="f-row flex-wrap:wrap">
+  <div id="aspect-ratio-example" class="flex-row flex-wrap:wrap">
     <div class="box" style="aspect-ratio: 1/1">1:1</div>
     <div class="box" style="aspect-ratio: 4/3">4:3</div>
     <div class="box" style="aspect-ratio: 16/9">16:9</div>
@@ -217,7 +286,7 @@ To set the aspect ratio of an element, use the `aspect-ratio` CSS property:
   ~~~
 
   <style>#aspect-ratio-example > .box { height: 10vh }</style>
-  <div id="aspect-ratio-example" class="f-row flex-wrap:wrap">
+  <div id="aspect-ratio-example" class="flex-row flex-wrap:wrap">
     <div class="box" style="aspect-ratio: 1/1">1:1</div>
     <div class="box" style="aspect-ratio: 4/3">4:3</div>
     <div class="box" style="aspect-ratio: 16/9">16:9</div>
@@ -232,7 +301,7 @@ To set the aspect ratio of an element, use the `aspect-ratio` CSS property:
 
 ## Scrolling
 
-Set the `overflow` property with these utility classes.
+Set the `overflow`{.token .attr-name} property with these utility classes.
 
 <dfn>`.overflow:auto`</dfn>  
 :   Show scrollbars if needed.
@@ -242,23 +311,18 @@ Set the `overflow` property with these utility classes.
 
 <dfn>`.overflow:clip`</dfn>
 :   Overflow content is clipped at the element's padding box.
-    Can be set per axis using <dfn>`.overflow-x:clip`</dfn> or <dfn>`.overflow-y:clip`</dfn>, and the clip margin can be extended using the `overflow-clip-margin` CSS property.
+    Can be set per axis using <dfn>`.overflow-x:clip`</dfn> or <dfn>`.overflow-y:clip`</dfn>, and the clip margin can be extended using the `overflow-clip-margin`{.token .attr-name} CSS property.
 
-<div class="box info">
-
-**Info**:&emsp;When using the `.overflow:scroll` utilities, it is recommended to add
-the element to the tabbing order (e.g., `<div tabindex=0 class=overflow-x:scroll>`)
-so that the container can be scrolled using the keyboard.
-
-</div>
+**Info**:&emsp;When using the `.overflow:scroll` utilities, it is recommended to add the element to the tabbing order (`tabindex=0`{.token .attr-name}) so that the container can be scrolled using the keyboard.{.info .box}
 
 
 ## Pseudo-tables
 
-The <dfn>`.table`</dfn> class makes an element act like a table for the purposes of layout. The <dfn>`.row`</dfn> class can be used to create a table row, or you can make all descendants of an element into rows with <dfn>`.rows`</dfn>.
+The <dfn>`.table`</dfn> class makes an element act like a table for the purposes of layout.
+The <dfn>`.row`</dfn> class can be used to create a table row, or you can make all descendants of an element into rows with <dfn>`.rows`</dfn>.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Using pseudo-tables to align forms</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Pseudo-table markup for aligning forms</figcaption>
 
   ~~~ html
   <form class="table rows">
@@ -307,19 +371,56 @@ The <dfn>`.table`</dfn> class makes an element act like a table for the purposes
 :   Set `position: sticky`.
 
 <dfn>`.top`</dfn>
-:   Set `top: 0`. Use together with `.fixed` or `.sticky`.
+:   Set `top: 0`.
+    Use together with `.fixed` or `.sticky`.
 
 <dfn>`.right`</dfn>
-:   Set `right: 0`. See `.top`.
+:   Set `right: 0`.
+    See `.top`.
 
 <dfn>`.bottom`</dfn>
-:   Set `bottom: 0`. See `.top`.
+:   Set `bottom: 0`.
+    See `.top`.
 
 <dfn>`.left`</dfn>
-:   Set `left: 0`. See `.top`.
+:   Set `left: 0`.
+    See `.top`.
 
 <dfn>`.float:left`</dfn>
 :   Set `float: left`.
 
 <dfn>`.float:right`</dfn>
 :   Set `float: right`.
+
+## Printing
+
+Missing.css attempts to prevent page breaks inside of grouped content and after headings when printed.
+Additionally, collapsed `<details>`{.language-html} elements will be revealed during printing in [supported browsers][].
+
+During printing, missing.css will also annotate `<a>`{.language-html} and `<abbr>`{.language-html} tags by displaying an `::after`{.token .attr-name} pseudo-element that contains the `href`{.token .attr-name} or `title`{.token .attr-name} attribute value in parenthesis.
+You can disable these annotations by placing the following class on a parent element:
+
+<dfn>`.annotations@print:disabled`</dfn>
+:   Disable print annotations on child elements.
+
+<figure id=example:print-annotations>
+  <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Print annotations</figcaption>
+
+  <style>
+    #example\:print-annotations {
+      & a:not([href^="#"]):not(:has(> *))::after {
+        content: " (" attr(href) ")";
+        font-size: 80%;
+      }
+      & abbr[title]::after {
+        content: " (" attr(title) ")";
+      }
+    }
+  </style>
+
+  This is a representation of what <a href=/docs/layout/#printing>print annotations</a> will look like when a webpage is being printed.
+
+  Print annotations utilize <abbr title="Cascading Style Sheets">CSS</abbr> rules in conjunction with semantic <abbr title="HyperText Markup Language">HTML</abbr> tags to display extra information that is typically communicated via hypertext.
+</figure>
+
+[supported browsers]: https://caniuse.com/?search=%3A%3Adetails-content

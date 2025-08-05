@@ -5,8 +5,8 @@ url: ./colorways/
 
 # Colorways
 
-A colorway is a group of shades of a color, with specific roles. For instance,
-here is the `.ok` colorway in the missing.css source code:
+A colorway is a group of shades of a color, with specific roles.
+For instance, here is the `.ok` colorway in the missing.css source code:
 
   ~~~ css
   .ok {
@@ -19,21 +19,17 @@ here is the `.ok` colorway in the missing.css source code:
 The following colorways are provided by default:
 
  - <dfn>`.plain`</dfn> is the default. {.plain .bg .color}
- - <dfn>`.info`</dfn> is used to highlight information without any emotional 
-   affect. {.info .bg .color}
- - <dfn>`.ok`</dfn> is used to indicate successes, insertions, desired
-   states. {.ok .bg .color}
- - <dfn>`.warn`</dfn> is used to warn the user, although there may not necessarily be a bad
-   situation. {.warn .bg .color}
+ - <dfn>`.info`</dfn> is used to highlight information without any emotional affect. {.info .bg .color}
+ - <dfn>`.ok`</dfn> is used to indicate successes, insertions, desired states. {.ok .bg .color}
+ - <dfn>`.warn`</dfn> is used to warn the user, although there may not necessarily be a bad situation. {.warn .bg .color}
  - <dfn>`.bad`</dfn> is used for errors, deletions, failure states. {.bad .bg .color}
  {role=list .flow-gap}
 
-Applying the colorway class to an element will not change its appearance by 
-default. Use the <dfn>`.bg`</dfn>, <dfn>`.color`</dfn> and <dfn>`.border`</dfn>
-classes to use an aspect of the colorway:
+Applying the colorway class to an element will not change its appearance by default.
+Use the <dfn>`.bg`</dfn>, <dfn>`.color`</dfn> and <dfn>`.border`</dfn> classes to use an aspect of the colorway:
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Colorway classes</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Colorway classes</figcaption>
 
   ~~~ html
   <p><b class="ok color border">Do:</b> Use color to help users scan information
@@ -54,23 +50,22 @@ classes to use an aspect of the colorway:
 
 ## Custom colorways
 
-If you want, you can make your own colorway simply with a class that sets the 
-appropriate CSS variables. We recommend naming your colorways after their 
-purpose, as opposed to their specific color.
+If you want, you can make your own colorway simply with a class that sets the appropriate CSS variables.
+We recommend naming your colorways after their purpose, as opposed to their specific color.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Defining a custom colorway</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Defining a custom colorway</figcaption>
 
   ~~~ css
+  /* style.css */
   .done {
     --box-bg: lavender;
     --accent: rebeccapurple;
   }
   ~~~
 
-  <hr>
-
   ~~~ html
+  <!-- markup.html -->
   <h2>Pull requests</h2>
 
   <h3>Add "ok" colorway</h3>

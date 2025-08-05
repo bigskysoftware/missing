@@ -31,20 +31,25 @@ const site = lume(
   .addEventListener("afterRender",
     "cd .. && mise run 'build:{css,js}' && cp -r dist src www/_site/")
   .data("layout", "docs.vto", "/docs")
+  .data("layout", "demo.vto", "/demos")
   .data("layout", "prose.vto", "/pages")
   .data("layout", "release.vto", "/releases")
   .data("url", (p) => p.src.path + "/", "/releases")
   .data("url", (p) => p.src.path + "/", "/demos")
+  .data("browserslist", Deno.env.get("BROWSERSLIST"), "/")
   .preprocess([".md"], (ps) => ps.forEach(p => {
     if (p.src.path.match(/^\/releases\/\d/)) {
       p.data.release = p.src.path.split("/").at(-1);
+			p.data.title = p.data.release;
     }
   }))
   .loadPages([".html"])
   .use(date())
   .use(basePath())
   .use(resolveUrls())
-  .use(prismHighlight())
+  .use(prismHighlight({
+    cssSelector: "pre code, code[class*=language-]",
+  }))
   .use(pagefind({
     ui: false,
     indexing: {

@@ -5,7 +5,12 @@ url: ./components/
 
 # Components
 
-[[toc]]
+<details>
+  <summary>Contents:</summary>
+
+  [[toc]]
+
+</details>
 
 ## Box
 
@@ -14,42 +19,36 @@ The <dfn>`.box`</dfn> class creates a padded box with a border.
 Boxes use the border and background color of the [colorway][].
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Box markup</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Box markup</figcaption>
 
   ~~~ html
-  <div class="box warn">
+  <div class="warn box">
     <strong>Warning</strong>: If you're putting <!-- ... -->
   </div>
   ~~~
 
   <hr>
 
-  <div class="box warn">
-  
-  **Warning**:&emsp;If you're putting something in a box, make sure to clarify
-  why it is in a box in some other way. For example, this box has "Warning" in
-  bold, in addition to being yellow. This makes your page clearer and prevents
-  accessibility failures.
-  
-  </div>
+  **Warning**:&emsp;If you're putting something in a box, make sure to clarify why it is in a box in some other way.
+  For example, this box has "Warning" in bold, in addition to being yellow.
+  This makes your page clearer and prevents accessibility failures.{.warn .box}
 
 </figure>
 
 The above box, in addition to being an example, is also a genuine warning.
 
-The `<figure>`, `<details>` and `<dialog>` elements share their
-appearance with the `.box` class.
+The `<figure>`{.language-html}, `<details>`{.language-html}, and `<dialog>`{.language-html} elements share their appearance with the `.box` class.
 
 
 ## Titlebar
 
-<dfn>`.titlebar`</dfn>: A titlebar for a `.box`.
+<dfn>`.titlebar`</dfn>: A titlebar for a `.box`{.language-css}.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Titlebar markup</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Titlebar markup</figcaption>
 
   ~~~ html
-  <div class="box bad">
+  <div class="bad box">
     <strong class="titlebar">Error</strong>
     <p>Task failed successfully
   </div>
@@ -57,7 +56,7 @@ appearance with the `.box` class.
 
   <hr>
 
-  <div class="box bad">
+  <div class="bad box">
     <strong class="titlebar">Error</strong>
     <p>Task failed successfully
   </div>
@@ -67,11 +66,11 @@ appearance with the `.box` class.
 
 ## Subtitle
 
-The <dfn>`<sub-title>`</dfn> custom element or the <dfn>`.sub-title`</dfn>
-class is a subtitle for a heading. Visually hiding a colon with the `<v-h>` element can help screen readers parse the heading correctly.
+The <dfn>`<sub-title>`</dfn> custom element or the <dfn>`.sub-title`</dfn> class is a subtitle for a heading.
+Visually hiding a colon with the `<v-h>`{.language-html} element can help screen readers parse the heading correctly.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Sub-title after a heading</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Sub-title markup (after a heading)</figcaption>
 
   ~~~ html
   <h4>
@@ -90,7 +89,7 @@ class is a subtitle for a heading. Visually hiding a colon with the `<v-h>` elem
 </figure>
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Sub-title before a heading</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Sub-title markup (before a heading)</figcaption>
 
   ~~~ html
   <h4>
@@ -111,24 +110,23 @@ class is a subtitle for a heading. Visually hiding a colon with the `<v-h>` elem
 
 ## Section permalinks
 
-Many pages, including these docs, have links that can be used to jump to a
-section that appear when the heading is hovered. Missing.css provides this
-as the <dfn>`.permalink-anchor`</dfn> class.
+Many pages, including these docs, have links that can be used to jump to a section that appear when the heading is hovered.
+Missing.css provides this as the <dfn>`.permalink-anchor`</dfn> class.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Permalink markup (hover to reveal)</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Permalink markup (hover to reveal)</figcaption>
 
   ~~~ html
-  <h2 id="section-permalinks" class="packed" tabindex="-1">
-    <a class="permalink-anchor float:right" href="#section-permalinks">§</a>
+  <h2 id=section-permalinks class="packed" tabindex=-1>
+    <a class="permalink-anchor float:right" href=#section-permalinks>§</a>
     Section permalinks
   </h2>
   ~~~
 
   <hr>
 
-  <h2 id="section-permalinks" class="packed" tabindex="-1">
-    <a class="permalink-anchor float:right" href="#section-permalinks">§</a>
+  <h2 id=section-permalinks tabindex=-1 class="packed">
+    <a href=#section-permalinks class="permalink-anchor float:right">§</a>
     Section permalinks
   </h2>
 
@@ -137,18 +135,18 @@ as the <dfn>`.permalink-anchor`</dfn> class.
 ## Toolbar
 
 A <dfn>`.tool-bar`</dfn> is a horizontally laid-out collection of controls.
-Alternatively, you can use `[role=toolbar]`.
+Alternatively, you can use `role=toolbar`{.token .attr-name}.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Toolbar markup</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Toolbar markup</figcaption>
 
   ~~~ html
-  <section role="toolbar">
+  <section role=toolbar>
     <button type=button>Cut</button>
     <button type=button>Copy</button>
     <button type=button>Paste</button>
 
-    <hr aria-orientation="vertical">
+    <hr aria-orientation=vertical>
 
     <label>Find: <input type=text></label>
   </section>
@@ -156,11 +154,11 @@ Alternatively, you can use `[role=toolbar]`.
 
   <hr>
 
-  <section role="toolbar">
+  <section role=toolbar>
     <button type=button>Cut</button>
     <button type=button>Copy</button>
     <button type=button>Paste</button>
-    <hr aria-orientation="vertical">
+    <hr aria-orientation=vertical>
     <label>Find: <input type=text></label>
   </section>
 
@@ -172,19 +170,19 @@ Alternatively, you can use `[role=toolbar]`.
 ## Sidebar
 
 Use the <dfn>`.sidebar-layout`</dfn> class to create a sidebar/main layout.
-Put sidebar content in a `<header>` element directly inside `.sidebar-layout`, and the next
-element will house the rest of the page. See this example:
+Put sidebar content in a `<header>`{.language-html} element directly inside `.sidebar-layout`{.language-css}, and the next element will house the rest of the page.
+See this example:
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Sidebar markup</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Sidebar markup</figcaption>
 
   ~~~ html
   <div class="sidebar-layout">
     <header>
       <ul role="list">
-        <li><a href="/">Home</a></li>
-        <li><a href="/">Profile</a></li>
-        <li><a href="/">Settings</a></li>
+        <li><a href=/>Home</a></li>
+        <li><a href=/>Profile</a></li>
+        <li><a href=/>Settings</a></li>
         <!-- ... -->
       </ul>
     </header>
@@ -196,70 +194,60 @@ element will house the rest of the page. See this example:
   </div>
   ~~~
 
-**<a href="/demos/sidebar" class="<button>">Sidebar demo &rarr;</a>**
+**<a href=/demos/sidebar class="<button>">Sidebar demo &rarr;</a>**
 
 </figure>
 
 
 ## Breadcrumbs
 
-Add <dfn>`.breadcrumbs`</dfn> to a `<nav>` element. Use an `<ul>` or  `<ol>` of
-links inside. Don't forget to add an `aria-label`.
+Add <dfn>`.breadcrumbs`</dfn> to a `<nav>`{.language-html} element.
+Use an `<ul>`{.language-html} or  `<ol>`{.language-html} of links inside.
+Don't forget to add an `aria-label`{.token .attr-name} attribute.
 
-Add the attribute `aria-current=page` (or `step`) to the link representing the current
-page or step (if any). The separator will be set to either `--breadcrumb-page` or `--breadcrumb-step`
-depending on whether `aria-current=page` or `aria-current=step` is used.
+Add the attribute `aria-current`{.token .attr-name} to the link representing the current page or step (if any).
+The separator will be set to either `--breadcrumb-page` or `--breadcrumb-step` depending on whether its value is `page`{.token .attr-value} or `step`{.token .attr-value}.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Breadcrumbs markup</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Breadcrumbs markup</figcaption>
 
   ~~~ html
-  <nav class=breadcrumbs aria-label="Breadcrumbs">
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
     <ol>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">User</a></li>
-      <li><a href="#">Advanced</a></li>
-      <li><a href="#">New All</a></li>
-      <li><a href="#" aria-current=page>Quit Sibelius</a></li>
+      <li><a href=#>Home</a></li>
+      <li><a href=#>User</a></li>
+      <li><a href=#>Advanced</a></li>
+      <li><a href=#>New All</a></li>
+      <li><a href=# aria-current=page>Quit Sibelius</a></li>
     </ol>
   </nav>
   ~~~
 
   <hr>
 
-  <nav class=breadcrumbs aria-label="Breadcrumbs">
+  <nav class="breadcrumbs" aria-label="Breadcrumbs">
     <ol>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">User</a></li>
-      <li><a href="#">Advanced</a></li>
-      <li><a href="#">New All</a></li>
-      <li><a href="#" aria-current=page>Quit Sibelius</a></li>
+      <li><a href=#>Home</a></li>
+      <li><a href=#>User</a></li>
+      <li><a href=#>Advanced</a></li>
+      <li><a href=#>New All</a></li>
+      <li><a href=# aria-current=page>Quit Sibelius</a></li>
     </ol>
   </nav>
-  ~~~
 
-  <nav class=breadcrumbs aria-label="Breadcrumbs">
-    <ol>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">User</a></li>
-      <li><a href="#">Advanced</a></li>
-      <li><a href="#">New All</a></li>
-      <li><a href="#" aria-current=page>Quit Sibelius</a></li>
-    </ol>
-  </nav>
 </figure>
 
-If you want to preserve the `<ol>` numbering, use the `type` attribute.
+If you want to preserve the `<ol>`{.language-html} numbering, use the `type`{.token .attr-name} attribute.
 
 <figure>
 
   ~~~ html
   <header class="packed">
     <strong class="<h1>">Checkout</strong>
-    <nav class=breadcrumbs aria-label="Breadcrumbs">
-      <ol type="1">
-        <li><a href="#">Cart</a></li>
-        <li><a href="#" aria-current=step>Account</a></li>
+    <nav class="breadcrumbs" aria-label="Breadcrumbs">
+      <ol type=1>
+        <li><a href=#>Cart</a></li>
+        <li><a href=# aria-current=step>Account</a></li>
         <li>Info</li>
         <li>Payment</li>
         <li>Review</li>
@@ -268,12 +256,14 @@ If you want to preserve the `<ol>` numbering, use the `type` attribute.
   </header>
   ~~~
 
+  <hr>
+
   <header class="packed">
     <strong class="<h1>">Checkout</strong>
-    <nav class=breadcrumbs aria-label="Breadcrumbs">
-      <ol type="1">
-        <li><a href="#">Cart</a></li>
-        <li><a href="#" aria-current=step>Account</a></li>
+    <nav class="breadcrumbs" aria-label="Breadcrumbs">
+      <ol type=1>
+        <li><a href=#>Cart</a></li>
+        <li><a href=# aria-current=step>Account</a></li>
         <li>Info</li>
         <li>Payment</li>
         <li>Review</li>
@@ -285,25 +275,24 @@ If you want to preserve the `<ol>` numbering, use the `type` attribute.
 
 ## Chip
 
-The <dfn>`<chip>`</dfn> class, or the <dfn>`.chip`</dfn> class, creates a
-rounded chip, like what you might use for a tag list or contacts.
+The <dfn>`<chip>`</dfn> class, or the <dfn>`.chip`</dfn> class, creates a rounded chip, like what you might use for a tag list or contacts.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Chip markup</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Chip markup</figcaption>
 
   ~~~ html
-  <chip class=info>#webdev</chip>
-  <chip class=ok>⍻ Merged</chip>
+  <chip class="info">#webdev</chip>
+  <chip class="ok">⍻ Merged</chip>
   <chip>John Doe</chip>
-  <chip class=warn>3 minute read</chip>  
+  <chip class="warn">3 minute read</chip>  
   ~~~
 
   <hr>
 
-  <chip class=info>#webdev</chip>
-  <chip class=ok>⍻ Merged</chip>
+  <chip class="info">#webdev</chip>
+  <chip class="ok">⍻ Merged</chip>
   <chip>John Doe</chip>
-  <chip class=warn>3 minute read</chip>  
+  <chip class="warn">3 minute read</chip>  
 
 </figure>
 
@@ -314,23 +303,23 @@ A navbar has the <dfn>`.navbar`</dfn> class --- see the following for a markup
 example:
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Navbar markup</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Navbar markup</figcaption>
 
   ~~~ html
   <header class="navbar">
     <nav aria-label="Site sections">
       <ul role="list">
-        <li><a href="/"><img alt="missing.js" src="/logo.png"></a>
-        <li><a href="/docs">Docs</a>
-        <li><a href="/docs">Contribute</a>
-        <li><a href="/docs">Donate</a>
+        <li><a href=/><img alt="missing.js" src="/logo.png"></a>
+        <li><a href=/docs>Docs</a>
+        <li><a href=/docs>Contribute</a>
+        <li><a href=/docs>Donate</a>
       </ul>
     </nav>
     <nav aria-label="Social media links">
       <ul role="list">
-        <li><a href="/"><img alt=""></a>
-        <li><a href="https://github.com/...">GitHub</a>
-        <li><a href="https://discord.app/...">Discord</a>
+        <li><a href=/><img alt=""></a>
+        <li><a href=https://github.com/...>GitHub</a>
+        <li><a href=https://discord.app/...>Discord</a>
       </ul>
     </nav>
   </header>
@@ -341,29 +330,18 @@ example:
 To make your navbar expand/collapsible on smaller screens,
 you can use [Missing.js &sect; Expand/collapse navbar](/docs/js#expand%2Fcollapse-navbar).
 
-<div class="box info">
-
-**Info**:&emsp;When you have multiple `<nav>` elements on a page, it's a good idea to put
-`aria-label` attributes on them. This is because many assistive programs have
-a feature to jump to the navigation part of a page, which does not work well if
-the user can't tell which nav is which.
-
-</div>
+**Info**:&emsp;When you have multiple `<nav>`{.language-html} elements on a page, it's a good idea to put `aria-label`{.token .attr-name} attributes on them.
+This is because many assistive programs have a feature to jump to the navigation part of a page, which does not work well if the user can't tell which nav is which.{.info .box}
 
 
 ## Icon Button
 
-<dfn>`.iconbutton`</dfn> creates a bare icon; it even works with the `.\<button\>` masquerade!
+<dfn>`.iconbutton`</dfn> creates a bare icon; it even works with the `.<button>`{.language-css} and `.<big>` masquerades!
 [Colorways][colorway] are supported as well.
-We recommend using <a href="https://lucide.dev">Lucide</a> for icons.
+We recommend using <a href=https://lucide.dev>Lucide</a> for icons.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Icon button markup</figcaption>
-
-  ~~~ css
-  /* style.css */
-  svg:has(use[href$="-icon"]) { height: 1em; width: 1em; }
-  ~~~
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Icon button markup</figcaption>
 
   ~~~ html
   <!-- sprite sheet -->
@@ -376,13 +354,13 @@ We recommend using <a href="https://lucide.dev">Lucide</a> for icons.
   ~~~
 
   ~~~ html
-  <!-- markup -->
+  <!-- markup.html -->
   <section class="flex-row justify-content:space-between">
-    <button class=iconbutton type=button aria-label="Menu">
-      <svg aria-hidden=true><use href="#menu-icon"></use></svg>
+    <button class="iconbutton" type=button aria-label="Menu">
+      <svg aria-hidden=true><use href=#menu-icon></use></svg>
     </button>
     <a class="info <button> iconbutton" aria-label="Next">
-      <svg aria-hidden=true><use href="#next-icon"></use></svg>
+      <svg aria-hidden=true><use href=#next-icon></use></svg>
     </a>
     <!-- ... -->
   </section>
@@ -390,7 +368,6 @@ We recommend using <a href="https://lucide.dev">Lucide</a> for icons.
 
   <hr>
 
-  <style>svg:has(use[href$="-icon"]) { height: 1em; width: 1em; }</style>
   <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <defs>
       <symbol id="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu-icon lucide-menu"><path d="M4 12h16"/><path d="M4 18h16"/><path d="M4 6h16"/></symbol>
@@ -403,29 +380,70 @@ We recommend using <a href="https://lucide.dev">Lucide</a> for icons.
     </defs>
   </svg>
   <section class="flex-row justify-content:space-between">
-    <button class=iconbutton type=button aria-label="Menu">
-      <svg aria-hidden=true><use href="#menu-icon"></use></svg>
+    <button class="iconbutton" type=button aria-label="Menu">
+      <svg aria-hidden=true><use href=#menu-icon></use></svg>
     </button>
     <a class="info <button> iconbutton" aria-label="Next">
-      <svg aria-hidden=true><use href="#next-icon"></use></svg>
+      <svg aria-hidden=true><use href=#next-icon></use></svg>
     </a>
     <button class="ok iconbutton" type=button aria-label="Cut">
-      <svg aria-hidden=true><use href="#cut-icon"></use></svg>
+      <svg aria-hidden=true><use href=#cut-icon></use></svg>
     </button>
     <a class="warn <button> iconbutton" aria-label="Close">
-      <svg aria-hidden=true><use href="#close-icon"></use></svg>
+      <svg aria-hidden=true><use href=#close-icon></use></svg>
     </a>
     <button class="bad iconbutton" type=button aria-label="Trans">
-      <svg aria-hidden=true><use href="#trans-icon"></use></svg>
+      <svg aria-hidden=true><use href=#trans-icon></use></svg>
     </button>
     <a class="info <button> iconbutton" aria-label="Smile">
-      <svg aria-hidden=true><use href="#smile-icon"></use></svg>
+      <svg aria-hidden=true><use href=#smile-icon></use></svg>
     </a>
     <button class="ok iconbutton" type=button aria-label="Music">
-      <svg aria-hidden=true><use href="#music-icon"></use></svg>
+      <svg aria-hidden=true><use href=#music-icon></use></svg>
     </button>
   </section>
 
 </figure>
+
+<figure>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Big icon button markup</figcaption>
+
+  ~~~ html
+  <section class="flex-row justify-content:space-between">
+    <button class="<big> iconbutton" type=button aria-label="Menu">
+      <svg aria-hidden=true><use href=#menu-icon></use></svg>
+    </button>
+    <!-- ... -->
+  </section>
+  ~~~
+
+  <hr>
+
+  <section class="flex-row justify-content:space-between">
+    <button class="<big> iconbutton" type=button aria-label="Menu">
+      <svg aria-hidden=true><use href=#menu-icon></use></svg>
+    </button>
+    <a class="<big> info <button> iconbutton" aria-label="Next">
+      <svg aria-hidden=true><use href=#next-icon></use></svg>
+    </a>
+    <button class="<big> ok iconbutton" type=button aria-label="Cut">
+      <svg aria-hidden=true><use href=#cut-icon></use></svg>
+    </button>
+    <a class="<big> warn <button> iconbutton" aria-label="Close">
+      <svg aria-hidden=true><use href=#close-icon></use></svg>
+    </a>
+    <button class="<big> bad iconbutton" type=button aria-label="Trans">
+      <svg aria-hidden=true><use href=#trans-icon></use></svg>
+    </button>
+    <a class="<big> info <button> iconbutton" aria-label="Smile">
+      <svg aria-hidden=true><use href=#smile-icon></use></svg>
+    </a>
+    <button class="<big> ok iconbutton" type=button aria-label="Music">
+      <svg aria-hidden=true><use href=#music-icon></use></svg>
+    </button>
+  </section>
+
+</figure>
+
 
 [colorway]: /docs/colorways

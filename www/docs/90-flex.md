@@ -5,7 +5,12 @@ url: ./flex/
 
 # Flexbox
 
-[[toc]]
+<details>
+  <summary>Contents:</summary>
+
+  [[toc]]
+
+</details>
 
 
 ## Flex containers
@@ -13,10 +18,12 @@ url: ./flex/
 <dfn>`.flex-row`</dfn> and <dfn>`.flex-column`</dfn> will create non-wrapping Flexbox containers, with `flex-direction` set to `row` and `column` respectively.
 
 <dfn>`.flex-switch`</dfn> will create a Flexbox container that will switch from row to column when the width of an individual descendant exceeds the <dfn>`--flex-switch-threshold`</dfn> variable (default `15ch`).
+Pair this with `.flex-wrap:wrap-reverse` to reverse the order when displayed as a column.
 
 All of `.flex-row`, `.flex-column` and `.flex-switch` will remove margins from their children, and have a [gap] set to `--gap`.
 
-<strong class="bad color">Deprecated:</strong> The original names for these classes, `.f-row`, `.f-col`, and `.f-switch` (as well as `--f-switch-threshold`), have been deprecated in favor of the more intuitive names given above. The original names will be removed in version 2.0.
+**Deprecated:**{.bad .color} The original names for these classes, `.f-row`, `.f-col`, and `.f-switch` (as well as `--f-switch-threshold`), have been deprecated in favor of the more intuitive names given above.
+The original names will be removed in version 2.0.
 
 [gap]: https://developer.mozilla.org/en-US/docs/Web/CSS/gap
 
@@ -49,6 +56,7 @@ The following utility classes are meant to be applied to flex containers:
 
  - <dfn>`.flex-wrap:nowrap`</dfn>
  - <dfn>`.flex-wrap:wrap`</dfn>
+ - <dfn>`.flex-wrap:wrap-reverse`</dfn>
 
 
 ## Flex children

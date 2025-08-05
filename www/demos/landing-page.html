@@ -1,116 +1,110 @@
 ---
 layout: layout.vto
-name: Landing Page
+title: Landing Page
 ---
 
 <header class="navbar">
-    <nav>
-        <ul role="list">
-            <li>
-                <a href="asdasd">adsasd</a>
-            </li>
-        </ul>
-    </nav>
+	<nav>
+		<ul role=list>
+		<li><a href=#>adsasd</a>
+		</ul>
+	</nav>
 </header>
 
 <main class="airy">
-    <big-screen class="dense">
-        <h1>So easy, even a programmer can do it</h1>
-        
-        <p>
-            Missing.css is the stylesheet you've been looking for. Build an enticing 
-            landing page, an admin dashboard, or even an online shop with the design
-            work already done.
-        </p>
-    
-        <tool-bar>
-            <strong><button aria-controls="signup-form" aria-expanded="false" type="button">Sign up</button></strong>
-            <a class="<button>" href="#">Learn more</a>
-        </tool-bar>
-        
-    </big-screen>
+	<div class="dense">
+		<h1>So easy, even a programmer can do it</h1>
 
-    <div>
-        <form hidden id="signup-form" class="box dense absolute">
-            <h4>Sign up to our mailing list</h4>
-            <div class="table rows">
-                <p>
-                    <label for="email-in">Email</label>
-                    <input type="email" name="email" id="email-in" placeholder="you@example.com">
-                </p>
-                <p>
-                    <label for="update-freq">Update frequency</label>
-                    <radio-buttons id="update-freq">
-                        <input type="radio" name="upd-freq-in" id="upd-all" checked>
-                        <label for="upd-all">All updates</label>
-    
-                        <input type="radio" name="upd-freq-in" id="upd-important">
-                        <label for="upd-important">Most important</label>
-    
-                        <input type="radio" name="upd-freq-in" id="upd-weekly">
-                        <label for="upd-weekly">Weekly digest</label>
-                    </radio-buttons>
-                </p>
-            </form-table>
-            <p><button>Sign Up</button></p>
-        </form>
-    </div>
+		<p>
+		Missing.css is the stylesheet you've been looking for.
+		Build an enticing landing page, an admin dashboard, or even an online shop with the design work already done.
+		</p>
 
-    <p>
-        <b class="lede">
-            All websites these days look the same anyway,
-            so why should it be so much work to design one?
-        </b>
-        We want to unleash the power of classless CSS. Lorem ipsum dolor sit 
-        amet consectetur adipisicing elit. Aliquam odit animi iure autem magni
-        molestiae architecto, earum, quaerat quisquam, totam at sequi eum. 
-        Rerum ipsam consequatur autem eaque et velit?
-    </p>
+		<section role=toolbar>
+			<strong>
+			  <button
+					aria-controls=signup-form
+					aria-expanded=false
+					onclick="this.ariaExpanded = !document.getElementById('signup-form').toggleAttribute('hidden')"
+				>
+				  Sign up
+				</button>
+			</strong>
+			<a class="<button>" href=#>Learn more</a>
+		</section>
+	</div>
 
-    <ul role="list" class="flex-switch dense">
-        <li class="box">
-            <h2 class="<h4>">Beautiful by default</h2>
-            <p>Just drop the stylesheet in and use semantic HTML.</p>
-        </li>
-        <li class="box">
-            <h2 class="<h4>">Accessible structures</h2>
-            <p>Mark up tabs and other components and we'll handle the styling.</p>
-        </li>
-        <li class="box">
-            <h2 class="<h4>">Useful components</h2>
-            <p>...such as these cards!</p>
-        </li>
-    </ul>
+	<form hidden id=signup-form class="crowded box">
+		<h4>Sign up to our mailing list</h4>
+		<div class="table rows">
+			<p>
+				<label for=email-in>Email</label>
+				<input type=email name=email id=email-in placeholder="you@example.com">
+			</p>
+			<div role=radiogroup aria-labelledby=update-freq>
+				<span id=update-freq>Update frequency</span>
+				<div>
+					<div><label><input type=radio name=freq value=all checked> All updates</label></div>
+					<div><label><input type=radio name=freq value=most       > Most important</label></div>
+					<div><label><input type=radio name=freq value=week       > Weekly digest</label></div>
+				</div>
+			</div>
+		</div>
+		<p><button>Sign Up</button></p>
+	</form>
+
+	<p>
+		<b class="lede">
+		All websites these days look the same anyway,
+		so why should it be so much work to design one?
+		</b>
+		We want to unleash the power of classless CSS.
+		Lorem ipsum dolor sit amet consectetur adipisicing elit.
+		Aliquam odit animi iure autem magni molestiae architecto, earum, quaerat quisquam, totam at sequi eum.
+		Rerum ipsam consequatur autem eaque et velit?
+	</p>
+
+	<ul role=list class="flex-switch dense">
+		<li class="box">
+			<h2 class="<h4>">Beautiful by default</h2>
+			<p>Just drop the stylesheet in and use semantic HTML.</p>
+		<li class="box">
+			<h2 class="<h4>">Accessible structures</h2>
+			<p>Mark up tabs and other components and we'll handle the styling.</p>
+		<li class="box">
+			<h2 class="<h4>">Useful components</h2>
+			<p>...such as these cards!</p>
+	</ul>
 </main>
 
 <footer>
-    <nav class="flex-switch">
-        <div>
-            <h4>Company</h4>
-            <ul role="list">
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">Certifications</a></li>
-            </ul>
-        </div>
+	<nav class="flex-switch">
+		<div>
+			<h4>Company</h4>
+			<ul role=list>
+			<li><a href=#>About Us</a>
+			<li><a href=#>Contact</a>
+			<li><a href=#>Certifications</a>
+			</ul>
+		</div>
 
-        <div>
-            <h4>Product</h4>
-            <ul role="list">
-                <li><a href="#">Missing.css</a></li>
-                <li><a href="#">Documentation</a></li>
-                <li><a href="#">Developers</a></li>
-            </ul>
-        </div>
+		<div>
+			<h4>Product</h4>
+			<ul role=list>
+			<li><a href=#>Missing.css</a>
+			<li><a href=#>Documentation</a>
+			<li><a href=#>Developers</a>
+			</ul>
+		</div>
 
-        <div>
-            <h4>Legal</h4>
-            <ul role="list">
-                <li><a href="#">Privacy Statement</a></li>
-                <li><a href="#">End User License Agreement</a></li>
-            </ul>
-        </div>
-    </nav>
+		<div>
+			<h4>Legal</h4>
+			<ul role=list>
+			<li><a href=#>Privacy Statement</a>
+			<li><a href=#>End User License Agreement</a>
+			</ul>
+		</div>
+	</nav>
 
-    <p><small>&copy; 2022 Fictitious CSS Industries</small></p>
+	<p><small>&copy; 2022 Fictitious CSS Industries</small></p>
 </footer>

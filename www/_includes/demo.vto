@@ -1,0 +1,45 @@
+---
+layout: layout.vto
+crumbs:
+ - url: /
+   title: Home
+ - url: /demos/
+   title: Demos
+---
+
+<main>
+
+{{ include "breadcrumbs.vto" }}
+<h1>{{ title }}</h1>
+
+{{ if apg }}
+<blockquote>
+	<p>{{ apg.quote }}</p>
+	<small>
+		— <a href={{ apg.url }}>{{ title }} Pattern</a>,
+		<cite>WAI ARIA Authoring Practices Guide (APG)</cite>
+	</small>
+</blockquote>
+{{ /if }}
+
+{{ content }}
+
+</main>
+
+<footer>
+	{{ set prev = search.previousPage(url, "url^=/demos/apg/", "page.src.path") }}
+	{{ set next = search.nextPage(url, "url^=/demos/apg/", "page.src.path") }}
+
+	<div class="flex-row flex-wrap:wrap justify-content:space-between">
+		{{ if prev }}
+		<div>Previous &larr;
+			<strong><a href={{ prev.url }}>{{ prev.title }}</a></strong>
+		</div>
+		{{ /if }}
+		{{ if next }}
+		<div>Next &rarr;
+			<strong><a href={{ next.url }}>{{ next.title }}</a></strong>
+		</div>
+		{{ /if }}
+	</div>
+</footer>

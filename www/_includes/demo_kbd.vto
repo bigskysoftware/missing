@@ -1,0 +1,11 @@
+<h2>Keyboard Interaction</h2>
+
+{{ if shortcuts }}
+<ul role=list>
+{{ for s of shortcuts }}
+ <li>{{ if s.keys }}<kbd>{{ for key of s.keys }}<kbd>{{ key }}</kbd> {{ /for }}</kbd>: {{ /if }}{{ s.text }}
+ {{ /for }}
+</ul>
+{{ else }}
+<p>Not applicable.</p>
+{{ /if }}

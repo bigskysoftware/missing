@@ -11,20 +11,25 @@ Missing.js is a JavaScript library implementing common UI patterns.
 {{ set version = search.pages("release!=undefined") |>
     map(rel => rel.release) |> sortSemVer |> at(-1) }}
 
-[[toc]]
+<details>
+  <summary>Contents:</summary>
+
+  [[toc]]
+
+</details>
+
 
 ## Tabs
 
 _See [ARIA &sect; Tabs](/docs/aria/#tabs)_
 
-Add `tabs.js` **as a module script** to your page
-and mark up your tabs with the appropriate ARIA roles.
+Add `tabs.js` **as a module script** to your page and mark up your tabs with the appropriate ARIA roles.
 Behavior will be added automatically.
 
 <figure>
 
   ~~~ html
-  <script type="module" src="https://unpkg.com/missing.css@{{ version }}/dist/js/tabs.js"></script>
+  <script type=module src=https://unpkg.com/missing.css@{{ version }}/dist/js/tabs.js></script>
   ~~~
 
 </figure>
@@ -46,13 +51,14 @@ The tabs behavior emits these custom events:
 
 <figure class="plain">
 
+  <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Initializing a missing.js behavior on newly inserted content</figcaption>
+
   ~~~ js
   import tabs from "https://unpkg.com/missing.css@{{ version }}/dist/js/tabs.js";
   // ... insert some content ...
-  tabs(theContentIJustInserted);
+  tabs(theContentIJustInserted)
   ~~~
 
-  <figcaption>Initializing a missing.js behavior on newly inserted content</figcaption>
 
 </figure>
 
@@ -63,6 +69,7 @@ you could pass the whole `document` every time if you wanted to.
 
 </div>
 
+
 ## Menu
 
 _See [ARIA &sect; menu](/docs/aria/#menu)_
@@ -70,7 +77,7 @@ _See [ARIA &sect; menu](/docs/aria/#menu)_
 <figure>
 
   ~~~ html
-  <script type="module" src="https://unpkg.com/missing.css@{{ version }}/dist/js/menu.js">
+  <script type=module src=https://unpkg.com/missing.css@{{ version }}/dist/js/menu.js>
   ~~~
 
 </figure>
@@ -88,9 +95,9 @@ or
 The menu behavior emits these custom events:
 
 - **`menu:close`** on a menu after it closes
-  - `detail.opener`: the `[aria-haspopup=menu]` element used to close the menu
+  - `detail.opener`: the `aria-haspopup=menu`{.token .attr-name} element used to close the menu
 - **`menu:open`** on a menu after it opens
-  - `detail.opener`: the `[aria-haspopup=menu]` element used to open the menu
+  - `detail.opener`: the `aria-haspopup=menu`{.token .attr-name} element used to open the menu
 
 All notes above about initializing dynamic content apply here.
 
@@ -102,7 +109,7 @@ _See [ARIA &sect; feed](/docs/aria/#feed)_
 <figure>
 
   ~~~ html
-  <script type="module" src="https://unpkg.com/missing.css@{{ version }}/dist/js/feed.js">
+  <script type=module src=https://unpkg.com/missing.css@{{ version }}/dist/js/feed.js>
   ~~~
 
 </figure>
@@ -120,8 +127,6 @@ or
 All notes above about initializing dynamic content apply here.
 
 
-
-
 ## Expand/collapse navbar
 
 _See [Components &sect; Navbar](/docs/components/#navbar)_
@@ -129,18 +134,18 @@ _See [Components &sect; Navbar](/docs/components/#navbar)_
 <figure>
 
   ~~~ html
-  <script type="module" src="https://unpkg.com/missing.css@{{ version }}/dist/js/overflow-nav.js">
+  <script type=module src=https://unpkg.com/missing.css@{{ version }}/dist/js/overflow-nav.js>
   ~~~
 
 </figure>
 
 Make sure to add:
 
- - the `data-overflow-nav` attribute to your navbar.
- - inside that navbar, a button with a `data-nav-expander` attribute.
+ - the `data-overflow-nav`{.token .attr-name} attribute to your navbar.
+ - inside that `.navbar`{.language-css}, a button with a `data-nav-expander`{.attr .attr-name} attribute.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>:</v-h></sub-title>Collapsing navbar markup</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Collapsing navbar markup</figcaption>
 
   ~~~ html
   <header class="navbar" data-overflow-nav>
@@ -155,5 +160,4 @@ Make sure to add:
 
 The navbar will remain horizontally scrollable.
 
-All notes above about initializing dynamic content apply here
-(for all those times you dynamically add navbars to your page).
+All notes above about initializing dynamic content apply here (for all those times you dynamically add navbars to your page).

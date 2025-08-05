@@ -1,11 +1,35 @@
 .textcolumns {
-    --col-width: 30ch;
-    column-width: var(--col-width);
-    column-gap: var(--gap);
-    margin-block: var(--gap);
+  --col-width: 30ch;
 
-    & :first-child { margin-block-start: 0 !important }
+  column-width: var(--col-width);
+  column-gap: var(--gap);
+  margin-block: var(--gap);
+
+  & :first-child { margin-block-start: 0 !important }
+
+  &:is(dl) {
+    @supports (break-after: avoid-column) {
+      & dt {
+        break-after: avoid-column;
+        break-inside: avoid-column;
+        orphans: 2;
+        widows: 2;
+      }
+      & dd {
+        break-before: avoid-column;
+        break-inside: avoid-column;
+        orphans: 2;
+        widows: 2;
+      }
+    }
+
+    > div:has(dt):has(dd) {
+      break-inside: avoid-column;
+    }
+  }
 }
+
+
 
 .text-align\:center {
     text-align: center;
@@ -235,3 +259,59 @@
 .overflow\:clip     { overflow: clip;     }
 .overflow-x\:clip   { overflow-x: clip;   }
 .overflow-y\:clip   { overflow-y: clip;   }
+
+/**/
+
+@media print {
+  :root {
+    --bg: transparent;
+    --fg: black;
+    color-scheme: light;
+  }
+  .titlebar,
+  role[menuitem] {
+    /* These use `color: var(--bg);` */
+    --bg: white;
+    text-shadow: none;
+  }
+
+  main, .container {
+    max-inline-size: unset;
+    width: auto;
+  }
+
+  h1, h2, h3, h4, h5, h6,
+  table, tr, th, td,
+  blockquote,
+  pre, code,
+  ol, li, dt, dd,
+  .box, dialog, details, summary,
+  img, figure, figcaption,
+  video, audio, object, embed,
+  fieldset, legend,
+  input, textarea, select, button,
+  header, footer, nav, aside, search,
+  section {
+    break-inside: avoid-page;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    break-after: avoid-page;
+  }
+  p {
+    orphans: 2;
+    widows: 2;
+  }
+
+  a:not([href^="#"]):not(:has(> *))::after {
+    content: " (" attr(href) ")";
+    font-size: 80%;
+  }
+  abbr[title]::after {
+    content: " (" attr(title) ")";
+  }
+  @supports selector(::details-content) {
+    details::details-content {
+      content-visibility: visible;
+    }
+  }
+}
