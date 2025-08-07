@@ -6,15 +6,21 @@ templateEngine: [vento, md]
 
 <header>
 
-# <span class=allcaps>missing<wbr>.css<v-h>:</v-h></span> <sub-title>The Missing CSS Stylesheet</sub-title>
+<h1 class="flex-row crowded">
+  <img src="/img/logo/missing-logo.svg"
+    style="width: 1.5lh; aspect-ratio: 1/1;">
+  <span class="flex-column packed">
+    <span class=allcaps>missing<wbr>.css<v-h>:</v-h></span> <sub-title>The Missing CSS Stylesheet</sub-title>
+  </span>
+</h1>
 
 <nav>
 
-[Docs](/docs/) 
-[Demos](/demos/) 
-[Playground](/playground/) 
-[Releases](/releases/) 
-[GitHub](https://github.com/bigskysoftware/missing) 
+[Docs](/docs/)
+[Demos](/demos/)
+[Playground](/playground/)
+[Releases](/releases/)
+[GitHub](https://github.com/bigskysoftware/missing)
 [Discord](https://htmx.org/discord)
 {.tool-bar}
 
@@ -59,7 +65,7 @@ Though it's quite early, there are a few sites using missing.css:
  - <https://www.davidaflood.com>
 -->
 
-Missing.css is a notch on the complexity slider that's just right for small projects and personal sites where 
+Missing.css is a notch on the complexity slider that's just right for small projects and personal sites where
  classless CSS is not enough,
  Tailwind is too much, and
  Bootstrap just doesn't have the right vibe.
