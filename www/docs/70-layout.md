@@ -352,6 +352,35 @@ The <dfn>`.row`</dfn> class can be used to create a table row, or you can make a
 
 </figure>
 
+Pseudo-tables work nicely with description lists:
+
+<figure>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Pseudo-table markup for description lists</figcaption>
+
+  ~~~ html
+  <dl class="table rows">
+    <div><dt>Name:     <dd>Anakin Skywalker</div>
+    <div><dt>Alias:    <dd>Darth Vader     </div>
+    <div><dt>Species:  <dd>Human           </div>
+    <div><dt>Gender:   <dd>Male            </div>
+    <div><dt>Spouse:   <dd>Padmé Amadala   </div>
+    <div><dt>Homeworld:<dd>Tatooine        </div>
+  </dl>
+  ~~~
+
+  <hr>
+
+  <dl class="table rows">
+    <div><dt>Name:     <dd>Anakin Skywalker</div>
+    <div><dt>Alias:    <dd>Darth Vader     </div>
+    <div><dt>Species:  <dd>Human           </div>
+    <div><dt>Gender:   <dd>Male            </div>
+    <div><dt>Spouse:   <dd>Padmé Amadala   </div>
+    <div><dt>Homeworld:<dd>Tatooine        </div>
+  </dl>
+
+</figure>
+
 
 ## Positioning
 
