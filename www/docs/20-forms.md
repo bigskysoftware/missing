@@ -108,7 +108,7 @@ Buttons, `.<button>` [masquerades][], and `<input type=file>`{.language-html} al
     <table id=button-table class="table">
     <caption>Button demonstration</caption>
     <thead>
-      <tr><th><th><th><code>.ok</code><th><code>.info</code><th><code>.warn</code><th><code>.bad</code>
+      <tr><th><th><th><code>.info</code><th><code>.ok</code><th><code>.warn</code><th><code>.bad</code>
     <tbody>
       <tr><th scope=row><code>&lt;button&gt;</code>
           <td><button>Plain</button>
@@ -156,48 +156,48 @@ Buttons, `.<button>` [masquerades][], and `<input type=file>`{.language-html} al
     <table id=button-table class="table">
     <caption>Button demonstration</caption>
     <thead>
-      <tr><th><th><th><code>.ok</code><th><code>.info</code><th><code>.warn</code><th><code>.bad</code>
+      <tr><th><th><th><code>.info</code><th><code>.ok</code><th><code>.warn</code><th><code>.bad</code>
     <tbody>
       <tr><th scope=row><code>&lt;button&gt;</code>
           <td><button>Plain</button>
-          <td><button class="ok">Open</button>
           <td><button class="info">Info</button>
+          <td><button class="ok">Open</button>
           <td><button class="warn" type=reset>Reset</button>
           <td><button class="bad" formaction=dialog>Close</button>
       <tr><th scope=row class="padding-inline-start"><code>:disabled</code>
           <td><button disabled>Plain</button>
-          <td><button disabled class="ok">Open</button>
           <td><button disabled class="info">Info</button>
+          <td><button disabled class="ok">Open</button>
           <td><button disabled class="warn" type=reset>Reset</button>
           <td><button disabled class="bad" formaction=dialog>Close</button>
       <tr><th scope=row class="padding-inline-start"><code>[aria-pressed=true]</code>
           <td><button aria-pressed=true onclick="toggle(this)">Plain</button>
-          <td><button aria-pressed=true class="ok" onclick="toggle(this)">Open</button>
           <td><button aria-pressed=true class="info" onclick="toggle(this)">Info</button>
+          <td><button aria-pressed=true class="ok" onclick="toggle(this)">Open</button>
           <td><button aria-pressed=true class="warn" onclick="toggle(this)">Reset</button>
           <td><button aria-pressed=true class="bad" onclick="toggle(this)">Close</button>
       <tr><th scope=row><code>&lt;strong&gt;&lt;button&gt;</code>
           <td><strong><button>Plain</button></strong>
-          <td><strong><button class="ok">Open</button></strong>
           <td><strong><button class="info">Info</button></strong>
+          <td><strong><button class="ok">Open</button></strong>
           <td><strong><button class="warn" type=reset>Reset</button></strong>
           <td><strong><button class="bad" formaction=dialog>Close</button></strong>
       <tr><th scope=row class="padding-inline-start"><code>:disabled</code>
           <td><strong><button disabled>Plain</button></strong>
-          <td><strong><button disabled class="ok">Open</button></strong>
           <td><strong><button disabled class="info">Info</button></strong>
+          <td><strong><button disabled class="ok">Open</button></strong>
           <td><strong><button disabled class="warn" type=reset>Reset</button></strong>
           <td><strong><button disabled class="bad" formaction=dialog>Close</button></strong>
       <tr><th scope=row class="padding-inline-start"><code>[aria-pressed=true]</code>
           <td><strong><button aria-pressed=true onclick="toggle(this)">Plain</button></strong>
-          <td><strong><button aria-pressed=true class="ok" onclick="toggle(this)">Open</button></strong>
           <td><strong><button aria-pressed=true class="info" onclick="toggle(this)">Info</button></strong>
+          <td><strong><button aria-pressed=true class="ok" onclick="toggle(this)">Open</button></strong>
           <td><strong><button aria-pressed=true class="warn" onclick="toggle(this)">Reset</button></strong>
           <td><strong><button aria-pressed=true class="bad" onclick="toggle(this)">Close</button></strong>
       <tr><th scope=row><code>&lt;a class="&lt;button&gt;"&gt;</code>
           <td><a href=#button-table class="<button>">Plain</a></button>
-          <td><a href=#button-table class="ok <button>">Open</a></button>
           <td><a href=#button-table class="info <button>">Info</a></button>
+          <td><a href=#button-table class="ok <button>">Open</a></button>
           <td><a href=#button-table class="warn <button>">Reset</a></button>
           <td><a href=#button-table class="bad <button>">Close</a></button>
     </table>
@@ -210,15 +210,15 @@ Buttons, `.<button>` [masquerades][], and `<input type=file>`{.language-html} al
   <section class="crowded flex-switch">
     <div class="flex-column">
       <input type=file>
-      <input type=file class="ok">
       <input type=file class="info">
+      <input type=file class="ok">
       <input type=file class="warn">
       <input type=file class="bad">
     </div>
     <div class="flex-column">
       <strong><input type=file></strong>
-      <strong><input type=file class="ok"></strong>
       <strong><input type=file class="info"></strong>
+      <strong><input type=file class="ok"></strong>
       <strong><input type=file class="warn"></strong>
       <strong><input type=file class="bad"></strong>
     </div>
