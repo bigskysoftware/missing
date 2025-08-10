@@ -246,7 +246,7 @@ You can use the `.table` and `.rows` classes to create a form with inputs lined 
     <p><label for=tf-text>Text</label> <input id=tf-text></p>
     <p><label for=tf-sel>Select</label> <select id=tf-sel><option>Option</select></p>
     <p><label for=tf-textarea>Textarea</label> <textarea id=tf-textarea rows=4></textarea></p>
-    <p><label for=tf-text>Text</label> <input id=tf-text></p>
+    <p><label for=tf-text-2>Text</label> <input id=tf-text-2></p>
   </form>
 </figure>
 
@@ -288,8 +288,8 @@ Notice that the wrapper has `role=radiogroup`{.token .attr-name} and its `aria-l
 
   <form class="table rows">
     <div>
-      <label for="item">Item</label>
-      <select>
+      <label for=item>Item</label>
+      <select id=item>
         <option>Wallet
         <option>Skyscraper
         <option>Typewriter
