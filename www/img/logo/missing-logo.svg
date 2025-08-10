@@ -3,10 +3,11 @@
   id="missing-logo"
 	width="48"
 	height="48"
-	viewBox="0 0 48 48"
+	viewBox="4 4 44 44"
 	xmlns="http://www.w3.org/2000/svg"
 	xmlns:svg="http://www.w3.org/2000/svg"
 >
+  <view id="uncropped" viewBox="0 0 48 48"/>
 	<style>
 		.tab    { fill: #979b9d } /* --gray-6   */
 		.alt    { fill: #d1d6d8 } /* --gray-4   */
