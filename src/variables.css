@@ -29,55 +29,54 @@
 	--bad-bg: light-dark(var(--red-1), var(--red-12));
 	--warn-bg: light-dark(var(--yellow-1), var(--yellow-12));
 
-	--accent: light-dark(var(--blue-10), var(--blue-2)); /* Accent color. Will be used *as a text color* with a
-		background of --c-bg and --c-bg-2 -- check contrast! */
+	--accent: light-dark(var(--blue-10), var(--blue-2)); /* Accent color.
+	Will be used *as a text color* with a background of --box-bg and --pressed-interactive-bg -- check contrast! */
 	--muted-accent: light-dark(var(--blue-7), var(--blue-5)); /* Muted accent color. Will not be used for text. */
 
 	/* Lengths */
-  --rhythm: 1.4rem; /* Deprecated, but must provide in case people use it in calc() */
+	--rhythm: 1.4rem; /* Deprecated, but must provide in case people use it in calc() */
 	--line-length: 40rem; /* Maximum line length for prose. */
 
-  /* Borders */
-  --border-width: unset; /* Single value; set for uniform border widths */
-  --border-block-start-width: var(--border-width, 1px);
-  --border-block-end-width: var(--border-width, 1px);
-  --border-inline-start-width: var(--border-width, 1px);
-  --border-inline-end-width: var(--border-width, 1px);
-  --border-style: unset; /* Single value; set for uniform border styles */
-  --border-block-start-style: var(--border-style, solid);
-  --border-block-end-style: var(--border-style, solid);
-  --border-inline-start-style: var(--border-style, solid);
-  --border-inline-end-style: var(--border-style, solid);
+	/* Borders */
+	--border-width: unset; /* Single value; set for uniform border widths */
+	--border-block-start-width: var(--border-width, 1px);
+	--border-block-end-width: var(--border-width, 1px);
+	--border-inline-start-width: var(--border-width, 1px);
+	--border-inline-end-width: var(--border-width, 1px);
+	--border-style: unset; /* Single value; set for uniform border styles */
+	--border-block-start-style: var(--border-style, solid);
+	--border-block-end-style: var(--border-style, solid);
+	--border-inline-start-style: var(--border-style, solid);
+	--border-inline-end-style: var(--border-style, solid);
 	--border-radius: .2rem; /* Accepts multiple values, e.g. 1em 0 */
 
-  --interactive-border-width: var(--border-width, 1px); /* Single value */
-  --interactive-border-style: var(--border-style, solid); /* Single value */
-  --interactive-border-radius: .2rem; /* Single value */
+	--interactive-border-width: var(--border-width, 1px); /* Single value */
+	--interactive-border-style: var(--border-style, solid); /* Single value */
+	--interactive-border-radius: .2rem; /* Single value */
 
-  --chip-border-width: var(--border-width, 1px); /* Single value */
-  --chip-border-style: var(--border-style, solid); /* Single value */
+	--chip-border-width: var(--border-width, 1px); /* Single value */
+	--chip-border-style: var(--border-style, solid); /* Single value */
 
-  --tab-border-radius: .4em; /* Single value */
+	--tab-border-radius: .4em; /* Single value */
 
-  /* Interactive shadows */
-  --shadow: 0 2px 4px -2px var(--fg);
-  --shadow-focus: 0 3px 6px -2px var(--fg);
-  --shadow-active: none;
-  --shadow-disabled: none;
-  --pressed-shadow: 0 2px 4px -1px var(--fg) inset;
-  --pressed-shadow-focus:  1 1px 3px -1px var(--fg) inset;
-  --pressed-shadow-active: 0 1px 5px -1px var(--fg) inset;
+	/* Interactive shadows */
+	--shadow: 0 2px 4px -2px var(--fg);
+	--shadow-focus: 0 3px 6px -2px var(--fg);
+	--shadow-active: none;
+	--shadow-disabled: none;
+	--pressed-shadow: 0 2px 4px -1px var(--fg) inset;
+	--pressed-shadow-focus:  1 1px 3px -1px var(--fg) inset;
+	--pressed-shadow-active: 0 1px 5px -1px var(--fg) inset;
 
 	/* Fonts */
 	--main-font: 'Source Sans 3', 'Source Sans Pro', -apple-system, system-ui, sans-serif;
 	--secondary-font: var(--main-font); /* UI elements and captions */
-  --display-font: var(--secondary-font); /* Headings */
-	--mono-font: 'M Plus Code Latin', monospace, monospace; /* monospace twice stops browsers from
-		shrinking this */
+	--display-font: var(--secondary-font); /* Headings */
+	--mono-font: 'M Plus Code Latin', monospace, monospace; /* monospace twice stops browsers from shrinking this */
 
-  /* Markers */
-  --breadcrumb-page: ' / ';
-  --breadcrumb-step: ' › ';
+	/* Markers */
+	--breadcrumb-page: ' / ';
+	--breadcrumb-step: ' › ';
 
 	/* Density */
 	--density: 1;
@@ -97,14 +96,14 @@
 			(
 				var(--full-width)        /* Viewport width */
 				- var(--eff-line-length) /* minus line width */
-			) / 2);                      /* Divide by 2: there are two page margins */
+			) / 2);                    /* Divide by 2: there are two page margins */
 }
 
 /* Respect the deprecated .-dark-theme and .-no-dark-theme classes */
 :root:not(:has(meta[name=color-scheme])) {
-  &.-dark-theme    { color-scheme: dark  }
-  &.-no-dark-theme { color-scheme: light }
-  &:not(.-dark-theme, .-no-dark-theme) { color-scheme: light dark }
+	&.-dark-theme    { color-scheme: dark  }
+	&.-no-dark-theme { color-scheme: light }
+	&:not(.-dark-theme, .-no-dark-theme) { color-scheme: light dark }
 }
 
 * {
@@ -112,7 +111,7 @@
 }
 
 * {
-  @supports (accent-color: #000) {
-    accent-color: var(--accent);
-  }
+	@supports (accent-color: #000) {
+		accent-color: var(--accent);
+	}
 }
