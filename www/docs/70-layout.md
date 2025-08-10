@@ -358,7 +358,7 @@ Pseudo-tables work nicely with description lists:
 <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Pseudo-table markup for description lists</figcaption>
 
   ~~~ html
-  <dl class="table rows">
+  <dl class="table rows" style="width: auto;">
     <div><dt>Name:     <dd>Anakin Skywalker</div>
     <div><dt>Alias:    <dd>Darth Vader     </div>
     <div><dt>Species:  <dd>Human           </div>
@@ -370,7 +370,7 @@ Pseudo-tables work nicely with description lists:
 
   <hr>
 
-  <dl class="table rows">
+  <dl class="table rows" style="width: auto;">
     <div><dt>Name:     <dd>Anakin Skywalker</div>
     <div><dt>Alias:    <dd>Darth Vader     </div>
     <div><dt>Species:  <dd>Human           </div>
