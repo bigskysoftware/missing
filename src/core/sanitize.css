@@ -148,12 +148,17 @@ textarea {
 
 /**
  * 1. Correct the odd appearance in Chrome, Edge, and Safari.
- * 2. Correct the outline style in Safari.
  */
 
 [type="search"] {
     -webkit-appearance: textfield; /* 1 */
-    outline-offset: -2px; /* 2 */
+}
+
+/**
+ * Correct input focus rings in Safari.
+ */
+input {
+    outline-offset: 0;
 }
 
 /**
