@@ -9,7 +9,7 @@
 >
 	<style>
 		.tab    { fill: #979b9d } /* --gray-6   */
-		.alt    { fill: #e0e4e5 } /* --gray-3   */
+		.alt    { fill: #d1d6d8 } /* --gray-4   */
 		.purple { fill: #be4bdb } /* --purple-6 */
 		.blue   { fill: #228be6 } /* --blue-6   */
 		.green  { fill: #40c057 } /* --green-6  */
