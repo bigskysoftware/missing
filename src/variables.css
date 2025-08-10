@@ -12,7 +12,7 @@
 	--bad-fg: light-dark(var(--red-11), var(--red-2));
 	--warn-fg: light-dark(var(--yellow-11), var(--yellow-2));
 
-	--plain-graphical-fg: light-dark(var(--gray-6), var(--blue-6));
+	--plain-graphical-fg: light-dark(var(--gray-6), var(--gray-6));
 	--info-graphical-fg: light-dark(var(--blue-6), var(--blue-6));
 	--ok-graphical-fg: light-dark(var(--green-6), var(--green-6));
 	--bad-graphical-fg: light-dark(var(--red-6), var(--red-6));
