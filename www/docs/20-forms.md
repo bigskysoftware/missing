@@ -39,6 +39,55 @@ Inputs outside labels will be `display:block`{.language-css}.
 
 Input placeholders are styled with `text-align:end`{.language-css} to better distinguish them from actual input.
 
+<figure>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Placeholder markup</figcaption>
+
+  ~~~ html
+  <form class="flex-row">
+    <div>
+      <label for=category>Category:</label>
+      <select id=category placeholder="Select a category...">
+        <option>Blues</option>
+        <!-- ... -->
+      </select>
+    </div>
+    <div>
+      <label for=search>Search:</label>
+      <input id=search type=search placeholder="Search...">
+    </div>
+    <div>
+      <label for=text>Text:</label>
+      <input id=text type=text placeholder="Type...">
+    </div>
+  </div>
+  ~~~
+
+  <hr>
+
+  <form class="flex-row">
+    <div>
+      <label for=category>Category:</label>
+      <select id=category placeholder="Select a category...">
+        <option>Blues</option>
+        <option>Dixieland</option>
+        <option>Swing</option>
+        <option>Bebop</option>
+        <option>Cool</option>
+        <option>Modal</option>
+      </select>
+    </div>
+    <div>
+      <label for=search>Search:</label>
+      <input id=search type=search placeholder="Search...">
+    </div>
+    <div>
+      <label for=text>Text:</label>
+      <input id=text type=text placeholder="Type...">
+    </div>
+  </form>
+
+</figure>
+
 
 ## Buttons
 
@@ -59,7 +108,7 @@ Buttons, `.<button>` [masquerades][], and `<input type=file>`{.language-html} al
     <table id=button-table class="table">
     <caption>Button demonstration</caption>
     <thead>
-      <tr><th><th><th><code>.ok</code><th><code>.info</code><th><code>.warn</code><th><code>.bad</code>
+      <tr><th><th><th><code>.info</code><th><code>.ok</code><th><code>.warn</code><th><code>.bad</code>
     <tbody>
       <tr><th scope=row><code>&lt;button&gt;</code>
           <td><button>Plain</button>
@@ -107,48 +156,48 @@ Buttons, `.<button>` [masquerades][], and `<input type=file>`{.language-html} al
     <table id=button-table class="table">
     <caption>Button demonstration</caption>
     <thead>
-      <tr><th><th><th><code>.ok</code><th><code>.info</code><th><code>.warn</code><th><code>.bad</code>
+      <tr><th><th><th><code>.info</code><th><code>.ok</code><th><code>.warn</code><th><code>.bad</code>
     <tbody>
       <tr><th scope=row><code>&lt;button&gt;</code>
           <td><button>Plain</button>
-          <td><button class="ok">Open</button>
           <td><button class="info">Info</button>
+          <td><button class="ok">Open</button>
           <td><button class="warn" type=reset>Reset</button>
           <td><button class="bad" formaction=dialog>Close</button>
       <tr><th scope=row class="padding-inline-start"><code>:disabled</code>
           <td><button disabled>Plain</button>
-          <td><button disabled class="ok">Open</button>
           <td><button disabled class="info">Info</button>
+          <td><button disabled class="ok">Open</button>
           <td><button disabled class="warn" type=reset>Reset</button>
           <td><button disabled class="bad" formaction=dialog>Close</button>
       <tr><th scope=row class="padding-inline-start"><code>[aria-pressed=true]</code>
           <td><button aria-pressed=true onclick="toggle(this)">Plain</button>
-          <td><button aria-pressed=true class="ok" onclick="toggle(this)">Open</button>
           <td><button aria-pressed=true class="info" onclick="toggle(this)">Info</button>
+          <td><button aria-pressed=true class="ok" onclick="toggle(this)">Open</button>
           <td><button aria-pressed=true class="warn" onclick="toggle(this)">Reset</button>
           <td><button aria-pressed=true class="bad" onclick="toggle(this)">Close</button>
       <tr><th scope=row><code>&lt;strong&gt;&lt;button&gt;</code>
           <td><strong><button>Plain</button></strong>
-          <td><strong><button class="ok">Open</button></strong>
           <td><strong><button class="info">Info</button></strong>
+          <td><strong><button class="ok">Open</button></strong>
           <td><strong><button class="warn" type=reset>Reset</button></strong>
           <td><strong><button class="bad" formaction=dialog>Close</button></strong>
       <tr><th scope=row class="padding-inline-start"><code>:disabled</code>
           <td><strong><button disabled>Plain</button></strong>
-          <td><strong><button disabled class="ok">Open</button></strong>
           <td><strong><button disabled class="info">Info</button></strong>
+          <td><strong><button disabled class="ok">Open</button></strong>
           <td><strong><button disabled class="warn" type=reset>Reset</button></strong>
           <td><strong><button disabled class="bad" formaction=dialog>Close</button></strong>
       <tr><th scope=row class="padding-inline-start"><code>[aria-pressed=true]</code>
           <td><strong><button aria-pressed=true onclick="toggle(this)">Plain</button></strong>
-          <td><strong><button aria-pressed=true class="ok" onclick="toggle(this)">Open</button></strong>
           <td><strong><button aria-pressed=true class="info" onclick="toggle(this)">Info</button></strong>
+          <td><strong><button aria-pressed=true class="ok" onclick="toggle(this)">Open</button></strong>
           <td><strong><button aria-pressed=true class="warn" onclick="toggle(this)">Reset</button></strong>
           <td><strong><button aria-pressed=true class="bad" onclick="toggle(this)">Close</button></strong>
       <tr><th scope=row><code>&lt;a class="&lt;button&gt;"&gt;</code>
           <td><a href=#button-table class="<button>">Plain</a></button>
-          <td><a href=#button-table class="ok <button>">Open</a></button>
           <td><a href=#button-table class="info <button>">Info</a></button>
+          <td><a href=#button-table class="ok <button>">Open</a></button>
           <td><a href=#button-table class="warn <button>">Reset</a></button>
           <td><a href=#button-table class="bad <button>">Close</a></button>
     </table>
@@ -161,15 +210,15 @@ Buttons, `.<button>` [masquerades][], and `<input type=file>`{.language-html} al
   <section class="crowded flex-switch">
     <div class="flex-column">
       <input type=file>
-      <input type=file class="ok">
       <input type=file class="info">
+      <input type=file class="ok">
       <input type=file class="warn">
       <input type=file class="bad">
     </div>
     <div class="flex-column">
       <strong><input type=file></strong>
-      <strong><input type=file class="ok"></strong>
       <strong><input type=file class="info"></strong>
+      <strong><input type=file class="ok"></strong>
       <strong><input type=file class="warn"></strong>
       <strong><input type=file class="bad"></strong>
     </div>
@@ -197,7 +246,7 @@ You can use the `.table` and `.rows` classes to create a form with inputs lined 
     <p><label for=tf-text>Text</label> <input id=tf-text></p>
     <p><label for=tf-sel>Select</label> <select id=tf-sel><option>Option</select></p>
     <p><label for=tf-textarea>Textarea</label> <textarea id=tf-textarea rows=4></textarea></p>
-    <p><label for=tf-text>Text</label> <input id=tf-text></p>
+    <p><label for=tf-text-2>Text</label> <input id=tf-text-2></p>
   </form>
 </figure>
 
@@ -239,8 +288,8 @@ Notice that the wrapper has `role=radiogroup`{.token .attr-name} and its `aria-l
 
   <form class="table rows">
     <div>
-      <label for="item">Item</label>
-      <select>
+      <label for=item>Item</label>
+      <select id=item>
         <option>Wallet
         <option>Skyscraper
         <option>Typewriter
@@ -255,6 +304,160 @@ Notice that the wrapper has `role=radiogroup`{.token .attr-name} and its `aria-l
       </div>
     </div>
   </form>
+</figure>
+
+
+## Select
+
+Missing.css will attempt to style `<select>`{.language-html} elements consistently across browsers.
+[Colorway][colorways] support is limited until [browser support][] for [custom selects][] improves.
+
+[browser support]: https://caniuse.com/mdn-css_properties_appearance_base-select
+[custom selects]: https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Customizable_select
+
+<figure>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Select dropdown markup</figcaption>
+
+  ~~~ html
+  <form class="flex-switch">
+    <div>
+    <label for=none>None:</label>
+    <select id=none>
+      <option>One</option>
+      <option>Two</option>
+      <option>Three</option>
+    </select>
+    </div>
+    <!-- ... -->
+    <div>
+    <label for=bad>Bad:</label>
+    <select id=bad class="bad">
+      <option>One</option>
+      <option>Two</option>
+      <option>Three</option>
+    </select>
+    </div>
+  </form>
+
+  <span class="aestheticbreak"></span>
+
+  <form class="flex-switch">
+    <!-- ... -->
+    <label for=info>Info:
+    <select id=info class="info color bg">
+      <option>One</option>
+      <option>Two</option>
+      <option>Three</option>
+    </select>
+    <-- ... -->
+  </form>
+
+  ~~~
+
+  <hr>
+
+  <form class="flex-switch">
+    <div>
+    <label for=none>None:</label>
+    <select id=none>
+      <option>One</option>
+      <option>Two</option>
+      <option>Three</option>
+    </select>
+    </div>
+    <div>
+    <label for=plain>Plain:</label>
+    <select id=plain class="plain">
+      <option>One</option>
+      <option>Two</option>
+      <option>Three</option>
+    </select>
+    </div>
+    <div>
+    <label for=info>Info:</label>
+    <select id=info class="info">
+      <option>One</option>
+      <option>Two</option>
+      <option>Three</option>
+    </select>
+    </div>
+    <div>
+    <label for=ok>OK:</label>
+    <select id=ok class="ok">
+      <option>One</option>
+      <option>Two</option>
+      <option>Three</option>
+    </select>
+    </div>
+    <div>
+    <label for=warn>Warn:</label>
+    <select id=warn class="warn">
+      <option>One</option>
+      <option>Two</option>
+      <option>Three</option>
+    </select>
+    </div>
+    <div>
+    <label for=bad>Bad:</label>
+    <select id=bad class="bad">
+      <option>One</option>
+      <option>Two</option>
+      <option>Three</option>
+    </select>
+    </div>
+  </form>
+  <span class="aestheticbreak"></span>
+  <form class="flex-switch">
+    <div>
+    <label for=none>None:</label>
+    <select id=none>
+      <option>One</option>
+      <option>Two</option>
+      <option>Three</option>
+    </select>
+    </div>
+    <div>
+    <label for=plain>Plain:</label>
+    <select id=plain class="plain bg color">
+      <option>One</option>
+      <option>Two</option>
+      <option>Three</option>
+    </select>
+    </div>
+    <div>
+    <label for=info>Info:</label>
+    <select id=info class="info bg color">
+      <option>One</option>
+      <option>Two</option>
+      <option>Three</option>
+    </select>
+    </div>
+    <div>
+    <label for=ok>OK:</label>
+    <select id=ok class="ok bg color">
+      <option>One</option>
+      <option>Two</option>
+      <option>Three</option>
+    </select>
+    </div>
+    <div>
+    <label for=warn>Warn:</label>
+    <select id=warn class="warn bg color">
+      <option>One</option>
+      <option>Two</option>
+      <option>Three</option>
+    </select>
+    </div>
+    <div>
+    <label for=bad>Bad:</label>
+    <select id=bad class="bad bg color">
+      <option>One</option>
+      <option>Two</option>
+      <option>Three</option>
+    </select>
+    </div>
+  </form>
+
 </figure>
 
 

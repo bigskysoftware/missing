@@ -15,9 +15,10 @@ apg:
 
 ## Notes
 
-Missing.css uses the `<table>`{ .language-html } element for tables.
-"Pseudo-tables" can be created from other elements by applying the <code>.table</code> and <code>.rows</code> classes.
+Missing.css uses the `<table>`{ .language-html } element for tables; for full-width tables, use the `.width:100%` utility class.
+["Pseudo-tables"][] can be created from other elements by applying the `.table` and `.rows` classes.
 
+["Pseudo-tables"]: /docs/layout/#pseudo-tables
 
 {{ include "demo_kbd.vto" }}
 

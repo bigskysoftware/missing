@@ -53,7 +53,7 @@ authors
 
 {.flow-gap .dense}
 
-Our target for browser support is **`"{{ browserslist }}"`{ .ok .color }**.
+Our target for browser support is **`"{{ browserslist }}"`{.color}**.
 You can view the implications of this on <a href="https://browsersl.ist/#q={{ browserslist }}">browsersl.ist</a>.
 
 <!--
