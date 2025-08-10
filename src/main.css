@@ -628,7 +628,7 @@ strong > :where(
 	}
 
   &:disabled {
-    color: var(--muted-accent);
+    /* c.f. strong > input:disabled::file-selector-button */
   }
 }
 
@@ -690,7 +690,7 @@ strong > input:is(.plain, .info, .ok, .warn, .bad)::file-selector-button {
   --muted-accent: var(--graphical-fg);
 }
 strong > input:disabled::file-selector-button {
-  color: var(--muted-accent);
+  /* c.f. strong > button:disabled */
 }
 
 

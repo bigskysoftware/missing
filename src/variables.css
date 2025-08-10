@@ -1,11 +1,10 @@
 :root {
 	/* Colors */
 	--fg: light-dark(var(--gray-12), var(--gray-0)); /* Text. */
-	--muted-fg: light-dark(var(--gray-10), var(--gray-2)); /* Secondary text color. Will be
-		used with a background of --bg and --box-bg -- check contrast! */
+	--muted-fg: light-dark(var(--gray-10), var(--gray-2)); /* Secondary text color.
+	Will be used with a background of --bg, --box-bg, and --interactive-bg -- check contrast! */
 	--faded-fg: light-dark(var(--gray-6), var(--gray-7)); /* Disabled text color. */
-	--graphical-fg: var(--plain-graphical-fg); /* Graphical elements. Will not
-		be used as a text color. */
+	--graphical-fg: var(--plain-graphical-fg); /* Graphical elements. Will not be used as a text color. */
 
 	--plain-fg: light-dark(var(--blue-10), var(--blue-2));
 	--info-fg: light-dark(var(--blue-11), var(--blue-2));
