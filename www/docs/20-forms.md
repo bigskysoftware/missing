@@ -39,6 +39,55 @@ Inputs outside labels will be `display:block`{.language-css}.
 
 Input placeholders are styled with `text-align:end`{.language-css} to better distinguish them from actual input.
 
+<figure>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Placeholder markup</figcaption>
+
+  ~~~ html
+  <form class="flex-row">
+    <div>
+      <label for=category>Category:</label>
+      <select id=category placeholder="Select a category...">
+        <option>Blues</option>
+        <!-- ... -->
+      </select>
+    </div>
+    <div>
+      <label for=search>Search:</label>
+      <input id=search type=search placeholder="Search...">
+    </div>
+    <div>
+      <label for=text>Text:</label>
+      <input id=text type=text placeholder="Type...">
+    </div>
+  </div>
+  ~~~
+
+  <hr>
+
+  <form class="flex-row">
+    <div>
+      <label for=category>Category:</label>
+      <select id=category placeholder="Select a category...">
+        <option>Blues</option>
+        <option>Dixieland</option>
+        <option>Swing</option>
+        <option>Bebop</option>
+        <option>Cool</option>
+        <option>Modal</option>
+      </select>
+    </div>
+    <div>
+      <label for=search>Search:</label>
+      <input id=search type=search placeholder="Search...">
+    </div>
+    <div>
+      <label for=text>Text:</label>
+      <input id=text type=text placeholder="Type...">
+    </div>
+  </form>
+
+</figure>
+
 
 ## Buttons
 
@@ -255,6 +304,160 @@ Notice that the wrapper has `role=radiogroup`{.token .attr-name} and its `aria-l
       </div>
     </div>
   </form>
+</figure>
+
+
+## Select
+
+Missing.css will attempt to style `<select>`{.language-html} elements consistently across browsers.
+[Colorway][colorways] support is limited until [browser support][] for [custom selects][] improves.
+
+[browser support]: https://caniuse.com/mdn-css_properties_appearance_base-select
+[custom selects]: https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms/Customizable_select
+
+<figure>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Select dropdown markup</figcaption>
+
+  ~~~ html
+  <form class="flex-switch">
+    <div>
+    <label for=none>None:</label>
+    <select id=none>
+      <option>One</option>
+      <option>Two</option>
+      <option>Three</option>
+    </select>
+    </div>
+    <!-- ... -->
+    <div>
+    <label for=bad>Bad:</label>
+    <select id=bad class="bad">
+      <option>One</option>
+      <option>Two</option>
+      <option>Three</option>
+    </select>
+    </div>
+  </form>
+
+  <span class="aestheticbreak"></span>
+
+  <form class="flex-switch">
+    <!-- ... -->
+    <label for=info>Info:
+    <select id=info class="info color bg">
+      <option>One</option>
+      <option>Two</option>
+      <option>Three</option>
+    </select>
+    <-- ... -->
+  </form>
+
+  ~~~
+
+  <hr>
+
+  <form class="flex-switch">
+    <div>
+    <label for=none>None:</label>
+    <select id=none>
+      <option>One</option>
+      <option>Two</option>
+      <option>Three</option>
+    </select>
+    </div>
+    <div>
+    <label for=plain>Plain:</label>
+    <select id=plain class="plain">
+      <option>One</option>
+      <option>Two</option>
+      <option>Three</option>
+    </select>
+    </div>
+    <div>
+    <label for=info>Info:</label>
+    <select id=info class="info">
+      <option>One</option>
+      <option>Two</option>
+      <option>Three</option>
+    </select>
+    </div>
+    <div>
+    <label for=ok>OK:</label>
+    <select id=ok class="ok">
+      <option>One</option>
+      <option>Two</option>
+      <option>Three</option>
+    </select>
+    </div>
+    <div>
+    <label for=warn>Warn:</label>
+    <select id=warn class="warn">
+      <option>One</option>
+      <option>Two</option>
+      <option>Three</option>
+    </select>
+    </div>
+    <div>
+    <label for=bad>Bad:</label>
+    <select id=bad class="bad">
+      <option>One</option>
+      <option>Two</option>
+      <option>Three</option>
+    </select>
+    </div>
+  </form>
+  <span class="aestheticbreak"></span>
+  <form class="flex-switch">
+    <div>
+    <label for=none>None:</label>
+    <select id=none>
+      <option>One</option>
+      <option>Two</option>
+      <option>Three</option>
+    </select>
+    </div>
+    <div>
+    <label for=plain>Plain:</label>
+    <select id=plain class="plain bg color">
+      <option>One</option>
+      <option>Two</option>
+      <option>Three</option>
+    </select>
+    </div>
+    <div>
+    <label for=info>Info:</label>
+    <select id=info class="info bg color">
+      <option>One</option>
+      <option>Two</option>
+      <option>Three</option>
+    </select>
+    </div>
+    <div>
+    <label for=ok>OK:</label>
+    <select id=ok class="ok bg color">
+      <option>One</option>
+      <option>Two</option>
+      <option>Three</option>
+    </select>
+    </div>
+    <div>
+    <label for=warn>Warn:</label>
+    <select id=warn class="warn bg color">
+      <option>One</option>
+      <option>Two</option>
+      <option>Three</option>
+    </select>
+    </div>
+    <div>
+    <label for=bad>Bad:</label>
+    <select id=bad class="bad bg color">
+      <option>One</option>
+      <option>Two</option>
+      <option>Three</option>
+    </select>
+    </div>
+  </form>
+
 </figure>
 
 

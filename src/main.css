@@ -759,6 +759,30 @@ input[type="file"] {
 	}
 }
 
+select {
+	/* UAs force `line-height: normal` instead of `inherit` */
+	height: calc(
+		2 * var(--interactive-border-width)  /* Top and bottom borders */
+		+ 3/2 * var(--rhythm, 1lh)           /* Plus line height and padding-block */
+	);
+
+	background: var(--bg);
+	color: var(--fg);
+
+	& option {
+		background: inherit;
+		color: inherit;
+		border: inherit;
+
+		&:hover {
+			/* This currently doesn't do anything */
+			background: var(--accent);
+			color: var(--bg);
+		}
+	}
+
+}
+
 select[multiple] {
 	vertical-align: top;
 }
