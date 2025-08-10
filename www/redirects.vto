@@ -1,0 +1,15 @@
+---
+url: /_redirects
+---
+
+https://the.missing.style/*    /_the/:splat                       301!
+/_the              https://unpkg.com/missing.css                  301!
+/_the/prism        https://unpkg.com/missing.css/prism            301!
+
+{{ set releases = search.pages("release!=undefined")
+	|> sortSemVer(page => page.release)
+	|> reverse }}
+{{ for rel of releases }}
+/_the/{{ rel.release }}     https://unpkg.com/missing.css@{{ rel.release }}          301!
+/_the/{{ rel.release }}/*   https://unpkg.com/missing.css@{{ rel.release }}/:splat   301!
+{{ /for }}

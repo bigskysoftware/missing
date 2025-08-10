@@ -1,0 +1,3 @@
+image: jdxcode/mise
+command: mise install && mise run build:www
+public: www/_site

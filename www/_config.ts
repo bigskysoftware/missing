@@ -24,7 +24,6 @@ const site = lume(
     },
   },
 )
-  .copy("netlify.redirects", "_redirects")
   .copy("netlify.headers", "_headers")
   .copy("img")
   .copy("js")

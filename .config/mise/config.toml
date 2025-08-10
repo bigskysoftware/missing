@@ -3,8 +3,9 @@ BROWSERSLIST="> 0.9% and last 2 versions and not dead"
 
 
 [tools]
-esbuild = "latest"
+node = "latest"
 deno = "2.4"
+# esbuild = "0.25.8"
 
 
 [tasks]
@@ -17,7 +18,7 @@ serve = { depends = ["lume -s"] }
   "esbuild --bundle --outdir=dist src/missing.css src/missing-prism.css",
   "esbuild --minify --outdir=dist --entry-names=[name].min dist/missing.css dist/missing-prism.css",
 ]
-"build:js" = "rm -rf dist/js && cp -r src/js dist/js"
+"build:js" = "rm -rf dist/js && mkdir -p dist && cp -r src/js dist/js"
 
 lume = { hide = true, run = "cd www && echo \"import 'lume/cli.ts'\" | deno run --unstable -A -" }
 
