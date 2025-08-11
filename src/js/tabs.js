@@ -1,90 +1,47 @@
 /// a tabs library.
 
 //@deno-types=./19.ts
-import { $, $$, on, attr, next, prev, asHtml, hotkey, behavior, makelogger, identify, dispatch } from "./19.js";
+import { $, $$, on, attr, next, prev, asHtml, hotkey, behavior, makelogger, identify, dispatch, tag, html } from "./19.js";
+import { focusGroup } from "./focusgroup.js";
 
 const ilog = makelogger("tabs");
 
-/** 
- * @param {Element} tablist
- * @returns {HTMLElement[]}
- */
-const tabsOf = tablist => $$(tablist, "[role=tab]");
+const tablist = tag("aria-tablist", { base: focusGroup }, (tablist) => {
+  tablist.internals.role = "tablist"
 
-/** 
- * @param {Element} tablist
- * @returns {HTMLElement | null}
- */
-const currentTab = tablist => $(tablist, "[role=tab][aria-selected=true]");
-
-/** 
- * @param {Element} tab
- * @param {import("./19.ts").Root} root
- * @returns {HTMLElement | null}
- */
-const tabPanelOf = (tab, root) => {
-  const id = attr(tab, "aria-controls");
-  if (id === null) return console.error("Tab", tab, "has no associated tabpanel"), null;
-  return root.getElementById(id);
-}
-
-/** 
- * @param {import("./19.ts").Root} root
- * @param {Element} tablist
- * @param {HTMLElement | null} tab
- * @returns {void}
- */
-const switchTab = (root, tablist, tab, { focusTab = true } = {}) => {
-  if (!tab) return;
-  const curtab = currentTab(tablist);
-
-  if (curtab) {
-    attr(curtab, { ariaSelected: false, tabindex: -1 });
-    const tabpanel = tabPanelOf(curtab, root);
-    if (tabpanel) tabpanel.hidden = true;
-  }
-  attr(tab, { ariaSelected: true, tabindex: 0 });
-  
-  const tabpanel = tabPanelOf(tab, root);
-  if (tabpanel) tabpanel.hidden = false;
-
-  if (focusTab) tab.focus();
-
-  tablist.tabIndex = -1;
-
-  dispatch(curtab, "missing-switch-away", { to: tab })
-  dispatch(tab, "missing-switch-to", { from: curtab })
-  dispatch(tablist, "missing-change", { from: curtab, to: tab })
-};
-
-/**
- * https://www.w3.org/WAI/ARIA/apg/patterns/tabpanel/
- */
-export const tablist = behavior("[role=tablist]", (tablist, { root }) => {
-  if (!(tablist instanceof HTMLElement)) return;
-  tablist.tabIndex = 0;
-  tabsOf(tablist).forEach(tab => {
-    tab.tabIndex = -1;
-    tabPanelOf(tab, root).setAttribute("aria-labelledby", identify(tab));
-  });
-  if (!(tablist.hasAttribute("aria-labelledby") || tablist.hasAttribute("aria-label")))
-    console.error("Tab list", tablist, "has no accessible name (aria-label or aria-labelledby)");
-  
-  switchTab(root, tablist, currentTab(tablist), { focusTab: false });
-
-  on(tablist, "focus", _ => currentTab(tablist)?.focus());
-
-  on(tablist, "click",   e => switchTab(root, tablist, asHtml(asHtml(e.target)?.closest("[role=tab]"))));
-  on(tablist, "focusin", e => switchTab(root, tablist, asHtml(asHtml(e.target)?.closest("[role=tab]"))));
-
-  on(tablist, "keydown", hotkey({
-    "ArrowRight": e => asHtml(next(tablist, "[role=tab]", asHtml(e.target)))?.focus(),
-    "ArrowLeft":  e => asHtml(prev(tablist, "[role=tab]", asHtml(e.target)))?.focus(),
-    "Home": _ => tabsOf(tablist).at(0)?.focus(),
-    "End": _ => tabsOf(tablist).at(-1)?.focus(),
-  }));
+  if (!tablist.hasAttribute("aria-labelledby") && !tablist.hasAttribute("aria-label"))
+    ilog("ERROR:", tablist, "has no accessible name (aria-label or aria-labelledby)")
 })
 
-tablist(document);
-export default tablist;
+const tab = tag("aria-tab", (tab) => {
+  tab.internals.role = "tab"
+  tab.tabIndex = -1
 
+  if (tab.ariaControlsElements.length === 0)
+    console.error("ERROR:", this, "has no associated tabpanel")
+
+  const tabpanel = (t = tab) => t.ariaControlsElements[0]
+  const tablist = () => tab.closest("aria-tablist")
+  const siblings = () => tablist().querySelectorAll("aria-tab")
+
+  const close = (tab) => {
+    tab.ariaSelected = false
+    tabpanel(tab).hidden = true
+  }
+
+  const open = (focusTab = true) => {
+    siblings().forEach(close)
+    tab.ariaSelected = true
+    tabpanel(tab).hidden = false
+  }
+
+  on(tab, "click", () => open())
+  on(tab, "focus", () => open())
+})
+
+const tabpanel = tag("aria-tabpanel", panel =>
+  panel.internals.role = "tabpanel")
+
+tablist.define()
+tab.define()
+tabpanel.define()

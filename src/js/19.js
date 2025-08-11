@@ -505,6 +505,49 @@ export function behavior(selector, init) {
 }
 
 /**
+ * @typedef {object} ElementDefinition
+ * @property {typeof HTMLElement} [base]
+ * @property {string[]} [observedAttributes]
+ */
+
+/**
+ * Define a custom element.
+ * @param {string} name
+ * @param {ElementDefinition | ((el: Element) => void)} options
+ * @param {((el: Element) => void)} init
+ */
+export function tag(name, options, init) {
+  if (typeof options === "function") { init = options; options = {} }
+  const { base = HTMLElement, observedAttributes = [] } = options
+  return class extends base {
+    constructor() {
+      super()
+      if (!this.internals) this.internals = this.attachInternals()
+      init(this)
+      observedAttributes.forEach((attr) =>
+        dispatch(this, `attribute:${attr}`, { value: this.getAttribute(attr) }))
+    }
+
+    // snatched from https://github.com/kgscialdone/facet/blob/master/facet.js
+    observedAttributes = observedAttributes
+    connectedCallback() { dispatch(this, 'connected') }
+    disconnectedCallback() { dispatch(this, 'disconnected') }
+    attributeChangedCallback(name, oldValue, newValue) {
+      dispatch(this, 'attributeChanged', { name, oldValue, newValue })
+      dispatch(this, `attributeChanged:${name}`, { oldValue, newValue })
+      dispatch(this, `attribute:${name}`, { value: newValue })
+    }
+    formAssociatedCallback(form) { dispatch(this, 'formAssociated', { form }) }
+    formDisabledCallback(disabled) { dispatch(this, 'formDisabled', { disabled }) }
+    formResetCallback() { dispatch(this, 'formReset') }
+    formStateRestoreCallback(state, mode) {
+      dispatch(this, 'formStateRestore', { state, mode }) }
+
+    static define() { customElements.define(name, this) }
+  }
+}
+
+/**
  * @template TData
  * @typedef {object} Repeater
  *
