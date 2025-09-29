@@ -6,8 +6,9 @@ import { focusGroup } from "./focusgroup.js";
 
 const ilog = makelogger("tabs");
 
-const tablist = tag("aria-tablist", { base: focusGroup }, (tablist) => {
+const tablist = tag("aria-tablist", (tablist) => {
   tablist.internals.role = "tablist"
+  focusGroup.install(tablist)
 
   if (!tablist.hasAttribute("aria-labelledby") && !tablist.hasAttribute("aria-label"))
     ilog("ERROR:", tablist, "has no accessible name (aria-label or aria-labelledby)")

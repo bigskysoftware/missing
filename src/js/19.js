@@ -544,6 +544,7 @@ export function tag(name, options, init) {
       dispatch(this, 'formStateRestore', { state, mode }) }
 
     static define() { customElements.define(name, this) }
+    static install(el) { init(el) }
   }
 }
 
