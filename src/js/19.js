@@ -120,7 +120,7 @@ export function traverse(
   // start at 1). Then, having run out of siblings, we move up (as many times
   // as needed) before advancing, ending up at 4.
   //
-  // To "test" an element, ee call Element#matches, then if that returns false,
+  // To "test" an element, we call Element#matches, then if that returns false,
   // querySelector. The querySelector call is how the items marked with
   // asterisks can be checked.
   let cursor = current;
@@ -518,20 +518,36 @@ export function behavior(selector, init) {
  */
 export function tag(name, options, init) {
   if (typeof options === "function") { init = options; options = {} }
-  const { base = HTMLElement, observedAttributes = [] } = options
+  const {
+    base = HTMLElement,
+    internals = {},
+    observedAttributes = [],
+    mutationOptions = {},
+  } = options
   return class extends base {
     constructor() {
       super()
       if (!this.internals) this.internals = this.attachInternals()
+      Object.assign(this.internals, internals)
       init(this)
-      observedAttributes.forEach((attr) =>
-        dispatch(this, `attribute:${attr}`, { value: this.getAttribute(attr) }))
+      if (mutationOptions.length)
+        this.observer = new MutationObserver((records, observer) =>
+          records.forEach(r => dispatch(this, `mutation:${r.type}`, r)))
     }
 
-    // snatched from https://github.com/kgscialdone/facet/blob/master/facet.js
-    observedAttributes = observedAttributes
-    connectedCallback() { dispatch(this, 'connected') }
-    disconnectedCallback() { dispatch(this, 'disconnected') }
+    // adapted from https://github.com/kgscialdone/facet/blob/master/facet.js
+    static observedAttributes = observedAttributes
+
+    connectedCallback() {
+      dispatch(this, 'connected')
+      this.observer?.observe(this, observedMutations)
+    }
+    disconnectedCallback() {
+      dispatch(this, 'disconnected')
+      this.observer?.disconnect()
+    }
+    connectedMoveCallback() { dispatch(this, 'connectedMove') }
+    adoptedCallback() { dispatch(this, 'adopted') }
     attributeChangedCallback(name, oldValue, newValue) {
       dispatch(this, 'attributeChanged', { name, oldValue, newValue })
       dispatch(this, `attributeChanged:${name}`, { oldValue, newValue })
