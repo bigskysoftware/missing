@@ -1,4 +1,6 @@
-import { $, $$, on, halt, halts, hotkey, tag, traverse } from "./19.js";
+import { $, $$, attr, on, dispatch, halt, halts, hotkey, tag, traverse, makelogger } from "./19.js"
+
+const ilog = makelogger("focus-group")
 
 // keyTable[writing-mode][direction][key] => action
 
@@ -23,7 +25,7 @@ const keyTable = /** @type {const} */ ({
       "inline": { "Down": "previous", "Up": "next" },
     },
   },
-  "vertical-lr": {
+  "vertical-rl": {
     "ltr": {
       "block": { "Right": "previous", "Left": "next" },
       "inline": { "Up": "previous", "Down": "next" },
@@ -39,9 +41,12 @@ export const focusGroup = tag(
   "focus-group",
   { observedAttributes: ["orientation"] },
   (group) => {
+    if (!group.hasAttribute("aria-labelledby") && !group.hasAttribute("aria-label"))
+      ilog("ERROR:", group, "has no accessible name (aria-label or aria-labelledby)")
+
     const writingMode = () => getComputedStyle(group).writingMode
     const direction = () => getComputedStyle(group).direction
-    const orientation = () => group.getAttribute("aria-orientation") ?? "inline"
+    const orientation = () => group.getAttribute("orientation") ?? "inline"
     const wrapping = () => group.hasAttribute("wrap")
 
     const movement = (key) =>
@@ -51,7 +56,7 @@ export const focusGroup = tag(
       ? document.activeElement
       : null
 
-    const sMember = "[tabindex]"
+    const sMember = '[tabindex]:not([focusgroup="none"] *)'
 
     const focusTo = (dest) => {
       if (!dest) return
@@ -60,11 +65,21 @@ export const focusGroup = tag(
       dest.focus()
     }
 
+    on(group, "connected", (e) => {
+      const members = $$(group, sMembers)
+      const initialized = members.find(m => m.tabIndex == 0 || m.autofocus )
+      if (members.length && !initialized)
+        members[0].tabIndex = 0
+
+     if (!group.hasAttribute("orientation"))
+        dispatch(group, "attribute:orientation", {})
+    })
+
+    on(group, "focusin", (e) => focusTo(e.target))
+
     on(group, "keydown", hotkey({
-      "Home": (e) => halts("default propagation", e,
-        () => focusTo($(group, sMember))),
-      "End": (e) => halts("default propagation", e,
-        () => focusTo($$(group, sMember).at(-1))),
+      "Home": halts("default propagation", (e) => focusTo($(group, sMember))),
+      "End":  halts("default propagation", (e) => focusTo($$(group, sMember).at(-1))),
     }))
 
     on(group, "keydown", (e) => {
@@ -75,10 +90,12 @@ export const focusGroup = tag(
       }
     })
 
-    on(group, "focusin", (e) => focusTo(e.target))
-
-    on(group, "attribute:orientation", e =>
-      group.internals.ariaOrientation = orientation())
+    on(group, "attribute:orientation", (e) => {
+      group.internals.ariaOrientation = {
+        horizontal: { block: "vertical",   inline: "horizontal" },
+        vertical:   { block: "horizontal", inline: "vertical"   },
+      }[writingMode().split("-")[0]][orientation()]
+    })
   }
 )
 

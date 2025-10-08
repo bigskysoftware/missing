@@ -1,48 +1,65 @@
 /// a tabs library.
 
 //@deno-types=./19.ts
-import { $, $$, on, attr, next, prev, asHtml, hotkey, behavior, makelogger, identify, dispatch, tag, html } from "./19.js";
-import { focusGroup } from "./focusgroup.js";
+import { on, attr, makelogger, tag } from "./19.js"
+import { focusGroup } from "./focusgroup.js"
 
-const ilog = makelogger("tabs");
+const ilog = makelogger("tabs")
 
-const tablist = tag("aria-tablist", (tablist) => {
-  tablist.internals.role = "tablist"
-  focusGroup.install(tablist)
+const tablist = tag(
+  "aria-tablist",
+  { internals: { role: "tablist" } },
+  (tablist) => { focusGroup.install(tablist) }
+)
 
-  if (!tablist.hasAttribute("aria-labelledby") && !tablist.hasAttribute("aria-label"))
-    ilog("ERROR:", tablist, "has no accessible name (aria-label or aria-labelledby)")
-})
+const tab = tag(
+  "aria-tab",
+  {
+    internals: { role: "tab", ariaSelected: "false" },
+    observedAttributes: ["aria-controls", "tabindex", "aria-selected"],
+  },
+  (tab) => {
 
-const tab = tag("aria-tab", (tab) => {
-  tab.internals.role = "tab"
-  tab.tabIndex = -1
+    tab.tabIndex = (tab.ariaSelected == "true") ? "0" : "-1"
 
-  if (tab.ariaControlsElements.length === 0)
-    console.error("ERROR:", this, "has no associated tabpanel")
+    tab.open  = () => { attr(tab, "aria-selected", "true") }
+    tab.close = () => { attr(tab, "aria-selected",  null ) }
 
-  const tabpanel = (t = tab) => t.ariaControlsElements[0]
-  const tablist = () => tab.closest("aria-tablist")
-  const siblings = () => tablist().querySelectorAll("aria-tab")
+    on(tab, "attribute:aria-controls", (e) => {
+      if ("ariaControlsElements" in tab)
+        tab.panel = tab.ariaControlsElements[0]
+      else
+        tab.panel = tab.getRootNode().getElementById(e.detail.value)
 
-  const close = (tab) => {
-    tab.ariaSelected = false
-    tabpanel(tab).hidden = true
+      if (tab.panel)
+        tab.panel.hidden = (tab.ariaSelected !== "true")
+      else
+        return ilog("ERROR:", tab, "has no associated tabpanel")
+
+      if ("ariaLabelledByElements" in tab.internals)
+        tab.panel.internals.ariaLabelledByElements = [tab]
+      else
+        attr(tab.panel, "aria-labelledby", identify(tab))
+    })
+
+    on(tab, "attribute:tabindex", (e) =>
+      tab.ariaSelected = (e.detail.value == "0") ? "true" : null)
+
+    on(tab, "attribute:aria-selected", (e) => {
+      if (tab.panel)
+        tab.panel.hidden = (e.detail.value !== "true")
+    })
+
   }
+)
 
-  const open = (focusTab = true) => {
-    siblings().forEach(close)
-    tab.ariaSelected = true
-    tabpanel(tab).hidden = false
-  }
+const tabpanel = tag(
+  "aria-tabpanel",
+  { internals: { role: "tabpanel" } },
+  (tabpanel) => {},
+)
 
-  on(tab, "click", () => open())
-  on(tab, "focus", () => open())
-})
-
-const tabpanel = tag("aria-tabpanel", panel =>
-  panel.internals.role = "tabpanel")
-
-tablist.define()
-tab.define()
+// Define nested elements first
 tabpanel.define()
+tab.define()
+tablist.define()
