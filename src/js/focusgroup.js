@@ -66,7 +66,7 @@ export const focusGroup = tag(
     }
 
     on(group, "connected", (e) => {
-      const members = $$(group, sMembers)
+      const members = $$(group, sMember)
       const initialized = members.find(m => m.tabIndex == 0 || m.autofocus )
       if (members.length && !initialized)
         members[0].tabIndex = 0
