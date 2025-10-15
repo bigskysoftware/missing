@@ -521,6 +521,7 @@ export function tag(name, options, init) {
   const {
     base = HTMLElement,
     internals = {},
+    formAssociated = false,
     observedAttributes = [],
     mutationOptions = {},
   } = options
@@ -530,7 +531,7 @@ export function tag(name, options, init) {
       if (!this.internals) this.internals = this.attachInternals()
       Object.assign(this.internals, internals)
       init(this)
-      if (mutationOptions.length)
+      if (Object.keys(mutationOptions).length)
         this.observer = new MutationObserver((records, observer) =>
           records.forEach(r => dispatch(this, `mutation:${r.type}`, r)))
     }
@@ -540,7 +541,7 @@ export function tag(name, options, init) {
 
     connectedCallback() {
       dispatch(this, 'connected')
-      this.observer?.observe(this, observedMutations)
+      this.observer?.observe(this, mutationOptions)
     }
     disconnectedCallback() {
       dispatch(this, 'disconnected')
