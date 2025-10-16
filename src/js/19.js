@@ -439,11 +439,11 @@ export function hotkey(hotkeys) {
     ~~(e.altKey && alt) | ~~(e.ctrlKey && ctrl) |
     ~~(e.metaKey && meta) | ~~(e.shiftKey && shift);
   const parse = /** @returns {[string, number]} */ (/** @type {string} */ hotkeySpec) => {
-      const
-        tokens = hotkeySpec.split("+"), key = /** @type {string} */ (tokens.pop());
+      const tokens = hotkeySpec.toLowerCase().split("+");
+      const key = /** @type {string} */ (tokens.pop());
       let modifiers = 0 | 0;
       for (const token of tokens)
-        switch (token.toLowerCase()) {
+        switch (token) {
           case "alt": modifiers |= alt; break;
           case "ctrl": modifiers |= ctrl; break;
           case "meta": modifiers |= meta; break;
@@ -454,7 +454,7 @@ export function hotkey(hotkeys) {
 
   for (const [hotkeySpec, handler] of Object.entries(hotkeys)) {
     const [key, modifiers] = parse(hotkeySpec);
-    (handlers[key] ??= new Array(8))[modifiers] = handler;
+    (handlers[key.toLowerCase()] ??= new Array(8))[modifiers] = handler;
   }
 
   return (/** @type {KeyboardEvent} */ e) => handlers[e.key]?.[modifiersOf(e)]?.(e);
