@@ -94,6 +94,8 @@ export function traverse(
   const { wrap = true } = options;
 
   const advance = /** @type {const} */(`${direction}ElementSibling`);
+  
+  const descend = direction === "next" ? $ : (el, sel) => $$(el, sel).at(-1)
 
   const wrapIt = () => {
     // If wrapping is disabled.
