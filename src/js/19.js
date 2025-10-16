@@ -134,7 +134,7 @@ export function traverse(
     cursor = /** @type {HTMLElement} */ (cursor[advance]); // 1 to 2 to 3, r to 4
     const found = cursor.matches(selector)
       ? cursor // 4
-      : $(cursor, selector); // asterisks
+      : descend(cursor, selector); // asterisks
     if (found) return found;
   }
 }
