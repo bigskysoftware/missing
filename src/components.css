@@ -68,7 +68,7 @@ details,
 }
 
 
-.tool-bar, [role=toolbar] {
+.tool-bar, [role=toolbar], aria-toolbar {
 	display: flex;
 	flex-flow: row wrap;
 	gap: calc(var(--gap) / 2);
