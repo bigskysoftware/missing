@@ -456,8 +456,7 @@ export function hotkey(hotkeys) {
     const [key, modifiers] = parse(hotkeySpec);
     (handlers[key.toLowerCase()] ??= new Array(8))[modifiers] = handler;
   }
-
-  return (/** @type {KeyboardEvent} */ e) => handlers[e.key]?.[modifiersOf(e)]?.(e);
+  return (/** @type {KeyboardEvent} */ e) => handlers[e.key.toLowerCase()]?.[modifiersOf(e)]?.(e);
 }
 
 /**
