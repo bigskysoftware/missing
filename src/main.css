@@ -1037,6 +1037,6 @@ dialog:is([open], [popover])::backdrop {
 }
 
 dialog:not([popover], [open]),
-[popover]:not(:popover-over) {
+[popover]:not(:popover-open) {
     display: none;
 }
