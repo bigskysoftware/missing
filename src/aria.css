@@ -22,7 +22,8 @@ aria-tab, [role="tab"]:not([specificity-hack]) {
     border-start-start-radius: var(--tab-border-radius);
     border-start-end-radius: var(--tab-border-radius);
 
-    &:active, &[aria-selected="true"] {
+    &:active,
+    &[aria-selected="true"] {
         background: var(--box-bg);
         border-block-end: var(--border-block-start-width) var(--border-block-start-style) transparent;
     }
@@ -78,36 +79,37 @@ aria-tabpanel, [role="tabpanel"] {
     }
 }
 
-[role=listbox] {
+aria-listbox, [role=listbox] {
     /* This has been removed from docs, but we keep the styling here as a
      * reference for future implementation.
      */
     list-style: none;
 
-    [role=option] {
+    aria-option, [role=option] {
         margin-inline: calc(-1 * var(--gap));
         padding-inline: var(--gap);
         border-radius: 0;
-    }
 
-    [role=option][aria-selected=true] {
-        background: var(--interactive-bg);
-    }
+        &[aria-selected=true],
+        &[aria-checked=true] {
+            background: var(--interactive-bg);
+        }
 
-    [role=option].active {
-        --temporary-bg: var(--accent);
-        --temporary-fg: var(--bg);
-        --temporary-accent: var(--muted-accent); /* TODO: was `parent-var` */
-        --temporary-muted-accent: var(--box-bg); /* TODO: was `parent-var` */
+        &.active {
+            --temporary-bg: var(--accent);
+            --temporary-fg: var(--bg);
+            --temporary-accent: var(--muted-accent); /* TODO: was `parent-var` */
+            --temporary-muted-accent: var(--box-bg); /* TODO: was `parent-var` */
 
-        background: var(--temporary-bg);
-        color: var(--temporary-fg);
+            background: var(--temporary-bg);
+            color: var(--temporary-fg);
 
-        > * {
-            --bg: var(--temporary-bg);
-            --fg: var(--temporary-fg);
-            --accent: var(--temporary-accent);
-            --muted-accent: var(--temporary-muted-accent);
+            > * {
+                --bg: var(--temporary-bg);
+                --fg: var(--temporary-fg);
+                --accent: var(--temporary-accent);
+                --muted-accent: var(--temporary-muted-accent);
+            }
         }
     }
 }
