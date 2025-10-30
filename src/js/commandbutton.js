@@ -1,5 +1,5 @@
+//@deno-types=./19.ts
 import { attr, identify, on, halt, halts, behavior, makelogger } from "./19.js"
-
 
 const ilog = makelogger("command-button")
 
@@ -13,7 +13,6 @@ const commandTable = /** @type {const} */ ({
   "show-modal": "showModal",
 })
 
-
 export class CommandEvent extends Event {
   constructor(type, options = { cancelable: true }) {
     const { command, source } = options
@@ -24,7 +23,6 @@ export class CommandEvent extends Event {
     })
   }
 }
-
 
 export const commandButton = behavior(
   "button[command][commandfor]",
@@ -92,6 +90,5 @@ export const commandButton = behavior(
 
   },
 )
-
 
 commandButton(document)
