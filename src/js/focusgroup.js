@@ -1,4 +1,6 @@
-import { $, $$, attr, on, dispatch, halt, halts, hotkey, tag, traverse, makelogger } from "./19.js"
+//@deno-types=./19.ts
+import { $, $$, css, halt, halts, hotkey, makelogger, mixin, on, tag, traverse } from "./19.js"
+import { validate } from "./validate.js"
 
 const ilog = makelogger("focus-group")
 
@@ -7,56 +9,64 @@ const ilog = makelogger("focus-group")
 const keyTable = /** @type {const} */ ({
   "horizontal-tb": {
     "ltr": {
-      "block": { "Up": "previous", "Down": "next" },
-      "inline": { "Left": "previous", "Right": "next" },
+      "vertical": { "Up": "previous", "Down": "next" },
+      "horizontal": { "Left": "previous", "Right": "next" },
     },
     "rtl": {
-      "block": { "Up": "previous", "Down": "next" },
-      "inline": { "Right": "previous", "Left": "next" },
+      "vertical": { "Up": "previous", "Down": "next" },
+      "horizontal": { "Right": "previous", "Left": "next" },
     },
   },
   "vertical-lr": {
     "ltr": {
-      "block": { "Left": "previous", "Right": "next" },
-      "inline": { "Up": "previous", "Down": "next" },
+      "vertical": { "Left": "previous", "Right": "next" },
+      "horizontal": { "Up": "previous", "Down": "next" },
     },
     "rtl": {
-      "block": { "Left": "previous", "Right": "next" },
-      "inline": { "Down": "previous", "Up": "next" },
+      "vertical": { "Left": "previous", "Right": "next" },
+      "horizontal": { "Down": "previous", "Up": "next" },
     },
   },
   "vertical-rl": {
     "ltr": {
-      "block": { "Right": "previous", "Left": "next" },
-      "inline": { "Up": "previous", "Down": "next" },
+      "vertical": { "Right": "previous", "Left": "next" },
+      "horizontal": { "Up": "previous", "Down": "next" },
     },
     "rtl": {
-      "block": { "Right": "previous", "Left": "next" },
-      "inline": { "Down": "previous", "Up": "next" },
+      "vertical": { "Right": "previous", "Left": "next" },
+      "horizontal": { "Down": "previous", "Up": "next" },
     },
   },
 })
 
-export const focusGroup = tag(
-  "focus-group",
-  { observedAttributes: ["orientation"] },
+export const FocusGroupMixin = mixin(
+  {
+    internals: { ariaOrientation: "horizontal" },
+    observedAttributes: ["aria-orientation"],
+    css: css`
+      :host {
+        display: flex;
+        flex-direction: var(--flex-direction);
+        inline-size: fit-content;
+      }
+      :host(:state(horizontal)) { --flex-direction: row; }
+      :host(:state(vertical)) { --flex-direction: column; }
+    `
+  },
   (group) => {
-    if (!group.hasAttribute("aria-labelledby") && !group.hasAttribute("aria-label"))
-      ilog("ERROR:", group, "has no accessible name (aria-label or aria-labelledby)")
 
     const writingMode = () => getComputedStyle(group).writingMode
     const direction = () => getComputedStyle(group).direction
-    const orientation = () => group.getAttribute("orientation") ?? "inline"
-    const wrapping = () => group.hasAttribute("wrap")
+    const orientation = () => (group.ariaOrientation || group.internals.ariaOrientation)
+    const wrapping = ()  => group.hasAttribute("wrap")
 
     const movement = (key) =>
       keyTable[writingMode()][direction()][orientation()][key]
 
+    const sMember = "[tabindex]:not(:state(focusgroup))"
     const current = () => group.contains(document.activeElement)
       ? document.activeElement
       : null
-
-    const sMember = '[tabindex]:not([focusgroup="none"] *)'
 
     const focusTo = (dest) => {
       if (!dest) return
@@ -65,14 +75,13 @@ export const focusGroup = tag(
       dest.focus()
     }
 
+    group.internals.states.add("focusgroup")
+
     on(group, "connected", (e) => {
       const members = $$(group, sMember)
-      const initialized = members.find(m => m.tabIndex == 0 || m.autofocus )
-      if (members.length && !initialized)
+      const initialized = members.filter(m => m.tabIndex == 0 || m.autofocus)
+      if (members.length && !initialized.length)
         members[0].tabIndex = 0
-
-     if (!group.hasAttribute("orientation"))
-        dispatch(group, "attribute:orientation", {})
     })
 
     on(group, "focusin", (e) => focusTo(e.target))
@@ -85,18 +94,23 @@ export const focusGroup = tag(
     on(group, "keydown", (e) => {
       const mvt = e.key.startsWith("Arrow") && movement(e.key.slice(5))
       if (mvt) {
-        halt("default propagation", e)
+        halt("default", e)
         focusTo(traverse(mvt, group, sMember, current(), { wrap: wrapping() }))
       }
     })
 
-    on(group, "attribute:orientation", (e) => {
-      group.internals.ariaOrientation = {
-        horizontal: { block: "vertical",   inline: "horizontal" },
-        vertical:   { block: "horizontal", inline: "vertical"   },
-      }[writingMode().split("-")[0]][orientation()]
+    on(group, "attribute:aria-orientation", (e) => {
+      const state = orientation()
+      group.internals.states.delete((state === "horizontal") ? "vertical" : state)
+      group.internals.states.add(state)
     })
   }
+)
+
+export const focusGroup = tag(
+  "focus-group",
+  { mixins: [FocusGroupMixin, validate({ label: true })] },
+  (group) => {}
 )
 
 focusGroup.define()

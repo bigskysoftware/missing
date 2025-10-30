@@ -520,34 +520,45 @@ export function behavior(selector, init) {
 export function tag(name, options, init) {
   if (typeof options === "function") { init = options; options = {} }
   const {
-    base = HTMLElement,
     internals = {},
-    formAssociated = false,
+    mixins = [],
     observedAttributes = [],
-    mutationOptions = {},
+    css = null,
   } = options
-  return class extends base {
+  const Base = mixins.reduce((Base, Mixin) =>
+    Mixin(Base), options.Base ?? HTMLElement)
+
+  return class extends Base {
+
+    static observedAttributes = [
+      ...(Base.observedAttributes || []),
+      ...observedAttributes,
+    ]
+    static inits = [...(Base.inits || []), init]
+
     constructor() {
       super()
+
       if (!this.internals) this.internals = this.attachInternals()
       Object.assign(this.internals, internals)
-      init(this)
-      if (Object.keys(mutationOptions).length)
-        this.observer = new MutationObserver((records, observer) =>
-          records.forEach(r => dispatch(this, `mutation:${r.type}`, r)))
+
+      if (!this.shadowRoot) {
+        this.attachShadow({ mode: "open" })
+        this.shadowRoot.innerHTML = `<slot></slot>`
+      }
+      if (css) this.shadowRoot.adoptedStyleSheets.push(css)
+
+      this.constructor.inits.forEach(init => init(this))
+
+      this.constructor.observedAttributes.filter((attr) =>
+        !this.hasAttribute(attr)
+      ).forEach((attr) =>
+        dispatch(this, `attribute:${attr}`, { value: null })
+      )
     }
 
-    // adapted from https://github.com/kgscialdone/facet/blob/master/facet.js
-    static observedAttributes = observedAttributes
-
-    connectedCallback() {
-      dispatch(this, 'connected')
-      this.observer?.observe(this, mutationOptions)
-    }
-    disconnectedCallback() {
-      dispatch(this, 'disconnected')
-      this.observer?.disconnect()
-    }
+    connectedCallback() { dispatch(this, 'connected') }
+    disconnectedCallback() { dispatch(this, 'disconnected') }
     connectedMoveCallback() { dispatch(this, 'connectedMove') }
     adoptedCallback() { dispatch(this, 'adopted') }
     attributeChangedCallback(name, oldValue, newValue) {
@@ -555,14 +566,47 @@ export function tag(name, options, init) {
       dispatch(this, `attributeChanged:${name}`, { oldValue, newValue })
       dispatch(this, `attribute:${name}`, { value: newValue })
     }
-    formAssociatedCallback(form) { dispatch(this, 'formAssociated', { form }) }
-    formDisabledCallback(disabled) { dispatch(this, 'formDisabled', { disabled }) }
-    formResetCallback() { dispatch(this, 'formReset') }
-    formStateRestoreCallback(state, mode) {
-      dispatch(this, 'formStateRestore', { state, mode }) }
+
+    attr(name, value) {
+      const curValue = this[name] || this.internals[name]
+      if (value === undefined)
+        return curValue
+      else
+        return this[name] = value, curValue
+    }
 
     static define() { customElements.define(name, this) }
-    static install(el) { init(el) }
+
+  }
+}
+
+export function mixin(options, init) {
+  if (typeof options === "function") { init = options; options = {} }
+  const {
+    internals = {},
+    observedAttributes = [],
+    css = null,
+  } = options
+  return (Super) => class extends Super {
+
+    static observedAttributes = [
+      ...(Super.observedAttributes || []),
+      ...observedAttributes,
+    ]
+    static inits = [...(Super.inits || []), init]
+
+    constructor() {
+      super()
+
+      if (!this.internals) this.internals = this.attachInternals()
+      Object.assign(this.internals, internals)
+
+      if (!this.shadowRoot) {
+        this.attachShadow({ mode: "open" })
+        this.shadowRoot.innerHTML = `<slot></slot>`
+      }
+      if (css) this.shadowRoot.adoptedStyleSheets.push(css)
+    }
   }
 }
 
