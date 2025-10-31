@@ -29,8 +29,14 @@ Missing.css provides the `<aria-feed>`{ .language-html } custom element for feed
 
  - The author is responsible for loading new content based on user interaction.
    Be sure to set `<aria-feed aria-busy=true>`{ .language-html } during this process.
+   After your feed is updated, be sure to remove the attribute.
 
- - The `<aria-feed>`{ .language-html } element uses MutationObserver to update ARIA attributes on `<article>`{ .language-html } or `[role=article]`{ .token .attr-name } elements when new content is appended.
+ - The `<aria-feed>`{ .language-html } element uses MutationObserver to update the following attributes on `<article>`{ .language-html } or `[role=article]`{ .token .attr-name } elements when new content is appended:
+    - `tabindex`{ .token .attr-name },
+    - `aria-posinset`{ .token .attr-name }, and
+    - `aria-setsize`{ .token .attr-name }.
+
+   It will also validate that the articles contain `aria-labelledby`{ .token .attr-name } and `aria-describedby`{ .token .attr-name } attributes.
 
  - If the total number of `<article>`{ .language-html } elements is extremely large, indefinite, or changes often, authors may use the `<aria-feed infinite>`{ .language-html } attribute, which sets `<article aria-setsize="-1">`{ .language-html } on child elements in order to communicate the unknown size of the set to assistive technologies.
 
@@ -56,12 +62,14 @@ This example requires JavaScript to be activated.
 	$$(feed, "article").forEach(label)
 	let count = feed.children.length
 	on($(document, "button"), "click", (e) => {
+		feed.ariaBusy = "true"
 		count++
 		const article = $(document, "template").content.cloneNode(true).firstElementChild
 		$(article, "h4").textContent = `Blog Post ${count}`
 		label(article)
 		$$(article, "article").forEach(label)
 		feed.appendChild(article)
+		feed.ariaBusy = null
 	})
 </script>
 
