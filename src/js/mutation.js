@@ -1,10 +1,12 @@
 //@deno-types=./19.ts
-import { dispatch, mixin, on } from "./19.js"
+import { dispatch, makelogger, mixin, on } from "./19.js"
+
+const ilog = makelogger("mutation")
 
 export const MutationMixin = (mutationOptions) => mixin((el) => {
-  on(el, "connect", (e) => {
+  on(el, "connected", (e) => {
     el.observer = new MutationObserver((records, observer) =>
-      records.forEach(r => dispatch(this, `mutation:${r.type}`, r)))
+      records.forEach(r => dispatch(el, `mutation:${r.type}`, r)))
     el.observer.observe(el, mutationOptions)
   })
 

@@ -20,16 +20,19 @@ shortcuts:
    text: Move focus to the first article in nested feed.
  - keys: ["Alt", "PageUp"]
    text: Move focus from a nested feed to the parent article.
-useTag: false
 ---
 
 
 ## Notes
 
-<!-- Missing.css provides the `<aria-feed>`{ .language-html } custom element for feeds.-->
-Missing.css uses the `<section role=feed>`{ .language-html } element to define feeds.
-To get the actual behavior of an accessible feed, you can use [Missing.js &sect; Feed](/docs/js#feed).
+Missing.css provides the `<aria-feed>`{ .language-html } custom element for feeds.
 
+ - The author is responsible for loading new content based on user interaction.
+   Be sure to set `<aria-feed aria-busy=true>`{ .language-html } during this process.
+
+ - The `<aria-feed>`{ .language-html } element uses MutationObserver to update ARIA attributes on `<article>`{ .language-html } or `[role=article]`{ .token .attr-name } elements when new content is appended.
+
+ - If the total number of `<article>`{ .language-html } elements is extremely large, indefinite, or changes often, authors may use the `<aria-feed infinite>`{ .language-html } attribute, which sets `<article aria-setsize="-1">`{ .language-html } on child elements in order to communicate the unknown size of the set to assistive technologies.
 
 {{ include "demo_kbd.vto" }}
 
@@ -42,21 +45,33 @@ This example requires JavaScript to be activated.
 
 </noscript>
 <script type=module>
-	import { attr, identify } from "/dist/js/19.js"
-	document.querySelectorAll("article").forEach(article => {
-		attr(article, 'aria-labelledby', identify(article.firstElementChild))
+	import { $, $$, attr, identify, on } from "/dist/js/19.js"
+	function label(article) {
+		attr(article, {
+			'aria-labelledby': identify(article.firstElementChild),
+			'aria-describedby': identify($(article, 'p')),
+		})
+	}
+	const feed = $(document, "aria-feed")
+	$$(feed, "article").forEach(label)
+	let count = feed.children.length
+	on($(document, "button"), "click", (e) => {
+		count++
+		const article = $(document, "template").content.cloneNode(true).firstElementChild
+		$(article, "h4").textContent = `Blog Post ${count}`
+		label(article)
+		$$(article, "article").forEach(label)
+		feed.appendChild(article)
 	})
 </script>
 
 <figure>
-	<h3 id=feed-label>Blog Post Feed and with Nested Comment Feeds</h3>
-	<a href=#>A focusable element before the feed</a>
-	<section role=feed aria-labelledby=feed-label>
+	<template>
 		<article class="crowded box">
 			<h4>Blog Post 1</h4>
 			<p>Some content for the blog post.</p>
 			<a href=#>Read more...</a>
-			<section role=feed>
+			<aria-feed aria-label="Comment Feed 1">
 				<article class="box ok">
 					<h5 class="titlebar">Comment #1</h5>
 					<p>Some content for the comment.</p>
@@ -72,13 +87,40 @@ This example requires JavaScript to be activated.
 					<p>Some content for the comment.</p>
 					<a href=#>Edit</a> <a href=#>Delete</a>
 				</article>
-			</section role=feed>
+			</aria-feed>
+		</article>
+	</template>
+	<h3 id=feed-label>Blog Post Feed and with Nested Comment Feeds</h3>
+	<button id="load-article">Load an article</button>
+	<p><a href=#>A focusable element before the feed</a></p>
+	<aria-feed aria-labelledby=feed-label>
+		<article class="crowded box">
+			<h4>Blog Post 1</h4>
+			<p>Some content for the blog post.</p>
+			<a href=#>Read more...</a>
+			<aria-feed aria-label="Comment Feed 1">
+				<article class="box ok">
+					<h5 class="titlebar">Comment #1</h5>
+					<p>Some content for the comment.</p>
+					<a href=#>Edit</a> <a href=#>Delete</a>
+				</article>
+				<article class="box ok">
+					<h5 class="titlebar">Comment #2</h5>
+					<p>Some content for the comment.</p>
+					<a href=#>Edit</a> <a href=#>Delete</a>
+				</article>
+				<article class="box ok">
+					<h5 class="titlebar">Comment #3</h5>
+					<p>Some content for the comment.</p>
+					<a href=#>Edit</a> <a href=#>Delete</a>
+				</article>
+			</aria-feed>
 		</article>
 		<article class="crowded box">
 			<h4>Blog Post 2</h4>
 			<p>Some content for the blog post.</p>
 			<a href=#>Read more...</a>
-			<section role=feed>
+			<aria-feed aria-label="Comment Feed 2">
 				<article class="box ok">
 					<h5 class="titlebar">Comment #1</h5>
 					<p>Some content for the comment.</p>
@@ -94,13 +136,13 @@ This example requires JavaScript to be activated.
 					<p>Some content for the comment.</p>
 					<a href=#>Edit</a> <a href=#>Delete</a>
 				</article>
-			</section role=feed>
+			</aria-feed>
 		</article>
 		<article class="crowded box">
 			<h4>Blog Post 3</h4>
 			<p>Some content for the blog post.</p>
 			<a href=#>Read more...</a>
-			<section role=feed>
+			<aria-feed aria-label="Comment Feed 3">
 				<article class="box ok">
 					<h5 class="titlebar">Comment #1</h5>
 					<p>Some content for the comment.</p>
@@ -116,10 +158,10 @@ This example requires JavaScript to be activated.
 					<p>Some content for the comment.</p>
 					<a href=#>Edit</a> <a href=#>Delete</a>
 				</article>
-			</section role=feed>
+			</aria-feed>
 		</article>
-	</section role=feed>
-	<a href=#>A focusable element after the second feed</a>
+	</aria-feed>
+	<p><a href=#>A focusable element after the second feed</a></p>
 </figure>
 
 <script type=module src=/dist/js/feed.js></script>
