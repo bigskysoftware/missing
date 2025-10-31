@@ -95,13 +95,8 @@ export const option = tag(
       SelectableMixin,
       validate({ sParent: ":is(aria-listbox, aria-optgroup)" }),
     ],
-    observedAttributes: ["aria-selected"],
   },
-  (option) => {
-    on(option, "attribute:aria-selected", (e) => {
-      dispatch(option, "changed", {}, { bubbles: true })
-    })
-  },
+  (option) => {}
 )
 
 // Define nested elements first

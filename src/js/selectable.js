@@ -1,14 +1,30 @@
 //@deno-types=./19.ts
-import { $, $$, halt, makelogger, mixin, on } from "./19.js"
+import { makelogger, mixin, on } from "./19.js"
 
 const ilog = makelogger("selectable")
+
+const roles = /** @type {const} */ ([
+  "gridcell",
+  "option",
+  "row",
+  "tab",
+  "columnheader",
+  "rowheader",
+  "treeitem",
+])
+
 
 export const SelectableMixin = mixin(
   {
     internals: { ariaSelected: "false" },
-    observedAttributes: ["tabindex"],
+    observedAttributes: ["tabindex", "aria-selected"],
   },
   (el) => {
+
+    const role = () => (el.internals || el).role
+
+    if (!roles.includes(role()))
+      return console.error(el, `role must be one of ${roles}; got ${role()}.`)
 
     el.internals.states.add("selectable")
 
@@ -22,6 +38,10 @@ export const SelectableMixin = mixin(
       if (container && container.ariaMultiSelectable !== "true") {
         el.ariaSelected = (e.detail.value == "0") ? "true" : null
       }
+    })
+
+    on(el, "attribute:aria-selected", (e) => {
+      dispatch(el, "changed", {}, { bubbles: true })
     })
   }
 )
