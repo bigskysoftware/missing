@@ -14,7 +14,7 @@ const roles = /** @type {const} */ ([
 export const CheckableMixin = mixin(
   {
     internals: { ariaChecked: "false" },
-    observedAttributes: ["aria-checked"],
+    observedAttributes: ["aria-checked", "aria-disabled"],
   },
   (el) => {
 

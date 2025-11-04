@@ -17,7 +17,7 @@ const roles = /** @type {const} */ ([
 export const SelectableMixin = mixin(
   {
     internals: { ariaSelected: "false" },
-    observedAttributes: ["tabindex", "aria-selected"],
+    observedAttributes: ["tabindex", "aria-selected", "aria-disabled"],
   },
   (el) => {
 
