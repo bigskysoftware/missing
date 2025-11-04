@@ -1,29 +1,44 @@
-/// a tabs library.
-
 //@deno-types=./19.ts
-import { on, attr, makelogger, tag } from "./19.js"
-import { focusGroup } from "./focusgroup.js"
+import { $$, css, makelogger, on, tag } from "./19.js"
+import { validate } from "./validate.js"
+import { FocusGroupMixin } from "./focusgroup.js"
+import { SelectableMixin } from "./selectable.js"
+import { MultiSelectMixin } from "./multiselect.js"
 
 const ilog = makelogger("tabs")
 
-const tablist = tag(
+export const tablist = tag(
   "aria-tablist",
-  { internals: { role: "tablist" } },
-  (tablist) => { focusGroup.install(tablist) }
+  {
+    internals: { role: "tablist", ariaMultiSelectable: "false" },
+    mixins: [
+      FocusGroupMixin,
+      MultiSelectMixin,
+      validate({ label: true, sChildren: "aria-tab" }),
+    ],
+  },
+  (tablist) => {
+    on(tablist, "attribute:aria-multiselectable", (e) => {
+      if (e.detail.value === "true")
+        $$(tablist, "aria-tab").forEach(tab => {
+          tab.internals.ariaExpanded = false
+          tab.ariaExpanded = (tab.ariaSelected === "true") ? "true" : null
+        })
+    })
+  }
 )
 
-const tab = tag(
+export const tab = tag(
   "aria-tab",
   {
-    internals: { role: "tab", ariaSelected: "false" },
-    observedAttributes: ["aria-controls", "tabindex", "aria-selected"],
+    internals: { role: "tab" },
+    mixins: [
+      SelectableMixin,
+      validate({ sParent: "aria-tablist" }),
+    ],
+    observedAttributes: ["aria-controls", "aria-selected"],
   },
   (tab) => {
-
-    tab.tabIndex = (tab.ariaSelected == "true") ? "0" : "-1"
-
-    tab.open  = () => { attr(tab, "aria-selected", "true") }
-    tab.close = () => { attr(tab, "aria-selected",  null ) }
 
     on(tab, "attribute:aria-controls", (e) => {
       if ("ariaControlsElements" in tab)
@@ -34,28 +49,30 @@ const tab = tag(
       if (tab.panel)
         tab.panel.hidden = (tab.ariaSelected !== "true")
       else
-        return ilog("ERROR:", tab, "has no associated tabpanel")
+        return console.error(tab, "has no associated <aria-tabpanel>")
 
       if ("ariaLabelledByElements" in tab.internals)
         tab.panel.internals.ariaLabelledByElements = [tab]
       else
-        attr(tab.panel, "aria-labelledby", identify(tab))
+        tab.panel.setAttribute("aria-labelledby", identify(tab))
     })
-
-    on(tab, "attribute:tabindex", (e) =>
-      tab.ariaSelected = (e.detail.value == "0") ? "true" : null)
 
     on(tab, "attribute:aria-selected", (e) => {
-      if (tab.panel)
+      if (tab.panel) {
         tab.panel.hidden = (e.detail.value !== "true")
+        if (tab.parentElement.ariaMultiSelectable === "true")
+          tab.ariaExpanded = (tab.panel.hidden) ? null : "true"
+      }
     })
-
   }
 )
 
-const tabpanel = tag(
+export const tabpanel = tag(
   "aria-tabpanel",
-  { internals: { role: "tabpanel" } },
+  {
+    internals: { role: "tabpanel" },
+    css: css`:host { display: block }`,
+  },
   (tabpanel) => {},
 )
 

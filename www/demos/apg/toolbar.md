@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Toolbar
 templateEngine: [vento, md]
 apg:
@@ -15,9 +14,9 @@ shortcuts:
  - keys: ["Shift", "Tab"]
    text: Tab in and out of the toolbar, remembering previous focus.
  - keys: ["Left Arrow"]
-   text: Move focus to the previous item.
+   text: Move focus to the previous item (dependent on writing mode / direction).
  - keys: ["Right Arrow"]
-   text: Move focus to the next item.
+   text: Move focus to the next item (dependent on writing mode / direction).
  - keys: ["Home"]
    text: Move focus to the first item.
  - keys: ["End"]
@@ -33,6 +32,8 @@ shortcuts:
 
 Missing.css provides the `<aria-toolbar>`{ .language-html } custom element for toolbars.
 
+Arrow key navigation of toolbar items takes into account the `dir`{ .token .attr-name } HTML attribute and `writing-mode`{ .token .attr-name } CSS property.
+
 
 {{ include "demo_kbd.vto" }}
 
@@ -45,16 +46,124 @@ This example requires JavaScript to be activated.
 
 </noscript>
 
-<figure>
-	<div class="container flex-column">
-		<a href=#>Focusable element before the toolbar</a>
-		<section class="tool-bar">
-			<button type=button>Cut</button>
-			<button type=button>Copy</button>
-			<button type=button>Paste</button>
+<div style="writing-mode: horizontal-tb">
+	<figure dir=ltr>
+		<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>horizontal-tb, ltr</figcaption>
+		<p><a href=#>Focusable element before the toolbar</a></p>
+		<aria-toolbar class="tool-bar">
+			<button type=button tabindex=-1>Cut</button>
+			<button type=button tabindex=-1>Copy</button>
+			<button type=button tabindex=-1>Paste</button>
 			<hr aria-orientation=vertical>
-			<label>Find: <input type=text></label>
-		</section>
-		<a href=#>Focusable element after the toolbar</a>
-	</div>
-</figure>
+			<label>Find: <input type=text tabindex=-1></label>
+		</aria-toolbar>
+		<p><a href=#>Focusable element between the toolbars</a></p>
+		<aria-toolbar class="tool-bar" aria-orientation=vertical>
+			<button type=button tabindex=-1>Cut</button>
+			<button type=button tabindex=-1>Copy</button>
+			<button type=button tabindex=-1>Paste</button>
+		</aria-toolbar>
+		<p><a href=#>Focusable element after the toolbar</a></p>
+	</figure>
+	
+	<figure dir=rtl>
+		<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>horizontal-tb, rtl</figcaption>
+		<p><a href=#>Focusable element before the toolbar</a></p>
+		<aria-toolbar class="tool-bar">
+			<button type=button tabindex=-1>Cut</button>
+			<button type=button tabindex=-1>Copy</button>
+			<button type=button tabindex=-1>Paste</button>
+			<hr aria-orientation=vertical>
+			<label>Find: <input type=text tabindex=-1></label>
+		</aria-toolbar>
+		<p><a href=#>Focusable element between the toolbars</a></p>
+		<aria-toolbar class="tool-bar" aria-orientation=vertical>
+			<button type=button tabindex=-1>Cut</button>
+			<button type=button tabindex=-1>Copy</button>
+			<button type=button tabindex=-1>Paste</button>
+		</aria-toolbar>
+		<p><a href=#>Focusable element after the toolbar</a></p>
+	</figure>
+</div>
+<div style="writing-mode: vertical-lr">
+	<figure dir=ltr>
+		<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>vertical-rl, ltr</figcaption>
+		<p><a href=#>Focusable element before the toolbar</a></p>
+		<aria-toolbar class="tool-bar">
+			<button type=button tabindex=-1>Cut</button>
+			<button type=button tabindex=-1>Copy</button>
+			<button type=button tabindex=-1>Paste</button>
+			<hr aria-orientation=vertical>
+			<label>Find: <input type=text tabindex=-1></label>
+		</aria-toolbar>
+		<p><a href=#>Focusable element between the toolbars</a></p>
+		<aria-toolbar class="tool-bar" aria-orientation=vertical>
+			<button type=button tabindex=-1>Cut</button>
+			<button type=button tabindex=-1>Copy</button>
+			<button type=button tabindex=-1>Paste</button>
+		</aria-toolbar>
+		<p><a href=#>Focusable element after the toolbar</a></p>
+	</figure>
+</div>
+<div style="writing-mode: vertical-lr">
+	<figure dir=rtl>
+	<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>vertical-rl, rtl</figcaption>
+		<p><a href=#>Focusable element before the toolbar</a></p>
+		<aria-toolbar class="tool-bar">
+			<button type=button tabindex=-1>Cut</button>
+			<button type=button tabindex=-1>Copy</button>
+			<button type=button tabindex=-1>Paste</button>
+			<hr aria-orientation=vertical>
+			<label>Find: <input type=text tabindex=-1></label>
+		</aria-toolbar>
+		<p><a href=#>Focusable element between the toolbars</a></p>
+		<aria-toolbar class="tool-bar" aria-orientation=vertical>
+			<button type=button tabindex=-1>Cut</button>
+			<button type=button tabindex=-1>Copy</button>
+			<button type=button tabindex=-1>Paste</button>
+		</aria-toolbar>
+		<p><a href=#>Focusable element after the toolbar</a></p>
+	</figure>
+</div>
+<div style="writing-mode: vertical-rl">
+	<figure dir=ltr>
+		<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>vertical-rl, ltr</figcaption>
+		<p><a href=#>Focusable element before the toolbar</a></p>
+		<aria-toolbar class="tool-bar">
+			<button type=button tabindex=-1>Cut</button>
+			<button type=button tabindex=-1>Copy</button>
+			<button type=button tabindex=-1>Paste</button>
+			<hr aria-orientation=vertical>
+			<label>Find: <input type=text tabindex=-1></label>
+		</aria-toolbar>
+		<p><a href=#>Focusable element between the toolbars</a></p>
+		<aria-toolbar class="tool-bar" aria-orientation=vertical>
+			<button type=button tabindex=-1>Cut</button>
+			<button type=button tabindex=-1>Copy</button>
+			<button type=button tabindex=-1>Paste</button>
+		</aria-toolbar>
+		<p><a href=#>Focusable element after the toolbar</a></p>
+	</figure>
+</div>
+<div style="writing-mode: vertical-rl">
+	<figure dir=rtl>
+		<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>vertical-rl, rtl</figcaption>
+		<p><a href=#>Focusable element before the toolbar</a></p>
+		<aria-toolbar class="tool-bar">
+			<button type=button tabindex=-1>Cut</button>
+			<button type=button tabindex=-1>Copy</button>
+			<button type=button tabindex=-1>Paste</button>
+			<hr aria-orientation=vertical>
+			<label>Find: <input type=text tabindex=-1></label>
+		</aria-toolbar>
+		<p><a href=#>Focusable element between the toolbars</a></p>
+		<aria-toolbar class="tool-bar" aria-orientation=vertical>
+			<button type=button tabindex=-1>Cut</button>
+			<button type=button tabindex=-1>Copy</button>
+			<button type=button tabindex=-1>Paste</button>
+		</aria-toolbar>
+		<p><a href=#>Focusable element after the toolbar</a></p>
+	</figure>
+</div>
+
+<script type=module src=/dist/js/toolbar.js></script>
