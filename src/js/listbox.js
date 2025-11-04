@@ -81,7 +81,7 @@ export const optgroup = tag(
     on(optgroup, "attribute:tabindex", (e) => {
       if (e.detail.value !== null) {
         optgroup.removeAttribute("tabindex")
-        console.warn(optgroup, "do not support focus. The 'tabindex' attribute has been removed.")
+        console.warn(optgroup, "does not support focus. The 'tabindex' attribute has been removed.")
       }
     })
   }
