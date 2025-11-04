@@ -58,7 +58,7 @@ This example requires JavaScript to be activated.
     <p>A horizontal tablist.</p>
 	<aria-tablist aria-label="Example">
 		<aria-tab aria-controls=panel-1>Tab 1</aria-tab>
-		<aria-tab aria-controls=panel-2 selected>Tab 2</aria-tab>
+		<aria-tab aria-controls=panel-2>Tab 2</aria-tab>
 		<aria-tab aria-controls=panel-3>Tab 3</aria-tab>
 	</aria-tablist>
 	<aria-tabpanel id=panel-1>This is the content for the first tab.</p></aria-tabpanel>
@@ -67,7 +67,7 @@ This example requires JavaScript to be activated.
 	<a href=#>A focusable element between the tabs</a></p>
     <p>A vertical tablist.</p>
 	<aria-tablist aria-label="Example" aria-orientation="vertical">
-		<aria-tab aria-controls=panel-4 selected>Tab 1</aria-tab>
+		<aria-tab aria-controls=panel-4 aria-selected=true>Tab 1</aria-tab>
 		<aria-tab aria-controls=panel-5>Tab 2</aria-tab>
 		<aria-tab aria-controls=panel-6>Tab 3</aria-tab>
 	</aria-tablist>
@@ -78,8 +78,8 @@ This example requires JavaScript to be activated.
     <p>A multi-selectable tablist.</p>
 	<aria-tablist aria-label="Example" aria-multiselectable="true">
 		<aria-tab aria-controls=panel-7>Tab 1</aria-tab>
-		<aria-tab aria-controls=panel-8 selected>Tab 2</aria-tab>
-		<aria-tab aria-controls=panel-9 selected>Tab 3</aria-tab>
+		<aria-tab aria-controls=panel-8 aria-selected=true>Tab 2</aria-tab>
+		<aria-tab aria-controls=panel-9 aria-selected=true>Tab 3</aria-tab>
 	</aria-tablist>
 	<aria-tabpanel id=panel-7>This is the content for the first tab.</p></aria-tabpanel>
 	<aria-tabpanel id=panel-8>This is the content for the second tab.</p></aria-tabpanel>
