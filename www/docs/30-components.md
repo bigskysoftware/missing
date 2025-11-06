@@ -345,10 +345,10 @@ We recommend using <a href=https://lucide.dev>Lucide</a> for icons.
 <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Icon button markup</figcaption>
 
   ~~~ html
-  <!-- sprite sheet -->
-  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <!-- sprite sheet from https://icones.js.org/collection/lucide -->
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display: none">
     <defs>
-      <symbol id="lucide-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16"/><path d="M4 18h16"/><path d="M4 6h16"/></symbol>
+      <symbol viewBox="0 0 24 24" id="lucide-arrow-big-right"><!-- Icon from Lucide by Lucide Contributors - https://github.com/lucide-icons/lucide/blob/main/LICENSE --><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 9h6V5l7 7l-7 7v-4H6z"></path></symbol>
       <!-- ... --->
     </defs>
   </svg>
@@ -358,11 +358,9 @@ We recommend using <a href=https://lucide.dev>Lucide</a> for icons.
   <!-- markup.html -->
   <section class="flex-row justify-content:space-between">
     <button class="iconbutton" type=button aria-label="Menu">
-      // OLD: <svg aria-hidden=true><use href=#lucide-menu></use></svg>
       <aria-icon name=lucide-menu></aria-icon>
     </button>
     <a class="info <button> iconbutton" aria-label="Next">
-      // OLD: <svg aria-hidden=true><use href=#lucide-arrow-big-right></use></svg>
       <aria-icon name=lucide-arrow-big-right></aria-icon>
     </a>
     <!-- ... -->
@@ -370,44 +368,18 @@ We recommend using <a href=https://lucide.dev>Lucide</a> for icons.
   ~~~
 
   <hr>
-
-  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-    <defs>
-      <symbol id="lucide-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu-icon lucide-menu"><path d="M4 12h16"/><path d="M4 18h16"/><path d="M4 6h16"/></symbol>
-      <symbol id="lucide-arrow-big-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-big-right-icon lucide-arrow-big-right"><path d="M6 9h6V5l7 7-7 7v-4H6V9z"/></symbol>
-      <symbol id="lucide-scissors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-scissors-icon lucide-scissors"><circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/></symbol>
-      <symbol id="lucide-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-x-icon lucide-x"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></symbol>
-      <symbol id="lucide-transgender" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-transgender-icon lucide-transgender"><path d="M12 16v6"/><path d="M14 20h-4"/><path d="M18 2h4v4"/><path d="m2 2 7.17 7.17"/><path d="M2 5.355V2h3.357"/><path d="m22 2-7.17 7.17"/><path d="M8 5 5 8"/><circle cx="12" cy="12" r="4"/></symbol>
-      <symbol id="lucide-smile" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-smile-icon lucide-smile"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/></symbol>
-      <symbol id="lucide-music" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-music-icon lucide-music"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></symbol>
-    </defs>
+  <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="display: none">
+  <defs>
+  <symbol viewBox="0 0 24 24" id="lucide-arrow-big-right"><!-- Icon from Lucide by Lucide Contributors - https://github.com/lucide-icons/lucide/blob/main/LICENSE --><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 9h6V5l7 7l-7 7v-4H6z"></path></symbol>
+  <symbol viewBox="0 0 24 24" id="lucide-menu"><!-- Icon from Lucide by Lucide Contributors - https://github.com/lucide-icons/lucide/blob/main/LICENSE --><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 12h16M4 6h16M4 18h16"></path></symbol>
+  <symbol viewBox="0 0 24 24" id="lucide-music"><!-- Icon from Lucide by Lucide Contributors - https://github.com/lucide-icons/lucide/blob/main/LICENSE --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M9 18V5l12-2v13"></path><circle cx="6" cy="18" r="3"></circle><circle cx="18" cy="16" r="3"></circle></g></symbol>
+  <symbol viewBox="0 0 24 24" id="lucide-scissors"><!-- Icon from Lucide by Lucide Contributors - https://github.com/lucide-icons/lucide/blob/main/LICENSE --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="6" cy="6" r="3"></circle><path d="M8.12 8.12L12 12m8-8L8.12 15.88"></path><circle cx="6" cy="18" r="3"></circle><path d="M14.8 14.8L20 20"></path></g></symbol>
+  <symbol viewBox="0 0 24 24" id="lucide-smile"><!-- Icon from Lucide by Lucide Contributors - https://github.com/lucide-icons/lucide/blob/main/LICENSE --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2s4-2 4-2M9 9h.01M15 9h.01"></path></g></symbol>
+  <symbol viewBox="0 0 24 24" id="lucide-transgender"><!-- Icon from Lucide by Lucide Contributors - https://github.com/lucide-icons/lucide/blob/main/LICENSE --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M12 16v6m2-2h-4m8-18h4v4M2 2l7.17 7.17M2 5.355V2h3.357M22 2l-7.17 7.17M8 5L5 8"></path><circle cx="12" cy="12" r="4"></circle></g></symbol>
+  <symbol viewBox="0 0 24 24" id="lucide-x"><!-- Icon from Lucide by Lucide Contributors - https://github.com/lucide-icons/lucide/blob/main/LICENSE --><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 6L6 18M6 6l12 12"></path></symbol>
+  
+  </defs>
   </svg>
-  <!--
-  <section class="flex-row justify-content:space-between">
-    <button class="iconbutton" type=button aria-label="Menu">
-      <svg aria-hidden=true><use href=#lucide-menu></use></svg>
-    </button>
-    <a class="info <button> iconbutton" aria-label="Next">
-      <svg aria-hidden=true><use href=#lucide-arrow-big-right></use></svg>
-    </a>
-    <button class="ok iconbutton" type=button aria-label="Cut">
-      <svg aria-hidden=true><use href=#lucide-scissors></use></svg>
-    </button>
-    <a class="warn <button> iconbutton" aria-label="Close">
-      <svg aria-hidden=true><use href=#lucide-x></use></svg>
-    </a>
-    <button class="bad iconbutton" type=button aria-label="Trans">
-      <svg aria-hidden=true><use href=#lucide-transgender></use></svg>
-    </button>
-    <a class="info <button> iconbutton" aria-label="Smile">
-      <svg aria-hidden=true><use href=#lucide-smile></use></svg>
-    </a>
-    <button class="ok iconbutton" type=button aria-label="Music">
-      <svg aria-hidden=true><use href=#lucide-music></use></svg>
-    </button>
-  </section>
-  -->
-
   <section class="flex-row justify-content:space-between">
     <button class="iconbutton" type=button aria-label="Menu">
       <aria-icon fetch name=menu></aria-icon>
@@ -442,7 +414,6 @@ We recommend using <a href=https://lucide.dev>Lucide</a> for icons.
   ~~~ html
   <section class="flex-row justify-content:space-between">
     <button class="<big> iconbutton" type=button aria-label="Menu">
-      // OLD: <svg aria-hidden=true><use href=#lucide-menu></use></svg>
       <aria-icon fetch name=menu></aria-icon>
     </button>
     <!-- ... -->
@@ -451,31 +422,6 @@ We recommend using <a href=https://lucide.dev>Lucide</a> for icons.
 
   <hr>
 
-  <!--
-  <section class="flex-row justify-content:space-between">
-    <button class="<big> iconbutton" type=button aria-label="Menu">
-      <svg aria-hidden=true><use href=#lucide-menu></use></svg>
-    </button>
-    <a class="<big> info <button> iconbutton" aria-label="Next">
-      <svg aria-hidden=true><use href=#lucide-arrow-big-right></use></svg>
-    </a>
-    <button class="<big> ok iconbutton" type=button aria-label="Cut">
-      <svg aria-hidden=true><use href=#lucide-scissors></use></svg>
-    </button>
-    <a class="<big> warn <button> iconbutton" aria-label="Close">
-      <svg aria-hidden=true><use href=#lucide-x></use></svg>
-    </a>
-    <button class="<big> bad iconbutton" type=button aria-label="Trans">
-      <svg aria-hidden=true><use href=#lucide-transgender></use></svg>
-    </button>
-    <a class="<big> info <button> iconbutton" aria-label="Smile">
-      <svg aria-hidden=true><use href=#lucide-smile></use></svg>
-    </a>
-    <button class="<big> ok iconbutton" type=button aria-label="Music">
-      <svg aria-hidden=true><use href=#lucide-music></use></svg>
-    </button>
-  </section>
-  -->
   <section class="flex-row justify-content:space-between">
     <button class="<big> iconbutton" type=button aria-label="Menu">
       <aria-icon name=lucide-menu></aria-icon>

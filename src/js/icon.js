@@ -4,15 +4,17 @@ import { css, makelogger, on, tag } from "./19.js"
 const ilog = makelogger("icons")
 const cache = new Map()
 
-// https://www.w3.org/WAI/WCAG21/Understanding/target-size.html
-// https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html
-const min_size = 24  // TODO: Use WCAG21 or WCAG22? 24px or 44px?
+// ref: https://www.w3.org/WAI/WCAG22/Understanding/target-size-minimum.html
+const minSize = 24
+
+const latest = "0.552.0"  // Avoid CDN redirect
+const url = `https://unpkg.com/lucide-static@${latest}/icons/`
 
 export const icon = tag(
   "aria-icon",
   {
     internals: { ariaHidden: "true" },
-    observedAttributes: ["name", "size", "fetch"],
+    observedAttributes: ["name"],
     css: css`
       :host {
         display: inline-flex;
@@ -20,92 +22,94 @@ export const icon = tag(
         justify-content: center;
         font-size: inherit;
         line-height: 1;
-        width: 1em; height: 1em;  // Avoid reflow
-      }
-      svg {
         width: 1em;
         height: 1em;
-        fill: none;
-        stroke: currentColor;
-        stroke-width: 2;
-        stroke-linecap: round;
-        stroke-linejoin: round;
+      }
+      svg {
+        width: 100%;
+        height: 100%;
+        fill: var(--icon-fill, none);
+        stroke: var(--icon-stroke, currentColor);
+        stroke-width: var(--icon-stroke-width, 2px);
+        stroke-linecap: var(--icon-stroke-linecap, round);
+        stroke-linejoin: var(--icon-stroke-linejoin, round);
       }
     `,
   },
   (icon) => {
 
-    async function fetchIcon(name) {
-      if (!name) return
+    const fetchIcon = async (name) => {
+      if (name) name = name.replace("lucide-", "")
+      else return ""
+
       if (cache.has(name)) {
         const cached = cache.get(name)
         return (typeof cached === "string") ? cached : await cached
       }
 
-      const url = `https://unpkg.com/lucide-static@latest/icons/${name}.svg`
-
-      const pendingFetch = (async () => {
+      const result = (async () => {
+        let str = ""
         try {
-          const response = await fetch(url)
-
-          if (!response.ok)
-            return console.error(`Icon "${name}" not found (${url}).`), ""
-
-          const svg = await response.text()
-          cache.set(name, svg)
-          return svg
+          const response = await fetch(`${url}${name}.svg`)
+          if (response.ok)
+            str = await response.text()
+          else throw new Error(`HTTP Error ${response.status}: ${response.url}.`)
         } catch (error) {
-          console.error(`Failed to fetch "${url}"`, error)
-          cache.set(name, "")
-          return ""
+          console.error(`Failed to load icon "${name}".`, error)
         }
+        cache.set(name, str)
+        return str
       })()
 
-      cache.set(name, pendingFetch)
-      return pendingFetch
+      cache.set(name, result)
+      return result
     }
 
+    const useIcon = (name) => `
+      <!-- @license lucide-static v0.552.0 - ISC -->
+      <svg
+        class="lucide lucide-${name}"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+      >
+        <!-- TODO: really only need to define this once... -->
+        <style>symbol[id^=lucide] > * {
+          fill: var(--icon-fill, none);
+          stroke: var(--icon-stroke, currentColor);
+          stroke-width: var(--icon-stroke-width, 2px);
+          stroke-linecap: var(--icon-stroke-linecap, round);
+          stroke-linejoin: var(--icon-stroke-linejoin, round);
+        }</style>
+        <use href="#${name}"/>
+      </svg>`
+
     const validate = () => {
-      const button = icon.parentElement
-      if (!(button instanceof HTMLButtonElement || button.getAttribute("role") === "button"))
+      const clickable = icon.parentElement
+      if (!(clickable instanceof HTMLButtonElement || clickable instanceof HTMLAnchorElement))
         return
 
-      const rect = button.getBoundingClientRect()
-      if (rect.width < min_size || rect.height < min_size)
-        console.warn(icon.parentElement, `The recommended touch target size is ${min_size}px x ${min_size}px.`)
-      if (!(button.hasAttribute("aria-label") || button.textContent.trim()))
-        console.error(button, "has no accessible label (aria-label or text content).")
+      const rect = clickable.getBoundingClientRect()
+      if (rect.width < minSize || rect.height < minSize)
+        console.warn(icon.parentElement,
+          `WCAG 2.2 minimum target size is ${minSize}px x ${minSize}px.`
+        )
+      if (!(clickable.hasAttribute("aria-label") || clickable.textContent.trim()))
+        console.error(clickable,
+          "has no accessible label (aria-label or text content)."
+        )
     }
 
     const render = async () => {
-      validate()
       const name = icon.getAttribute("name")
-      const svg = (icon.hasAttribute("fetch"))
-        ? await fetchIcon(name)
-        : `
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <use href="#${name}"/>
-          </svg>
-        `
-      icon.innerHTML = svg
-
-      // TODO: Strip outer `<svg>` when fetching to eliminate need to resize?
       if (icon.hasAttribute("fetch"))
-        resize()
+        icon.shadowRoot.innerHTML = await fetchIcon(name)
+      else
+        // <use href> can't resolve in ShadowDOM :(
+        icon.innerHTML = useIcon(name)
     }
 
-    const resize = () => {
-      validate()
-      const size = icon.getAttribute("size") || "1em"
-      const svg = icon.querySelector("svg")
-      if (svg)
-        svg.style.width = svg.style.height = size
-    }
-
-    on(icon, "connected", validate)
-    on(icon, "attribute:name", render)
-    on(icon, "attribute:fetch", render)
-    on(icon, "attribute:size", resize)
+    on(icon, "connected", (e) => validate())
+    on(icon, "attribute:name", (e) => render())
   }
 )
 
