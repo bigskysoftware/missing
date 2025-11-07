@@ -1,198 +1,194 @@
-aria-tablist, [role="tablist"] {
-    display: flex;
-    gap: .5ch;
+aria-tablist, [role=tablist] {
+	display: flex;
+	gap: .5ch;
+	z-index: 2;
 }
 
-aria-tab, [role="tab"]:not([specificity-hack]) {
-    all: initial;
-    color-scheme: light dark;
+aria-tab, [role=tab]:not([specificity-hack]) {
+	all: initial;
+	color-scheme: light dark;
 
 	font-family: var(--secondary-font);
 
-    padding: 0 calc(var(--rhythm, 1rlh) / 4);
-    margin: 0;
-    min-height: var(--rhythm, 1rlh);
-    bottom: calc(-1 * var(--border-block-start-width));
-    position: relative;
+	padding: 0 calc(var(--rhythm, 1rlh) / 4);
+	margin: 0;
+	min-height: var(--rhythm, 1rlh);
+	bottom: calc(-1 * var(--border-block-start-width));
+	position: relative;
 
-    color: var(--fg);
-    border: var(--border-block-start-width) var(--border-block-start-style) var(--graphical-fg);
-    background: var(--interactive-bg);
+	color: var(--fg);
+	border: var(--border-block-start-width) var(--border-block-start-style) var(--graphical-fg);
+	background: var(--interactive-bg);
 
-    border-start-start-radius: var(--tab-border-radius);
-    border-start-end-radius: var(--tab-border-radius);
+	border-start-start-radius: var(--tab-border-radius);
+	border-start-end-radius: var(--tab-border-radius);
 
-    &:active,
-    &[aria-selected="true"] {
-        background: var(--box-bg);
-        border-block-end: var(--border-block-start-width) var(--border-block-start-style) transparent;
-    }
+	&:active,
+	&[aria-selected=true] {
+		background: var(--box-bg);
+		border-block-end: var(--border-block-start-width) var(--border-block-start-style) transparent;
+	}
 
-    &:hover {
-        background-color: var(--box-bg);
-        box-shadow: none;
-    }
+	&:hover {
+		background-color: var(--box-bg);
+		box-shadow: none;
+	}
 
-    &:focus-visible {
-        box-shadow: none;
-        color: var(--accent);
-        text-decoration: underline;
-    }
+	&:focus-visible {
+		box-shadow: none;
+		color: var(--accent);
+		text-decoration: underline;
+	}
 }
 
-aria-tabpanel, [role="tabpanel"] {
-    /* SEE components/box.css */
-
-    display: block;
-    margin-block-start: 0;
-    border-start-start-radius: 0;
-    border-start-end-radius: 0;
-    z-index: 1;
+aria-tabpanel, [role=tabpanel] {
+	/* SEE components/box.css */
+	margin-block-start: 0;
+	border-start-start-radius: 0;
+	border-start-end-radius: 0;
+	z-index: 1;
 }
 
-[role="menu"] {
-    /* SEE components/box.css */
-    position: absolute;
+aria-menulist, [role=menu] {
+	/* SEE components/box.css */
+	position: absolute;
 
-    z-index: 10;
+	z-index: 10;
 
-    padding: calc(var(--gap) / 2) 0;
-    margin: 1px 0 0 0;
+	padding: calc(var(--gap) / 2) 0;
+	margin: 1px 0 0 0;
 
-    display: flex;
-    flex-flow: column nowrap;
+	display: flex;
+	flex-flow: column nowrap;
 }
 
-[role=menuitem] {
-    padding: 0 calc(var(--gap) / 2);
+aria-menuitem, [role=menuitem] {
+	padding: 0 calc(var(--gap) / 2);
 
-    display: block;
+	display: block;
 
-    text-decoration: none;
-    border-radius: 0;
+	text-decoration: none;
+	border-radius: 0;
 
-    color: var(--fg);
+	color: var(--fg);
 
-    &:focus, &:active {
-        background: var(--accent);
-        color: var(--bg);
-    }
+	&:focus,
+	&:active {
+		background: var(--accent);
+		color: var(--bg);
+	}
 }
 
 aria-listbox, [role=listbox] {
-    /* This has been removed from docs, but we keep the styling here as a
-     * reference for future implementation.
-     */
-    list-style: none;
+	list-style: none;
 
-    aria-option, [role=option] {
-        margin-inline: calc(-1 * var(--gap));
-        padding-inline: var(--gap);
-        border-radius: 0;
+	aria-option, [role=option] {
+		margin-inline: calc(-1 * var(--gap));
+		padding-inline: var(--gap);
+		border-radius: 0;
 
-        &[aria-selected=true],
-        &[aria-checked=true] {
-            background: var(--interactive-bg);
-        }
+		&[aria-selected=true],
+		&[aria-checked=true] {
+			background: var(--interactive-bg);
+		}
 
-        &.active {
-            --temporary-bg: var(--accent);
-            --temporary-fg: var(--bg);
-            --temporary-accent: var(--muted-accent); /* TODO: was `parent-var` */
-            --temporary-muted-accent: var(--box-bg); /* TODO: was `parent-var` */
+		&.active {
+			--temporary-bg: var(--accent);
+			--temporary-fg: var(--bg);
+			--temporary-accent: var(--muted-accent); /* TODO: was `parent-var` */
+			--temporary-muted-accent: var(--box-bg); /* TODO: was `parent-var` */
 
-            background: var(--temporary-bg);
-            color: var(--temporary-fg);
+			background: var(--temporary-bg);
+			color: var(--temporary-fg);
 
-            > * {
-                --bg: var(--temporary-bg);
-                --fg: var(--temporary-fg);
-                --accent: var(--temporary-accent);
-                --muted-accent: var(--temporary-muted-accent);
-            }
-        }
-    }
+			> * {
+				--bg: var(--temporary-bg);
+				--fg: var(--temporary-fg);
+				--accent: var(--temporary-accent);
+				--muted-accent: var(--temporary-muted-accent);
+			}
+		}
+	}
 }
 
 
-[aria-orientation="vertical"] {
-    flex-direction: column;
-    width: fit-content;
-    text-align: center;
+[aria-orientation=vertical] {
+	flex-direction: column;
+	width: fit-content;
+	text-align: center;
 }
 
 
 input[type=checkbox][role=switch] {
-  all: unset;
-  appearance: none;
+	all: unset;
+	appearance: none;
 
-  display: inline-grid;
-  vertical-align: middle;
-  grid-template-columns: repeat(2, 1rem);
-  aspect-ratio: 2 / 1;
-  margin-block: auto;
+	display: inline-grid;
+	vertical-align: middle;
+	grid-template-columns: repeat(2, 1rem);
+	aspect-ratio: 2 / 1;
+	margin-block: auto;
 
-  &::before, &::after {
-    content: '';
-    display: inline-block;
+	&::before, &::after {
+		content: '';
+		display: inline-block;
 
-    transition: transform .2s ease-in-out, background-color .2s ease-in-out, background-color .2s ease-in-out;
-  }
+		transition: transform .2s ease-in-out, background-color .2s ease-in-out, background-color .2s ease-in-out;
+	}
 
-  &::before {
-    grid-column: 1 / span 2;
-    grid-row: 1;
-    border: var(--interactive-border-width) var(--interactive-border-style) var(--graphical-fg);
-    background: var(--bg);
-    border-radius: 9999rem;
-  }
+	&::before {
+		grid-column: 1 / span 2;
+		grid-row: 1;
+		border: var(--interactive-border-width) var(--interactive-border-style) var(--graphical-fg);
+		background: var(--bg);
+		border-radius: 9999rem;
+	}
 
-  &::after {
-    --toggle-nub-margin: 2px;
-    grid-column: 1;
-    grid-row: 1;
-    margin: var(--toggle-nub-margin);
-    border-radius: 99999rem;
-    background: var(--graphical-fg);
-  }
+	&::after {
+		--toggle-nub-margin: 2px;
+		grid-column: 1;
+		grid-row: 1;
+		margin: var(--toggle-nub-margin);
+		border-radius: 99999rem;
+		background: var(--graphical-fg);
+	}
 
-  &:checked {
-    &::before {
-      border-color: var(--accent);
-      background: var(--accent);
-    }
-    &::after {
-      transform: translateX(calc(100% + 2 * var(--toggle-nub-margin)));
-      background: var(--bg);
-    }
-  }
+	&:checked {
+		&::before {
+			border-color: var(--accent);
+			background: var(--accent);
+		}
+		&::after {
+			transform: translateX(calc(100% + 2 * var(--toggle-nub-margin)));
+			background: var(--bg);
+		}
+	}
 
-  &:indeterminate {
-    &::before {
-      border: var(--interactive-border-width) var(--interactive-border-style) var(--interactive-bg);
-    }
-    &::after {
-      transform: translateX(calc(50% + var(--toggle-nub-margin)));
-      background: var(--interactive-bg);
-    }
-  }
+	&:indeterminate {
+		&::before {
+			border: var(--interactive-border-width) var(--interactive-border-style) var(--interactive-bg);
+		}
+		&::after {
+			transform: translateX(calc(50% + var(--toggle-nub-margin)));
+			background: var(--interactive-bg);
+		}
+	}
 
-  &:is(label > *):not(#specificity-hack) {
-    margin-block-end: auto;
+	&:is(label > *):not(#specificity-hack) {
+		margin-block-end: auto;
   }
   &:not(label > *) {
-    padding-block: calc(var(--gap) / 4 + (var(--rhythm, 1rlh) - 1em) / 2);
+		padding-block: calc(var(--gap) / 4 + (var(--rhythm, 1rlh) - 1em) / 2);
   }
 
   :is(label:has(> &)) {
-    /* Lightning CSS requires :is() when nested selector doesn't start with & */
-    display: flex;
-    gap: var(--gap);
-    flex-direction: row;
+		/* Lightning CSS requires :is() when nested selector doesn't start with & */
+		display: flex;
+		gap: var(--gap);
+		flex-direction: row;
   }
   :is(label:has(+ &)) {
-    /* Lightning CSS requires :is() when nested selector doesn't start with & */
-    width: 100%;
+	  /* Lightning CSS requires :is() when nested selector doesn't start with & */
+	  width: 100%;
   }
-
 }
