@@ -1,5 +1,5 @@
 //@deno-types=./19.ts
-import { makelogger, mixin, on } from "./19.js"
+import { dispatch, makelogger, mixin, on } from "./19.js"
 
 const ilog = makelogger("selectable")
 
