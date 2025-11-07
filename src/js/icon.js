@@ -14,7 +14,7 @@ export const icon = tag(
   "aria-icon",
   {
     internals: { ariaHidden: "true" },
-    observedAttributes: ["name"],
+    observedAttributes: ["name", "aria-label", "aria-labelledby"],
     css: css`
       :host {
         display: inline-flex;
@@ -108,8 +108,17 @@ export const icon = tag(
         icon.innerHTML = useIcon(name)
     }
 
+    const label = (value) => {
+      Object.assign(icon.internals, {
+        ariaHidden: (value) ? "false" : "true",
+        role: (value) ? "img" : null,
+      })
+    }
+
     on(icon, "connected", (e) => validate())
     on(icon, "attribute:name", (e) => render())
+    on(icon, "attribute:aria-label", (e) => label(e.detail.value))
+    on(icon, "attribute:aria-labelledby", (e) => label(e.detail.value))
   }
 )
 
