@@ -5,12 +5,17 @@ aria-tablist, [role=tablist] {
 }
 
 aria-tab, [role=tab]:not([specificity-hack]) {
+  --gap: calc(var(--rhythm, 1rlh) / 4);
+
 	all: initial;
 	color-scheme: light dark;
 
 	font-family: var(--secondary-font);
 
-	padding: 0 calc(var(--rhythm, 1rlh) / 4);
+  display: flex;
+  align-items: center;
+  gap: var(--gap);
+	padding: 0 var(--gap);
 	margin: 0;
 	min-height: var(--rhythm, 1rlh);
 	bottom: calc(-1 * var(--border-block-start-width));
@@ -47,6 +52,80 @@ aria-tabpanel, [role=tabpanel] {
 	border-start-start-radius: 0;
 	border-start-end-radius: 0;
 	z-index: 1;
+}
+
+aria-tabset {
+	&:has(aria-tablist[aria-orientation=vertical]) {
+		&:has(aria-tablist:first-child) {
+			& aria-tab {
+				border-radius: var(--tab-border-radius) 0 0 var(--tab-border-radius);
+				right: calc(-1 * var(--border-block-start-width));
+				bottom: unset;
+
+				&:active,
+				&[aria-selected=true] {
+					border-inline-end: var(--border-block-start-width) var(--border-block-start-style) transparent;
+					border-inline-start-color: var(--graphical-fg);
+					border-block-end-color: var(--graphical-fg);
+				}
+			}
+		  & aria-tabpanel {
+		  	border-start-start-radius: 0;
+		  	border-start-end-radius: var(--border-radius);
+		  	border-end-start-radius: 0;
+		  	border-end-end-radius: var(--border-radius);
+		  }
+
+		}
+		&:not(:has(aria-tablist:first-child)) {
+			& aria-tab {
+				border-radius: 0 var(--tab-border-radius) var(--tab-border-radius) 0;
+				left: calc(-1 * var(--border-block-start-width));
+				bottom: unset;
+
+				&:active,
+				&[aria-selected=true] {
+					border-inline-start: var(--border-block-start-width) var(--border-block-start-style) transparent;
+					border-inline-end-color: var(--graphical-fg);
+					border-block-end-color: var(--graphical-fg);
+				}
+			}
+		  & aria-tabpanel {
+		  	border-start-start-radius: var(--border-radius);
+		  	border-start-end-radius: 0;
+		  	border-end-start-radius: var(--border-radius);
+		  	border-end-end-radius: 0;
+		  }
+		}
+
+	}
+	&:not(:has(aria-tablist[aria-orientation=vertical])) {
+		&:has(aria-tablist:first-child) {
+
+		}
+		&:not(:has(aria-tablist:first-child)) {
+			& aria-tab {
+				border-radius: 0 0 var(--tab-border-radius) var(--tab-border-radius);
+				top: calc(-1 * var(--border-block-start-width));
+
+				&:active,
+				&[aria-selected=true] {
+					border-block-start: var(--border-block-start-width) var(--border-block-start-style) transparent;
+					border-block-end-color: var(--graphical-fg);
+				}
+			}
+		  & aria-tabpanel {
+		  	border-start-start-radius: var(--border-radius);
+		  	border-start-end-radius: var(--border-radius);
+		  	border-end-start-radius: 0;
+		  	border-end-end-radius: 0;
+		  }
+		}
+	}
+
+	& aria-tabpanel {
+		margin: 0;
+	}
 }
 
 aria-menulist, [role=menu] {

@@ -27,19 +27,22 @@ shortcuts:
 
 Missing.css provides the following custom elements for tabs:
 
+- `<aria-tabset>`{ .language-html }
 - `<aria-tablist>`{ .language-html }
 - `<aria-tab>`{ .language-html }
 - `<aria-tabpanel>`{ .language-html }
 
 See [Missing.js &sect; Tabs](/docs/js#tabs).
 
+ - The `<aria-tabset>`{ .language-html } element provides positioning support for `<aria-tablist>`{ .language-html } and `<aria-tabpanel>`{ .language-html }.
+   It does not have have an ARIA role.
  - Don't forget to set an accessible label for the `<aria-tablist>`{ .language-html }.
 
  - You must establish the relationship between `<aria-tab>`{ .language-html } and `<aria-tabpanel>`{ .language-html } elements by providing `aria-controls`{ .token .attr-name } attributes to each `<aria-tab>`{ .language-html }.
    The component will set the reverse `aria-labelledby`{ .token .attr-name } attributes (generating unique ids if necessary).
 
  - It is highly recommended you set the initial state with `<aria-tab aria-selected=true>`{ .language-html } and `<aria-tabpanel hidden>`{ .language-html }.
-   If initial state is not provided, the custom element will select the first tab, likely resulting in a DOM reflow as the remaining `<aria-tabpanel>`{ .language-html } instances are hidden.
+   If initial state is not provided the first tab will be selected, resulting in a DOM reflow as the remaining `<aria-tabpanel>`{ .language-html } instances are hidden.
 
 
 {{ include "demo_kbd.vto" }}

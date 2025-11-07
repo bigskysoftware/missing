@@ -7,6 +7,24 @@ import { MultiSelectMixin } from "./multiselect.js"
 
 const ilog = makelogger("tabs")
 
+export const tabset = tag(
+  "aria-tabset",
+  {
+    internals: { role: "" },
+    css: css`
+      :host {
+        display: flex;
+        flex-direction: column;
+      }
+      :host(:has(aria-tablist[aria-orientation=vertical])) {
+        flex-direction: row;
+      }
+    `,
+  },
+  (tabset) => {
+  }
+)
+
 export const tablist = tag(
   "aria-tablist",
   {
@@ -37,6 +55,7 @@ export const tab = tag(
       validate({ sParent: "aria-tablist" }),
     ],
     observedAttributes: ["aria-controls", "aria-selected"],
+    css: css`:host { display: flex; }`,
   },
   (tab) => {
 
@@ -71,7 +90,7 @@ export const tabpanel = tag(
   "aria-tabpanel",
   {
     internals: { role: "tabpanel" },
-    css: css`:host { display: block }`,
+    css: css`:host { flex-grow: 1; }`,
   },
   (tabpanel) => {},
 )
@@ -80,3 +99,4 @@ export const tabpanel = tag(
 tabpanel.define()
 tab.define()
 tablist.define()
+tabset.define()
