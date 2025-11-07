@@ -57,36 +57,62 @@ This example requires JavaScript to be activated.
 </noscript>
 
 <figure>
-	<a href=#>A focusable element before the tabs</a></p>
-    <p>A horizontal tablist.</p>
-	<aria-tablist aria-label="Example">
-		<aria-tab aria-controls=panel-1>Tab 1</aria-tab>
-		<aria-tab aria-controls=panel-2>Tab 2</aria-tab>
-		<aria-tab aria-controls=panel-3>Tab 3</aria-tab>
-	</aria-tablist>
-	<aria-tabpanel id=panel-1>This is the content for the first tab.</p></aria-tabpanel>
-	<aria-tabpanel id=panel-2>This is the content for the second tab.</p></aria-tabpanel>
-	<aria-tabpanel id=panel-3>This is the content for the third tab.</p></aria-tabpanel>
-	<a href=#>A focusable element between the tabs</a></p>
-    <p>A vertical tablist.</p>
-	<aria-tablist aria-label="Example" aria-orientation="vertical">
-		<aria-tab aria-controls=panel-4 aria-selected=true>Tab 1</aria-tab>
-		<aria-tab aria-controls=panel-5>Tab 2</aria-tab>
-		<aria-tab aria-controls=panel-6>Tab 3</aria-tab>
-	</aria-tablist>
-	<aria-tabpanel id=panel-4>The first tab for the vertical tablist.</p></aria-tabpanel>
-	<aria-tabpanel id=panel-5>The second tab for the vertical tablist.</p></aria-tabpanel>
-	<aria-tabpanel id=panel-6>The third tab for the vertical tablist.</p></aria-tabpanel>
-	<a href=#>A focusable element after the tabs</a></p>
-    <p>A multi-selectable tablist.</p>
-	<aria-tablist aria-label="Example" aria-multiselectable="true">
-		<aria-tab aria-controls=panel-7>Tab 1</aria-tab>
-		<aria-tab aria-controls=panel-8 aria-selected=true>Tab 2</aria-tab>
-		<aria-tab aria-controls=panel-9 aria-selected=true>Tab 3</aria-tab>
-	</aria-tablist>
-	<aria-tabpanel id=panel-7>This is the content for the first tab.</p></aria-tabpanel>
-	<aria-tabpanel id=panel-8>This is the content for the second tab.</p></aria-tabpanel>
-	<aria-tabpanel id=panel-9>This is the content for the third tab.</p></aria-tabpanel>
+	<p>A horizontal tablist with start tabs.</p>
+	<aria-tabset>
+		<aria-tablist aria-label="Example">
+			<aria-tab aria-controls=panel-1s><aria-icon fetch name=home></aria-icon> Tab 1</aria-tab>
+			<aria-tab aria-controls=panel-2s><aria-icon fetch name=book></aria-icon> Tab 2</aria-tab>
+			<aria-tab aria-controls=panel-3s><aria-icon fetch name=database></aria-icon> Tab 3</aria-tab>
+		</aria-tablist>
+		<aria-tabpanel id=panel-1s>This is the content for the first tab.</p></aria-tabpanel>
+		<aria-tabpanel id=panel-2s>This is the content for the second tab.</p></aria-tabpanel>
+		<aria-tabpanel id=panel-3s>This is the content for the third tab.</p></aria-tabpanel>
+	</aria-tabset>
+	<p>A horizontal tablist with end tabs and big icons.</p>
+	<aria-tabset>
+		<aria-tabpanel id=panel-1e>This is the content for the first tab.</p></aria-tabpanel>
+		<aria-tabpanel id=panel-2e>This is the content for the second tab.</p></aria-tabpanel>
+		<aria-tabpanel id=panel-3e>This is the content for the third tab.</p></aria-tabpanel>
+		<aria-tablist aria-label="Example">
+			<aria-tab aria-controls=panel-1e><aria-icon fetch name=home class="<big>"></aria-icon> Tab 1</aria-tab>
+			<aria-tab aria-controls=panel-2e><aria-icon fetch name=book class="<big>"></aria-icon> Tab 2</aria-tab>
+			<aria-tab aria-controls=panel-3e><aria-icon fetch name=database class="<big>"></aria-icon> Tab 3</aria-tab>
+		</aria-tablist>
+	</aria-tabset>
+	<p>A vertical tablist with start tabs.</p>
+	<aria-tabset>
+		<aria-tablist aria-label="Example" aria-orientation="vertical">
+			<aria-tab aria-controls=panel-4s aria-selected=true><aria-icon fetch name=home></aria-icon> Tab 1</aria-tab>
+			<aria-tab aria-controls=panel-5s><aria-icon fetch name=book></aria-icon> Tab 2</aria-tab>
+			<aria-tab aria-controls=panel-6s><aria-icon fetch name=database></aria-icon> Tab 3</aria-tab>
+		</aria-tablist>
+		<aria-tabpanel id=panel-4s>The first tab for the vertical tablist.</p></aria-tabpanel>
+		<aria-tabpanel id=panel-5s>The second tab for the vertical tablist.</p></aria-tabpanel>
+		<aria-tabpanel id=panel-6s>The third tab for the vertical tablist.</p></aria-tabpanel>
+	</aria-tabset>
+	<p>A vertical tablist with end tabs and big tabs.</p>
+	<aria-tabset>
+		<aria-tabpanel id=panel-4e>The first tab for the vertical tablist.</p></aria-tabpanel>
+		<aria-tabpanel id=panel-5e>The second tab for the vertical tablist.</p></aria-tabpanel>
+		<aria-tabpanel id=panel-6e>The third tab for the vertical tablist.</p></aria-tabpanel>
+		<aria-tablist aria-label="Example" aria-orientation="vertical">
+			<aria-tab class="<big>" aria-controls=panel-4e aria-selected=true>Tab 1<aria-icon fetch name=home class="<big>"></aria-icon></aria-tab>
+			<aria-tab class="<big>" aria-controls=panel-5e>Tab 2 <aria-icon fetch name=book class="<big>"></aria-icon></aria-tab>
+			<aria-tab class="<big>" aria-controls=panel-6e>Tab 3 <aria-icon fetch name=database class="<big>"></aria-icon></aria-tab>
+		</aria-tablist>
+	</aria-tabset>
+	<p>A multi-selectable tablist.</p>
+	<aria-tabset>
+		<aria-tablist aria-label="Example" aria-multiselectable="true">
+			<aria-tab aria-controls=panel-7><aria-icon fetch name=home></aria-icon> Tab 1</aria-tab>
+			<aria-tab aria-controls=panel-8 aria-selected=true><aria-icon fetch name=book></aria-icon>Tab 2</aria-tab>
+			<aria-tab aria-controls=panel-9 aria-selected=true><aria-icon fetch name=database></aria-icon>Tab 3</aria-tab>
+		</aria-tablist>
+		<aria-tabpanel id=panel-7>This is the content for the first tab.</p></aria-tabpanel>
+		<aria-tabpanel id=panel-8>This is the content for the second tab.</p></aria-tabpanel>
+		<aria-tabpanel id=panel-9>This is the content for the third tab.</p></aria-tabpanel>
+	</aria-tabset>
 </figure>
 
 <script type=module src=/dist/js/tabs.js></script>
+<script type=module src=/dist/js/icon.js></script>
