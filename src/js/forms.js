@@ -14,7 +14,7 @@ export const FormElementMixin = (Super) => class extends Super {
   
   constructor() { super(); internals(this, {}) }
 
-  get value() { return this.#value }
+  get value() { return this.hasAttribute("disabled") ? null : this.#value }
   set value(value) { internals(this).setFormValue(this.#value = value) }
   get form() { return internals(this).form }
   get name() { return this.getAttribute('name') }

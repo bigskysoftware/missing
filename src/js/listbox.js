@@ -30,9 +30,6 @@ export const listbox = tag(
     }
 
     const setValue = () => {
-      if (listbox.hasAttribute("disabled"))
-        return listbox.value = null
-
       const data = new FormData()
       $$(listbox, sSelected).forEach(o =>
         data.append(listbox.name, o.getAttribute("value")))
