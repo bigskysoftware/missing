@@ -37,6 +37,7 @@ export const listbox = tag(
     }
     
     internals(listbox, { role: "listbox", ariaOrientation: "vertical", ariaMultiSelectable: "false" })
+    stylize(listbox, css`:host { display: block; }`)
 
     on(listbox, "connected", (e) => {
       if (!$(listbox, "[aria-selected=true]"))
@@ -97,6 +98,7 @@ export const option = tag(
   },
   (option) => {
     internals(option, { role: "option" })
+    stylize(option, css`:host { display: block; }`)
   }
 )
 

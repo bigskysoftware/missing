@@ -99,7 +99,7 @@ export const FocusGroupMixin = mixin(
     })
 
     on(group, "attribute:aria-orientation", (e) => {
-      const state = orientation()
+      const state = group.attr("ariaOrientation")
       states(group, {
         horizontal: state === "horizontal",
         vertical: state === "vertical",
