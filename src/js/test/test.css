@@ -1,0 +1,52 @@
+test-case {
+  display: grid;
+  width: 100%;
+  grid-template-columns: auto 1fr;
+  margin-block: 1lh;
+
+  .fail-detail {
+    grid-column: 2;
+  }
+}
+
+test-route {
+  display: none;
+}
+
+test-results {
+  font-size: 1rem;
+}
+
+.test-result {
+  font-family: var(--mono);
+
+  --color: purple;
+  color: lch(from var(--color) 100 60 h);
+  outline: 1px solid lch(from var(--color) 60 50 h);
+  background: lch(from var(--color) 10 40 h);
+
+  margin-inline-end: 1ch;
+  padding: 0 .5ch;
+  border-radius: .2em;
+
+  overflow: hidden;
+
+  .value {
+    margin-inline: .5ch -.5ch;
+    padding-inline: .5ch;
+    background: lch(from var(--color) 60 50 h);
+    color: black;
+    font-weight: bold;
+  }
+}
+
+.fail-detail {
+  overflow: hidden;
+  samp {
+    font-family: var(--mono);
+  }
+  pre {
+    width: 100%;
+    overflow-x: auto;
+  }
+}
