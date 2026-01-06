@@ -637,6 +637,7 @@ export function tag(name, options, init) {
     constructor() {
       super()
       init(this)
+      dispatch(this, 'constructed')
     }
 
     connectedCallback() { dispatch(this, 'connected') }
@@ -700,10 +701,11 @@ export function observeAttributes(...attrs) {
     
     constructor() {
       super()
-      this.constructor.observedAttributes
-        .filter((/** @type {string} */ attr) => !this.hasAttribute(attr))
-        .forEach((/** @type {string} */ attr) =>
-          dispatch(this, `attribute:${attr}`, { value: null }))
+      on(this, "constructed", () =>
+        this.constructor.observedAttributes
+          .filter((/** @type {string} */ attr) => !this.hasAttribute(attr))
+          .forEach((/** @type {string} */ attr) =>
+            dispatch(this, `attribute:${attr}`, { value: null })))
     }
     
     /**
