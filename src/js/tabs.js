@@ -1,5 +1,5 @@
 //@deno-types=./19.ts
-import { $$, css, makelogger, on, tag } from "./19.js"
+import { $$, css, internals, makelogger, observeAttributes, on, stylize, tag } from "./19.js"
 import { validate } from "./validate.js"
 import { FocusGroupMixin } from "./focusgroup.js"
 import { SelectableMixin } from "./selectable.js"
@@ -7,28 +7,22 @@ import { MultiSelectMixin } from "./multiselect.js"
 
 const ilog = makelogger("tabs")
 
-export const tabset = tag(
-  "aria-tabset",
-  {
-    internals: { role: "" },
-    css: css`
-      :host {
-        display: flex;
-        flex-direction: column;
-      }
-      :host(:has(aria-tablist[aria-orientation=vertical])) {
-        flex-direction: row;
-      }
-    `,
-  },
-  (tabset) => {
-  }
-)
+export const tabset = tag("aria-tabset", (tabset) => {
+  internals(tabset, { role: "" })
+  stylize(tabset, css`
+    :host {
+      display: flex;
+      flex-direction: column;
+    }
+    :host(:has(aria-tablist[aria-orientation=vertical])) {
+      flex-direction: row;
+    }
+  `)
+})
 
 export const tablist = tag(
   "aria-tablist",
   {
-    internals: { role: "tablist", ariaMultiSelectable: "false" },
     mixins: [
       FocusGroupMixin,
       MultiSelectMixin,
@@ -36,10 +30,11 @@ export const tablist = tag(
     ],
   },
   (tablist) => {
+    internals(tablist, { role: "tablist", ariaMultiSelectable: "false" })
     on(tablist, "attribute:aria-multiselectable", (e) => {
       if (e.detail.value === "true")
         $$(tablist, "aria-tab").forEach(tab => {
-          tab.internals.ariaExpanded = false
+          internals(tab, { ariaExpanded: "false" })
           tab.ariaExpanded = (tab.ariaSelected === "true") ? "true" : null
         })
     })
@@ -49,15 +44,15 @@ export const tablist = tag(
 export const tab = tag(
   "aria-tab",
   {
-    internals: { role: "tab" },
     mixins: [
+      observeAttributes("aria-controls", "aria-selected"),
       SelectableMixin,
       validate({ sParent: "aria-tablist" }),
     ],
-    observedAttributes: ["aria-controls", "aria-selected"],
-    css: css`:host { display: flex; }`,
   },
   (tab) => {
+    internals(tab, { role: "tab" })
+    stylize(tab, css`:host { display: flex; }`)
 
     on(tab, "attribute:aria-controls", (e) => {
       if ("ariaControlsElements" in tab)
@@ -70,8 +65,8 @@ export const tab = tag(
       else
         return console.error(tab, "has no associated <aria-tabpanel>")
 
-      if ("ariaLabelledByElements" in tab.internals)
-        tab.panel.internals.ariaLabelledByElements = [tab]
+      if ("ariaLabelledByElements" in internals(tab))
+        internals(tab.panel, { ariaLabelledByElements: [tab] })
       else
         tab.panel.setAttribute("aria-labelledby", identify(tab))
     })
@@ -86,14 +81,10 @@ export const tab = tag(
   }
 )
 
-export const tabpanel = tag(
-  "aria-tabpanel",
-  {
-    internals: { role: "tabpanel" },
-    css: css`:host { flex-grow: 1; }`,
-  },
-  (tabpanel) => {},
-)
+export const tabpanel = tag("aria-tabpanel", (tabpanel) => {
+  internals(tabpanel, { role: "tabpanel" })
+  stylize(tabpanel, css`:host { flex-grow: 1; }`)
+})
 
 // Define nested elements first
 tabpanel.define()

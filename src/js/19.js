@@ -486,6 +486,94 @@ export function debounce(t, f, { mode = "trailing" } = {}) {
 }
 
 /**
+ * Get or create the shadow root of an element.
+ * By default, the shadow root will be populated by a single <slot>.
+ * Will throw an error if:
+ * - the element has a shadow root with mode: "closed".
+ * - options were specified, but the shadow root already exists.
+ * @param {Element} host
+ * @param {ShadowRootInit} [options]
+ * @returns {ShadowRoot}
+ */
+export function shadow(host, options) {
+  if (options && host.shadowRoot)
+    throw new Error("Cannot apply options to already existing shadow root.")
+  let shadow = host.shadowRoot
+  if (!shadow) {
+    shadow = host.attachShadow({ ...(options ?? {}), mode: "open" })
+    shadow.append(document.createElement("slot"))
+  }
+  return shadow
+}
+
+/**
+ * @type {WeakMap<HTMLElement, ElementInternals>}
+ */
+const internalsMap = new WeakMap()
+
+/**
+ * Get ElementInternals for an element.
+ * 
+ * If {@linkcode options} is passed:
+ * - The internals will be created if needed,
+ * - options will be Object.assign'ed to it.
+ * - If the element has internals that weren't attached by this function,
+ *   this function will throw.
+ * 
+ * Otherwise, if the element has internals attached by this function,
+ * it will be returned, otherwise `null` will be returned.
+ * @param {Element} el
+ * @param {Partial<ElementInternals>} [options]
+ * @returns {ElementInternals | null}
+ */
+export function internals(el, options) {
+  if (!(el instanceof HTMLElement)) return null
+  let ints = internalsMap.get(el)
+  if (options) {
+    if (!ints) internalsMap.set(el, ints = el.attachInternals())
+    Object.assign(ints, options)
+  }
+  return ints ?? null
+}
+
+/**
+ * Set Custom Element States on an element.
+ * 
+ * @param {HTMLElement} el
+ * @param {string[] | Record<string, boolean>} states
+ */
+export function states(el, states) {
+  const ints = internals(el)
+  if (!ints) throw new Error(`Could not get internals of ${el}`)
+  if (Array.isArray(states)) {
+    for (const state of states) ints.states.add(state)
+  } else {
+    for (const key in states) {
+      if (states[key]) ints.states.add(key)
+      else ints.states.delete(key)
+    }
+  }
+}
+
+/**
+ * Apply a stylesheet to an element's shadow root.
+ * @param {Element} el 
+ * @param {CSSStyleSheet} css 
+ */
+export function stylize(el, css) {
+  shadow(el).adoptedStyleSheets.push(css)
+}
+
+/**
+ * Get the specified role of an element (will not get HTML implied role).
+ * @param {HTMLElement} el 
+ * @returns {string | null}
+ */
+export function role(el) {
+  return internals(el)?.role ?? el.role
+}
+
+/**
  * Create a behavior that applies to elements matching the given selector.
  * @template TOptions
  * @param {string} selector
@@ -506,69 +594,62 @@ export function behavior(selector, init) {
 }
 
 /**
+ * @typedef {(Base: typeof HTMLElement) => typeof HTMLElement} Mixin
+ */
+
+/**
+ * Apply mixins to a base class
+ * @param {typeof HTMLElement} Base
+ * @param {Mixin[]} mixins
+ * @returns {typeof HTMLElement}
+ */
+function applyMixins(Base, mixins) {
+  return mixins.reduce((Class, Mixin) => Mixin(Class), Base)
+}
+
+/**
  * @typedef {object} ElementDefinition
- * @property {typeof HTMLElement} [base]
- * @property {string[]} [observedAttributes]
+ * @property {typeof HTMLElement} [base=HTMLElement]
+ * @property {Mixin[]} [mixins=[]]
  */
 
 /**
  * Define a custom element.
  * @param {string} name
- * @param {ElementDefinition | ((el: Element) => void)} options
- * @param {((el: Element) => void)} init
+ * @param {ElementDefinition | ((el: HTMLElement) => void)} options
+ * @param {((el: HTMLElement) => void)} [init]
+ * @overload
+ * @param {string} name
+ * @param {ElementDefinition} options
+ * @param {((el: HTMLElement) => void)} init
+ * @returns {typeof HTMLElement}
+ * @overload
+ * @param {string} name
+ * @param {ElementDefinition} options
+ * @param {((el: HTMLElement) => void)} init
+ * @returns {typeof HTMLElement}
  */
 export function tag(name, options, init) {
   if (typeof options === "function") { init = options; options = {} }
-  const {
-    internals = {},
-    mixins = [],
-    observedAttributes = [],
-    css = null,
-  } = options
-  const Base = mixins.reduce((Base, Mixin) =>
-    Mixin(Base), options.Base ?? HTMLElement)
+  const { mixins = [], base = HTMLElement } = options
 
-  return class extends Base {
-
-    static observedAttributes = [
-      ...(Base.observedAttributes || []),
-      ...observedAttributes,
-    ]
-    static inits = [...(Base.inits || []), init]
-
+  return class extends applyMixins(base, mixins) {
     constructor() {
       super()
-
-      if (!this.internals) this.internals = this.attachInternals()
-      Object.assign(this.internals, internals)
-
-      if (!this.shadowRoot) {
-        this.attachShadow({ mode: "open" })
-        this.shadowRoot.innerHTML = `<slot></slot>`
-      }
-      if (css) this.shadowRoot.adoptedStyleSheets.push(css)
-
-      this.constructor.inits.forEach(init => init(this))
-
-      this.constructor.observedAttributes.filter((attr) =>
-        !this.hasAttribute(attr)
-      ).forEach((attr) =>
-        dispatch(this, `attribute:${attr}`, { value: null })
-      )
+      init(this)
     }
 
     connectedCallback() { dispatch(this, 'connected') }
     disconnectedCallback() { dispatch(this, 'disconnected') }
     connectedMoveCallback() { dispatch(this, 'connectedMove') }
     adoptedCallback() { dispatch(this, 'adopted') }
-    attributeChangedCallback(name, oldValue, newValue) {
-      dispatch(this, 'attributeChanged', { name, oldValue, newValue })
-      dispatch(this, `attributeChanged:${name}`, { oldValue, newValue })
-      dispatch(this, `attribute:${name}`, { value: newValue })
-    }
-
+    
+    /**
+     * @param {string} name
+     * @param {string} [value]
+     */
     attr(name, value) {
-      const curValue = this[name] || this.internals[name]
+      const curValue = this[name] || internals(this)?.[name]
       if (value === undefined)
         return curValue
       else
@@ -576,36 +657,65 @@ export function tag(name, options, init) {
     }
 
     static define() { customElements.define(name, this) }
-
   }
 }
 
-export function mixin(options, init) {
-  if (typeof options === "function") { init = options; options = {} }
-  const {
-    internals = {},
-    observedAttributes = [],
-    css = null,
-  } = options
-  return (Super) => class extends Super {
+/**
+ * Define a mixin for a custom element.
+ * 
+ * @param {((el: HTMLElement) => void) | Mixin[]} mixins
+ * @param {(el: HTMLElement) => void} [init]
+ * @overload
+ * @param {(el: HTMLElement) => void} mixins
+ * @returns {Mixin}
+ * @overload
+ * @param {Mixin[]} mixins Base mixins.
+ * @param {(el: HTMLElement) => void} init
+ * @returns {Mixin}
+ */
+export function mixin(mixins, init) {
+  if (typeof mixins === "function") { init = mixins; mixins = [] }
+  
+  /**
+   * @param {typeof HTMLElement} Super
+   */
+  return (Super) =>
+    class extends applyMixins(Super, mixins) {
+      constructor() { super(); init(this) }
+    }
+}
 
+/**
+ * Mixin to add observedAttributes for a custom element.
+ * 
+ * @param {...string} attrs
+ * @returns {Mixin}
+ */
+export function observeAttributes(...attrs) {
+  return (/** @type {typeof HTMLElement} */ Base) => class extends Base {
     static observedAttributes = [
-      ...(Super.observedAttributes || []),
-      ...observedAttributes,
+      ...("observedAttributes" in Base && Array.isArray(Base.observedAttributes) ? Base.observedAttributes : []),
+      ...attrs.flat(),
     ]
-    static inits = [...(Super.inits || []), init]
-
+    
     constructor() {
       super()
-
-      if (!this.internals) this.internals = this.attachInternals()
-      Object.assign(this.internals, internals)
-
-      if (!this.shadowRoot) {
-        this.attachShadow({ mode: "open" })
-        this.shadowRoot.innerHTML = `<slot></slot>`
-      }
-      if (css) this.shadowRoot.adoptedStyleSheets.push(css)
+      this.constructor.observedAttributes
+        .filter((/** @type {string} */ attr) => !this.hasAttribute(attr))
+        .forEach((/** @type {string} */ attr) =>
+          dispatch(this, `attribute:${attr}`, { value: null }))
+    }
+    
+    /**
+     * 
+     * @param {string} name
+     * @param {string} oldValue
+     * @param {string} newValue
+     */
+    attributeChangedCallback(name, oldValue, newValue) {
+      dispatch(this, 'attributeChanged', { name, oldValue, newValue })
+      dispatch(this, `attributeChanged:${name}`, { oldValue, newValue })
+      dispatch(this, `attribute:${name}`, { value: newValue })
     }
   }
 }

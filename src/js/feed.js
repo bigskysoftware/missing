@@ -1,5 +1,6 @@
+// @ts-check
 //@deno-types=./19.ts
-import { $, on, halts, hotkey, traverse, makelogger, tag } from "./19.js"
+import { $, on, halts, hotkey, traverse, makelogger, tag, internals } from "./19.js"
 import { validate } from "./validate.js"
 import { MutationMixin } from "./mutation.js"
 
@@ -25,12 +26,6 @@ const sFocusable = /** @type {const} */ ([
 const feed = tag(
   "aria-feed",
   {
-    internals: {
-      role: "feed",
-      ariaLive: "polite",
-      ariaRelevant: "additions",
-      ariaKeyShortcuts: Object.keys(keyTable).join(" "),
-    },
     mixins: [
       MutationMixin({ childList: true }),
       validate({ name: true, sChildren: ":is(article, [role=article])" }),
@@ -71,6 +66,13 @@ const feed = tag(
       }
       dest?.focus()
     }
+    
+    internals(feed, {
+      role: "feed",
+      ariaLive: "polite",
+      ariaRelevant: "additions",
+      ariaKeyShortcuts: Object.keys(keyTable).join(" "),
+    })
 
     on(feed, "connected", (e) => update())
 

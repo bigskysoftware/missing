@@ -159,9 +159,15 @@ aria-menuitem, [role=menuitem] {
 }
 
 aria-listbox, [role=listbox] {
+  display: block;
 	list-style: none;
+	
+	aria-optgroup {
+	  display: block;
+	}
 
 	aria-option, [role=option] {
+	  display: block;
 		margin-inline: calc(-1 * var(--gap));
 		padding-inline: var(--gap);
 		border-radius: 0;

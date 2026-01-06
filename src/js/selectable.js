@@ -1,5 +1,6 @@
 //@deno-types=./19.ts
-import { dispatch, makelogger, mixin, on } from "./19.js"
+import { dispatch, internals, makelogger, mixin, observeAttributes, on, role, states } from "./19.js"
+import { validate } from "./validate.js"
 
 const ilog = makelogger("selectable")
 
@@ -15,18 +16,13 @@ const roles = /** @type {const} */ ([
 
 
 export const SelectableMixin = mixin(
-  {
-    internals: { ariaSelected: "false" },
-    observedAttributes: ["tabindex", "aria-selected", "aria-disabled"],
-  },
+  [
+    observeAttributes("tabindex", "aria-selected", "aria-disabled"),
+    validate({ roles })
+  ],
   (el) => {
-
-    const role = () => (el.internals || el).role
-
-    if (!roles.includes(role()))
-      return console.error(el, `role must be one of ${roles}; got ${role()}.`)
-
-    el.internals.states.add("selectable")
+    internals(el, { ariaSelected: "false" })
+    states(el, ["selectable"])
 
     on(el, "connected", (e) => {
       const isSelected = (el.ariaSelected || el.hasAttribute("selected"))

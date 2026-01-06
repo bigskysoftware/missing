@@ -1,5 +1,5 @@
 //@deno-types=./19.ts
-import { $, $$, css, dispatch, makelogger, on, tag } from "./19.js"
+import { $, $$, css, internals, makelogger, observeAttributes, on, stylize, tag } from "./19.js"
 import { validate } from "./validate.js"
 import { FormElementMixin} from "./forms.js"
 import { FocusGroupMixin } from "./focusgroup.js"
@@ -12,7 +12,6 @@ const ilog = makelogger("listbox")
 export const listbox = tag(
   "aria-listbox",
   {
-    internals: { role: "listbox", ariaOrientation: "vertical", ariaMultiSelectable: "false" },
     mixins: [
       FormElementMixin,
       FocusGroupMixin,
@@ -39,6 +38,8 @@ export const listbox = tag(
         data.append(listbox.name, o.getAttribute("value")))
       listbox.value = data
     }
+    
+    internals(listbox, { role: "listbox", ariaOrientation: "vertical", ariaMultiSelectable: "false" })
 
     on(listbox, "connected", (e) => {
       if (!$(listbox, "[aria-selected=true]"))
@@ -72,12 +73,14 @@ export const listbox = tag(
 export const optgroup = tag(
   "aria-optgroup",
   {
-    internals: { role: "group" },
-    mixins: [validate({ sParent: "aria-listbox", sChildren: "aria-option" })],
-    css: css`:host { display: flex; flex-direction: var(--flex-direction) }`,
-    observedAttributes: ["tabindex"],
+    mixins: [
+      validate({ sParent: "aria-listbox", sChildren: "aria-option" }),
+      observeAttributes("tabindex"),
+    ],
   },
   (optgroup) => {
+    stylize(optgroup, css`:host { display: flex; flex-direction: var(--flex-direction) }`)
+    internals(optgroup, { role: "group" })
     on(optgroup, "attribute:tabindex", (e) => {
       if (e.detail.value !== null) {
         optgroup.removeAttribute("tabindex")
@@ -90,13 +93,14 @@ export const optgroup = tag(
 export const option = tag(
   "aria-option",
   {
-    internals: { role: "option" },
     mixins: [
       SelectableMixin,
       validate({ sParent: ":is(aria-listbox, aria-optgroup)" }),
     ],
   },
-  (option) => {}
+  (option) => {
+    internals(option, { role: "option" })
+  }
 )
 
 // Define nested elements first

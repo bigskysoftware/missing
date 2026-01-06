@@ -1,5 +1,5 @@
 //@deno-types=./19.ts
-import { dispatch, makelogger } from "./19.js"
+import { dispatch, internals, makelogger } from "./19.js"
 
 const ilog = makelogger("forms")
 
@@ -9,25 +9,21 @@ const ilog = makelogger("forms")
  * @returns {T}
  */
 export const FormElementMixin = (Super) => class extends Super {
-
   static formAssociated = true
   #value = ""
-
-  constructor() {
-    super()
-    if (!this.internals) this.internals = this.attachInternals()
-  }
+  
+  constructor() { super(); internals(this, {}) }
 
   get value() { return this.#value }
-  set value(value) { this.internals.setFormValue(this.#value = value) }
-  get form() { return this.internals.form }
+  set value(value) { internals(this).setFormValue(this.#value = value) }
+  get form() { return internals(this).form }
   get name() { return this.getAttribute('name') }
   get type() { return this.localName }
-  get validity() { return this.internals.validity }
-  get validationMessage() { return this.internals.validationMessage }
-  get willValidate() { return this.internals.willValidate }
-  checkValidity() { return this.internals.checkValidity() }
-  reportValidity() { return this.internals.reportValidity() }
+  get validity() { return internals(this).validity }
+  get validationMessage() { return internals(this).validationMessage }
+  get willValidate() { return internals(this).willValidate }
+  checkValidity() { return internals(this).checkValidity() }
+  reportValidity() { return internals(this).reportValidity() }
 
   formAssociatedCallback(form) { dispatch(this, 'formAssociated', { form }) }
   formDisabledCallback(disabled) { dispatch(this, 'formDisabled', { disabled }) }

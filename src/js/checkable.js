@@ -1,5 +1,6 @@
 //@deno-types=./19.ts
-import { makelogger, mixin, on } from "./19.js"
+import { makelogger, mixin, on, role } from "./19.js"
+import { validate } from "./validate.js"
 
 const ilog = makelogger("checkable")
 
@@ -12,24 +13,20 @@ const roles = /** @type {const} */ ([
 ])
 
 export const CheckableMixin = mixin(
-  {
-    internals: { ariaChecked: "false" },
-    observedAttributes: ["aria-checked", "aria-disabled"],
-  },
+  [
+    observeAttributes("aria-checked", "aria-disabled"),
+    validate({ roles }),
+  ],
   (el) => {
-
-    const role = () => (el.internals || el).role
-
-    if (!roles.includes(role()))
-      return console.error(el, `role must be one of ${roles}; got ${role()}.`)
-
-    el.internals.states.add("checkable")
-    if (role() === "checkbox" || role() === "menuitemcheckbox")
-      el.internals.states.add("tristate")
+    internals(el, { ariaChecked: "false" })
+    states(el, {
+      checkable: true,
+      tristate: role(el) === "checkbox" || role(el) === "menuitemcheckbox",
+    })
 
     on(el, "connected", (e) => {
       const isChecked = (el.ariaChecked || el.hasAttribute("checked"))
-      const isMenuitem = (role().startsWith("menuitem"))
+      const isMenuitem = (role(el).startsWith("menuitem"))
       el.tabIndex = (!isMenuitem || isChecked) ? 0 : -1
     })
 

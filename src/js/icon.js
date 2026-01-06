@@ -1,5 +1,5 @@
 //@deno-types=./19.ts
-import { css, makelogger, on, tag } from "./19.js"
+import { css, internals, makelogger, observeAttributes, on, shadow, stylize, tag } from "./19.js"
 
 const ilog = makelogger("icons")
 const cache = new Map()
@@ -12,30 +12,7 @@ const url = `https://unpkg.com/lucide-static@${latest}/icons/`
 
 export const icon = tag(
   "aria-icon",
-  {
-    internals: { ariaHidden: "true" },
-    observedAttributes: ["name", "aria-label", "aria-labelledby"],
-    css: css`
-      :host {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        font-size: inherit;
-        line-height: 1;
-        width: 1em;
-        height: 1em;
-      }
-      svg {
-        width: 100%;
-        height: 100%;
-        fill: var(--icon-fill, none);
-        stroke: var(--icon-stroke, currentColor);
-        stroke-width: var(--icon-stroke-width, 2px);
-        stroke-linecap: var(--icon-stroke-linecap, round);
-        stroke-linejoin: var(--icon-stroke-linejoin, round);
-      }
-    `,
-  },
+  { mixins: [observeAttributes("name", "aria-label", "aria-labelledby")] },
   (icon) => {
 
     const fetchIcon = async (name) => {
@@ -102,19 +79,40 @@ export const icon = tag(
     const render = async () => {
       const name = icon.getAttribute("name")
       if (icon.hasAttribute("fetch"))
-        icon.shadowRoot.innerHTML = await fetchIcon(name)
+        shadow(icon).innerHTML = await fetchIcon(name)
       else
         // <use href> can't resolve in ShadowDOM :(
         icon.innerHTML = useIcon(name)
     }
 
     const label = (value) => {
-      Object.assign(icon.internals, {
+      internals(icon, {
         ariaHidden: (value) ? "false" : "true",
         role: (value) ? "img" : null,
       })
     }
 
+    internals(icon, { ariaHidden: "true" })
+    stylize(icon, css`
+      :host {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: inherit;
+        line-height: 1;
+        width: 1em;
+        height: 1em;
+      }
+      svg {
+        width: 100%;
+        height: 100%;
+        fill: var(--icon-fill, none);
+        stroke: var(--icon-stroke, currentColor);
+        stroke-width: var(--icon-stroke-width, 2px);
+        stroke-linecap: var(--icon-stroke-linecap, round);
+        stroke-linejoin: var(--icon-stroke-linejoin, round);
+      }
+    `)
     on(icon, "connected", (e) => validate())
     on(icon, "attribute:name", (e) => render())
     on(icon, "attribute:aria-label", (e) => label(e.detail.value))

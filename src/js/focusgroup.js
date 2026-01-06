@@ -1,5 +1,5 @@
 //@deno-types=./19.ts
-import { $, $$, css, halt, halts, hotkey, makelogger, mixin, on, tag, traverse } from "./19.js"
+import { $, $$, css, halt, halts, hotkey, internals, makelogger, mixin, observeAttributes, on, states, stylize, tag, traverse } from "./19.js"
 import { validate } from "./validate.js"
 
 const ilog = makelogger("focus-group")
@@ -40,24 +40,12 @@ const keyTable = /** @type {const} */ ({
 })
 
 export const FocusGroupMixin = mixin(
-  {
-    internals: { ariaOrientation: "horizontal" },
-    observedAttributes: ["aria-orientation"],
-    css: css`
-      :host {
-        display: flex;
-        flex-direction: var(--flex-direction);
-        inline-size: fit-content;
-      }
-      :host(:state(horizontal)) { --flex-direction: row; }
-      :host(:state(vertical)) { --flex-direction: column; }
-    `
-  },
+  [observeAttributes("aria-orientation")],
   (group) => {
 
     const writingMode = () => getComputedStyle(group).writingMode
     const direction = () => getComputedStyle(group).direction
-    const orientation = () => (group.ariaOrientation || group.internals.ariaOrientation)
+    const orientation = () => (group.ariaOrientation || internals(group).ariaOrientation)
     const wrapping = ()  => group.hasAttribute("wrap")
 
     const movement = (key) =>
@@ -75,7 +63,18 @@ export const FocusGroupMixin = mixin(
       dest.focus()
     }
 
-    group.internals.states.add("focusgroup")
+    internals(group, { ariaOrientation: "horizontal" })
+    states(group, ["focusgroup"])
+    
+    stylize(group, css`
+      :host {
+        display: flex;
+        flex-direction: var(--flex-direction);
+        inline-size: fit-content;
+      }
+      :host(:state(horizontal)) { --flex-direction: row; }
+      :host(:state(vertical)) { --flex-direction: column; }
+    `)
 
     on(group, "connected", (e) => {
       const members = $$(group, sMember)
@@ -101,8 +100,10 @@ export const FocusGroupMixin = mixin(
 
     on(group, "attribute:aria-orientation", (e) => {
       const state = orientation()
-      group.internals.states.delete((state === "horizontal") ? "vertical" : state)
-      group.internals.states.add(state)
+      states(group, {
+        horizontal: state === "horizontal",
+        vertical: state === "vertical",
+      })
     })
   }
 )

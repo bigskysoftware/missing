@@ -1,11 +1,11 @@
 //@deno-types=./19.ts
-import { $, $$, halts, hotkey, makelogger, mixin, off, on } from "./19.js"
+import { $, $$, halts, hotkey, makelogger, mixin, observeAttributes, off, on } from "./19.js"
 
 const ilog = makelogger("multiselect")
 
 // TODO: Should this extend FocusGroupMixin?
 export const MultiSelectMixin = mixin(
-  { observedAttributes: ["aria-multiselectable"] },
+  [observeAttributes("aria-multiselectable")],
   (multiselect) => {
 
     const sMember = ":state(selectable)"
