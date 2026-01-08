@@ -1,7 +1,8 @@
 //@deno-types=./19.ts
-import { attr, identify, on, halt, halts, behavior, makelogger } from "./19.js"
+import { attr, behavior, dispatch, halt, halts, hotkey, identify, internals, makelogger, mixin, observeAttributes, on, states } from "./19.js"
+import { validate } from "./validate.js"
 
-const ilog = makelogger("command-button")
+const ilog = makelogger("command")
 
 const commandTable = /** @type {const} */ ({
   // ref: https://html.spec.whatwg.org/#attr-button-command
@@ -11,6 +12,10 @@ const commandTable = /** @type {const} */ ({
   "close": "close",
   "request-close": "requestClose",
   "show-modal": "showModal",
+	// OpenUI polyfill
+	"toggle-menu": "togglePopover",
+  "show-menu": "showPopover",
+  "hide-menu": "hidePopover",
 })
 
 export class CommandEvent extends Event {
@@ -24,32 +29,36 @@ export class CommandEvent extends Event {
   }
 }
 
-export const commandButton = behavior(
-  "button[command][commandfor]",
-  (button, { root }) => {
+const roles = /** @type {const} */ ([
+  "button",
+  "link",
+  "menuitem",
+  "menuitemcheckbox",
+  "menuitemradio",
+])
 
-    // Polyfill not necessary if UA implements the functionality
-    if ("command" in button && "commandForElement" in button) return
-
-    // Submit and reset buttons cannot invoke a command
-    if (button.form && button.type !== "button") {
-      console.warn(
-        "Buttons associated with forms that include command or commandfor attributes are ambiguous, " +
-        "and require a type=button attribute. No action will be taken."
-      )
-      on(button, "click", (e) => halt("default propagation", e))
-    }
+// ref: https://www.w3.org/TR/wai-aria-1.2/#command
+export const CommandMixin = mixin(
+  [observeAttributes("aria-pressed")],
+  (el) => {
+		internals(el, {
+      ariaDisabled: "false",
+      ariaPressed: "false",
+      ariaHasPopup: "false",
+      ariaExpanded: "false",
+		})
+		states(el, ["command"])
 
     // Reflect attributes
-    Object.defineProperties(button, {
+    Object.defineProperties(el, {
       command: {
-        get: () => attr(button, "command") || "",
-        set: (value) => attr(button, "command", value),
+        get: () => attr(el, "command") || "",
+        set: (value) => attr(el, "command", value),
         configurable: true, enumerable: true,
       },
       commandForElement: {
-        get: () => button.getRootNode().getElementById(attr(button, "commandfor")),
-        set: (el) => attr(button, "commandfor", el instanceof Element ? identify(el) : null),
+        get: () => el.getRootNode().getElementById(attr(el, "commandfor")),
+        set: (el) => attr(el, "commandfor", el instanceof Element ? identify(el) : null),
         configurable: true, enumerable: true,
       }
     })
@@ -59,36 +68,117 @@ export const commandButton = behavior(
     //      https://www.w3.org/TR/html-aam-1.0/#att-command-dialogs
     //      https://www.w3.org/TR/html-aam-1.0/#att-commandfor
     if (
-      button.command.endsWith("popover")
-      && button.commandForElement?.matches("[popover]")
-      && !button.commandForElement?.contains(button)
+      el.command.endsWith("popover")
+      && el.commandForElement?.matches("[popover]")
+      && !el.commandForElement?.contains(el)
     ) {
-      attr(button, {
-        "aria-expanded": String(button.commandForElement.matches(":popover-open")),
-        "aria-details": button.commandForElement.id,
+      internals(el, {
+        ariaExpanded: String(el.commandForElement.matches(":popover-open")),
+        ariaDetailsElements: [el.commandForElement],
       })
-      on(button.commandForElement, "toggle", (e) =>
-        button.ariaExpanded = String(e.newState === "open"))
+      on(el.commandForElement, "toggle", (e) =>
+        internals(el, { ariaExpanded: String(e.newState === "open") }))
     }
 
     // Handle events
-    on(button, "click", halts("default", (e) => {
-      if (!button.commandForElement) return
+    on(el, "constructed", (e) => {
+			el.tabIndex = -1
+		})
+
+    on(el, "connected", (e) => validate(el, { roles }))
+
+    on(el, "keydown", hotkey({
+      " ": halts("default", (e) => dispatch(el, "click", {}, { bubbles: true })),
+      "Enter": halts("default", (e) => dispatch(el, "click", {}, { bubbles: true })),
+    }))
+
+    on(el, "click", (e) => {
+      if (el.hasAttribute("disabled") || el.ariaDisabled === "true" || !el.commandForElement)
+        return halt("default bubbling propagation", e)
 
       // Attempt to perform the command via method calling
-      const method = button.commandForElement[commandTable[button.command]]
+      const method = el.commandForElement[commandTable[el.command]]
       if (typeof method === "function")
-        method.call(button.commandForElement)
-      else if (!button.command.startsWith("--"))
-        ilog(`WARNING: unsupported value for "command" attribute: "${button.command}"`)
+        method.call(el.commandForElement)
+      else if (!el.command.startsWith("--"))
+        console.warn(`Unsupported value for "command" attribute: "${el.command}"`)
 
       // Always dispatch the event
-      const options = { command: button.command, source: button }
-      button.commandForElement.dispatchEvent(new CommandEvent("command", options))
+      const options = { command: el.command, source: el }
+      el.commandForElement.dispatchEvent(new CommandEvent("command", options))
+    })
+  }
+)
+
+export const commandButton = behavior(
+  "button[command][commandfor]",
+  (el, { root }) => {
+
+    // Polyfill not necessary if UA implements the functionality
+    if ("command" in el && "commandForElement" in el) return
+
+    // Submit and reset buttons cannot invoke a command
+    if (el.form && el.type !== "button") {
+      console.warn(
+        "Buttons associated with forms that include command or commandfor attributes are ambiguous, " +
+        "and require a type=button attribute. No action will be taken."
+      )
+      on(el, "click", (e) => halt("default propagation", e))
+    }
+
+    // Reflect attributes
+    Object.defineProperties(el, {
+      command: {
+        get: () => attr(el, "command") || "",
+        set: (value) => attr(el, "command", value),
+        configurable: true, enumerable: true,
+      },
+      commandForElement: {
+        get: () => el.getRootNode().getElementById(attr(el, "commandfor")),
+        set: (value) => attr(el, "commandfor", value instanceof Element ? identify(value) : null),
+        configurable: true, enumerable: true,
+      }
+    })
+
+    // Handle ARIA
+    // ref: https://www.w3.org/TR/html-aam-1.0/#att-command-popovers
+    //      https://www.w3.org/TR/html-aam-1.0/#att-command-dialogs
+    //      https://www.w3.org/TR/html-aam-1.0/#att-commandfor
+    if (
+      el.command.endsWith("popover")
+      && el.commandForElement?.matches("[popover]")
+      && !el.commandForElement?.contains(el)
+    ) {
+      attr(el, {
+        "aria-expanded": String(el.commandForElement.matches(":popover-open")),
+        "aria-details": el.commandForElement.id,
+      })
+      on(el.commandForElement, "toggle", (e) =>
+        el.ariaExpanded = String(e.newState === "open"))
+    }
+
+    // Handle events
+    on(el, "click", halts("default", (e) => {
+      if (el.hasAttribute("disabled") || el.ariaDisabled === "true" || !el.commandForElement)
+        return halt("default bubbling propagation", e)
+
+      // Attempt to perform the command via method calling
+      const method = el.commandForElement[commandTable[el.command]]
+      if (typeof method === "function")
+        method.call(el.commandForElement)
+      else if (!el.command.startsWith("--"))
+        console.warn(`Unsupported value for "command" attribute: "${el.command}"`)
+
+      // Always dispatch the event
+      const options = { command: el.command, source: el }
+      el.commandForElement.dispatchEvent(new CommandEvent("command", options))
 
     }))
 
   },
 )
-
 commandButton(document)
+
+export const invokerOf = (el) => (el.id)
+	  ? el.getRootNode().querySelector(`[popovertarget="${el.id}"], [commandfor="${el.id}"]`)
+		: null
