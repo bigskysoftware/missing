@@ -7,20 +7,19 @@ import { MultiSelectMixin } from "./multiselect.js"
 
 const ilog = makelogger("tabs")
 
-export const tabset = tag("aria-tabset", (tabset) => {
-  internals(tabset, { role: "" })
-  stylize(tabset, css`
+export const TabSet = tag("aria-tabset", (el) => {
+  internals(el, { role: "presentation" })
+  stylize(el, css`
     :host {
       display: flex;
-      flex-direction: column;
+      flex-direction: var(--flex-direction);
     }
-    :host(:has(aria-tablist[aria-orientation=vertical])) {
-      flex-direction: row;
-    }
+    :host(:has(aria-tablist:state(horizontal))) { --flex-direction: column; }
+    :host(:has(aria-tablist:state(vertical)))   { --flex-direction: row;    }
   `)
 })
 
-export const tablist = tag(
+export const TabList = tag(
   "aria-tablist",
   { mixins: [FocusGroupMixin, MultiSelectMixin] },
   (el) => {
@@ -31,7 +30,8 @@ export const tablist = tag(
 
     on(el, "attribute:aria-multiselectable", (e) => {
       if (e.detail.value === "true")
-        $$(tablist, "aria-tab").forEach(tab => {
+        // TODO: initChildren?
+        $$(el, "aria-tab").forEach(tab => {
           internals(tab, { ariaExpanded: "false" })
           tab.ariaExpanded = (tab.ariaSelected === "true") ? "true" : null
         })
@@ -39,53 +39,60 @@ export const tablist = tag(
   }
 )
 
-export const tab = tag(
+export const Tab = tag(
   "aria-tab",
-  {
-    mixins: [
-      observeAttributes("aria-controls", "aria-selected"),
-      SelectableMixin,
-      validate({ sParent: "aria-tablist" }),
-    ],
-  },
-  (tab) => {
-    internals(tab, { role: "tab" })
-    stylize(tab, css`:host { display: flex; }`)
+  { mixins: [observeAttributes("aria-controls"), SelectableMixin] },
+  (el) => {
+    internals(el, { role: "tab" })
+    stylize(el, css`:host { display: flex; }`)
 
-    on(tab, "attribute:aria-controls", (e) => {
-      if ("ariaControlsElements" in tab)
-        tab.panel = tab.ariaControlsElements[0]
-      else
-        tab.panel = tab.getRootNode().getElementById(e.detail.value)
+    on(el, "connected", (e) =>
+      validate(el, { sParent: "aria-tablist" }))
 
-      if (tab.panel)
-        tab.panel.hidden = (tab.ariaSelected !== "true")
-      else
-        return console.error(tab, "has no associated <aria-tabpanel>")
+    // TODO: Is el.panel getting too close to making an API?
+    //       Should we just directly reference ariaControlsElements?
+    on(el, "attribute:aria-controls", (e) => {
+      // TODO: This event will fire if someone does `t.ariaControlsElements = [ts]`, but
+      // if ts doesn't have an id, then the event detail will be "", so our
+      // initial check might not be best. How to set el.panel in this case?
+      // TODO: Why did this run twice?
+      //ilog(e)  // TODO: when using t.ariaControlsElements = [tp], does this work?
+      if (!e.detail.value)
+        return el.panel = null
 
-      if ("ariaLabelledByElements" in internals(tab))
-        internals(tab.panel, { ariaLabelledByElements: [tab] })
+      if ("ariaControlsElements" in el)
+        el.panel = el.ariaControlsElements[0]
       else
-        tab.panel.setAttribute("aria-labelledby", identify(tab))
+        el.panel = el.getRootNode().getElementById(e.detail.value)
+
+      if (el.panel)
+        el.panel.hidden = (el.ariaSelected !== "true")
+      else
+        return console.error(el, "has no associated <aria-tabpanel>")
+
+      if ("ariaLabelledByElements" in internals(el))
+        internals(el.panel, { ariaLabelledByElements: [el] })
+      else
+        el.panel.setAttribute("aria-labelledby", identify(el))
     })
 
-    on(tab, "attribute:aria-selected", (e) => {
-      if (tab.panel) {
-        tab.panel.hidden = (e.detail.value !== "true")
-        if (tab.parentElement.ariaMultiSelectable === "true")
-          tab.ariaExpanded = (tab.panel.hidden) ? null : "true"
+    on(el, "attribute:aria-selected", (e) => {
+      if (el.panel) {
+        el.panel.hidden = (e.detail.value !== "true")
+        if (el.parentElement.ariaMultiSelectable === "true")
+          el.ariaExpanded = (el.panel.hidden) ? null : "true"
       }
     })
   }
 )
 
-export const tabpanel = tag("aria-tabpanel", (tabpanel) => {
-  internals(tabpanel, { role: "tabpanel" })
-  stylize(tabpanel, css`:host { flex-grow: 1; }`)
+export const TabPanel = tag("aria-tabpanel", (el) => {
+  internals(el, { role: "tabpanel" })
+  stylize(el, css`:host { flex-grow: 1; }`)
 })
 
 // Define nested elements first
-tabpanel.define()
-tab.define()
-tablist.define()
-tabset.define()
+TabPanel.define()
+Tab.define()
+TabList.define()
+TabSet.define()

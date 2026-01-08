@@ -41,39 +41,46 @@ const keyTable = /** @type {const} */ ({
 
 export const FocusGroupMixin = mixin(
   [observeAttributes("aria-orientation")],
-  (group) => {
+  (el) => {
 
-    const writingMode = () => getComputedStyle(group).writingMode
-    const direction = () => getComputedStyle(group).direction
-    const orientation = () => (group.ariaOrientation || internals(group).ariaOrientation)
-    const wrapping = ()  => group.hasAttribute("wrap")
+    const writingMode = () => getComputedStyle(el).writingMode
+    const direction = () => getComputedStyle(el).direction
+    const orientation = () => el.attr("ariaOrientation")
+    const wrapping = ()  => el.hasAttribute("wrap")
 
     const movement = (key) =>
       keyTable[writingMode()][direction()][orientation()][key]
 
-    const sMember = "[tabindex]:not(:state(focusgroup))"
-    const current = () => group.contains(document.activeElement)
+    // const sMember = "[tabindex]:not(:state(focusgroup))"
+    const sMember = "[tabindex]:not(:scope :state(focusgroup) [tabindex])"
+    const current = () => el.contains(document.activeElement)
       ? document.activeElement
       : null
 
     const focusTo = (dest) => {
-      if (!dest) return
-      $$(group, sMember).forEach(member => member.tabIndex = -1)
+      //if (!dest) return
+      //$$(el, sMember).forEach(member => member.tabIndex = -1)
+      // TODO: :scope resolves differently in $$(el, sMember) and cursor.matches(sMember)
+      const members = $$(el, sMember)
+      //ilog(el, dest, members)
+      if (!members.includes(dest)) return
+      //if (!dest?.matches(sMember)) return
+      //$$(el, sMember).forEach(member => member.tabIndex = -1)
+      members.forEach(member => member.tabIndex = -1)
       dest.tabIndex = 0
       dest.focus()
     }
 
-    internals(group, { ariaOrientation: "horizontal" })
-    states(group, ["focusgroup"])
-    
-    stylize(group, css`
+    internals(el, { ariaOrientation: "horizontal" })
+    states(el, ["focusgroup"])
+    stylize(el, css`
       :host {
         display: flex;
         flex-direction: var(--flex-direction);
         inline-size: fit-content;
       }
       :host(:state(horizontal)) { --flex-direction: row; }
-      :host(:state(vertical)) { --flex-direction: column; }
+      :host(:state(vertical))   { --flex-direction: column; }
     `)
 
     on(el, "connected", (e) => {
@@ -86,24 +93,24 @@ export const FocusGroupMixin = mixin(
         members[0].tabIndex = 0
     })
 
-    on(group, "focusin", (e) => focusTo(e.target))
+    on(el, "focusin", (e) => focusTo(e.target))
 
-    on(group, "keydown", hotkey({
-      "Home": halts("default propagation", (e) => focusTo($(group, sMember))),
-      "End":  halts("default propagation", (e) => focusTo($$(group, sMember).at(-1))),
+    on(el, "keydown", hotkey({
+      "Home": halts("default propagation", (e) => focusTo($(el, sMember))),
+      "End":  halts("default propagation", (e) => focusTo($$(el, sMember).at(-1))),
     }))
 
-    on(group, "keydown", (e) => {
+    on(el, "keydown", (e) => {
       const mvt = e.key.startsWith("Arrow") && movement(e.key.slice(5))
       if (mvt) {
         halt("default", e)
-        focusTo(traverse(mvt, group, sMember, current(), { wrap: wrapping() }))
+        focusTo(traverse(mvt, el, sMember, current(), { wrap: wrapping() }))
       }
     })
 
-    on(group, "attribute:aria-orientation", (e) => {
-      const state = group.attr("ariaOrientation")
-      states(group, {
+    on(el, "attribute:aria-orientation", (e) => {
+      const state = el.attr("ariaOrientation")
+      states(el, {
         horizontal: state === "horizontal",
         vertical: state === "vertical",
       })
@@ -111,10 +118,10 @@ export const FocusGroupMixin = mixin(
   }
 )
 
-export const focusGroup = tag(
+export const FocusGroup = tag(
   "focus-group",
   { mixins: [FocusGroupMixin] },
   (el) => {}
 )
 
-focusGroup.define()
+FocusGroup.define()

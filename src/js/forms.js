@@ -11,7 +11,7 @@ const ilog = makelogger("forms")
 export const FormElementMixin = (Super) => class extends Super {
   static formAssociated = true
   #value = ""
-  
+
   constructor() { super(); internals(this, {}) }
 
   get value() { return this.hasAttribute("disabled") ? null : this.#value }

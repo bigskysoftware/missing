@@ -1,20 +1,22 @@
 //@deno-types=./19.ts
 import { $$, halt, makelogger, mixin, on } from "./19.js"
+import { FocusGroupMixin } from "./focusgroup.js"
 
-const ilog = makelogger("type-ahead")
+const ilog = makelogger("typeahead")
 
 const TIMEOUT = 500 // WAI-ARIA APG recommendation
 
 // TODO: Not compatible with aria-activedescendent.
-// TODO: Should this extend FocusGroupMixin?
 export const TypeAheadMixin = mixin(
-  (group) => {
+  [FocusGroupMixin],
+  (el) => {
 
     const sMember = "[tabindex]:not(:state(focusgroup))"
-    const current = () => group.contains(document.activeElement)
+    const current = () => el.contains(document.activeElement)
       ? document.activeElement
       : null
 
+    // TODO: labelOf helper? c.f. validate.js
     const nameOf = (member) =>
       (member.ariaLabel || member.textContent.trim() || "").toLowerCase()
 
@@ -27,7 +29,7 @@ export const TypeAheadMixin = mixin(
       state = { query: "", timeout: null }
     }
     const find = (query) => {
-      const members = $$(group, sMember)
+      const members = $$(el, sMember)
       const start = members.indexOf(document.activeElement)
       for (let i = 0; i < members.length; i++) {
         const member = members[(start + i) % members.length]
@@ -36,7 +38,7 @@ export const TypeAheadMixin = mixin(
       }
     }
 
-    on(group, "keydown", (e) => {
+    on(el, "keydown", (e) => {
       if (current() === null || !validKey(e)) return
 
       halt("default", e)
@@ -53,6 +55,6 @@ export const TypeAheadMixin = mixin(
       if (found) found.focus()
     })
 
-    on(group, "disconnect", (e) => reset())
+    on(el, "disconnect", (e) => reset())
   }
 )

@@ -14,7 +14,6 @@ const roles = /** @type {const} */ ([
   "treeitem",
 ])
 
-
 export const SelectableMixin = mixin(
   [observeAttributes("tabindex", "aria-selected", "aria-disabled")],
   (el) => {
@@ -31,13 +30,13 @@ export const SelectableMixin = mixin(
 
     on(el, "attribute:tabindex", (e) => {
       const container = el.closest(":state(focusgroup)")
+      // TODO: container.attr("ariaMultiSelectable")?
       if (container && container.ariaMultiSelectable !== "true") {
         el.ariaSelected = (e.detail.value == "0") ? "true" : null
       }
     })
 
-    on(el, "attribute:aria-selected", (e) => {
-      dispatch(el, "changed", {}, { bubbles: true })
-    })
+    on(el, "attribute:aria-selected", (e) =>
+      dispatch(el, "changed", {}, { bubbles: true }))
   }
 )
