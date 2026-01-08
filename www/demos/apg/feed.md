@@ -29,7 +29,7 @@ Missing.css provides the `<aria-feed>`{ .language-html } custom element for feed
 
  - The author is responsible for loading new content based on user interaction.
    Be sure to set `<aria-feed aria-busy=true>`{ .language-html } during this process.
-   After your feed is updated, be sure to remove the attribute.
+   After your feed is updated, the attribute must be removed.
 
  - The `<aria-feed>`{ .language-html } element uses MutationObserver to update the following attributes on `<article>`{ .language-html } or `[role=article]`{ .token .attr-name } elements when new content is appended:
     - `tabindex`{ .token .attr-name },
@@ -52,16 +52,15 @@ This example requires JavaScript to be activated.
 </noscript>
 <script type=module>
 	import { $, $$, attr, identify, on } from "/dist/js/19.js"
-	function label(article) {
-		attr(article, {
-			'aria-labelledby': identify(article.firstElementChild),
-			'aria-describedby': identify($(article, 'p')),
-		})
-	}
 	const feed = $(document, "aria-feed")
+	const button = document.getElementById("load-article")
+	const label = (a) => attr(a, {
+		"aria-labelledby": identify(a.firstElementChild),
+		"aria-describedby": identify($(a, 'p')),
+	})
 	$$(feed, "article").forEach(label)
 	let count = feed.children.length
-	on($(document, "button"), "click", (e) => {
+	on(button, "click", (e) => {
 		feed.ariaBusy = "true"
 		count++
 		const article = $(document, "template").content.cloneNode(true).firstElementChild

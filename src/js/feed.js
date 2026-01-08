@@ -1,8 +1,7 @@
 // @ts-check
 //@deno-types=./19.ts
-import { $, on, halts, hotkey, traverse, makelogger, tag, internals } from "./19.js"
+import { $, halts, hotkey, internals, makelogger, observe, on, tag, traverse } from "./19.js"
 import { validate } from "./validate.js"
-import { MutationMixin } from "./mutation.js"
 
 const ilog = makelogger("feed")
 
@@ -23,29 +22,20 @@ const sFocusable = /** @type {const} */ ([
   ":is(button, details, embed, iframe, label, select, textarea):not([disabled])"
 ].join(", "))
 
-const feed = tag(
+const Feed = tag(
   "aria-feed",
-  {
-    mixins: [
-      MutationMixin({ childList: true }),
-      validate({ name: true, sChildren: ":is(article, [role=article])" }),
-    ],
-  },
-  (feed) => {
+  (el) => {
+    const observer = observe(el, { childList: true })
     const register = (article, idx, articles) => {
       Object.assign(article, {
         tabIndex: 0,
         ariaAtomic: "true",
         ariaPosInSet: idx + 1,
-        ariaSetSize: feed.hasAttribute("infinite") ? -1 : articles.length,
+        ariaSetSize: el.hasAttribute("infinite") ? -1 : articles.length,
       })
-
-      if (!article.hasAttribute("aria-labelledby"))
-        console.error(article, "has no accessible name (aria-labelledby)")
-      if (!article.hasAttribute("aria-describedby"))
-        console.warn(article, "has no accessible description (aria-describedby)")
+      validate(article, { label: true, attrs: ["aria-describedby"] })
     }
-    const update = () => [...feed.children].forEach(register)
+    const update = () => [...el.children].forEach(register)
 
     const sArticle = "article, [role=article]"
     const focus = (direction) => {
@@ -59,26 +49,29 @@ const feed = tag(
       else if (direction == "outside")
         dest = current.parentElement.closest(sArticle)
       else if (direction == "next" || direction == "previous")
-        dest = traverse(direction, feed, sArticle, current, { wrap: false })
+        dest = traverse(direction, el, sArticle, current, { wrap: false })
       else if (direction == "after" || direction == "before") {
         direction = { after: "next", before: "previous" }[direction]
-        dest = traverse(direction, document.body, sFocusable, feed, { wrap: false })
+        dest = traverse(direction, document.body, sFocusable, el, { wrap: false })
       }
       dest?.focus()
     }
-    
-    internals(feed, {
+
+    internals(el, {
       role: "feed",
       ariaLive: "polite",
       ariaRelevant: "additions",
       ariaKeyShortcuts: Object.keys(keyTable).join(" "),
     })
 
-    on(feed, "connected", (e) => update())
+    on(el, "connected", (e) => {
+      validate(el, { label: true, sChildren: ":is(article, [role=article])" })
+      update()  // TODO: initChildren?
+    })
 
-    on(feed, "mutation:childList", (e) => update())
+    on(el, "mutation:childList", (e) => update())
 
-    on(feed, "keydown", hotkey(Object.fromEntries(
+    on(el, "keydown", hotkey(Object.fromEntries(
       Object.entries(keyTable).map(([key, value]) =>
         [key, halts("default propagation", (e) => focus(value))]
       )
@@ -86,4 +79,4 @@ const feed = tag(
   }
 )
 
-feed.define()
+Feed.define()

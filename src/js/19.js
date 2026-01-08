@@ -565,6 +565,26 @@ export function stylize(el, css) {
 }
 
 /**
+ * Create a MutationObserver for an element.
+ *
+ * @param {Element} el
+ * @param {object} [options]
+ * @param {boolean} [options.subtree] Extend monitoring to the entire subtree.
+ * @param {boolean} [options.childList] Monitor addition / removal of child nodes.
+ * @param {boolean} [options.attributes] Monitor attribute value changes.
+ * @param {string[]} [options.attributeFilter] Array of attributes to monitor.
+ * @param {boolean} [options.attributeOldValue] Record the previous value of an attribute.
+ * @param {boolean} [options.characterData] Monitor changes in character data.
+ * @param {boolean} [options.characterDataOldValue] Record the previous value of a node's text.
+ */
+export function observe(el, options) {
+  const observer = new MutationObserver((records, observer) =>
+    records.forEach(r => dispatch(el, `mutation:${r.type}`, r)))
+  on(el, "connected", (e) => observer.observe(el, options))
+  on(el, "disconnected", (e) => observer.disconnect())
+}
+
+/**
  * Get the specified role of an element (will not get HTML implied role).
  * @param {HTMLElement} el 
  * @returns {string | null}
