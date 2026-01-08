@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Menubar
 templateEngine: [vento, md]
 apg:
@@ -29,11 +28,15 @@ shortcuts:
 
 ## Notes
 
-Missing.css provides `<aria-menubar>`{ .language-html } and `<aria-menu>`{ .language-html } custom elements.
+Missing.js provides the following custom elements for menubars:
+ - `<aria-menubar>`{ .language-html }
+ - `<aria-menulist>`{ .language-html }
+ - `<aria-menuitem>`{ .language-html }
+
+See [Missing.js &sect; Menubar](/docs/js#menubar).
 
  - Don't forget to set an accessible label for the `<aria-menubar>`{ .language-html }.
- - A menuitem that opens up a submenu is called a <em>parent menuitem</em> (and is specified using `role=parent`{ .token .attr-name });
-		the next sibling of a parent menuitem must be an `<aria-menu>`{ .language-html } element.
+ - Use `<aria-menubar wrap>`{ .language-html } if you want the menubar to wrap.
 
 
 {{ include "demo_kbd.vto" }}
@@ -46,65 +49,92 @@ Missing.css provides `<aria-menubar>`{ .language-html } and `<aria-menu>`{ .lang
 This example requires JavaScript to be activated.
 
 </noscript>
+<script type=module>
+	import { on } from "/dist/js/19.js"
+    const cmds = {
+        "--font-sans": { fontFamily: "sans-serif" },
+        "--font-serif": { fontFamily: "serif" },
+        "--font-mono": { fontFamily: "monospace" },
+        "--font-style-b": { fontWeight: "bold" },
+        "--font-style-i": { fontStyle: "italic" },
+        "--style-color-b": { color: "blue" }, 
+        "--style-color-r": { color: "red" },
+        "--style-color-g": { color: "green" },
+        "--align-l": { textAlign: "left" },
+        "--align-c": { textAlign: "center" },
+        "--align-r": { textAlign: "right" },
+        "--relative-size-sm": { },
+        "--relative-size-lg": { },
+        "--absolute-size-xs": { fontSize: "0.5em" },
+        "--absolute-size-sm": { fontSize: "0.8em" },
+        "--absolute-size-md": { fontSize: "1em" },
+        "--absolute-size-lg": { fontSize: "1.2em" },
+        "--absolute-size-xl": { fontSize: "1.5em" },
+        "--reset": { fontFamily: null, fontWeight: null, fontStyle: null, color: null, textAlign: null, fontSize: null },
+    }
+	const el = document.getElementById("editor")
+    on(el, "command", (e) => {
+        if (e.command === "--quit")
+          return alert("You have quit the editor.")
+        console.log(cmds[e.command])
+        Object.assign(el.style, cmds[e.command])
+    })
+</script>
 
 <figure>
-	<div class="packed flex-column" style="--border-radius: 0;">
-		<aria-menubar aria-label="Text Formatting" class="crowded ok box with flex-row">
-			<aria-menuitem type=parent>Font</aria-menuitem>
-			<aria-menu hidden>
-				<aria-menuitem type=radio>Sans-serif</aria-menuitem>
-				<aria-menuitem type=radio>Serif</aria-menuitem>
-				<aria-menuitem type=radio>Monospace</aria-menuitem>
-			</aria-menu>
-			<aria-menuitem type=parent>Style/Color</aria-menuitem>
-			<aria-menu hidden>
-				<aria-menuitem type=group>
-					<aria-menuitem type=checkbox>Bold</aria-menuitem>
-					<aria-menuitem type=checkbox>Italic</aria-menuitem>
-				</aria-menuitem>
-				<aria-menuitem type=separator></aria-menuitem>
-				<aria-menuitem type=group>
-					<aria-menuitem type=radio>Black</aria-menuitem>
-					<aria-menuitem type=radio>Blue</aria-menuitem>
-					<aria-menuitem type=radio>Red</aria-menuitem>
-					<aria-menuitem type=radio>Green</aria-menuitem>
-				</aria-menuitem>
-			</aria-menu>
-			<aria-menuitem type=parent>Text Align</aria-menuitem>
-			<aria-menu hidden>
-				<aria-menuitem type=radio>Left</aria-menuitem>
-				<aria-menuitem type=radio>Center</aria-menuitem>
-				<aria-menuitem type=radio>Right</aria-menuitem>
-				<aria-menuitem type=radio>Justify</aria-menuitem>
-			</aria-menu>
-			<aria-menuitem type=parent>Size</aria-menuitem>
-			<aria-menu hidden>
-				<aria-menuitem type=parent>Relative</aria-menuitem>
-				<aria-menu hidden>
-					<aria-menuitem>Smaller</aria-menuitem>
-					<aria-menuitem>Larger</aria-menuitem>
-				</aria-menu>
-				<aria-menuitem type=parent>Absolute</aria-menuitem>
-				<aria-menu hidden>
-					<aria-menuitem type=radio>X-Small</aria-menuitem>
-					<aria-menuitem type=radio>Small</aria-menuitem>
-					<aria-menuitem type=radio>Medium</aria-menuitem>
-					<aria-menuitem type=radio>Large</aria-menuitem>
-					<aria-menuitem type=radio>X-Large</aria-menuitem>
-				</aria-menu>
-			</aria-menu>
-			<aria-menuitem>Reset</aria-menuitem>
-			<aria-menuitem>Quit</aria-menuitem>
-		</aria-menubar>
-		<textarea style="width:100%; resize:none; height:200px; --interactive-border-radius:0;">
+	<aria-menubar aria-label="Text Formatting">
+		<aria-menuitem commandfor=font-menu command=toggle-menu>Font</aria-menuitem>
+		<aria-menuitem commandfor=style-menu command=toggle-menu>Style/Color</aria-menuitem>
+		<aria-menuitem commandfor=align-menu command=toggle-menu>Text Align</aria-menuitem>
+		<aria-menuitem commandfor=size-menu command=toggle-menu>Size</aria-menuitem>
+		<aria-menuitem commandfor=editor command=--reset>Reset</aria-menuitem>
+		<aria-menuitem commandfor=editor command=--quit>Quit</aria-menuitem>
+	</aria-menubar>
+	<aria-menulist id=font-menu popover>
+		<aria-menuitem type=radio commandfor=editor command=--font-sans>Sans-serif</aria-menuitem>
+		<aria-menuitem type=radio commandfor=editor command=--font-serif>Serif</aria-menuitem>
+		<aria-menuitem type=radio commandfor=editor command=--font-mono>Monospace</aria-menuitem>
+	</aria-menulist>
+	<aria-menulist id=style-menu popover>
+		<fieldset>
+			<aria-menuitem type=checkbox commandfor=editor command=--style-font-b>Bold</aria-menuitem>
+			<aria-menuitem type=checkbox commandfor=editor command=--style-font-i>Italic</aria-menuitem>
+		</fieldset>
+		<hr>
+		<fieldset>
+			<aria-menuitem type=radio commandfor=editor command=--style-color-b>Blue</aria-menuitem>
+			<aria-menuitem type=radio commandfor=editor command=--style-color-r>Red</aria-menuitem>
+			<aria-menuitem type=radio commandfor=editor command=--style-color-g>Green</aria-menuitem>
+		</fieldset>
+	</aria-menulist>
+	<aria-menulist id=align-menu popover>
+		<aria-menuitem type=radio commandfor=editor command=--align-l>Left</aria-menuitem>
+		<aria-menuitem type=radio commandfor=editor command=--align-c>Center</aria-menuitem>
+		<aria-menuitem type=radio commandfor=editor command=--align-r>Right</aria-menuitem>
+	</aria-menulist>
+	<aria-menulist id=size-menu popover>
+		<aria-menuitem commandfor=relative-size-menu command=toggle-menu>Relative</aria-menuitem>
+		<aria-menuitem commandfor=absolute-size-menu command=toggle-menu>Absolute</aria-menuitem>
+	</aria-menulist>
+	<aria-menulist id=relative-size-menu popover>
+		<aria-menuitem commandfor=editor command=--relative-size-sm>Smaller</aria-menuitem>
+		<aria-menuitem commandfor=editor command=--relative-size-lg>Larger</aria-menuitem>
+	</aria-menulist>
+	<aria-menulist id=absolute-size-menu popover>
+		<aria-menuitem type=radio commandfor=editor command=--absolute-size-xs>X-Small</aria-menuitem>
+		<aria-menuitem type=radio commandfor=editor command=--absolute-size-sm>Small</aria-menuitem>
+		<aria-menuitem type=radio commandfor=editor command=--absolute-size-md>Medium</aria-menuitem>
+		<aria-menuitem type=radio commandfor=editor command=--absolute-size-lg>Large</aria-menuitem>
+		<aria-menuitem type=radio commandfor=editor command=--absolute-size-xl>X-Large</aria-menuitem>
+	</aria-menulist>
+	<textarea id=editor style="width:100%; resize:none; height:200px; --interactive-border-radius: 0;">
 Let me explain something to you.
 Um, I am not Mr. Lebowski.
 You're Mr. Lebowski.
 I'm the Dude.
 So that’s what you call me.
-You know, that or, uh, His Dudeness, or uh, Duder, or El Duderino if you’re not into the whole brevity thing.
-		</textarea>
-	</div>
+You know, that or, uh, His Dudeness, or uh, Duder, or El Duderino if you’re not into the wole brevity thing.
+	</textarea>
 </figure>
 
 <script type=module src=/dist/js/menu.js></script>

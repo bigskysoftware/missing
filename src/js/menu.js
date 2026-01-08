@@ -1,99 +1,99 @@
-/// <reference lib="es2022" />
+//@deno-types=./19.ts
+import { $, $$, css, internals, on, dispatch, halts, attr, next, prev, asHtml, hotkey, behavior, tag, makelogger } from "./19.js"
+import { validate } from "./validate.js"
+import { FocusGroupMixin } from "./focusgroup.js"
+import { PopoverPositionMixin } from "./popover.js"
+import { invokerOf, CommandMixin } from "./commandbutton.js"
 
-import { $, $$, on, dispatch, halts, attr, next, prev, asHtml, hotkey, behavior, makelogger } from "./19.js"
-
-const ilog = makelogger("menu");
-const sMenu = "[role=menu]";
-const sMenuitem = "[role=menuitem]";
-
-/**
- * @param {HTMLElement} menu
- * @returns {HTMLElement[]}
- */
-const menuItems = menu => $$(menu, sMenuitem);
-
-/**
- * @param {Element} button 
- * @param {object} options 
- * @param {import("./19.js").Root} options.root 
- * @returns {HTMLElement | null}
- */
-const menuOf = (button, { root }) => {
-    const id = attr(button, "aria-controls");
-    if (id === null) return null;
-    return root.getElementById(id);
-}
-
-/**
- * @param {HTMLElement} menu
- * @returns {HTMLElement | null}
- */
-const firstItem = menu => $(menu, sMenuitem)
-
-/**
- * @param {HTMLElement} menu
- * @returns {HTMLElement | null}
- */
-const lastItem = menu => menuItems(menu).at(-1) ?? null;
+const ilog = makelogger("menu")
 
 
-/**
- * @param {HTMLElement} menu 
- * @returns {boolean}
- */
-const isOpen = menu => !menu.hidden;
+const MenuBar = tag(
+  "aria-menubar",
+  { mixins: [FocusGroupMixin] },
+  (el) => {
+    internals(el, { role: "menubar" })
+  }
+)
 
-export const menu = behavior(sMenu, (menu, { root }) => {
-    if (!(menu instanceof HTMLElement)) return;
+const MenuList = tag(
+  "aria-menulist",
+  { mixins: [FocusGroupMixin, PopoverPositionMixin] },
+  (el) => {
+    internals(el, {
+			role: "menu",
+			ariaOrientation: "vertical",
+			ariaLabelledByElements: (el.popover) ? [invokerOf(el)] : null,
+		})
 
-    let opener;
+    on(el, "connected", (e) =>
+      validate(el, { attrs: ["id"], sChildren: "aria-menuitem, hr, fieldset" }))
 
-    menuItems(menu).forEach(item => item.setAttribute("tabindex", "-1"));
+    on(el, "toggle", (e) => {
+			if (e.newState === "open")
+        // Wait for PopoverPositionMixin
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            el.children[0].focus()
+          })
+        })
+    })
 
-    on(menu, "menu:open", e => {
-        opener = e.detail?.opener;
-        if (!opener) ilog("Warning: Menu", menu, "opened without passing an `opener` element");
-        menu.hidden = false;
-        firstItem(menu)?.focus();
-    });
+		on(el, "focusout", (e) => {
+      if (!el.contains(e.relatedTarget))
+  			el.hidePopover()
+		})
+  }
+)
 
-    on(menu, "menu:close", _ => {
-        ilog("menu:close", menu.hidden = true);
-        opener?.focus();
-    });
+const MenuItem = tag(
+  "aria-menuitem",
+  { mixins: [CommandMixin] },
+  (el) => {
+    const focusWhenDisabled = true
+    const type = el.attr("type") || ""
+    if (type && !(type === "radio" || type == "checkbox"))
+      return console.error(el, "Unexpected value for attribute 'type'.")
 
-    on(menu, "focusout", e => {
-        if (!isOpen(menu)) return;
-        if (menu.contains(/** @type {Node} */(e.relatedTarget))) return;
-        if (opener === e.relatedTarget) return;
-        dispatch(menu, "menu:close");
-    });
+    internals(el, {
+      role: `menuitem${type}`,
+      ariaChecked: (type === "radio" || type === "checkbox") ? "false" : null,
+      ariaHasPopup: (el.popoverTargetElement) ? "menu" : null,
+      ariaExpanded: (el.popoverTargetElement) ? "false" : null,
+    })
 
-    on(menu, "keydown", halts("default", hotkey({
-        "ArrowUp": _ => asHtml(prev(menu, sMenuitem, root.activeElement, {}))?.focus(),
-        "ArrowDown": _ => asHtml(next(menu, sMenuitem, root.activeElement, {}))?.focus(),
-        "Space": _ => asHtml(root.activeElement?.closest(sMenuitem))?.click(),
-        "Home": _ => firstItem(menu)?.focus(),
-        "End": _ => lastItem(menu)?.focus(),
-        "Escape": _ => dispatch(menu, "menu:close"),
-    })));
+    if (internals(el).ariaHasPopup === "menu") {
+      // TODO: are we sure that .popoverTargetElement exists in all browsers?
+      const submenu = el.popoverTargetElement
+      if (internals(submenu).role != "menu")
+        console.error("Menu button", el, "has no associated menu")
 
-    on(window, "click", e => {
-        if (!isOpen(menu)) return;
-        if (opener === e.target) return;
-        dispatch(menu, "menu:close");
-    }, { addedBy: menu });
-});
+      if ('ariaControlsElements' in internals(el)) {
+        internals(el).ariaControlsElements = [submenu]
+        internals(submenu).ariaLabelledByElements = [el]
+      } else {
+        // TODO: el.attr, submenu.attr?
+        attr(el, 'aria-controls', identify(submenu))
+        attr(submenu, 'aria-labelledby', identify(el))
+      }
+    }
 
-export const menuButton = behavior("[aria-haspopup=menu]", (button, { root }) => {
-    const menu = menuOf(button, { root });
+    // TODO: If we use .togglePopover() instead of [popovertarget], then there's
+    // no way to access the triggering element in PopoverPositionMixin bc
+    // ToggleEvent.source isn't baseline. But also [popovertarget] is only
+    // supported on <button> and <input> :roll eyes:
+    //on(el, "click", (e) => {
+    //  if (el.internals.ariaHasPopup === "menu")
+    //    el.internals.ariaControlsElements[0].togglePopover()
+    //})
 
-    if (menu === null) return ilog("Error: Menu button", button, "has no menu.");
+    on(el, "connected", (e) =>
+      validate(el, { sParent: ":is(aria-menubar, aria-menulist, fieldset)" }))
+  }
+)
 
-    on(menu, "menu:close", _ => attr(button, "aria-expanded", "false"), { addedBy: button })
-    on(menu, "menu:open", _ => attr(button, "aria-expanded", "true"), { addedBy: button })
-    on(button, "click", () => dispatch(menu, isOpen(menu) ? "menu:close" : "menu:open", { opener: button }));
-});
 
-menu(document);
-menuButton(document);
+// Define nested elements first
+MenuList.define()
+MenuItem.define()
+MenuBar.define()

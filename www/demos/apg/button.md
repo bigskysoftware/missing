@@ -27,10 +27,15 @@ Toggle button
 
 Menu button
 :	A button that reveals a hidden menu.
-	<!-- Can be used with missing.js' `<aria-menu>`{ .language-html } custom element.-->
+	Can be used with missing.js' `<aria-menu>`{ .language-html } custom element.
+
+Command button
+:	A button that dispatches a CommandEvent.
+	Can be used with missing.h's `CommandButton` polyfill.
 
 Any of the above buttons can also be disabled using the `disabled`{ .token .attr-name } attribute.
 
+<b class=bad>TODO: difference between ordinary button and command button? does menu button belong here?
 
 {{ include "demo_kbd.vto" }}
 
@@ -46,31 +51,31 @@ This example requires JavaScript to be activated.
 <figure>
 	<h3>The different types of buttons</h3>
 	<div class="flex-column">
-    <div>
-  		<button onclick="alert('You clicked an ordinary button that had an `onclick` handler.')">
-  			Ordinary
-  		</button>
-    </div>
-    <div>
-  		<button aria-pressed=false onclick="this.ariaPressed = (this.ariaPressed !== 'true')">
-  			Toggle
-  		</button>
-    </div>
-    <div>
-      <button aria-haspopup=menu aria-controls=my-menu aria-expanded=false>
-        Menu
-      </button>
-      <div role=menu hidden id=my-menu>
-        <a role=menuitem>View</a>
-        <a role=menuitem>Edit</a>
-        <a role=menuitem>Delete</a>
-      </div>
-    </div>
-    <div>
-  		<button disabled>
-  			Disabled
-  		</button>
-    </div>
+		<div>
+			<button onclick="alert('You clicked an ordinary button that had an `onclick` handler.')">
+			Ordinary
+			</button>
+		</div>
+		<div>
+			<button aria-pressed=false onclick="this.ariaPressed = (this.ariaPressed !== 'true')">
+			Toggle
+			</button>
+		</div>
+		<div>
+			<button aria-haspopup=menu aria-controls=my-menu aria-expanded=false>
+			Menu
+			</button>
+			<div role=menu hidden id=my-menu>
+			<a role=menuitem>View</a>
+			<a role=menuitem>Edit</a>
+			<a role=menuitem>Delete</a>
+			</div>
+		</div>
+		<div>
+			<button disabled>
+			Disabled
+			</button>
+		</div>
 	</div>
 </figure>
 

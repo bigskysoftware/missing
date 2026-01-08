@@ -26,18 +26,16 @@ shortcuts:
 
 ## Notes
 
-<!--
-
-Missing.css provides `<aria-menubar>`{ .language-html } and `<aria-menu>`{ .language-html } custom elements.
+Missing.css provides the following custom elements:
+ - `<aria-menubar>`{ .language-html },
+ - `<aria-menulist>`{ .language-html }, and
+ - `<aria-menuitem>`{ .language-html }.
 
  - Don't forget to set an accessible label for the `<aria-menubar>`{ .language-html }.
  - A menuitem that opens up a submenu is called a <em>parent menuitem</em> (and is specified using `role=parent`{ .token .attr-name });
 		the next sibling of a parent menuitem must be an `<aria-menu>`{ .language-html } element.
--->
-Missing.css uses `role=menu`{.token .attr-name} and `role=menuitem`{.token .attr-name} to define menus and `aria-haspopup=menu`{.token .attr-name} and `aria-controls`{.token .attr-name} to define menubuttons.
-To get the actual behavior of an accessible menu, you can use [Missing.js &sect; Menu](/docs/js#menu).
 
-Don't forget to set an accessible label for the element with `role=menu`{.token .attr-name}, either by specifying `aria-label`{.token .attr-name} or by setting `aria-labelledby`{.token .attr-name} to the menubutton that controls its display.
+Don't forget to set an accessible label for `<aria-menulist>`{ .language-html }, either by specifying `aria-label`{.token .attr-name} or by setting `aria-labelledby`{.token .attr-name} to the menu button that controls its display.
 
 
 {{ include "demo_kbd.vto" }}
@@ -52,20 +50,13 @@ This example requires JavaScript to be activated.
 </noscript>
 
 <figure>
-	<!--
-	<button id=menubutton type=button aria-haspopup=menu aria-controls=my-menu aria-expanded=false>Options</button>
-	<aria-menu id=my-menu hidden aria-labelledby=menubutton>
+	<button popovertarget=m>Options</button>
+	<aria-menulist id=m popover>
 		<aria-menuitem onclick="alert(`You clicked {this.innerText}`)">Edit</aria-menuitem>
 		<aria-menuitem onclick="alert(`You clicked {this.innerText}`)">View</aria-menuitem>
 		<aria-menuitem onclick="alert(`You clicked {this.innerText}`)">Delete</aria-menuitem>
-	</aria-menu>
-	-->
-	<button id=menubutton type=button aria-haspopup=menu aria-controls=my-menu aria-expanded=false>Options</button>
-	<div role=menu id=my-menu hidden aria-labelledby=menubutton>
-		<a role=menuitem href=javascript:void(0)>Edit</a>
-		<a role=menuitem href=javascript:void(0)>View</a>
-		<a role=menuitem href=javascript:void(0)>Delete</a>
-	</div>
+	</aria-menulist>
 </figure>
 
+<script type=module src=/dist/js/commandbutton.js></script>
 <script type=module src=/dist/js/menu.js></script>
