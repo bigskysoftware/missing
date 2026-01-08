@@ -22,16 +22,14 @@ export const tabset = tag("aria-tabset", (tabset) => {
 
 export const tablist = tag(
   "aria-tablist",
-  {
-    mixins: [
-      FocusGroupMixin,
-      MultiSelectMixin,
-      validate({ label: true, sChildren: "aria-tab" }),
-    ],
-  },
-  (tablist) => {
-    internals(tablist, { role: "tablist", ariaMultiSelectable: "false" })
-    on(tablist, "attribute:aria-multiselectable", (e) => {
+  { mixins: [FocusGroupMixin, MultiSelectMixin] },
+  (el) => {
+    internals(el, { role: "tablist", ariaMultiSelectable: "false" })
+
+    on(el, "connected", (e) =>
+      validate(el, { label: true, sChildren: "aria-tab" }))
+
+    on(el, "attribute:aria-multiselectable", (e) => {
       if (e.detail.value === "true")
         $$(tablist, "aria-tab").forEach(tab => {
           internals(tab, { ariaExpanded: "false" })

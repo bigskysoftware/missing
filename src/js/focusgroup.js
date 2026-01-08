@@ -76,8 +76,11 @@ export const FocusGroupMixin = mixin(
       :host(:state(vertical)) { --flex-direction: column; }
     `)
 
-    on(group, "connected", (e) => {
-      const members = $$(group, sMember)
+    on(el, "connected", (e) => {
+      validate(el, { label: true })
+
+      // TODO: initChildren?
+      const members = $$(el, sMember)
       const initialized = members.filter(m => m.tabIndex == 0 || m.autofocus)
       if (members.length && !initialized.length)
         members[0].tabIndex = 0
@@ -110,8 +113,8 @@ export const FocusGroupMixin = mixin(
 
 export const focusGroup = tag(
   "focus-group",
-  { mixins: [FocusGroupMixin, validate({ label: true })] },
-  (group) => {}
+  { mixins: [FocusGroupMixin] },
+  (el) => {}
 )
 
 focusGroup.define()

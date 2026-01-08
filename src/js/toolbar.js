@@ -5,9 +5,12 @@ import { FocusGroupMixin } from "./focusgroup.js"
 
 export const toolbar = tag(
   "aria-toolbar",
-  { mixins: [FocusGroupMixin, validate({ label: true })] },
+  { mixins: [ FocusGroupMixin ] },
   (toolbar) => {
 		internals(toolbar, { role: "toolbar" })
+    on(el, "connected", (e) => {
+      validate(el, { label: true })
+    })
   }
 )
 

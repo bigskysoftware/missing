@@ -16,18 +16,18 @@ const roles = /** @type {const} */ ([
 
 
 export const SelectableMixin = mixin(
-  [
-    observeAttributes("tabindex", "aria-selected", "aria-disabled"),
-    validate({ roles })
-  ],
+  [observeAttributes("tabindex", "aria-selected", "aria-disabled")],
   (el) => {
     internals(el, { ariaSelected: "false" })
     states(el, ["selectable"])
 
-    on(el, "connected", (e) => {
+    // TODO: This might be the responsibility of a select container
+    on(el, "constructed", (e) => {
       const isSelected = (el.ariaSelected || el.hasAttribute("selected"))
       el.tabIndex = (isSelected) ? 0 : -1
     })
+
+    on(el, "connected", (e) => validate(el, { roles }))
 
     on(el, "attribute:tabindex", (e) => {
       const container = el.closest(":state(focusgroup)")

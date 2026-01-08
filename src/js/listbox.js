@@ -39,8 +39,12 @@ export const listbox = tag(
     internals(listbox, { role: "listbox", ariaOrientation: "vertical", ariaMultiSelectable: "false" })
     stylize(listbox, css`:host { display: block; }`)
 
-    on(listbox, "connected", (e) => {
-      if (!$(listbox, "[aria-selected=true]"))
+    internals(el, { role: "listbox", ariaOrientation: "vertical", ariaMultiSelectable: "false" })
+    stylize(el, css`:host { display: block; }`)
+
+    on(el, "connected", (e) => {
+      validate(el, { label: true, sChildren: ":is(aria-optgroup, aria-option)" })
+      if (!$(el, "[aria-selected=true]"))
         setDefault()
       setValue()
     })
@@ -70,16 +74,15 @@ export const listbox = tag(
 
 export const optgroup = tag(
   "aria-optgroup",
-  {
-    mixins: [
-      validate({ sParent: "aria-listbox", sChildren: "aria-option" }),
-      observeAttributes("tabindex"),
-    ],
-  },
-  (optgroup) => {
-    stylize(optgroup, css`:host { display: flex; flex-direction: var(--flex-direction) }`)
-    internals(optgroup, { role: "group" })
-    on(optgroup, "attribute:tabindex", (e) => {
+  { mixins: [observeAttributes("tabindex")] },
+  (el) => {
+    stylize(el, css`:host { display: flex; flex-direction: var(--flex-direction) }`)
+    internals(el, { role: "group" })
+
+    on(el, "connected", (e) =>
+      validate(el, { sParent: "aria-listbox", sChildren: "aria-option" }))
+
+    on(el, "attribute:tabindex", (e) => {
       if (e.detail.value !== null) {
         optgroup.removeAttribute("tabindex")
         console.warn(optgroup, "does not support focus. The 'tabindex' attribute has been removed.")
@@ -90,15 +93,13 @@ export const optgroup = tag(
 
 export const option = tag(
   "aria-option",
-  {
-    mixins: [
-      SelectableMixin,
-      validate({ sParent: ":is(aria-listbox, aria-optgroup)" }),
-    ],
-  },
-  (option) => {
-    internals(option, { role: "option" })
-    stylize(option, css`:host { display: block; }`)
+  { mixins: [SelectableMixin] },
+  (el) => {
+    internals(el, { role: "option" })
+    stylize(el, css`:host { display: block; }`)
+
+    on(el, "connected", (e) =>
+      validate(el, { sParent: ":is(aria-listbox, aria-optgroup)" }))
   }
 )
 
