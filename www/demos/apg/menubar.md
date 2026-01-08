@@ -76,7 +76,6 @@ This example requires JavaScript to be activated.
     on(el, "command", (e) => {
         if (e.command === "--quit")
           return alert("You have quit the editor.")
-        console.log(cmds[e.command])
         Object.assign(el.style, cmds[e.command])
     })
 </script>

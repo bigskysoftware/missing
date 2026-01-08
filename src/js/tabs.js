@@ -1,11 +1,19 @@
 //@deno-types=./19.ts
-import { $$, css, internals, makelogger, observeAttributes, on, stylize, tag } from "./19.js"
+import { $$, attr, css, internals, makelogger, observeAttributes, on, stylize, tag } from "./19.js"
 import { validate } from "./validate.js"
 import { FocusGroupMixin } from "./focusgroup.js"
 import { SelectableMixin } from "./selectable.js"
 import { MultiSelectMixin } from "./multiselect.js"
 
 const ilog = makelogger("tabs")
+
+// TODO: browerlist: ariaControlsElements, ariaLabelledByElements
+export const controlledBy = (el) => {
+  const root = el.getRootNode()
+  return el.attr("ariaControlsElements") || attr(el, "aria-controls").split(" ").map(
+    id => root.getElementById(id)
+  )
+}
 
 export const TabSet = tag("aria-tabset", (el) => {
   internals(el, { role: "presentation" })
@@ -43,44 +51,36 @@ export const Tab = tag(
   "aria-tab",
   { mixins: [observeAttributes("aria-controls"), SelectableMixin] },
   (el) => {
+
     internals(el, { role: "tab" })
     stylize(el, css`:host { display: flex; }`)
 
     on(el, "connected", (e) =>
       validate(el, { sParent: "aria-tablist" }))
 
-    // TODO: Is el.panel getting too close to making an API?
-    //       Should we just directly reference ariaControlsElements?
+    // TODO: Crucial for authors to use [aria-controls] or can we use internals?
     on(el, "attribute:aria-controls", (e) => {
-      // TODO: This event will fire if someone does `t.ariaControlsElements = [ts]`, but
-      // if ts doesn't have an id, then the event detail will be "", so our
-      // initial check might not be best. How to set el.panel in this case?
-      // TODO: Why did this run twice?
-      //ilog(e)  // TODO: when using t.ariaControlsElements = [tp], does this work?
-      if (!e.detail.value)
-        return el.panel = null
+      if (!(e.detail.value || el.ariaControlsElements.length))
+        return
 
-      if ("ariaControlsElements" in el)
-        el.panel = el.ariaControlsElements[0]
-      else
-        el.panel = el.getRootNode().getElementById(e.detail.value)
-
-      if (el.panel)
-        el.panel.hidden = (el.ariaSelected !== "true")
+      const panel = controlledBy(el)[0]
+      if (panel)
+        panel.hidden = (el.ariaSelected !== "true")
       else
         return console.error(el, "has no associated <aria-tabpanel>")
 
       if ("ariaLabelledByElements" in internals(el))
-        internals(el.panel, { ariaLabelledByElements: [el] })
+        internals(panel, { ariaLabelledByElements: [el] })
       else
-        el.panel.setAttribute("aria-labelledby", identify(el))
+        panel.setAttribute("aria-labelledby", identify(el))
     })
 
     on(el, "attribute:aria-selected", (e) => {
-      if (el.panel) {
-        el.panel.hidden = (e.detail.value !== "true")
+      const panel = controlledBy(el)[0]
+      if (panel) {
+        panel.hidden = (e.detail.value !== "true")
         if (el.parentElement.ariaMultiSelectable === "true")
-          el.ariaExpanded = (el.panel.hidden) ? null : "true"
+          el.ariaExpanded = (panel.hidden) ? null : "true"
       }
     })
   }

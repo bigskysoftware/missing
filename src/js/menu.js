@@ -1,5 +1,5 @@
 //@deno-types=./19.ts
-import { $, $$, css, internals, on, dispatch, halts, attr, next, prev, asHtml, hotkey, behavior, tag, makelogger } from "./19.js"
+import { attr, internals, makelogger, on, tag } from "./19.js"
 import { validate } from "./validate.js"
 import { FocusGroupMixin } from "./focusgroup.js"
 import { PopoverPositionMixin } from "./popover.js"
@@ -50,10 +50,9 @@ const MenuItem = tag(
   "aria-menuitem",
   { mixins: [CommandMixin] },
   (el) => {
-    const focusWhenDisabled = true
-    const type = el.attr("type") || ""
+    const type = attr(el, "type") || ""
     if (type && !(type === "radio" || type == "checkbox"))
-      return console.error(el, "Unexpected value for attribute 'type'.")
+      throw new Error(el, "Unexpected value for attribute 'type'.")
 
     internals(el, {
       role: `menuitem${type}`,
@@ -63,7 +62,7 @@ const MenuItem = tag(
     })
 
     if (internals(el).ariaHasPopup === "menu") {
-      // TODO: are we sure that .popoverTargetElement exists in all browsers?
+      // TODO: browserlist: .popoverTargetElement
       const submenu = el.popoverTargetElement
       if (internals(submenu).role != "menu")
         console.error("Menu button", el, "has no associated menu")
@@ -72,20 +71,10 @@ const MenuItem = tag(
         internals(el).ariaControlsElements = [submenu]
         internals(submenu).ariaLabelledByElements = [el]
       } else {
-        // TODO: el.attr, submenu.attr?
         attr(el, 'aria-controls', identify(submenu))
         attr(submenu, 'aria-labelledby', identify(el))
       }
     }
-
-    // TODO: If we use .togglePopover() instead of [popovertarget], then there's
-    // no way to access the triggering element in PopoverPositionMixin bc
-    // ToggleEvent.source isn't baseline. But also [popovertarget] is only
-    // supported on <button> and <input> :roll eyes:
-    //on(el, "click", (e) => {
-    //  if (el.internals.ariaHasPopup === "menu")
-    //    el.internals.ariaControlsElements[0].togglePopover()
-    //})
 
     on(el, "connected", (e) =>
       validate(el, { sParent: ":is(aria-menubar, aria-menulist, fieldset)" }))

@@ -9,7 +9,7 @@ export const PopoverPositionMixin = mixin(
 			const invoker = invokerOf(el)
 			const viewport = document.documentElement
 
-			if (ilog(!invoker) || ilog(!el.matches(":popover-open"))) return
+			if (!invoker || !el.matches(":popover-open")) return
 
 			const invokerRect = invoker.getBoundingClientRect()
 			const popoverRect = el.getBoundingClientRect()

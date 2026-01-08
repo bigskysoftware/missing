@@ -11,7 +11,7 @@ const roles = /** @type {const} */ ([
   "tree",     // super: composite > select role
 ])
 
-// TODO: Should this extend FocusGroupMixin? or SelectMixin > FocusGroupMixin?
+// TODO: This is really "AriaMultiselectablePropertyMixin".
 export const MultiSelectMixin = mixin(
   [observeAttributes("aria-multiselectable")],
   (el) => {

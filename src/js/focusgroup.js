@@ -58,14 +58,9 @@ export const FocusGroupMixin = mixin(
       : null
 
     const focusTo = (dest) => {
-      //if (!dest) return
-      //$$(el, sMember).forEach(member => member.tabIndex = -1)
       // TODO: :scope resolves differently in $$(el, sMember) and cursor.matches(sMember)
       const members = $$(el, sMember)
-      //ilog(el, dest, members)
       if (!members.includes(dest)) return
-      //if (!dest?.matches(sMember)) return
-      //$$(el, sMember).forEach(member => member.tabIndex = -1)
       members.forEach(member => member.tabIndex = -1)
       dest.tabIndex = 0
       dest.focus()
