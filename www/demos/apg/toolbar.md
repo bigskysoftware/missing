@@ -34,6 +34,9 @@ Missing.css provides the `<aria-toolbar>`{ .language-html } custom element for t
 
 Arrow key navigation of toolbar items takes into account the `dir`{ .token .attr-name } HTML attribute and `writing-mode`{ .token .attr-name } CSS property.
 
+- If you wish for disabled items to remain focusable for discovery purposes, use the `aria-disabled`{ .token .attr-name } attribute instead of `disabled`{ .token .attr-name }.
+  For more information, see [focusability of disabled controls](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_disabled_controls).
+
 
 {{ include "demo_kbd.vto" }}
 
@@ -50,7 +53,7 @@ This example requires JavaScript to be activated.
 	<figure dir=ltr>
 		<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>horizontal-tb, ltr</figcaption>
 		<p><a href=#>Focusable element before the toolbar</a></p>
-		<aria-toolbar class="tool-bar">
+		<aria-toolbar class="tool-bar" aria-label="Edit">
 			<button type=button tabindex=-1>Cut</button>
 			<button type=button tabindex=-1>Copy</button>
 			<button type=button tabindex=-1>Paste</button>
@@ -58,9 +61,9 @@ This example requires JavaScript to be activated.
 			<label>Find: <input type=text tabindex=-1></label>
 		</aria-toolbar>
 		<p><a href=#>Focusable element between the toolbars</a></p>
-		<aria-toolbar class="tool-bar" aria-orientation=vertical>
+		<aria-toolbar class="tool-bar" aria-orientation=vertical aria-label="Edit">
 			<button type=button tabindex=-1>Cut</button>
-			<button type=button tabindex=-1>Copy</button>
+			<button type=button tabindex=-1 disabled class="bad">Copy</button>
 			<button type=button tabindex=-1>Paste</button>
 		</aria-toolbar>
 		<p><a href=#>Focusable element after the toolbar</a></p>
@@ -69,7 +72,7 @@ This example requires JavaScript to be activated.
 	<figure dir=rtl>
 		<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>horizontal-tb, rtl</figcaption>
 		<p><a href=#>Focusable element before the toolbar</a></p>
-		<aria-toolbar class="tool-bar">
+		<aria-toolbar class="tool-bar" aria-label="Edit">
 			<button type=button tabindex=-1>Cut</button>
 			<button type=button tabindex=-1>Copy</button>
 			<button type=button tabindex=-1>Paste</button>
@@ -77,9 +80,9 @@ This example requires JavaScript to be activated.
 			<label>Find: <input type=text tabindex=-1></label>
 		</aria-toolbar>
 		<p><a href=#>Focusable element between the toolbars</a></p>
-		<aria-toolbar class="tool-bar" aria-orientation=vertical>
+		<aria-toolbar class="tool-bar" aria-orientation=vertical aria-label="Edit">
 			<button type=button tabindex=-1>Cut</button>
-			<button type=button tabindex=-1>Copy</button>
+			<button type=button tabindex=-1 aria-disabled=true class="bad">Copy</button>
 			<button type=button tabindex=-1>Paste</button>
 		</aria-toolbar>
 		<p><a href=#>Focusable element after the toolbar</a></p>
@@ -89,7 +92,7 @@ This example requires JavaScript to be activated.
 	<figure dir=ltr>
 		<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>vertical-rl, ltr</figcaption>
 		<p><a href=#>Focusable element before the toolbar</a></p>
-		<aria-toolbar class="tool-bar">
+		<aria-toolbar class="tool-bar" aria-label="Edit">
 			<button type=button tabindex=-1>Cut</button>
 			<button type=button tabindex=-1>Copy</button>
 			<button type=button tabindex=-1>Paste</button>
@@ -97,7 +100,7 @@ This example requires JavaScript to be activated.
 			<label>Find: <input type=text tabindex=-1></label>
 		</aria-toolbar>
 		<p><a href=#>Focusable element between the toolbars</a></p>
-		<aria-toolbar class="tool-bar" aria-orientation=vertical>
+		<aria-toolbar class="tool-bar" aria-orientation=vertical aria-label="Edit">
 			<button type=button tabindex=-1>Cut</button>
 			<button type=button tabindex=-1>Copy</button>
 			<button type=button tabindex=-1>Paste</button>
@@ -109,7 +112,7 @@ This example requires JavaScript to be activated.
 	<figure dir=rtl>
 	<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>vertical-rl, rtl</figcaption>
 		<p><a href=#>Focusable element before the toolbar</a></p>
-		<aria-toolbar class="tool-bar">
+		<aria-toolbar class="tool-bar" aria-label="Edit">
 			<button type=button tabindex=-1>Cut</button>
 			<button type=button tabindex=-1>Copy</button>
 			<button type=button tabindex=-1>Paste</button>
@@ -117,7 +120,7 @@ This example requires JavaScript to be activated.
 			<label>Find: <input type=text tabindex=-1></label>
 		</aria-toolbar>
 		<p><a href=#>Focusable element between the toolbars</a></p>
-		<aria-toolbar class="tool-bar" aria-orientation=vertical>
+		<aria-toolbar class="tool-bar" aria-orientation=vertical aria-label="Edit">
 			<button type=button tabindex=-1>Cut</button>
 			<button type=button tabindex=-1>Copy</button>
 			<button type=button tabindex=-1>Paste</button>
@@ -129,7 +132,7 @@ This example requires JavaScript to be activated.
 	<figure dir=ltr>
 		<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>vertical-rl, ltr</figcaption>
 		<p><a href=#>Focusable element before the toolbar</a></p>
-		<aria-toolbar class="tool-bar">
+		<aria-toolbar class="tool-bar" aria-label="Edit">
 			<button type=button tabindex=-1>Cut</button>
 			<button type=button tabindex=-1>Copy</button>
 			<button type=button tabindex=-1>Paste</button>
@@ -137,7 +140,7 @@ This example requires JavaScript to be activated.
 			<label>Find: <input type=text tabindex=-1></label>
 		</aria-toolbar>
 		<p><a href=#>Focusable element between the toolbars</a></p>
-		<aria-toolbar class="tool-bar" aria-orientation=vertical>
+		<aria-toolbar class="tool-bar" aria-orientation=vertical aria-label="Edit">
 			<button type=button tabindex=-1>Cut</button>
 			<button type=button tabindex=-1>Copy</button>
 			<button type=button tabindex=-1>Paste</button>
@@ -149,7 +152,7 @@ This example requires JavaScript to be activated.
 	<figure dir=rtl>
 		<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>vertical-rl, rtl</figcaption>
 		<p><a href=#>Focusable element before the toolbar</a></p>
-		<aria-toolbar class="tool-bar">
+		<aria-toolbar class="tool-bar" aria-label="Edit">
 			<button type=button tabindex=-1>Cut</button>
 			<button type=button tabindex=-1>Copy</button>
 			<button type=button tabindex=-1>Paste</button>
@@ -157,7 +160,7 @@ This example requires JavaScript to be activated.
 			<label>Find: <input type=text tabindex=-1></label>
 		</aria-toolbar>
 		<p><a href=#>Focusable element between the toolbars</a></p>
-		<aria-toolbar class="tool-bar" aria-orientation=vertical>
+		<aria-toolbar class="tool-bar" aria-orientation=vertical aria-label="Edit">
 			<button type=button tabindex=-1>Cut</button>
 			<button type=button tabindex=-1>Copy</button>
 			<button type=button tabindex=-1>Paste</button>
