@@ -20,6 +20,7 @@ export const TypeAheadMixin = mixin(
     const nameOf = (member) =>
       (member.ariaLabel || member.textContent.trim() || "").toLowerCase()
 
+    // TODO: Cover international symbols with a test
     const validKey = (e) =>
       !(e.altKey || e.ctrlKey || e.metaKey) && e.key.match(/^.$/u)
 
