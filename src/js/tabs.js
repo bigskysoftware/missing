@@ -4,6 +4,7 @@ import { validate } from "./validate.js"
 import { FocusGroupMixin } from "./focusgroup.js"
 import { SelectableMixin } from "./selectable.js"
 import { MultiSelectMixin } from "./multiselect.js"
+import { DisableableMixin } from "./disableable.js"
 
 const ilog = makelogger("tabs")
 
@@ -29,7 +30,7 @@ export const TabSet = tag("aria-tabset", (el) => {
 
 export const TabList = tag(
   "aria-tablist",
-  { mixins: [FocusGroupMixin, MultiSelectMixin] },
+  { mixins: [FocusGroupMixin, MultiSelectMixin, DisableableMixin] },
   (el) => {
     internals(el, { role: "tablist", ariaMultiSelectable: "false" })
 
@@ -49,7 +50,7 @@ export const TabList = tag(
 
 export const Tab = tag(
   "aria-tab",
-  { mixins: [observeAttributes("aria-controls"), SelectableMixin] },
+  { mixins: [observeAttributes("aria-controls"), SelectableMixin, DisableableMixin] },
   (el) => {
 
     internals(el, { role: "tab" })

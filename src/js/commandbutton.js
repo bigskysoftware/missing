@@ -1,6 +1,7 @@
 //@deno-types=./19.ts
 import { attr, behavior, dispatch, halt, halts, hotkey, identify, internals, makelogger, mixin, observeAttributes, on, states } from "./19.js"
 import { validate } from "./validate.js"
+import { DisableableMixin } from "./disableable.js"
 
 const ilog = makelogger("command")
 
@@ -39,10 +40,9 @@ const roles = /** @type {const} */ ([
 
 // ref: https://www.w3.org/TR/wai-aria-1.2/#command
 export const CommandMixin = mixin(
-  [observeAttributes("aria-pressed")],
+  [observeAttributes("aria-pressed"), DisableableMixin],
   (el) => {
 		internals(el, {
-      ariaDisabled: "false",
       ariaPressed: "false",
       ariaHasPopup: "false",
       ariaExpanded: "false",

@@ -5,6 +5,7 @@ import { FormElementMixin} from "./forms.js"
 import { TypeAheadMixin } from "./typeahead.js"
 import { SelectableMixin } from "./selectable.js"
 import { MultiSelectMixin } from "./multiselect.js"
+import { DisableableMixin } from "./disableable.js"
 
 const ilog = makelogger("listbox")
 
@@ -63,7 +64,7 @@ export const ListBox = tag(
 
 export const OptGroup = tag(
   "aria-optgroup",
-  { mixins: [observeAttributes("tabindex")] },
+  { mixins: [observeAttributes("tabindex"), DisableableMixin] },
   (el) => {
     stylize(el, css`:host { display: flex; flex-direction: var(--flex-direction) }`)
     internals(el, { role: "group" })

@@ -1,6 +1,7 @@
 //@deno-types=./19.ts
 import { dispatch, internals, makelogger, mixin, observeAttributes, on, role, states } from "./19.js"
 import { validate } from "./validate.js"
+import { DisableableMixin } from "./disableable.js"
 
 const ilog = makelogger("selectable")
 
@@ -15,7 +16,7 @@ const roles = /** @type {const} */ ([
 ])
 
 export const SelectableMixin = mixin(
-  [observeAttributes("tabindex", "aria-selected", "aria-disabled")],
+  [observeAttributes("tabindex", "aria-selected"), DisableableMixin],
   (el) => {
     internals(el, { ariaSelected: "false" })
     states(el, ["selectable"])

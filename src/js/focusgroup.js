@@ -1,6 +1,7 @@
 //@deno-types=./19.ts
 import { $, $$, css, halt, halts, hotkey, internals, makelogger, mixin, observeAttributes, on, states, stylize, tag, traverse } from "./19.js"
 import { validate } from "./validate.js"
+import { DisableableMixin } from "./disableable.js"
 
 const ilog = makelogger("focus-group")
 
@@ -39,8 +40,20 @@ const keyTable = /** @type {const} */ ({
   },
 })
 
+const roles = /** @type {const} */ ([
+  "grid",
+  "tablist",
+  "listbox",
+  "menu",
+  "menubar",
+  "radiogroup",
+  "tree",
+  "treegrid",
+  "toolbar",
+])
+
 export const FocusGroupMixin = mixin(
-  [observeAttributes("aria-orientation")],
+  [observeAttributes("aria-orientation"), DisableableMixin],
   (el) => {
 
     const writingMode = () => getComputedStyle(el).writingMode
@@ -79,7 +92,7 @@ export const FocusGroupMixin = mixin(
     `)
 
     on(el, "connected", (e) => {
-      validate(el, { label: true })
+      validate(el, { label: true, roles: roles })
 
       // TODO: initChildren?
       const members = $$(el, sMember)

@@ -1,6 +1,7 @@
 //@deno-types=./19.ts
 import { makelogger, mixin, on, role } from "./19.js"
 import { validate } from "./validate.js"
+import { DisableableMixin } from "./disableable.js"
 
 const ilog = makelogger("checkable")
 
@@ -13,7 +14,7 @@ const roles = /** @type {const} */ ([
 ])
 
 export const CheckableMixin = mixin(
-  [observeAttributes("aria-checked", "aria-disabled")],
+  [observeAttributes("aria-checked"), DisableableMixin],
   (el) => {
     internals(el, { ariaChecked: "false" })
     states(el, {
