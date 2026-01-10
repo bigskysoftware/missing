@@ -49,9 +49,7 @@ This example requires JavaScript to be activated.
 
 </noscript>
 
-<script>
-</script>
-<form class="flex-row">
+<form class="flex-row" aria-label="Orientation">
 	<div>
 	<label for=writing-mode>Writing Mode:</label>
 	<select id=writing-mode onchange="document.getElementById('ex').style.writingMode = this.value">
@@ -67,19 +65,40 @@ This example requires JavaScript to be activated.
 		<option value=rtl>Right to left
 	</select>
 	</div>
+    <div>
+    <label for=orientation>ARIA Orientation:</label>
+    <select id=orientation onchange="document.getElementById('tb').ariaOrientation = this.value">
+      <option value=horizontal>Horizontal
+      <option value=vertical>Vertical
+    </select>
+    </div>
 </form>
 <figure id=ex dir=ltr style="writing-mode: horizontal-tb">
 	<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Toolbar</figcaption>
 	<p><a href=#>Focusable element before the toolbar</a></p>
-	<aria-toolbar class="tool-bar" aria-label="Edit">
-		<button type=button tabindex=-1><aria-icon fetch name=scissors></aria-icon></button>
-		<button type=button tabindex=-1><aria-icon fetch name=clipboard-copy></aria-icon></button>
-		<button type=button tabindex=-1><aria-icon fetch name=clipboard-paste></aria-icon></button>
+	<aria-toolbar id=tb class="tool-bar" aria-label="Edit">
+		<button type=button tabindex=-1 aria-label="Cut">
+            <aria-icon fetch name=scissors></aria-icon>
+        </button>
+		<button type=button tabindex=-1 aria-label="Copy">
+            <aria-icon fetch name=clipboard-copy></aria-icon>
+        </button>
+		<button type=button tabindex=-1 aria-label="Paste">
+            <aria-icon fetch name=clipboard-paste></aria-icon>
+        </button>
 		<hr aria-orientation=vertical>
-		<button type=button tabindex=-1><aria-icon fetch name=text-align-start></aria-icon></button>
-		<button type=button tabindex=-1><aria-icon fetch name=text-align-center></aria-icon></button>
-		<button type=button tabindex=-1><aria-icon fetch name=text-align-end></aria-icon></button>
-		<button type=button tabindex=-1><aria-icon fetch name=text-align-justify></aria-icon></button>
+		<button type=button tabindex=-1 aria-label="Text align: start">
+            <aria-icon fetch name=text-align-start></aria-icon>
+        </button>
+		<button type=button tabindex=-1 aria-label="Text align: center">
+            <aria-icon fetch name=text-align-center></aria-icon>
+        </button>
+		<button type=button tabindex=-1 aria-label="Text align: end">
+            <aria-icon fetch name=text-align-end></aria-icon>
+        </button>
+		<button type=button tabindex=-1 aria-label="Text align: justify">
+            <aria-icon fetch name=text-align-justify></aria-icon>
+        </button>
 		<hr aria-orientation=vertical>
 		<select aria-label="Font Size">
 		  <option>8pt
@@ -89,17 +108,6 @@ This example requires JavaScript to be activated.
 		</select>
 		<hr aria-orientation=vertical>
 		<label>Find: <input type=text tabindex=-1></label>
-	</aria-toolbar>
-	<p><a href=#>Focusable element between the toolbars</a></p>
-	<aria-toolbar class="tool-bar" aria-orientation=vertical aria-label="Edit">
-		<button type=button tabindex=-1><aria-icon fetch name=scissors></aria-icon></button>
-		<button type=button tabindex=-1 disabled class="bad"><aria-icon fetch name=clipboard-copy></aria-icon></button>
-		<button type=button tabindex=-1><aria-icon fetch name=clipboard-paste></aria-icon></button>
-		<hr>
-		<button type=button tabindex=-1><aria-icon fetch name=text-align-start></aria-icon></button>
-		<button type=button tabindex=-1><aria-icon fetch name=text-align-center></aria-icon></button>
-		<button type=button tabindex=-1 aria-disabled class="bad"><aria-icon fetch name=text-align-end></aria-icon></button>
-		<button type=button tabindex=-1><aria-icon fetch name=text-align-justify></aria-icon></button>
 	</aria-toolbar>
 	<p><a href=#>Focusable element after the toolbar</a></p>
 </figure>
