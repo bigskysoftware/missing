@@ -31,7 +31,7 @@ export const DisableableMixin = mixin(
 
     on(el, "click", (e) => {
       if (el.ariaDisabled === "true")
-        halt("default bubbbling propagation", e)
+        halt("default bubbling propagation", e)
     })
   }
 )
