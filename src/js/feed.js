@@ -73,9 +73,9 @@ const Feed = tag(
 
     on(el, "keydown", hotkey(Object.fromEntries(
       Object.entries(keyTable).map(([key, value]) =>
-        [key, halts("default propagation", (e) => focus(value))]
+        [key, (e) => focus(value)]
       )
-    )))
+    ), { halt: "default propagation" }))
   }
 )
 

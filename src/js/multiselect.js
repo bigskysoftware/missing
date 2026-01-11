@@ -27,16 +27,16 @@ export const MultiSelectMixin = mixin(
     }
 
     const hotkeys = hotkey({
-      " ": halts("default", (e) => {
+      " ": (e) => {
         toggle(e.target)
-      }),
-      "Shift+ArrowDown": halts("default", (e) => {
+      },
+      "Shift+ArrowDown": (e) => {
         toggle(document.activeElement)
-      }),
-      "Shift+ArrowUp": halts("default", (e) => {
+      },
+      "Shift+ArrowUp": (e) => {
         toggle(document.activeElement)
-      }),
-      "Shift+ ": halts("default", (e) => {
+      },
+      "Shift+ ": (e) => {
         const members = $$(el, sMember)
         const start = members.indexOf(anchor)
         const end = members.indexOf(document.activeElement)
@@ -45,26 +45,26 @@ export const MultiSelectMixin = mixin(
           Math.max(start, end) + 1,
         ).forEach(m => m.ariaSelected = "true")
         anchor = members.at(end)
-      }),
-      "Ctrl+Shift+Home": halts("default", (e) => {
+      },
+      "Ctrl+Shift+Home": (e) => {
         const members = $$(el, sMember)
         const start = members.indexOf(document.activeElement)
         members.slice(0, start).forEach(m => m.ariaSelected = "true")
         anchor = members.at(0)
-      }),
-      "Ctrl+Shift+End": halts("default", (e) => {
+      },
+      "Ctrl+Shift+End": (e) => {
         const members = $$(el, sMember)
         const start = members.indexOf(document.activeElement)
         members.slice(start).forEach(m => m.ariaSelected = "true")
         anchor = members.at(-1)
-      }),
-      "Ctrl+A": halts("default", (e) => {
+      },
+      "Ctrl+A": (e) => {
         const members = $$(el, sMember)
         const all = members.every(m => m.ariaSelected === "true")
         members.forEach(m => m.ariaSelected = all ? null : "true")
         anchor = (all) ? members.at(0) : members.at(-1)
-      }),
-    })
+      },
+    }, { halt: "default" })
 
     internals(el, { ariaMultiSelectable: "false" })
 

@@ -104,9 +104,9 @@ export const FocusGroupMixin = mixin(
     on(el, "focusin", (e) => focusTo(e.target))
 
     on(el, "keydown", hotkey({
-      "Home": halts("default propagation", (e) => focusTo($(el, sMember))),
-      "End":  halts("default propagation", (e) => focusTo($$(el, sMember).at(-1))),
-    }))
+      "Home": (e) => focusTo($(el, sMember)),
+      "End":  (e) => focusTo($$(el, sMember).at(-1)),
+    }, { halt: "default propagation" }))
 
     on(el, "keydown", (e) => {
       const mvt = e.key.startsWith("Arrow") && movement(e.key.slice(5))

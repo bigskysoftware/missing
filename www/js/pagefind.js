@@ -66,15 +66,18 @@ searchDialog = () => {
     })
 
     on(input, "keydown", hotkey({
-        "ArrowDown": halts("default", _ => {
+        "ArrowDown": _ => {
             const item = next(results, "[role=option]", selectedItem());
             if (item) selectItem(item);
-        }),
-        "ArrowUp": halts("default", _ => {
+        },
+        "ArrowUp": _ => {
             const item = prev(results, "[role=option]", selectedItem());
             if (item) selectItem(item);
-        }),
-        "Enter": halts("default", _ => selectedItem()?.click()),
+        },
+        "Enter": _ => selectedItem()?.click(),
+    }, { halt: "default" }))
+    
+    on(input, "keydown", hotkey({
         "ArrowLeft": _ => selectItem(null),
         "ArrowRight": _ => selectItem(null),
         "Home": _ => selectItem(null),

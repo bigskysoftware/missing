@@ -428,9 +428,11 @@ export function prev(root, selector, current, options = {}) {
  * - "Ctrl+Alt+3"
  *
  * @param {Record<string, KeyboardEventListener>} hotkeys
+ * @param {*} options
+ * @param {string} [options.halt] {@linkcode halt} the event with this argument when a hotkey is matched.
  * @returns KeyboardEventListener
  */
-export function hotkey(hotkeys) {
+export function hotkey(hotkeys, { halt: haltArg = "" } = {}) {
   const alt = 0b1, ctrl = 0b10, meta = 0b100, shift = 0b1000;
   // handlers[key][modifiers as bitfields]
   /** @type {Record<string, Record<number, KeyboardEventListener>>} */
@@ -454,7 +456,7 @@ export function hotkey(hotkeys) {
 
   for (const [hotkeySpec, handler] of Object.entries(hotkeys)) {
     const [key, modifiers] = parse(hotkeySpec);
-    (handlers[key.toLowerCase()] ??= new Array(8))[modifiers] = handler;
+    (handlers[key.toLowerCase()] ??= new Array(8))[modifiers] = halts(haltArg, handler);
   }
   return (/** @type {KeyboardEvent} */ e) => handlers[e.key.toLowerCase()]?.[modifiersOf(e)]?.(e);
 }

@@ -88,9 +88,9 @@ export const CommandMixin = mixin(
     on(el, "connected", (e) => validate(el, { roles }))
 
     on(el, "keydown", hotkey({
-      " ": halts("default", (e) => dispatch(el, "click", {}, { bubbles: true })),
-      "Enter": halts("default", (e) => dispatch(el, "click", {}, { bubbles: true })),
-    }))
+      " ": (e) => dispatch(el, "click", {}, { bubbles: true }),
+      "Enter": (e) => dispatch(el, "click", {}, { bubbles: true }),
+    }, { halt: "default" }))
 
     on(el, "click", (e) => {
       if (el.hasAttribute("disabled") || el.ariaDisabled === "true" || !el.commandForElement)
