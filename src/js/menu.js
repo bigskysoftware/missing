@@ -81,8 +81,6 @@ const MenuItem = tag(
   }
 )
 
-
-// Define nested elements first
 MenuList.define()
 MenuItem.define()
 MenuBar.define()

@@ -94,7 +94,6 @@ export const Option = tag(
   }
 )
 
-// Define nested elements first
 Option.define()
 OptGroup.define()
 ListBox.define()
