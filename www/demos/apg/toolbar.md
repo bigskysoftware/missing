@@ -65,46 +65,46 @@ This example requires JavaScript to be activated.
 		<option value=rtl>Right to left
 	</select>
 	</div>
-    <div>
-    <label for=orientation>ARIA Orientation:</label>
-    <select id=orientation onchange="document.getElementById('tb').ariaOrientation = this.value">
-      <option value=horizontal>Horizontal
-      <option value=vertical>Vertical
-    </select>
-    </div>
+	<div>
+	<label for=orientation>ARIA Orientation:</label>
+	<select id=orientation onchange="document.getElementById('tb').ariaOrientation = this.value">
+		<option value=horizontal>Horizontal
+		<option value=vertical>Vertical
+	</select>
+	</div>
 </form>
 <figure id=ex dir=ltr style="writing-mode: horizontal-tb">
 	<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Toolbar</figcaption>
 	<p><a href=#>Focusable element before the toolbar</a></p>
 	<aria-toolbar id=tb class="tool-bar" aria-label="Edit">
-		<button type=button tabindex=-1 aria-label="Cut">
-            <aria-icon fetch name=scissors></aria-icon>
-        </button>
-		<button type=button tabindex=-1 aria-label="Copy">
-            <aria-icon fetch name=clipboard-copy></aria-icon>
-        </button>
-		<button type=button tabindex=-1 aria-label="Paste">
-            <aria-icon fetch name=clipboard-paste></aria-icon>
-        </button>
+		<button type=button tabindex=-1 aria-label="Cut" onclick="alert('Cut')">
+			<aria-icon fetch name=scissors></aria-icon>
+		</button>
+		<button type=button tabindex=-1 aria-label="Copy" disabled class="bad" onclick="alert(this.ariaLabel)">
+			<aria-icon fetch name=clipboard-copy></aria-icon>
+		</button>
+		<button type=button tabindex=-1 aria-label="Paste" aria-disabled="true" class="bad" onclick="alert(this.ariaLabel)">
+			<aria-icon fetch name=clipboard-paste></aria-icon>
+		</button>
 		<hr aria-orientation=vertical>
-		<button type=button tabindex=-1 aria-label="Text align: start">
-            <aria-icon fetch name=text-align-start></aria-icon>
-        </button>
-		<button type=button tabindex=-1 aria-label="Text align: center">
-            <aria-icon fetch name=text-align-center></aria-icon>
-        </button>
-		<button type=button tabindex=-1 aria-label="Text align: end">
-            <aria-icon fetch name=text-align-end></aria-icon>
-        </button>
-		<button type=button tabindex=-1 aria-label="Text align: justify">
-            <aria-icon fetch name=text-align-justify></aria-icon>
-        </button>
+		<button type=button tabindex=-1 aria-label="Text align: start" onclick="alert(this.ariaLabel)">
+			<aria-icon fetch name=text-align-start></aria-icon>
+		</button>
+		<button type=button tabindex=-1 aria-label="Text align: center" onclick="alert(this.ariaLabel)">
+			<aria-icon fetch name=text-align-center></aria-icon>
+		</button>
+		<button type=button tabindex=-1 aria-label="Text align: end" onclick="alert(this.ariaLabel)">
+			<aria-icon fetch name=text-align-end></aria-icon>
+		</button>
+		<button type=button tabindex=-1 aria-label="Text align: justify" onclick="alert(this.ariaLabel)">
+			<aria-icon fetch name=text-align-justify></aria-icon>
+		</button>
 		<hr aria-orientation=vertical>
-		<select aria-label="Font Size">
-		  <option>8pt
-		  <option>12pt
-		  <option>16pt
-		  <option>24pt
+		<select tabindex=-1 aria-label="Font Size">
+			<option>8pt
+			<option>12pt
+			<option>16pt
+			<option>24pt
 		</select>
 		<hr aria-orientation=vertical>
 		<label>Find: <input type=text tabindex=-1></label>
