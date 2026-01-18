@@ -2,6 +2,7 @@
 import { dispatch, internals, makelogger, mixin, observeAttributes, on, role, states } from "./19.js"
 import { validate } from "./validate.js"
 import { DisableableMixin } from "./disableable.js"
+import { ariaState } from "./aria.js"
 
 const ilog = makelogger("selectable")
 
@@ -23,7 +24,7 @@ export const SelectableMixin = mixin(
 
     // TODO: This might be the responsibility of a select container
     on(el, "constructed", (e) => {
-      const isSelected = (el.ariaSelected || el.hasAttribute("selected"))
+      const isSelected = (ariaState(el, "selected") || el.hasAttribute("selected"))
       el.tabIndex = (isSelected) ? 0 : -1
     })
 
@@ -31,8 +32,8 @@ export const SelectableMixin = mixin(
 
     on(el, "attribute:tabindex", (e) => {
       const container = el.closest(":state(focusgroup)")
-      if (container && container.attr("ariaMultiSelectable") !== "true") {
-        el.ariaSelected = (e.detail.value == "0") ? "true" : null
+      if (container && !ariaState(container, "multiSelectable")) {
+        ariaState(el, "selected", e.detail.value == "0" || null)
       }
     })
 

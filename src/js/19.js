@@ -488,6 +488,22 @@ export function debounce(t, f, { mode = "trailing" } = {}) {
 }
 
 /**
+ * @template TKey
+ * @template {any[]} TRest
+ * @param {(key: TKey, ...rest: TRest) => any} f
+ * @returns {(key: TKey, ...rest: TRest) => any}
+ */
+export function memoize(f) {
+  const map = new Map()
+  return (key, ...args) => {
+    if (map.has(key)) return map.get(key)
+    const result = f(key, ...args)
+    map.set(key, result)
+    return result
+  }
+}
+
+/**
  * Get or create the shadow root of an element.
  * By default, the shadow root will be populated by a single <slot>.
  * Will throw an error if:
@@ -666,18 +682,6 @@ export function tag(name, options, init) {
     disconnectedCallback() { dispatch(this, 'disconnected') }
     connectedMoveCallback() { dispatch(this, 'connectedMove') }
     adoptedCallback() { dispatch(this, 'adopted') }
-    
-    /**
-     * @param {string} name
-     * @param {string} [value]
-     */
-    attr(name, value) {
-      const curValue = this[name] || internals(this)?.[name]
-      if (value === undefined)
-        return curValue
-      else
-        return this[name] = value, curValue
-    }
 
     static define() { customElements.define(name, this) }
   }

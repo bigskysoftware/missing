@@ -1,5 +1,6 @@
 //@deno-types=./19.ts
 import { $$, halt, makelogger, mixin, on } from "./19.js"
+import { ariaProperty } from "./aria.js"
 import { FocusGroupMixin } from "./focusgroup.js"
 
 const ilog = makelogger("typeahead")
@@ -18,7 +19,7 @@ export const TypeAheadMixin = mixin(
 
     // TODO: labelOf helper? c.f. validate.js
     const nameOf = (member) =>
-      (member.ariaLabel || member.textContent.trim() || "").toLowerCase()
+      (ariaProperty(member, "label") || member.textContent.trim() || "").toLowerCase()
 
     // TODO: Cover international symbols with a test
     const validKey = (e) =>

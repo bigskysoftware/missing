@@ -2,6 +2,7 @@
 import { $, $$, css, halt, halts, hotkey, internals, makelogger, mixin, observeAttributes, on, states, stylize, tag, traverse } from "./19.js"
 import { validate } from "./validate.js"
 import { DisableableMixin } from "./disableable.js"
+import { ariaProperty } from "./aria.js"
 
 const ilog = makelogger("focus-group")
 
@@ -58,7 +59,7 @@ export const FocusGroupMixin = mixin(
 
     const writingMode = () => getComputedStyle(el).writingMode
     const direction = () => getComputedStyle(el).direction
-    const orientation = () => el.attr("ariaOrientation")
+    const orientation = () => ariaProperty(el, "orientation")
     const wrapping = ()  => el.hasAttribute("wrap")
 
     const movement = (key) =>
@@ -117,10 +118,9 @@ export const FocusGroupMixin = mixin(
     })
 
     on(el, "attribute:aria-orientation", (e) => {
-      const state = el.attr("ariaOrientation")
       states(el, {
-        horizontal: state === "horizontal",
-        vertical: state === "vertical",
+        horizontal: e.detail.value === "horizontal",
+        vertical: e.detail.value === "vertical",
       })
     })
   }

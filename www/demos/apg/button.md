@@ -35,7 +35,7 @@ Command button
 
 Any of the above buttons can also be disabled using the `disabled`{ .token .attr-name } attribute.
 
-<b class=bad>TODO: difference between ordinary button and command button? does menu button belong here?
+<b class="bad color">TODO: difference between ordinary button and command button? does menu button belong here?</b>
 
 {{ include "demo_kbd.vto" }}
 

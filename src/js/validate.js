@@ -1,6 +1,7 @@
 // @ts-check
 //@deno-types=./19.ts
-import { internals, makelogger, role } from "./19.js"
+import { internals, makelogger, on, role } from "./19.js"
+import { ariaProperty, ariaRelatives } from "./aria.js"
 
 const ilog = makelogger("validate")
 
@@ -17,16 +18,24 @@ const or = new Intl.ListFormat("en", { type: "disjunction" })
  * @param {string} [options.sChildren] The selector to validate children against.
  * @param {string[]} [options.roles] A list of acceptable roles to validate against.
  * @param {string[]} [options.attrs] A list of required attributes to validate against.
+ * @param {string | null} [options.when] Perform validation when this event is fired.
  */
-export function validate(el, options) {
-  const { label, sParent, sChildren, roles, attrs } = options
+export function validate(el, options = {}) {
+  const { label, sParent, sChildren, roles, attrs, when } = options
+  
+  if (when) {
+    const options_ = { ...options, when: null }
+    on(el, when, () => validate(el, options_))
+    return
+  }
 
   if (label) {
     // TODO: Create labelOf() helper?
     const validLabel = (
-      (el.hasAttribute("aria-labelledby") || el.hasAttribute("aria-label")) ||
-      (internals(el).ariaLabel || internals(el).ariaLabelledByElements?.length) ||
-      (el.constructor.formAssociated && internals(el).labels.length)
+      (ariaRelatives(el, "labelledby")?.length
+        || el.hasAttribute("aria-labelledby")
+        || ariaProperty(el, "label")) ||
+      (el.constructor.formAssociated && internals(el)?.labels.length)
     )
     if (!validLabel)
       throw new Error(`${el} has no accessible name.`)

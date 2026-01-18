@@ -2,6 +2,7 @@
 import { makelogger, mixin, on, role } from "./19.js"
 import { validate } from "./validate.js"
 import { DisableableMixin } from "./disableable.js"
+import { AriaState, ariaState } from "./aria.js"
 
 const ilog = makelogger("checkable")
 
@@ -14,7 +15,7 @@ const roles = /** @type {const} */ ([
 ])
 
 export const CheckableMixin = mixin(
-  [observeAttributes("aria-checked"), DisableableMixin],
+  [AriaState("checked"), DisableableMixin],
   (el) => {
     internals(el, { ariaChecked: "false" })
     states(el, {
@@ -23,7 +24,7 @@ export const CheckableMixin = mixin(
     })
 
     on(el, "constructed", (e) => {
-      const isChecked = (el.ariaChecked || el.hasAttribute("checked"))
+      const isChecked = (ariaState(el, "checked") || el.hasAttribute("checked"))
       const isMenuitem = (role(el).startsWith("menuitem"))
       el.tabIndex = (!isMenuitem || isChecked) ? 0 : -1
     })

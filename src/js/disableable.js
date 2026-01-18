@@ -1,5 +1,6 @@
 //@deno-types=./19.ts
 import { halt, internals, makelogger, mixin, observeAttributes, on, states } from "./19.js"
+import { ariaState, AriaState } from "./aria.js"
 import { validate } from "./validate.js"
 
 const ilog = makelogger("disableable")
@@ -18,20 +19,10 @@ const roles = /** @type {const} */ ([
   "tab",
 ])
 
-export const DisableableMixin = mixin(
-  [observeAttributes("aria-disabled")],
-  (el) => {
-    internals(el, { ariaDisabled: "false" })
-
-    on(el, "connected", (e) => validate(el, { roles }))
-
-    on(el, "attribute:aria-disabled", (e) => {
-      states(el, { disabled: e.value === "true" })
-    })
-
-    on(el, "click", (e) => {
-      if (el.ariaDisabled === "true")
-        halt("default bubbling propagation", e)
-    })
-  }
-)
+export const DisableableMixin = mixin([AriaState("disabled")], (el) => {
+  validate(el, { roles, when: "connected" })
+  on(el, "click", (e) => {
+    if (ariaState(el, "disabled"))
+      halt("default bubbling propagation", ilog("inhibited event:", e))
+  })
+})

@@ -1,5 +1,6 @@
 //@deno-types=./19.ts
 import { $, $$, halts, hotkey, internals, makelogger, mixin, observeAttributes, off, on } from "./19.js"
+import { ariaState } from "./aria.js"
 import { validate } from "./validate.js"
 
 const ilog = makelogger("multiselect")
@@ -21,8 +22,8 @@ export const MultiSelectMixin = mixin(
     let anchor = $$(el, sSelected).at(-1) || $$(el, sMember).at(0)
 
     const toggle = (member) => {
-      member.ariaSelected = (member.ariaSelected === "true") ? null : "true"
-      if (member.ariaSelected)
+      ariaState(member, "selected", !ariaState(member, "selected") || null)
+      if (ariaState(member, "selected"))
         anchor = member
     }
 
@@ -43,25 +44,25 @@ export const MultiSelectMixin = mixin(
         members.slice(
           Math.min(start, end),
           Math.max(start, end) + 1,
-        ).forEach(m => m.ariaSelected = "true")
+        ).forEach(m => ariaState(m, "selected", true))
         anchor = members.at(end)
       },
       "Ctrl+Shift+Home": (e) => {
         const members = $$(el, sMember)
         const start = members.indexOf(document.activeElement)
-        members.slice(0, start).forEach(m => m.ariaSelected = "true")
+        members.slice(0, start).forEach(m => ariaState(m, "selected", true))
         anchor = members.at(0)
       },
       "Ctrl+Shift+End": (e) => {
         const members = $$(el, sMember)
         const start = members.indexOf(document.activeElement)
-        members.slice(start).forEach(m => m.ariaSelected = "true")
+        members.slice(start).forEach(m => ariaState(m, "selected", true))
         anchor = members.at(-1)
       },
       "Ctrl+A": (e) => {
         const members = $$(el, sMember)
-        const all = members.every(m => m.ariaSelected === "true")
-        members.forEach(m => m.ariaSelected = all ? null : "true")
+        const all = members.every(m => ariaState(m, "selected"))
+        members.forEach(m => ariaState(m, "selected", !all || null))
         anchor = (all) ? members.at(0) : members.at(-1)
       },
     }, { halt: "default" })

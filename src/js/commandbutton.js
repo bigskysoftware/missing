@@ -2,6 +2,7 @@
 import { attr, behavior, dispatch, halt, halts, hotkey, identify, internals, makelogger, mixin, observeAttributes, on, states } from "./19.js"
 import { validate } from "./validate.js"
 import { DisableableMixin } from "./disableable.js"
+import { ariaState } from "./aria.js"
 
 const ilog = makelogger("command")
 
@@ -93,7 +94,7 @@ export const CommandMixin = mixin(
     }, { halt: "default" }))
 
     on(el, "click", (e) => {
-      if (el.hasAttribute("disabled") || el.ariaDisabled === "true" || !el.commandForElement)
+      if (el.hasAttribute("disabled") || ariaState(el, "disabled") || !el.commandForElement)
         return halt("default bubbling propagation", e)
 
       // Attempt to perform the command via method calling
@@ -154,12 +155,12 @@ export const commandButton = behavior(
         "aria-details": el.commandForElement.id,
       })
       on(el.commandForElement, "toggle", (e) =>
-        el.ariaExpanded = String(e.newState === "open"))
+        ariaState(el, "expanded", e.newState === "open"))
     }
 
     // Handle events
     on(el, "click", halts("default", (e) => {
-      if (el.hasAttribute("disabled") || el.ariaDisabled === "true" || !el.commandForElement)
+      if (el.hasAttribute("disabled") || ariaState(el, "disabled") || !el.commandForElement)
         return halt("default bubbling propagation", e)
 
       // Attempt to perform the command via method calling

@@ -6,6 +6,7 @@ import { TypeAheadMixin } from "./typeahead.js"
 import { SelectableMixin } from "./selectable.js"
 import { MultiSelectMixin } from "./multiselect.js"
 import { DisableableMixin } from "./disableable.js"
+import { ariaState } from "./aria.js"
 
 const ilog = makelogger("listbox")
 
@@ -19,7 +20,7 @@ export const ListBox = tag(
     const setDefault = () => {
       // TODO: initChildren?
       $$(el, sMember).forEach(o =>
-        o.ariaSelected = o.hasAttribute("selected") ? "true" : null)
+        ariaState(o, "selected", o.hasAttribute("selected") || null))
     }
 
     const setValue = () => {
@@ -40,7 +41,7 @@ export const ListBox = tag(
     })
 
     on(el, "formDisabled", (e) => {
-      el.ariaDisabled = (e.detail.disabled) ? "true" : null
+      ariaState(el, "disabled", e.detail.disabled || null)
       setValue()
     })
 
@@ -53,7 +54,7 @@ export const ListBox = tag(
       if (e.detail.mode === "restore") {
         const values = [...e.detail.state.values()]
         $$(el, sMember).forEach(o =>
-          o.ariaSelected = values.includes(o.getAttribute("value")) ? "true" : null)
+          ariaState(o, "selected", values.includes(o.getAttribute("value")) || null))
         setValue()
       }
     })

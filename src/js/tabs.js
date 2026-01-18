@@ -5,16 +5,12 @@ import { FocusGroupMixin } from "./focusgroup.js"
 import { SelectableMixin } from "./selectable.js"
 import { MultiSelectMixin } from "./multiselect.js"
 import { DisableableMixin } from "./disableable.js"
+import { ariaRelatives, ariaState } from "./aria.js"
 
 const ilog = makelogger("tabs")
 
 // TODO: browerlist: ariaControlsElements, ariaLabelledByElements
-export const controlledBy = (el) => {
-  const root = el.getRootNode()
-  return el.attr("ariaControlsElements") || attr(el, "aria-controls").split(" ").map(
-    id => root.getElementById(id)
-  )
-}
+export const controlledBy = (el) => ariaRelatives(el, "controls")
 
 export const TabSet = tag("aria-tabset", (el) => {
   internals(el, { role: "presentation" })
@@ -42,7 +38,7 @@ export const TabList = tag(
         // TODO: initChildren?
         $$(el, "aria-tab").forEach(tab => {
           internals(tab, { ariaExpanded: "false" })
-          tab.ariaExpanded = (tab.ariaSelected === "true") ? "true" : null
+          ariaState(tab, "expanded", ariaState(tab, "selected"))
         })
     })
   }
@@ -61,12 +57,12 @@ export const Tab = tag(
 
     // TODO: Crucial for authors to use [aria-controls] or can we use internals?
     on(el, "attribute:aria-controls", (e) => {
-      if (!(e.detail.value || el.ariaControlsElements.length))
+      if (!(e.detail.value || ariaRelatives(el, "controls").length))
         return
 
       const panel = controlledBy(el)[0]
       if (panel)
-        panel.hidden = (el.ariaSelected !== "true")
+        panel.hidden = (ariaState(el, "selected") !== "true")
       else
         return console.error(el, "has no associated <aria-tabpanel>")
 
@@ -81,7 +77,7 @@ export const Tab = tag(
       if (panel) {
         panel.hidden = (e.detail.value !== "true")
         if (el.parentElement.ariaMultiSelectable === "true")
-          el.ariaExpanded = (panel.hidden) ? null : "true"
+          ariaState(el, "expanded", !panel.hidden || null)
       }
     })
   }
