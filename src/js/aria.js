@@ -22,6 +22,10 @@ const stateTable = /** @type {const} */ ({
     "application", "checkbox", "combobox", "gridcell", "listbox", "radiogroup", "slider", "spinbutton", "textbox", "tree",
     "columnheader", "rowheader", "searchbox", "switch", "treegrid",
   ],
+  modal: [  // technically an "ARIA Property"
+    "window",
+    "alertdialog", "dialog"
+  ],
   multiSelectable: [  // technically an "ARIA Property"
     "grid", "listbox", "tablist", "tree",
     "treegrid",
@@ -82,11 +86,23 @@ export const AriaBusy = AriaState("busy")
 
 export const AriaCurrent = AriaState("current")
 
-export const AriaExpanded = AriaState("expanded")
+export const AriaExpanded = mixin(
+  [AriaState("expanded")],
+  (el) => {
+    states(el, ["expandable"])
+  }
+)
 
-export const AriaGrabbed = AriaState("grabbed")
+export const AriaGrabbed = mixin(
+  [AriaState("grabbed")],
+  (el) => {
+    states(el, ["draggable"])
+  }
+)
 
 export const AriaInvalid = AriaState("invaid")
+
+export const AriaModal = AriaState("modal")
 
 export const AriaOrientation = mixin(
   [AriaState("orientation", { defaultValue: "horizontal" })],
@@ -112,4 +128,9 @@ export const AriaOrientation = mixin(
   }
 )
 
-export const AriaPressed = AriaState("pressed")
+export const AriaPressed = mixin(
+  [AriaState("pressed")],
+  (el) => {
+    states(el, ["pressable"])
+  }
+)
