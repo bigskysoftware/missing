@@ -63,6 +63,7 @@ const Feed = tag(
       ariaRelevant: "additions",
       ariaKeyShortcuts: Object.keys(keyTable).join(" "),
     })
+    validate(el, { label: true, sChildren: ":is(article, [role=article])", when: "connected" })
 
     on(el, "connected", (e) => {
       validate(el, { label: true, sChildren: ":is(article, [role=article])" })

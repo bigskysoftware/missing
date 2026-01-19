@@ -29,8 +29,6 @@ export const CheckableMixin = mixin(
       el.tabIndex = (!isMenuitem || isChecked) ? 0 : -1
     })
 
-    on(el, "connected", (e) => validate(el, { roles }))
-
     on(el, "attribute:aria-checked", (e) => {
       dispatch(el, "changed", {}, { bubbles: true })
     })

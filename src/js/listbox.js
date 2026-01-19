@@ -32,9 +32,9 @@ export const ListBox = tag(
 
     internals(el, { role: "listbox", ariaOrientation: "vertical", ariaMultiSelectable: "false" })
     stylize(el, css`:host { display: block; }`)
+    validate(el, { label: true, sChildren: ":is(aria-optgroup, aria-option)", when: "connected" })
 
     on(el, "connected", (e) => {
-      validate(el, { label: true, sChildren: ":is(aria-optgroup, aria-option)" })
       if (!$(el, "[aria-selected=true]"))
         setDefault()
       setValue()
@@ -70,9 +70,7 @@ export const OptGroup = tag(
     stylize(el, css`:host { display: flex; flex-direction: var(--flex-direction) }`)
     internals(el, { role: "group" })
 
-    on(el, "connected", (e) =>
-      validate(el, { sParent: "aria-listbox", sChildren: "aria-option" }))
-
+    // TODO: Can we validate "not tabindex" instead of observing the attribute?
     on(el, "attribute:tabindex", (e) => {
       if (e.detail.value !== null) {
         el.removeAttribute("tabindex")
@@ -88,9 +86,7 @@ export const Option = tag(
   (el) => {
     internals(el, { role: "option" })
     stylize(el, css`:host { display: block; }`)
-
-    on(el, "connected", (e) =>
-      validate(el, { sParent: ":is(aria-listbox, aria-optgroup)" }))
+    validate(el, { sParent: ":is(aria-listbox, aria-optgroup)", when: "connected" })
   }
 )
 

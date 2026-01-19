@@ -3,18 +3,9 @@ import { $, $$, halts, hotkey, internals, makelogger, mixin, observeAttributes, 
 import { ariaState } from "./aria.js"
 import { validate } from "./validate.js"
 
-const ilog = makelogger("multiselect")
-
-const roles = /** @type {const} */ ([
-  "grid",     // super: composite role
-  "listbox",  // super: compsite > select role
-  "tablist",  // super: composite role
-  "tree",     // super: composite > select role
-])
-
-// TODO: This is really "AriaMultiselectablePropertyMixin".
-export const MultiSelectMixin = mixin(
-  [observeAttributes("aria-multiselectable")],
+// TODO: Move to aria.js?
+export const AriaMultiSelectable = mixin(
+  [AriaState("multiSelectable")],
   (el) => {
 
     const sMember = ":state(selectable)"

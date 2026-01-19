@@ -1,4 +1,43 @@
-import { internals, memoize, on, states } from "./19.js"
+import { css, internals, memoize, mixin, on, states, stylize } from "./19.js"
+import { validate } from "./validate.js"
+
+// ref: https://www.w3.org/TR/wai-aria-1.3/
+const stateTable = /** @type {const} */ ({
+  busy: [],  // global state
+  checked: [
+    "checkbox", "menuitemcheckbox", "menuitemradio", "option", "radio", "switch",
+    "switch", "treeitem",
+  ],
+  current: [],  // global state
+  disabled: [
+    "application", "button", "composite", "gridcell", "group", "input", "link", "menuitem", "scrollbar", "separator", "tab",
+    "checkbox", "columnheader", "combobox", "grid", "listbox", "menu", "menubar", "menuitemcheckbox", "menuitemradio", "option", "radio", "radiogroup", "row", "rowheader", "searchbox", "select", "slider", "spinbutton", "switch", "tablist", "textbox", "toolbar", "tree", "treegrid", "treeitem",
+  ],
+  expanded: [
+    "application", "button", "checkbox", "combobox", "gridcell", "link", "listbox", "menuitem", "row", "rowheader", "tab", "treeitem",
+    "columnheader", "menuitemcheckbox", "menuitemradio", "rowheader", "switch",
+  ],
+  grabbed: [],  // global state
+  invalid: [
+    "application", "checkbox", "combobox", "gridcell", "listbox", "radiogroup", "slider", "spinbutton", "textbox", "tree",
+    "columnheader", "rowheader", "searchbox", "switch", "treegrid",
+  ],
+  multiSelectable: [  // technically an "ARIA Property"
+    "grid", "listbox", "tablist", "tree",
+    "treegrid",
+  ],
+  orientation: [ // technically an "ARIA Property"
+    "scrollbar", "select", "separator", "slider", "tablist", "toolbar",
+    "listbox", "menu", "menubar", "radiogroup", "tree", "treegrid",
+  ],
+  pressed: [
+    "button",
+  ],
+  selected: [
+    "gridcell", "option", "row", "tab",
+    "columnheader", "rowheader", "treeitem",
+  ],
+})
 
 const ariaAttributeName = aria => `aria-${aria.toLowerCase()}`
 const ariaPropertyName = aria => `aria${aria.replace(/^./, c => c.toUpperCase())}`

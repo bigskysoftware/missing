@@ -41,18 +41,8 @@ const keyTable = /** @type {const} */ ({
   },
 })
 
-const roles = /** @type {const} */ ([
-  "grid",
-  "tablist",
-  "listbox",
-  "menu",
-  "menubar",
-  "radiogroup",
-  "tree",
-  "treegrid",
-  "toolbar",
-])
-
+// TODO: How to skip disabled elements (incl possible wrap)
+// TODO: How to handle <input type=text>
 export const FocusGroupMixin = mixin(
   [observeAttributes("aria-orientation"), DisableableMixin],
   (el) => {
@@ -93,7 +83,6 @@ export const FocusGroupMixin = mixin(
     `)
 
     on(el, "connected", (e) => {
-      validate(el, { label: true, roles: roles })
 
       // TODO: initChildren?
       const members = $$(el, sMember)

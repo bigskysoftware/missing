@@ -25,9 +25,7 @@ const MenuList = tag(
 			ariaOrientation: "vertical",
 			ariaLabelledByElements: (el.popover) ? [invokerOf(el)] : null,
 		})
-
-    on(el, "connected", (e) =>
-      validate(el, { attrs: ["id"], sChildren: "aria-menuitem, hr, fieldset" }))
+    validate(el, { attrs: ["id"], sChildren: "aria-menuitem, hr, fieldset", when: "connected" })
 
     on(el, "toggle", (e) => {
 			if (e.newState === "open")
@@ -60,6 +58,7 @@ const MenuItem = tag(
       ariaHasPopup: (el.popoverTargetElement) ? "menu" : null,
       ariaExpanded: (el.popoverTargetElement) ? "false" : null,
     })
+    validate(el, { sParent: ":is(aria-menubar, aria-menulist, fieldset)", when: "connected" })
 
     if (internals(el).ariaHasPopup === "menu") {
       // TODO: browserlist: .popoverTargetElement
@@ -75,9 +74,6 @@ const MenuItem = tag(
         attr(submenu, 'aria-labelledby', identify(el))
       }
     }
-
-    on(el, "connected", (e) =>
-      validate(el, { sParent: ":is(aria-menubar, aria-menulist, fieldset)" }))
   }
 )
 
