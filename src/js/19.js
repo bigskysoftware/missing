@@ -670,11 +670,17 @@ function applyMixins(Base, mixins) {
 export function tag(name, options, init) {
   if (typeof options === "function") { init = options; options = {} }
   const { mixins = [], base = HTMLElement } = options
+  const Base = applyMixins(base, mixins)
+  return class extends Base {
+    static observedAttributes = Base.observedAttributes || []
 
-  return class extends applyMixins(base, mixins) {
     constructor() {
       super()
       init(this)
+      this.constructor.observedAttributes
+        .filter((/** @type {string} */ attr) => !this.hasAttribute(attr))
+        .forEach((/** @type {string} */ attr) =>
+          dispatch(this, `attribute:${attr}`, { value: null }))
       dispatch(this, 'constructed')
     }
 
@@ -682,6 +688,18 @@ export function tag(name, options, init) {
     disconnectedCallback() { dispatch(this, 'disconnected') }
     connectedMoveCallback() { dispatch(this, 'connectedMove') }
     adoptedCallback() { dispatch(this, 'adopted') }
+
+    /**
+     *
+     * @param {string} name
+     * @param {string} oldValue
+     * @param {string} newValue
+     */
+    attributeChangedCallback(name, oldValue, newValue) {
+      dispatch(this, 'attributeChanged', { name, oldValue, newValue })
+      dispatch(this, `attributeChanged:${name}`, { oldValue, newValue })
+      dispatch(this, `attribute:${name}`, { value: newValue })
+    }
 
     static define() { customElements.define(name, this) }
   }
@@ -724,27 +742,6 @@ export function observeAttributes(...attrs) {
       ...("observedAttributes" in Base && Array.isArray(Base.observedAttributes) ? Base.observedAttributes : []),
       ...attrs.flat(),
     ]
-    
-    constructor() {
-      super()
-      on(this, "constructed", () =>
-        this.constructor.observedAttributes
-          .filter((/** @type {string} */ attr) => !this.hasAttribute(attr))
-          .forEach((/** @type {string} */ attr) =>
-            dispatch(this, `attribute:${attr}`, { value: null })))
-    }
-    
-    /**
-     * 
-     * @param {string} name
-     * @param {string} oldValue
-     * @param {string} newValue
-     */
-    attributeChangedCallback(name, oldValue, newValue) {
-      dispatch(this, 'attributeChanged', { name, oldValue, newValue })
-      dispatch(this, `attributeChanged:${name}`, { oldValue, newValue })
-      dispatch(this, `attribute:${name}`, { value: newValue })
-    }
   }
 }
 
