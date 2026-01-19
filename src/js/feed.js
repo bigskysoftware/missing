@@ -20,13 +20,14 @@ const sFocusable = /** @type {const} */ ([
   ":is(a, area)[href]",
   ":is(audio, video)[controls]",
   ":is(img, object)[usemap]",
-  ":is(button, details, embed, iframe, label, select, textarea):not([disabled])"
+  ":is(button, details, embed, iframe, input, label, select, textarea):not([disabled])",
+  ":state(focusable)",
 ].join(", "))
 
 const Feed = tag(
   "aria-feed",
+  { mixins: [AriaBusy] },
   (el) => {
-    const observer = observe(el, { childList: true })
     const register = (article, idx, articles) => {
       Object.assign(article, {
         tabIndex: 0,
@@ -66,12 +67,10 @@ const Feed = tag(
     })
     validate(el, { label: true, sChildren: ":is(article, [role=article])", when: "connected" })
 
-    on(el, "connected", (e) => {
-      validate(el, { label: true, sChildren: ":is(article, [role=article])" })
-      update()  // TODO: initChildren?
+    on(el, "attribute:aria-busy", (e) => {
+      if (e.detail.value !== "true")
+        Array.from(el.children).forEach(register)
     })
-
-    on(el, "mutation:childList", (e) => update())
 
     on(el, "keydown", hotkey(Object.fromEntries(
       Object.entries(keyTable).map(([key, value]) =>
