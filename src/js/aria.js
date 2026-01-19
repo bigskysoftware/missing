@@ -76,7 +76,12 @@ export const AriaState = memoize((aria, { defaultValue = "false" } = {}) => {
       super()
       internals(this, { [ariaPropertyName(aria)]: defaultValue })
       validate(this, { roles: stateTable[aria], when: "connected" })
-      on(this, ariaEventName(aria), (e) => states(this, { [ariaStateName(aria)]: ariaState(this, aria) }))
+      on(this, ariaEventName(aria), (e) => {
+        states(this, {
+          [ariaStateName(aria)]: ariaState(this, aria),
+          mixed: (e.detail.value === "mixed"),
+        })
+      })
     }
   }
 })
