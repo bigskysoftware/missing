@@ -42,6 +42,7 @@ const stateTable = /** @type {const} */ ({
 const ariaAttributeName = aria => `aria-${aria.toLowerCase()}`
 const ariaPropertyName = aria => `aria${aria.replace(/^./, c => c.toUpperCase())}`
 const ariaEventName = aria => `attribute:${ariaAttributeName(aria)}`
+const ariaStateName = aria => aria.toLowerCase()
 
 const getInSelfOrInternals = (el, prop) => el[prop] ?? internals(el)?.[prop]
 const setOrGet = (el, prop, value) => value === undefined

@@ -32,7 +32,7 @@ export function validate(el, options = {}) {
   if (label) {
     // TODO: Create labelOf() helper?
     const validLabel = (
-      (ariaRelatives(el, "labelledby")?.length
+      (ariaRelatives(el, "labelledBy")?.length
         || el.hasAttribute("aria-labelledby")
         || ariaProperty(el, "label")) ||
       (el.constructor.formAssociated && internals(el)?.labels.length)

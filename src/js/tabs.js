@@ -67,7 +67,7 @@ export const Tab = tag(
     })
 
     on(el, "attribute:aria-selected", (e) => {
-      const panel = controlledBy(el)[0]
+      const panel = ariaRelatives(el, "controls")[0]
       if (panel) {
         panel.hidden = (e.detail.value !== "true")
         if (el.parentElement.ariaMultiSelectable === "true")
