@@ -94,4 +94,4 @@ This example requires JavaScript to be activated.
 	</div>
 </figure>
 
-<script type=module src=/dist/js/commandbutton.js></script>
+<script type=module src=/dist/js/command.js></script>

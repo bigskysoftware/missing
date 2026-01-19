@@ -3,10 +3,9 @@ import { attr, internals, makelogger, on, tag } from "./19.js"
 import { validate } from "./validate.js"
 import { FocusGroupMixin } from "./focusgroup.js"
 import { PopoverPositionMixin } from "./popover.js"
-import { invokerOf, CommandMixin } from "./commandbutton.js"
+import { invokerOf, CommandRole } from "./command.js"
 
 const ilog = makelogger("menu")
-
 
 const MenuBar = tag(
   "aria-menubar",
@@ -46,7 +45,7 @@ const MenuList = tag(
 
 const MenuItem = tag(
   "aria-menuitem",
-  { mixins: [CommandMixin] },
+  { mixins: [CommandRole] },
   (el) => {
     const type = attr(el, "type") || ""
     if (type && !(type === "radio" || type == "checkbox"))
@@ -66,6 +65,7 @@ const MenuItem = tag(
       if (internals(submenu).role != "menu")
         console.error("Menu button", el, "has no associated menu")
 
+      // TODO: Use ariaRelatives
       if ('ariaControlsElements' in internals(el)) {
         internals(el).ariaControlsElements = [submenu]
         internals(submenu).ariaLabelledByElements = [el]

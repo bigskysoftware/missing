@@ -58,5 +58,5 @@ This example requires JavaScript to be activated.
 	</aria-menulist>
 </figure>
 
-<script type=module src=/dist/js/commandbutton.js></script>
+<script type=module src=/dist/js/command.js></script>
 <script type=module src=/dist/js/menu.js></script>

@@ -1,5 +1,5 @@
 import { $, on, mixin, makelogger } from "./19.js"
-import { invokerOf } from "./commandbutton.js"
+import { invokerOf } from "./command.js"
 
 const ilog = makelogger("popover-position")
 

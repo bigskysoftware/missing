@@ -1,7 +1,7 @@
 //@deno-types=./19.ts
 import { attr, behavior, dispatch, halt, halts, hotkey, identify, internals, makelogger, mixin, observeAttributes, on, states } from "./19.js"
 import { validate } from "./validate.js"
-import { DisableableMixin } from "./disableable.js"
+import { AriaDisabled } from "./disableable.js"
 import { ariaState } from "./aria.js"
 
 const ilog = makelogger("command")
@@ -39,16 +39,12 @@ const roles = /** @type {const} */ ([
   "menuitemradio",
 ])
 
-// ref: https://www.w3.org/TR/wai-aria-1.2/#command
-export const CommandMixin = mixin(
-  [observeAttributes("aria-pressed"), DisableableMixin],
+// ref: https://www.w3.org/TR/wai-aria-1.3/#command
+export const CommandRole = mixin(
+  [AriaDisabled],
   (el) => {
-		internals(el, {
-      ariaPressed: "false",
-      ariaHasPopup: "false",
-      ariaExpanded: "false",
-		})
 		states(el, ["command"])
+    validate(el, { roles, when: "connected" })
 
     // Reflect attributes
     Object.defineProperties(el, {
@@ -85,8 +81,6 @@ export const CommandMixin = mixin(
     on(el, "constructed", (e) => {
 			el.tabIndex = -1
 		})
-
-    on(el, "connected", (e) => validate(el, { roles }))
 
     on(el, "keydown", hotkey({
       " ": (e) => dispatch(el, "click", {}, { bubbles: true }),
