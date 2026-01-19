@@ -33,7 +33,11 @@ export const ListBox = tag(
 
     internals(el, { role: "listbox", ariaOrientation: "vertical", ariaMultiSelectable: "false" })
     stylize(el, css`:host { display: block; }`)
-    validate(el, { label: true, sChildren: ":is(aria-optgroup, aria-option)", when: "connected" })
+    validate(el, {
+      label: true,
+      sChildren: ":is(aria-optgroup:not([tabindex]), aria-option)", // TODO: add [tabindex] test
+      when: "connected"
+    })
 
     on(el, "connected", (e) => {
       if (!$(el, "[aria-selected=true]"))
@@ -66,20 +70,12 @@ export const ListBox = tag(
 
 export const OptGroup = tag(
   "aria-optgroup",
-  { mixins: [observeAttributes("tabindex"), AriaDisabled] },
+  { mixins: [AriaDisabled] },
   (el) => {
     internals(el, { role: "group" })
     states(el, ["group"])
     stylize(el, css`:host { display: flex; flex-direction: var(--flex-direction) }`)
     validate(el, { sParent: "aria-listbox", sChildren: "aria-option", when: "connected" })
-
-    // TODO: Can we validate "not tabindex" instead of observing the attribute?
-    on(el, "attribute:tabindex", (e) => {
-      if (e.detail.value !== null) {
-        el.removeAttribute("tabindex")
-        console.warn(el, "does not support focus. The 'tabindex' attribute has been removed.")
-      }
-    })
   }
 )
 
