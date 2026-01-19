@@ -1,5 +1,5 @@
-//@deno-types=./19.ts
-import { internals, tag } from "./19.js"
+// @deno-types=./43.ts
+import { internals, tag } from "./43.js"
 import { FocusGroupMixin } from "./focusgroup.js"
 
 export const Toolbar = tag(

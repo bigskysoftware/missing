@@ -1,5 +1,7 @@
-//@deno-types=./19.ts
-import { $$, halt, makelogger, mixin, on } from "./19.js"
+// @deno-types=./19.ts
+// @deno-types=./43.ts
+import { $$, halt, makelogger, on } from "./19.js"
+import { mixin } from "./43.js"
 import { ariaProperty } from "./aria.js"
 import { FocusGroupMixin } from "./focusgroup.js"
 

@@ -1,4 +1,7 @@
-import { $, on, mixin, makelogger } from "./19.js"
+// @deno-types=./19.ts
+// @deno-types=./43.ts
+import { $, on, makelogger } from "./19.js"
+import { mixin } from "./43.js"
 import { invokerOf } from "./command.js"
 
 const ilog = makelogger("popover-position")

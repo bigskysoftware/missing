@@ -1,11 +1,9 @@
-//@deno-types=./19.ts
-import { $$, attr, css, internals, makelogger, observeAttributes, on, stylize, tag } from "./19.js"
-import { validate } from "./validate.js"
+// @deno-types=./19.ts
+// @deno-types=./43.ts
+import { $$, attr, css, makelogger, on } from "./19.js"
+import { internals, observeattributes, stylize, tag, validate } from "./43.js"
 import { FocusGroupMixin } from "./focusgroup.js"
-import { AriaSelected } from "./selectable.js"
-import { AriaMultiSelectable } from "./multiselect.js"
-import { AriaDisabled } from "./disableable.js"
-import { ariaRelatives, ariaState } from "./aria.js"
+import { ariaRelatives, ariaState, AriaMultiSelectable, AriaSelected } from "./aria.js"
 
 const ilog = makelogger("tabs")
 
@@ -23,7 +21,7 @@ export const TabSet = tag("aria-tabset", (el) => {
 
 export const TabList = tag(
   "aria-tablist",
-  { mixins: [FocusGroupMixin, AriaMultiSelectable, AriaDisabled] },
+  { mixins: [FocusGroupMixin, AriaMultiSelectable] },
   (el) => {
     internals(el, { role: "tablist", ariaMultiSelectable: "false" })
     validate(el, { label: true, sChildren: "aria-tab", when: "connected" })
@@ -41,7 +39,7 @@ export const TabList = tag(
 
 export const Tab = tag(
   "aria-tab",
-  { mixins: [observeAttributes("aria-controls"), AriaSelected, AriaDisabled] },
+  { mixins: [observeAttributes("aria-controls"), AriaSelected] },
   (el) => {
 
     internals(el, { role: "tab" })

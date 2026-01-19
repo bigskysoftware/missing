@@ -1,6 +1,7 @@
-//@deno-types=./19.ts
-import { attr, internals, makelogger, on, tag } from "./19.js"
-import { validate } from "./validate.js"
+// @deno-types=./19.ts
+// @deno-types=./43.ts
+import { attr, makelogger, on } from "./19.js"
+import { internals, tag, validate } from "./43.js"
 import { FocusGroupMixin } from "./focusgroup.js"
 import { PopoverPositionMixin } from "./popover.js"
 import { invokerOf, CommandRole } from "./command.js"

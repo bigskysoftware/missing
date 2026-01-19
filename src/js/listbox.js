@@ -1,12 +1,10 @@
-//@deno-types=./19.ts
-import { $, $$, css, internals, makelogger, observeAttributes, on, states, stylize, tag } from "./19.js"
-import { validate } from "./validate.js"
+// @deno-types=./19.ts
+// @deno-types=./43.ts
+import { $, $$, css, makelogger, on } from "./19.js"
+import { internals, observeAttributes, states, stylize, tag, validate } from "./43.js"
 import { FormElementMixin} from "./forms.js"
 import { TypeAheadMixin } from "./typeahead.js"
-import { AriaSelected } from "./selectable.js"
-import { AriaMultiSelectable } from "./multiselect.js"
-import { AriaDisabled } from "./disableable.js"
-import { ariaState } from "./aria.js"
+import { ariaState, AriaDisabled, AriaMultiSelectable, AriaSelected } from "./aria.js"
 
 const ilog = makelogger("listbox")
 
@@ -81,7 +79,7 @@ export const OptGroup = tag(
 
 export const Option = tag(
   "aria-option",
-  { mixins: [AriaDisabled, AriaSelected] },
+  { mixins: [AriaSelected] },
   (el) => {
     internals(el, { role: "option" })
     stylize(el, css`:host { display: block; }`)

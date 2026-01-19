@@ -1,5 +1,7 @@
-//@deno-types=./19.ts
-import { css, internals, makelogger, observeAttributes, on, shadow, stylize, tag } from "./19.js"
+// @deno-types=./19.ts
+// @deno-types=./43.ts
+import { css, makelogger, on } from "./19.js"
+import { internals, observeAttributes, shadow, stylize, tag } from "./43.js"
 
 const ilog = makelogger("icons")
 const cache = new Map()

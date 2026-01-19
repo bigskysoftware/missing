@@ -1,7 +1,7 @@
-//@deno-types=./19.ts
-import { $, $$, css, halt, halts, hotkey, internals, makelogger, mixin, observeAttributes, on, states, stylize, tag, traverse } from "./19.js"
-import { validate } from "./validate.js"
-import { AriaDisabled } from "./disableable.js"
+// @deno-types=./19.ts
+// @deno-types=./43.ts
+import { $, $$, css, halt, halts, hotkey, makelogger, on, traverse } from "./19.js"
+import { internals, mixin, observeAttributes, states, stylize, tag, validate } from "./43.js"
 import { ariaProperty, AriaOrientation } from "./aria.js"
 
 const ilog = makelogger("focus-group")
@@ -44,7 +44,7 @@ const keyTable = /** @type {const} */ ({
 // TODO: How to skip disabled elements (incl possible wrap)
 // TODO: How to handle <input type=text>
 export const FocusGroupMixin = mixin(
-  [AriaDisabled, AriaOrientation],
+  [AriaOrientation],
   (el) => {
 
     const writingMode = () => getComputedStyle(el).writingMode

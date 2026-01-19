@@ -1,8 +1,8 @@
-//@deno-types=./19.ts
-import { attr, behavior, dispatch, halt, halts, hotkey, identify, internals, makelogger, mixin, observeAttributes, on, states } from "./19.js"
-import { validate } from "./validate.js"
-import { AriaDisabled } from "./disableable.js"
-import { ariaState } from "./aria.js"
+// @deno-types=./19.ts
+// @deno-types=./43.ts
+import { attr, behavior, dispatch, halt, halts, hotkey, identify, internals, makelogger, mixin, observeAttributes, on, states, validate } from "./19.js"
+import { internals, mixin, observeAttributes, states, validate } from "./43.js"
+import { ariaState, AriaDisabled } from "./aria.js"
 
 const ilog = makelogger("command")
 
