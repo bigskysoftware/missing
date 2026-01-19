@@ -62,7 +62,6 @@ export const ariaRelatives = (el, aria, value) =>
 export const ariaState = (el, aria, value) => {
   if (value === undefined) {
     const val = ariaProperty(el, aria)
-    // TODO: do all ARIA booleans default to false?
     return val === "true" ? true : val === "false" ? false : false
   } else {
     el[ariaPropertyName(aria)] = value
