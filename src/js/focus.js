@@ -6,8 +6,16 @@ import { ariaProperty, AriaOrientation } from "./aria.js"
 
 const ilog = makelogger("focus-group")
 
-// keyTable[writing-mode][direction][key] => action
+const sFocusable = /** @type {const} */ ([
+  "[tabindex]:not([tabindex='-1'])",
+  ":is(a, area)[href]",
+  ":is(audio, video)[controls]",
+  ":is(img, object)[usemap]",
+  ":is(button, details, embed, iframe, input, label, select, textarea):not([disabled])",
+  ":state(focusable)",
+].join(", "))
 
+// keyTable[writing-mode][direction][key] => action
 const keyTable = /** @type {const} */ ({
   "horizontal-tb": {
     "ltr": {
@@ -74,7 +82,6 @@ export const FocusGroupMixin = mixin(
     validate(el, { label: true, when: "connected" })
 
     on(el, "connected", (e) => {
-
       // TODO: initChildren?
       const members = $$(el, sMember)
       const initialized = members.filter(m => m.tabIndex == 0 || m.autofocus)

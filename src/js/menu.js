@@ -2,7 +2,7 @@
 // @deno-types=./43.ts
 import { attr, makelogger, on } from "./19.js"
 import { internals, tag, validate } from "./43.js"
-import { FocusGroupMixin } from "./focusgroup.js"
+import { FocusGroupMixin } from "./focus.js"
 import { PopoverPositionMixin } from "./popover.js"
 import { invokerOf, CommandRole } from "./command.js"
 

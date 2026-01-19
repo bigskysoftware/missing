@@ -4,6 +4,7 @@
 import { $, halts, hotkey, makelogger, observe, on, traverse } from "./19.js"
 import { internals, tag, validate } from "./43.js"
 import { AriaBusy } from "./aria.js"
+import { sFocusable } from "./focus.js"
 
 const ilog = makelogger("feed")
 
@@ -15,15 +16,6 @@ const keyTable = /** @type {const} */ ({
   "Alt+PageUp": "outside",
   "Alt+PageDown": "inside",
 })
-
-const sFocusable = /** @type {const} */ ([
-  "[tabindex]:not([tabindex='-1'])",
-  ":is(a, area)[href]",
-  ":is(audio, video)[controls]",
-  ":is(img, object)[usemap]",
-  ":is(button, details, embed, iframe, input, label, select, textarea):not([disabled])",
-  ":state(focusable)",
-].join(", "))
 
 const Feed = tag(
   "aria-feed",

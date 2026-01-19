@@ -3,7 +3,7 @@
 import { $$, halt, makelogger, on } from "./19.js"
 import { mixin } from "./43.js"
 import { ariaProperty } from "./aria.js"
-import { FocusGroupMixin } from "./focusgroup.js"
+import { FocusGroupMixin } from "./focus.js"
 
 const ilog = makelogger("typeahead")
 
