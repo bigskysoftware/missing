@@ -52,9 +52,9 @@ This example requires JavaScript to be activated.
 <figure>
 	<button popovertarget=m>Options</button>
 	<aria-menulist id=m popover>
-		<aria-menuitem onclick="alert(`You clicked {this.innerText}`)">Edit</aria-menuitem>
-		<aria-menuitem onclick="alert(`You clicked {this.innerText}`)">View</aria-menuitem>
-		<aria-menuitem onclick="alert(`You clicked {this.innerText}`)">Delete</aria-menuitem>
+		<aria-menuitem onclick="alert(`You clicked ${this.innerText}`)">Edit</aria-menuitem>
+		<aria-menuitem onclick="alert(`You clicked ${this.innerText}`)">View</aria-menuitem>
+		<aria-menuitem onclick="alert(`You clicked ${this.innerText}`)">Delete</aria-menuitem>
 	</aria-menulist>
 </figure>
 

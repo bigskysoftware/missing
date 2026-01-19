@@ -1,13 +1,12 @@
 //@deno-types=./19.ts
-import { internals, on, tag } from "./19.js"
-import { validate } from "./validate.js"
+import { internals, tag } from "./19.js"
 import { FocusGroupMixin } from "./focusgroup.js"
 
 export const Toolbar = tag(
   "aria-toolbar",
   { mixins: [FocusGroupMixin] },
   (el) => {
-		internals(el, { role: "toolbar" })
+    internals(el, { role: "toolbar" })
   }
 )
 

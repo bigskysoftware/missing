@@ -22,7 +22,7 @@ const or = new Intl.ListFormat("en", { type: "disjunction" })
  */
 export function validate(el, options = {}) {
   const { label, sParent, sChildren, roles, attrs, when } = options
-  
+
   if (when) {
     const options_ = { ...options, when: null }
     on(el, when, () => validate(el, options_))
@@ -41,6 +41,7 @@ export function validate(el, options = {}) {
       throw new Error(`${el} has no accessible name.`)
   }
 
+  // TODO: Throwing does help author determine which el had the error
   if (sParent && !el.matches(`${sParent} > *`))
     throw new Error(`${el} parent must match "${sParent}".`)
 
