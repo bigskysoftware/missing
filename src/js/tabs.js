@@ -2,15 +2,12 @@
 import { $$, attr, css, internals, makelogger, observeAttributes, on, stylize, tag } from "./19.js"
 import { validate } from "./validate.js"
 import { FocusGroupMixin } from "./focusgroup.js"
-import { SelectableMixin } from "./selectable.js"
-import { MultiSelectMixin } from "./multiselect.js"
-import { DisableableMixin } from "./disableable.js"
+import { AriaSelected } from "./selectable.js"
+import { AriaMultiSelectable } from "./multiselect.js"
+import { AriaDisabled } from "./disableable.js"
 import { ariaRelatives, ariaState } from "./aria.js"
 
 const ilog = makelogger("tabs")
-
-// TODO: browerlist: ariaControlsElements, ariaLabelledByElements
-export const controlledBy = (el) => ariaRelatives(el, "controls")
 
 export const TabSet = tag("aria-tabset", (el) => {
   internals(el, { role: "presentation" })
@@ -26,7 +23,7 @@ export const TabSet = tag("aria-tabset", (el) => {
 
 export const TabList = tag(
   "aria-tablist",
-  { mixins: [FocusGroupMixin, MultiSelectMixin, DisableableMixin] },
+  { mixins: [FocusGroupMixin, AriaMultiSelectable, AriaDisabled] },
   (el) => {
     internals(el, { role: "tablist", ariaMultiSelectable: "false" })
     validate(el, { label: true, sChildren: "aria-tab", when: "connected" })
@@ -44,26 +41,25 @@ export const TabList = tag(
 
 export const Tab = tag(
   "aria-tab",
-  { mixins: [observeAttributes("aria-controls"), SelectableMixin, DisableableMixin] },
+  { mixins: [observeAttributes("aria-controls"), AriaSelected, AriaDisabled] },
   (el) => {
 
     internals(el, { role: "tab" })
     stylize(el, css`:host { display: flex; }`)
-
-    on(el, "connected", (e) =>
-      validate(el, { sParent: "aria-tablist" }))
+    validate(el, { sParent: "aria-tablist", when: "connected" })
 
     // TODO: Crucial for authors to use [aria-controls] or can we use internals?
     on(el, "attribute:aria-controls", (e) => {
       if (!(e.detail.value || ariaRelatives(el, "controls").length))
         return
 
-      const panel = controlledBy(el)[0]
+      const panel = ariaRelatives(el, "controls")[0]
       if (panel)
         panel.hidden = (ariaState(el, "selected") !== "true")
       else
         return console.error(el, "has no associated <aria-tabpanel>")
 
+      // TODO: browerlist: ariaControlsElements, ariaLabelledByElements
       if ("ariaLabelledByElements" in internals(el))
         internals(panel, { ariaLabelledByElements: [el] })
       else

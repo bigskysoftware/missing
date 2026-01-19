@@ -1,26 +1,21 @@
 //@deno-types=./19.ts
-import { dispatch, internals, makelogger, mixin, observeAttributes, on, role, states } from "./19.js"
+import { dispatch, halt, makelogger, mixin, on, states } from "./19.js"
 import { validate } from "./validate.js"
-import { DisableableMixin } from "./disableable.js"
-import { ariaState } from "./aria.js"
+import { AriaDisabled } from "./disableable.js"
+import { AriaState, ariaState } from "./aria.js"
 
-const ilog = makelogger("selectable")
+const ilog = makelogger("aria-selected")
 
-const roles = /** @type {const} */ ([
-  "gridcell",
-  "option",
-  "row",
-  "tab",
-  "columnheader",
-  "rowheader",
-  "treeitem",
-])
-
-export const SelectableMixin = mixin(
-  [observeAttributes("tabindex", "aria-selected"), DisableableMixin],
+// TODO: Move to aria.js?
+// TODO: Should this inherit AriaDisabled or not?
+export const AriaSelected = mixin(
+  [AriaState("selected"), AriaDisabled],
   (el) => {
-    internals(el, { ariaSelected: "false" })
-    states(el, ["selectable"])
+    states(el, ["focusable", "selectable"])
+
+    const selectionFollowsFocus = () => !el.matches(
+      ":state(multiselectable) > *, :state(multiselectable) > :state(group) > *"
+    )
 
     // TODO: This might be the responsibility of a select container
     on(el, "constructed", (e) => {
@@ -28,16 +23,32 @@ export const SelectableMixin = mixin(
       el.tabIndex = (isSelected) ? 0 : -1
     })
 
-    on(el, "connected", (e) => validate(el, { roles }))
+    on(el, "focus", (e) => {
+      if (selectionFollowsFocus())
+        ariaState(el, "selected", true)
+    })
 
-    on(el, "attribute:tabindex", (e) => {
-      const container = el.closest(":state(focusgroup)")
-      if (container && !ariaState(container, "multiSelectable")) {
-        ariaState(el, "selected", e.detail.value == "0" || null)
+    on(el, "blur", (e) => {
+      if (selectionFollowsFocus() && el.closest(":state(focusgroup)").contains(e.relatedTarget))
+        ariaState(el, "selected", null)
+    })
+
+    on(el, "click", (e) => {
+      if (selectionFollowsFocus())
+        ilog("How to remove ariaSelected frome existing el?")
+      else
+        ariaState(el, "selected", !ariaState(el, "selected") || null)
+    })
+
+    on(el, "keydown", (e) => {
+      if (!selectionFollowsFocus() && e.key === " ") {
+        halt("default propagation", e)
+        ariaState(el, "selected", !ariaState(el, "selected") || null)
       }
     })
 
-    on(el, "attribute:aria-selected", (e) =>
-      dispatch(el, "changed", {}, { bubbles: true }))
+    on(el, "attribute:aria-selected", (e) => {
+      dispatch(el, "changed", {}, { bubbles: true })
+    })
   }
 )

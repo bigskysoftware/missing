@@ -1,8 +1,8 @@
 //@deno-types=./19.ts
 import { $, $$, css, halt, halts, hotkey, internals, makelogger, mixin, observeAttributes, on, states, stylize, tag, traverse } from "./19.js"
 import { validate } from "./validate.js"
-import { DisableableMixin } from "./disableable.js"
-import { ariaProperty } from "./aria.js"
+import { AriaDisabled } from "./disableable.js"
+import { ariaProperty, AriaOrientation } from "./aria.js"
 
 const ilog = makelogger("focus-group")
 
@@ -44,7 +44,7 @@ const keyTable = /** @type {const} */ ({
 // TODO: How to skip disabled elements (incl possible wrap)
 // TODO: How to handle <input type=text>
 export const FocusGroupMixin = mixin(
-  [observeAttributes("aria-orientation"), DisableableMixin],
+  [AriaDisabled, AriaOrientation],
   (el) => {
 
     const writingMode = () => getComputedStyle(el).writingMode
@@ -70,17 +70,8 @@ export const FocusGroupMixin = mixin(
       dest.focus()
     }
 
-    internals(el, { ariaOrientation: "horizontal" })
     states(el, ["focusgroup"])
-    stylize(el, css`
-      :host {
-        display: flex;
-        flex-direction: var(--flex-direction);
-        inline-size: fit-content;
-      }
-      :host(:state(horizontal)) { --flex-direction: row; }
-      :host(:state(vertical))   { --flex-direction: column; }
-    `)
+    validate(el, { label: true, when: "connected" })
 
     on(el, "connected", (e) => {
 
@@ -106,12 +97,12 @@ export const FocusGroupMixin = mixin(
       }
     })
 
-    on(el, "attribute:aria-orientation", (e) => {
-      states(el, {
-        horizontal: e.detail.value === "horizontal",
-        vertical: e.detail.value === "vertical",
-      })
-    })
+    // TODO: Add test that focusgroup will capture+halt <button aria-disabled onclick="">
+    // NOTE: Children of button (e.g., <aria-icon> might be the target of click event
+    on(el, "click", (e) => {
+      if (e.target.ariaDisabled === "true" || e.target.matches("[aria-disabled=true] *"))
+        halt("propagation", e)
+    }, { capture: true })
   }
 )
 

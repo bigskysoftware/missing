@@ -1,6 +1,7 @@
 // @ts-check
 //@deno-types=./19.ts
 import { $, halts, hotkey, internals, makelogger, observe, on, tag, traverse } from "./19.js"
+import { AriaBusy } from "./aria.js"
 import { validate } from "./validate.js"
 
 const ilog = makelogger("feed")

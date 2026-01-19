@@ -1,13 +1,11 @@
 //@deno-types=./19.ts
-import { $, $$, halts, hotkey, internals, makelogger, mixin, observeAttributes, off, on } from "./19.js"
-import { ariaState } from "./aria.js"
-import { validate } from "./validate.js"
+import { $$, hotkey, mixin, off, on } from "./19.js"
+import { AriaState, ariaState } from "./aria.js"
 
 // TODO: Move to aria.js?
 export const AriaMultiSelectable = mixin(
   [AriaState("multiSelectable")],
   (el) => {
-
     const sMember = ":state(selectable)"
     const sSelected = "[aria-selected=true]"
     let anchor = $$(el, sSelected).at(-1) || $$(el, sMember).at(0)
@@ -18,10 +16,9 @@ export const AriaMultiSelectable = mixin(
         anchor = member
     }
 
+    // TODO: ArrowDown and ArrowUp kind of rely on orientation
+    // TODO: APG only explicitly recommends these for listbox and tree
     const hotkeys = hotkey({
-      " ": (e) => {
-        toggle(e.target)
-      },
       "Shift+ArrowDown": (e) => {
         toggle(document.activeElement)
       },
@@ -58,17 +55,12 @@ export const AriaMultiSelectable = mixin(
       },
     }, { halt: "default" })
 
-    internals(el, { ariaMultiSelectable: "false" })
-
-    on(el, "connected", (e) => validate(el, { roles }))
-
-    let keys, click
+    let keys
     on(el, "attribute:aria-multiselectable", (e) => {
       if (e.detail.value === "true") {
         keys = on(el, "keydown", hotkeys)
-        click = on(el, "click", (e) => toggle(e.target))
-      } else if (keys || click)
-        off(keys), off(click)
+      } else if (keys)
+        off(keys)
     })
   }
 )

@@ -64,15 +64,51 @@ export const ariaState = (el, aria, value) => {
   }
 }
 
-// Either a mixin
-export const AriaState = memoize((aria) => {
+export const AriaState = memoize((aria, { defaultValue = "false" } = {}) => {
   return (Base) => class extends Base {
     static observedAttributes = [ariaAttributeName(aria)]
       .concat(Base.observedAttributes ?? [])
     constructor() {
       super()
-      internals(this, { [ariaPropertyName(aria)]: false })
-      on(this, ariaEventName(aria), (e) => states(this, { [aria]: ariaState(this, aria) }))
+      internals(this, { [ariaPropertyName(aria)]: defaultValue })
+      validate(this, { roles: stateTable[aria], when: "connected" })
+      on(this, ariaEventName(aria), (e) => states(this, { [ariaStateName(aria)]: ariaState(this, aria) }))
     }
   }
 })
+
+export const AriaBusy = AriaState("busy")
+
+export const AriaCurrent = AriaState("current")
+
+export const AriaExpanded = AriaState("expanded")
+
+export const AriaGrabbed = AriaState("grabbed")
+
+export const AriaInvalid = AriaState("invaid")
+
+export const AriaOrientation = mixin(
+  [AriaState("orientation", { defaultValue: "horizontal" })],
+  (el) => {
+    states(el, ["orientable"])
+    stylize(el, css`
+      :host {
+        display: flex;
+        flex-direction: var(--flex-direction, row);
+        inline-size: fit-content;
+      }
+      :host(:state(horizontal)) { --flex-direction: row; }
+      :host(:state(vertical))   { --flex-direction: column; }
+    `)
+
+    on(el, "attribute:aria-orientation", (e) => {
+      // TODO: What if e.detail.value is null? (e.g. on init)
+      states(el, {
+        horizontal: ariaProperty(el, "orientation") === "horizontal",
+        vertical: ariaProperty(el, "orientation") === "vertical",
+      })
+    })
+  }
+)
+
+export const AriaPressed = AriaState("pressed")

@@ -1,18 +1,19 @@
 //@deno-types=./19.ts
-import { $, $$, css, internals, makelogger, observeAttributes, on, stylize, tag } from "./19.js"
+import { $, $$, css, internals, makelogger, observeAttributes, on, states, stylize, tag } from "./19.js"
 import { validate } from "./validate.js"
 import { FormElementMixin} from "./forms.js"
 import { TypeAheadMixin } from "./typeahead.js"
-import { SelectableMixin } from "./selectable.js"
-import { MultiSelectMixin } from "./multiselect.js"
-import { DisableableMixin } from "./disableable.js"
+import { AriaSelected } from "./selectable.js"
+import { AriaMultiSelectable } from "./multiselect.js"
+import { AriaDisabled } from "./disableable.js"
 import { ariaState } from "./aria.js"
 
 const ilog = makelogger("listbox")
 
+// TODO: Should we halt "Ctrl+A" on Single Select Listbox? Click/Drag?
 export const ListBox = tag(
   "aria-listbox",
-  { mixins: [FormElementMixin, TypeAheadMixin, MultiSelectMixin] },
+  { mixins: [FormElementMixin, TypeAheadMixin, AriaMultiSelectable] },
   (el) => {
     const sMember = "aria-option"
     const sSelected = "aria-option[aria-selected=true]"
@@ -65,10 +66,12 @@ export const ListBox = tag(
 
 export const OptGroup = tag(
   "aria-optgroup",
-  { mixins: [observeAttributes("tabindex"), DisableableMixin] },
+  { mixins: [observeAttributes("tabindex"), AriaDisabled] },
   (el) => {
-    stylize(el, css`:host { display: flex; flex-direction: var(--flex-direction) }`)
     internals(el, { role: "group" })
+    states(el, ["group"])
+    stylize(el, css`:host { display: flex; flex-direction: var(--flex-direction) }`)
+    validate(el, { sParent: "aria-listbox", sChildren: "aria-option", when: "connected" })
 
     // TODO: Can we validate "not tabindex" instead of observing the attribute?
     on(el, "attribute:tabindex", (e) => {
@@ -82,7 +85,7 @@ export const OptGroup = tag(
 
 export const Option = tag(
   "aria-option",
-  { mixins: [SelectableMixin] },
+  { mixins: [AriaDisabled, AriaSelected] },
   (el) => {
     internals(el, { role: "option" })
     stylize(el, css`:host { display: block; }`)

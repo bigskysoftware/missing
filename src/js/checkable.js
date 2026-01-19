@@ -1,24 +1,15 @@
 //@deno-types=./19.ts
-import { makelogger, mixin, on, role } from "./19.js"
-import { validate } from "./validate.js"
-import { DisableableMixin } from "./disableable.js"
+import { mixin, on, role } from "./19.js"
+import { AriaDisabled } from "./disableable.js"
 import { AriaState, ariaState } from "./aria.js"
 
-const ilog = makelogger("checkable")
-
-const roles = /** @type {const} */ ([
-  "checkbox",
-  "menuitemcheckbox",
-  "menuitemradio",
-  "radio",
-  "switch",
-])
-
-export const CheckableMixin = mixin(
-  [AriaState("checked"), DisableableMixin],
+// TODO: Move to aria.js?
+// TODO: Should this inherit AriaDisabled or not?
+export const AriaChecked = mixin(
+  [AriaState("checked"), AriaDisabled],
   (el) => {
-    internals(el, { ariaChecked: "false" })
     states(el, {
+      focusable: true,
       checkable: true,
       tristate: role(el) === "checkbox" || role(el) === "menuitemcheckbox",
     })
