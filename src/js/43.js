@@ -2,6 +2,10 @@
  * a custom element library.
  * "1 US$ = 43.2678 TR₺ · Jan 19, 2026, 19:12 UTC"
  */
+// @deno-types=./19.ts
+// @deno-types=./aria.ts
+import { $$, css, dispatch, halt, hotkey, off, on } from "./19.js"
+import { ariaProperty, ariaRelatives } from "./aria.js"
 
 // @ts-check
 

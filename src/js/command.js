@@ -1,6 +1,6 @@
 // @deno-types=./19.ts
 // @deno-types=./43.ts
-import { attr, behavior, dispatch, halt, halts, hotkey, identify, internals, makelogger, mixin, observeAttributes, on, states, validate } from "./19.js"
+import { attr, behavior, dispatch, halt, halts, hotkey, identify, makelogger, on } from "./19.js"
 import { internals, mixin, observeAttributes, states, validate } from "./43.js"
 import { ariaState, AriaDisabled } from "./aria.js"
 

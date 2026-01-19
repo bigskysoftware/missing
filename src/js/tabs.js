@@ -1,7 +1,7 @@
 // @deno-types=./19.ts
 // @deno-types=./43.ts
 import { $$, attr, css, makelogger, on } from "./19.js"
-import { internals, observeattributes, stylize, tag, validate } from "./43.js"
+import { internals, observeAttributes, stylize, tag, validate } from "./43.js"
 import { FocusGroupMixin } from "./focus.js"
 import { ariaRelatives, ariaState, AriaMultiSelectable, AriaSelected } from "./aria.js"
 
@@ -28,7 +28,6 @@ export const TabList = tag(
 
     on(el, "attribute:aria-multiselectable", (e) => {
       if (e.detail.value === "true")
-        // TODO: initChildren?
         $$(el, "aria-tab").forEach(tab => {
           internals(tab, { ariaExpanded: "false" })
           ariaState(tab, "expanded", ariaState(tab, "selected"))

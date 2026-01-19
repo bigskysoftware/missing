@@ -17,7 +17,6 @@ export const ListBox = tag(
     const sSelected = "aria-option[aria-selected=true]"
 
     const setDefault = () => {
-      // TODO: initChildren?
       $$(el, sMember).forEach(o =>
         ariaState(o, "selected", o.hasAttribute("selected") || null))
     }

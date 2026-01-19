@@ -6,7 +6,7 @@ import { ariaProperty, AriaOrientation } from "./aria.js"
 
 const ilog = makelogger("focus-group")
 
-const sFocusable = /** @type {const} */ ([
+export const sFocusable = /** @type {const} */ ([
   "[tabindex]:not([tabindex='-1'])",
   ":is(a, area)[href]",
   ":is(audio, video)[controls]",
