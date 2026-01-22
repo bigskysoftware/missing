@@ -139,21 +139,20 @@ export function validate(el, options = {}) {
       (el.constructor.formAssociated && internals(el)?.labels.length)
     )
     if (!validLabel)
-      throw new Error(`${el} has no accessible name.`)
+      console.error(el, "has no accessible name.")
   }
 
-  // TODO: Throwing does help author determine which el had the error
   if (sParent && !el.matches(`${sParent} > *`))
-    throw new Error(`${el} parent must match "${sParent}".`)
+    console.error(el, "parent must match '${sParent}'.")
 
   if (sChildren && !el.matches(`:not(:has(> :not(${sChildren})))`))
-    throw new Error(`${el} children must match "${sChildren}".`)
+    console.error(el, "children must match '${sChildren}'.")
 
   if (roles?.length && !roles.includes(role(el)))
-    throw new Error(`${el} role must be one of ${or.format(roles)}".`)
+    console.error(el, "role must be one of ${or.format(roles)}.")
 
   if (attrs?.length && !el.matches(attrs.map(a => `[${a}]`).join("")))
-    throw new Error(`${el} requires attributes ${and.format(attrs)}".`)
+    console.error(el, "requires attributes ${and.format(attrs)}.")
 }
 
 /**

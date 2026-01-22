@@ -31,7 +31,6 @@ export const ListBox = tag(
     internals(el, { role: "listbox", ariaOrientation: "vertical", ariaMultiSelectable: "false" })
     stylize(el, css`:host { display: block; }`)
     validate(el, {
-      label: true,
       sChildren: ":is(aria-optgroup:not([tabindex]), aria-option)", // TODO: add [tabindex] test
       when: "connected"
     })

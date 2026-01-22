@@ -24,7 +24,7 @@ export const TabList = tag(
   { mixins: [FocusGroupMixin, AriaMultiSelectable] },
   (el) => {
     internals(el, { role: "tablist", ariaMultiSelectable: "false" })
-    validate(el, { label: true, sChildren: "aria-tab", when: "connected" })
+    validate(el, { sChildren: "aria-tab", when: "connected" })
 
     on(el, "attribute:aria-multiselectable", (e) => {
       if (e.detail.value === "true")
