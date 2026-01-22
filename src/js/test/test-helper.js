@@ -1,10 +1,14 @@
+// @deno-types=./19.ts
+// @deno-types=./43.ts
+
 /**
  * @typedef {object} Test
  * @prop {Element} source
  * @prop {HTMLTemplateElement} template
  */
 
-import { css, stylize, tag, on, html, dispatch } from "../19.js"
+import { css, on, html, dispatch } from "../19.js"
+import { stylize, tag } from "../43.js"
 
 /**
  * @typedef {TestPass | TestFail} TestResult

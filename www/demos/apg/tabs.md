@@ -167,5 +167,5 @@ This example requires JavaScript to be activated.
 
 <script type=module src=/dist/js/icon.js></script>
 <script type=module src=/dist/js/tabs.js></script>
-<script type=module src=/dist/js/commandbutton.js></script>
+<script type=module src=/dist/js/command.js></script>
 <script type=module src=/dist/js/menu.js></script>

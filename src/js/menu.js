@@ -1,12 +1,12 @@
-//@deno-types=./19.ts
-import { attr, internals, makelogger, on, tag } from "./19.js"
-import { validate } from "./validate.js"
-import { FocusGroupMixin } from "./focusgroup.js"
+// @deno-types=./19.ts
+// @deno-types=./43.ts
+import { attr, makelogger, on } from "./19.js"
+import { internals, tag, validate } from "./43.js"
+import { FocusGroupMixin } from "./focus.js"
 import { PopoverPositionMixin } from "./popover.js"
-import { invokerOf, CommandMixin } from "./commandbutton.js"
+import { invokerOf, CommandRole } from "./command.js"
 
 const ilog = makelogger("menu")
-
 
 const MenuBar = tag(
   "aria-menubar",
@@ -25,9 +25,7 @@ const MenuList = tag(
 			ariaOrientation: "vertical",
 			ariaLabelledByElements: (el.popover) ? [invokerOf(el)] : null,
 		})
-
-    on(el, "connected", (e) =>
-      validate(el, { attrs: ["id"], sChildren: "aria-menuitem, hr, fieldset" }))
+    validate(el, { attrs: ["id"], sChildren: "aria-menuitem, hr, fieldset", when: "connected" })
 
     on(el, "toggle", (e) => {
 			if (e.newState === "open")
@@ -48,7 +46,7 @@ const MenuList = tag(
 
 const MenuItem = tag(
   "aria-menuitem",
-  { mixins: [CommandMixin] },
+  { mixins: [CommandRole] },
   (el) => {
     const type = attr(el, "type") || ""
     if (type && !(type === "radio" || type == "checkbox"))
@@ -60,6 +58,7 @@ const MenuItem = tag(
       ariaHasPopup: (el.popoverTargetElement) ? "menu" : null,
       ariaExpanded: (el.popoverTargetElement) ? "false" : null,
     })
+    validate(el, { sParent: ":is(aria-menubar, aria-menulist, fieldset)", when: "connected" })
 
     if (internals(el).ariaHasPopup === "menu") {
       // TODO: browserlist: .popoverTargetElement
@@ -67,6 +66,7 @@ const MenuItem = tag(
       if (internals(submenu).role != "menu")
         console.error("Menu button", el, "has no associated menu")
 
+      // TODO: Use ariaRelatives
       if ('ariaControlsElements' in internals(el)) {
         internals(el).ariaControlsElements = [submenu]
         internals(submenu).ariaLabelledByElements = [el]
@@ -75,14 +75,9 @@ const MenuItem = tag(
         attr(submenu, 'aria-labelledby', identify(el))
       }
     }
-
-    on(el, "connected", (e) =>
-      validate(el, { sParent: ":is(aria-menubar, aria-menulist, fieldset)" }))
   }
 )
 
-
-// Define nested elements first
 MenuList.define()
 MenuItem.define()
 MenuBar.define()

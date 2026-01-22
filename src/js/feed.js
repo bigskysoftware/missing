@@ -1,7 +1,10 @@
 // @ts-check
-//@deno-types=./19.ts
-import { $, halts, hotkey, internals, makelogger, observe, on, tag, traverse } from "./19.js"
-import { validate } from "./validate.js"
+// @deno-types=./19.ts
+// @deno-types=./43.ts
+import { $, halts, hotkey, makelogger, observe, on, traverse } from "./19.js"
+import { internals, tag, validate } from "./43.js"
+import { AriaBusy } from "./aria.js"
+import { sFocusable } from "./focus.js"
 
 const ilog = makelogger("feed")
 
@@ -14,18 +17,10 @@ const keyTable = /** @type {const} */ ({
   "Alt+PageDown": "inside",
 })
 
-const sFocusable = /** @type {const} */ ([
-  "[tabindex]:not([tabindex='-1'])",
-  ":is(a, area)[href]",
-  ":is(audio, video)[controls]",
-  ":is(img, object)[usemap]",
-  ":is(button, details, embed, iframe, label, select, textarea):not([disabled])"
-].join(", "))
-
 const Feed = tag(
   "aria-feed",
+  { mixins: [AriaBusy] },
   (el) => {
-    const observer = observe(el, { childList: true })
     const register = (article, idx, articles) => {
       Object.assign(article, {
         tabIndex: 0,
@@ -63,13 +58,12 @@ const Feed = tag(
       ariaRelevant: "additions",
       ariaKeyShortcuts: Object.keys(keyTable).join(" "),
     })
+    validate(el, { label: true, sChildren: ":is(article, [role=article])", when: "connected" })
 
-    on(el, "connected", (e) => {
-      validate(el, { label: true, sChildren: ":is(article, [role=article])" })
-      update()  // TODO: initChildren?
+    on(el, "attribute:aria-busy", (e) => {
+      if (e.detail.value !== "true")
+        Array.from(el.children).forEach(register)
     })
-
-    on(el, "mutation:childList", (e) => update())
 
     on(el, "keydown", hotkey(Object.fromEntries(
       Object.entries(keyTable).map(([key, value]) =>

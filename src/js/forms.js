@@ -1,5 +1,7 @@
-//@deno-types=./19.ts
-import { dispatch, internals, makelogger } from "./19.js"
+// @deno-types=./19.ts
+// @deno-types=./43.ts
+import { dispatch, makelogger } from "./19.js"
+import { internals } from "./43.js"
 
 const ilog = makelogger("forms")
 
