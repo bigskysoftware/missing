@@ -81,12 +81,14 @@ export const FocusGroupMixin = mixin(
     states(el, ["focusgroup"])
     validate(el, { label: true, when: "connected" })
 
-    on(el, "connected", (e) => {
-      // TODO: initChildren?
-      const members = $$(el, sMember)
+    on(el, "slotchange", (e) => {
+      const members = e.detail.elements
       const initialized = members.filter(m => m.tabIndex == 0 || m.autofocus)
       if (members.length && !initialized.length)
         members[0].tabIndex = 0
+      else if (initialized.length > 1) {
+        members.slice(1).forEach(m => m.tabIndex = -1)
+      }
     })
 
     on(el, "focusin", (e) => focusTo(e.target))

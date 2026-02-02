@@ -45,7 +45,11 @@ export function shadow(host, options) {
   let shadow = host.shadowRoot
   if (!shadow) {
     shadow = host.attachShadow({ ...(options ?? {}), mode: "open" })
-    shadow.append(document.createElement("slot"))
+    const slot = document.createElement("slot")
+    shadow.append(slot)
+    on(slot, "slotchange", (e) => {
+      dispatch(host, "slotchange", { elements: slot.assignedElements() })
+    })
   }
   return shadow
 }
