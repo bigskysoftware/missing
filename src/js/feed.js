@@ -30,7 +30,6 @@ const Feed = tag(
       })
       validate(article, { label: true, attrs: ["aria-describedby"] })
     }
-    const update = () => [...el.children].forEach(register)
 
     const sArticle = "article, [role=article]"
     const focus = (direction) => {
@@ -62,7 +61,7 @@ const Feed = tag(
 
     on(el, "attribute:aria-busy", (e) => {
       if (e.detail.value !== "true")
-        Array.from(el.children).forEach(register)
+        [...el.children].forEach(register)
     })
 
     on(el, "keydown", hotkey(Object.fromEntries(

@@ -23,7 +23,7 @@ export const TabList = tag(
   "aria-tablist",
   { mixins: [FocusGroupMixin, AriaMultiSelectable] },
   (el) => {
-    internals(el, { role: "tablist", ariaMultiSelectable: "false" })
+    internals(el, { role: "tablist" })
     validate(el, { sChildren: "aria-tab", when: "connected" })
 
     on(el, "attribute:aria-multiselectable", (e) => {
@@ -56,20 +56,16 @@ export const Tab = tag(
       else
         return console.error(el, "has no associated <aria-tabpanel>")
 
-      // TODO: browerlist: ariaControlsElements, ariaLabelledByElements
-      if ("ariaLabelledByElements" in internals(el))
-        internals(panel, { ariaLabelledByElements: [el] })
-      else
-        panel.setAttribute("aria-labelledby", identify(el))
     })
 
     on(el, "attribute:aria-selected", (e) => {
-      const panel = ariaRelatives(el, "controls")[0]
-      if (panel) {
+      // TODO: Move multiselect check outside of loop?
+      // TODO: use .matches(":state(multiselectable)") or ariaState(el.parentElement)?
+      ariaRelatives(el, "controls").forEach(panel => {
         panel.hidden = (e.detail.value !== "true")
         if (el.parentElement.ariaMultiSelectable === "true")
           ariaState(el, "expanded", !panel.hidden || null)
-      }
+      })
     })
   }
 )

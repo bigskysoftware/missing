@@ -61,9 +61,10 @@ export const CommandRole = mixin(
     })
 
     // Handle ARIA
-    // ref: https://www.w3.org/TR/html-aam-1.0/#att-command-popovers
-    //      https://www.w3.org/TR/html-aam-1.0/#att-command-dialogs
-    //      https://www.w3.org/TR/html-aam-1.0/#att-commandfor
+    // ref: https://w3c.github.io/html-aam/#att-command-popovers
+    //      https://w3c.github.io/html-aam/#att-command-dialogs
+    //      https://w3c.github.io/html-aam/#att-commandfor
+    // TODO: What about upcoming toggle|show|hide-menu commands?
     if (
       el.command.endsWith("popover")
       && el.commandForElement?.matches("[popover]")

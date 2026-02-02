@@ -62,7 +62,7 @@ export const ariaProperty = (el, aria, value) =>
 export const ariaRelative = (el, aria, value) =>
   setOrGet(el, `${ariaPropertyName(aria)}Element`, value)
 export const ariaRelatives = (el, aria, value) =>
-  setOrGet(el, `${ariaPropertyName(aria)}Elements`, value)
+  setOrGet(el, `${ariaPropertyName(aria)}Elements`, value) || []
 export const ariaState = (el, aria, value) => {
   if (value === undefined) {
     const val = ariaProperty(el, aria)
@@ -199,10 +199,9 @@ export const AriaMultiSelectable = mixin(
 
     let keys
     on(el, "attribute:aria-multiselectable", (e) => {
-      if (e.detail.value === "true") {
-        keys = on(el, "keydown", hotkeys)
-      } else if (keys)
-        off(keys)
+      keys = ariaState(el, "multiSelectable")
+        ? on(el, "keydown", hotkeys)
+        : keys ? off(keys) : undefined
     })
   }
 )
@@ -246,7 +245,7 @@ export const AriaSelected = mixin(
       ":state(multiselectable) > *, :state(multiselectable) > :state(group) > *"
     )
 
-    // TODO: This might be the responsibility of a select container
+    // TODO: This might be the responsibility of a select container (c.f. with AriaChecked)
     on(el, "constructed", (e) => {
       const isSelected = (ariaState(el, "selected") || el.hasAttribute("selected"))
       el.tabIndex = (isSelected) ? 0 : -1

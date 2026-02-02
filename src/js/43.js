@@ -133,7 +133,7 @@ export function validate(el, options = {}) {
   if (label) {
     // TODO: Create labelOf() helper?
     const validLabel = (
-      (ariaRelatives(el, "labelledBy")?.length
+      (ariaRelatives(el, "labelledBy").length
         || el.hasAttribute("aria-labelledby")
         || ariaProperty(el, "label")) ||
       (el.constructor.formAssociated && internals(el)?.labels.length)
@@ -163,7 +163,6 @@ export function validate(el, options = {}) {
 export function role(el) {
   return internals(el)?.role ?? el.role
 }
-
 
 /**
  * @typedef {(Base: typeof HTMLElement) => typeof HTMLElement} Mixin
@@ -206,6 +205,7 @@ export function tag(name, options, init) {
   const { mixins = [], base = HTMLElement } = options
   const Base = applyMixins(base, mixins)
   return class extends Base {
+    static name = name
     static observedAttributes = Base.observedAttributes || []
 
     constructor() {
