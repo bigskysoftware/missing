@@ -5,7 +5,22 @@ import { internals, memoize, mixin, states, stylize, validate } from "./43.js"
 
 const ilog = makelogger("aria")
 
-// ref: https://www.w3.org/TR/wai-aria-1.3/
+// ref: https://w3c.github.io/aria/
+const propertyTable = /** @type {const } */ ({
+  controls: [],  // global
+  modal: [
+    "window",
+    "alertdialog", "dialog"
+  ],
+  multiSelectable: [
+    "grid", "listbox", "tablist", "tree",
+    "treegrid",
+  ],
+  orientation: [
+    "scrollbar", "select", "separator", "slider", "tablist", "toolbar",
+    "listbox", "menu", "menubar", "radiogroup", "tree", "treegrid",
+  ],
+})
 const stateTable = /** @type {const} */ ({
   busy: [],  // global state
   checked: [
@@ -25,18 +40,6 @@ const stateTable = /** @type {const} */ ({
   invalid: [
     "application", "checkbox", "combobox", "gridcell", "listbox", "radiogroup", "slider", "spinbutton", "textbox", "tree",
     "columnheader", "rowheader", "searchbox", "switch", "treegrid",
-  ],
-  modal: [  // technically an "ARIA Property"
-    "window",
-    "alertdialog", "dialog"
-  ],
-  multiSelectable: [  // technically an "ARIA Property"
-    "grid", "listbox", "tablist", "tree",
-    "treegrid",
-  ],
-  orientation: [ // technically an "ARIA Property"
-    "scrollbar", "select", "separator", "slider", "tablist", "toolbar",
-    "listbox", "menu", "menubar", "radiogroup", "tree", "treegrid",
   ],
   pressed: [
     "button",
@@ -69,6 +72,19 @@ export const ariaState = (el, aria, value) => {
     return val === "true" ? true : val === "false" ? false : false
   } else {
     el[ariaPropertyName(aria)] = value
+  }
+}
+
+export const AriaProperty = (aria, { defaultValue = "false" } = {}) => {
+  return (Base) => class extends Base {
+    constructor() {
+      super()
+      internals(this, { [ariaPropertyName(aria)]: defaultValue })
+      validate(this, { roles: propertyTable[aria], when: "connected" })
+      on(this, "constructed", (e) => {
+        dispatch(this, ariaEventName(aria), { value: null })
+      })
+    }
   }
 }
 
@@ -143,10 +159,10 @@ export const AriaInvalid = mixin(
   (el) => {}
 )
 
-export const AriaModal = AriaState("modal")
+export const AriaModal = AriaProperty("modal")
 
 export const AriaMultiSelectable = mixin(
-  [AriaDisabled, AriaState("multiSelectable")],
+  [AriaDisabled, AriaProperty("multiSelectable")],
   (el) => {
     const sMember = ":state(selectable)"
     const sSelected = "[aria-selected=true]"
@@ -207,7 +223,7 @@ export const AriaMultiSelectable = mixin(
 )
 
 export const AriaOrientation = mixin(
-  [AriaDisabled, AriaState("orientation", { defaultValue: "horizontal" })],
+  [AriaDisabled, AriaProperty("orientation", { defaultValue: "horizontal" })],
   (el) => {
     states(el, ["orientable"])
     stylize(el, css`
