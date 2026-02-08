@@ -3,7 +3,7 @@
 import { $$, attr, css, makelogger, on } from "./19.js"
 import { internals, observeAttributes, stylize, tag, validate } from "./43.js"
 import { FocusGroupMixin } from "./focus.js"
-import { ariaRelatives, ariaState, AriaMultiSelectable, AriaSelected } from "./aria.js"
+import { ariaProperty, ariaRelatives, ariaState, AriaControls, AriaMultiSelectable, AriaSelected } from "./aria.js"
 
 const ilog = makelogger("tabs")
 

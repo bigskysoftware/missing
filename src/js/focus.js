@@ -6,14 +6,24 @@ import { ariaProperty, AriaOrientation } from "./aria.js"
 
 const ilog = makelogger("focus-group")
 
-export const sFocusable = /** @type {const} */ ([
-  "[tabindex]:not([tabindex='-1'])",
-  ":is(a, area)[href]",
-  ":is(audio, video)[controls]",
-  ":is(img, object)[usemap]",
-  ":is(button, details, embed, iframe, input, label, select, textarea):not([disabled])",
-  ":state(focusable)",
-].join(", "))
+export const INACTIVE_TABINDEX = /** @type {const} */ -7822865
+export const sFocusable = /** @type {const} */ `
+  :is(
+    [tabindex]:not([tabindex^='-']),
+    [tabindex=${INACTIVE_TABINDEX}],
+    :is(a, area)[href],
+    :is(audio, video)[controls],
+    :is(img, object)[usemap],
+    button, details, embed, iframe, input, select, textarea,
+    :state(focusable)
+  ):not(
+    [disabled],
+    [hidden] *,
+    :state(disabled),
+    :state(focusgroup-disable) *,
+    :state(focusable) *
+  )
+`
 
 // keyTable[writing-mode][direction][key] => action
 const keyTable = /** @type {const} */ ({
@@ -62,17 +72,15 @@ export const FocusGroupMixin = mixin(
     const movement = (key) =>
       keyTable[writingMode()][direction()][orientation()][key]
 
-    // const sMember = "[tabindex]:not(:state(focusgroup))"
-    const sMember = "[tabindex]:not(:scope :state(focusgroup) [tabindex])"
+    const sMember = sFocusable
     const current = () => el.contains(document.activeElement)
       ? document.activeElement
       : null
 
     const focusTo = (dest) => {
-      // TODO: :scope resolves differently in $$(el, sMember) and cursor.matches(sMember)
       const members = $$(el, sMember)
       if (!members.includes(dest)) return
-      members.forEach(member => member.tabIndex = -1)
+      members.forEach(member => member.tabIndex = INACTIVE_TABINDEX)
       dest.tabIndex = 0
       dest.focus()
     }
@@ -80,13 +88,23 @@ export const FocusGroupMixin = mixin(
     states(el, ["focusgroup"])
     validate(el, { label: true, when: "connected" })
 
+    // TODO: from AriaSelected and AriaChecked
+    //on(el, "constructed", (e) => {
+    //  const isSelected = (ariaState(el, "selected") || el.hasAttribute("selected"))
+    //  el.tabIndex = (isSelected) ? 0 : INACTIVE_TABINDEX
+    //})
+    //on(el, "constructed", (e) => {
+    //  const isChecked = (ariaState(el, "checked") || el.hasAttribute("checked"))
+    //  const isMenuitem = (role(el).startsWith("menuitem"))
+    //  el.tabIndex = (!isMenuitem || isChecked) ? 0 : INACTIVE_TABINDEX
+    //})
     on(el, "slotchange", (e) => {
-      const members = e.detail.elements
+      const members = e.detail.elements.filter(m => m.matches(sFocusable))
       const initialized = members.filter(m => m.tabIndex == 0 || m.autofocus)
       if (members.length && !initialized.length)
         members[0].tabIndex = 0
       else if (initialized.length > 1) {
-        members.slice(1).forEach(m => m.tabIndex = -1)
+        members.slice(1).forEach(m => m.tabIndex = INACTIVE_TABINDEX)
       }
     })
 
@@ -106,7 +124,7 @@ export const FocusGroupMixin = mixin(
     })
 
     // TODO: Add test that focusgroup will capture+halt <button aria-disabled onclick="">
-    // NOTE: Children of button (e.g., <aria-icon> might be the target of click event
+    // NOTE: Children of button (e.g., <aria-icon>) might be the target of click event
     on(el, "click", (e) => {
       if (e.target.ariaDisabled === "true" || e.target.matches("[aria-disabled=true] *"))
         halt("propagation", e)

@@ -37,11 +37,11 @@ export const ariaState = (el, aria, value) => {
 export const ariaLabel = (el, value) => {
   if (value === undefined) {
     // TODO: Calculate accessible label using:
-    // 1) ariaRelatives("labelledBy") content
-    // 2) ariaProperty("label") value
-    // 3) internals(el)?.labels content (if el.constructor.formAssociated)
-    // 4) heading tags?
-    throw new Error("NotImplementedError")
+    // - ariaRelatives("labelledBy") content
+    // - ariaProperty("label") value
+    // - internals(el)?.labels content (if el.constructor.formAssociated)
+    // - heading tags
+    console.error("Calculating accessible name not implemented yet")
   } else if (value instanceof HTMLElement) {
     internals(el, { ariaLabelledByElements: [value] })
   } else {
@@ -156,14 +156,13 @@ export const AriaSelected = mixin(
   (el) => {
     states(el, ["focusable", "selectable"])
 
-    // TODO: Should :state(multiselectable) exist even though it's a property?
-    // TODO: If we don't use a function, parent element might not have :state(ms) set
+    // TODO: How to define this once, on "connected"?
     const selectionFollowsFocus = () => !el.matches(
       ":state(multiselectable) > *, :state(multiselectable) > :state(group) > *"
     )
 
     on(el, "focus", (e) => {
-      if (ilog(selectionFollowsFocus()))
+      if (selectionFollowsFocus())
         ariaState(el, "selected", true)
     })
 
@@ -223,20 +222,33 @@ export const AriaProperty = (aria, { defaultValue = "false" } = {}) => {
   }
 }
 
+// TODO: Could/should ariaRelatives use internals?
+// TODO: Still a work in progress
 export const AriaControls = mixin(
   [AriaProperty("controls")],
   (el) => {
+    const sLandmark = `
+      :is(
+        [role=banner], header,
+        [role=complementary], aside,
+        [role=contentinfo], footer,
+        [role=form], form,
+        [role=main], main,
+        [role=navigation], nav,
+        [role=region], section[aria-label], section[aria-labelledby],
+        [role=search], search
+      )
+    `
+
     on(el, "connected", (e) => {
-      // TODO:
-      // 1. If target has landmark role and is not labelled (<h2> etc),
-      //    then we label it.
-      // 2. If target is a tooltip, use aria-describedby
-      // 3. If target is a menu, use aria-labelledby
-      // 4. If el is combobox and target is listbox, the input's label
-      //    should suffice.
-      // 5. Else, do not label or describe (e.g. search button controls list of results)
-      ariaRelatives(el, "controls").forEach(t => {
-        ariaLabel(t, el)
+      ariaRelatives(el, "controls").forEach(target => {
+        const targetRole = role(target)
+        if (target.matches(sLandmark) && !ariaLabel(target))
+          ariaRelatives(target, "labelledBy", el)
+        else if (targetRole == "menu" || targetRole == "tab")
+          ariaRelatives(target, "labelledBy", el)
+        else if (targetRole == "tooltip")
+          ariaRelatives(el, "describedBy", target)
       })
     })
   }

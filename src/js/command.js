@@ -43,7 +43,7 @@ const roles = /** @type {const} */ ([
 export const CommandRole = mixin(
   [AriaDisabled],
   (el) => {
-		states(el, ["command"])
+		states(el, ["command", "focusable"])
     validate(el, { roles, when: "connected" })
 
     // Reflect attributes
@@ -79,10 +79,6 @@ export const CommandRole = mixin(
     }
 
     // Handle events
-    on(el, "constructed", (e) => {
-			el.tabIndex = -1
-		})
-
     on(el, "keydown", hotkey({
       " ": (e) => dispatch(el, "click", {}, { bubbles: true }),
       "Enter": (e) => dispatch(el, "click", {}, { bubbles: true }),
