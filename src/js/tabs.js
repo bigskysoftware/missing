@@ -25,20 +25,12 @@ export const TabList = tag(
   (el) => {
     internals(el, { role: "tablist" })
     validate(el, { sChildren: "aria-tab", when: "connected" })
-
-    on(el, "attribute:aria-multiselectable", (e) => {
-      if (e.detail.value === "true")
-        $$(el, "aria-tab").forEach(tab => {
-          internals(tab, { ariaExpanded: "false" })
-          ariaState(tab, "expanded", ariaState(tab, "selected"))
-        })
-    })
   }
 )
 
 export const Tab = tag(
   "aria-tab",
-  { mixins: [observeAttributes("aria-controls"), AriaSelected] },
+  { mixins: [AriaControls, AriaSelected] },
   (el) => {
 
     internals(el, { role: "tab" })
@@ -59,11 +51,10 @@ export const Tab = tag(
     })
 
     on(el, "attribute:aria-selected", (e) => {
-      // TODO: Move multiselect check outside of loop?
-      // TODO: use .matches(":state(multiselectable)") or ariaState(el.parentElement)?
+      const multiselectable = (ariaProperty(el.parentElement, "multiSelectable") === "true")
       ariaRelatives(el, "controls").forEach(panel => {
         panel.hidden = (e.detail.value !== "true")
-        if (el.parentElement.ariaMultiSelectable === "true")
+        if (multiselectable)
           ariaState(el, "expanded", !panel.hidden || null)
       })
     })

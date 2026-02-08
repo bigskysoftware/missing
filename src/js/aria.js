@@ -257,13 +257,16 @@ export const AriaMultiSelectable = mixin(
         anchor = member
     }
 
-    // TODO: ArrowDown and ArrowUp kind of rely on orientation
-    // TODO: APG only explicitly recommends these for listbox and tree
+    // TODO: Should these also change based on writing-mode / dir?
+    const arrow = (ariaProperty(el, "orientation") === "horizontal")
+      ? { next: "ArrowRight", prev: "ArrowLeft" }
+      : { next: "ArrowDown", prev: "ArrowUp" }
+
     const hotkeys = hotkey({
-      "Shift+ArrowDown": (e) => {
+      [`Shift+${arrow.next}`]: (e) => {
         toggle(document.activeElement)
       },
-      "Shift+ArrowUp": (e) => {
+      [`Shift+${arrow.prev}`]: (e) => {
         toggle(document.activeElement)
       },
       "Shift+ ": (e) => {
@@ -297,10 +300,27 @@ export const AriaMultiSelectable = mixin(
     }, { halt: "default" })
 
     let keys
-    on(el, "attribute:aria-multiselectable", (e) => {
-      keys = ariaState(el, "multiSelectable")
-        ? on(el, "keydown", hotkeys)
-        : keys ? off(keys) : undefined
+    on(el, "connected", (e) => {
+      if (ariaProperty(el, "multiSelectable") !== "true") return
+
+      states(el, ["multiselectable"])
+
+      switch (role(el)) {
+        case "listbox":
+        case "tree":
+          keys = on(el, "keydown", hotkeys)
+          break
+        case "tablist":
+          [...el.children].forEach(tab => {
+            internals(tab, { ariaExpanded: "false" })
+            ariaState(tab, "expanded", ariaState(tab, "selected"))
+          })
+          break
+      }
+    })
+
+    on(el, "disconnected", (e) => {
+      keys = keys ? off(keys) : undefined
     })
   }
 )
@@ -308,7 +328,7 @@ export const AriaMultiSelectable = mixin(
 export const AriaOrientation = mixin(
   [AriaDisabled, AriaProperty("orientation", { defaultValue: "horizontal" })],
   (el) => {
-    states(el, ["orientable"])
+    states(el, ["orientable", ariaProperty(el, "orientation")])
     stylize(el, css`
       :host {
         display: flex;
