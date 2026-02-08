@@ -14,6 +14,7 @@ export const TypeAheadMixin = mixin(
   [FocusGroupMixin],
   (el) => {
 
+    // TODO: sync this with sFocusable / FocusGroupMixin
     const sMember = "[tabindex]:not(:state(focusgroup))"
     const current = () => el.contains(document.activeElement)
       ? document.activeElement

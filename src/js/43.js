@@ -147,16 +147,16 @@ export function validate(el, options = {}) {
   }
 
   if (sParent && !el.matches(`${sParent} > *`))
-    console.error(el, "parent must match '${sParent}'.")
+    console.error(el, `parent must match '${sParent}'.`)
 
   if (sChildren && !el.matches(`:not(:has(> :not(${sChildren})))`))
-    console.error(el, "children must match '${sChildren}'.")
+    console.error(el, `children must match '${sChildren}'.`)
 
   if (roles?.length && !roles.includes(role(el)))
-    console.error(el, "role must be one of ${or.format(roles)}.")
+    console.error(el, `role must be one of ${or.format(roles)}.`)
 
   if (attrs?.length && !el.matches(attrs.map(a => `[${a}]`).join("")))
-    console.error(el, "requires attributes ${and.format(attrs)}.")
+    console.error(el, `requires attributes ${and.format(attrs)}.`)
 }
 
 /**

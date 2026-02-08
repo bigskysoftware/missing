@@ -49,7 +49,6 @@ const keyTable = /** @type {const} */ ({
   },
 })
 
-// TODO: How to skip disabled elements (incl possible wrap)
 // TODO: How to handle <input type=text>
 export const FocusGroupMixin = mixin(
   [AriaOrientation],
