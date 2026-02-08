@@ -1,55 +1,15 @@
 // @deno-types=./19.ts
 // @deno-types=./43.ts
 import { $$, css, dispatch, halt, hotkey, makelogger, off, on } from "./19.js"
-import { internals, memoize, mixin, states, stylize, validate } from "./43.js"
+import { internals, memoize, mixin, role, states, stylize, validate } from "./43.js"
 
 const ilog = makelogger("aria")
 
-// ref: https://w3c.github.io/aria/
-const propertyTable = /** @type {const } */ ({
-  controls: [],  // global
-  modal: [
-    "window",
-    "alertdialog", "dialog"
-  ],
-  multiSelectable: [
-    "grid", "listbox", "tablist", "tree",
-    "treegrid",
-  ],
-  orientation: [
-    "scrollbar", "select", "separator", "slider", "tablist", "toolbar",
-    "listbox", "menu", "menubar", "radiogroup", "tree", "treegrid",
-  ],
-})
-const stateTable = /** @type {const} */ ({
-  busy: [],  // global state
-  checked: [
-    "checkbox", "menuitemcheckbox", "menuitemradio", "option", "radio", "switch",
-    "switch", "treeitem",
-  ],
-  current: [],  // global state
-  disabled: [
-    "application", "button", "composite", "gridcell", "group", "input", "link", "menuitem", "scrollbar", "separator", "tab",
-    "checkbox", "columnheader", "combobox", "grid", "listbox", "menu", "menubar", "menuitemcheckbox", "menuitemradio", "option", "radio", "radiogroup", "row", "rowheader", "searchbox", "select", "slider", "spinbutton", "switch", "tablist", "textbox", "toolbar", "tree", "treegrid", "treeitem",
-  ],
-  expanded: [
-    "application", "button", "checkbox", "combobox", "gridcell", "link", "listbox", "menuitem", "row", "rowheader", "tab", "treeitem",
-    "columnheader", "menuitemcheckbox", "menuitemradio", "rowheader", "switch",
-  ],
-  grabbed: [],  // global state
-  invalid: [
-    "application", "checkbox", "combobox", "gridcell", "listbox", "radiogroup", "slider", "spinbutton", "textbox", "tree",
-    "columnheader", "rowheader", "searchbox", "switch", "treegrid",
-  ],
-  pressed: [
-    "button",
-  ],
-  selected: [
-    "gridcell", "option", "row", "tab",
-    "columnheader", "rowheader", "treeitem",
-  ],
-})
-
+/* ARIA Helpers:
+ *
+ *
+ *
+ */
 const ariaAttributeName = aria => `aria-${aria.toLowerCase()}`
 const ariaPropertyName = aria => `aria${aria.replace(/^./, c => c.toUpperCase())}`
 const ariaEventName = aria => `attribute:${ariaAttributeName(aria)}`
@@ -74,19 +34,55 @@ export const ariaState = (el, aria, value) => {
     el[ariaPropertyName(aria)] = value
   }
 }
-
-export const AriaProperty = (aria, { defaultValue = "false" } = {}) => {
-  return (Base) => class extends Base {
-    constructor() {
-      super()
-      internals(this, { [ariaPropertyName(aria)]: defaultValue })
-      validate(this, { roles: propertyTable[aria], when: "connected" })
-      on(this, "constructed", (e) => {
-        dispatch(this, ariaEventName(aria), { value: null })
-      })
-    }
+export const ariaLabel = (el, value) => {
+  if (value === undefined) {
+    // TODO: Calculate accessible label using:
+    // 1) ariaRelatives("labelledBy") content
+    // 2) ariaProperty("label") value
+    // 3) internals(el)?.labels content (if el.constructor.formAssociated)
+    // 4) heading tags?
+    throw new Error("NotImplementedError")
+  } else if (value instanceof HTMLElement) {
+    internals(el, { ariaLabelledByElements: [value] })
+  } else {
+    ariaProperty(el, "label", value)
   }
 }
+
+/* ARIA States:
+ *
+ *
+ *
+ */
+const globalAttribute = [];
+const stateTable = /** @type {const} */ ({
+  busy: globalAttribute,
+  checked: [
+    "checkbox", "menuitemcheckbox", "menuitemradio", "option", "radio", "switch",
+    "switch", "treeitem",
+  ],
+  current: globalAttribute,
+  disabled: [
+    "application", "button", "composite", "gridcell", "group", "input", "link", "menuitem", "scrollbar", "separator", "tab",
+    "checkbox", "columnheader", "combobox", "grid", "listbox", "menu", "menubar", "menuitemcheckbox", "menuitemradio", "option", "radio", "radiogroup", "row", "rowheader", "searchbox", "select", "slider", "spinbutton", "switch", "tablist", "textbox", "toolbar", "tree", "treegrid", "treeitem",
+  ],
+  expanded: [
+    "application", "button", "checkbox", "combobox", "gridcell", "link", "listbox", "menuitem", "row", "rowheader", "tab", "treeitem",
+    "columnheader", "menuitemcheckbox", "menuitemradio", "rowheader", "switch",
+  ],
+  grabbed: globalAttribute,
+  invalid: [
+    "application", "checkbox", "combobox", "gridcell", "listbox", "radiogroup", "slider", "spinbutton", "textbox", "tree",
+    "columnheader", "rowheader", "searchbox", "switch", "treegrid",
+  ],
+  pressed: [
+    "button",
+  ],
+  selected: [
+    "gridcell", "option", "row", "tab",
+    "columnheader", "rowheader", "treeitem",
+  ],
+})
 
 export const AriaState = memoize((aria, { defaultValue = "false" } = {}) => {
   return (Base) => class extends Base {
@@ -127,36 +123,123 @@ export const AriaChecked = mixin(
       tristate: role(el) === "checkbox" || role(el) === "menuitemcheckbox",
     })
 
-    on(el, "constructed", (e) => {
-      const isChecked = (ariaState(el, "checked") || el.hasAttribute("checked"))
-      const isMenuitem = (role(el).startsWith("menuitem"))
-      el.tabIndex = (!isMenuitem || isChecked) ? 0 : -1
-    })
-
     on(el, "attribute:aria-checked", (e) => {
       dispatch(el, "changed", {}, { bubbles: true })
     })
   }
 )
+
 export const AriaCurrent = AriaState("current")
 
 export const AriaExpanded = mixin(
   [AriaDisabled, AriaState("expanded")],
-  (el) => {
-    states(el, ["expandable"])
-  }
+  (el) => states(el, ["expandable"])
 )
 
 export const AriaGrabbed = mixin(
   [AriaState("grabbed")],
-  (el) => {
-    states(el, ["draggable"])
-  }
+  (el) => states(el, ["draggable"])
 )
 
 export const AriaInvalid = mixin(
   [AriaDisabled, AriaState("invalid")],
   (el) => {}
+)
+
+export const AriaPressed = mixin(
+  [AriaDisabled, AriaExpanded, AriaState("pressed")],
+  (el) => states(el, ["pressable"])
+)
+
+export const AriaSelected = mixin(
+  [AriaDisabled, AriaState("selected")],
+  (el) => {
+    states(el, ["focusable", "selectable"])
+
+    // TODO: Should :state(multiselectable) exist even though it's a property?
+    // TODO: If we don't use a function, parent element might not have :state(ms) set
+    const selectionFollowsFocus = () => !el.matches(
+      ":state(multiselectable) > *, :state(multiselectable) > :state(group) > *"
+    )
+
+    on(el, "focus", (e) => {
+      if (ilog(selectionFollowsFocus()))
+        ariaState(el, "selected", true)
+    })
+
+    on(el, "blur", (e) => {
+      if (selectionFollowsFocus() && el.closest(":state(focusgroup)").contains(e.relatedTarget))
+        ariaState(el, "selected", null)
+    })
+
+    on(el, "click", (e) => {
+      if (selectionFollowsFocus())
+        ilog("How to remove ariaSelected frome existing el?")
+      else
+        ariaState(el, "selected", !ariaState(el, "selected") || null)
+    })
+
+    on(el, "keydown", (e) => {
+      if (!selectionFollowsFocus() && e.key === " ") {
+        halt("default propagation", e)
+        ariaState(el, "selected", !ariaState(el, "selected") || null)
+      }
+    })
+
+    on(el, "attribute:aria-selected", (e) => {
+      dispatch(el, "changed", {}, { bubbles: true })
+    })
+  }
+)
+
+/* ARIA Properties:
+ *
+ *
+ *
+ */
+const propertyTable = /** @type {const } */ ({
+  controls: globalAttribute,
+  modal: [
+    "window",
+    "alertdialog", "dialog"
+  ],
+  multiSelectable: [
+    "grid", "listbox", "tablist", "tree",
+    "treegrid",
+  ],
+  orientation: [
+    "scrollbar", "select", "separator", "slider", "tablist", "toolbar",
+    "listbox", "menu", "menubar", "radiogroup", "tree", "treegrid",
+  ],
+})
+
+export const AriaProperty = (aria, { defaultValue = "false" } = {}) => {
+  return (Base) => class extends Base {
+    constructor() {
+      super()
+      internals(this, { [ariaPropertyName(aria)]: defaultValue })
+      validate(this, { roles: propertyTable[aria], when: "connected" })
+    }
+  }
+}
+
+export const AriaControls = mixin(
+  [AriaProperty("controls")],
+  (el) => {
+    on(el, "connected", (e) => {
+      // TODO:
+      // 1. If target has landmark role and is not labelled (<h2> etc),
+      //    then we label it.
+      // 2. If target is a tooltip, use aria-describedby
+      // 3. If target is a menu, use aria-labelledby
+      // 4. If el is combobox and target is listbox, the input's label
+      //    should suffice.
+      // 5. Else, do not label or describe (e.g. search button controls list of results)
+      ariaRelatives(el, "controls").forEach(t => {
+        ariaLabel(t, el)
+      })
+    })
+  }
 )
 
 export const AriaModal = AriaProperty("modal")
@@ -235,64 +318,5 @@ export const AriaOrientation = mixin(
       :host(:state(horizontal)) { --flex-direction: row; }
       :host(:state(vertical))   { --flex-direction: column; }
     `)
-
-    on(el, "attribute:aria-orientation", (e) => {
-      states(el, {
-        horizontal: ariaProperty(el, "orientation") === "horizontal",
-        vertical: ariaProperty(el, "orientation") === "vertical",
-      })
-    })
-  }
-)
-
-export const AriaPressed = mixin(
-  [AriaDisabled, AriaExpanded, AriaState("pressed")],
-  (el) => {
-    states(el, ["pressable"])
-  }
-)
-
-export const AriaSelected = mixin(
-  [AriaDisabled, AriaState("selected")],
-  (el) => {
-    states(el, ["focusable", "selectable"])
-
-    const selectionFollowsFocus = () => !el.matches(
-      ":state(multiselectable) > *, :state(multiselectable) > :state(group) > *"
-    )
-
-    // TODO: This might be the responsibility of a select container (c.f. with AriaChecked)
-    on(el, "constructed", (e) => {
-      const isSelected = (ariaState(el, "selected") || el.hasAttribute("selected"))
-      el.tabIndex = (isSelected) ? 0 : -1
-    })
-
-    on(el, "focus", (e) => {
-      if (selectionFollowsFocus())
-        ariaState(el, "selected", true)
-    })
-
-    on(el, "blur", (e) => {
-      if (selectionFollowsFocus() && el.closest(":state(focusgroup)").contains(e.relatedTarget))
-        ariaState(el, "selected", null)
-    })
-
-    on(el, "click", (e) => {
-      if (selectionFollowsFocus())
-        ilog("How to remove ariaSelected frome existing el?")
-      else
-        ariaState(el, "selected", !ariaState(el, "selected") || null)
-    })
-
-    on(el, "keydown", (e) => {
-      if (!selectionFollowsFocus() && e.key === " ") {
-        halt("default propagation", e)
-        ariaState(el, "selected", !ariaState(el, "selected") || null)
-      }
-    })
-
-    on(el, "attribute:aria-selected", (e) => {
-      dispatch(el, "changed", {}, { bubbles: true })
-    })
   }
 )

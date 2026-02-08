@@ -90,26 +90,30 @@ This example requires JavaScript to be activated.
 		<aria-menuitem commandfor=editor command=--quit>Quit</aria-menuitem>
 	</aria-menubar>
 	<aria-menulist id=font-menu popover>
-		<aria-menuitem type=radio commandfor=editor command=--font-sans>Sans-serif</aria-menuitem>
-		<aria-menuitem type=radio commandfor=editor command=--font-serif>Serif</aria-menuitem>
-		<aria-menuitem type=radio commandfor=editor command=--font-mono>Monospace</aria-menuitem>
+		<aria-group checkable=single>
+			<aria-menuitem commandfor=editor command=--font-sans>Sans-serif</aria-menuitem>
+			<aria-menuitem commandfor=editor command=--font-serif>Serif</aria-menuitem>
+			<aria-menuitem commandfor=editor command=--font-mono>Monospace</aria-menuitem>
+		</aria-group>
 	</aria-menulist>
 	<aria-menulist id=style-menu popover>
-		<fieldset>
-			<aria-menuitem type=checkbox commandfor=editor command=--style-font-b>Bold</aria-menuitem>
-			<aria-menuitem type=checkbox commandfor=editor command=--style-font-i>Italic</aria-menuitem>
-		</fieldset>
-		<hr>
-		<fieldset>
-			<aria-menuitem type=radio commandfor=editor command=--style-color-b>Blue</aria-menuitem>
-			<aria-menuitem type=radio commandfor=editor command=--style-color-r>Red</aria-menuitem>
-			<aria-menuitem type=radio commandfor=editor command=--style-color-g>Green</aria-menuitem>
-		</fieldset>
+		<aria-group checkable=multiple>
+			<aria-menuitem commandfor=editor command=--style-font-b>Bold</aria-menuitem>
+			<aria-menuitem commandfor=editor command=--style-font-i>Italic</aria-menuitem>
+		</aria-group>
+		<aria-separator></aria-separator>
+		<aria-group checkable=single>
+			<aria-menuitem commandfor=editor command=--style-color-b>Blue</aria-menuitem>
+			<aria-menuitem commandfor=editor command=--style-color-r>Red</aria-menuitem>
+			<aria-menuitem commandfor=editor command=--style-color-g>Green</aria-menuitem>
+		</aria-group>
 	</aria-menulist>
 	<aria-menulist id=align-menu popover>
-		<aria-menuitem type=radio commandfor=editor command=--align-l>Left</aria-menuitem>
-		<aria-menuitem type=radio commandfor=editor command=--align-c>Center</aria-menuitem>
-		<aria-menuitem type=radio commandfor=editor command=--align-r>Right</aria-menuitem>
+		<aria-group checkable=single>
+			<aria-menuitem commandfor=editor command=--align-l>Left</aria-menuitem>
+			<aria-menuitem commandfor=editor command=--align-c>Center</aria-menuitem>
+			<aria-menuitem commandfor=editor command=--align-r>Right</aria-menuitem>
+		</aria-group>
 	</aria-menulist>
 	<aria-menulist id=size-menu popover>
 		<aria-menuitem commandfor=relative-size-menu command=toggle-menu>Relative</aria-menuitem>
@@ -120,11 +124,13 @@ This example requires JavaScript to be activated.
 		<aria-menuitem commandfor=editor command=--relative-size-lg>Larger</aria-menuitem>
 	</aria-menulist>
 	<aria-menulist id=absolute-size-menu popover>
-		<aria-menuitem type=radio commandfor=editor command=--absolute-size-xs>X-Small</aria-menuitem>
-		<aria-menuitem type=radio commandfor=editor command=--absolute-size-sm>Small</aria-menuitem>
-		<aria-menuitem type=radio commandfor=editor command=--absolute-size-md>Medium</aria-menuitem>
-		<aria-menuitem type=radio commandfor=editor command=--absolute-size-lg>Large</aria-menuitem>
-		<aria-menuitem type=radio commandfor=editor command=--absolute-size-xl>X-Large</aria-menuitem>
+	    <aria-group checkable=single>
+			<aria-menuitem commandfor=editor command=--absolute-size-xs>X-Small</aria-menuitem>
+			<aria-menuitem commandfor=editor command=--absolute-size-sm>Small</aria-menuitem>
+			<aria-menuitem commandfor=editor command=--absolute-size-md>Medium</aria-menuitem>
+			<aria-menuitem commandfor=editor command=--absolute-size-lg>Large</aria-menuitem>
+			<aria-menuitem commandfor=editor command=--absolute-size-xl>X-Large</aria-menuitem>
+		</aria-group>
 	</aria-menulist>
 	<textarea id=editor style="width:100%; resize:none; height:200px; --interactive-border-radius: 0;">
 Let me explain something to you.
