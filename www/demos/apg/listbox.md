@@ -23,7 +23,7 @@ shortcuts:
 Missing.css provides the following custom elements for listboxes:
 
 - `<aria-listbox>`{ .language-html }
-- `<aria-optgroup>`{ .language-html }
+- `<aria-group>`{ .language-html }
 - `<aria-option>`{ .language-html }
 
 `<aria-listbox>`{ .language-html } is a [Form Associated Custom Element][face] and can be used with or without a `<form>`{ .language-html }.
@@ -105,22 +105,22 @@ This example requires JavaScript to be activated.
 	</aria-listbox>
 	<label for=multi-listbox>Multiple Select Listbox</label>
 	<aria-listbox id=multi-listbox name=multi aria-multiselectable=true class="box">
-		<aria-optgroup label="Programming Languages">
+		<aria-group label="Programming Languages">
 			<aria-option value=javascript>JavaScript</aria-option>
 			<aria-option value=typescript selected>TypeScript</aria-option>
 			<aria-option value=python>Python</aria-option>
 			<aria-option value=java>Java</aria-option>
 			<aria-option value=go selected>Go</aria-option>
 			<aria-option value=rust aria-selected=true>Rust</aria-option>
-		</aria-optgroup>
-		<aria-optgroup label="Bagels">
+		</aria-group>
+		<aria-group label="Bagels">
 			<aria-option value=plain>Plain</aria-option>
 			<aria-option value=everything>Everything</aria-option>
 			<aria-option value=blueberry selected>Blueberry</aria-option>
 			<aria-option value=cinnamon-raisin>Cinnamon Raisin</aria-option>
 			<aria-option value=sesame aria-selected=true>Sesame</aria-option>
 			<aria-option value=asiago>Asiago</aria-option>
-		</aria-optgroup>
+		</aria-group>
 	</aria-listbox>
 	<div class="flex-row">
 		<button type=reset>Reset</button>

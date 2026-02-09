@@ -1,7 +1,7 @@
 // @deno-types=./19.ts
 // @deno-types=./43.ts
 import { $$, css, dispatch, halt, hotkey, makelogger, off, on } from "./19.js"
-import { internals, memoize, mixin, role, states, stylize, validate } from "./43.js"
+import { internals, memoize, mixin, role, states, stylize, tag, validate } from "./43.js"
 
 const ilog = makelogger("aria")
 
@@ -350,5 +350,33 @@ export const AriaOrientation = mixin(
       :host(:state(horizontal)) { --flex-direction: row; }
       :host(:state(vertical))   { --flex-direction: column; }
     `)
+  }
+)
+
+export const AriaGroup = tag(
+  "aria-group",
+  { mixins: [AriaDisabled] },
+  (el) => {
+    internals(el, { role: "group" })
+    states(el, ["group"])
+    stylize(el, css`:host { display: flex; flex-direction: var(--flex-direction) }`)
+    // validate(el, { sParent: "aria-listbox", sChildren: "aria-option", when: "connected" })
+
+    //on(el, "connected", (e) => el.removeAttribute("tabindex"))
+
+  }
+)
+
+export const AriaSeparator = tag(
+  "aria-separator",
+  (el) => {
+    internals(el, { role: "separator" })
+
+    on(el, "connected", (e) => {
+      const orthogonal = el.closest(":state(orientable)").matches(":state(horizontal)")
+        ? "vertical"
+        : "horizontal"
+      el.innerHTML = `<hr aria-orientation=${orthogonal}>`
+    })
   }
 )

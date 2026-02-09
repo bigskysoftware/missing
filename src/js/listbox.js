@@ -31,7 +31,7 @@ export const ListBox = tag(
     internals(el, { role: "listbox", ariaOrientation: "vertical" })
     stylize(el, css`:host { display: block; }`)
     validate(el, {
-      sChildren: ":is(aria-optgroup:not([tabindex]), aria-option)", // TODO: add [tabindex] test
+      sChildren: ":is(aria-group, aria-option)",
       when: "connected"
     })
 
@@ -64,27 +64,15 @@ export const ListBox = tag(
   }
 )
 
-export const OptGroup = tag(
-  "aria-optgroup",
-  { mixins: [AriaDisabled] },
-  (el) => {
-    internals(el, { role: "group" })
-    states(el, ["group"])
-    stylize(el, css`:host { display: flex; flex-direction: var(--flex-direction) }`)
-    validate(el, { sParent: "aria-listbox", sChildren: "aria-option", when: "connected" })
-  }
-)
-
 export const Option = tag(
   "aria-option",
   { mixins: [AriaSelected] },
   (el) => {
     internals(el, { role: "option" })
     stylize(el, css`:host { display: block; }`)
-    validate(el, { sParent: ":is(aria-listbox, aria-optgroup)", when: "connected" })
+    validate(el, { sParent: ":is(aria-listbox, aria-group)", when: "connected" })
   }
 )
 
 Option.define()
-OptGroup.define()
 ListBox.define()

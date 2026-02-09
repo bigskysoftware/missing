@@ -2,6 +2,7 @@
 // @deno-types=./43.ts
 import { attr, makelogger, on } from "./19.js"
 import { internals, tag, validate } from "./43.js"
+import { AriaOrientation, AriaGroup, AriaSeparator } from "./aria.js"
 import { FocusGroupMixin } from "./focus.js"
 import { PopoverPositionMixin } from "./popover.js"
 import { invokerOf, CommandRole } from "./command.js"
@@ -18,7 +19,7 @@ const MenuBar = tag(
 
 const MenuList = tag(
   "aria-menulist",
-  { mixins: [FocusGroupMixin, PopoverPositionMixin] },
+  { mixins: [FocusGroupMixin, PopoverPositionMixin, AriaOrientation] },
   (el) => {
     internals(el, {
 			role: "menu",
@@ -75,3 +76,5 @@ const MenuItem = tag(
 MenuList.define()
 MenuItem.define()
 MenuBar.define()
+AriaGroup.define()
+AriaSeparator.define()
