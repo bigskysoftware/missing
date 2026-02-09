@@ -32,6 +32,15 @@
  */
 
 /**
+ * @callback MutationObserverCallback
+ * @param {MutationRecord[]} records
+ * @param {MutationObserver} observer
+ */
+
+/**
+ * @param {MutationObserverCallback} callback
+ */
+/**
  * @typedef {Document | ShadowRoot} Root
  */
 
@@ -497,10 +506,10 @@ export function debounce(t, f, { mode = "trailing" } = {}) {
  * @param {boolean} [options.attributeOldValue] Record the previous value of an attribute.
  * @param {boolean} [options.characterData] Monitor changes in character data.
  * @param {boolean} [options.characterDataOldValue] Record the previous value of a node's text.
+ * @param {MutationObserverCallback} callback
  */
-export function observe(el, options) {
-  const observer = new MutationObserver((records, observer) =>
-    records.forEach(r => dispatch(el, `mutation:${r.type}`, r)))
+export function observe(el, options, callback) {
+  const observer = new MutationObserver(callback)
   on(el, "connected", (e) => observer.observe(el, options))
   on(el, "disconnected", (e) => observer.disconnect())
 }
