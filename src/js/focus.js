@@ -63,7 +63,6 @@ const keyTable = /** @type {const} */ ({
   },
 })
 
-// TODO: How to handle <input type=text>
 export const FocusGroupMixin = mixin(
   [AriaOrientation],
   (el) => {

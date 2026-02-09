@@ -107,7 +107,7 @@ This example requires JavaScript to be activated.
 			<option>24pt
 		</select>
 		<hr aria-orientation=vertical>
-		<label>Find: <input type=text></label>
+		<label>Find: <aria-input-button><input type=text></aria-input-button></label>
 	</aria-toolbar>
 	<p><a href=#>Focusable element after the toolbar</a></p>
 </figure>
