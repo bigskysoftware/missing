@@ -129,6 +129,7 @@ export const AriaChecked = mixin(
     })
 
     on(el, "attribute:aria-checked", (e) => {
+      // TODO: This is probably firing for every el on "constructed"
       dispatch(el, "changed", {}, { bubbles: true })
     })
   }

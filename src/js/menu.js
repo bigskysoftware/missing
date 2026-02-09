@@ -66,7 +66,6 @@ const MenuItem = tag(
       if (internals(submenu).role != "menu")
         console.error("Menu button", el, "has no associated menu")
 
-      // TODO: Can ariaRelatives use internals?
       internals(el).ariaControlsElements = [submenu]
       internals(submenu).ariaLabelledByElements = [el]
     }

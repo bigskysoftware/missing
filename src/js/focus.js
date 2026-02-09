@@ -109,7 +109,7 @@ export const FocusGroupMixin = mixin(
     // TODO: Add test that focusgroup will capture+halt <button aria-disabled onclick="">
     // NOTE: Children of button (e.g., <aria-icon>) might be the target of click event
     on(el, "click", (e) => {
-      if (e.target.ariaDisabled === "true" || e.target.matches("[aria-disabled=true] *"))
+      if (ariaState(e.target, "disabled") || e.target.matches("[aria-disabled=true] *"))
         halt("propagation", e)
     }, { capture: true })
   }
