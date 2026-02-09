@@ -79,6 +79,8 @@ export const CommandRole = mixin(
     }
 
     // Handle events
+    on(el, "connected", (e) => el.tabIndex = 0)
+
     on(el, "keydown", hotkey({
       " ": (e) => dispatch(el, "click", {}, { bubbles: true }),
       "Enter": (e) => dispatch(el, "click", {}, { bubbles: true }),

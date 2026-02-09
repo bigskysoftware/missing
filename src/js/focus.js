@@ -7,6 +7,10 @@ import { ariaProperty, AriaOrientation } from "./aria.js"
 const ilog = makelogger("focus-group")
 
 export const INACTIVE_TABINDEX = /** @type {const} */ -7822865
+
+/** @type {Set<string>} */
+const focusableTags = new Set()
+
 export const sFocusable = /** @type {const} */ `
   :is(
     [tabindex]:not([tabindex^='-']),
@@ -15,7 +19,7 @@ export const sFocusable = /** @type {const} */ `
     :is(audio, video)[controls],
     :is(img, object)[usemap],
     button, details, embed, iframe, input, select, textarea,
-    :state(focusable)
+    :state(focusable),
   ):not(
     [disabled],
     [hidden] *,
@@ -87,26 +91,6 @@ export const FocusGroupMixin = mixin(
 
     states(el, ["focusgroup"])
     validate(el, { label: true, when: "connected" })
-
-    // TODO: from AriaSelected and AriaChecked
-    //on(el, "constructed", (e) => {
-    //  const isSelected = (ariaState(el, "selected") || el.hasAttribute("selected"))
-    //  el.tabIndex = (isSelected) ? 0 : INACTIVE_TABINDEX
-    //})
-    //on(el, "constructed", (e) => {
-    //  const isChecked = (ariaState(el, "checked") || el.hasAttribute("checked"))
-    //  const isMenuitem = (role(el).startsWith("menuitem"))
-    //  el.tabIndex = (!isMenuitem || isChecked) ? 0 : INACTIVE_TABINDEX
-    //})
-    on(el, "slotchange", (e) => {
-      const members = e.detail.elements.filter(m => m.matches(sFocusable))
-      const initialized = members.filter(m => m.tabIndex == 0 || m.autofocus)
-      if (members.length && !initialized.length)
-        members[0].tabIndex = 0
-      else if (initialized.length > 1) {
-        members.slice(1).forEach(m => m.tabIndex = INACTIVE_TABINDEX)
-      }
-    })
 
     on(el, "focusin", (e) => focusTo(e.target))
 

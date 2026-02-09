@@ -123,6 +123,11 @@ export const AriaChecked = mixin(
       tristate: role(el) === "checkbox" || role(el) === "menuitemcheckbox",
     })
 
+    on(el, "constructed", (e) => {
+      if (ariaState(el, "checked") || el.hasAttribute("checked"))
+        el.tabIndex = 0
+    })
+
     on(el, "attribute:aria-checked", (e) => {
       dispatch(el, "changed", {}, { bubbles: true })
     })
@@ -154,38 +159,52 @@ export const AriaPressed = mixin(
 export const AriaSelected = mixin(
   [AriaDisabled, AriaState("selected")],
   (el) => {
+
+    const sMultiSelectable = `
+      :state(multiselectable) > *,
+      :state(multiselectable) > :state(group) > *
+    `
+    let selectionFollowsFocus
+
     states(el, ["focusable", "selectable"])
 
-    // TODO: How to define this once, on "connected"?
-    const selectionFollowsFocus = () => !el.matches(
-      ":state(multiselectable) > *, :state(multiselectable) > :state(group) > *"
-    )
+    on(el, "constructed", (e) => {
+      if (ariaState(el, "selected") || el.hasAttribute("selected"))
+        el.tabIndex = 0
+    })
+
+    on(el, "connected", (e) => {
+      selectionFollowsFocus = !el.matches(sMultiSelectable)
+    })
 
     on(el, "focus", (e) => {
-      if (selectionFollowsFocus())
+      if (selectionFollowsFocus)
         ariaState(el, "selected", true)
     })
 
     on(el, "blur", (e) => {
-      if (selectionFollowsFocus() && el.closest(":state(focusgroup)").contains(e.relatedTarget))
+      if (selectionFollowsFocus && el.closest(":state(focusgroup)").contains(e.relatedTarget))
         ariaState(el, "selected", null)
     })
 
     on(el, "click", (e) => {
-      if (selectionFollowsFocus())
+      if (selectionFollowsFocus)
         ilog("How to remove ariaSelected frome existing el?")
       else
         ariaState(el, "selected", !ariaState(el, "selected") || null)
     })
 
     on(el, "keydown", (e) => {
-      if (!selectionFollowsFocus() && e.key === " ") {
+      if (!selectionFollowsFocus && e.key === " ") {
         halt("default propagation", e)
         ariaState(el, "selected", !ariaState(el, "selected") || null)
       }
     })
 
     on(el, "attribute:aria-selected", (e) => {
+      if (e.detail.value === null && el.tabIndex === 0)
+        el.removeAttribute("tabindex")
+      // TODO: This is probably firing for every el on "constructed"
       dispatch(el, "changed", {}, { bubbles: true })
     })
   }
