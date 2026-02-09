@@ -1,6 +1,6 @@
 // @deno-types=./19.ts
 // @deno-types=./43.ts
-import { $, $$, css, makelogger, on } from "./19.js"
+import { $, $$, attr, css, dispatch, makelogger, on } from "./19.js"
 import { internals, observeAttributes, states, stylize, tag, validate } from "./43.js"
 import { FormElementMixin} from "./forms.js"
 import { TypeAheadMixin } from "./typeahead.js"
@@ -17,8 +17,11 @@ export const ListBox = tag(
     const sSelected = "aria-option[aria-selected=true]"
 
     const setDefault = () => {
-      $$(el, sMember).forEach(o =>
-        ariaState(o, "selected", o.hasAttribute("selected") || null))
+      $$(el, sMember).forEach(o => {
+        const isSelected = o.hasAttribute("selected")
+        ariaState(o, "selected", isSelected || null)
+        attr(o, "tabindex", isSelected ? 0 : null)
+      })
     }
 
     const setValue = () => {
@@ -35,6 +38,7 @@ export const ListBox = tag(
       when: "connected"
     })
 
+    // TODO: Should this be "focusgroup:update"?
     on(el, "connected", (e) => {
       if (!$(el, "[aria-selected=true]"))
         setDefault()

@@ -25,6 +25,10 @@ export const TabList = tag(
   (el) => {
     internals(el, { role: "tablist" })
     validate(el, { sChildren: "aria-tab", when: "connected" })
+
+    on(el, "focusgroup:update", (e) => {
+      ariaState(e.detail.preferred, "selected", true)
+    })
   }
 )
 

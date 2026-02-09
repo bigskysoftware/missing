@@ -1,8 +1,8 @@
 // @deno-types=./19.ts
 // @deno-types=./43.ts
-import { $, $$, css, halt, halts, hotkey, makelogger, on, traverse } from "./19.js"
+import { $, $$, css, dispatch, halt, halts, hotkey, makelogger, observe, on, traverse } from "./19.js"
 import { internals, mixin, observeAttributes, states, stylize, tag, validate } from "./43.js"
-import { ariaProperty, AriaOrientation } from "./aria.js"
+import { ariaProperty, ariaState, AriaOrientation } from "./aria.js"
 
 const ilog = makelogger("focus-group")
 
@@ -76,26 +76,41 @@ export const FocusGroupMixin = mixin(
       keyTable[writingMode()][direction()][orientation()][key]
 
     const sMember = sFocusable
+    const members = () => $$(el, sMember)
     const current = () => el.contains(document.activeElement)
       ? document.activeElement
       : null
 
+    const update = () => {
+      if (current()) return
+      const ms = members()
+      if (!ms.length) return
+      const preferred = ms.find(
+        m => ariaState(m, "checked") || ariaState(m, "selected")
+      ) || ms[0]
+      preferred.tabIndex = 0
+      dispatch(el, "focusgroup:update", { members: ms, preferred: preferred })
+    }
+
     const focusTo = (dest) => {
-      const members = $$(el, sMember)
-      if (!members.includes(dest)) return
-      members.forEach(member => member.tabIndex = INACTIVE_TABINDEX)
+      const ms = members()
+      if (!ms.includes(dest)) return
+      ms.forEach(m => m.tabIndex = INACTIVE_TABINDEX)
       dest.tabIndex = 0
       dest.focus()
     }
 
     states(el, ["focusgroup"])
     validate(el, { label: true, when: "connected" })
+    observe(el, { subtree: true, childList: true }, update)
+
+    on(el, "connected", (e) => update())
 
     on(el, "focusin", (e) => focusTo(e.target))
 
     on(el, "keydown", hotkey({
       "Home": (e) => focusTo($(el, sMember)),
-      "End":  (e) => focusTo($$(el, sMember).at(-1)),
+      "End":  (e) => focusTo(members().at(-1)),
     }, { halt: "default propagation" }))
 
     on(el, "keydown", (e) => {
