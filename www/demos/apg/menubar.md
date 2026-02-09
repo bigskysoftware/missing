@@ -96,7 +96,7 @@ This example requires JavaScript to be activated.
 			<aria-menuitem commandfor=editor command=--font-mono>Monospace</aria-menuitem>
 		</aria-group>
 	</aria-menulist>
-	<aria-menulist id=style-menu popover aria-orientation=vertical>
+	<aria-menulist id=style-menu popover>
 		<aria-group checkable=multiple>
 			<aria-menuitem commandfor=editor command=--style-font-b>Bold</aria-menuitem>
 			<aria-menuitem commandfor=editor command=--style-font-i>Italic</aria-menuitem>

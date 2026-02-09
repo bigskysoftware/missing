@@ -359,7 +359,6 @@ export const AriaMultiSelectable = mixin(
 export const AriaOrientation = mixin(
   [AriaDisabled, AriaProperty("orientation", { defaultValue: "horizontal" })],
   (el) => {
-    states(el, ["orientable", ariaProperty(el, "orientation")])
     stylize(el, css`
       :host {
         display: flex;
@@ -369,6 +368,9 @@ export const AriaOrientation = mixin(
       :host(:state(horizontal)) { --flex-direction: row; }
       :host(:state(vertical))   { --flex-direction: column; }
     `)
+    on(el, "connected", (e) => {
+      states(el, ["orientable", ariaProperty(el, "orientation")])
+    })
   }
 )
 
