@@ -392,7 +392,7 @@ export const AriaSeparator = tag(
     internals(el, { role: "separator" })
 
     on(el, "connected", (e) => {
-      const orthogonal = el.closest(":state(orientable)").matches(":state(horizontal)")
+      const orthogonal = getComputedStyle(el).getPropertyValue("--flex-direction") === "horizontal"
         ? "vertical"
         : "horizontal"
       el.innerHTML = `<hr aria-orientation=${orthogonal}>`
