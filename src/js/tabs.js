@@ -1,6 +1,6 @@
 // @deno-types=./19.ts
 // @deno-types=./43.ts
-import { $$, attr, css, identify, makelogger, on } from "./19.js"
+import { $$, attr, css, html, identify, makelogger, on } from "./19.js"
 import { internals, observeAttributes, shadow, stylize, tag, validate } from "./43.js"
 import { sFocusable, FocusGroupMixin } from "./focus.js"
 import { ariaProperty, ariaRelatives, ariaState, AriaControls, AriaMultiSelectable, AriaSelected } from "./aria.js"
@@ -26,42 +26,70 @@ export const TabList = tag(
     internals(el, { role: "tablist" })
     validate(el, { sChildren: "aria-tab", when: "connected" })
 
-    on(el, "focusgroup:update", (e) => {
-      ariaState(e.detail.preferred, "selected", true)
+    on(el, "slotchange", (e) => {
+      const tabs = e.detail.elements
+
+      const panels = (el.parentElement.matches("aria-tabset"))
+        ? $$(el.parentElement, "aria-tabpanel").map(p => [p])
+        : tabs.map(tab => ariaRelatives(tab, "controls") || [])
+
+      tabs.forEach((tab, i) => {
+        internals(tab, { ariaControlsElements: panels[i] })
+        panels[i].forEach(panel => {
+          internals(panel, { ariaLabelledByElements: [tab] })
+        })
+      })
+
+      const current = tabs.find(
+        t => t.tabIndex == 0 || ariaState(t, "selected")
+      ) || tabs[0]
+      current.tabIndex = 0
+      ariaState(current, "selected", true)
     })
   }
 )
 
 export const Tab = tag(
   "aria-tab",
-  { mixins: [AriaControls, AriaSelected] },
+  { mixins: [AriaSelected] },
   (el) => {
 
     internals(el, { role: "tab" })
     stylize(el, css`:host { display: flex; }`)
+    shadow(el).replaceChildren(html`
+      <slot name=leading></slot>
+      <slot></slot>
+      <slot name=trailing></slot>
+    `)
     validate(el, { sParent: "aria-tablist", when: "connected" })
 
-    // TODO: Crucial for authors to use [aria-controls] or can we use internals?
-    on(el, "attribute:aria-controls", (e) => {
-      if (!(e.detail.value || ariaRelatives(el, "controls").length))
-        return
+    const tabset = () => el.matches("aria-tabset *")
+      ? el.parentElement.parentElement
+      : null
+    const tablist = () => el.parentElement
+    const siblings = () => [...tablist().children]
+    const panels = () => tabset() ? $$(tabset(), "aria-tabpanel") : []
 
-      const panel = ariaRelatives(el, "controls")[0]
-      if (panel)
-        panel.hidden = (ariaState(el, "selected") !== "true")
-      else
-        return console.error(el, "has no associated <aria-tabpanel>")
+    const panel = () =>
+      ariaRelatives(el, "controls") || [panels()[siblings().indexOf(el)]]
 
-    })
-
+    // TODO: When this fires in construction, ariaControlsElements is null
     on(el, "attribute:aria-selected", (e) => {
-      const multiselectable = (ariaProperty(el.parentElement, "multiSelectable") === "true")
-      ariaRelatives(el, "controls").forEach(panel => {
+      const multiselect = el.matches(":state(multiselectable) > *")
+      panel().forEach(panel => {
         panel.hidden = (e.detail.value !== "true")
-        if (multiselectable)
-          ariaState(el, "expanded", !panel.hidden || null)
+        ariaState(el, "expanded", (multiselect && !panel.hidden) || null)
       })
     })
+
+    on(el, "keydown", (e) => {
+      const lastFocusable = $$(el, "button").at(-1)
+      if (e.key === "Tab" && document.activeElement === lastFocusable) {
+        e.preventDefault()
+        el.focus()
+      }
+    })
+
   }
 )
 

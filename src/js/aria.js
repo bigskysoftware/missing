@@ -250,6 +250,8 @@ export const AriaControls = mixin(
 
 export const AriaModal = AriaProperty("modal")
 
+
+// TODO: Should we halt "Ctrl+A" on Single Select? Click/Drag?
 export const AriaMultiSelectable = mixin(
   [AriaDisabled, AriaProperty("multiSelectable")],
   (el) => {

@@ -116,11 +116,3 @@ export const FocusGroupMixin = mixin(
     }, { capture: true })
   }
 )
-
-export const FocusGroup = tag(
-  "focus-group",
-  { mixins: [FocusGroupMixin] },
-  (el) => {}
-)
-
-FocusGroup.define()

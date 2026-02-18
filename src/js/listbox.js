@@ -8,7 +8,6 @@ import { ariaState, AriaDisabled, AriaMultiSelectable, AriaSelected } from "./ar
 
 const ilog = makelogger("listbox")
 
-// TODO: Should we halt "Ctrl+A" on Single Select Listbox? Click/Drag?
 export const ListBox = tag(
   "aria-listbox",
   { mixins: [FormElementMixin, TypeAheadMixin, AriaMultiSelectable] },
@@ -23,7 +22,6 @@ export const ListBox = tag(
         attr(o, "tabindex", isSelected ? 0 : null)
       })
     }
-
     const setValue = () => {
       const data = new FormData()
       $$(el, sSelected).forEach(o =>
@@ -73,7 +71,10 @@ export const ListBox = tag(
       }
     })
 
-    on(el, "changed", (e) => setValue())
+    on(el, "change", (e) => {
+      setValue()
+    })
+
   }
 )
 
@@ -83,6 +84,11 @@ export const Option = tag(
   (el) => {
     internals(el, { role: "option" })
     stylize(el, css`:host { display: block; }`)
+    shadow(el).replaceChildren(html`
+      <slot name=leading></slot>
+      <slot></slot>
+      <slot name=trailing></slot>
+    `)
     validate(el, { sParent: ":is(aria-listbox, aria-group)", when: "connected" })
 
     on(el, "attribute:aria-selected", (e) => {

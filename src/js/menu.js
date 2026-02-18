@@ -1,7 +1,7 @@
 // @deno-types=./19.ts
 // @deno-types=./43.ts
-import { attr, makelogger, on } from "./19.js"
-import { internals, tag, validate } from "./43.js"
+import { $$, attr, html, makelogger, on } from "./19.js"
+import { internals, shadow, tag, validate } from "./43.js"
 import { AriaOrientation, AriaGroup, AriaSeparator } from "./aria.js"
 import { FocusGroupMixin } from "./focus.js"
 import { PopoverPositionMixin } from "./popover.js"
@@ -71,6 +71,11 @@ const MenuItem = tag(
       ariaHasPopup: (el.popoverTargetElement) ? "menu" : null,
       ariaExpanded: (el.popoverTargetElement) ? "false" : null,
     })
+    shadow(el).replaceChildren(html`
+      <slot name=leading></slot>
+      <slot></slot>
+      <slot name=trailing></slot>
+    `)
     validate(el, { sParent: ":is(aria-menubar, aria-menulist, aria-group)", when: "connected" })
 
     if (internals(el).ariaHasPopup === "menu") {
