@@ -88,6 +88,7 @@ export function internals(el, options) {
  * Set Custom Element States on an element.
  * @param {HTMLElement} el
  * @param {string[] | Record<string, boolean>} states
+ * @returns {CustomStateSet}
  */
 export function states(el, states) {
   const ints = internals(el)
@@ -100,6 +101,7 @@ export function states(el, states) {
       else ints.states.delete(key)
     }
   }
+  return ints.states
 }
 
 /**

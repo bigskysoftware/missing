@@ -70,7 +70,7 @@ export const TreeItem = tag(
     `)
     validate(el, { sParent: ":is(aria-tree, aria-group)", when: "connected" })
 
-    const isExpanded = () => internals(el).states.has("expandable")
+    const isExpanded = () => states(el).has("expandable")
       ? ariaState(el, "expanded")
       : null
 
@@ -88,7 +88,7 @@ export const TreeItem = tag(
 
     on(el, "click", halts("default propagation", (e) => {
       ariaState(el, "selected", ariaState(el, "selected") || null)
-      if (internals(el).states.has("expandable"))
+      if (states(el).has("expandable"))
         ariaState(el, "expanded", !ariaState(el, "expanded"))
     }))
 
