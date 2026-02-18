@@ -122,11 +122,6 @@ export const AriaChecked = mixin(
       checkable: true,
       tristate: role(el) === "checkbox" || role(el) === "menuitemcheckbox",
     })
-
-    on(el, "attribute:aria-checked", (e) => {
-      // TODO: This is probably firing for every el on "constructed"
-      dispatch(el, "changed", {}, { bubbles: true })
-    })
   }
 )
 
@@ -186,11 +181,6 @@ export const AriaSelected = mixin(
         halt("default propagation", e)
         ariaState(el, "selected", !ariaState(el, "selected") || null)
       }
-    })
-
-    on(el, "attribute:aria-selected", (e) => {
-      // TODO: This is probably firing for every el on "constructed"
-      dispatch(el, "changed", {}, { bubbles: true })
     })
   }
 )

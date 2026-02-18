@@ -75,6 +75,13 @@ export const Option = tag(
     internals(el, { role: "option" })
     stylize(el, css`:host { display: block; }`)
     validate(el, { sParent: ":is(aria-listbox, aria-group)", when: "connected" })
+
+    on(el, "attribute:aria-selected", (e) => {
+      // TODO: This will fire on soft (not hard) refresh.
+      // TODO: Is there a better way only fire this after load/upgrade?
+      if (el.isConnected)
+        dispatch(el.closest("aria-listbox"), "change", {}, { bubbles: true })
+    })
   }
 )
 
