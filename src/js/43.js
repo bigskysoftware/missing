@@ -147,10 +147,10 @@ export function validate(el, options = {}) {
   }
 
   if (sParent && !el.matches(`${sParent} > *`))
-    console.error(el, `parent must match '${sParent}'.`)
+    console.error(el, `parent must match "${sParent}".`)
 
   if (sChildren && !el.matches(`:not(:has(> :not(${sChildren})))`))
-    console.error(el, `children must match '${sChildren}'.`)
+    console.error(el, `children must match "${sChildren}".`)
 
   if (roles?.length && !roles.includes(role(el)))
     console.error(el, `role must be one of ${or.format(roles)}.`)
@@ -219,13 +219,13 @@ export function tag(name, options, init) {
         .filter((/** @type {string} */ attr) => !this.hasAttribute(attr))
         .forEach((/** @type {string} */ attr) =>
           dispatch(this, `attribute:${attr}`, { value: null }))
-      dispatch(this, 'constructed')
+      dispatch(this, "constructed")
     }
 
-    connectedCallback() { dispatch(this, 'connected') }
-    disconnectedCallback() { dispatch(this, 'disconnected') }
-    connectedMoveCallback() { dispatch(this, 'connectedMove') }
-    adoptedCallback() { dispatch(this, 'adopted') }
+    connectedCallback() { dispatch(this, "connected") }
+    disconnectedCallback() { dispatch(this, "disconnected") }
+    connectedMoveCallback() { dispatch(this, "connectedMove") }
+    adoptedCallback() { dispatch(this, "adopted") }
 
     /**
      *
@@ -234,7 +234,7 @@ export function tag(name, options, init) {
      * @param {string} newValue
      */
     attributeChangedCallback(name, oldValue, newValue) {
-      dispatch(this, 'attributeChanged', { name, oldValue, newValue })
+      dispatch(this, "attributeChanged", { name, oldValue, newValue })
       dispatch(this, `attributeChanged:${name}`, { oldValue, newValue })
       dispatch(this, `attribute:${name}`, { value: newValue })
     }
