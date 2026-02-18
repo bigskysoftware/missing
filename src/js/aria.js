@@ -25,7 +25,7 @@ export const ariaProperty = (el, aria, value) =>
 export const ariaRelative = (el, aria, value) =>
   setOrGet(el, `${ariaPropertyName(aria)}Element`, value)
 export const ariaRelatives = (el, aria, value) =>
-  setOrGet(el, `${ariaPropertyName(aria)}Elements`, value) || []
+  setOrGet(el, `${ariaPropertyName(aria)}Elements`, value)
 export const ariaState = (el, aria, value) => {
   if (value === undefined) {
     const val = ariaProperty(el, aria)
@@ -229,7 +229,7 @@ export const AriaProperty = (aria, { defaultValue = "false" } = {}) => {
 // TODO: Could/should ariaRelatives use internals?
 // TODO: Still a work in progress
 export const AriaControls = mixin(
-  [AriaProperty("controls")],
+  [AriaProperty("controlsElements", { defaultValue: [] })],
   (el) => {
     const sLandmark = `
       :is(
@@ -245,7 +245,7 @@ export const AriaControls = mixin(
     `
 
     on(el, "connected", (e) => {
-      ariaRelatives(el, "controls").forEach(target => {
+      ariaRelatives(el, "controls")?.forEach(target => {
         const targetRole = role(target)
         if (target.matches(sLandmark) && !ariaLabel(target))
           ariaRelatives(target, "labelledBy", el)
