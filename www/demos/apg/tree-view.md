@@ -42,93 +42,223 @@ This example requires JavaScript to be activated.
   aria-treeitem:not([aria-expanded=true]) > aria-group {
 	display: none;
   }
+
+  aria-treeitem {
+	aria-icon.when-open { display: none }
+	&:state(expanded) {
+	  aria-icon.when-closed { display: none }
+	  aria-icon.when-open { display: block }
+	}
+  }
+</style>
 </style>
 <aria-tree id=tree aria-labelledby=documents:label>
 	<aria-treeitem>
+		<aria-icon fetch slot=leading name=folder-open class="when-open"></aria-icon>
+		<aria-icon fetch slot=leading name=folder-closed class="when-closed"></aria-icon>
 		<span>Projects</span>
 		<aria-group>
-			<aria-treeitem>project-1.docx</aria-treeitem>
-			<aria-treeitem>project-2.docx</aria-treeitem>
 			<aria-treeitem>
+				<aria-icon fetch slot=leading name=file-text></aria-icon>
+				project-1.docx
+			</aria-treeitem>
+			<aria-treeitem>
+				<aria-icon fetch slot=leading name=file-text></aria-icon>
+				project-2.docx
+			</aria-treeitem>
+			<aria-treeitem>
+				<aria-icon fetch slot=leading name=folder-open class="when-open"></aria-icon>
+				<aria-icon fetch slot=leading name=folder-closed class="when-closed"></aria-icon>
 				<span>project-3</span>
 				<aria-group>
-					<aria-treeitem>project-3A.docx</aria-treeitem>
-					<aria-treeitem>project-3B.docx</aria-treeitem>
-					<aria-treeitem>project-3C.docx</aria-treeitem>
+					<aria-treeitem>
+						<aria-icon fetch slot=leading name=file-text></aria-icon>
+						project-3A.docx
+					</aria-treeitem>
+					<aria-treeitem>
+						<aria-icon fetch slot=leading name=file-text></aria-icon>
+						project-3B.docx
+					</aria-treeitem>
+					<aria-treeitem>
+						<aria-icon fetch slot=leading name=file-text></aria-icon>
+						project-3C.docx
+					</aria-treeitem>
 				</aria-group>
 			</aria-treeitem>
 			<aria-treeitem>project-4.docx</aria-treeitem>
 			<aria-treeitem>
+				<aria-icon fetch slot=leading name=folder-open class="when-open"></aria-icon>
+				<aria-icon fetch slot=leading name=folder-closed class="when-closed"></aria-icon>
 				<span>project-5</span>
 				<aria-group>
-					<aria-treeitem>project-5A.docx</aria-treeitem>
-					<aria-treeitem>project-5B.docx</aria-treeitem>
-					<aria-treeitem>project-5C.docx</aria-treeitem>
-					<aria-treeitem>project-5D.docx</aria-treeitem>
-					<aria-treeitem>project-5E.docx</aria-treeitem>
-					<aria-treeitem>project-5F.docx</aria-treeitem>
+					<aria-treeitem>
+						<aria-icon fetch slot=leading name=file-text></aria-icon>
+						project-5A.docx
+					</aria-treeitem>
+					<aria-treeitem>
+						<aria-icon fetch slot=leading name=file-text></aria-icon>
+						project-5B.docx
+					</aria-treeitem>
+					<aria-treeitem>
+						<aria-icon fetch slot=leading name=file-text></aria-icon>
+						project-5C.docx
+					</aria-treeitem>
+					<aria-treeitem>
+						<aria-icon fetch slot=leading name=file-text></aria-icon>
+						project-5D.docx
+					</aria-treeitem>
+					<aria-treeitem>
+						<aria-icon fetch slot=leading name=file-text></aria-icon>
+						project-5E.docx
+					</aria-treeitem>
+					<aria-treeitem>
+						<aria-icon fetch slot=leading name=file-text></aria-icon>
+						project-5F.docx
+					</aria-treeitem>
 				</aria-group>
 			</aria-treeitem>
 		</aria-group>
 	</aria-treeitem>
 	<aria-treeitem>
+		<aria-icon fetch slot=leading name=folder-open class="when-open"></aria-icon>
+		<aria-icon fetch slot=leading name=folder-closed class="when-closed"></aria-icon>
 		<span>Reports</span>
 		<aria-group>
 			<aria-treeitem>
+				<aria-icon fetch slot=leading name=folder-open class="when-open"></aria-icon>
+				<aria-icon fetch slot=leading name=folder-closed class="when-closed"></aria-icon>
 				<span>report-1</span>
 				<aria-group>
-					<aria-treeitem>report-1A.docx</aria-treeitem>
-					<aria-treeitem>report-1B.docx</aria-treeitem>
-					<aria-treeitem>report-1C.docx</aria-treeitem>
+					<aria-treeitem>
+						<aria-icon fetch slot=leading name=file-text></aria-icon>
+						report-1A.docx
+					</aria-treeitem>
+					<aria-treeitem>
+						<aria-icon fetch slot=leading name=file-text></aria-icon>
+						report-1B.docx
+					</aria-treeitem>
+					<aria-treeitem>
+						<aria-icon fetch slot=leading name=file-text></aria-icon>
+						report-1C.docx
+					</aria-treeitem>
 				</aria-group>
 			</aria-treeitem>
 			<aria-treeitem>
+				<aria-icon fetch slot=leading name=folder-open class="when-open"></aria-icon>
+				<aria-icon fetch slot=leading name=folder-closed class="when-closed"></aria-icon>
 				<span>report-2</span>
 				<aria-group>
-					<aria-treeitem>report-2A.docx</aria-treeitem>
-					<aria-treeitem>report-2B.docx</aria-treeitem>
-					<aria-treeitem>report-2C.docx</aria-treeitem>
-					<aria-treeitem>report-2D.docx</aria-treeitem>
+					<aria-treeitem>
+						<aria-icon fetch slot=leading name=file-text></aria-icon>
+						report-2A.docx
+					</aria-treeitem>
+					<aria-treeitem>
+						<aria-icon fetch slot=leading name=file-text></aria-icon>
+						report-2B.docx
+					</aria-treeitem>
+					<aria-treeitem>
+						<aria-icon fetch slot=leading name=file-text></aria-icon>
+						report-2C.docx
+					</aria-treeitem>
+					<aria-treeitem>
+						<aria-icon fetch slot=leading name=file-text></aria-icon>
+						report-2D.docx
+					</aria-treeitem>
 				</aria-group>
 			</aria-treeitem>
 			<aria-treeitem>
+				<aria-icon fetch slot=leading name=folder-open class="when-open"></aria-icon>
+				<aria-icon fetch slot=leading name=folder-closed class="when-closed"></aria-icon>
 				<span>report-3</span>
 				<aria-group>
-					<aria-treeitem>report-3A.docx</aria-treeitem>
-					<aria-treeitem>report-3B.docx</aria-treeitem>
-					<aria-treeitem>report-3C.docx</aria-treeitem>
-					<aria-treeitem>report-3D.docx</aria-treeitem>
+					<aria-treeitem>
+						<aria-icon fetch slot=leading name=file-text></aria-icon>
+						report-3A.docx
+					</aria-treeitem>
+					<aria-treeitem>
+						<aria-icon fetch slot=leading name=file-text></aria-icon>
+						report-3B.docx
+					</aria-treeitem>
+					<aria-treeitem>
+						<aria-icon fetch slot=leading name=file-text></aria-icon>
+						report-3C.docx
+					</aria-treeitem>
+					<aria-treeitem>
+						<aria-icon fetch slot=leading name=file-text></aria-icon>
+						report-3D.docx
+					</aria-treeitem>
 				</aria-group>
 			</aria-treeitem>
 		</aria-group>
 	</aria-treeitem>
 	<aria-treeitem>
+		<aria-icon fetch slot=leading name=folder-open class="when-open"></aria-icon>
+		<aria-icon fetch slot=leading name=folder-closed class="when-closed"></aria-icon>
 		<span>Letters</span>
 		<aria-group>
 			<aria-treeitem>
+				<aria-icon fetch slot=leading name=folder-open class="when-open"></aria-icon>
+				<aria-icon fetch slot=leading name=folder-closed class="when-closed"></aria-icon>
 				<span>letter-1</span>
 				<aria-group>
-					<aria-treeitem>letter-1A.docx</aria-treeitem>
-					<aria-treeitem>letter-1B.docx</aria-treeitem>
-					<aria-treeitem>letter-1C.docx</aria-treeitem>
+					<aria-treeitem>
+						<aria-icon fetch slot=leading name=file-text></aria-icon>
+						letter-1A.docx
+					</aria-treeitem>
+					<aria-treeitem>
+						<aria-icon fetch slot=leading name=file-text></aria-icon>
+						letter-1B.docx
+					</aria-treeitem>
+					<aria-treeitem>
+						<aria-icon fetch slot=leading name=file-text></aria-icon>
+						letter-1C.docx
+					</aria-treeitem>
 				</aria-group>
 			</aria-treeitem>
 			<aria-treeitem>
+				<aria-icon fetch slot=leading name=folder-open class="when-open"></aria-icon>
+				<aria-icon fetch slot=leading name=folder-closed class="when-closed"></aria-icon>
 				<span>letter-2</span>
 				<aria-group>
-					<aria-treeitem>letter-2A.docx</aria-treeitem>
-					<aria-treeitem>letter-2B.docx</aria-treeitem>
-					<aria-treeitem>letter-2C.docx</aria-treeitem>
-					<aria-treeitem>letter-2D.docx</aria-treeitem>
+					<aria-treeitem>
+						<aria-icon fetch slot=leading name=file-text></aria-icon>
+						letter-2A.docx
+					</aria-treeitem>
+					<aria-treeitem>
+						<aria-icon fetch slot=leading name=file-text></aria-icon>
+						letter-2B.docx
+					</aria-treeitem>
+					<aria-treeitem>
+						<aria-icon fetch slot=leading name=file-text></aria-icon>
+						letter-2C.docx
+					</aria-treeitem>
+					<aria-treeitem>
+						<aria-icon fetch slot=leading name=file-text></aria-icon>
+						letter-2D.docx
+					</aria-treeitem>
 				</aria-group>
 			</aria-treeitem>
 			<aria-treeitem>
+				<aria-icon fetch slot=leading name=folder-open class="when-open"></aria-icon>
+				<aria-icon fetch slot=leading name=folder-closed class="when-closed"></aria-icon>
 				<span>letter-3</span>
 				<aria-group>
-					<aria-treeitem>letter-3A.docx</aria-treeitem>
-					<aria-treeitem>letter-3B.docx</aria-treeitem>
-					<aria-treeitem>letter-3C.docx</aria-treeitem>
-					<aria-treeitem>letter-3D.docx</aria-treeitem>
+					<aria-treeitem>
+						<aria-icon fetch slot=leading name=file-text></aria-icon>
+						letter-3A.docx
+					</aria-treeitem>
+					<aria-treeitem>
+						<aria-icon fetch slot=leading name=file-text></aria-icon>
+						letter-3B.docx
+					</aria-treeitem>
+					<aria-treeitem>
+						<aria-icon fetch slot=leading name=file-text></aria-icon>
+						letter-3C.docx
+					</aria-treeitem>
+					<aria-treeitem>
+						<aria-icon fetch slot=leading name=file-text></aria-icon>
+						letter-3D.docx
+					</aria-treeitem>
 				</aria-group>
 			</aria-treeitem>
 		</aria-group>
@@ -139,6 +269,7 @@ This example requires JavaScript to be activated.
 
 </figure>
 
+<script type=module src=/dist/js/icon.js></script>
 <script type=module src=/dist/js/tree.js></script>
 <script>
 	const tree = document.getElementById("tree")

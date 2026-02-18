@@ -39,6 +39,7 @@ export const Tree = tag(
   { mixins: [AriaMultiSelectable, TypeAheadMixin] },
   (el) => {
     internals(el, { role: "tree", ariaOrientation: "vertical" })
+    stylize(el, css`:host { display: block; }`)
     validate(el, { sChildren: "aria-treeitem", when: "connected" })
 
     on(el, "slotchange", register)
