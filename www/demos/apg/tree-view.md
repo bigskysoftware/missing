@@ -1,5 +1,4 @@
 ---
-draft: true
 title: Tree View
 templateEngine: [vento, md]
 apg:
@@ -30,3 +29,127 @@ Refer to the APG page when implementing this pattern.
 {{ include "demo_kbd.vto" }}
 
 ## Example
+<noscript>
+
+This example requires JavaScript to be activated.
+
+</noscript>
+
+<figure>
+<h3 id=documents:label>My Documents</h3>
+
+<style>
+  aria-treeitem:not([aria-expanded=true]) > aria-group {
+	display: none;
+  }
+</style>
+<aria-tree id=tree aria-labelledby=documents:label>
+	<aria-treeitem>
+		<span>Projects</span>
+		<aria-group>
+			<aria-treeitem>project-1.docx</aria-treeitem>
+			<aria-treeitem>project-2.docx</aria-treeitem>
+			<aria-treeitem>
+				<span>project-3</span>
+				<aria-group>
+					<aria-treeitem>project-3A.docx</aria-treeitem>
+					<aria-treeitem>project-3B.docx</aria-treeitem>
+					<aria-treeitem>project-3C.docx</aria-treeitem>
+				</aria-group>
+			</aria-treeitem>
+			<aria-treeitem>project-4.docx</aria-treeitem>
+			<aria-treeitem>
+				<span>project-5</span>
+				<aria-group>
+					<aria-treeitem>project-5A.docx</aria-treeitem>
+					<aria-treeitem>project-5B.docx</aria-treeitem>
+					<aria-treeitem>project-5C.docx</aria-treeitem>
+					<aria-treeitem>project-5D.docx</aria-treeitem>
+					<aria-treeitem>project-5E.docx</aria-treeitem>
+					<aria-treeitem>project-5F.docx</aria-treeitem>
+				</aria-group>
+			</aria-treeitem>
+		</aria-group>
+	</aria-treeitem>
+	<aria-treeitem>
+		<span>Reports</span>
+		<aria-group>
+			<aria-treeitem>
+				<span>report-1</span>
+				<aria-group>
+					<aria-treeitem>report-1A.docx</aria-treeitem>
+					<aria-treeitem>report-1B.docx</aria-treeitem>
+					<aria-treeitem>report-1C.docx</aria-treeitem>
+				</aria-group>
+			</aria-treeitem>
+			<aria-treeitem>
+				<span>report-2</span>
+				<aria-group>
+					<aria-treeitem>report-2A.docx</aria-treeitem>
+					<aria-treeitem>report-2B.docx</aria-treeitem>
+					<aria-treeitem>report-2C.docx</aria-treeitem>
+					<aria-treeitem>report-2D.docx</aria-treeitem>
+				</aria-group>
+			</aria-treeitem>
+			<aria-treeitem>
+				<span>report-3</span>
+				<aria-group>
+					<aria-treeitem>report-3A.docx</aria-treeitem>
+					<aria-treeitem>report-3B.docx</aria-treeitem>
+					<aria-treeitem>report-3C.docx</aria-treeitem>
+					<aria-treeitem>report-3D.docx</aria-treeitem>
+				</aria-group>
+			</aria-treeitem>
+		</aria-group>
+	</aria-treeitem>
+	<aria-treeitem>
+		<span>Letters</span>
+		<aria-group>
+			<aria-treeitem>
+				<span>letter-1</span>
+				<aria-group>
+					<aria-treeitem>letter-1A.docx</aria-treeitem>
+					<aria-treeitem>letter-1B.docx</aria-treeitem>
+					<aria-treeitem>letter-1C.docx</aria-treeitem>
+				</aria-group>
+			</aria-treeitem>
+			<aria-treeitem>
+				<span>letter-2</span>
+				<aria-group>
+					<aria-treeitem>letter-2A.docx</aria-treeitem>
+					<aria-treeitem>letter-2B.docx</aria-treeitem>
+					<aria-treeitem>letter-2C.docx</aria-treeitem>
+					<aria-treeitem>letter-2D.docx</aria-treeitem>
+				</aria-group>
+			</aria-treeitem>
+			<aria-treeitem>
+				<span>letter-3</span>
+				<aria-group>
+					<aria-treeitem>letter-3A.docx</aria-treeitem>
+					<aria-treeitem>letter-3B.docx</aria-treeitem>
+					<aria-treeitem>letter-3C.docx</aria-treeitem>
+					<aria-treeitem>letter-3D.docx</aria-treeitem>
+				</aria-group>
+			</aria-treeitem>
+		</aria-group>
+	</aria-treeitem>
+</aria-tree>
+
+<label>File or Folder Selected: <input id="last_action" type="text" size="15" readonly=""></label>
+
+</figure>
+
+<script type=module src=/dist/js/tree.js></script>
+<script>
+	const tree = document.getElementById("tree")
+	const input = document.getElementById("last_action")
+	tree.addEventListener("change", (e) => {
+		const treeitem = e.detail.selected
+		let label = treeitem.getAttribute("aria-label")
+		if (!label) {
+			let child = treeitem.firstElementChild
+			label = child ? child.innerText : treeitem.innerText
+		}
+		input.value = label.trim()
+	})
+</script>

@@ -129,7 +129,12 @@ export const AriaCurrent = AriaState("current")
 
 export const AriaExpanded = mixin(
   [AriaDisabled, AriaState("expanded")],
-  (el) => states(el, ["expandable"])
+  (el) => {
+    states(el, ["expandable"])
+    on(el, "attribute:aria-expanded", (e) => {
+      states(el, { collapsed: !ariaState(el, "expanded") })
+    })
+  }
 )
 
 export const AriaGrabbed = mixin(
@@ -155,7 +160,10 @@ export const AriaSelected = mixin(
       :state(multiselectable) *,
       :state(multiselectable) :state(group) *
     `
-    const selectionFollowsFocus = () => !el.matches(sMultiSelectable)
+    const sExceptions = `
+      aria-treeitem
+    `
+    const selectionFollowsFocus = () => !el.matches(sMultiSelectable) && !el.matches(sExceptions)
 
     states(el, ["focusable", "selectable"])
 
@@ -165,13 +173,14 @@ export const AriaSelected = mixin(
     })
 
     on(el, "blur", (e) => {
-      if (selectionFollowsFocus() && el.closest(":state(focusgroup)").contains(e.relatedTarget))
+      const target = e.relatedTarget
+      if (selectionFollowsFocus() && el.closest(":state(focusgroup)").contains(target) && !el.contains(target))
         ariaState(el, "selected", null)
     })
 
     on(el, "click", (e) => {
       if (selectionFollowsFocus())
-        ilog("How to remove ariaSelected frome existing el?")
+        ilog("How to remove ariaSelected from existing el?")
       else
         ariaState(el, "selected", !ariaState(el, "selected") || null)
     })
