@@ -1,7 +1,7 @@
 // @deno-types=./19.ts
 // @deno-types=./43.ts
-import { $, $$, attr, css, dispatch, makelogger, on } from "./19.js"
-import { internals, observeAttributes, states, stylize, tag, validate } from "./43.js"
+import { $, $$, attr, css, dispatch, html, makelogger, on } from "./19.js"
+import { internals, observeAttributes, shadow, states, stylize, tag, validate } from "./43.js"
 import { FormElementMixin} from "./forms.js"
 import { TypeAheadMixin } from "./typeahead.js"
 import { ariaState, AriaDisabled, AriaMultiSelectable, AriaSelected } from "./aria.js"

@@ -74,7 +74,7 @@ export const FocusGroupMixin = mixin(
     const movement = (key) =>
       keyTable[writingMode()][direction()][orientation()][key]
 
-    const sMember = sFocusable
+    const sMember = ":state(focusable)"
     const members = () => $$(el, sMember)
     const current = () => el.contains(document.activeElement)
       ? document.activeElement
@@ -113,6 +113,8 @@ export const FocusGroupMixin = mixin(
     on(el, "click", (e) => {
       if (ariaState(e.target, "disabled") || e.target.matches("[aria-disabled=true] *"))
         halt("propagation", e)
+      else
+        focusTo(e.target)
     }, { capture: true })
   }
 )

@@ -1,7 +1,7 @@
 // @deno-types=./19.ts
 // @deno-types=./43.ts
-import { $, css, dispatch, halts, hotkey, makelogger, on } from "./19.js"
-import { internals, role, states, stylize, tag, validate } from "./43.js"
+import { $, css, dispatch, halts, html, hotkey, makelogger, on } from "./19.js"
+import { internals, role, shadow, states, stylize, tag, validate } from "./43.js"
 import { FocusGroupMixin } from "./focus.js"
 import { ariaState, AriaExpanded, AriaGroup, AriaMultiSelectable, AriaSelected } from "./aria.js"
 import { TypeAheadMixin } from "./typeahead.js"

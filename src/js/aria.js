@@ -1,6 +1,6 @@
 // @deno-types=./19.ts
 // @deno-types=./43.ts
-import { $$, css, dispatch, halt, hotkey, makelogger, off, on } from "./19.js"
+import { $, $$, css, dispatch, halt, hotkey, makelogger, off, on } from "./19.js"
 import { internals, memoize, mixin, role, states, stylize, tag, validate } from "./43.js"
 
 const ilog = makelogger("aria")
@@ -172,16 +172,18 @@ export const AriaSelected = mixin(
         ariaState(el, "selected", true)
     })
 
-    on(el, "blur", (e) => {
+    on(el, "focusout", (e) => {
       const target = e.relatedTarget
       if (selectionFollowsFocus() && el.closest(":state(focusgroup)").contains(target) && !el.contains(target))
         ariaState(el, "selected", null)
     })
 
+    on(el, "blur", (e) => {
+      console.log('TODO')
+    })
+
     on(el, "click", (e) => {
-      if (selectionFollowsFocus())
-        ilog("How to remove ariaSelected from existing el?")
-      else
+      if (!selectionFollowsFocus())
         ariaState(el, "selected", !ariaState(el, "selected") || null)
     })
 
@@ -224,6 +226,18 @@ export const AriaProperty = (aria, { defaultValue = "false" } = {}) => {
     }
   }
 }
+
+export const AriaActions = mixin(
+  (el) => {
+    const inert = (value) => {
+      const a = $(el, "aria-actions")
+      if (a) a.inert = value
+    }
+    on(el, "constructed", (e) => inert(true))
+    on(el, "focusin", (e) => inert(false))
+    on(el, "focusout", (e) => inert(true))
+  }
+)
 
 // TODO: Could/should ariaRelatives use internals?
 // TODO: Still a work in progress
@@ -299,7 +313,7 @@ export const AriaMultiSelectable = mixin(
       "Ctrl+Shift+Home": (e) => {
         const members = $$(el, sMember)
         const start = members.indexOf(document.activeElement)
-        members.slice(0, start).forEach(m => ariaState(m, "selected", true))
+        members.slice(0, start + 1).forEach(m => ariaState(m, "selected", true))
         anchor = members.at(0)
       },
       "Ctrl+Shift+End": (e) => {

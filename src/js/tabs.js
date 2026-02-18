@@ -3,7 +3,7 @@
 import { $$, attr, css, html, identify, makelogger, on } from "./19.js"
 import { internals, observeAttributes, shadow, stylize, tag, validate } from "./43.js"
 import { sFocusable, FocusGroupMixin } from "./focus.js"
-import { ariaProperty, ariaRelatives, ariaState, AriaControls, AriaMultiSelectable, AriaSelected } from "./aria.js"
+import { ariaProperty, ariaRelatives, ariaState, AriaActions, AriaControls, AriaMultiSelectable, AriaSelected } from "./aria.js"
 
 const ilog = makelogger("tabs")
 
@@ -51,7 +51,7 @@ export const TabList = tag(
 
 export const Tab = tag(
   "aria-tab",
-  { mixins: [AriaSelected] },
+  { mixins: [AriaActions, AriaSelected] },
   (el) => {
 
     internals(el, { role: "tab" })
@@ -80,14 +80,6 @@ export const Tab = tag(
         panel.hidden = (e.detail.value !== "true")
         ariaState(el, "expanded", (multiselect && !panel.hidden) || null)
       })
-    })
-
-    on(el, "keydown", (e) => {
-      const lastFocusable = $$(el, "button").at(-1)
-      if (e.key === "Tab" && document.activeElement === lastFocusable) {
-        e.preventDefault()
-        el.focus()
-      }
     })
 
   }
