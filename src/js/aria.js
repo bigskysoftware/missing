@@ -360,6 +360,9 @@ export const AriaGroup = tag(
 
     //on(el, "connected", (e) => el.removeAttribute("tabindex"))
 
+    on(el, "slotchange", (e) => {
+      dispatch(el.parentElement, "slotchange", { host: el, elements: e.detail.elements })
+    })
   }
 )
 

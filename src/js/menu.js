@@ -14,6 +14,12 @@ const MenuBar = tag(
   { mixins: [FocusGroupMixin] },
   (el) => {
     internals(el, { role: "menubar" })
+
+    on(el, "slotchange", (e) => {
+      const menuitems = e.detail.elements
+      const current = menuitems.find(t => t.tabIndex == 0) || menuitems[0]
+      current.tabIndex = 0
+    })
   }
 )
 
@@ -27,6 +33,12 @@ const MenuList = tag(
 			ariaLabelledByElements: (el.popover) ? [invokerOf(el)] : null,
 		})
     validate(el, { attrs: ["id"], sChildren: "aria-menuitem, aria-group, aria-separator", when: "connected" })
+
+    on(el, "slotchange", (e) => {
+      const menuitems = $$(el, "aria-menuitem")
+      const current = menuitems.find(t => t.tabIndex == 0) || menuitems[0]
+      current.tabIndex = 0
+    })
 
     on(el, "toggle", (e) => {
 			if (e.newState === "open")

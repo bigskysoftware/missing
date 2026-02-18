@@ -1,6 +1,6 @@
 // @deno-types=./19.ts
 // @deno-types=./43.ts
-import { $, $$, css, dispatch, halt, halts, hotkey, makelogger, observe, on, traverse } from "./19.js"
+import { $, $$, attr, css, dispatch, halt, halts, hotkey, makelogger, observe, on, traverse } from "./19.js"
 import { internals, mixin, observeAttributes, states, stylize, tag, validate } from "./43.js"
 import { ariaProperty, ariaState, AriaOrientation } from "./aria.js"
 
@@ -19,13 +19,12 @@ export const sFocusable = /** @type {const} */ `
     :is(audio, video)[controls],
     :is(img, object)[usemap],
     button, details, embed, iframe, input, select, textarea,
-    :state(focusable),
+    :state(focusable)
   ):not(
     [disabled],
     [hidden] *,
     :state(disabled),
-    :state(focusgroup-disable) *,
-    :state(focusable) *
+    :state(focusgroup-disable) *
   )
 `
 
@@ -81,30 +80,18 @@ export const FocusGroupMixin = mixin(
       ? document.activeElement
       : null
 
-    const update = () => {
-      if (current()) return
-      const ms = members()
-      if (!ms.length) return
-      const preferred = ms.find(
-        m => ariaState(m, "checked") || ariaState(m, "selected")
-      ) || ms[0]
-      preferred.tabIndex = 0
-      dispatch(el, "focusgroup:update", { members: ms, preferred: preferred })
-    }
-
     const focusTo = (dest) => {
       const ms = members()
       if (!ms.includes(dest)) return
-      ms.forEach(m => m.tabIndex = INACTIVE_TABINDEX)
+      ms.forEach(m =>
+        attr(m, "tabindex", m.tagName.includes("-") ? null : INACTIVE_TABINDEX)
+      )
       dest.tabIndex = 0
       dest.focus()
     }
 
     states(el, ["focusgroup"])
     validate(el, { label: true, when: "connected" })
-    observe(el, { subtree: true, childList: true }, update)
-
-    on(el, "connected", (e) => update())
 
     on(el, "focusin", (e) => focusTo(e.target))
 

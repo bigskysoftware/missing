@@ -1,8 +1,8 @@
 // @deno-types=./19.ts
 // @deno-types=./43.ts
-import { $$, attr, css, makelogger, on } from "./19.js"
-import { internals, observeAttributes, stylize, tag, validate } from "./43.js"
-import { FocusGroupMixin } from "./focus.js"
+import { $$, attr, css, identify, makelogger, on } from "./19.js"
+import { internals, observeAttributes, shadow, stylize, tag, validate } from "./43.js"
+import { sFocusable, FocusGroupMixin } from "./focus.js"
 import { ariaProperty, ariaRelatives, ariaState, AriaControls, AriaMultiSelectable, AriaSelected } from "./aria.js"
 
 const ilog = makelogger("tabs")

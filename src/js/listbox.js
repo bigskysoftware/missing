@@ -38,11 +38,20 @@ export const ListBox = tag(
       when: "connected"
     })
 
-    // TODO: Should this be "focusgroup:update"?
     on(el, "connected", (e) => {
       if (!$(el, "[aria-selected=true]"))
         setDefault()
       setValue()
+    })
+
+    on(el, "slotchange", (e) => {
+      setValue()
+
+      const options = $$(el, sMember)
+      const current = options.find(o =>
+        o.tabIndex == 0 || ariaState(o, "selected")
+      ) || options[0]
+      current.tabIndex = 0
     })
 
     on(el, "formDisabled", (e) => {
