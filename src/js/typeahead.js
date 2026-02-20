@@ -1,9 +1,9 @@
 // @deno-types=./19.ts
 // @deno-types=./43.ts
-import { $$, attr, halt, makelogger, on } from "./19.js"
-import { mixin } from "./43.js"
+import { $$, halt, makelogger, on } from "./19.js"
+import { accName, mixin } from "./43.js"
 import { ariaProperty } from "./aria.js"
-import { sFocusable, FocusGroupMixin } from "./focus.js"
+import { FocusGroupMixin } from "./focus.js"
 
 const ilog = makelogger("typeahead")
 
@@ -13,12 +13,8 @@ export const TypeAheadMixin = mixin(
   [FocusGroupMixin],
   (el) => {
 
-    const sMember = sFocusable
-    // TODO: labelOf helper? c.f. validate.js
-    const nameOf = (member) =>
-      (ariaProperty(member, "label") || member.textContent.trim() || "").toLowerCase()
+    const sMember = ":state(focusable)"
 
-    // TODO: Cover international symbols with a test
     const validKey = (e) =>
       !(e.altKey || e.ctrlKey || e.metaKey) && e.key.match(/^.$/u)
 
@@ -28,12 +24,12 @@ export const TypeAheadMixin = mixin(
       state = { query: "", timeout: null }
     }
     const find = (query) => {
-      const members = $$(el, sMember)
-      const start = members.indexOf(document.activeElement)
-      for (let i = 0; i < members.length; i++) {
-        const member = members[(start + i) % members.length]
-        if (nameOf(member).startsWith(query))
-          return member
+      const ms = $$(el, sMember)
+      const start = ms.indexOf(document.activeElement)
+      for (let i = 0; i < ms.length; i++) {
+        const m = ms[(start + i) % ms.length]
+        if (accName(m).toLowerCase().startsWith(query))
+          return m
       }
     }
 

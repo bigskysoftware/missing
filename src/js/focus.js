@@ -1,26 +1,26 @@
 // @deno-types=./19.ts
 // @deno-types=./43.ts
-import { $, $$, attr, css, dispatch, halt, halts, hotkey, makelogger, observe, on, traverse } from "./19.js"
-import { internals, mixin, observeAttributes, states, stylize, tag, validate } from "./43.js"
-import { ariaProperty, ariaState, AriaOrientation } from "./aria.js"
+import { $, $$, halt, hotkey, makelogger, on, traverse } from "./19.js"
+import { mixin, states, validate } from "./43.js"
+import { ariaProperty, AriaOrientation } from "./aria.js"
 
 const ilog = makelogger("focus-group")
 
+// TODO: Haven't been able to figure out selector to ignore all
+//       negative values except INACTIVE_TABINDEX. The problem
+//       is how to support e.g. button[tabindex=-7822865] but
+//       not button[tabindex=-1], button[tabindex=-2], etc.
 export const INACTIVE_TABINDEX = /** @type {const} */ -7822865
-
-/** @type {Set<string>} */
-const focusableTags = new Set()
-
 export const sFocusable = /** @type {const} */ `
   :is(
-    [tabindex]:not([tabindex^='-']),
-    [tabindex=${INACTIVE_TABINDEX}],
+    [tabindex],
     :is(a, area)[href],
     :is(audio, video)[controls],
     :is(img, object)[usemap],
     button, details, embed, iframe, input, select, textarea,
     :state(focusable)
   ):not(
+    [tabindex='-1'],
     [disabled],
     [hidden] *,
     :state(disabled),
@@ -29,7 +29,7 @@ export const sFocusable = /** @type {const} */ `
 `
 
 // keyTable[writing-mode][direction][key] => action
-const keyTable = /** @type {const} */ ({
+export const keyTable = /** @type {const} */ ({
   "horizontal-tb": {
     "ltr": {
       "vertical": { "Up": "previous", "Down": "next" },
@@ -65,12 +65,14 @@ const keyTable = /** @type {const} */ ({
 export const FocusGroupMixin = mixin(
   [AriaOrientation],
   (el) => {
+    states(el, ["focusgroup"])
+    validate(el, { label: true, when: "connected" })
 
+    // TODO: Extract this outside of the mixin?
     const writingMode = () => getComputedStyle(el).writingMode
     const direction = () => getComputedStyle(el).direction
     const orientation = () => ariaProperty(el, "orientation")
     const wrapping = ()  => el.hasAttribute("wrap")
-
     const movement = (key) =>
       keyTable[writingMode()][direction()][orientation()][key]
 
@@ -81,17 +83,15 @@ export const FocusGroupMixin = mixin(
       : null
 
     const focusTo = (dest) => {
-      const ms = members()
-      if (!ms.includes(dest)) return
-      ms.forEach(m =>
-        attr(m, "tabindex", m.tagName.includes("-") ? null : INACTIVE_TABINDEX)
-      )
-      dest.tabIndex = 0
-      dest.focus()
+      ilog(dest)
+      if (!dest) return
+      if (dest.tabIndex !== 0) {
+        members().forEach(m => m.tabIndex = -1)
+        dest.tabIndex = 0
+      }
+      if (dest !== document.activeElement)
+        dest.focus()
     }
-
-    states(el, ["focusgroup"])
-    validate(el, { label: true, when: "connected" })
 
     on(el, "focusin", (e) => focusTo(e.target))
 
@@ -108,13 +108,10 @@ export const FocusGroupMixin = mixin(
       }
     })
 
-    // TODO: Add test that focusgroup will capture+halt <button aria-disabled onclick="">
-    // NOTE: Children of button (e.g., <aria-icon>) might be the target of click event
     on(el, "click", (e) => {
-      if (ariaState(e.target, "disabled") || e.target.matches("[aria-disabled=true] *"))
+      const sDisabled = "[aria-disabled=true], [aria-disabled=true] *"
+      if (e.target.matches(sDisabled))
         halt("propagation", e)
-      else
-        focusTo(e.target)
     }, { capture: true })
   }
 )

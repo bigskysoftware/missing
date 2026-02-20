@@ -68,32 +68,38 @@ This example requires JavaScript to be activated.
 		<aria-tablist aria-label="Example">
 			<aria-tab id=hs-tab-1>
 				<aria-icon fetch slot=leading name=home></aria-icon> Tab 1
-                <aria-actions slot=trailing>
-    				<button slot=actions commandfor=hs-tab-1 command="--close" class="bad iconbutton margin-inline-start" aria-label="Close tab 1">
-	    				<aria-icon fetch name=x></aria-icon>
-		    		</button>
-                </aria-actions>
+				<aria-actions slot=trailing>
+					<button slot=actions commandfor=hs-tab-1 command="--close" class="bad iconbutton" aria-label="Close tab 1">
+						<aria-icon fetch name=x></aria-icon>
+					</button>
+				</aria-actions>
 			</aria-tab>
 			<aria-tab id=hs-tab-2 aria-actions=hs-actions-2>
 				<aria-icon fetch slot=leading name=book></aria-icon> Tab 2
-                <aria-actions slot=trailing>
-				    <button id=hs-actions-2 commandfor=hs-tab-2 command="--close" class="bad iconbutton margin-inline-start" aria-label="Close tab 2">
-				    	<aria-icon fetch name=x></aria-icon>
-				    </button>
-                </aria-actions>
+				<aria-actions slot=trailing>
+					<button id=hs-actions-2 commandfor=hs-tab-2 command="--close" class="bad iconbutton" aria-label="Close tab 2">
+						<aria-icon fetch name=x></aria-icon>
+					</button>
+				</aria-actions>
 			</aria-tab>
 			<aria-tab id=hs-tab-3 aria-actions=tab-hs-3a>
 				<aria-icon fetch slot=leading name=database></aria-icon> Tab 3
-                <aria-actions slot=trailing>
-				    <button id=hs-actions-3 commandfor=hs-tab-3 command="--close" class="bad iconbutton margin-inline-start" aria-label="Close tab 3">
-					    <aria-icon fetch name=x></aria-icon>
-				    </button>
-                </aria-actions>
+				<aria-actions slot=trailing>
+					<button id=hs-actions-3 commandfor=hs-tab-3 command="--close" class="bad iconbutton" aria-label="Close tab 3">
+						<aria-icon fetch name=x></aria-icon>
+					</button>
+				</aria-actions>
 			</aria-tab>
 		</aria-tablist>
-		<aria-tabpanel><p>This is the content for the first tab.</p></aria-tabpanel>
-		<aria-tabpanel><p>This is the content for the second tab.</p></aria-tabpanel>
-		<aria-tabpanel><p>This is the content for the third tab.</p></aria-tabpanel>
+		<aria-tabpanel>
+			<p>This is the content for the first tab; it contains a <a href=#>focusable</a> link.</p>
+		</aria-tabpanel>
+		<aria-tabpanel>
+			<p>This is the content for the second tab; it contains a <a href=#>focusable</a> link.</p>
+		</aria-tabpanel>
+		<aria-tabpanel>
+			<p>This is the content for the third tab; it contains a <a href=#>focusable</a> link.</p>
+		</aria-tabpanel>
 	</aria-tabset>
 	<p>A horizontal tablist with end tabs and big icons.</p>
 	<aria-tabset>
@@ -103,69 +109,69 @@ This example requires JavaScript to be activated.
 		<aria-tablist aria-label="Example">
 			<aria-tab aria-actions=he-actions-1>
 				<aria-icon fetch slot=leading name=home class="<big>"></aria-icon> Tab 1
-                <aria-actions slot=trailing>
-    				<button id=he-actions-1 popovertarget=he-actions-1-menu class="iconbutton margin-inline-start" aria-label="Actions for tab 1">
-	    				<aria-icon fetch name=ellipsis-vertical></aria-icon>
-		    		</button>
-			    	<aria-menulist id=he-actions-1-menu popover aria-labelledby=he-actions-1>
-				    	<aria-menuitem onclick="alert(`You clicked ${this.innerText}`)">
-                          <aria-icon fetch slot=leading name=arrow-right></aria-icon>
-                          Move forward
-                        </aria-menuitem>
-					    <aria-menuitem onclick="alert(`You clicked ${this.innerText}`)">
-                          <aria-icon fetch slot=leading name=arrow-left></aria-icon>
-                          Move backwards
-                        </aria-menuitem>
-					    <aria-menuitem onclick="alert(`You clicked ${this.innerText}`)">
-                          <aria-icon fetch slot=leading name=x></aria-icon>
-                          Close
-                        </aria-menuitem>
-				    </aria-menulist>
-                </aria-actions>
+				<aria-actions slot=trailing>
+					<button id=he-actions-1 popovertarget=he-actions-1-menu class="iconbutton" aria-label="Actions for tab 1">
+						<aria-icon fetch name=ellipsis-vertical></aria-icon>
+					</button>
+					<aria-menulist id=he-actions-1-menu popover aria-labelledby=he-actions-1>
+						<aria-menuitem onclick="alert(`You clicked ${this.innerText}`)">
+							<aria-icon fetch slot=leading name=arrow-right></aria-icon>
+							Move forward
+						</aria-menuitem>
+						<aria-menuitem onclick="alert(`You clicked ${this.innerText}`)">
+							<aria-icon fetch slot=leading name=arrow-left></aria-icon>
+							Move backwards
+						</aria-menuitem>
+						<aria-menuitem onclick="alert(`You clicked ${this.innerText}`)">
+							<aria-icon fetch slot=leading name=x></aria-icon>
+							Close
+						</aria-menuitem>
+					</aria-menulist>
+				</aria-actions>
 			</aria-tab>
 			<aria-tab aria-actions=he-actions-2>
 				<aria-icon fetch slot=leading name=book class="<big>"></aria-icon> Tab 2
-                <aria-actions slot=trailing>
-				    <button id=he-actions-2 popovertarget=he-actions-2-menu class="iconbutton margin-inline-start" aria-label="Actions for tab 2">
-				    	<aria-icon fetch name=ellipsis-vertical></aria-icon>
-				    </button>
-				    <aria-menulist id=he-actions-2-menu popover aria-labelledby=he-actions-2>
-				    	<aria-menuitem onclick="alert(`You clicked ${this.innerText}`)">
-                          <aria-icon fetch slot=leading name=arrow-right></aria-icon>
-                          Move forward
-                        </aria-menuitem>
-					    <aria-menuitem onclick="alert(`You clicked ${this.innerText}`)">
-                          <aria-icon fetch slot=leading name=arrow-left></aria-icon>
-                          Move backwards
-                        </aria-menuitem>
-					    <aria-menuitem onclick="alert(`You clicked ${this.innerText}`)">
-                          <aria-icon fetch slot=leading name=x></aria-icon>
-                          Close
-                        </aria-menuitem>
-				    </aria-menulist>
-                </aria-actions>
+				<aria-actions slot=trailing>
+					<button id=he-actions-2 popovertarget=he-actions-2-menu class="iconbutton" aria-label="Actions for tab 2">
+						<aria-icon fetch name=ellipsis-vertical></aria-icon>
+					</button>
+					<aria-menulist id=he-actions-2-menu popover aria-labelledby=he-actions-2>
+						<aria-menuitem onclick="alert(`You clicked ${this.innerText}`)">
+							<aria-icon fetch slot=leading name=arrow-right></aria-icon>
+							Move forward
+						</aria-menuitem>
+						<aria-menuitem onclick="alert(`You clicked ${this.innerText}`)">
+							<aria-icon fetch slot=leading name=arrow-left></aria-icon>
+							Move backwards
+						</aria-menuitem>
+						<aria-menuitem onclick="alert(`You clicked ${this.innerText}`)">
+							<aria-icon fetch slot=leading name=x></aria-icon>
+							Close
+						</aria-menuitem>
+					</aria-menulist>
+				</aria-actions>
 			</aria-tab>
 			<aria-tab aria-actions=he-actions-3>
 				<aria-icon fetch slot=leading name=database class="<big>"></aria-icon> Tab 3
-                <aria-actions slot=trailing>
-				    <button id=he-actions-3 popovertarget=he-actions-3-menu class="iconbutton margin-inline-start" aria-label="Actions for tab 3">
-				    	<aria-icon fetch name=ellipsis-vertical></aria-icon>
-				    </button>
-				    <aria-menulist id=he-actions-3-menu popover aria-labelledby=he-actions-3>
-				    	<aria-menuitem onclick="alert(`You clicked ${this.innerText}`)">
-                          <aria-icon fetch slot=leading name=arrow-right></aria-icon>
-                          Move forward
-                        </aria-menuitem>
-					    <aria-menuitem onclick="alert(`You clicked ${this.innerText}`)">
-                          <aria-icon fetch slot=leading name=arrow-left></aria-icon>
-                          Move backwards
-                        </aria-menuitem>
-					    <aria-menuitem onclick="alert(`You clicked ${this.innerText}`)">
-                          <aria-icon fetch slot=leading name=x></aria-icon>
-                          Close
-                        </aria-menuitem>
-				    </aria-menulist>
-                </aria-actions>
+				<aria-actions slot=trailing>
+					<button id=he-actions-3 popovertarget=he-actions-3-menu class="iconbutton" aria-label="Actions for tab 3">
+						<aria-icon fetch name=ellipsis-vertical></aria-icon>
+					</button>
+					<aria-menulist id=he-actions-3-menu popover aria-labelledby=he-actions-3>
+						<aria-menuitem onclick="alert(`You clicked ${this.innerText}`)">
+							<aria-icon fetch slot=leading name=arrow-right></aria-icon>
+							Move forward
+						</aria-menuitem>
+						<aria-menuitem onclick="alert(`You clicked ${this.innerText}`)">
+							<aria-icon fetch slot=leading name=arrow-left></aria-icon>
+							Move backwards
+						</aria-menuitem>
+						<aria-menuitem onclick="alert(`You clicked ${this.innerText}`)">
+							<aria-icon fetch slot=leading name=x></aria-icon>
+							Close
+						</aria-menuitem>
+					</aria-menulist>
+				</aria-actions>
 			</aria-tab>
 		</aria-tablist>
 	</aria-tabset>

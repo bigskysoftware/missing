@@ -1,9 +1,9 @@
 // @deno-types=./19.ts
 // @deno-types=./43.ts
-import { $, css, dispatch, halts, html, hotkey, makelogger, on } from "./19.js"
-import { internals, role, shadow, states, stylize, tag, validate } from "./43.js"
+import { $, css, dispatch, halts, hotkey, makelogger, on } from "./19.js"
+import { internals, role, states, stylize, tag, validate } from "./43.js"
 import { FocusGroupMixin } from "./focus.js"
-import { ariaState, AriaExpanded, AriaGroup, AriaMultiSelectable, AriaSelected } from "./aria.js"
+import { ariaState, AriaActions, AriaExpanded, AriaGroup, AriaMultiSelectable, AriaSelected } from "./aria.js"
 import { TypeAheadMixin } from "./typeahead.js"
 
 const ilog = makelogger("tree")
@@ -34,6 +34,7 @@ const register = (e) => {
   current.tabIndex = 0
 }
 
+// TODO: Implement multiselect functionality
 export const Tree = tag(
   "aria-tree",
   { mixins: [AriaMultiSelectable, TypeAheadMixin] },
@@ -48,11 +49,10 @@ export const Tree = tag(
 
 export const TreeItem = tag(
   "aria-treeitem",
-  { mixins: [AriaExpanded, AriaSelected] },
+  { mixins: [AriaActions, AriaExpanded, AriaSelected] },
   (el) => {
 
     internals(el, { role: "treeitem" })
-    // TODO: Why is <style> in tree-view.md neccessary?
     stylize(el, css`
       :host {
         display: list-item;
@@ -62,12 +62,7 @@ export const TreeItem = tag(
       :host(:state(expanded))  { --marker: "-"; }
       :host(:state(collapsed)) { --marker: "+"; }
       :host(:state(collapsed):not(:has(aria-group))) { --marker: ""; }
-      :host(:state(collapsed)) > aria-group { display: none; }
-    `)
-    shadow(el).replaceChildren(html`
-      <slot name=leading></slot>
-      <slot></slot>
-      <slot name=trailing></slot>
+      :host(:state(collapsed)) ::slotted(aria-group) { display: none; }
     `)
     validate(el, { sParent: ":is(aria-tree, aria-group)", when: "connected" })
 
@@ -76,8 +71,10 @@ export const TreeItem = tag(
       : null
 
 
-    // TODO: Can AriaExpanded mixin be defined to allow for undefined?
-    // TODO: Can (should?) ariaState also return undefined instead of just bool?
+    // TODO: Not every <aria-treeitem> should have a default aria-expanded=false.
+		//			 Can AriaExpanded be ...expanded to take this into account?
+    // TODO: Could ariaState support looking for "expandable" state and setting
+		//			 true/false/null based on that?
     on(el, "slotchange", (e) => {
       const expandable = !!$(el, ":scope > aria-group")
       states(el, { "expandable": expandable })
@@ -121,12 +118,8 @@ export const TreeItem = tag(
     }, { halt: "default propagation" }))
 
     on(el, "attribute:aria-selected", (e) => {
-      if (ariaState(el, "selected")) {
+      if (ariaState(el, "selected"))
         dispatch(el.closest("aria-tree"), "change", { selected: el })
-      }
-
-      // TODO: Does MultiSelectable do anything?
-      const multiselect = el.matches(":state(multiselectable) > *")
     })
   }
 )

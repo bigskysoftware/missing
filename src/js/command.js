@@ -1,7 +1,7 @@
 // @deno-types=./19.ts
 // @deno-types=./43.ts
-import { attr, behavior, dispatch, halt, halts, hotkey, identify, makelogger, on } from "./19.js"
-import { internals, mixin, observeAttributes, states, validate } from "./43.js"
+import { attr, behavior, css, dispatch, halt, halts, hotkey, identify, makelogger, mkid, on } from "./19.js"
+import { internals, mixin, states, stylize, validate } from "./43.js"
 import { ariaState, AriaDisabled } from "./aria.js"
 
 const ilog = makelogger("command")
@@ -45,6 +45,12 @@ export const CommandRole = mixin(
   (el) => {
 		states(el, ["command", "focusable"])
     validate(el, { roles, when: "connected" })
+
+    // TODO: Can `anchor-scope` help out here?
+    const anchorName = `--${mkid()}`
+    stylize(el, css`:host { anchor-name: ${anchorName}; }`)
+    if (el.commandForElement)
+      el.commandForElement.style.positionAnchor = `${anchorName}`
 
     // Reflect attributes
     Object.defineProperties(el, {

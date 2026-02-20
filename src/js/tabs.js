@@ -1,9 +1,9 @@
 // @deno-types=./19.ts
 // @deno-types=./43.ts
-import { $$, attr, css, html, identify, makelogger, on } from "./19.js"
-import { internals, observeAttributes, shadow, stylize, tag, validate } from "./43.js"
-import { sFocusable, FocusGroupMixin } from "./focus.js"
-import { ariaProperty, ariaRelatives, ariaState, AriaActions, AriaControls, AriaMultiSelectable, AriaSelected } from "./aria.js"
+import { $$, css, makelogger, on } from "./19.js"
+import { internals, stylize, tag, validate } from "./43.js"
+import { FocusGroupMixin } from "./focus.js"
+import { ariaRelatives, ariaState, AriaActions, AriaControls, AriaMultiSelectable, AriaSelected } from "./aria.js"
 
 const ilog = makelogger("tabs")
 
@@ -56,11 +56,6 @@ export const Tab = tag(
 
     internals(el, { role: "tab" })
     stylize(el, css`:host { display: flex; }`)
-    shadow(el).replaceChildren(html`
-      <slot name=leading></slot>
-      <slot></slot>
-      <slot name=trailing></slot>
-    `)
     validate(el, { sParent: "aria-tablist", when: "connected" })
 
     const tabset = () => el.matches("aria-tabset *")
@@ -73,7 +68,7 @@ export const Tab = tag(
     const panel = () =>
       ariaRelatives(el, "controls") || [panels()[siblings().indexOf(el)]]
 
-    // TODO: When this fires in construction, ariaControlsElements is null
+    // TODO: When this fires on "constructed", ariaControlsElements is null
     on(el, "attribute:aria-selected", (e) => {
       const multiselect = el.matches(":state(multiselectable) > *")
       panel().forEach(panel => {

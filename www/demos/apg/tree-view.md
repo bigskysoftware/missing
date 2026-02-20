@@ -39,18 +39,13 @@ This example requires JavaScript to be activated.
 <h3 id=documents:label>My Documents</h3>
 
 <style>
-  aria-treeitem:not([aria-expanded=true]) > aria-group {
-	display: none;
-  }
-
   aria-treeitem {
-	aria-icon.when-open { display: none }
+	> aria-icon.when-open { display: none }
 	&:state(expanded) {
-	  aria-icon.when-closed { display: none }
-	  aria-icon.when-open { display: block }
+	  > aria-icon.when-closed { display: none }
+	  > aria-icon.when-open { display: block }
 	}
   }
-</style>
 </style>
 <aria-tree id=tree aria-labelledby=documents:label>
 	<aria-treeitem>
@@ -271,9 +266,10 @@ This example requires JavaScript to be activated.
 
 <script type=module src=/dist/js/icon.js></script>
 <script type=module src=/dist/js/tree.js></script>
-<script>
+<script type=module>
 	const tree = document.getElementById("tree")
 	const input = document.getElementById("last_action")
+    // TODO: Use accName from 43.js once it's not jank
 	tree.addEventListener("change", (e) => {
 		const treeitem = e.detail.selected
 		let label = treeitem.getAttribute("aria-label")

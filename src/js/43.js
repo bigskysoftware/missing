@@ -5,13 +5,67 @@
 // @deno-types=./19.ts
 // @deno-types=./aria.ts
 import { $$, css, dispatch, halt, hotkey, off, on } from "./19.js"
-import { ariaProperty, ariaRelatives } from "./aria.js"
 
 // @ts-check
 
 // @deno-types=./19.ts
 /// <reference lib="es2022" />
 /// <reference lib="dom" />
+
+
+/**
+ * Get the accessible name of an element.
+ * https://www.w3.org/TR/accname-1.2/
+ *
+ * @param {Element} el
+ * @returns str
+ */
+export function accName(el) {
+	const prohibited = new Set([
+	  "caption", "code", "definition", "deletion",
+		"emphasis", "generic", "insertion", "mark",
+		"none", "paragraph", "strong", "subscript",
+		"suggestion", "superscript", "term", "time",
+	])
+
+	let name = ""
+
+	if (prohibited.has(role(el))) return name
+
+	// 2.1 Hidden Not Referenced
+	if (el.hidden || el.ariaHidden === "true")
+		return ""
+
+	// 2.2 LabelledBy
+	if (el.hasAttribute("aria-labelledby"))
+		name = el.ariaLabelledByElements?.map(accName).join(" ")
+	if (name) return name
+
+	// 2.3 Embedded Control (TODO)
+
+	// 2.4 AriaLabel (TODO: 2.4.1)
+	if (el.tagName !== "SLOT" && el.ariaLabel?.trim())
+	  name = el.ariaLabel?.trim()
+	if (name) return name
+
+	// 2.5 Host Language Label
+	const labels = (el.constructor.formAssociated)
+	  ? internals(el)?.labels
+		: el.labels
+	if (labels)
+		name = [...labels].map(accName).join(" ")
+	if (name) return name
+
+	const attrs = ["alt", "title", "placeholder", "aria-placeholder"]
+	name = el.getAttribute(
+	  attrs.find(at => el.getAttribute(at)?.trim())
+	)?.trim()
+	if (name) return name
+
+	// 2.6 Name from Content (gross simplifiction)
+	name = el.textContent.trim()
+	return name
+}
 
 /**
  * @template TKey
@@ -136,17 +190,8 @@ export function validate(el, options = {}) {
     return
   }
 
-  if (label) {
-    // TODO: Create labelOf() helper?
-    const validLabel = (
-      (ariaRelatives(el, "labelledBy")?.length
-        || el.hasAttribute("aria-labelledby")
-        || ariaProperty(el, "label")) ||
-      (el.constructor.formAssociated && internals(el)?.labels.length)
-    )
-    if (!validLabel)
-      console.error(el, "has no accessible name.")
-  }
+  if (label && !accName(el))
+    console.error(el, "has no accessible name.")
 
   if (sParent && !el.matches(`${sParent} > *`))
     console.error(el, `parent must match "${sParent}".`)
@@ -157,8 +202,16 @@ export function validate(el, options = {}) {
   if (roles?.length && !roles.includes(role(el)))
     console.error(el, `role must be one of ${or.format(roles)}.`)
 
-  if (attrs?.length && !el.matches(attrs.map(a => `[${a}]`).join("")))
+	const required = [], forbidden = []
+	for (const at in attrs) {
+		if (attrs[at]) required.push(at)
+		else forbidden.push(at)
+	}
+  if (required.length && !el.matches(required.map(a => `[${a}]`).join("")))
     console.error(el, `requires attributes ${and.format(attrs)}.`)
+  if (forbidden.length && el.matches(forbidden.map(a => `[${a}]`).join("")))
+    console.error(el, `does not support attributes ${and.format(attrs)}.`)
+
 }
 
 /**

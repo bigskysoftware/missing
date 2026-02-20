@@ -34,7 +34,7 @@ export const icon = tag(
             str = await response.text()
           else throw new Error(`HTTP Error ${response.status}: ${response.url}.`)
         } catch (error) {
-          console.error(`Failed to load icon "${name}".`, error)
+          console.error(`Failed to load icon: "${url}${name}.svg".`, error)
         }
         cache.set(name, str)
         return str

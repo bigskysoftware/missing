@@ -194,6 +194,9 @@ aria-listbox, [role=listbox] {
 			}
 		}
 	}
+	aria-option {
+		display: flex; /* TODO: Split out aria-option styles from [role=option]? */
+	}
 }
 
 

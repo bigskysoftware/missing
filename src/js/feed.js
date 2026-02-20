@@ -1,7 +1,7 @@
 // @ts-check
 // @deno-types=./19.ts
 // @deno-types=./43.ts
-import { $, halts, hotkey, makelogger, observe, on, traverse } from "./19.js"
+import { $, hotkey, makelogger, on, traverse } from "./19.js"
 import { internals, tag, validate } from "./43.js"
 import { AriaBusy } from "./aria.js"
 import { sFocusable } from "./focus.js"
@@ -21,6 +21,14 @@ const Feed = tag(
   "aria-feed",
   { mixins: [AriaBusy] },
   (el) => {
+    internals(el, {
+      role: "feed",
+      ariaLive: "polite",
+      ariaRelevant: "additions",
+      ariaKeyShortcuts: Object.keys(keyTable).join(" "),
+    })
+    validate(el, { label: true, sChildren: ":is(article, [role=article])", when: "connected" })
+
     const register = (article, idx, articles) => {
       Object.assign(article, {
         tabIndex: 0,
@@ -28,7 +36,7 @@ const Feed = tag(
         ariaPosInSet: idx + 1,
         ariaSetSize: el.hasAttribute("infinite") ? -1 : articles.length,
       })
-      validate(article, { label: true, attrs: ["aria-describedby"] })
+      validate(article, { label: true, attrs: { "aria-describedby": true } })
     }
 
     const sArticle = "article, [role=article]"
@@ -51,22 +59,14 @@ const Feed = tag(
       dest?.focus()
     }
 
-    internals(el, {
-      role: "feed",
-      ariaLive: "polite",
-      ariaRelevant: "additions",
-      ariaKeyShortcuts: Object.keys(keyTable).join(" "),
-    })
-    validate(el, { label: true, sChildren: ":is(article, [role=article])", when: "connected" })
-
     on(el, "attribute:aria-busy", (e) => {
       if (e.detail.value !== "true")
         [...el.children].forEach(register)
     })
 
     on(el, "keydown", hotkey(Object.fromEntries(
-      Object.entries(keyTable).map(([key, value]) =>
-        [key, (e) => focus(value)]
+      Object.entries(keyTable).map(
+        ([key, value]) => [key, (e) => focus(value)]
       )
     ), { halt: "default propagation" }))
   }

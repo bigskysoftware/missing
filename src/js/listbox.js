@@ -1,10 +1,10 @@
 // @deno-types=./19.ts
 // @deno-types=./43.ts
-import { $, $$, attr, css, dispatch, html, makelogger, on } from "./19.js"
-import { internals, observeAttributes, shadow, states, stylize, tag, validate } from "./43.js"
-import { FormElementMixin} from "./forms.js"
+import { $, $$, attr, css, dispatch, makelogger, on } from "./19.js"
+import { internals, states, stylize, tag, validate } from "./43.js"
+import { FormElementMixin } from "./forms.js"
 import { TypeAheadMixin } from "./typeahead.js"
-import { ariaState, AriaDisabled, AriaMultiSelectable, AriaSelected } from "./aria.js"
+import { ariaState, AriaActions, AriaMultiSelectable, AriaSelected } from "./aria.js"
 
 const ilog = makelogger("listbox")
 
@@ -12,6 +12,13 @@ export const ListBox = tag(
   "aria-listbox",
   { mixins: [FormElementMixin, TypeAheadMixin, AriaMultiSelectable] },
   (el) => {
+    internals(el, { role: "listbox", ariaOrientation: "vertical" })
+    stylize(el, css`:host { display: block; }`)
+    validate(el, {
+      sChildren: ":is(aria-group, aria-option)",
+      when: "connected"
+    })
+
     const sMember = "aria-option"
     const sSelected = "aria-option[aria-selected=true]"
 
@@ -29,13 +36,6 @@ export const ListBox = tag(
       el.value = data
     }
 
-    internals(el, { role: "listbox", ariaOrientation: "vertical" })
-    stylize(el, css`:host { display: block; }`)
-    validate(el, {
-      sChildren: ":is(aria-group, aria-option)",
-      when: "connected"
-    })
-
     on(el, "connected", (e) => {
       if (!$(el, "[aria-selected=true]"))
         setDefault()
@@ -44,7 +44,6 @@ export const ListBox = tag(
 
     on(el, "slotchange", (e) => {
       setValue()
-
       const options = $$(el, sMember)
       const current = options.find(o =>
         o.tabIndex == 0 || ariaState(o, "selected")
@@ -80,20 +79,13 @@ export const ListBox = tag(
 
 export const Option = tag(
   "aria-option",
-  { mixins: [AriaSelected] },
+  { mixins: [AriaActions, AriaSelected] },
   (el) => {
     internals(el, { role: "option" })
-    stylize(el, css`:host { display: block; }`)
-    shadow(el).replaceChildren(html`
-      <slot name=leading></slot>
-      <slot></slot>
-      <slot name=trailing></slot>
-    `)
     validate(el, { sParent: ":is(aria-listbox, aria-group)", when: "connected" })
 
     on(el, "attribute:aria-selected", (e) => {
-      // TODO: This will fire on soft (not hard) refresh.
-      // TODO: Is there a better way only fire this after load/upgrade?
+      // TODO: This fires on soft (not hard) refresh. How to only fire once el is upgraded?
       if (el.isConnected)
         dispatch(el.closest("aria-listbox"), "change", {}, { bubbles: true })
     })

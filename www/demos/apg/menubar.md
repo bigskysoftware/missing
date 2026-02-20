@@ -49,40 +49,9 @@ See [Missing.js &sect; Menubar](/docs/js#menubar).
 This example requires JavaScript to be activated.
 
 </noscript>
-<script type=module>
-	import { on } from "/dist/js/19.js"
-    const cmds = {
-        "--font-sans": { fontFamily: "sans-serif" },
-        "--font-serif": { fontFamily: "serif" },
-        "--font-mono": { fontFamily: "monospace" },
-        "--font-style-b": { fontWeight: "bold" },
-        "--font-style-i": { fontStyle: "italic" },
-        "--style-color-b": { color: "blue" }, 
-        "--style-color-r": { color: "red" },
-        "--style-color-g": { color: "green" },
-        "--align-l": { textAlign: "left" },
-        "--align-c": { textAlign: "center" },
-        "--align-r": { textAlign: "right" },
-        "--relative-size-sm": { },
-        "--relative-size-lg": { },
-        "--absolute-size-xs": { fontSize: "0.5em" },
-        "--absolute-size-sm": { fontSize: "0.8em" },
-        "--absolute-size-md": { fontSize: "1em" },
-        "--absolute-size-lg": { fontSize: "1.2em" },
-        "--absolute-size-xl": { fontSize: "1.5em" },
-        "--reset": { fontFamily: null, fontWeight: null, fontStyle: null, color: null, textAlign: null, fontSize: null },
-    }
-	const el = document.getElementById("editor")
-    on(el, "command", (e) => {
-        if (e.command === "--quit")
-          return alert("You have quit the editor.")
-        Object.assign(el.style, cmds[e.command])
-    })
-</script>
-
 <figure>
 	<aria-menubar aria-label="Text Formatting">
-		<aria-menuitem commandfor=font-menu command=toggle-menu>Font</aria-menuitem>
+		<aria-menuitem commandfor=font-menu command=toggle-popover>Font</aria-menuitem>
 		<aria-menuitem commandfor=style-menu command=toggle-menu>Style/Color</aria-menuitem>
 		<aria-menuitem commandfor=align-menu command=toggle-menu>Text Align</aria-menuitem>
 		<aria-menuitem commandfor=size-menu command=toggle-menu>Size</aria-menuitem>
@@ -142,4 +111,34 @@ You know, that or, uh, His Dudeness, or uh, Duder, or El Duderino if you’re no
 	</textarea>
 </figure>
 
+<script type=module src=/dist/js/icon.js></script>
+<script>
+const cmds = {
+	"--font-sans": { fontFamily: "sans-serif" },
+	"--font-serif": { fontFamily: "serif" },
+	"--font-mono": { fontFamily: "monospace" },
+	"--font-style-b": { fontWeight: "bold" },
+	"--font-style-i": { fontStyle: "italic" },
+	"--style-color-b": { color: "blue" }, 
+	"--style-color-r": { color: "red" },
+	"--style-color-g": { color: "green" },
+	"--align-l": { textAlign: "left" },
+	"--align-c": { textAlign: "center" },
+	"--align-r": { textAlign: "right" },
+	"--relative-size-sm": { },
+	"--relative-size-lg": { },
+	"--absolute-size-xs": { fontSize: "0.5em" },
+	"--absolute-size-sm": { fontSize: "0.8em" },
+	"--absolute-size-md": { fontSize: "1em" },
+	"--absolute-size-lg": { fontSize: "1.2em" },
+	"--absolute-size-xl": { fontSize: "1.5em" },
+	"--reset": { fontFamily: null, fontWeight: null, fontStyle: null, color: null, textAlign: null, fontSize: null },
+}
+const editor = document.getElementById("editor")
+editor.addEventListener("command", (e) => {
+	if (e.command === "--quit")
+		return alert("You have quit the editor.")
+	Object.assign(editor.style, cmds[e.command])
+})
+</script>
 <script type=module src=/dist/js/menu.js></script>

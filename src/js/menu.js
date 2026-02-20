@@ -1,10 +1,9 @@
 // @deno-types=./19.ts
 // @deno-types=./43.ts
-import { $$, attr, html, makelogger, on } from "./19.js"
-import { internals, shadow, tag, validate } from "./43.js"
+import { $, $$, attr, css, html, makelogger, on } from "./19.js"
+import { internals, shadow, stylize, tag, validate } from "./43.js"
 import { AriaOrientation, AriaGroup, AriaSeparator } from "./aria.js"
 import { FocusGroupMixin } from "./focus.js"
-import { PopoverPositionMixin } from "./popover.js"
 import { invokerOf, CommandRole } from "./command.js"
 
 const ilog = makelogger("menu")
@@ -25,34 +24,49 @@ const MenuBar = tag(
 
 const MenuList = tag(
   "aria-menulist",
-  { mixins: [FocusGroupMixin, PopoverPositionMixin, AriaOrientation] },
+  { mixins: [FocusGroupMixin, AriaOrientation] },
   (el) => {
     internals(el, {
 			role: "menu",
 			ariaOrientation: "vertical",
 			ariaLabelledByElements: (el.popover) ? [invokerOf(el)] : null,
 		})
-    validate(el, { attrs: ["id"], sChildren: "aria-menuitem, aria-group, aria-separator", when: "connected" })
+    stylize(el, css`
+      :host {
+        display: fixed;
+        top: anchor(bottom);
+        left: anchor(left);
+      }
+    `)
+    validate(el, {
+			attrs: { "id": true },  // required for invokerOf()
+			sChildren: "aria-menuitem, aria-group, aria-separator",
+			when: "connected",
+		})
+
+		const sMember = "aria-menuitem"
+		const members = () => $$(el, sMember)
+		const clearMemory = () => {
+			const ms = members()
+			ms.forEach(m => m.tabindex = -1)
+			ms[0].tabIndex = 0
+		}
 
     on(el, "slotchange", (e) => {
-      const menuitems = $$(el, "aria-menuitem")
-      const current = menuitems.find(t => t.tabIndex == 0) || menuitems[0]
-      current.tabIndex = 0
+			clearMemory()
     })
 
+		// TODO: Should opening a menu focus the first item?
     on(el, "toggle", (e) => {
 			if (e.newState === "open")
-        // Wait for PopoverPositionMixin
-        requestAnimationFrame(() => {
-          requestAnimationFrame(() => {
-            el.children[0].focus()
-          })
-        })
+				$(el, sMember).focus()
     })
 
 		on(el, "focusout", (e) => {
-      if (!el.contains(e.relatedTarget))
+      if (!el.contains(e.relatedTarget)) {
   			el.hidePopover()
+				clearMemory()
+			}
 		})
   }
 )
@@ -76,7 +90,10 @@ const MenuItem = tag(
       <slot></slot>
       <slot name=trailing></slot>
     `)
-    validate(el, { sParent: ":is(aria-menubar, aria-menulist, aria-group)", when: "connected" })
+    validate(el, {
+			sParent: ":is(aria-menubar, aria-menulist, aria-group)",
+			when: "connected",
+		})
 
     if (internals(el).ariaHasPopup === "menu") {
       const submenu = el.popoverTargetElement

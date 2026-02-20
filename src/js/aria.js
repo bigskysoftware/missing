@@ -1,7 +1,7 @@
 // @deno-types=./19.ts
 // @deno-types=./43.ts
-import { $, $$, css, dispatch, halt, hotkey, makelogger, off, on } from "./19.js"
-import { internals, memoize, mixin, role, states, stylize, tag, validate } from "./43.js"
+import { $, $$, css, dispatch, halt, hotkey, html, makelogger, off, on } from "./19.js"
+import { accName, internals, memoize, mixin, role, shadow, states, stylize, tag, validate } from "./43.js"
 
 const ilog = makelogger("aria")
 
@@ -34,19 +34,14 @@ export const ariaState = (el, aria, value) => {
     el[ariaPropertyName(aria)] = value
   }
 }
+
 export const ariaLabel = (el, value) => {
-  if (value === undefined) {
-    // TODO: Calculate accessible label using:
-    // - ariaRelatives("labelledBy") content
-    // - ariaProperty("label") value
-    // - internals(el)?.labels content (if el.constructor.formAssociated)
-    // - heading tags
-    console.error("Calculating accessible name not implemented yet")
-  } else if (value instanceof HTMLElement) {
+  if (value === undefined)
+    return ariaProperty(el, "label") || ariaRelatives(el, "labelledBy")?.map(accName).join(" ")
+  else if (value instanceof HTMLElement)
     internals(el, { ariaLabelledByElements: [value] })
-  } else {
+  else
     ariaProperty(el, "label", value)
-  }
 }
 
 /* ARIA States:
@@ -155,7 +150,10 @@ export const AriaPressed = mixin(
 export const AriaSelected = mixin(
   [AriaDisabled, AriaState("selected")],
   (el) => {
+    states(el, ["focusable", "selectable"])
+    el.tabIndex = -1
 
+    const focusgroup = () => el.closest(":state(focusgroup)")
     const sMultiSelectable = `
       :state(multiselectable) *,
       :state(multiselectable) :state(group) *
@@ -165,21 +163,12 @@ export const AriaSelected = mixin(
     `
     const selectionFollowsFocus = () => !el.matches(sMultiSelectable) && !el.matches(sExceptions)
 
-    states(el, ["focusable", "selectable"])
-
     on(el, "focus", (e) => {
-      if (selectionFollowsFocus())
+      if (selectionFollowsFocus()) {
+        const prev = $(focusgroup(), "[aria-selected=true]")
+        ariaState(prev, "selected", null)
         ariaState(el, "selected", true)
-    })
-
-    on(el, "focusout", (e) => {
-      const target = e.relatedTarget
-      if (selectionFollowsFocus() && el.closest(":state(focusgroup)").contains(target) && !el.contains(target))
-        ariaState(el, "selected", null)
-    })
-
-    on(el, "blur", (e) => {
-      console.log('TODO')
+      }
     })
 
     on(el, "click", (e) => {
@@ -187,12 +176,9 @@ export const AriaSelected = mixin(
         ariaState(el, "selected", !ariaState(el, "selected") || null)
     })
 
-    on(el, "keydown", (e) => {
-      if (!selectionFollowsFocus() && e.key === " ") {
-        halt("default propagation", e)
-        ariaState(el, "selected", !ariaState(el, "selected") || null)
-      }
-    })
+    on(el, "keydown", hotkey({
+      " ": (e) => dispatch(el, "click", {}, { bubbles: true }),
+    }, { halt: "default" }))
   }
 )
 
@@ -229,18 +215,57 @@ export const AriaProperty = (aria, { defaultValue = "false" } = {}) => {
 
 export const AriaActions = mixin(
   (el) => {
+
+    stylize(el, css`
+      :host {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        white-space: nowrap;
+      }
+      slot[name=leading] {
+        display: flex;
+        flex-shrink: 0;
+      }
+      slot[name=leading]::slotted(*) {
+        display: inline-flex;
+        width: 24px;
+        height: 24px;
+      }
+      slot:not([name]) {
+        flex-grow: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      slot[name=trailing] {
+        display: flex;
+        flex-shrink: 0;
+        margin-left: auto;
+      }
+      slot[name=trailing]::slotted(*) {
+        display: inline-flex;
+      }
+    `)
+    shadow(el).replaceChildren(html`
+      <slot name=leading></slot>
+      <slot></slot>
+      <slot name=trailing></slot>
+    `)
+
     const inert = (value) => {
-      const a = $(el, "aria-actions")
+      //const a = $(el, "aria-actions")
+      const a = $(shadow(el), "slot[name=trailing]")
       if (a) a.inert = value
     }
+
     on(el, "constructed", (e) => inert(true))
     on(el, "focusin", (e) => inert(false))
-    on(el, "focusout", (e) => inert(true))
+    on(el, "focusout", (e) => inert(!el.contains(e.relatedTarget)))
   }
 )
 
-// TODO: Could/should ariaRelatives use internals?
-// TODO: Still a work in progress
+// TODO: Work in progress.
 export const AriaControls = mixin(
   [AriaProperty("controlsElements", { defaultValue: [] })],
   (el) => {
@@ -274,7 +299,7 @@ export const AriaControls = mixin(
 export const AriaModal = AriaProperty("modal")
 
 
-// TODO: Should we halt "Ctrl+A" on Single Select? Click/Drag?
+// TODO: Halt "Ctrl+A" on single select? Implement click+drag?
 export const AriaMultiSelectable = mixin(
   [AriaDisabled, AriaProperty("multiSelectable")],
   (el) => {
@@ -288,7 +313,7 @@ export const AriaMultiSelectable = mixin(
         anchor = member
     }
 
-    // TODO: Should these also change based on writing-mode / dir?
+    // TODO: Implement arrowTable, c.f. focus.keyTable and toolbar.js
     const arrow = (ariaProperty(el, "orientation") === "horizontal")
       ? { next: "ArrowRight", prev: "ArrowLeft" }
       : { next: "ArrowDown", prev: "ArrowUp" }
@@ -381,9 +406,12 @@ export const AriaGroup = tag(
     internals(el, { role: "group" })
     states(el, ["group"])
     stylize(el, css`:host { display: flex; flex-direction: var(--flex-direction) }`)
-    // validate(el, { sParent: "aria-listbox", sChildren: "aria-option", when: "connected" })
-
-    //on(el, "connected", (e) => el.removeAttribute("tabindex"))
+    validate(el, {
+      sParent: ":is(aria-listbox, aria-menulist, aria-treeitem)",
+      sChildren: ":is(aria-option, aria-menuitem, aria-treeitem)",
+      attrs: { "tabindex": false },
+      when: "connected",
+    })
 
     on(el, "slotchange", (e) => {
       dispatch(el.parentElement, "slotchange", { host: el, elements: e.detail.elements })

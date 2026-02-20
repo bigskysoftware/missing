@@ -87,6 +87,19 @@ This example requires JavaScript to be activated.
 			<aria-icon fetch name=clipboard-paste></aria-icon>
 		</button>
 		<hr aria-orientation=vertical>
+		<label for=font-select hidden>Font Size:</label>
+		<select id=font-select>
+			<option>8pt
+			<option>12pt
+			<option>16pt
+			<option>24pt
+		</select>
+		<hr aria-orientation=vertical>
+		<input-button>
+			<label for=text-input hidden>Find:</label>
+			<input id=text-input type=text>
+		</input-button>
+		<hr aria-orientation=vertical>
 		<button type=button aria-label="Text align: start" onclick="alert(this.ariaLabel)">
 			<aria-icon fetch name=text-align-start></aria-icon>
 		</button>
@@ -100,14 +113,12 @@ This example requires JavaScript to be activated.
 			<aria-icon fetch name=text-align-justify></aria-icon>
 		</button>
 		<hr aria-orientation=vertical>
-		<select aria-label="Font Size">
-			<option>8pt
-			<option>12pt
-			<option>16pt
-			<option>24pt
-		</select>
-		<hr aria-orientation=vertical>
-		<label>Find: <aria-input-button><input type=text></aria-input-button></label>
+		<input-button>
+			<label for=number-input hidden>Number:</label>
+			<input type=number step=1 min=12 max=32 value=16>
+		</input-button>
+		<label for=color-input hidden>Color:</label>
+		<input type=color value=rebeccapurple>
 	</aria-toolbar>
 	<p><a href=#>Focusable element after the toolbar</a></p>
 </figure>
