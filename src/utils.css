@@ -28,10 +28,6 @@
   white-space: nowrap;
 }
 
-.all\:initial {
-  all: initial;
-}
-
 .bold { font-weight: bold }
 .italic {
   font-style: italic;

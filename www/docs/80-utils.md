@@ -319,13 +319,6 @@ Until browser support for detecting vertical writing modes has improved,
 [progress bars]: /docs/forms/#progress-bars
 
 
-## Reset
-    
-~~Use the <dfn>`.all:initial`</dfn> class to reset all CSS properties on an
-element and return it to its browser-default styles.~~
-**Deprecated:**{.bad .color} Will be removed in version 2.0.
-
-
 ## Print
 
 The following utilities can be used to fine-tune the display of your webpage when it is being printed.
