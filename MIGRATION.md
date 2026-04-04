@@ -12,6 +12,7 @@ The migration guide is a work in progress.
 - `.f-row` -> `.flex-row`
 - `.f-col` -> `.flex-col`
 - `.f-switch` -> `.flex-switch`
+- `.primary-font` -> `.main-font`
 
 ## Rename variables
 - `--f-switch-threshold` -> `--flex-switch-threshold`

@@ -114,10 +114,6 @@ You can set `--density` yourself in inline styles or your own CSS:
 <dfn>`.main-font`</dfn>
 :   Renders the text in the main font (`--main-font`).
 
-<dfn>~~`.primary-font`~~</dfn>
-:   **Deprecated:**{.bad .color} Will be removed in version 2.0.
-    Use `.main-font` instead.
-
 <dfn>`.secondary-font`</dfn>
 :   Renders the text in the secondary font (`--secondary-font`).
 
