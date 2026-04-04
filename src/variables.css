@@ -34,7 +34,6 @@
   --muted-accent: light-dark(var(--blue-7), var(--blue-5)); /* Muted accent color. Will not be used for text. */
 
   /* Lengths */
-  --rhythm: 1.4rem; /* Deprecated, but must provide in case people use it in calc() */
   --line-length: 40rem; /* Maximum line length for prose. */
   --input-inline-size: 20ch; /* Default size for text inputs and selects. */
 
@@ -104,5 +103,5 @@
 }
 
 * {
-  --gap: calc(var(--rhythm, 1rlh) * var(--density));
+  --gap: calc(1rlh * var(--density));
 }

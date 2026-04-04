@@ -50,7 +50,7 @@
 .massivetext {
   --eff-line-length:
     min(
-      calc(var(--full-width) - (2 * var(--rhythm, 1rlh))),
+      calc(var(--full-width) - 2rlh),
       var(--line-length)
     );
   font-size: calc(.13 * var(--eff-line-length));

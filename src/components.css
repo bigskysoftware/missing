@@ -107,7 +107,7 @@ details,
       --full-width: calc(100vi - var(--sidebar-width));
       --eff-line-length:
         min(
-          calc(var(--full-width) - (2 * var(--rhythm, 1rlh))),
+          calc(var(--full-width) - 2rlh),
           var(--line-length)
         );
       padding-block-start: var(--gap);
@@ -131,7 +131,7 @@ details,
       --full-width: calc(100vi - var(--sidebar-width));
       --eff-line-length:
         min(
-          calc(var(--full-width) - (2 * var(--rhythm, 1rlh))),
+          calc(var(--full-width) - 2rlh),
           var(--line-length)
         );
       padding-block-start: var(--gap);
@@ -174,12 +174,12 @@ details,
   font-family: var(--secondary-font);
   border: var(--chip-border-width) var(--chip-border-style) var(--accent);
   background: var(--box-bg);
-  border-radius: calc(var(--rhythm, 1rlh) / 2);
-  padding-inline: calc(var(--rhythm, 1rlh) / 2);
+  border-radius: 0.5rlh;
+  padding-inline: 0.5rlh;
 }
 
 .navbar {
-  padding: var(--rhythm, 1rlh);
+  padding: 1rlh;
 
   font-family: var(--secondary-font);
 
@@ -223,7 +223,7 @@ details,
   & nav ul[role=list] {
     display: flex;
     flex-flow: row;
-    gap: var(--rhythm, 1rlh);
+    gap: 1rlh;
     padding-inline-start: 0;
 
     & * { flex-shrink: 0 }
@@ -277,7 +277,7 @@ details,
   color: currentcolor;
   padding: 0;
   box-shadow: none;
-  line-height: var(--rhythm, 1rlh);
+  line-height: 1rlh;
   font-size: var(--wcag-target-size-aa);
   inline-size: var(--wcag-target-size-aa);
   block-size: var(--wcag-target-size-aa);
@@ -325,9 +325,9 @@ aside[role=note] {
     0px,
     calc(
       0px - min(
-        var(--gutter-width) - var(--rhythm, 1rlh),
-        var(--sidenote-width) + var(--rhythm, 1rlh)
-      ) + var(--rhythm, 1rlh) - 1ch
+        var(--gutter-width) - 1rlh,
+        var(--sidenote-width) + 1rlh
+      ) + 1rlh - 1ch
     )
   );
   --density: 0.5;

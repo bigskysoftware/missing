@@ -109,10 +109,6 @@ these are grouped together at the bottom, in addition to being mentioned in the 
 
 ## Lengths
 
-<dfn>~~`--rhythm`~~</dfn> {#var-rhythm}
-:   ~~Vertical rhythm, line height.~~ **Deprecated:**{.bad .color} Will be removed in version 2.0.
-    Set a value for the `line-height`{.token .attr-name} property on the `html` element instead.
-
 <dfn>`--line-length`</dfn> {#var-line-length}
 :   Maximum line length for prose.
 

@@ -15,5 +15,9 @@ The migration guide is a work in progress.
 - `.f-switch` -> `.flex-switch`
 - `.primary-font` -> `.main-font`
 
+## Removed variables
+- `--rhythm`: Set a value for the `line-height`{.token .attr-name} property on the `html` element instead.
+
+
 ## Rename variables
 - `--f-switch-threshold` -> `--flex-switch-threshold`
