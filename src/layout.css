@@ -201,8 +201,6 @@
   }
 }
 
-.nested-list :where(ul, ol, dl) { margin-block: 0 }
-
 .inline { display: inline }
 .block { display: block }
 .contents { display: contents }

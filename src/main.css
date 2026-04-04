@@ -238,6 +238,7 @@ ul, ol {
 
   & & {
     padding-inline-start: var(--gap);
+    margin-block: 0;
   }
 
   &[role=list], &[role=listbox] {
@@ -255,6 +256,7 @@ ol {
 dl {
   margin-block: var(--gap);
 }
+
 dt {
   font-weight: bold;
   font-family: var(--secondary-font);

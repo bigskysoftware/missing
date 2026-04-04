@@ -9,6 +9,7 @@ The migration guide is a work in progress.
 - `.-no-light-theme`: Set `html { color-sheme: light; }` instead.
 - `.all:initial`
 - `.grid`: Use new helper, **TODO**
+- `.nested-list`: This utility class is now the default (nested `<ul>` and `<ol>` do not get extra spacing). To get the old behavior, add `.margin-block` to the nested `<ul>` or `<ol>`.
 
 ## Renamed classes
 - `.f-row` -> `.flex-row`
