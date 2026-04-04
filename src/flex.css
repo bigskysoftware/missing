@@ -1,24 +1,23 @@
 
-.flex-row, .f-row {
+.flex-row {
   display: flex;
   flex-direction: row;
   gap: var(--gap);
   & > * { margin: 0 }
 }
 
-.flex-column, .f-col {
+.flex-column {
   display: flex;
   flex-direction: column;
   gap: var(--gap);
   & > * { margin: 0 }
 }
 
-.flex-switch, .f-switch {
+.flex-switch {
   display: flex;
   flex-wrap: wrap;
   gap: var(--gap);
-  --f-switch-threshold: 55ch;  /* Deprecated name */
-  --flex-switch-threshold: var(--f-switch-threshold);
+  --flex-switch-threshold: 55ch;
 
   & > * {
     margin: 0;

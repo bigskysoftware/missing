@@ -107,8 +107,9 @@
     display: block;
 
     & :is(
-      .f-row, .flex-row, .f-col,
-      .flex-column, .f-switch, .flex-switch,
+      .flex-row,
+      .flex-column,
+      .flex-switch,
       .grid
     ) > * { margin: revert; }
   }

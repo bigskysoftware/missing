@@ -22,9 +22,6 @@ Pair this with `.flex-wrap:wrap-reverse` to reverse the order when displayed as 
 
 All of `.flex-row`, `.flex-column` and `.flex-switch` will remove margins from their children, and have a [gap] set to `--gap`.
 
-**Deprecated:**{.bad .color} The original names for these classes, `.f-row`, `.f-col`, and `.f-switch` (as well as `--f-switch-threshold`), have been deprecated in favor of the more intuitive names given above.
-The original names will be removed in version 2.0.
-
 [gap]: https://developer.mozilla.org/en-US/docs/Web/CSS/gap
 
 
