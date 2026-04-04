@@ -261,14 +261,6 @@ these are grouped together at the bottom, in addition to being mentioned in the 
 :   Sets the width of the sidebar for the `.sidebar-layout` component.
     Default is `25ch`{.token .attr-value}.
 
-<dfn>`--grid-row-width`</dfn> {#var-grid-row-width}
-:   Sets the width of a row in a `.grid`.
-    Default is `1fr`{.token .attr-value}.
-
-<dfn>`--grid-col-width`</dfn> {#var-grid-col-width}
-:   Sets the width of a column in a `.grid`.
-    Default is `1fr`{.token .attr-value}.
-
 <dfn>`--sidebar-width`</dfn> {#var-sidebar-width}
 :   Sets the width of the sidebar for the `.sidebar-layout` component.
     Default is `25ch`{.token .attr-value}.

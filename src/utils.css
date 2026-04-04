@@ -102,11 +102,11 @@
   .block\@print {
     display: block;
 
+    /* TODO: Do we need to add the new grid util here? */
     & :is(
       .flex-row,
       .flex-column,
-      .flex-switch,
-      .grid
+      .flex-switch
     ) > * { margin: revert; }
   }
 

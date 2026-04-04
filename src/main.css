@@ -49,7 +49,7 @@ aside {
   line-height: 0.66rlh;
   --gap: calc(0.66rlh * var(--density))
 
-  border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--graphical-fg);
+    border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--graphical-fg);
   border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--graphical-fg);
   padding-block: var(--gap);
   margin-block: calc(var(--gap) * 3 / 2);
@@ -167,7 +167,7 @@ main + footer {
   --eff-line-length:
     min(
       calc(var(--full-width) - 2rlh)),
-      var(--line-length)
+    var(--line-length)
     );
   padding-block: 1rlh;
   padding-inline: calc((var(--full-width) - var(--eff-line-length)) / 2);
