@@ -8,6 +8,7 @@ html {
   font-family: var(--main-font);
   line-height: var(--rhythm, 1.4rem);
 
+  color-scheme: light dark;
   background: var(--bg);
   color: var(--fg);
 

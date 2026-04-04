@@ -265,23 +265,20 @@ The <dfn>`.big`</dfn> class will be removed in version 2.0.
 ## Theme selection
 
 By default, missing.css applies a light or dark theme based on the visitor's OS settings.
-To force the theme independently of `@prefers-color-scheme`{.language-css} you can use the following:
+To force the theme, you can set `color-scheme: light`{.language-css} or `color-scheme: dark`{.language-css} on the `html` element.
 
-~~Add the <dfn>`.-dark-theme`</dfn> class to your root element to use the dark theme.~~
-**Deprecated:**{.bad .color} Will be removed in version 2.0.
-Use `<meta name=color-scheme content=dark>`{.language-html} instead.
-
-~~Add the <dfn>`.-no-dark-theme`</dfn> class to your root element to use the light theme.~~
-**Deprecated:**{.bad .color} Will be removed in version 2.0.
-Use `<meta name=color-scheme content=light>`{.language-html} instead.
+It is recommended that you include a `<meta name=color-scheme content="light dark">`{.language-html} tag in the `<head>`{.language-html} of your document.
+This allows the browser to render form controls and other native elements in the appropriate colors before the CSS is loaded.
 
 <figure>
 <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Theme toggle markup</figcaption>
 
   ~~~ css
-  :root:has([name=theme][value=light]:checked) { color-scheme: light      }
-  :root:has([name=theme][value=dark]:checked)  { color-scheme: dark       }
-  :root:has([name=theme][value=auto]:checked)  { color-scheme: light dark }
+  html {
+    &:has([name=theme][value=light]:checked) { color-scheme: light      }
+    &:has([name=theme][value=dark]:checked)  { color-scheme: dark       }
+    &:has([name=theme][value=auto]:checked)  { color-scheme: light dark }
+  }
   ~~~
 
   ~~~ html
@@ -298,9 +295,11 @@ Use `<meta name=color-scheme content=light>`{.language-html} instead.
   <hr>
 
   <style>
-    :root:has([name=theme][value=light]:checked) { color-scheme: light      }
-    :root:has([name=theme][value=dark]:checked)  { color-scheme: dark       }
-    :root:has([name=theme][value=auto]:checked)  { color-scheme: light dark }
+    html {
+      &:has([name=theme][value=light]:checked) { color-scheme: light      }
+      &:has([name=theme][value=dark]:checked)  { color-scheme: dark       }
+      &:has([name=theme][value=auto]:checked)  { color-scheme: light dark }
+    }
   </style>
   <fieldset>
     <legend>Select theme</legend>
