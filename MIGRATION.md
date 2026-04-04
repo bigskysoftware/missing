@@ -15,6 +15,7 @@ The migration guide is a work in progress.
 - `.f-col` -> `.flex-col`
 - `.f-switch` -> `.flex-switch`
 - `.primary-font` -> `.main-font`
+- `.big` -> `.<big>`
 
 ## Removed variables
 - `--rhythm`: Set a value for the `line-height`{.token .attr-name} property on the `html` element instead.

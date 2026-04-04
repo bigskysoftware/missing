@@ -306,7 +306,7 @@ details,
     color: var(--accent);
   }
 
-  &:is(.big, .\<big\>) {
+  &.\<big\> {
     font-size: var(--wcag-target-size-aaa);
     inline-size: var(--wcag-target-size-aaa);
     block-size: var(--wcag-target-size-aaa);

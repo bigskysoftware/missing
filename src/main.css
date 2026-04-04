@@ -69,7 +69,7 @@ aside {
     letter-spacing: normal;
   }
 
-  &:is(.big, .\<big\>) {
+  &.\<big\> {
     /* Pull quote */
     background: none;
     border: none;
@@ -561,7 +561,7 @@ label :is(input, select):not([specificity-hack]) {
     box-shadow: var(--shadow-disabled);
   }
 
-  &:is(.big, .\<big\>) {
+  &.\<big\> {
     min-block-size: 1.5rlh;
     font-size: 1rem;
     padding-inline: 0.5rlh;
@@ -661,7 +661,7 @@ input:disabled::file-selector-button {
   --fg: var(--muted-fg);
   box-shadow: var(--shadow-disabled);
 }
-input:is(.big, .\<big\>)::file-selector-button {
+input.\<big\>::file-selector-button {
   min-block-size: 1.5rlh;
   font-size: 1rem;
   padding-inline: 0.5rlh;

@@ -45,7 +45,7 @@
 .align-content\:center { align-content: center }
 .align-content\:end    { align-content: end    }
 
-.big, .\<big\> {
+.\<big\> {
   font-size: 1.4em;
   line-height: 1.5rlh;
 }

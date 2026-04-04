@@ -219,8 +219,6 @@ The following classes can be used to make one element look like another:
 To get a smaller font size, use the `.<small>` masquerade.
 
 The <dfn>`.<big>`</dfn> class makes things bigger, with special treatment for some elements.
-**Deprecated:**{.bad .color} We have converted our `.big` class to a masquerade in honor of W3C deprecating the `<big>`{.language-html} HTML tag.
-The <dfn>`.big`</dfn> class will be removed in version 2.0.
 
 <figure>
 <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></subtitle>Masquerade markups</figcaption>
