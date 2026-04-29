@@ -166,8 +166,8 @@ body > footer,
 main + footer {
   --eff-line-length:
     min(
-      calc(var(--full-width) - 2rlh)),
-    var(--line-length)
+      calc(var(--full-width) - 2rlh),
+      var(--line-length)
     );
   padding-block: 1rlh;
   padding-inline: calc((var(--full-width) - var(--eff-line-length)) / 2);
