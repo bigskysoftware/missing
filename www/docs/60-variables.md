@@ -109,10 +109,6 @@ these are grouped together at the bottom, in addition to being mentioned in the 
 
 ## Lengths
 
-<dfn>~~`--rhythm`~~</dfn> {#var-rhythm}
-:   ~~Vertical rhythm, line height.~~ **Deprecated:**{.bad .color} Will be removed in version 2.0.
-    Set a value for the `line-height`{.token .attr-name} property on the `html` element instead.
-
 <dfn>`--line-length`</dfn> {#var-line-length}
 :   Maximum line length for prose.
 
@@ -120,6 +116,10 @@ these are grouped together at the bottom, in addition to being mentioned in the 
 :   The `inline-size`{.token .attr-name} for selects, text inputs, and textareas.
     Defaults to `20ch`{.token .attr-value}.
     Can be overridden by using `<input size=n>`{.language-html}, `<textarea cols=n>`{.language-html}, or `.wide-inputs`{.language-css}.
+
+<dfn>`--card-length`</dfn> {#var-input-inline-size}
+:   The `inline-size`{.token .attr-name} for `.layout-grid` children.
+    Defaults to `18rem`{.token .attr-value}.
 
 
 ## Borders
@@ -265,20 +265,12 @@ these are grouped together at the bottom, in addition to being mentioned in the 
 :   Sets the width of the sidebar for the `.sidebar-layout` component.
     Default is `25ch`{.token .attr-value}.
 
-<dfn>`--grid-row-width`</dfn> {#var-grid-row-width}
-:   Sets the width of a row in a `.grid`.
-    Default is `1fr`{.token .attr-value}.
-
-<dfn>`--grid-col-width`</dfn> {#var-grid-col-width}
-:   Sets the width of a column in a `.grid`.
-    Default is `1fr`{.token .attr-value}.
-
-<dfn>`--sidebar-width`</dfn> {#var-sidebar-width}
-:   Sets the width of the sidebar for the `.sidebar-layout` component.
-    Default is `25ch`{.token .attr-value}.
-
 <dfn>`--sidenote-width`</dfn> {#var-sidenote-width}
 :   Sets the width of a `<small role=note>`{.language-html} sidenote.
     Default is `20ch`{.token .attr-value}.
+
+<dfn>`--cell-length`</dfn> {#var-cell-length}
+:   Sets the width of a cell inside the `.layout-grid` container.
+    Default is `--card-length`{.token .attr-value}.
 
 [colorway]: /docs/colorways

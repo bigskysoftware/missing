@@ -6,8 +6,9 @@
 
 html {
   font-family: var(--main-font);
-  line-height: var(--rhythm, 1.4rem);
+  line-height: 1.4rem;
 
+  color-scheme: light dark;
   background: var(--bg);
   color: var(--fg);
 
@@ -45,10 +46,10 @@ nav {
 
 aside {
   font-size: .8em;
-  line-height: calc(var(--rhythm, 1rlh) * 2 / 3);
-  --gap: calc(var(--rhythm, 1rlh) * var(--density) * 2 / 3);
+  line-height: 0.66rlh;
+  --gap: calc(0.66rlh * var(--density))
 
-  border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--graphical-fg);
+    border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--graphical-fg);
   border-block-end: var(--border-block-end-width) var(--border-block-end-style) var(--graphical-fg);
   padding-block: var(--gap);
   margin-block: calc(var(--gap) * 3 / 2);
@@ -68,14 +69,14 @@ aside {
     letter-spacing: normal;
   }
 
-  &:is(.big, .\<big\>) {
+  &.\<big\> {
     /* Pull quote */
     background: none;
     border: none;
     border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) var(--muted-fg);
     border-radius: 0;
     padding: 0;
-    padding-inline-start: var(--rhythm, 1rlh);
+    padding-inline-start: 1rlh;
     font-style: italic;
     color: var(--accent);
   }
@@ -92,26 +93,26 @@ h1, h2, h3, h4, h5, h6,
 h1, .\<h1\> {
   font-size: 2em;
   text-transform: none;
-  line-height: calc(2 * var(--rhythm, 1rlh));
+  line-height: 2rlh;
   letter-spacing: 0;
 }
 
 h2, .\<h2\> {
   font-size: 1.6em;
   text-transform: none;
-  line-height: calc(1.5 * var(--rhythm, 1rlh));
+  line-height: 1.5rlh;
   letter-spacing: 0;
 }
 
 h3, .\<h3\> {
   font-size: 1.17em;
-  line-height: calc(1 * var(--rhythm, 1rlh));
+  line-height: 1rlh;
 }
 
 h4, .\<h4\>, h5, .\<h5\>, h6, .\<h6\> {
   font-size: 1em;
   text-transform: none;
-  line-height: calc(1 * var(--rhythm, 1rlh));
+  line-height: 1rlh;
   letter-spacing: 0;
   margin-block-start: var(--gap);
 }
@@ -156,7 +157,7 @@ header {
 footer {
   font-family: var(--secondary-font);
   font-size: .8em;
-  line-height: calc(var(--rhythm, 1rlh) * 2 / 3);
+  line-height: 0.66rlh;
   border-block-start: var(--border-block-start-width) var(--border-block-start-style) var(--graphical-fg);
 }
 
@@ -165,10 +166,10 @@ body > footer,
 main + footer {
   --eff-line-length:
     min(
-      calc(var(--full-width) - (2 * var(--rhythm, 1rlh))),
+      calc(var(--full-width) - 2rlh),
       var(--line-length)
     );
-  padding-block: var(--rhythm, 1rlh);
+  padding-block: 1rlh;
   padding-inline: calc((var(--full-width) - var(--eff-line-length)) / 2);
 }
 
@@ -201,7 +202,7 @@ hr {
 pre {
   font-family: var(--mono-font);
   font-size: .9em;
-  line-height: var(--rhythm, 1rlh);
+  line-height: 1rlh;
   tab-size: 2;
 
   margin-block: var(--gap);
@@ -216,7 +217,7 @@ blockquote {
   margin-block: var(--gap);
 
   font-size: 1.1em;
-  line-height: var(--rhythm, 1rlh);
+  line-height: 1rlh;
   font-style: italic;
 
   border-inline-start: var(--border-inline-start-width) var(--border-inline-start-style) var(--graphical-fg);
@@ -232,11 +233,12 @@ blockquote {
 }
 
 ul, ol {
-  padding-inline-start: var(--rhythm, 1rlh);
+  padding-inline-start: 1rlh;
   margin-block: var(--gap);
 
   & & {
     padding-inline-start: var(--gap);
+    margin-block: 0;
   }
 
   &[role=list], &[role=listbox] {
@@ -254,13 +256,14 @@ ol {
 dl {
   margin-block: var(--gap);
 }
+
 dt {
   font-weight: bold;
   font-family: var(--secondary-font);
 }
 
 dd {
-  margin-inline-start: var(--rhythm, 1rlh);
+  margin-inline-start: 1rlh;
 }
 
 @supports selector(li::marker) {
@@ -285,7 +288,7 @@ figcaption {
 main {
   --eff-line-length:
     min(
-      calc(var(--full-width) - (2 * var(--rhythm, 1rlh))),
+      calc(var(--full-width) - 2rlh),
       var(--line-length)
     );
   max-inline-size: var(--eff-line-length);
@@ -328,7 +331,7 @@ a, .\<a\> {
 
 small, .\<small\> {
   font-size: .8em;
-  line-height: calc(var(--rhythm, 1rlh) * 2 / 3);
+  line-height: 0.66rlh;
 }
 
 s {
@@ -462,7 +465,7 @@ td, th {
   vertical-align: top;
 
   &:not(:last-child) {
-    padding-inline-end: var(--rhythm, 1rlh);
+    padding-inline-end: 1rlh;
   }
 }
 
@@ -495,14 +498,14 @@ label :is(input, select):not([specificity-hack]) {
   display: inline-flex;
   align-items: center;
   padding-block: 0;
-  padding-inline: calc(var(--rhythm, 1rlh) / 4);
+  padding-inline: 0.25rlh;
   vertical-align: middle;
   box-sizing: border-box;
 
   font-size: .8rem;
   line-height: 1.125em;
   font-family: var(--secondary-font);
-  min-block-size: var(--rhythm, 1rlh);
+  min-block-size: 1rlh;
 
   background: var(--interactive-bg);
   color: var(--fg);
@@ -560,11 +563,11 @@ label :is(input, select):not([specificity-hack]) {
     box-shadow: var(--shadow-disabled);
   }
 
-  &:is(.big, .\<big\>) {
-    min-block-size: calc(1.5 * var(--rhythm, 1rlh));
+  &.\<big\> {
+    min-block-size: 1.5rlh;
     font-size: 1rem;
-    padding-inline: calc(.5 * var(--rhythm, 1rlh));
-    line-height: var(--rhythm, 1rlh);
+    padding-inline: 0.5rlh;
+    line-height: 1rlh;
   }
 }
 a.\<button\>:not([specificity-hack]) {
@@ -628,14 +631,14 @@ input::file-selector-button {
   display: inline-flex;
   align-items: center;
   padding-block: 0;
-  padding-inline: calc(var(--rhythm, 1rlh) / 4);
+  padding-inline: 0.25rlh;
   vertical-align: middle;
   box-sizing: border-box;
 
   font-size: .8rem;
   line-height: 1.125em;
   font-family: var(--secondary-font);
-  min-block-size: var(--rhythm, 1rlh);
+  min-block-size: 1rlh;
 
   background: var(--interactive-bg);
   color: var(--fg);
@@ -660,11 +663,11 @@ input:disabled::file-selector-button {
   --fg: var(--muted-fg);
   box-shadow: var(--shadow-disabled);
 }
-input:is(.big, .\<big\>)::file-selector-button {
-  min-block-size: calc(1.5 * var(--rhythm, 1rlh));
+input.\<big\>::file-selector-button {
+  min-block-size: 1.5rlh;
   font-size: 1rem;
-  padding-inline: calc(.5 * var(--rhythm, 1rlh));
-  line-height: var(--rhythm, 1rlh);
+  padding-inline: 0.5rlh;
+  line-height: 1rlh;
 }
 strong > input::file-selector-button {
   background: var(--accent);
@@ -698,7 +701,7 @@ input[type=datetime-local],
 input[type=number],
 select,
 textarea {
-  padding: calc(var(--rhythm, 1rlh) / 4);
+  padding: 0.25rlh;
   vertical-align: top;
 
   font-size: 1rem;
@@ -733,7 +736,7 @@ input[type=range] {
 input[type=color] {
   padding: 0;
   margin: 0;
-  block-size: calc(1.5 * var(--rhythm, 1rlh));
+  block-size: 1.5rlh;
 
   border: none;
   background: none;
@@ -743,7 +746,7 @@ input[type=file] {
   padding-block: calc(var(--gap) / 4);
   padding-inline: 0;
   font: inherit;
-  line-height: calc(var(--rhythm, 1rlh) / 2);
+  line-height: 0.5rlh;
   &::file-selector-button {
     margin-block: .1em 0;
     margin-inline-end: 1ch;
@@ -781,7 +784,7 @@ select {
   --hover-color: color-mix(currentColor 10%, transparent);
   --checked-color: color-mix(var(--graphical-fg) 50%, var(--box-bg));
   --active-color: color-mix(var(--graphical-fg) 75%, var(--box-bg));
-  --padding: calc(var(--rhythm, 1rlh) / 4);
+  --padding: 0.25rlh;
   --indented: 1em;
 
   &[multiple],

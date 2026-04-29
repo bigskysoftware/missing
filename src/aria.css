@@ -18,7 +18,7 @@
   &:is(button) {
     /* button-specific resets */
     font-size: 1em;
-    line-height: var(--rhythm, 1.4rem);
+    line-height: 1rlh;
     box-shadow: none;
     &:is(:hover, :focus-visible, :active, :disabled) {
       filter: none;
@@ -220,7 +220,7 @@ input[type=checkbox][role=switch] {
     margin-block-end: auto;
   }
   &:not(label > *) {
-    padding-block: calc(var(--gap) / 4 + (var(--rhythm, 1rlh) - 1em) / 2);
+    padding-block: calc(var(--gap) / 4 + (1rlh - 1em) / 2);
   }
 
   label:has(> &) {

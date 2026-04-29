@@ -45,9 +45,9 @@
 .align-content\:center { align-content: center }
 .align-content\:end    { align-content: end    }
 
-.big, .\<big\> {
+.\<big\> {
   font-size: 1.4em;
-  line-height: calc(1.5 * var(--rhythm, 1rlh));
+  line-height: 1.5rlh;
 }
 
 /***
@@ -57,7 +57,7 @@
 .container {
   --eff-line-length:
     min(
-      calc(var(--full-width) - (2 * var(--rhythm, 1rlh))),
+      calc(var(--full-width) - 2rlh),
       var(--line-length)
     );
 
@@ -200,8 +200,6 @@
     margin-block-end: var(--gap);
   }
 }
-
-.nested-list :where(ul, ol, dl) { margin-block: 0 }
 
 .inline { display: inline }
 .block { display: block }

@@ -114,10 +114,6 @@ You can set `--density` yourself in inline styles or your own CSS:
 <dfn>`.main-font`</dfn>
 :   Renders the text in the main font (`--main-font`).
 
-<dfn>~~`.primary-font`~~</dfn>
-:   **Deprecated:**{.bad .color} Will be removed in version 2.0.
-    Use `.main-font` instead.
-
 <dfn>`.secondary-font`</dfn>
 :   Renders the text in the secondary font (`--secondary-font`).
 
@@ -223,8 +219,6 @@ The following classes can be used to make one element look like another:
 To get a smaller font size, use the `.<small>` masquerade.
 
 The <dfn>`.<big>`</dfn> class makes things bigger, with special treatment for some elements.
-**Deprecated:**{.bad .color} We have converted our `.big` class to a masquerade in honor of W3C deprecating the `<big>`{.language-html} HTML tag.
-The <dfn>`.big`</dfn> class will be removed in version 2.0.
 
 <figure>
 <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Masquerade markups</figcaption>
@@ -265,26 +259,25 @@ The <dfn>`.big`</dfn> class will be removed in version 2.0.
 ## Theme selection
 
 By default, missing.css applies a light or dark theme based on the visitor's OS settings.
-To force the theme independently of `@prefers-color-scheme`{.language-css} you can use the following:
+To force the theme, you can set `color-scheme: light`{.language-css} or `color-scheme: dark`{.language-css} on the `html` element.
 
-~~Add the <dfn>`.-dark-theme`</dfn> class to your root element to use the dark theme.~~
-**Deprecated:**{.bad .color} Will be removed in version 2.0.
-Use `<meta name=color-scheme content=dark>`{.language-html} instead.
-
-~~Add the <dfn>`.-no-dark-theme`</dfn> class to your root element to use the light theme.~~
-**Deprecated:**{.bad .color} Will be removed in version 2.0.
-Use `<meta name=color-scheme content=light>`{.language-html} instead.
+It is recommended that you include a `<meta name=color-scheme content="light dark">`{.language-html} tag in the `<head>`{.language-html} of your document.
+This allows the browser to render form controls and other native elements in the appropriate colors before the CSS is loaded.
 
 <figure>
 <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Theme toggle markup</figcaption>
 
-  ~~~ html
-  <style>
-    :root:has([name=theme][value=light]:checked) { color-scheme: light      }
-    :root:has([name=theme][value=dark]:checked)  { color-scheme: dark       }
-    :root:has([name=theme][value=auto]:checked)  { color-scheme: light dark }
-  </style>
+  ~~~ css
+  /* style.css */
+  html {
+    &:has([name=theme][value=light]:checked) { color-scheme: light      }
+    &:has([name=theme][value=dark]:checked)  { color-scheme: dark       }
+    &:has([name=theme][value=auto]:checked)  { color-scheme: light dark }
+  }
+  ~~~
 
+  ~~~ html
+  <!-- page.html -->
   <fieldset>
     <legend>Select theme</legend>
     <div>
@@ -298,9 +291,11 @@ Use `<meta name=color-scheme content=light>`{.language-html} instead.
   <hr>
 
   <style>
-    :root:has([name=theme][value=light]:checked) { color-scheme: light      }
-    :root:has([name=theme][value=dark]:checked)  { color-scheme: dark       }
-    :root:has([name=theme][value=auto]:checked)  { color-scheme: light dark }
+    html {
+      &:has([name=theme][value=light]:checked) { color-scheme: light      }
+      &:has([name=theme][value=dark]:checked)  { color-scheme: dark       }
+      &:has([name=theme][value=auto]:checked)  { color-scheme: light dark }
+    }
   </style>
   <fieldset>
     <legend>Select theme</legend>
@@ -322,13 +317,6 @@ Until browser support for detecting vertical writing modes has improved,
 
 [toggle switches]: /docs/aria/#toggle-switch
 [progress bars]: /docs/forms/#progress-bars
-
-
-## Reset
-    
-~~Use the <dfn>`.all:initial`</dfn> class to reset all CSS properties on an
-element and return it to its browser-default styles.~~
-**Deprecated:**{.bad .color} Will be removed in version 2.0.
 
 
 ## Print
