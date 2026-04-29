@@ -9,7 +9,7 @@ We use several CSS variables that you can override to customize your site.
 You can create multiple classes that set these variables and switch between them to create multiple themes.
 When overriding color variables, be sure to use the `light-dark()`{.language-css} CSS function in order to preserve the light/dark theme functionality.
 
-This is a reference of all the variables you can set on the root `<html>`{.language-html} element.
+This is a reference of all the variables you can set on the `:root`{.language-css} pseudo-class.
 There are a few more that are used with specific components or utility classes;
 these are grouped together at the bottom, in addition to being mentioned in the documentation for their respective class or component.
 
@@ -123,7 +123,7 @@ these are grouped together at the bottom, in addition to being mentioned in the 
 
 
 ## Borders
-   
+
 <dfn>`--border-width`</dfn> {#var-border-width}
 :   Shortcut for uniform border widths on various `.box` related components.
     Defaults to `unset`{.token .attr-value}.
@@ -232,7 +232,7 @@ these are grouped together at the bottom, in addition to being mentioned in the 
     ~~~ css
     --mono-font: "Cascadia Code", monospace, monospace
     ~~~
-    
+
     </div>
 
 

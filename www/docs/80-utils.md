@@ -221,7 +221,7 @@ To get a smaller font size, use the `.<small>` masquerade.
 The <dfn>`.<big>`</dfn> class makes things bigger, with special treatment for some elements.
 
 <figure>
-<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></subtitle>Masquerade markups</figcaption>
+<figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Masquerade markups</figcaption>
 
   ~~~ html
   <p>This is a paragraph.</p>
@@ -268,6 +268,7 @@ This allows the browser to render form controls and other native elements in the
 <figcaption><sub-title class="allcaps">Example<v-h>: </v-h></sub-title>Theme toggle markup</figcaption>
 
   ~~~ css
+  /* style.css */
   html {
     &:has([name=theme][value=light]:checked) { color-scheme: light      }
     &:has([name=theme][value=dark]:checked)  { color-scheme: dark       }
@@ -276,6 +277,7 @@ This allows the browser to render form controls and other native elements in the
   ~~~
 
   ~~~ html
+  <!-- page.html -->
   <fieldset>
     <legend>Select theme</legend>
     <div>

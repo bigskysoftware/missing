@@ -1,5 +1,5 @@
 [env]
-BROWSERSLIST="> 0.9% and last 2 versions and not dead"
+BROWSERSLIST="> 0.9%, last 2 versions, not dead"
 
 
 [tools]

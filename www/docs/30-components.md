@@ -358,10 +358,10 @@ We recommend using <a href=https://lucide.dev>Lucide</a> for icons.
   <!-- markup.html -->
   <section class="flex-row justify-content:space-between">
     <button class="iconbutton" type=button aria-label="Menu">
-      <svg aria-hidden=true><use href=#menu-icon></use></svg>
+      <svg viewBox="0 0 24 24" aria-hidden=true><use href=#menu-icon></use></svg>
     </button>
     <a class="info <button> iconbutton" aria-label="Next">
-      <svg aria-hidden=true><use href=#next-icon></use></svg>
+      <svg viewBox="0 0 24 24" aria-hidden=true><use href=#next-icon></use></svg>
     </a>
     <!-- ... -->
   </section>
@@ -380,27 +380,27 @@ We recommend using <a href=https://lucide.dev>Lucide</a> for icons.
       <symbol id="music-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-music-icon lucide-music"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></symbol>
     </defs>
   </svg>
-  <section class="flex-row justify-content:space-between">
+  <section class="flex-row justify-content:space-between" role=toolbar>
     <button class="iconbutton" type=button aria-label="Menu">
-      <svg aria-hidden=true><use href=#menu-icon></use></svg>
+      <svg viewBox="0 0 24 24" aria-hidden=true><use href=#menu-icon></use></svg>
     </button>
     <a class="info <button> iconbutton" aria-label="Next">
-      <svg aria-hidden=true><use href=#next-icon></use></svg>
+      <svg viewBox="0 0 24 24" aria-hidden=true><use href=#next-icon></use></svg>
     </a>
     <button class="ok iconbutton" type=button aria-label="Cut">
-      <svg aria-hidden=true><use href=#cut-icon></use></svg>
+      <svg viewBox="0 0 24 24" aria-hidden=true><use href=#cut-icon></use></svg>
     </button>
     <a class="warn <button> iconbutton" aria-label="Close">
-      <svg aria-hidden=true><use href=#close-icon></use></svg>
+      <svg viewBox="0 0 24 24" aria-hidden=true><use href=#close-icon></use></svg>
     </a>
     <button class="bad iconbutton" type=button aria-label="Trans">
-      <svg aria-hidden=true><use href=#trans-icon></use></svg>
+      <svg viewBox="0 0 24 24" aria-hidden=true><use href=#trans-icon></use></svg>
     </button>
     <a class="info <button> iconbutton" aria-label="Smile">
-      <svg aria-hidden=true><use href=#smile-icon></use></svg>
+      <svg viewBox="0 0 24 24" aria-hidden=true><use href=#smile-icon></use></svg>
     </a>
     <button class="ok iconbutton" type=button aria-label="Music">
-      <svg aria-hidden=true><use href=#music-icon></use></svg>
+      <svg viewBox="0 0 24 24" aria-hidden=true><use href=#music-icon></use></svg>
     </button>
   </section>
 
@@ -412,7 +412,7 @@ We recommend using <a href=https://lucide.dev>Lucide</a> for icons.
   ~~~ html
   <section class="flex-row justify-content:space-between">
     <button class="<big> iconbutton" type=button aria-label="Menu">
-      <svg aria-hidden=true><use href=#menu-icon></use></svg>
+      <svg viewBox="0 0 24 24" aria-hidden=true><use href=#menu-icon></use></svg>
     </button>
     <!-- ... -->
   </section>
@@ -420,27 +420,27 @@ We recommend using <a href=https://lucide.dev>Lucide</a> for icons.
 
   <hr>
 
-  <section class="flex-row justify-content:space-between">
+  <section class="flex-row justify-content:space-between" role=toolbar>
     <button class="<big> iconbutton" type=button aria-label="Menu">
-      <svg aria-hidden=true><use href=#menu-icon></use></svg>
+      <svg viewBox="0 0 24 24" aria-hidden=true><use href=#menu-icon></use></svg>
     </button>
     <a class="<big> info <button> iconbutton" aria-label="Next">
-      <svg aria-hidden=true><use href=#next-icon></use></svg>
+      <svg viewBox="0 0 24 24" aria-hidden=true><use href=#next-icon></use></svg>
     </a>
     <button class="<big> ok iconbutton" type=button aria-label="Cut">
-      <svg aria-hidden=true><use href=#cut-icon></use></svg>
+      <svg viewBox="0 0 24 24" aria-hidden=true><use href=#cut-icon></use></svg>
     </button>
     <a class="<big> warn <button> iconbutton" aria-label="Close">
-      <svg aria-hidden=true><use href=#close-icon></use></svg>
+      <svg viewBox="0 0 24 24" aria-hidden=true><use href=#close-icon></use></svg>
     </a>
     <button class="<big> bad iconbutton" type=button aria-label="Trans">
-      <svg aria-hidden=true><use href=#trans-icon></use></svg>
+      <svg viewBox="0 0 24 24" aria-hidden=true><use href=#trans-icon></use></svg>
     </button>
     <a class="<big> info <button> iconbutton" aria-label="Smile">
-      <svg aria-hidden=true><use href=#smile-icon></use></svg>
+      <svg viewBox="0 0 24 24" aria-hidden=true><use href=#smile-icon></use></svg>
     </a>
     <button class="<big> ok iconbutton" type=button aria-label="Music">
-      <svg aria-hidden=true><use href=#music-icon></use></svg>
+      <svg viewBox="0 0 24 24" aria-hidden=true><use href=#music-icon></use></svg>
     </button>
   </section>
 
