@@ -1,0 +1,40 @@
+.layout-grid {
+  display: grid;
+  gap: var(--gap);
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  margin-block: var(--gap);
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-flow: column nowrap;
+  }
+
+  @supports (grid-area: attr(id type(<custom-ident>))) {
+    & [id] { grid-area: attr(id type(<custom-ident>)) }
+  }
+
+  & > * { margin: 0; }
+}
+
+.flow-grid {
+  display: grid;
+  --cell-length: var(--card-length);
+  grid-template-columns: repeat(
+    auto-fill, minmax(min(100%, var(--cell-length)), 1fr)
+  );
+  gap: var(--gap);
+
+  & > * { margin: 0 }
+}
+
+.row-grid {
+  display: grid;
+  inline-size: max-content;
+  max-inline-size: 100%;
+  gap: var(--gap);
+
+  @media not (max-width: 768px) {
+    grid: 1fr / auto-flow 1fr;
+  }
+}

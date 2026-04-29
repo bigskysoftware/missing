@@ -36,6 +36,13 @@
   /* Lengths */
   --line-length: 40rem; /* Maximum line length for prose. */
   --input-inline-size: 20ch; /* Default size for text inputs and selects. */
+  --card-length: 18rem; /* Default length for cards. */
+
+  /* Widths */
+  --full-width: 100vi;
+  --sidebar-width: 25ch;
+  --wcag-target-size-aa: 24px;
+  --wcag-target-size-aaa: 44px;
 
   /* Borders */
   --border-width: 1px; /* Single value; set for uniform border widths */
@@ -80,12 +87,6 @@
 
   /* Density */
   --density: 1;
-
-  /* Width */
-  --full-width: 100vi;
-  --sidebar-width: 25ch;
-  --wcag-target-size-aa: 24px;
-  --wcag-target-size-aaa: 44px;
 
   /* Icons: https://lucide.dev/ */
   --chevron-down-icon: url(

@@ -117,6 +117,10 @@ these are grouped together at the bottom, in addition to being mentioned in the 
     Defaults to `20ch`{.token .attr-value}.
     Can be overridden by using `<input size=n>`{.language-html}, `<textarea cols=n>`{.language-html}, or `.wide-inputs`{.language-css}.
 
+<dfn>`--card-length`</dfn> {#var-input-inline-size}
+:   The `inline-size`{.token .attr-name} for `.layout-grid` children.
+    Defaults to `18rem`{.token .attr-value}.
+
 
 ## Borders
    
@@ -261,12 +265,12 @@ these are grouped together at the bottom, in addition to being mentioned in the 
 :   Sets the width of the sidebar for the `.sidebar-layout` component.
     Default is `25ch`{.token .attr-value}.
 
-<dfn>`--sidebar-width`</dfn> {#var-sidebar-width}
-:   Sets the width of the sidebar for the `.sidebar-layout` component.
-    Default is `25ch`{.token .attr-value}.
-
 <dfn>`--sidenote-width`</dfn> {#var-sidenote-width}
 :   Sets the width of a `<small role=note>`{.language-html} sidenote.
     Default is `20ch`{.token .attr-value}.
+
+<dfn>`--cell-length`</dfn> {#var-cell-length}
+:   Sets the width of a cell inside the `.layout-grid` container.
+    Default is `--card-length`{.token .attr-value}.
 
 [colorway]: /docs/colorways
