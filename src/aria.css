@@ -1,4 +1,12 @@
 
+[aria-busy=true] {
+  cursor: progress;
+}
+
+[aria-disabled=true], [disabled] {
+  cursor: not-allowed;
+}
+
 [role=tablist] {
   display: flex;
   gap: .5ch;

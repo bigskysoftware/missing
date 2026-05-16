@@ -1,203 +1,63 @@
 /* stylelint-disable plugin/browser-compat */
 
-/* Document
- * ========================================================================== */
-
-/**
- * 1. Add border box sizing in all browsers (opinionated).
- * 2. Backgrounds do not repeat by default (opinionated).
- */
-
 *,
 ::before,
 ::after {
-  box-sizing: border-box; /* 1 */
-  background-repeat: no-repeat; /* 2 */
+  box-sizing: border-box;
+  font-kerning: normal;
 }
-
-/**
- * 1. Add text decoration inheritance in all browsers (opinionated).
- * 2. Add vertical alignment inheritance in all browsers (opinionated).
- */
-
-::before,
-::after {
-  text-decoration: inherit; /* 1 */
-  vertical-align: inherit; /* 2 */
-}
-
-/**
- * 1. Use the default cursor in all browsers (opinionated).
- * 3. Breaks words to prevent overflow in all browsers (opinionated).
- * 5. Remove the grey highlight on links in iOS (opinionated).
- * 6. Prevent adjustments of font size after orientation changes in iOS.
- */
 
 :root {
-  cursor: default; /* 1 */
-  overflow-wrap: break-word; /* 3 */
-  -webkit-tap-highlight-color: transparent; /* 5 */
-  text-size-adjust: none;
+  cursor: default;
+
+  overflow-wrap: break-word;
+
+  -webkit-tap-highlight-color: transparent;
+
+  -moz-text-size-adjust: none;
   -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+
+  @media (prefers-reduced-motion: no-preference) {
+    interpolate-size: allow-keywords;
+    scroll-behavior: smooth;
+  }
 }
-
-/* Text-level semantics
- * ========================================================================== */
-
-/**
- * Add the correct text decoration in Safari.
- */
 
 abbr[title] {
   text-decoration: underline dotted;
 }
 
-/**
- * Add the correct font weight in Chrome, Edge, and Safari.
- */
-
 strong, b {
   font-weight: bolder;
 }
 
-/**
- * Add the correct font size in all browsers.
- */
-
-small {
-  font-size: 80%;
+a {
+  text-decoration-skip-ink: auto;
 }
-
-/* Embedded content
- * ========================================================================== */
-
-/*
- * Change the alignment on media elements in all browsers (opinionated).
- */
 
 audio, canvas, iframe, img, svg, video {
   vertical-align: middle;
+  max-width: 100%;
 }
-
-/**
- * Change the fill color to match the text color in all browsers (opinionated).
- */
 
 svg:not([fill]) {
   fill: currentColor;
 }
-
-/* Tabular data
- * ========================================================================== */
-
-/**
- * 1. Collapse border spacing in all browsers (opinionated).
- * 2. Correct table border color in Chrome, Edge, and Safari.
- * 3. Remove text indentation from table contents in Chrome, Edge, and Safari.
- */
-
-table {
-  border-collapse: collapse; /* 1 */
-  border-color: currentColor; /* 2 */
-  text-indent: 0; /* 3 */
-}
-
-/* Forms
- * ========================================================================== */
-
-/**
- * Remove the margin on controls in Safari.
- */
-
-button, input, select {
-  margin: 0;
-}
-
-/**
- * Correct the inability to style buttons in iOS and Safari.
- */
-
-button, [type=button], [type=reset], [type=submit] {
-  -webkit-appearance: button;
-}
-
-/**
- * Change the inconsistent appearance in all browsers (opinionated).
- */
-
-fieldset {
-  border: 1px solid #a0a0a0;
-}
-
-/**
- * Add the correct vertical alignment in Chrome, Edge, and Firefox.
- */
-
-progress {
-  vertical-align: baseline;
-}
-
-/**
- * 1. Remove the margin in Firefox and Safari.
- */
-
-textarea {
-  margin: 0; /* 1 */
-}
-
-/**
- * 1. Correct the odd appearance in Chrome, Edge, and Safari.
- */
-
-[type=search] {
-  -webkit-appearance: textfield; /* 1 */
-}
-
-/**
- * Correct input focus rings in Safari.
- */
-input {
-  outline-offset: 0;
-}
-
-/**
- * Correct the cursor style of increment and decrement buttons in Safari.
- */
 
 ::-webkit-inner-spin-button,
 ::-webkit-outer-spin-button {
   block-size: auto;
 }
 
-/**
- * Correct the text style of placeholders in Chrome, Edge, and Safari.
- */
-
 ::-webkit-input-placeholder {
   color: inherit;
   opacity: 0.54;
 }
 
-/**
- * Remove the inner padding in Chrome, Edge, and Safari on macOS.
- */
-
 ::-webkit-search-decoration {
   -webkit-appearance: none;
 }
-
-/**
- * 1. Correct the inability to style upload buttons in iOS and Safari.
- * 2. Change font properties to `inherit` in Safari.
- */
-
-::-webkit-file-upload-button {
-  -webkit-appearance: button; /* 1 */
-  font: inherit; /* 2 */
-}
-
-/* Interactive
- * ========================================================================== */
 
 [hidden] {
   display: none !important;
@@ -205,6 +65,7 @@ input {
 
 :focus-visible {
   outline: .2em solid var(--accent);
+  outline-offset: 0;
   z-index: 2;
 }
 
@@ -216,38 +77,7 @@ body:focus-visible {
 
 :target {
   outline: .2em solid var(--fg);
+  outline-offset: 0;
   z-index: 2;
-}
-
-/*
- * Add the correct display in Safari.
- */
-
-details > summary:first-of-type {
-  display: list-item;
-}
-
-/* Accessibility
- * ========================================================================== */
-
-/**
- * Change the cursor on busy elements in all browsers (opinionated).
- */
-
-[aria-busy=true] {
-  cursor: progress;
-}
-
-/*
- * Change the cursor on disabled, not-editable, or otherwise
- * inoperable elements in all browsers (opinionated).
- */
-
-[aria-disabled=true], [disabled] {
-  cursor: not-allowed;
-}
-
-
-datalist {
-  display: none !important;
+  scroll-margin: 4rem;
 }

@@ -435,6 +435,9 @@ img, video, audio, iframe, object, embed {
 table {
   font-variant-numeric: tabular-nums;
   font: inherit;
+  
+  border-collapse: collapse;
+  text-indent: 0;
 }
 
 caption {
@@ -495,6 +498,7 @@ label :is(input, select):not([specificity-hack]) {
   display: inline-flex;
   align-items: center;
   padding-block: 0;
+  margin: 0;
   padding-inline: calc(var(--rhythm, 1rlh) / 4);
   vertical-align: middle;
   box-sizing: border-box;
@@ -625,9 +629,12 @@ input::file-selector-button {
    We have to duplicate styles from above.
   **/
 
+  -webkit-appearance: button;
+
   display: inline-flex;
   align-items: center;
   padding-block: 0;
+  margin: 0;
   padding-inline: calc(var(--rhythm, 1rlh) / 4);
   vertical-align: middle;
   box-sizing: border-box;
@@ -699,6 +706,7 @@ input[type=number],
 select,
 textarea {
   padding: calc(var(--rhythm, 1rlh) / 4);
+  margin: 0;
   vertical-align: top;
 
   font-size: 1rem;
@@ -967,6 +975,8 @@ meter, progress {
   --border-width: var(--interactive-border-width);
   --border-style: var(--interactive-border-style);
   --border-radius: var(--tab-border-radius);
+  
+  vertical-align: baseline;
 
   @supports (
     selector(::-moz-meter-bar) or
@@ -1174,6 +1184,8 @@ details:not(specificity-hack) {
 }
 
 summary {
+  display: list-item;
+
   margin-inline: calc(0px - var(--gap));
   margin-block: calc(0px - var(--gap)) 0;
   padding-inline: var(--gap);
