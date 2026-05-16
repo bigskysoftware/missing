@@ -1,6 +1,5 @@
 /* stylelint-disable plugin/browser-compat */
 
-
 *,
 ::before,
 ::after {
@@ -46,27 +45,15 @@ svg:not([fill]) {
   fill: currentColor;
 }
 
-/**
- * Correct the cursor style of increment and decrement buttons in Safari.
- */
-
 ::-webkit-inner-spin-button,
 ::-webkit-outer-spin-button {
   block-size: auto;
 }
 
-/**
- * Correct the text style of placeholders in Chrome, Edge, and Safari.
- */
-
 ::-webkit-input-placeholder {
   color: inherit;
   opacity: 0.54;
 }
-
-/**
- * Remove the inner padding in Chrome, Edge, and Safari on macOS.
- */
 
 ::-webkit-search-decoration {
   -webkit-appearance: none;
@@ -93,8 +80,4 @@ body:focus-visible {
   outline-offset: 0;
   z-index: 2;
   scroll-margin: 4rem;
-}
-
-datalist {
-  display: none !important;
 }
