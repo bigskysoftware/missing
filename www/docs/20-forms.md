@@ -59,7 +59,7 @@ Input placeholders are styled with `text-align:end`{.language-css} to better dis
       <label for=text>Text:</label>
       <input id=text type=text placeholder="Type...">
     </div>
-  </div>
+  </form>
   ~~~
 
   <hr>
